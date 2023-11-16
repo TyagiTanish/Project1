@@ -2,7 +2,6 @@ import React from "react";
 import "./App.css";
 
 import SignUpComp from "./views/components/Loginn";
-import MainPage from "./views/pages/MainPage";
 
 
 // import OtpVerification from "./views/components/OtpVerification";

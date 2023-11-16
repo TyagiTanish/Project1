@@ -4,6 +4,7 @@ import OtpVerification from "../components/OtpVerification";
 
 
 import SignUp from "../components/SignUp";
+import SignUpComp from "../components/Loginn";
 
 function MainPage() {
   return (
@@ -44,8 +45,8 @@ function MainPage() {
       </Typography>
       <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
         {/* <OtpVerification /> */}
-        {/* <SignUpComp/> */}
-        <SignUp/>
+        <SignUpComp/>
+        {/* <SignUp/> */}
 
       </Box>
     </Box>
