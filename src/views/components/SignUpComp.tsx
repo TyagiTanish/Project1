@@ -35,7 +35,7 @@ function SignUpComp() {
       >
         Sign up & Get ₹500 OYO Money
       </Box>
-      <Box sx={{ paddingLeft: 2, paddingRight: 1, background: "white" }}>
+      <Box sx={{ paddingLeft: 2, paddingRight: 1 }}>
         <Typography sx={{ fontSize: "32px", fontWeight: "700" }}>
           Login/Signup
         </Typography>
@@ -44,6 +44,16 @@ function SignUpComp() {
         </Typography>
         <form onSubmit={handleSubmit(Onsubmit)}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
+            {/* <Typography
+            sx={{
+              marginRight: 2,
+              marginTop: 2,
+              marginBottom: 2,
+              borderBottom: "1px solid black",
+            }}
+          >
+            +91
+          </Typography> */}
             <Box sx={{ fontWeight: "700", marginTop: 1 }}>Email</Box>
 
             <TextField
@@ -67,7 +77,7 @@ function SignUpComp() {
             Verify Email
           </Button>
         </form>
-        <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
+        <Box sx={{ display: "flex", fontWeight: " 600 " }}>
           {state ? (
             <p> Prefer to Proceed with OTP instead? </p>
           ) : (
