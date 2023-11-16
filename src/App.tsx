@@ -2,6 +2,8 @@ import React from "react";
 import "./App.css";
 
 
+import SignUpComp from "./views/components/Loginn";
+
 
 // import OtpVerification from "./views/components/OtpVerification";
 
@@ -18,7 +20,6 @@ function App() {
     // <Home/>
   )
   
- 
-}
+
 
 export default App;
