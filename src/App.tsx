@@ -6,7 +6,7 @@ import "./App.css";
 // import OtpVerification from "./views/components/OtpVerification";
 
 // import OtpVerification from "./views/components/OtpVerification";
-import SignUpComp from "./views/components/SignUpComp";
+
 import OtpVerification from "./views/components/OtpVerification";
 import MainPage from "./views/pages/MainPage";
 
