@@ -1,9 +1,11 @@
 import React from "react";
 import "./App.css";
-import OtpVerification from "./views/components/OtpVerification";
+// import OtpVerification from "./views/components/OtpVerification";
+
+import Home from "./views/components/Home";
 
 function App() {
-  return (<OtpVerification />)
+  return (<Home />)
 }
 
 export default App;
