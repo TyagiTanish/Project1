@@ -1,7 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import OtpVerification from "../components/OtpVerification";
-import SignUpComp from "../components/Loginn";
+
+
 import SignUp from "../components/SignUp";
 
 function MainPage() {
@@ -43,8 +44,9 @@ function MainPage() {
       </Typography>
       <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
         {/* <OtpVerification /> */}
-        <SignUpComp />
-        {/* <SignUp/> */}
+        {/* <SignUpComp/> */}
+        <SignUp/>
+
       </Box>
     </Box>
   );
