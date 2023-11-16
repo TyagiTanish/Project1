@@ -1,15 +1,22 @@
-import React from 'react'
-import "../../App.css"
-function Home() {
-  return (
-   <div style={{height:"100vh"}}>
-    <div className='layout'>
-        <div className='headerMDD'>
-        <div className="oyo-cell oyo-cell--12-col oyo-cell--8-col-tablet oyo-cell--4-col-phone headerMDD__mddListWrapper"></div>
-        </div>
-    </div>
-   </div>
-  )
-}
+import * as React from 'react';
 
-export default Home
+import Card from '@mui/material/Card';
+
+import CardContent from '@mui/material/CardContent';
+
+import Typography from '@mui/material/Typography';
+
+
+export default function BasicCard() {
+  return (
+    <Card sx={{ width:"100%" }}>
+      <CardContent>
+        <Typography sx={{ fontSize:"20px", mt:1}} color="text.secondary" gutterBottom>
+            OYO
+        </Typography>
+       
+      </CardContent>
+    
+    </Card>
+  );
+}

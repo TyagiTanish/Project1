@@ -7,12 +7,18 @@ import "./App.css";
 
 // import OtpVerification from "./views/components/OtpVerification";
 
-import OtpVerification from "./views/components/OtpVerification";
-import MainPage from "./views/pages/MainPage";
+// import OtpVerification from "./views/components/OtpVerification";
+// import MainPage from "./views/pages/MainPage";
 
 import Home from "./views/components/Home";
+import MainPage from "./views/pages/MainPage";
 function App() {
-  return <MainPage />
+  return (
+    <MainPage />
+    // <Home/>
+  )
+  
+ 
 }
 
 export default App;

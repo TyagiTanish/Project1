@@ -27,8 +27,8 @@ function MainPage() {
     <Typography sx={{width:'77%'}} >Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners.</Typography></Typography> 
       <Box sx={{ml:'70%',position:"absolute",mt:'10%'}}  >
         {/* <OtpVerification /> */}
-        <SignUpComp/>
-        {/* <SignUp/> */}
+        {/* <SignUpComp/> */}
+        <SignUp/>
       </Box>
     </Box>
   );
