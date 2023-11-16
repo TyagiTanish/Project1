@@ -12,15 +12,15 @@ function SignUpComp() {
     <Box
       sx={{
         // float: "right",
-        // marginLeft: "70%",
+        marginLeft: "70%",
         // border: "1px solid black",
         height: "400px",
         marginTop: "10%",
-        maxWidth: 400,
+        maxWidth: 450,
         paddingLeft: 4,
         fontFamily: "sans-serif",
         alignSelf: "flex-start",
-        backgroundColor:'white'
+        backgroundColor: "white",
       }}
     >
       <Box
@@ -32,7 +32,7 @@ function SignUpComp() {
           paddingTop: 1,
           paddingLeft: 4,
           color: "white",
-          width:"100%"
+          width: "100%",
         }}
       >
         Sign up & Get ₹500 OYO Money
@@ -77,7 +77,7 @@ function SignUpComp() {
           )}
 
           <Button
-            sx={{ color: "red" }}
+            sx={{ color: "red", marginTop: -1 }}
             onClick={() => {
               if (state) {
                 setState(false);
