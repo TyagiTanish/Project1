@@ -22,7 +22,7 @@ function SignUp() {
    
   } = useForm(   );
   return (
-    <Card className="oyo-cell loginCard">
+    <Card className="oyo-cell loginCard" sx={{ border: "1px solid black",width:470, height: "50vh", b: "1px solid black" }}  >
       <Typography
         sx={{
           backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -32,6 +32,7 @@ function SignUp() {
           paddingBottom: "5px",
           color: "white",
           fontWeight: "bold",
+          width:"100%"
         }}
         color="text.secondary"
         gutterBottom

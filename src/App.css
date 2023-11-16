@@ -46,13 +46,13 @@
     width: calc(100% - 16px);
 }
 
-.oyo-cell {
+/* .oyo-cell {
     margin: 8px;
-    width: 33.33333%;
+    width: 400;
     width: -webkit-calc(33.33333% - 16px);
     width: -moz-calc(33.33333% - 16px);
     width: calc(33.33333% - 16px);
-}
+} */
 .oyo-cell {
     box-sizing: border-box;
 }
