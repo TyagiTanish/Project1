@@ -1,8 +1,8 @@
 import React from "react";
 import "./App.css";
 
-
 import SignUpComp from "./views/components/Loginn";
+import MainPage from "./views/pages/MainPage";
 
 
 // import OtpVerification from "./views/components/OtpVerification";
@@ -15,11 +15,9 @@ import SignUpComp from "./views/components/Loginn";
 import Home from "./views/components/Home";
 import MainPage from "./views/pages/MainPage";
 function App() {
-  return (
-    <MainPage />
-    // <Home/>
-  )
-  
-  }
+  // return <OtpVerification />
+  return <MainPage />;
+}
+
 
 export default App;
