@@ -18,3 +18,8 @@
 .oyo-cell {
     box-sizing: border-box;
 }
+.linkStyle{
+  color:white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
