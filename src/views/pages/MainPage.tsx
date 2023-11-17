@@ -44,8 +44,8 @@ function MainPage() {
         </Typography>
       </Typography>
       <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-        {/* <OtpVerification /> */}
-        <SignUpComp/>
+        <OtpVerification />
+        {/* <SignUpComp/> */}
         {/* <SignUp/> */}
 
       </Box>
