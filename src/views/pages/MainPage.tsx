@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import OtpVerification from "../components/OtpVerification";
-import SignUpComp from "../components/SignUpComp";
+// import SignUpComp from "../components/SignUpComp";
 import SignUp from "../components/SignUp";
 
 function MainPage() {

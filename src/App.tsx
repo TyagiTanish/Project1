@@ -16,10 +16,10 @@ import Home from "./views/components/Home";
 import MainPage from "./views/pages/MainPage";
 function App() {
   return (
-    <MainPage />
-    // <Home/>
+    // <MainPage />
+    <Home/>
   )
-  
+}
 
 
 export default App;
