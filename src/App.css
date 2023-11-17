@@ -18,8 +18,19 @@
 .oyo-cell {
     box-sizing: border-box;
 }
+
 .linkStyle{
   color:white;
   text-decoration: none;
   margin-bottom: 10px;
+
+.css-ahj2mt-MuiTypography-root {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  width: 140px;
+
 }

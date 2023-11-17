@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import SignUpComp from "./views/components/Loginn";
-import Logo from "./views/components/Footer";
+import Footer from "./views/components/Footer";
 
 // import OtpVerification from "./views/components/OtpVerification";
 
@@ -13,10 +13,11 @@ import Logo from "./views/components/Footer";
 
 import Home from "./views/components/Home";
 import MainPage from "./views/pages/MainPage";
+import SearchBar from "./views/components/SearchBar";
 function App() {
   // return <OtpVerification />
   // return <MainPage />;
-  return <Logo />;
+  return <Footer />;
 }
 
 export default App;
