@@ -18,7 +18,7 @@ function App() {
 
   // return <OtpVerification />
   // return <MainPage />;
-  return <Footer />;
+  return <Home />;
 }
 
 
