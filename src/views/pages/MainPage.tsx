@@ -2,6 +2,10 @@ import { Box, Typography } from "@mui/material";
 import React from "react";
 import OtpVerification from "../components/OtpVerification";
 
+// import SignUpComp from "../components/SignUpComp";
+
+
+
 import SignUp from "../components/SignUp";
 import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
