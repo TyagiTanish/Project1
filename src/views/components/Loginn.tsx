@@ -1,21 +1,15 @@
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
+import { mt } from "date-fns/locale";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function SignUpComp({ setVerify }: any) {
+function SignUpComp({ setVerify, setLogReg }: any) {
   const Onsubmit = (value: any) => {
-
     console.log(value.Number);
     setVerify(1);
-
-    
   };
   const { register, handleSubmit } = useForm();
   const [state, setState] = useState(false);
-
-
-
-
 
   return (
     <Box
@@ -48,7 +42,7 @@ function SignUpComp({ setVerify }: any) {
         }}
       >
         <Typography sx={{ fontSize: "32px", fontWeight: "700" }}>
-          Login/Signup
+          Login
         </Typography>
         <Typography sx={{ fontWeight: "700" }}>
           Please enter your Email to continue
@@ -96,6 +90,17 @@ function SignUpComp({ setVerify }: any) {
             }}
           >
             Click here
+          </Button>
+        </Box>
+        <Box sx={{ display: "flex", width: 500, mt: 8 }}>
+          <Typography sx={{ width: 200 }}> Don't have an account?</Typography>
+          <Button
+            sx={{ mt: -1 }}
+            onClick={() => {
+              setLogReg(false);
+            }}
+          >
+            Register here
           </Button>
         </Box>
       </Box>

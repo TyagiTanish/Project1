@@ -3,9 +3,11 @@ import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import OtpVerification from "../components/OtpVerification";
+import SignUp from "../components/SignUp";
 
 function MainPage() {
   const [verify, setVerify]: any = useState(0);
+  const [LogReg, setLogReg] = useState(false);
   const [email, setEmail]: any = useState("");
   return (
     <>
@@ -45,23 +47,29 @@ function MainPage() {
           </Typography>
         </Typography>
 
-        {verify ? (
-          <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            <OtpVerification />
-            {/* <SignUpComp/> */}
-            {/* <SignUp/> */}
-          </Box>
+        {LogReg ? (
+          <>
+            {" "}
+            {verify ? (
+              <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+                <OtpVerification />
+                {/* <SignUpComp/> */}
+                {/* <SignUp/> */}
+              </Box>
+            ) : (
+              <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+                {/* <OtpVerification /> */}``
+                <SignUpComp setVerify={setVerify} setLogReg={setLogReg} />
+                {/* <SignUp/> */}
+              </Box>
+            )}
+          </>
         ) : (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            {/* <OtpVerification /> */}``
-            <SignUpComp setVerify={setVerify} />
-            {/* <SignUp/> */}
+            <SignUp setLogReg={setLogReg} />
           </Box>
         )}
 
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-          <SignUpComp />
-        </Box>
         <Typography sx={{ width: "77%" }}>
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.
@@ -72,8 +80,10 @@ function MainPage() {
           {/* <SignUpComp/> */}
           {/* <SignUp/> */}
         </Box>
-
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}></Box>
+        {/* 
+        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+          <SignUp />
+        </Box> */}
       </Box>
       <Footer />
     </>
