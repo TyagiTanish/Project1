@@ -13,7 +13,7 @@ function SignUp({ setLogReg }: any) {
   const { request } = useAuth();
   const onSubmit = (data: any) => {
     // console.log(data);
-    request.post("/userLogin", {
+    request.post("/Register", {
       Name: data.Name,
       Phone: data.Phone,
       Email: data.Email,
@@ -106,12 +106,12 @@ function SignUp({ setLogReg }: any) {
           </Button>
         </form>
       </CardContent>
-      <Box sx={{ display: "flex", width: 500, mt: 5, ml: 2, mb: 2 }}>
+      <Box sx={{ display: "flex", width: 500, mt: 3, ml: 9, mb: 2 }}>
         <Typography sx={{ width: 200 }}> Already have an account?</Typography>
         <Button
           sx={{ mt: -1 }}
           onClick={() => {
-            setLogReg(true);
+            setLogReg(false);
           }}
         >
           Login here
