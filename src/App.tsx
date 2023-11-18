@@ -14,12 +14,17 @@ import Footer from "./views/components/Footer";
 import Home from "./views/components/Home";
 import MainPage from "./views/pages/MainPage";
 import SearchBar from "./views/components/SearchBar";
+import { Outlet } from "react-router-dom";
+import LoginSystem from "./views/components/LoginSystem";
 function App() {
-
   // return <OtpVerification />
   // return <MainPage />;
-  return <Home />;
+  return (
+    <>
+      <LoginSystem />
+      <Outlet/>
+    </>
+  );
 }
-
 
 export default App;

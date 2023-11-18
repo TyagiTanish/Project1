@@ -8,7 +8,8 @@ import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
-export default function BasicCard() {
+import { Link } from "react-router-dom";
+export default function HomePage() {
   const [banglore, setbanglore] = React.useState(null);
   const [chennai, setchennai] = React.useState(null);
   const [gurgaon, setgurgaon] = React.useState(null);
@@ -161,7 +162,7 @@ export default function BasicCard() {
           }}
         >
           <PersonIcon sx={{ margin: 1 }} />
-          Login / SignUp
+          <Link to={'/login'}>Login / SignUp</Link>
         </Box>
       </Box>
       <Box
