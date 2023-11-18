@@ -66,7 +66,8 @@ function SignUpComp({ setVerify, setLogReg }: any) {
     <>
       <Box
         sx={{
-          height: "400px",
+          // height: "400px",
+          maxHeight: "800px",
           Width: "500px",
 
           fontFamily: "sans-serif",
@@ -76,10 +77,12 @@ function SignUpComp({ setVerify, setLogReg }: any) {
       >
         <Box
           sx={{
-            background: "#D4164B",
+            // background: "#D4164B",
+            backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
             minHeight: "30px",
-            paddingTop: 2,
-            paddingLeft: 3,
+            paddingTop: 1,
+            paddingLeft: 6,
+            fontWeight: 700,
             color: "white",
           }}
         >
@@ -160,11 +163,14 @@ function SignUpComp({ setVerify, setLogReg }: any) {
           {/* </Box> */}
         </Box>
         <Box sx={{ display: "flex", width: 500, mt: 8 }}>
-          <Typography sx={{ width: 200 }}> Don't have an account?</Typography>
+          <Typography sx={{ width: 200, ml: 9, mb: 2 }}>
+            {" "}
+            Don't have an account?
+          </Typography>
           <Button
-            sx={{ mt: -1 }}
+            sx={{ mt: -2 }}
             onClick={() => {
-              setLogReg(false);
+              setLogReg(true);
             }}
           >
             Register here

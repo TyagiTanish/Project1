@@ -23,18 +23,16 @@ function SearchBar() {
   };
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const [guests, setGuests] = useState(0);
-  const [render,setRender] = React.useState(0)
- 
+  const [render, setRender] = React.useState(0);
 
-useEffect(()=>{
-    var result=0;
-    rooms.forEach((element:any) => {
-        result = result + +element.guest
-    })
-    setGuests(result)
+  useEffect(() => {
+    var result = 0;
+    rooms.forEach((element: any) => {
+      result = result + +element.guest;
+    });
+    setGuests(result);
     setRooms(rooms);
-},[render,rooms])
-
+  }, [render, rooms]);
 
   return (
     <>
@@ -71,7 +69,7 @@ useEffect(()=>{
             sx={{
               backgroundColor: "white",
               width: "30%",
-              ml: "20%",
+              ml: "15%",
               height: "20%",
               mt: 2,
             }}
@@ -118,7 +116,7 @@ useEffect(()=>{
         rooms={rooms}
         setRooms={setRooms}
         render={render}
-        setRender = {setRender}
+        setRender={setRender}
       />
     </>
   );

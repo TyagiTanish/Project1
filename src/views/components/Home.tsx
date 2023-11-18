@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
+import HomeBody from "./HomeBody";
 export default function BasicCard() {
   return (
     <>
@@ -72,8 +73,7 @@ export default function BasicCard() {
           }}
         >
           <PersonIcon sx={{ margin: 1 }} />
-          <Link to="/login">    Login / SignUp</Link>
-      
+          <Link to="/login"> Login / SignUp</Link>
         </Box>
       </Box>
       <Box
@@ -290,8 +290,10 @@ export default function BasicCard() {
           </Box>
         </Box>
       </Box>
-      <SearchBar/>
-      <Footer/>
+
+      <SearchBar />
+      <HomeBody />
+      <Footer />
     </>
   );
 }
