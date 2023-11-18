@@ -124,7 +124,7 @@ const [authentication,setAuthentication] = useState("")
           </Button>):( <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
             Verify Email
           </Button>)}
-        
+
         </form>
         {/* <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
           {state ? (
