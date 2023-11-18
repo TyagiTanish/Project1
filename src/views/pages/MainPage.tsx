@@ -2,10 +2,11 @@ import { Box, Typography } from "@mui/material";
 import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
 import { useState } from "react";
+import OtpVerification from "../components/OtpVerification";
 
 function MainPage() {
-  const [verify, setVerify]: any = useState(0);
-  const [email, setEmail]: any = useState("");
+  const [verify, setVerify]= useState(0);
+  const [email, setEmail]= useState("");
   return (
     <>
       <Box
@@ -46,33 +47,24 @@ function MainPage() {
 
         {verify ? (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            {/* <SignUpComp/> */}
-            {/* <SignUp/> */}
+            <OtpVerification/>
           </Box>
         ) : (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            {/* <OtpVerification /> */}``
             <SignUpComp setVerify={setVerify} />
-            {/* <SignUp/> */}
           </Box>
         )}
-
-
-
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-          <SignUpComp />
-        </Box>
         <Typography sx={{ width: "77%" }}>
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.
         </Typography>
 
-
+{/* 
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-          {/* <OtpVerification /> */}
-          {/* <SignUpComp/> */}
-          {/* <SignUp/> */}
-        </Box>
+          <OtpVerification />
+          <SignUpComp/>
+          <SignUp/>
+        </Box> */}
 
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}></Box>
 

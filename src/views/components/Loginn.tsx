@@ -1,18 +1,21 @@
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+import * as Yup from 'yup'
+import { yupResolver } from ;
+
 
 function SignUpComp({ setVerify }: any) {
   const Onsubmit = (value: any) => {
-
     console.log(value.Number);
     setVerify(1);
-
-    
   };
-  const { register, handleSubmit } = useForm();
-  const [state, setState] = useState(false);
+  const FormSchema = Yup.object().shape({ email: Yup.string().email('invalid email !').required("Email is Required")})
 
+  const { register, handleSubmit, formState: { errors } } = useForm<User>({
+    resolver: yupResolver(FormSchema),
+});
+  const [state, setState] = useState(false);
 
 
 
