@@ -11,6 +11,7 @@ import PlayStoreLogo from "../../assets/PlayStoreLogo";
 import AppStoreLogo from "../../assets/AppStoreLogo";
 import OyoLogo from "../../assets/OyoLogo";
 import FooterRytLogo from "../../assets/FooterRytLogo";
+import { grey } from "@mui/material/colors";
 function Footer() {
   return (
     <Box sx={{ fontFamily: "sans-serif" }}>
@@ -28,7 +29,7 @@ function Footer() {
           // sx={{
           //   fontFamily: "sans-serif",
           //   fontWeight: "900",
-          //   fontSize: "40px", 
+          //   fontSize: "40px",
           // }}
           >
             <OyoLogo />
@@ -62,18 +63,18 @@ function Footer() {
             }}
           >
             Join our network and grow your business!
+            <Button
+              sx={{
+                color: "#616161",
+                textTransform: "none",
+                background: "white",
+                ml: 2,
+                fontWeight: 700,
+              }}
+            >
+              List Your Property
+            </Button>
           </Box>
-          <Button
-            sx={{
-              backgroundColor: "white",
-              color: "grey",
-              ml: 2,
-              textTransform: "none",
-              fontWeight: 700,
-            }}
-          >
-            List Your Property
-          </Button>
         </Box>
       </Box>
 

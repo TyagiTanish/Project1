@@ -3,10 +3,12 @@ import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
 import { useState } from "react";
 import OtpVerification from "../components/OtpVerification";
+import SignUp from "../components/SignUp";
 
 function MainPage() {
-  const [verify, setVerify]= useState(0);
-  const [email, setEmail]= useState("");
+  const [verify, setVerify]: any = useState(0);
+  const [LogReg, setLogReg] = useState(false);
+  const [email, setEmail]: any = useState("");
   return (
     <>
       <Box
@@ -54,6 +56,29 @@ function MainPage() {
             <SignUpComp setVerify={setVerify} />
           </Box>
         )}
+        {LogReg ? (
+          <>
+            {" "}
+            {verify ? (
+              <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+                <OtpVerification />
+                {/* <SignUpComp/> */}
+                {/* <SignUp/> */}
+              </Box>
+            ) : (
+              <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+                {/* <OtpVerification /> */}``
+                <SignUpComp setVerify={setVerify} setLogReg={setLogReg} />
+                {/* <SignUp/> */}
+              </Box>
+            )}
+          </>
+        ) : (
+          <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+            <SignUp setLogReg={setLogReg} />
+          </Box>
+        )}
+
         <Typography sx={{ width: "77%" }}>
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.
@@ -68,6 +93,15 @@ function MainPage() {
 
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}></Box>
 
+        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+          {/* <OtpVerification /> */}
+          {/* <SignUpComp/> */}
+          {/* <SignUp/> */}
+        </Box>
+        {/* 
+        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+          <SignUp />
+        </Box> */}
       </Box>
       <Footer />
     </>

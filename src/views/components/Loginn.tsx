@@ -1,4 +1,5 @@
 import { Box, Button, Card, FormHelperText, Snackbar, TextField, Typography } from "@mui/material";
+import { mt } from "date-fns/locale";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -8,7 +9,7 @@ import { enqueueSnackbar } from "notistack";
 
 
 
-function SignUpComp({ setVerify }: any) {
+function SignUpComp({setVerify, setLogReg }: any) {
 
 const {request} = useAuth()
 const [state, setState] = useState(false);
@@ -58,9 +59,8 @@ const [authentication,setAuthentication] = useState("")
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
-  
-
   return (
+    <>
     <Box
       sx={{
         height: "400px",
@@ -91,7 +91,7 @@ const [authentication,setAuthentication] = useState("")
         }}
       >
         <Typography sx={{ fontSize: "32px", fontWeight: "700" }}>
-          Login/Signup
+          Login
         </Typography>
         <Typography sx={{ fontWeight: "700" }}>
           Please enter your Email to continue
@@ -146,9 +146,20 @@ const [authentication,setAuthentication] = useState("")
             Click here
           </Button> */}
         {/* </Box> */}
-      </Box>
-    </Box>
+        </Box>
+        <Box sx={{ display: "flex", width: 500, mt: 8 }}>
+          <Typography sx={{ width: 200 }}> Don't have an account?</Typography>
+          <Button
+            sx={{ mt: -1 }}
+            onClick={() => {
+              setLogReg(false);
+            }}
+          >
+            Register here
+          </Button>
+        </Box>
+        </Box>
+    </>
   );
 }
-
 export default SignUpComp;
