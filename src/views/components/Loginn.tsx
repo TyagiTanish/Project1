@@ -1,24 +1,43 @@
 import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import * as Yup from 'yup'
-import { yupResolver } from ;
-
+import * as Yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 
 function SignUpComp({ setVerify }: any) {
   const Onsubmit = (value: any) => {
     console.log(value.Number);
     setVerify(1);
   };
-  const FormSchema = Yup.object().shape({ email: Yup.string().email('invalid email !').required("Email is Required")})
+  const FormSchema = Yup.object().shape({
+    Email: Yup.string().email("invalid email !").required("Email is Required"),
+    password: Yup.string()
+      .required("This field is required")
+      .min(8, "Pasword must be 8 or more characters")
+      .matches(
+        /(?=.*[a-z])(?=.*[A-Z])\w+/,
+        "Password ahould contain at least one uppercase and lowercase character"
+      )
+      .matches(/\d/, "Password should contain at least one number")
+      .matches(
+        /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
+        "Password should contain at least one special character"
+      ),
+  });
 
-  const { register, handleSubmit, formState: { errors } } = useForm<User>({
+  interface User {
+    Email: string;
+    password: string;
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<User>({
     resolver: yupResolver(FormSchema),
-});
+  });
   const [state, setState] = useState(false);
-
-
-
 
   return (
     <Box
