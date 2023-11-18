@@ -28,7 +28,7 @@ function Footer() {
           // sx={{
           //   fontFamily: "sans-serif",
           //   fontWeight: "900",
-          //   fontSize: "40px",
+          //   fontSize: "40px", 
           // }}
           >
             <OyoLogo />

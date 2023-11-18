@@ -4,11 +4,19 @@ import { useForm } from "react-hook-form";
 
 function SignUpComp({ setVerify }: any) {
   const Onsubmit = (value: any) => {
+
     console.log(value.Number);
     setVerify(1);
+
+    
   };
   const { register, handleSubmit } = useForm();
   const [state, setState] = useState(false);
+
+
+
+
+
   return (
     <Box
       sx={{
@@ -23,7 +31,6 @@ function SignUpComp({ setVerify }: any) {
       <Box
         sx={{
           background: "#D4164B",
-          // backgroundImage: "lineargradient(270deg,#d11450,#ee2a24)",
           minHeight: "30px",
           paddingTop: 2,
           paddingLeft: 3,
@@ -44,7 +51,7 @@ function SignUpComp({ setVerify }: any) {
           Login/Signup
         </Typography>
         <Typography sx={{ fontWeight: "700" }}>
-          Please enter your phone number to continue
+          Please enter your Email to continue
         </Typography>
         <form onSubmit={handleSubmit(Onsubmit)}>
           <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -73,7 +80,7 @@ function SignUpComp({ setVerify }: any) {
         </form>
         <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
           {state ? (
-            <p> Prefer to Proceed with OTP instead? </p>
+            <p>Prefer to Proceed with email verification instead?</p>
           ) : (
             <p>Prefer to Sign in with password instead?</p>
           )}

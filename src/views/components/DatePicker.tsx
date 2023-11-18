@@ -5,7 +5,7 @@ import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
 import { SingleInputDateRangeField } from "@mui/x-date-pickers-pro/SingleInputDateRangeField";
 import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 import dayjs from "dayjs";
-import { format } from "date-fns";
+import { format, parseISO } from "date-fns";
 
 export default function SingleInputDateRangePicker() {
   return (
@@ -17,7 +17,7 @@ export default function SingleInputDateRangePicker() {
         <DateRangePicker
           slots={{ field: SingleInputDateRangeField }}
           defaultValue={[
-            dayjs((Date.now())),
+            dayjs(Date.now()),
             dayjs((Date.now())),
           ]}
         />
