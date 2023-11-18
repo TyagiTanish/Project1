@@ -49,7 +49,7 @@ function MainPage() {
 
         {verify ? (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            <OtpVerification/>
+            <OtpVerification />
           </Box>
         ) : (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
@@ -84,7 +84,7 @@ function MainPage() {
           savings on OYO stays and with our many travel partners.
         </Typography>
 
-{/* 
+        {/* 
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
           <OtpVerification />
           <SignUpComp/>
