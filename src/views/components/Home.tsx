@@ -5,6 +5,7 @@ import { Box, Menu, MenuItem } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+<<<<<<< HEAD
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
@@ -98,6 +99,11 @@ export default function HomePage() {
   function handleClose8() {
     setpune(null);
   }
+=======
+import {Link} from "react-router-dom"
+export default function BasicCard() {
+
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 
   return (
     <>
@@ -123,7 +129,10 @@ export default function HomePage() {
             mr: 165,
           }}
         >
+<<<<<<< HEAD
           <Logo />
+=======
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
         </Typography>
         <Box
           sx={{
@@ -161,7 +170,11 @@ export default function HomePage() {
           }}
         >
           <PersonIcon sx={{ margin: 1 }} />
+<<<<<<< HEAD
           <Link to={'/login'}>Login / SignUp</Link>
+=======
+          Login / SignUp
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
         </Box>
       </Box>
       <Box
@@ -186,6 +199,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={banglore ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick}
@@ -193,10 +207,22 @@ export default function HomePage() {
           >
             {" "}
             <Box sx={{ color: "gray", marginTop: "10px" }}>Banglore</Box>
+=======
+         
+          >
+            {" "}
+            <Box
+              sx={{ color: "gray", marginTop: "10px" }}
+            
+            >
+              Banglore
+            </Box>
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
             <KeyboardArrowDownIcon
               className="xyz"
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
+<<<<<<< HEAD
           </Box>
 
           <Menu
@@ -212,6 +238,17 @@ export default function HomePage() {
             <MenuItem onClick={handleClose}>Rajaji Nagar</MenuItem>
           </Menu>
 
+=======
+              <Box className='drop'>
+         
+              <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+       
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
           <Box
             className="abc"
             sx={{
@@ -222,6 +259,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={chennai ? "menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick2}
@@ -244,6 +282,21 @@ export default function HomePage() {
             <MenuItem onClick={handleClose2}>Mount Road </MenuItem>
             <MenuItem onClick={handleClose2}>T Nagar</MenuItem>
           </Menu>
+=======
+          
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Chennai</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+             <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 
           <Box
             className="abc"
@@ -255,6 +308,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={gurgaon ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick3}
@@ -278,6 +332,23 @@ export default function HomePage() {
             <MenuItem onClick={handleClose3}>Medanta Hospital</MenuItem>
           </Menu>
 
+=======
+           
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Gurgaon</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+         
+             <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+         
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
           <Box
             className="abc"
             sx={{
@@ -288,6 +359,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={banglore ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick4}
@@ -310,6 +382,23 @@ export default function HomePage() {
             <MenuItem onClick={handleClose4}>Gachibowli</MenuItem>
             <MenuItem onClick={handleClose4}>Ameerpet</MenuItem>
           </Menu>
+=======
+           
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Hyderabad</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+         
+             <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+         
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 
           <Box
             className="abc"
@@ -321,6 +410,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={kolkata ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick5}
@@ -346,6 +436,23 @@ export default function HomePage() {
             </MenuItem>
           </Menu>
 
+=======
+          
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Kolkata</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+         
+             <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+         
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
           <Box
             className="abc"
             sx={{
@@ -356,6 +463,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={mumbai ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick6}
@@ -378,6 +486,23 @@ export default function HomePage() {
             <MenuItem onClick={handleClose6}>Andheri West</MenuItem>
             <MenuItem onClick={handleClose6}>Thane</MenuItem>
           </Menu>
+=======
+     
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Mumbai</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+         
+             <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+        
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 
           <Box
             className="abc"
@@ -389,6 +514,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={noida ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick7}
@@ -411,6 +537,23 @@ export default function HomePage() {
             <MenuItem onClick={handleClose7}>Sector 62</MenuItem>
             <MenuItem onClick={handleClose7}>Pari Chowk</MenuItem>
           </Menu>
+=======
+           
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Noida</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+         
+             <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+       
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 
           <Box
             className="abc"
@@ -422,6 +565,7 @@ export default function HomePage() {
               paddingLeft: 1,
               paddingBottom: 0,
             }}
+<<<<<<< HEAD
             aria-owns={pune ? "simple-menu" : undefined}
             aria-haspopup="true"
             onClick={handleClick8}
@@ -448,6 +592,25 @@ export default function HomePage() {
       </Box>
       <SearchBar/>
       <Footer/>
+=======
+            
+          >
+            <Box sx={{ color: "gray", marginTop: "10px" }}>Pune</Box>
+            <KeyboardArrowDownIcon className="xyz"
+              sx={{ marginTop: "8px", color: "lightgray" }}
+            />
+             <Box className='drop'>
+         
+         <Link   style= {{fontWeight:"bold"}} to="/" >Popular Locations</Link>  
+         <Link to="/">Mg Road</Link>
+         <Link to="/">Rajaji nagar</Link>
+    </Box>
+          </Box>
+
+         
+        </Box>
+      </Box>
+>>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
     </>
   );
 }
