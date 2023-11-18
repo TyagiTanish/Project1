@@ -2,9 +2,10 @@ import { Box, Button, Card, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-function SignUpComp() {
+function SignUpComp({ setVerify }: any) {
   const Onsubmit = (value: any) => {
     console.log(value.Number);
+    setVerify(1);
   };
   const { register, handleSubmit } = useForm();
   const [state, setState] = useState(false);

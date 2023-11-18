@@ -6,6 +6,8 @@ import CallIcon from "@mui/icons-material/Call";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import Logo from "./Logo";
+import SearchBar from "./SearchBar";
+import Footer from "./Footer";
 export default function BasicCard() {
   const [banglore, setbanglore] = React.useState(null);
   const [chennai, setchennai] = React.useState(null);
@@ -111,17 +113,16 @@ export default function BasicCard() {
         }}
       >
         <Typography
-        sx={{
-          alignSelf:"center",
-          mt:1,
-          ml: 10,
-          fontWeight: "bolder",
-         
-          mr: 165,
-        }}
+          sx={{
+            alignSelf: "center",
+            mt: 1,
+            ml: 10,
+            fontWeight: "bolder",
+
+            mr: 165,
+          }}
         >
-         <Logo/>
-          
+          <Logo />
         </Typography>
         <Box
           sx={{
@@ -444,6 +445,8 @@ export default function BasicCard() {
           </Menu>
         </Box>
       </Box>
+      <SearchBar />
+      <Footer />
     </>
   );
 }
