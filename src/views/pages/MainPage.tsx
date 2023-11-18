@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
+import { useState } from "react";
 
 function MainPage() {
   const [verify, setVerify]: any = useState(0);
@@ -45,7 +46,6 @@ function MainPage() {
 
         {verify ? (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            <OtpVerification />
             {/* <SignUpComp/> */}
             {/* <SignUp/> */}
           </Box>
