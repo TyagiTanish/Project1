@@ -60,13 +60,21 @@ function SignUp() {
               id="demo-helper-text-aligned"
               // label="Name"
               sx={{ mb: 8, height: 2 }}
-              {...register("name")}
+              {...register("Name")}
             />
             <Typography sx={{ fontWeight: "bold" }}>Email</Typography>
             <TextField
               sx={{ mb: 8, height: 2, border: "none" }}
               id="demo-helper-text-aligned"
-              {...register("email")}
+              {...register("Email")}
+            />
+            <Typography sx={{ fontWeight: "bold" }}>Phone No</Typography>
+            <TextField
+              // sx={{width:"400px"}}
+              id="demo-helper-text-aligned"
+              // label="Name"
+              sx={{ mb: 8, height: 2 }}
+              {...register("Phone")}
             />
             {/* <Typography sx={{ fontWeight: "bold" }}>
               Enter four-digit passcode

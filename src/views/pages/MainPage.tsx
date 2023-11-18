@@ -1,6 +1,8 @@
 import { Box, Typography } from "@mui/material";
 import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
+import { useState } from "react";
+import OtpVerification from "../components/OtpVerification";
 
 function MainPage() {
   const [verify, setVerify]: any = useState(0);
@@ -57,8 +59,6 @@ function MainPage() {
           </Box>
         )}
 
-
-
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
           <SignUpComp />
         </Box>
@@ -67,7 +67,6 @@ function MainPage() {
           savings on OYO stays and with our many travel partners.
         </Typography>
 
-
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
           {/* <OtpVerification /> */}
           {/* <SignUpComp/> */}
@@ -75,7 +74,6 @@ function MainPage() {
         </Box>
 
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}></Box>
-
       </Box>
       <Footer />
     </>
