@@ -4,24 +4,6 @@
   font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
-<<<<<<< HEAD
-
-.oyo-cell {
-    margin: 8px;
-    width: 33.33333%;
-    width: -webkit-calc(33.33333% - 16px);
-    width: -moz-calc(33.33333% - 16px);
-    width: calc(33.33333% - 16px);
-    width: 470px;
-    margin-top: 30px;
-    /* margin-left: 1200px; */
-}
-.oyo-cell {
-    box-sizing: border-box;
-}
-
-
-=======
 
 .oyo-cell {
     margin: 8px;
@@ -42,7 +24,6 @@
     position:"relative";
 }
 
->>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 .headerMDD__mddListWrapper {
   height: 100%;
   display: flex;
@@ -57,8 +38,6 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 
 
-<<<<<<< HEAD
-=======
 }
 .abc:hover .xyz {
   transform: rotate(180deg);
@@ -71,7 +50,6 @@
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   margin-top:40px;
   border:1px solid lightgray
->>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
 }
 .xyz:hover{
   transform: rotate(180deg);
@@ -90,11 +68,7 @@
   line-height: 1.5;
   letter-spacing: 0.00938em;
   width: 140px;
-
-<<<<<<< HEAD
 }
-
-=======
 .drop a {
   color: black;
   padding: 12px 16px;
@@ -102,4 +76,3 @@
   display: block;
 }
 .abc:hover .drop {display: block;}
->>>>>>> 4eaa278cd0151dd99e304e7ffccb0a4e42a43ca3
