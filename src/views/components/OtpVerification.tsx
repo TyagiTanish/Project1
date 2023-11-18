@@ -20,9 +20,9 @@ export default function OtpVerification() {
   const [otp, setOtp] = React.useState("");
 
   return (
-    <Card sx={{ maxWidth: 400, height: "400px", border: "1px solid black" }}>
+    <Card sx={{ maxWidth: 400, border: "1px solid black" }}>
       <Typography
-        style={{
+        sx={{
           maxWidth: "800px",
           height: "30px",
           backgroundColor: " #D4164B",
@@ -37,12 +37,13 @@ export default function OtpVerification() {
         variant="h4"
         sx={{ fontWeight: "bolder", mt: "20px", ml: "20px", m: 2 }}
       >
-        Share Otp
+        Verify Your Email
       </Typography>
       <Typography sx={{ fontWeight: "bold", margin: "20px" }}>
-        We have sent a temporary passcode to you at PhoneNumber{" "}
+        We have sent a mail on your Email id ####### Please click on the link to
+        login.{" "}
       </Typography>
-      <Typography sx={{ mt: 2 }}>
+      {/* <Typography sx={{ mt: 2 }}>
         {" "}
         <Link
           sx={{
@@ -54,8 +55,8 @@ export default function OtpVerification() {
         >
           Use a different number
         </Link>
-      </Typography>
-      <Typography sx={{ margin: "20px" }}>
+      </Typography> */}
+      {/* <Typography sx={{ margin: "20px" }}>
         Enter your 4-digit passcode
       </Typography>
       <Typography sx={{ margin: "20px" }}>
@@ -76,7 +77,7 @@ export default function OtpVerification() {
         >
           Submit
         </Button>
-      )}
+      )} */}
     </Card>
   );
 }

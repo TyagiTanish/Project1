@@ -114,17 +114,16 @@ export default function HomePage() {
         }}
       >
         <Typography
-        sx={{
-          alignSelf:"center",
-          mt:1,
-          ml: 10,
-          fontWeight: "bolder",
-         
-          mr: 165,
-        }}
+          sx={{
+            alignSelf: "center",
+            mt: 1,
+            ml: 10,
+            fontWeight: "bolder",
+
+            mr: 165,
+          }}
         >
-         <Logo/>
-          
+          <Logo />
         </Typography>
         <Box
           sx={{

@@ -3,6 +3,8 @@ import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
 
 function MainPage() {
+  const [verify, setVerify]: any = useState(0);
+  const [email, setEmail]: any = useState("");
   return (
     <>
       <Box
@@ -41,6 +43,22 @@ function MainPage() {
           </Typography>
         </Typography>
 
+        {verify ? (
+          <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+            <OtpVerification />
+            {/* <SignUpComp/> */}
+            {/* <SignUp/> */}
+          </Box>
+        ) : (
+          <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+            {/* <OtpVerification /> */}``
+            <SignUpComp setVerify={setVerify} />
+            {/* <SignUp/> */}
+          </Box>
+        )}
+
+
+
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
           <SignUpComp />
         </Box>
@@ -48,7 +66,16 @@ function MainPage() {
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.
         </Typography>
+
+
+        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+          {/* <OtpVerification /> */}
+          {/* <SignUpComp/> */}
+          {/* <SignUp/> */}
+        </Box>
+
         <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}></Box>
+
       </Box>
       <Footer />
     </>
