@@ -13,7 +13,7 @@ function SignUp({ setLogReg }: any) {
   const { request } = useAuth();
   const onSubmit = (data: any) => {
     // console.log(data);
-    request.post("/userLogin", {
+    request.post("/register", {
       Name: data.Name,
       Phone: data.Phone,
       Email: data.Email,

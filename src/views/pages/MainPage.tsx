@@ -47,7 +47,7 @@ function MainPage() {
           </Typography>
         </Typography>
 
-        {verify ? (
+        {/* {verify ? (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
             <OtpVerification/>
           </Box>
@@ -55,7 +55,7 @@ function MainPage() {
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
             <SignUpComp setVerify={setVerify} />
           </Box>
-        )}
+        )} */}
         {LogReg ? (
           <>
             {" "}
@@ -83,26 +83,7 @@ function MainPage() {
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.
         </Typography>
-
-{/* 
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-          <OtpVerification />
-          <SignUpComp/>
-          <SignUp/>
-        </Box> */}
-
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}></Box>
-
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-          {/* <OtpVerification /> */}
-          {/* <SignUpComp/> */}
-          {/* <SignUp/> */}
         </Box>
-        {/* 
-        <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-          <SignUp />
-        </Box> */}
-      </Box>
       <Footer />
     </>
   );

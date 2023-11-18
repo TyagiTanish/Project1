@@ -1,25 +1,36 @@
-import React from "react";
+
 import "./App.css";
-
-import SignUpComp from "./views/components/Loginn";
-import Footer from "./views/components/Footer";
-
-// import OtpVerification from "./views/components/OtpVerification";
-
-// import OtpVerification from "./views/components/OtpVerification";
-
-// import OtpVerification from "./views/components/OtpVerification";
-// import MainPage from "./views/pages/MainPage";
-
-import Home from "./views/components/Home";
-import MainPage from "./views/pages/MainPage";
-import SearchBar from "./views/components/SearchBar";
 import { Outlet } from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
+import useAuth from "./Hooks/useAuth/useAuth";
+import {useDispatch} from 'react-redux'
+import { userLogin } from "./views/components/redux/user/userSlice";
+import { useEffect } from "react";
+
+
 function App() {
-  // return <OtpVerification />
-  // return <MainPage />;
+  const { request } = useAuth();
+  const dispatch = useDispatch();
+
+  const getUser = async () => {
+    console.log("...............");
+    
+    const authToken = localStorage.getItem("authToken");
+    try {
+      const userData = (await request.get(`/getUserData`)).data;
+      dispatch(userLogin(userData));
+    } catch (error) {
+      localStorage.removeItem("authToken");
+    }
+  };
+  useEffect(() => {
+    if (localStorage.getItem("authToken")) {
+      getUser();
+    }
+  });
+
+
   return (
     <>
     <SnackbarProvider>

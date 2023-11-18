@@ -9,7 +9,10 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
+import { useSelector } from "react-redux";
+
 export default function BasicCard() {
+  const user = useSelector((state: any) => state.userReducer.user);
   return (
     <>
       <Box
@@ -72,8 +75,7 @@ export default function BasicCard() {
           }}
         >
           <PersonIcon sx={{ margin: 1 }} />
-          <Link to="/login">    Login / SignUp</Link>
-      
+          <Link to="/login"> Login / SignUp</Link>
         </Box>
       </Box>
       <Box
@@ -290,8 +292,8 @@ export default function BasicCard() {
           </Box>
         </Box>
       </Box>
-      <SearchBar/>
-      <Footer/>
+      <SearchBar />
+      <Footer />
     </>
   );
 }
