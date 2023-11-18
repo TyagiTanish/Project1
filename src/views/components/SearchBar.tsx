@@ -13,6 +13,7 @@ import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePi
 import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
 import DateRangePickers from "./DatePicker";
 import RoomSelection from "./RoomSelection";
+import MyLocationIcon from '@mui/icons-material/MyLocation';
 
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -32,7 +33,27 @@ function SearchBar() {
     });
     setGuests(result);
     setRooms(rooms);
-  }, [render, rooms]);
+},[render,rooms])
+function handleLocationClick() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(success, error);
+  } else {
+    console.log("Geolocation not supported");
+  }
+}
+function success(position:any) {
+ 
+ 
+ console.log(position);
+ 
+
+  // Make API call to OpenWeatherMap
+  
+}
+
+function error() {
+  console.log("Unable to retrieve your location");
+}
 
   return (
     <>
@@ -65,16 +86,29 @@ function SearchBar() {
           Over 157,000 hotels and homes across 35 countries
         </Box>
         <Typography sx={{ mt: 9, display: "flex", alignContent: "center" }}>
+         <Box className="nearby">
+          <Box className='nearby2 ripple'>
+            <Typography className="nearby3" sx={{mr:0}} onClick={()=>
+            {
+                handleLocationClick()
+              
+            }}><MyLocationIcon/></Typography>
+            <Typography sx={{}}>Near me</Typography>
+          </Box>
+         </Box>
           <TextField
             sx={{
               backgroundColor: "white",
+              position:"relative",
               width: "30%",
               ml: "15%",
               height: "20%",
               mt: 2,
             }}
             placeholder="Search by city,hote, or neighborhood"
+          
           />
+         
           <Typography sx={{ position: "relative" }}>
             <DateRangePickers />
           </Typography>
