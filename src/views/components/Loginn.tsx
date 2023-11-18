@@ -1,18 +1,39 @@
-import { Box, Button, Card, TextField, Typography } from "@mui/material";
+import { Box, Button, Card, FormHelperText, Snackbar, TextField, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import { enqueueSnackbar } from "notistack";
+
+
 
 function SignUpComp({ setVerify }: any) {
-  const Onsubmit = (value: any) => {
-    console.log(value.Number);
-    setVerify(1);
+
+const {request} = useAuth()
+const [state, setState] = useState(false);
+const [authentication,setAuthentication] = useState("")
+
+  const Onsubmit = async (value: any) => {
+   if(!value.password){
+    const result = await request.post('/auth',value);
+    console.log(result.data);
+    
+   if(result.data){
+      setState(true)
+      setAuthentication("")
+   }else{
+    enqueueSnackbar("Authentication Failed",{variant:'error'})
+    setAuthentication("Email not Found")
+    setState(false);
+   }
+    
+   }
+    
   };
   const FormSchema = Yup.object().shape({
     Email: Yup.string().email("invalid email !").required("Email is Required"),
     password: Yup.string()
-      .required("This field is required")
       .min(8, "Pasword must be 8 or more characters")
       .matches(
         /(?=.*[a-z])(?=.*[A-Z])\w+/,
@@ -27,7 +48,7 @@ function SignUpComp({ setVerify }: any) {
 
   interface User {
     Email: string;
-    password: string;
+    password?: string;
   }
 
   const {
@@ -37,7 +58,7 @@ function SignUpComp({ setVerify }: any) {
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
-  const [state, setState] = useState(false);
+  
 
   return (
     <Box
@@ -83,6 +104,8 @@ function SignUpComp({ setVerify }: any) {
               sx={{ fontWeight: "500", marginTop: 1 }}
               {...register("Email")}
             ></TextField>
+            <FormHelperText sx={{color:"red",m:2}} >{errors.Email?.message}</FormHelperText>
+            {authentication && (<Typography sx={{fontSize:"small",m:2,color:"red"}}  >{authentication}</Typography>)}
           </Box>
           {state && (
             <Box sx={{ fontWeight: "700", marginTop: 1 }}>
@@ -96,18 +119,21 @@ function SignUpComp({ setVerify }: any) {
               ></TextField>
             </Box>
           )}
-          <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
+          {state ?(  <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
+          Log In
+          </Button>):( <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
             Verify Email
-          </Button>
+          </Button>)}
+        
         </form>
-        <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
+        {/* <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
           {state ? (
             <p>Prefer to Proceed with email verification instead?</p>
           ) : (
             <p>Prefer to Sign in with password instead?</p>
-          )}
+          )} */}
 
-          <Button
+          {/* <Button
             sx={{ color: "red", marginTop: -1 }}
             onClick={() => {
               if (state) {
@@ -118,8 +144,8 @@ function SignUpComp({ setVerify }: any) {
             }}
           >
             Click here
-          </Button>
-        </Box>
+          </Button> */}
+        {/* </Box> */}
       </Box>
     </Box>
   );
