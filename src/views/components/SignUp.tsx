@@ -19,6 +19,7 @@ const  SignUp = ({ setLogReg }: any) =>{
       Email: data.Email,
       Password: data.Password,
     });
+  }
   const { register, handleSubmit } = useForm();
   return (
     <Card
@@ -118,6 +119,5 @@ const  SignUp = ({ setLogReg }: any) =>{
       </Box>
     </Card>
   );
-}
 }
 export default SignUp;

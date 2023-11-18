@@ -7,6 +7,8 @@ import useAuth from "./Hooks/useAuth/useAuth";
 import {useDispatch} from 'react-redux'
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
+import { Hotel } from "@mui/icons-material";
+import Hotels from "./views/components/Hotels";
 
 
 function App() {
@@ -34,7 +36,8 @@ function App() {
   return (
     <>
     <SnackbarProvider>
-      <LoginSystem />
+      {/* <LoginSystem /> */}
+      <Hotels/>
       </SnackbarProvider>
       <Outlet/>
     </>

@@ -40,6 +40,11 @@ const navigate = useNavigate()
         setAuthentication("Email not Found");
         setState(false);
       }
+    }else{
+      const result = await request.post("/auth", value);
+      dispatch(userLogin(result.data.data))
+      localStorage.setItem("authToken",result.data.token);
+      navigate('/')
     }
   };
   const FormSchema = Yup.object().shape({
