@@ -47,16 +47,11 @@ function MainPage() {
           </Typography>
         </Typography>
 
-        {/* {verify ? (
+        {LogReg ? (
           <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            <OtpVerification/>
+            <SignUp setLogReg={setLogReg} />
           </Box>
         ) : (
-          <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            <SignUpComp setVerify={setVerify} />
-          </Box>
-        )} */}
-        {LogReg ? (
           <>
             {" "}
             {verify ? (
@@ -73,12 +68,7 @@ function MainPage() {
               </Box>
             )}
           </>
-        ) : (
-          <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
-            <SignUp setLogReg={setLogReg} />
-          </Box>
         )}
-
         <Typography sx={{ width: "77%" }}>
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.

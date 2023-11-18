@@ -10,7 +10,7 @@ import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
-
+import HomeBody from "./HomeBody";
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
   return (
@@ -293,6 +293,7 @@ export default function BasicCard() {
         </Box>
       </Box>
       <SearchBar />
+      <HomeBody />
       <Footer />
     </>
   );
