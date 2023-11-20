@@ -16,8 +16,6 @@ function App() {
   const dispatch = useDispatch();
 
   const getUser = async () => {
-    console.log("...............");
-    
     const authToken = localStorage.getItem("authToken");
     try {
       const userData = (await request.get(`/getUserData`)).data;
@@ -36,8 +34,8 @@ function App() {
   return (
     <>
     <SnackbarProvider>
-      {/* <LoginSystem /> */}
-      <Hotels/>
+      <LoginSystem />
+      {/* <Hotels/> */}
       </SnackbarProvider>
       <Outlet/>
     </>
