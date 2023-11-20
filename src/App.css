@@ -110,3 +110,6 @@
     margin-right: 1px;
 }
 
+.account:hover{
+    border:"1px solid dotted "
+}

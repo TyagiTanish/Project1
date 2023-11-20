@@ -9,7 +9,8 @@ import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
 import { Hotel } from "@mui/icons-material";
 import Hotels from "./views/components/Hotels";
-
+import Account from "./views/components/Account";
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
   const { request } = useAuth();
@@ -36,8 +37,12 @@ function App() {
   return (
     <>
     <SnackbarProvider>
+        
       {/* <LoginSystem /> */}
-      <Hotels/>
+      {/* <Hotels/> */}
+      <BrowserRouter>
+      <Account/>
+      </BrowserRouter>
       </SnackbarProvider>
       <Outlet/>
     </>
