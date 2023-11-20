@@ -39,24 +39,20 @@ function SignUpComp({ setVerify, setLogReg }: any) {
       }
     } else {
       const result = await request.post("/auth", value);
-      dispatch(userLogin(result.data.data));
-      localStorage.setItem("authToken", result.data.token);
-      navigate("/");
+      console.log(result);
+      
+      if(result.data  ){
+        dispatch(userLogin(result.data.data));
+        localStorage.setItem("authToken", result.data.token);
+        navigate("/");
+      }else{
+        setAuthentication("Invalid credentials ")
+      }
+     
     }
   };
   const FormSchema = Yup.object().shape({
     Email: Yup.string().email("invalid email !").required("Email is Required"),
-    password: Yup.string()
-      .min(8, "Pasword must be 8 or more characters")
-      .matches(
-        /(?=.*[a-z])(?=.*[A-Z])\w+/,
-        "Password ahould contain at least one uppercase and lowercase character"
-      )
-      .matches(/\d/, "Password should contain at least one number")
-      .matches(
-        /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-        "Password should contain at least one special character"
-      ),
   });
 
   interface User {
@@ -123,11 +119,7 @@ function SignUpComp({ setVerify, setLogReg }: any) {
                 <FormHelperText sx={{ color: "red", m: 2 }}>
                   {errors.Email?.message}
                 </FormHelperText>
-                {authentication && (
-                  <Typography sx={{ fontSize: "small", m: 2, color: "red" }}>
-                    {authentication}
-                  </Typography>
-                )}
+                
               </Box>
               {state && (
                 <Box sx={{ fontWeight: "700", marginTop: 1 }}>
@@ -141,6 +133,11 @@ function SignUpComp({ setVerify, setLogReg }: any) {
                   ></TextField>
                 </Box>
               )}
+               {authentication && (
+                  <Typography sx={{ fontSize: "small", m: 2, color: "red" }}>
+                    {authentication}
+                  </Typography>
+                )}
               {state ? (
                 <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
                   Log In
@@ -150,6 +147,7 @@ function SignUpComp({ setVerify, setLogReg }: any) {
                   Verify Email
                 </Button>
               )}
+             
             </form>
           </Box>
           <Box sx={{ display: "flex", width: 500, mt: 8 }}>
