@@ -42,24 +42,18 @@ const navigate = useNavigate()
       }
     }else{
       const result = await request.post("/auth", value);
-      dispatch(userLogin(result.data.data))
-      localStorage.setItem("authToken",result.data.token);
-      navigate('/')
+      if(result.data){
+        dispatch(userLogin(result.data.data))
+        localStorage.setItem("authToken",result.data.token);
+        navigate('/')
+      }else{
+        setAuthentication("Invalid Credentials")
+      }
+    
     }
   };
   const FormSchema = Yup.object().shape({
     Email: Yup.string().email("invalid email !").required("Email is Required"),
-    password: Yup.string()
-      .min(8, "Pasword must be 8 or more characters")
-      .matches(
-        /(?=.*[a-z])(?=.*[A-Z])\w+/,
-        "Password ahould contain at least one uppercase and lowercase character"
-      )
-      .matches(/\d/, "Password should contain at least one number")
-      .matches(
-        /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-        "Password should contain at least one special character"
-      ),
   });
 
   interface User {
@@ -122,9 +116,7 @@ const navigate = useNavigate()
                 sx={{ fontWeight: "500", marginTop: 1 }}
                 {...register("Email")}
               ></TextField>
-              <FormHelperText sx={{ color: "red", m: 2 }}>
-                {errors.Email?.message}
-              </FormHelperText>
+             
               {authentication && (
                 <Typography sx={{ fontSize: "small", m: 2, color: "red" }}>
                   {authentication}
@@ -143,6 +135,9 @@ const navigate = useNavigate()
                 ></TextField>
               </Box>
             )}
+             <FormHelperText sx={{ color: "red", m: 2 }}>
+                {errors.Email?.message}
+              </FormHelperText>
             {state ? (
               <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
                 Log In
