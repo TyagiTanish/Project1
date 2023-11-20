@@ -7,6 +7,7 @@ import Footer from "./Footer";
 import HomeBody from "./HomeBody";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
+import SimpleMap from "./Map";
 
 function Hotels() {
   const [hotels] = useState([
@@ -53,24 +54,14 @@ function Hotels() {
 
   return (
     <>
-      <Typography sx={{ ml: 20 }}>
-        <Link to="/">
-          <Logo />
-        </Link>
-      </Typography>
-
-      <Seachbar2
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        filterData={filterData}
-      />
-      <Box sx={{ padding: 2, mt: 4, marginLeft: "350px" }}>
+  
+      <Box sx={{height:'100vh', overflowY:'auto' ,minWidth:'50vw'}}>
+     
         {filteredData.map((item, i) => (
           <Box
             sx={{
               display: "flex",
               flexDirection: "row",
-              width: "75%",
               margin: "10px",
               border: "1px solid lightgray",
               borderRadius: "20px",
@@ -201,8 +192,8 @@ function Hotels() {
 
           // <img src={require(`./${item.src}`)} alt="hotel pic" style={{width:"250px", height:"200px", margin:"10px"}}/>
         ))}
-      </Box>
-      <Footer />
+      </Box> 
+      
     </>
   );
 }

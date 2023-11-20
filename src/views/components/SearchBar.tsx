@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { hover } from "@testing-library/user-event/dist/hover";
 import React, { useEffect, useState } from "react";
 import Building1 from "./BuildingSvg";
@@ -86,16 +86,6 @@ function error() {
           Over 157,000 hotels and homes across 35 countries
         </Box>
         <Typography sx={{ mt: 9, display: "flex", alignContent: "center" }}>
-         <Box className="nearby">
-          <Box className='nearby2 ripple'>
-            <Typography className="nearby3" sx={{mr:0}} onClick={()=>
-            {
-                handleLocationClick()
-              
-            }}><MyLocationIcon/></Typography>
-            <Typography sx={{}}>Near me</Typography>
-          </Box>
-         </Box>
           <TextField
             sx={{
               backgroundColor: "white",
@@ -105,8 +95,17 @@ function error() {
               height: "20%",
               mt: 2,
             }}
-            placeholder="Search by city,hote, or neighborhood"
-          
+            placeholder="Search by city,hotel, or neighborhood"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start" >
+                  <IconButton onClick={handleLocationClick} sx={{fontSize:'15px',fontWeight:'bolder',color:'black'}}  >
+                    <MyLocationIcon />
+                    Near me
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
          
           <Typography sx={{ position: "relative" }}>

@@ -21,8 +21,7 @@ const handleChange=(value:any)=>{
     
 }
   return (
-    // Important! Always set the container height explicitly
-    <div style={{ height: '100vh', width: '70%' }}>
+    <div style={{ height: '100vh',minWidth:'48vw' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
