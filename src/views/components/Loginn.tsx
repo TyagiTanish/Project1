@@ -29,8 +29,6 @@ function SignUpComp({ setVerify, setLogReg }: any) {
   const Onsubmit = async (value: any) => {
     if (!value.password) {
       const result = await request.post("/auth", value);
-      console.log(result.data);
-
       if (result.data) {
         setState(true);
         setAuthentication("");

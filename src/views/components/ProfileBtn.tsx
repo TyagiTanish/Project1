@@ -13,6 +13,7 @@ import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from './redux/user/userSlice';
+import { Link } from 'react-router-dom';
 
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -85,7 +86,8 @@ const handleLogOut = () =>{
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       > <Typography sx={{fontWeight:'bolder',m:2}}  >Hello,{user.Name}</Typography> 
         <MenuItem onClick={handleClose}>
-          <Avatar /> Profile
+          <Link to='/profile' ><Avatar /> Profile</Link>
+          
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleLogOut}>

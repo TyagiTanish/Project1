@@ -4,6 +4,7 @@ import { Home } from "@mui/icons-material";
 import HomePage from "../Home";
 import Hotels from "../Hotels";
 import HotelsPage from "../HotelsPage";
+import Account from "../Account";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
     path:'/hotels',
     element:<HotelsPage/>
   },
+  {
+    path:'/profile',
+    element:<Account/>
+  }
 ]);
 
 function Routes() {

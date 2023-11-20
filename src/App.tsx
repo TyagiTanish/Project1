@@ -46,9 +46,6 @@ function App() {
         
       {/* <LoginSystem /> */}
       {/* <Hotels/> */}
-      <BrowserRouter>
-      <Account/>
-      </BrowserRouter>
 
       <LoginSystem />
       {/* <SimpleMap/> */}
