@@ -81,7 +81,9 @@ function MainPage() {
           </Box>
           <Footer />{" "}
         </>
-      ):(<BasicCard />)}
+      ) : (
+        <BasicCard />
+      )}
     </>
   );
 }

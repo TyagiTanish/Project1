@@ -8,7 +8,6 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 
 const HotelsPage = () => {
-
   const [hotels] = useState([
     {
       name: "Hotel mountain face by snow",

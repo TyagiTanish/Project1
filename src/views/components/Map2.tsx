@@ -16,7 +16,7 @@ export default function SimpleMap() {
     console.log(value);
   };
   return (
-    <div style={{ height: "100vh", minWidth: "48vw" }}>
+    <div style={{ height: "200px", minWidth: "48vw" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
