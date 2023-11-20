@@ -83,8 +83,7 @@ return (
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       > <Typography sx={{fontWeight:'bolder',m:2}}  >Hello,{user.Name}</Typography> 
         <MenuItem onClick={handleClose} sx={{display:'flex',flexDirection:'row'}} >
-          <Link to='/profile' ><Avatar /> Profile</Link>
-          
+          <Avatar /><Link to='/profile' style={{textDecoration:'none',color:'black'}}>Profile</Link>
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleLogOut}>
