@@ -49,7 +49,6 @@ function Seachbar2(props: any) {
     }
   }
   function success(position: any) {
-    console.log(position);
     const data: any = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,

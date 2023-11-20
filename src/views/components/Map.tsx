@@ -19,8 +19,6 @@ const dispatch = useDispatch();
     },
     zoom: 16
   };
-console.log(defaultProps);
-
 const handleChange=(value:any)=>{
   console.log(value.center);
   

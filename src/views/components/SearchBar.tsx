@@ -1,21 +1,11 @@
 import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
-import { hover } from "@testing-library/user-event/dist/hover";
 import React, { useEffect, useState } from "react";
 import Building1 from "./BuildingSvg";
 import "react-datepicker/dist/react-datepicker.css";
-import { DatePicker, LocalizationProvider } from "@mui/x-date-pickers";
-import dayjs from "dayjs";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs/AdapterDayjs";
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { MobileDateRangePicker } from "@mui/x-date-pickers-pro/MobileDateRangePicker";
-import { DesktopDateRangePicker } from "@mui/x-date-pickers-pro/DesktopDateRangePicker";
-import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
-import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
 import DateRangePickers from "./DatePicker";
 import RoomSelection from "./RoomSelection";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
 import { useDispatch } from "react-redux";
-import { userLogin} from "./redux/user/userSlice";
 import {userLocation} from './redux/user/userSlice'
 
 function SearchBar() {
