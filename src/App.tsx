@@ -9,6 +9,8 @@ import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
 import { Hotel } from "@mui/icons-material";
 import Hotels from "./views/components/Hotels";
+import SimpleMap from "./views/components/Map";
+
 
 
 function App() {
@@ -34,8 +36,9 @@ function App() {
   return (
     <>
     <SnackbarProvider>
-      <LoginSystem />
+      {/* <LoginSystem /> */}
       {/* <Hotels/> */}
+      <SimpleMap/>
       </SnackbarProvider>
       <Outlet/>
     </>

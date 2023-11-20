@@ -44,9 +44,9 @@ function Seachbar2(props:any) {
 
   return (
     <Box sx={{marginLeft:"-120px"}}>
-    <Typography sx={{ mt: 9, display: "flex", alignContent: "center" }}>
+    <Typography sx={{ mt: 2, display: "flex", alignContent: "center" }}>
     <Box className="nearby" sx={{marginTop:"-120px" , marginLeft:"-60px"}}>
-     <Box className='nearby2 ripple'>
+     <Box className='nearby2 ripple' sx={{mt:"30px",ml:"70px"}} >
        <Typography className="nearby3" sx={{mr:0}} 
     ><MyLocationIcon/></Typography>
        <Typography>Near me</Typography>
@@ -86,7 +86,7 @@ function Seachbar2(props:any) {
        value={`${rooms.length} Room , ${guests} guest`}
        onClick={(event: any) => handleClick(event)}
      />
-
+{/* 
      <Button
        variant="contained"
        sx={{
@@ -101,7 +101,7 @@ function Seachbar2(props:any) {
        }}
      >
        Search
-     </Button>
+     </Button> */}
    </Typography>
    </Box>
   )
