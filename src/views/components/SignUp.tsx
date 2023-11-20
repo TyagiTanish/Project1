@@ -9,16 +9,31 @@ import "../../App.css";
 import { Stack, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import { useNavigate } from "react-router-dom";
+import { log } from "console";
 const  SignUp = ({ setLogReg }: any) =>{
   const { request } = useAuth();
-  const onSubmit = (data: any) => {
+
+
+
+  const navigate = useNavigate()
+  const onSubmit = async (data: any) => {
     // console.log(data);
-    request.post("/Register", {
+   const result= await request.post("/Register", {
       Name: data.Name,
       Phone: data.Phone,
       Email: data.Email,
       Password: data.Password,
     });
+
+  
+    
+    if(result.data){
+      console.log("hello there");
+      
+      
+    }
+    
   }
   const { register, handleSubmit } = useForm();
   return (

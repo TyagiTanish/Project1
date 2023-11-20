@@ -2,14 +2,15 @@ import { Box, Button, TextField, Typography } from '@mui/material'
 import React from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth/useAuth';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { enqueueSnackbar } from 'notistack';
+import { userLogin } from './redux/user/userSlice';
 
 function Password() {
 
     const {register,handleSubmit}=useForm();
 
-
+    const dispatch = useDispatch();
     const user = useSelector((state: any) => state.userReducer.user);
     console.log(user);
     
@@ -32,8 +33,11 @@ function Password() {
     enqueueSnackbar("Updated Successfully", {
       variant: "success",
       autoHideDuration: 1000,
+     
       
    })
+   const data2=await request.get('/getUserData');
+   dispatch(userLogin(data2.data));
    }
   
 
