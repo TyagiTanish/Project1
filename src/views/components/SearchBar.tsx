@@ -14,6 +14,9 @@ import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
 import DateRangePickers from "./DatePicker";
 import RoomSelection from "./RoomSelection";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { useDispatch } from "react-redux";
+import { userLogin} from "./redux/user/userSlice";
+import {userLocation} from './redux/user/userSlice'
 
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -25,6 +28,7 @@ function SearchBar() {
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const [guests, setGuests] = useState(0);
   const [render, setRender] = React.useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     var result = 0;
@@ -43,9 +47,12 @@ function handleLocationClick() {
 }
 function success(position:any) {
  
- 
- console.log(position);
- 
+console.log("position",position);
+ const data:any={
+  latitude:position.coords.latitude,
+  longitude:position.coords.longitude
+ }
+dispatch(userLocation(data))
 
   // Make API call to OpenWeatherMap
   

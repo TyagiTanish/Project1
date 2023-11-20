@@ -153,26 +153,6 @@ function SignUpComp({ setVerify, setLogReg }: any) {
                 </Button>
               )}
             </form>
-            {/* <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
-          {state ? (
-            <p>Prefer to Proceed with email verification instead?</p>
-          ) : (
-            <p>Prefer to Sign in with password instead?</p>
-          )} */}
-
-            {/* <Button
-            sx={{ color: "red", marginTop: -1 }}
-            onClick={() => {
-              if (state) {
-                setState(false);
-              } else {
-                setState(true);
-              }
-            }}
-          >
-            Click here
-          </Button> */}
-            {/* </Box> */}
           </Box>
           <Box sx={{ display: "flex", width: 500, mt: 8 }}>
             <Typography sx={{ width: 200, ml: 9, mb: 2 }}>
