@@ -9,16 +9,21 @@ import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
 import { Hotel } from "@mui/icons-material";
 import Hotels from "./views/components/Hotels";
+
 import Account from "./views/components/Account";
 import { BrowserRouter } from 'react-router-dom'
+
+import SimpleMap from "./views/components/Map";
+import HotelsPage from "./views/components/HotelsPage";
+
+
+
 
 function App() {
   const { request } = useAuth();
   const dispatch = useDispatch();
 
   const getUser = async () => {
-    console.log("...............");
-    
     const authToken = localStorage.getItem("authToken");
     try {
       const userData = (await request.get(`/getUserData`)).data;
@@ -37,12 +42,17 @@ function App() {
   return (
     <>
     <SnackbarProvider>
+
         
       {/* <LoginSystem /> */}
       {/* <Hotels/> */}
       <BrowserRouter>
       <Account/>
       </BrowserRouter>
+
+      <LoginSystem />
+      {/* <SimpleMap/> */}
+
       </SnackbarProvider>
       <Outlet/>
     </>
