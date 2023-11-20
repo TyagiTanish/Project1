@@ -12,6 +12,8 @@ import DateRangePickers from "./DatePicker";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 
 import "../../App.css";
+import { useDispatch } from "react-redux";
+import { userLocation } from "./redux/user/userSlice";
 
 function Seachbar2(props: any) {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -23,7 +25,7 @@ function Seachbar2(props: any) {
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const [guests, setGuests] = useState(0);
   const [render, setRender] = React.useState(0);
-
+  const dispatch = useDispatch();
   const handleInputChange = (event: any) => {
     const { value } = event.target;
     props.setSearchTerm(value);
@@ -39,7 +41,6 @@ function Seachbar2(props: any) {
     setRooms(rooms);
   }, [render, rooms]);
 
-
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
@@ -47,21 +48,18 @@ function Seachbar2(props: any) {
       console.log("Geolocation not supported");
     }
   }
-  function success(position:any) {
-   
-   
-   console.log(position);
-   
-  
-    // Make API call to OpenWeatherMap
-    
+  function success(position: any) {
+    console.log(position);
+    const data: any = {
+      latitude: position.coords.latitude,
+      longitude: position.coords.longitude,
+    };
+    dispatch(userLocation(data));
   }
-  
+
   function error() {
     console.log("Unable to retrieve your location");
   }
-
-
 
   return (
     <Box sx={{ marginLeft: "-120px", width: "100vw", mb: "30px" }}>
@@ -85,7 +83,14 @@ function Seachbar2(props: any) {
           InputProps={{
             endAdornment: (
               <InputAdornment position="start">
-                <IconButton onClick={handleLocationClick} sx={{fontSize:'15px',fontWeight:'bolder',color:'black'}} >
+                <IconButton
+                  onClick={handleLocationClick}
+                  sx={{
+                    fontSize: "15px",
+                    fontWeight: "bolder",
+                    color: "black",
+                  }}
+                >
                   <MyLocationIcon />
                   Near me
                 </IconButton>
