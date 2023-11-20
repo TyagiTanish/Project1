@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
 import { hover } from "@testing-library/user-event/dist/hover";
 import React, { useEffect, useState } from "react";
 import Building1 from "./BuildingSvg";
@@ -14,6 +14,9 @@ import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
 import DateRangePickers from "./DatePicker";
 import RoomSelection from "./RoomSelection";
 import MyLocationIcon from '@mui/icons-material/MyLocation';
+import { useDispatch } from "react-redux";
+import { userLogin} from "./redux/user/userSlice";
+import {userLocation} from './redux/user/userSlice'
 
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -25,6 +28,7 @@ function SearchBar() {
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const [guests, setGuests] = useState(0);
   const [render, setRender] = React.useState(0);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     var result = 0;
@@ -43,9 +47,12 @@ function handleLocationClick() {
 }
 function success(position:any) {
  
- 
- console.log(position);
- 
+console.log("position",position);
+ const data:any={
+  latitude:position.coords.latitude,
+  longitude:position.coords.longitude
+ }
+dispatch(userLocation(data))
 
   // Make API call to OpenWeatherMap
   
@@ -86,16 +93,6 @@ function error() {
           Over 157,000 hotels and homes across 35 countries
         </Box>
         <Typography sx={{ mt: 9, display: "flex", alignContent: "center" }}>
-         <Box className="nearby">
-          <Box className='nearby2 ripple'>
-            <Typography className="nearby3" sx={{mr:0}} onClick={()=>
-            {
-                handleLocationClick()
-              
-            }}><MyLocationIcon/></Typography>
-            <Typography sx={{}}>Near me</Typography>
-          </Box>
-         </Box>
           <TextField
             sx={{
               backgroundColor: "white",
@@ -105,8 +102,17 @@ function error() {
               height: "20%",
               mt: 2,
             }}
-            placeholder="Search by city,hote, or neighborhood"
-          
+            placeholder="Search by city,hotel, or neighborhood"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start" >
+                  <IconButton onClick={handleLocationClick} sx={{fontSize:'15px',fontWeight:'bolder',color:'black'}}  >
+                    <MyLocationIcon />
+                    Near me
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
           />
          
           <Typography sx={{ position: "relative" }}>

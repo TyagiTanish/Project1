@@ -11,6 +11,10 @@ import SearchBar from "./SearchBar";
 import Footer from "./Footer";
 import { useSelector } from "react-redux";
 import HomeBody from "./HomeBody";
+import AccountMenu from "./ProfileBtn";
+
+
+
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
   return (
@@ -33,8 +37,7 @@ export default function BasicCard() {
             mt: 1,
             ml: 10,
             fontWeight: "bolder",
-
-            mr: 165,
+            mr: 160,
           }}
         >
           <Logo />
@@ -62,8 +65,19 @@ export default function BasicCard() {
             <CallIcon /> 0124-6201611
           </Box>
         </Box>
-
-        <Box
+{user?(<Box
+          sx={{
+            height: "100%",
+            mr: 10,
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            width:'1%'
+          }}
+        ><AccountMenu/>
+        </Box>):(<Box
           sx={{
             height: "100%",
             mr: 3,
@@ -72,11 +86,24 @@ export default function BasicCard() {
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
+            minWidth:"100px",
           }}
         >
-          <PersonIcon sx={{ margin: 1 }} />
-          <Link to="/login"> Login / SignUp</Link>
-        </Box>
+              {" "}
+              <PersonIcon sx={{ margin: 1 }} />
+              <Link
+                to="/login"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                {" "}
+                Login / SignUp
+              </Link>
+        </Box>)}
+        
       </Box>
       <Box
         sx={{
@@ -111,8 +138,8 @@ export default function BasicCard() {
               <Link style={{ fontWeight: "bold" }} to="/">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
 
@@ -136,8 +163,8 @@ export default function BasicCard() {
               <Link style={{ fontWeight: "bold" }} to="/">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
 
@@ -161,8 +188,8 @@ export default function BasicCard() {
               <Link style={{ fontWeight: "bold" }} to="/">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
 
@@ -183,11 +210,11 @@ export default function BasicCard() {
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
             <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/">
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
 
@@ -208,14 +235,13 @@ export default function BasicCard() {
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
             <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/">
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
-
           <Box
             className="abc"
             sx={{
@@ -233,11 +259,11 @@ export default function BasicCard() {
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
             <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/">
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
 
@@ -258,11 +284,11 @@ export default function BasicCard() {
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
             <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/">
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
-              <Link to="/">Mg Road</Link>
-              <Link to="/">Rajaji nagar</Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
             </Box>
           </Box>
 
@@ -283,7 +309,7 @@ export default function BasicCard() {
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
             <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/">
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
               <Link to="/">Mg Road</Link>
