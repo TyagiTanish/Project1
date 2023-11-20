@@ -3,9 +3,12 @@ import React from 'react'
 import { useForm } from 'react-hook-form';
 import useAuth from '../../Hooks/useAuth/useAuth';
 import { useSelector } from 'react-redux';
+
+import {useDispatch} from 'react-redux'
+import { userLogin } from './redux/user/userSlice';
 function Update() {
 
-
+  const dispatch = useDispatch();
 
     const {register,handleSubmit}=useForm();
 
@@ -15,13 +18,15 @@ function Update() {
     const { request } = useAuth();
     const onSubmit1=async (data:any)=>{
     
-  
+
       
      const result= await request.put(`/username/${user._id}`,{
             Name:data.name
         });
-   
+     
         console.log(result);
+       const data2=await request.get('/getUserData');
+       dispatch(userLogin(data2.data));
         
       }
     
@@ -32,7 +37,7 @@ function Update() {
       
       <Typography sx={{fontWeight:"bold", mt:2, fontSize:15}}>First Name:</Typography>  
       
-      <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("name")}/>
+      <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("name")} defaultValue={user.Name}/>
       
    
    
