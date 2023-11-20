@@ -1,11 +1,11 @@
 import { Box, IconButton, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
-import Hotels from "./Hotels";
 import SimpleMap from "./Map";
 import Footer from "./Footer";
 import Seachbar2 from "./Seachbar2";
 import { Link } from "react-router-dom";
 import Logo from "./Logo";
+import Hotels from "./Hotels";
 
 const HotelsPage = () => {
 

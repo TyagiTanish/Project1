@@ -21,7 +21,7 @@ const handleChange=(value:any)=>{
     
 }
   return (
-    <div style={{ height: '100vh',minWidth:'48vw' }}>
+    <div style={{ height: '100vh',minWidth:'40vw' }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}

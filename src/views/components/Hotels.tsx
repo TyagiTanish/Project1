@@ -6,10 +6,6 @@ import Seachbar2 from "./Seachbar2";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HotelDetails from "./HotelDetails";
 
-import React, { useState } from "react";
-import DoneIcon from "@mui/icons-material/Done";
-import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
-import Seachbar2 from "./Seachbar2";
 import Footer from "./Footer";
 import HomeBody from "./HomeBody";
 import Logo from "./Logo";
@@ -52,7 +48,6 @@ function Hotels() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(hotels);
 
-
   const filterData = (searchTerm: any) => {
     const filteredData = hotels.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -69,195 +64,184 @@ function Hotels() {
       setDetailIndex("");
     }
 
-
-  const filterData = (searchTerm: any) => {
-    const filteredData = hotels.filter((item: any) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredData);
-
-  };
-
-  return (
-    <>
-
-      <Seachbar2
-        searchTerm={searchTerm}
-        setSearchTerm={setSearchTerm}
-        filterData={filterData}
-      />
-      <Box
-        sx={{
-          padding: 2,
-          mt: 4,
-          marginLeft: "350px",
-        }}
-      >
-        {filteredData.map((item, i) => (
-          <>
-            <Box
-              sx={{
-                width: "75%",
-                margin: "10px",
-                border: "1px solid lightgray",
-                borderRadius: "20px",
-                marginBottom: "30px",
-              }}
-            >
+    const filterData = (searchTerm: any) => {
+      const filteredData = hotels.filter((item: any) =>
+        item.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredData(filteredData);
+    };
+  }
+    return (
+      <>
+        <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
+          {filteredData.map((item, i) => (
+            <>
               <Box
                 sx={{
-                  display: "flex",
-                  flexDirection: "row",
+                  width: "58vw",
+                  margin: "10px",
+                  border: "1px solid lightgray",
+                  borderRadius: "20px",
+                  marginBottom: "30px",
                 }}
               >
-                <img
-                  src={require(`./${item.src}`)}
-                  alt="hotel pic"
-                  style={{
-                    width: "300px",
-                    height: "250px",
-                    borderTopLeftRadius: "20px",
-                    borderBottomLeftRadius: "20px",
-                  }}
-                />
-
                 <Box
                   sx={{
                     display: "flex",
-                    flexDirection: "column",
-                    marginLeft: "20px",
-                    marginTop: "30px",
-                    width: "500px",
+                    flexDirection: "row",
                   }}
                 >
-                  <Typography
-                    sx={{ fontWeight: "bold", fontSize: "25px", opacity: 0.8 }}
+                  <img
+                    src={require(`./${item.src}`)}
+                    alt="hotel pic"
+                    style={{
+                      width: "300px",
+                      height: "250px",
+                      borderTopLeftRadius: "20px",
+                      borderBottomLeftRadius: "20px",
+                    }}
+                  />
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      marginLeft: "20px",
+                      marginTop: "30px",
+                      width: "500px",
+                    }}
                   >
-                    {item.name}
-                  </Typography>
-                  <Box sx={{ display: "flex" }}>
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: "25px",
+                        opacity: 0.8,
+                      }}
+                    >
+                      {item.name}
+                    </Typography>
+                    <Box sx={{ display: "flex" }}>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: "15px",
+                          opacity: 0.5,
+                          marginTop: "10px",
+                        }}
+                      >
+                        Hotel
+                      </Typography>
+                      <Button
+                        sx={{ color: "grey", ml: 12 }}
+                        onClick={() => {
+                          handleClick(i);
+                        }}
+                      >
+                        <ExpandMoreIcon />
+                      </Button>
+                    </Box>
                     <Typography
                       sx={{
                         fontWeight: "bold",
                         fontSize: "15px",
                         opacity: 0.5,
+                        marginTop: "5px",
+                      }}
+                    >
+                      {item.rating}
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      margin: "20px",
+                      marginLeft: "50px",
+                      border: "1px solid lightgray",
+                      width: "300px",
+                      height: "80px",
+                      borderRadius: "20px",
+                      backgroundColor: "rgba(241,248,234)",
+                      padding: 2,
+                      display: "flex",
+                      flexDirection: "column",
+                    }}
+                  >
+                    <Box
+                      sx={{
+                        width: "90px",
+                        border: "1px solid red",
+                        ml: 22,
+                        height: "25px",
+                        borderRadius: "15px",
+                        color: "red",
+                        fontSize: "10px",
+                        padding: 1,
+                        fontWeight: "bold",
+                      }}
+                    >
+                      Our Lowest Price
+                    </Box>
+
+                    <Box
+                      sx={{
+                        color: "#D4164B",
+                        fontWeight: "bold",
+                        fontSize: "8px",
+                        display: "flex",
+                        flexDirection: "row",
+                      }}
+                    >
+                      <DoneIcon sx={{ fontSize: "15px", fontWeight: "bold" }} />{" "}
+                      <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
+                        Free Cancelation
+                      </Typography>
+                    </Box>
+                    <Box
+                      sx={{
+                        display: "flex",
+                        flexDirection: "row",
                         marginTop: "10px",
+                        marginLeft: "5px",
                       }}
                     >
-                      Hotel
-                    </Typography>
-                    <Button
-                      sx={{ color: "grey", ml: 12 }}
-                      onClick={() => {
-                        handleClick(i);
-                      }}
-                    >
-                      <ExpandMoreIcon />
-                    </Button>
-                  </Box>
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: "15px",
-                      opacity: 0.5,
-                      marginTop: "5px",
-                    }}
-                  >
-                    {item.rating}
-                  </Typography>
-                </Box>
-
-                <Box
-                  sx={{
-                    margin: "20px",
-                    marginLeft: "50px",
-                    border: "1px solid lightgray",
-                    width: "300px",
-                    height: "80px",
-                    borderRadius: "20px",
-                    backgroundColor: "rgba(241,248,234)",
-                    padding: 2,
-                    display: "flex",
-                    flexDirection: "column",
-                  }}
-                >
-                  <Box
-                    sx={{
-                      width: "90px",
-                      border: "1px solid red",
-                      ml: 22,
-                      height: "25px",
-                      borderRadius: "15px",
-                      color: "red",
-                      fontSize: "10px",
-                      padding: 1,
-                      fontWeight: "bold",
-                    }}
-                  >
-                    Our Lowest Price
-                  </Box>
-
-                  <Box
-                    sx={{
-                      color: "#D4164B",
-                      fontWeight: "bold",
-                      fontSize: "8px",
-                      display: "flex",
-                      flexDirection: "row",
-                    }}
-                  >
-                    <DoneIcon sx={{ fontSize: "15px", fontWeight: "bold" }} />{" "}
-                    <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
-                      Free Cancelation
-                    </Typography>
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "row",
-                      marginTop: "10px",
-                      marginLeft: "5px",
-                    }}
-                  >
-                    <Typography
-                      sx={{
-                        fontWeight: "bold",
-                        fontSize: "18px",
-                        opacity: 0.7,
-                      }}
-                    >
-                      ₹{item.price}
-                    </Typography>
-                    <Button
-                      sx={{
-                        width: "140px",
-                        backgroundColor: "#D4164B",
-                        height: "35px",
-                        color: "white",
-                        fontWeight: "bold",
-                        marginLeft: "120px",
-                        marginTop: "-9px",
-                        textTransform: "none",
-                      }}
-                    >
-                      View Deal <KeyboardArrowRightIcon />
-                    </Button>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: "18px",
+                          opacity: 0.7,
+                        }}
+                      >
+                        ₹{item.price}
+                      </Typography>
+                      <Button
+                        sx={{
+                          width: "140px",
+                          backgroundColor: "#D4164B",
+                          height: "35px",
+                          color: "white",
+                          fontWeight: "bold",
+                          marginLeft: "120px",
+                          marginTop: "-9px",
+                          textTransform: "none",
+                        }}
+                      >
+                        View Deal <KeyboardArrowRightIcon />
+                      </Button>
+                    </Box>
                   </Box>
                 </Box>
+
+                {detailIndex === i ? (
+                  // detailIndex.includes(i) ?
+                  <HotelDetails i={i} item={item} handleClick={handleClick} />
+                ) : null}
               </Box>
+            </>
+            // <img src={require(`./${item.src}`)} alt="hotel pic" style={{width:"250px", height:"200px", margin:"10px"}}/>
+          ))}
+        </Box>
 
-              {detailIndex === i ? (
-                // detailIndex.includes(i) ?
-                <HotelDetails i={i} item={item} handleClick={handleClick} />
-              ) : null}
-            </Box>
-          </>
-          // <img src={require(`./${item.src}`)} alt="hotel pic" style={{width:"250px", height:"200px", margin:"10px"}}/>
-        ))}
-      </Box>
-
-  
-      <Box sx={{height:'100vh', overflowY:'auto' ,minWidth:'50vw'}}>
+        {/* <Box sx={{height:'100vh', overflowY:'auto' ,minWidth:'50vw'}}>
      
         {filteredData.map((item, i) => (
           <Box
@@ -394,11 +378,8 @@ function Hotels() {
 
           // <img src={require(`./${item.src}`)} alt="hotel pic" style={{width:"250px", height:"200px", margin:"10px"}}/>
         ))}
-      </Box> 
-      
-
-    </>
-  );
-}
-
+      </Box>  */}
+      </>
+    );
+  };
 export default Hotels;

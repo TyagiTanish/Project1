@@ -8,8 +8,6 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Tooltip from '@mui/material/Tooltip';
-import PersonAdd from '@mui/icons-material/PersonAdd';
-import Settings from '@mui/icons-material/Settings';
 import Logout from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from './redux/user/userSlice';
@@ -34,8 +32,7 @@ const handleLogOut = () =>{
 }
 
 
-
-  return (
+return (
     <React.Fragment>
       <Box>
         <Tooltip title="Account settings">
@@ -74,7 +71,7 @@ const handleLogOut = () =>{
               position: 'absolute',
               top: 0,
               right: 14,
-              width: 10,
+              width: 20,
               height: 10,
               bgcolor: 'background.paper',
               transform: 'translateY(-50%) rotate(45deg)',
@@ -85,7 +82,7 @@ const handleLogOut = () =>{
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
       > <Typography sx={{fontWeight:'bolder',m:2}}  >Hello,{user.Name}</Typography> 
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={handleClose} sx={{display:'flex',flexDirection:'row'}} >
           <Link to='/profile' ><Avatar /> Profile</Link>
           
         </MenuItem>
