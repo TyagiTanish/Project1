@@ -13,50 +13,8 @@ import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 
-function Hotels() {
-  const [hotels] = useState([
-    {
-      name: "Hotel mountain face by snow",
-      price: "8000/-",
-      rating: "excellent",
-      src: "pic1.jpg",
-    },
-    {
-      name: "Bentewood Resort",
-      price: "2000/-",
-      rating: "excellent",
-      src: "pic2.jpg",
-    },
-    {
-      name: "JW Marriot Mumbai Sahar",
-      price: "3000/-",
-      rating: "excellent",
-      src: "pic3.jpg",
-    },
-    {
-      name: "Niranta Transit",
-      price: "5000/-",
-      rating: "excellent",
-      src: "pic4.jpg",
-    },
-    {
-      name: "Hotel Kohinoor Continental",
-      price: "9000/-",
-      rating: "excellent",
-      src: "pic5.jpg",
-    },
-  ]);
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(hotels);
+function Hotels({filteredData}:any) {
   const navigate = useNavigate()
-
-  const filterData = (searchTerm: any) => {
-    const filteredData = hotels.filter((item: any) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredData);
-  };
-
   const [detailIndex, setDetailIndex] = useState<any>("");
   const [openModule, setOpenModule] = useState<any>("info");
   const handleClick = (index: any) => {
@@ -75,7 +33,7 @@ const handleViewDeal = (item:any) => {
     return (
       <>
         <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
-        {filteredData.map((item, i) => (
+        {filteredData?.map((item:any, i:any) => (
           <>
               <Box
                 sx={{

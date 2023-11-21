@@ -49,6 +49,7 @@ const HotelsPage = () => {
     );
     setFilteredData(filteredData);
   };
+
   return (
     <>
       <Stack direction={"row"}>
@@ -65,7 +66,7 @@ const HotelsPage = () => {
       </Stack>
 
       <Stack direction={"row"}>
-        <Hotels />
+        <Hotels  filteredData={filteredData}  />
         <SimpleMap />
       </Stack>
       <Footer />
