@@ -1,7 +1,18 @@
 import { Box, Button, Card, Typography, createTheme } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Map2 from "./Map2";
 import OverViewHotel from "./OverViewHotel";
+import PhotosDetails from "./PhotosDetails";
+import ReviewDetails from "./ReviewDetails";
+import WifiIcon from "@mui/icons-material/Wifi";
+import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
+import PoolIcon from "@mui/icons-material/Pool";
+import AirlineSeatReclineExtraIcon from "@mui/icons-material/AirlineSeatReclineExtra";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import PetsIcon from "@mui/icons-material/Pets";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
+import WineBarIcon from "@mui/icons-material/WineBar";
 function HotelDetails({
   i,
   item,
@@ -10,7 +21,9 @@ function HotelDetails({
   setOpenModule,
 }: any) {
   const [activeButton, setActiveButton] = useState<any>("info");
-
+  useEffect(() => {
+    setOpenModule("info");
+  }, []);
   return (
     <Box sx={{ fontFamily: "sans-serif" }}>
       <Box
@@ -21,27 +34,109 @@ function HotelDetails({
           justifyContent: "space-evenly",
         }}
       >
-        <Button
-          sx={{ color: "grey" }}
-          onClick={() => {
-            setOpenModule("Overview");
-          }}
-        >
-          Overview
-        </Button>
-        <Button
-          sx={{ color: "grey" }}
-          onClick={() => {
-            setOpenModule("info");
-          }}
-        >
-          Info
-        </Button>
-        <Button sx={{ color: "grey" }}>Photos</Button>
-        <Button sx={{ color: "grey" }}>Reviews</Button>
+        {activeButton === "Overview" ? (
+          <Button
+            sx={{
+              color: "Black",
+              fontWeight: 500,
+              borderBottom: "1px solid Blue",
+            }}
+            onClick={() => {
+              setOpenModule("Overview");
+              setActiveButton("Overview");
+            }}
+          >
+            Overview
+          </Button>
+        ) : (
+          <Button
+            sx={{ color: "grey" }}
+            onClick={() => {
+              setOpenModule("Overview");
+              setActiveButton("Overview");
+            }}
+          >
+            Overview
+          </Button>
+        )}
+        {activeButton === "info" ? (
+          <Button
+            sx={{
+              color: "Black",
+              fontWeight: 500,
+              borderBottom: "1px solid Blue",
+            }}
+            onClick={() => {
+              setOpenModule("info");
+              setActiveButton("info");
+            }}
+          >
+            Info
+          </Button>
+        ) : (
+          <Button
+            sx={{ color: "grey" }}
+            onClick={() => {
+              setOpenModule("info");
+              setActiveButton("info");
+            }}
+          >
+            Info
+          </Button>
+        )}
+        {activeButton === "Photos" ? (
+          <Button
+            sx={{
+              color: "Black",
+              fontWeight: 500,
+              borderBottom: "1px solid Blue",
+            }}
+            onClick={() => {
+              setOpenModule("Photos");
+              setActiveButton("Photos");
+            }}
+          >
+            Photos
+          </Button>
+        ) : (
+          <Button
+            sx={{ color: "grey" }}
+            onClick={() => {
+              setOpenModule("Photos");
+              setActiveButton("Photos");
+            }}
+          >
+            Photos
+          </Button>
+        )}
+        {/* {activeButton === "Reviews" ? (
+          <Button
+            sx={{
+              color: "Black",
+              fontWeight: 500,
+              borderBottom: "1px solid Blue",
+            }}
+            onClick={() => {
+              setOpenModule("Reviews");
+              setActiveButton("Reviews");
+            }}
+          >
+            Reviews
+          </Button>
+        ) : (
+          <Button
+            sx={{ color: "grey" }}
+            onClick={() => {
+              setOpenModule("Reviews");
+              setActiveButton("Reviews");
+            }}
+          >
+            Reviews
+          </Button>
+        )} */}
       </Box>
       {openModule === "info" ? (
-        <Box sx={{ border: "1px solid lightgrey", mt: 2, mb: 2 }}>
+        <Box sx={{ border: "1px solid lightgrey", mb: 2 }}>
           <Box sx={{ fontWeight: 700, fontSize: 22, m: 2 }}>{item.name}</Box>
 
           <Box
@@ -72,19 +167,48 @@ function HotelDetails({
             <Box
               sx={{ display: "flex", justifyContent: "space-evenly", mt: 2 }}
             >
-              <Box>Wifi in lobby</Box>
-              <Box>Free WiFi</Box>
-              <Box>Pool</Box>
+              <Box>
+                <WifiIcon sx={{ fontSize: "large", mr: 1 }} />
+                Wifi in lobby
+              </Box>
+              <Box>
+                <NetworkWifiIcon sx={{ fontSize: "large", mr: 1 }} />
+                Free WiFi
+              </Box>
+              <Box>
+                <PoolIcon sx={{ fontSize: "large", mr: 1 }} />
+                Pool
+              </Box>
             </Box>
             <Box sx={{ display: "flex", mt: 2 }}>
-              <Box sx={{ ml: 28 }}>Spa</Box>
-              <Box sx={{ ml: 35 }}>Parking</Box>
-              <Box sx={{ ml: 30 }}>Pets</Box>
+              <Box sx={{ ml: 26 }}>
+                <AirlineSeatReclineExtraIcon
+                  sx={{ fontSize: "large", mr: 1 }}
+                />
+                Spa
+              </Box>
+              <Box sx={{ ml: 32.5 }}>
+                <LocalParkingIcon sx={{ fontSize: "large", mr: 1 }} />
+                Parking
+              </Box>
+              <Box sx={{ ml: 26.7 }}>
+                <PetsIcon sx={{ fontSize: "large", mr: 1 }} />
+                Pets
+              </Box>
             </Box>
             <Box sx={{ display: "flex", mt: 2 }}>
-              <Box sx={{ ml: 28 }}>A/C</Box>
-              <Box sx={{ ml: 35 }}>Restaurant</Box>
-              <Box sx={{ ml: 27 }}>Hotel bar</Box>
+              <Box sx={{ ml: 26 }}>
+                <AcUnitIcon sx={{ fontSize: "large", mr: 1 }} />
+                A/C
+              </Box>
+              <Box sx={{ ml: 32.5 }}>
+                <RestaurantMenuIcon sx={{ fontSize: "large", mr: 1 }} />
+                Restaurant
+              </Box>
+              <Box sx={{ ml: 23.5 }}>
+                <WineBarIcon sx={{ fontSize: "large", mr: 1 }} />
+                Hotel bar
+              </Box>
             </Box>
           </Box>
           <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
@@ -98,8 +222,12 @@ function HotelDetails({
             </Box>
           </Box>
         </Box>
-      ) : (
+      ) : openModule === "Overview" ? (
         <OverViewHotel />
+      ) : openModule === "Photos" ? (
+        <PhotosDetails />
+      ) : (
+        <ReviewDetails />
       )}
       <Button
         sx={{
