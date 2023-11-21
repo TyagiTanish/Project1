@@ -11,32 +11,55 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useNavigate } from "react-router-dom";
 import { log } from "console";
+import { enqueueSnackbar } from "notistack";
+import Loaders from "./Loaders";
 const  SignUp = ({ setLogReg }: any) =>{
   const { request } = useAuth();
 
-
+const [display,setDisplay]=React.useState(false);
 
   const navigate = useNavigate()
   const onSubmit = async (data: any) => {
     // console.log(data);
    const result= await request.post("/Register", {
-      Name: data.Name,
-      Phone: data.Phone,
-      Email: data.Email,
-      Password: data.Password,
+      name: data.name,
+      phone: data.phone,
+      email: data.email,
+      password: data.password,
     });
 
-  
-    
     if(result.data){
-      console.log("hello there");
-      
-      
+      enqueueSnackbar("Registered Successfully", {
+        variant: "success",
+        autoHideDuration: 1000,
+       
+        
+     })
     }
+    else{
+      setDisplay(true);
+      enqueueSnackbar("Email Already Registered", {
+        variant: "error",
+        autoHideDuration: 1000,
+       
+        
+     })
+     setTimeout(()=>{
+      setDisplay(false);
+      setLogReg(false);
+     },2000)
+    }
+      
+      
+      
+
     
   }
   const { register, handleSubmit } = useForm();
   return (
+
+
+   
     <Card
       className="oyo-cell loginCard"
       sx={{
@@ -46,6 +69,7 @@ const  SignUp = ({ setLogReg }: any) =>{
         b: "1px solid black",
       }}
     >
+       {display && <Loaders/>}
       <Typography
         sx={{
           backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -73,6 +97,7 @@ const  SignUp = ({ setLogReg }: any) =>{
       >
         Sign Up
       </Typography>
+     
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack>
@@ -80,31 +105,31 @@ const  SignUp = ({ setLogReg }: any) =>{
             <TextField
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
-              // label="Name"
+              // label="name"
               sx={{ mb: 8, height: 2 }}
-              {...register("Name")}
+              {...register("name")}
             />
-            <Typography sx={{ fontWeight: "bold" }}>Email</Typography>
+            <Typography sx={{ fontWeight: "bold" }}>email</Typography>
             <TextField
               sx={{ mb: 8, height: 2, border: "none" }}
               id="demo-helper-text-aligned"
-              {...register("Email")}
+              {...register("email")}
             />
             <Typography sx={{ fontWeight: "bold" }}>Phone No</Typography>
             <TextField
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
-              // label="Name"
+              // label="name"
               sx={{ mb: 8, height: 2 }}
-              {...register("Phone")}
+              {...register("phone")}
             />
             <Typography sx={{ fontWeight: "bold" }}>Password</Typography>
             <TextField
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
-              // label="Name"
+              // label="name"
               sx={{ mb: 8, height: 2 }}
-              {...register("Password")}
+              {...register("password")}
             />
             {/* <Typography sx={{ fontWeight: "bold" }}>
               Enter four-digit passcode
