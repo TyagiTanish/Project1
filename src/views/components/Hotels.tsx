@@ -64,15 +64,25 @@ function Hotels() {
     if (index === detailIndex) {
       setDetailIndex("");
     }
-  }
-    return (
-      <>
-        <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
+  };
+
+  return (
+    <>
+      <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
         {filteredData.map((item, i) => (
           <>
-            <Box
+            {/* <Box
               sx={{
                 width: "75%",
+                margin: "10px",
+                border: "1px solid lightgray",
+                borderRadius: "20px",
+                marginBottom: "30px",
+              }}
+            > */}
+            <Box
+              sx={{
+                width: "58vw",
                 margin: "10px",
                 border: "1px solid lightgray",
                 borderRadius: "20px",
@@ -81,170 +91,162 @@ function Hotels() {
             >
               <Box
                 sx={{
-                  width: "58vw",
-                  margin: "10px",
-                  border: "1px solid lightgray",
-                  borderRadius: "20px",
-                  marginBottom: "30px",
+                  display: "flex",
+                  flexDirection: "row",
                 }}
               >
+                <img
+                  src={require(`./${item.src}`)}
+                  alt="hotel pic"
+                  style={{
+                    width: "300px",
+                    height: "250px",
+                    borderTopLeftRadius: "20px",
+                    borderBottomLeftRadius: "20px",
+                  }}
+                />
+
                 <Box
                   sx={{
                     display: "flex",
-                    flexDirection: "row",
+                    flexDirection: "column",
+                    marginLeft: "20px",
+                    marginTop: "30px",
+                    width: "500px",
                   }}
                 >
-                  <img
-                    src={require(`./${item.src}`)}
-                    alt="hotel pic"
-                    style={{
-                      width: "300px",
-                      height: "250px",
-                      borderTopLeftRadius: "20px",
-                      borderBottomLeftRadius: "20px",
-                    }}
-                  />
-
-                  <Box
+                  <Typography
                     sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginLeft: "20px",
-                      marginTop: "30px",
-                      width: "500px",
+                      fontWeight: "bold",
+                      fontSize: "25px",
+                      opacity: 0.8,
                     }}
                   >
-                    <Typography
-                      sx={{
-                        fontWeight: "bold",
-                        fontSize: "25px",
-                        opacity: 0.8,
-                      }}
-                    >
-                      {item.name}
-                    </Typography>
-                    <Box sx={{ display: "flex" }}>
-                      <Typography
-                        sx={{
-                          fontWeight: "bold",
-                          fontSize: "15px",
-                          opacity: 0.5,
-                          marginTop: "10px",
-                        }}
-                      >
-                        Hotel
-                      </Typography>
-                      <Button
-                        sx={{ color: "grey", ml: 12 }}
-                        onClick={() => {
-                          handleClick(i);
-                        }}
-                      >
-                        <ExpandMoreIcon />
-                      </Button>
-                    </Box>
+                    {item.name}
+                  </Typography>
+                  <Box sx={{ display: "flex" }}>
                     <Typography
                       sx={{
                         fontWeight: "bold",
                         fontSize: "15px",
                         opacity: 0.5,
-                        marginTop: "5px",
+                        marginTop: "10px",
                       }}
                     >
-                      {item.rating}
+                      Hotel
                     </Typography>
+                    <Button
+                      sx={{ color: "grey", ml: 12, fontSize: 10 }}
+                      onClick={() => {
+                        handleClick(i);
+                      }}
+                    >
+                      View More
+                      <ExpandMoreIcon />
+                    </Button>
+                  </Box>
+                  {/* <Typography
+                    sx={{
+                      fontWeight: "bold",
+                      fontSize: "15px",
+                      opacity: 0.5,
+                      marginTop: "5px",
+                    }}
+                  >
+                    {item.rating}
+                  </Typography> */}
+                </Box>
+
+                <Box
+                  sx={{
+                    margin: "20px",
+                    marginLeft: "50px",
+                    border: "1px solid lightgray",
+                    width: "300px",
+                    height: "80px",
+                    borderRadius: "20px",
+                    backgroundColor: "rgba(241,248,234)",
+                    padding: 2,
+                    display: "flex",
+                    flexDirection: "column",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      width: "90px",
+                      border: "1px solid red",
+                      ml: 22,
+                      height: "25px",
+                      borderRadius: "15px",
+                      color: "red",
+                      fontSize: "10px",
+                      padding: 1,
+                      fontWeight: "bold",
+                    }}
+                  >
+                    Our Lowest Price
                   </Box>
 
                   <Box
                     sx={{
-                      margin: "20px",
-                      marginLeft: "50px",
-                      border: "1px solid lightgray",
-                      width: "300px",
-                      height: "80px",
-                      borderRadius: "20px",
-                      backgroundColor: "rgba(241,248,234)",
-                      padding: 2,
+                      color: "#D4164B",
+                      fontWeight: "bold",
+                      fontSize: "8px",
                       display: "flex",
-                      flexDirection: "column",
+                      flexDirection: "row",
                     }}
                   >
-                    <Box
+                    <DoneIcon sx={{ fontSize: "15px", fontWeight: "bold" }} />{" "}
+                    <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
+                      Free Cancelation
+                    </Typography>
+                  </Box>
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginTop: "10px",
+                      marginLeft: "5px",
+                    }}
+                  >
+                    <Typography
                       sx={{
-                        width: "90px",
-                        border: "1px solid red",
-                        ml: 22,
-                        height: "25px",
-                        borderRadius: "15px",
-                        color: "red",
-                        fontSize: "10px",
-                        padding: 1,
                         fontWeight: "bold",
+                        fontSize: "18px",
+                        opacity: 0.7,
                       }}
                     >
-                      Our Lowest Price
-                    </Box>
-
-                    <Box
+                      ₹{item.price}
+                    </Typography>
+                    <Button
                       sx={{
-                        color: "#D4164B",
+                        width: "140px",
+                        backgroundColor: "#D4164B",
+                        height: "35px",
+                        color: "white",
                         fontWeight: "bold",
-                        fontSize: "8px",
-                        display: "flex",
-                        flexDirection: "row",
+                        marginLeft: "120px",
+                        marginTop: "-9px",
+                        textTransform: "none",
                       }}
                     >
-                      <DoneIcon sx={{ fontSize: "15px", fontWeight: "bold" }} />{" "}
-                      <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
-                        Free Cancelation
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginTop: "10px",
-                        marginLeft: "5px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: "bold",
-                          fontSize: "18px",
-                          opacity: 0.7,
-                        }}
-                      >
-                        ₹{item.price}
-                      </Typography>
-                      <Button
-                        sx={{
-                          width: "140px",
-                          backgroundColor: "#D4164B",
-                          height: "35px",
-                          color: "white",
-                          fontWeight: "bold",
-                          marginLeft: "120px",
-                          marginTop: "-9px",
-                          textTransform: "none",
-                        }}
-                      >
-                        View Deal <KeyboardArrowRightIcon />
-                      </Button>
-                    </Box>
+                      View Deal <KeyboardArrowRightIcon />
+                    </Button>
                   </Box>
                 </Box>
               </Box>
-
-              {detailIndex === i ? (
-                <HotelDetails
-                  i={i}
-                  item={item}
-                  handleClick={handleClick}
-                  openModule={openModule}
-                  setOpenModule={setOpenModule}
-                />
-              ) : null}
             </Box>
+
+            {detailIndex === i ? (
+              <HotelDetails
+                i={i}
+                item={item}
+                handleClick={handleClick}
+                openModule={openModule}
+                setOpenModule={setOpenModule}
+              />
+            ) : null}
+            {/* </Box> */}
           </>
         ))}
       </Box>
