@@ -8,7 +8,6 @@ import Logo from "./Logo";
 import Hotels from "./Hotels";
 
 const HotelsPage = () => {
-
   const [hotels] = useState([
     {
       name: "Hotel mountain face by snow",
