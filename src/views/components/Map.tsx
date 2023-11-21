@@ -14,10 +14,10 @@ const location = useSelector((state:any)=>state.userReducer.location)
 const dispatch = useDispatch();
   const defaultProps = {
     center: {
-      lat:location?.latitude,
-      lng:location?.longitude  
+      lat:location?.latitude || 30.733315 ,
+      lng:location?.longitude || 76.779419 
     },
-    zoom: 16
+    zoom: 15
   };
 const handleChange=(value:any)=>{
   console.log(value.center);

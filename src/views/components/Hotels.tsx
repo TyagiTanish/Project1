@@ -70,15 +70,6 @@ function Hotels() {
         <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
         {filteredData.map((item, i) => (
           <>
-            <Box
-              sx={{
-                width: "75%",
-                margin: "10px",
-                border: "1px solid lightgray",
-                borderRadius: "20px",
-                marginBottom: "30px",
-              }}
-            >
               <Box
                 sx={{
                   width: "58vw",
@@ -244,7 +235,6 @@ function Hotels() {
                   setOpenModule={setOpenModule}
                 />
               ) : null}
-            </Box>
           </>
         ))}
       </Box>
