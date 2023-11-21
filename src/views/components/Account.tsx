@@ -1,39 +1,79 @@
-import { Box, Button, TextField, Typography } from '@mui/material'
-import React from 'react'
-import { Link } from 'react-router-dom'
-import "../../App.css"
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import { useForm } from 'react-hook-form';
-import Password from './Password';
-import Update from "./Update"
+import { Box, Button, IconButton, TextField, Typography } from "@mui/material";
+import React from "react";
+import { Link } from "react-router-dom";
+import "../../App.css";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import { useForm } from "react-hook-form";
+import Password from "./Password";
+import Update from "./Update";
+import Logo from "./Logo";
 function Account() {
-
-
- 
-
   return (
-   <Box sx={{  ml:60, mr:"auto", mt:10,    fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",display:"flex",flexDirection:"row"}}>
-    <Box sx={{display:"flex",flexDirection:"column",width:200,mt:1.5}}> <Link style={{textDecoration:"none",color:"#D4164B"}} to="/" ><ArrowBackIosIcon sx={{fontSize:12}}/>Back</Link>
-    
-    <Typography className='account' sx={{mt:2,    backgroundColor: "rgba(243,244,245)",padding:1,width:140,cursor:"pointer",fontSize:15}} >Account Settings</Typography>
-    <Box sx={{mt:2 ,paddingTop:2,fontSize:16,borderTop:"1px solid black",width:140}}>Log Out</Box> 
-    
-    </Box>
-    <Box sx={{display:"flex", flexDirection:"column"}}> 
+    <>
+      <IconButton href="/"sx={{ml:2}} >
+        <Logo />
+      </IconButton>
+      <Typography sx={{width:"100vw",borderBottom:"1px solid lightgray"}}  ></Typography>
+      <Box
+        sx={{
+          ml: 60,
+          mr: "auto",
+          mt: 10,
+          fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",
+          display: "flex",
+          flexDirection: "row",
+        }}
+      >
+        <Box
+          sx={{ display: "flex", flexDirection: "column", width: 200, mt: 1.5 }}
+        >
+          {" "}
+          <Link style={{ textDecoration: "none", color: "#D4164B" }} to="/">
+            <ArrowBackIosIcon sx={{ fontSize: 12 }} />
+            Back
+          </Link>
+          <Typography
+            className="account"
+            sx={{
+              mt: 2,
+              backgroundColor: "rgba(243,244,245)",
+              padding: 1,
+              width: 140,
+              cursor: "pointer",
+              fontSize: 15,
+            }}
+          >
+            Account Settings
+          </Typography>
+          <Box
+            sx={{
+              mt: 2,
+              paddingTop: 2,
+              fontSize: 16,
+              borderTop: "1px solid black",
+              width: 140,
+            }}
+          >
+            Log Out
+          </Box>
+        </Box>
+        <Box sx={{ display: "flex", flexDirection: "column" }}>
+          <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
+            Account Settings
+          </Typography>
+          <Typography sx={{ width: 300, mt: 2 }}>
+            Personal Information
+          </Typography>
 
-   <Typography sx={{fontSize:30, fontWeight:"bold"}}>Account Settings</Typography><Typography sx={{width:300,mt:2}}>Personal Information</Typography> 
-   
-   
-   <Update/>
+          <Update />
 
-   <Typography sx={{mt:5}}>Change Your Password</Typography>
+          <Typography sx={{ mt: 5 }}>Change Your Password</Typography>
 
-   <Password/>
-
-   </Box></Box>
-   
- 
-  )
+          <Password />
+        </Box>
+      </Box>
+    </>
+  );
 }
 
-export default Account
+export default Account;
