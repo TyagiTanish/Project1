@@ -11,6 +11,7 @@ import HomeBody from "./HomeBody";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
 import SimpleMap from "./Map";
+import OverViewHotel from "./OverViewHotel";
 
 function Hotels() {
   const [hotels] = useState([
@@ -48,27 +49,36 @@ function Hotels() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(hotels);
 
-  const [detailIndex, setDetailIndex] = useState<any>("");
+  const filterData = (searchTerm: any) => {
+    const filteredData = hotels.filter((item: any) =>
+      item.name.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+    setFilteredData(filteredData);
+  };
 
+  const [detailIndex, setDetailIndex] = useState<any>("");
+  const [openModule, setOpenModule] = useState<any>("info");
   const handleClick = (index: any) => {
     setDetailIndex(index);
 
     if (index === detailIndex) {
       setDetailIndex("");
     }
-
-    const filterData = (searchTerm: any) => {
-      const filteredData = hotels.filter((item: any) =>
-        item.name.toLowerCase().includes(searchTerm.toLowerCase())
-      );
-      setFilteredData(filteredData);
-    };
   }
     return (
       <>
         <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
-          {filteredData.map((item, i) => (
-            <>
+        {filteredData.map((item, i) => (
+          <>
+            <Box
+              sx={{
+                width: "75%",
+                margin: "10px",
+                border: "1px solid lightgray",
+                borderRadius: "20px",
+                marginBottom: "30px",
+              }}
+            >
               <Box
                 sx={{
                   width: "58vw",
@@ -223,17 +233,23 @@ function Hotels() {
                     </Box>
                   </Box>
                 </Box>
-
-                {detailIndex === i ? (
-                  // detailIndex.includes(i) ?
-                  <HotelDetails i={i} item={item} handleClick={handleClick} />
-                ) : null}
               </Box>
-            </>
-            // <img src={require(`./${item.src}`)} alt="hotel pic" style={{width:"250px", height:"200px", margin:"10px"}}/>
-          ))}
-        </Box>
-      </>
-    );
-  };
+
+              {detailIndex === i ? (
+                <HotelDetails
+                  i={i}
+                  item={item}
+                  handleClick={handleClick}
+                  openModule={openModule}
+                  setOpenModule={setOpenModule}
+                />
+              ) : null}
+            </Box>
+          </>
+        ))}
+      </Box>
+    </>
+  );
+}
+
 export default Hotels;

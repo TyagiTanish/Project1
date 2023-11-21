@@ -1,23 +1,19 @@
-
 import "./App.css";
 import { Outlet } from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
-import {useDispatch} from 'react-redux'
+import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
 import { Hotel } from "@mui/icons-material";
 import Hotels from "./views/components/Hotels";
 
 import Account from "./views/components/Account";
-import { BrowserRouter } from 'react-router-dom'
+import { BrowserRouter } from "react-router-dom";
 
 import SimpleMap from "./views/components/Map";
 import HotelsPage from "./views/components/HotelsPage";
-
-
-
 
 function App() {
   const { request } = useAuth();
@@ -38,7 +34,6 @@ function App() {
     }
   });
 
-
   return (
     <>
     <SnackbarProvider>
@@ -51,7 +46,7 @@ function App() {
       {/* <SimpleMap/> */}
 
       </SnackbarProvider>
-      <Outlet/>
+      <Outlet />
     </>
   );
 }

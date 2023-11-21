@@ -14,7 +14,7 @@ import FooterRytLogo from "../../assets/FooterRytLogo";
 import { grey } from "@mui/material/colors";
 function Footer() {
   return (
-    <Box sx={{ fontFamily: "sans-serif" }}>
+    <Box sx={{ fontFamily: "sans-serif", mt: 5 }}>
       <Box
         sx={{
           background: "#6D787D",
