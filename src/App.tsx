@@ -1,12 +1,12 @@
 import "./App.css";
-import { Outlet } from "react-router-dom";
+import { Outlet, RouterProvider } from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
-import { Hotel } from "@mui/icons-material";
+import { Hotel, Router } from "@mui/icons-material";
 import Hotels from "./views/components/Hotels";
 
 import Account from "./views/components/Account";
@@ -14,6 +14,8 @@ import { BrowserRouter } from "react-router-dom";
 
 import SimpleMap from "./views/components/Map";
 import HotelsPage from "./views/components/HotelsPage";
+import Billing from "./views/components/Billing";
+import Routes from "./views/components/Router/Router";
 
 function App() {
   const { request } = useAuth();
@@ -43,6 +45,8 @@ function App() {
       {/* <Hotels/> */}
 
       <LoginSystem />
+      {/* <BrowserRouter><Billing/></BrowserRouter>       */}
+
       {/* <SimpleMap/> */}
 
       </SnackbarProvider>
