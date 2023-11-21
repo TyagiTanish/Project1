@@ -37,7 +37,7 @@ const navigate = useNavigate()
         setAuthentication("");
       } else {
         enqueueSnackbar("Authentication Failed", { variant: "error" });
-        setAuthentication("Email not Found");
+        setAuthentication("email not Found");
         setState(false);
       }
     }else{
@@ -53,11 +53,11 @@ const navigate = useNavigate()
     }
   };
   const FormSchema = Yup.object().shape({
-    Email: Yup.string().email("invalid email !").required("Email is Required"),
+    email: Yup.string().email("invalid email !").required("email is Required"),
   });
 
   interface User {
-    Email: string;
+    email: string;
     password?: string;
   }
 
@@ -106,18 +106,18 @@ const navigate = useNavigate()
             Login
           </Typography>
           <Typography sx={{ fontWeight: "700" }}>
-            Please enter your Email to continue
+            Please enter your email to continue
           </Typography>
           <form onSubmit={handleSubmit(Onsubmit)}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Box sx={{ fontWeight: "700", marginTop: 1 }}>Email</Box>
+              <Box sx={{ fontWeight: "700", marginTop: 1 }}>email</Box>
 
               <TextField
                 sx={{ fontWeight: "500", marginTop: 1 }}
-                {...register("Email")}
+                {...register("email")}
               ></TextField>
               <FormHelperText sx={{ color: "red", m: 2 }}>
-                {errors.Email?.message}
+                {errors.email?.message}
               </FormHelperText>
               
             </Box>
@@ -144,7 +144,7 @@ const navigate = useNavigate()
               </Button>
             ) : (
               <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
-                Verify Email
+                Verify email
               </Button>
             )}
           </form>
