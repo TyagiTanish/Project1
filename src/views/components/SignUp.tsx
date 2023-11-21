@@ -18,7 +18,7 @@ const  SignUp = ({ setLogReg }: any) =>{
 
 const [display,setDisplay]=React.useState(false);
 
-  const navigate = useNavigate()
+
   const onSubmit = async (data: any) => {
     // console.log(data);
    const result= await request.post("/Register", {
