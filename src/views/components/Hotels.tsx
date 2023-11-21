@@ -218,56 +218,23 @@ const handleViewDeal = (item:any) => {
                         textTransform: "none",
                       }}
                     >
-                      <DoneIcon sx={{ fontSize: "15px", fontWeight: "bold" }} />{" "}
-                      <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
-                        Free Cancelation
-                      </Typography>
-                      </Button>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginTop: "10px",
-                        marginLeft: "5px",
-                      }}
-                    >
-                      <Typography
-                        sx={{
-                          fontWeight: "bold",
-                          fontSize: "18px",
-                          opacity: 0.7,
-                        }}
-                      >
-                        ₹{item.price}
-                      </Typography>
-                      <Button
-                        sx={{
-                          width: "140px",
-                          backgroundColor: "#D4164B",
-                          height: "35px",
-                          color: "white",
-                          fontWeight: "bold",
-                          marginLeft: "120px",
-                          marginTop: "-9px",
-                          textTransform: "none",
-                        }}
-                        onClick={()=>handleViewDeal(item)}
-                      >
-                        View Deal <KeyboardArrowRightIcon />
-                      </Button>
-                    </Box>
+                      View Deal <KeyboardArrowRightIcon />
+                    </Button>
                   </Box>
                 </Box>
-              {detailIndex === i ? (
-                <HotelDetails
-                  i={i}
-                  item={item}
-                  handleClick={handleClick}
-                  openModule={openModule}
-                  setOpenModule={setOpenModule}
-                />
-              ) : null}
+              </Box>
+            {/* </Box> */}
+
+            {detailIndex === i ? (
+              <HotelDetails
+                i={i}
+                item={item}
+                handleClick={handleClick}
+                openModule={openModule}
+                setOpenModule={setOpenModule}
+              />
+            ) : null}
+            {/* </Box> */}
           </>
         ))}
       </Box>
