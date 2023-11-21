@@ -1,4 +1,4 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box, Button, IconButton, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -9,7 +9,7 @@ import HotelDetails from "./HotelDetails";
 import Footer from "./Footer";
 import HomeBody from "./HomeBody";
 import Logo from "./Logo";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 
@@ -48,6 +48,7 @@ function Hotels() {
   ]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(hotels);
+  const navigate = useNavigate()
 
   const filterData = (searchTerm: any) => {
     const filteredData = hotels.filter((item: any) =>
@@ -65,6 +66,12 @@ function Hotels() {
       setDetailIndex("");
     }
   }
+
+const handleViewDeal = (item:any) => {
+
+  navigate('/billing')
+}
+
     return (
       <>
         <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
@@ -218,6 +225,7 @@ function Hotels() {
                           marginTop: "-9px",
                           textTransform: "none",
                         }}
+                        onClick={()=>handleViewDeal(item)}
                       >
                         View Deal <KeyboardArrowRightIcon />
                       </Button>
