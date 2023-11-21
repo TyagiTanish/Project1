@@ -21,7 +21,7 @@ function Update() {
 
       
      const result= await request.put(`/username/${user._id}`,{
-            Name:data.name
+            name:data.name
         });
      
         console.log(result);
@@ -37,7 +37,7 @@ function Update() {
       
       <Typography sx={{fontWeight:"bold", mt:2, fontSize:15}}>First Name:</Typography>  
       
-      <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("name")} defaultValue={user.Name}/>
+      <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("name")} defaultValue={user?.name}/>
       
    
    

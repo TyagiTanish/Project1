@@ -5,8 +5,9 @@ function Loaders() {
 
 const color="#EE2A24"
   return (
-    <Box sx={{zIndex:1,position:"absolute",padding:2 }} className='blur'>
-      <Loader type="bubble-scale" bgColor={color} color={color} size={50} className='loader' />
+    <Box sx={{zIndex:1,position:"absolute",paddingTop:60 }} className='blur'>
+      <center>  <Loader type="bubble-scale" bgColor={color} color={color} size={50} className='loader'/></center>
+    
 
       </Box>
   )
