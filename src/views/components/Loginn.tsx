@@ -17,11 +17,13 @@ import { enqueueSnackbar } from "notistack";
 import {useDispatch} from "react-redux";
 import { userLogin } from "./redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import Loaders from "./Loaders";
 
 
 function SignUpComp({ setVerify, setLogReg }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
+  const [display,setDisplay]=useState(false);
   const [authentication, setAuthentication] = useState("");
 const dispatch = useDispatch();
 const navigate = useNavigate()
@@ -42,10 +44,22 @@ const navigate = useNavigate()
       }
     }else{
       const result = await request.post("/auth", value);
+      console.log(result.data);
+      
       if(result.data){
-        dispatch(userLogin(result.data.data))
+        setDisplay(true);
+        setTimeout(()=>{
+
+           dispatch(userLogin(result.data.data))
         localStorage.setItem("authToken",result.data.token);
-        navigate('/')
+
+        },2000)
+        
+       
+        
+        console.log("hello,0000000000000");
+        
+       
       }else{
         setAuthentication("Invalid Credentials")
       }
@@ -70,6 +84,9 @@ const navigate = useNavigate()
   });
   return (
     <>
+
+<Box sx={{width:"100%", position:"relative"}}>
+    {display && <Loaders/>}
       <Box
         sx={{
           // height: "400px",
@@ -183,6 +200,7 @@ const navigate = useNavigate()
             Register here
           </Button>
         </Box>
+      </Box>
       </Box>
     </>
   );

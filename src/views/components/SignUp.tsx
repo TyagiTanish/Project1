@@ -29,12 +29,18 @@ const [display,setDisplay]=React.useState(false);
     });
 
     if(result.data){
+      setDisplay(true);
       enqueueSnackbar("Registered Successfully", {
         variant: "success",
         autoHideDuration: 1000,
        
         
      })
+     
+     setTimeout(()=>{
+      setDisplay(false);
+      setLogReg(false);
+     },1000)
     }
     else{
       setDisplay(true);
@@ -47,7 +53,7 @@ const [display,setDisplay]=React.useState(false);
      setTimeout(()=>{
       setDisplay(false);
       setLogReg(false);
-     },2000)
+     },1000)
     }
       
       
@@ -58,8 +64,9 @@ const [display,setDisplay]=React.useState(false);
   const { register, handleSubmit } = useForm();
   return (
 
-
-   
+<>
+<Box sx={{width:"100%", position:"relative"}}>
+    {display && <Loaders/>}
     <Card
       className="oyo-cell loginCard"
       sx={{
@@ -69,7 +76,7 @@ const [display,setDisplay]=React.useState(false);
         b: "1px solid black",
       }}
     >
-       {display && <Loaders/>}
+       
       <Typography
         sx={{
           backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -128,6 +135,7 @@ const [display,setDisplay]=React.useState(false);
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
               // label="name"
+              type="password"
               sx={{ mb: 8, height: 2 }}
               {...register("password")}
             />
@@ -158,6 +166,8 @@ const [display,setDisplay]=React.useState(false);
         </Button>
       </Box>
     </Card>
+    </Box>
+    </>
   );
 }
 export default SignUp;
