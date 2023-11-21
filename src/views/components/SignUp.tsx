@@ -6,60 +6,80 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "../../App.css";
-import { Stack, TextField } from "@mui/material";
+import { FormHelperText, Stack, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useNavigate } from "react-router-dom";
 import { log } from "console";
 import { enqueueSnackbar } from "notistack";
 import Loaders from "./Loaders";
-const  SignUp = ({ setLogReg }: any) =>{
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+
+
+
+
+const SignUp = ({ setLogReg }: any) => {
   const { request } = useAuth();
 
-const [display,setDisplay]=React.useState(false);
+  const [display, setDisplay] = React.useState(false);
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const onSubmit = async (data: any) => {
     // console.log(data);
-   const result= await request.post("/Register", {
+    const result = await request.post("/Register", {
       name: data.name,
       phone: data.phone,
       email: data.email,
       password: data.password,
     });
 
-    if(result.data){
+    if (result.data) {
       enqueueSnackbar("Registered Successfully", {
         variant: "success",
         autoHideDuration: 1000,
-       
-        
-     })
-    }
-    else{
+      });
+    } else {
       setDisplay(true);
       enqueueSnackbar("Email Already Registered", {
         variant: "error",
         autoHideDuration: 1000,
-       
-        
-     })
-     setTimeout(()=>{
-      setDisplay(false);
-      setLogReg(false);
-     },2000)
+      });
+      setTimeout(() => {
+        setDisplay(false);
+        setLogReg(false);
+      }, 2000);
     }
-      
-      
-      
+  };
 
-    
-  }
-  const { register, handleSubmit } = useForm();
+interface User{
+  name:string,
+  email:string,
+  phone:string,
+  password:string,
+
+}
+const FormSchema = Yup.object().shape({
+  name: Yup.string().required('First Name is required').min(3).matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
+  email: Yup.string().email('invalid email !').required("Email is Required"),
+  phone:Yup.string().required("This field is required").max(10,"Max length should be 10").matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
+  password: Yup.string()
+  .required("This field is required")
+  .min(8, "Pasword must be 8 or more characters")
+  .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "Password ahould contain at least one uppercase and lowercase character")
+  .matches(/\d/, "Password should contain at least one number")
+  .matches(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, "Password should contain at least one special character"),
+})
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<User>({
+    resolver: yupResolver(FormSchema),
+  });
+
   return (
-
-
-   
     <Card
       className="oyo-cell loginCard"
       sx={{
@@ -69,7 +89,7 @@ const [display,setDisplay]=React.useState(false);
         b: "1px solid black",
       }}
     >
-       {display && <Loaders/>}
+      {display && <Loaders />}
       <Typography
         sx={{
           backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -97,7 +117,7 @@ const [display,setDisplay]=React.useState(false);
       >
         Sign Up
       </Typography>
-     
+
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack>
@@ -109,12 +129,14 @@ const [display,setDisplay]=React.useState(false);
               sx={{ mb: 8, height: 2 }}
               {...register("name")}
             />
+              <FormHelperText>{errors.name?.message}</FormHelperText>
             <Typography sx={{ fontWeight: "bold" }}>email</Typography>
             <TextField
               sx={{ mb: 8, height: 2, border: "none" }}
               id="demo-helper-text-aligned"
               {...register("email")}
             />
+            <FormHelperText>{errors.email?.message}</FormHelperText>
             <Typography sx={{ fontWeight: "bold" }}>Phone No</Typography>
             <TextField
               // sx={{width:"400px"}}
@@ -123,6 +145,7 @@ const [display,setDisplay]=React.useState(false);
               sx={{ mb: 8, height: 2 }}
               {...register("phone")}
             />
+              <FormHelperText>{errors.phone?.message}</FormHelperText>
             <Typography sx={{ fontWeight: "bold" }}>Password</Typography>
             <TextField
               // sx={{width:"400px"}}
@@ -131,6 +154,7 @@ const [display,setDisplay]=React.useState(false);
               sx={{ mb: 8, height: 2 }}
               {...register("password")}
             />
+              <FormHelperText>{errors.password?.message}</FormHelperText>
             {/* <Typography sx={{ fontWeight: "bold" }}>
               Enter four-digit passcode
             </Typography> */}
@@ -159,5 +183,5 @@ const [display,setDisplay]=React.useState(false);
       </Box>
     </Card>
   );
-}
+};
 export default SignUp;
