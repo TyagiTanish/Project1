@@ -43,7 +43,7 @@ return (
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
           >
-            <Avatar sx={{ width: 32, height: 32,fontWeight:'bolder' }}>{user?.name[0]}</Avatar>
+            <Avatar sx={{ width: 32, height: 32,fontWeight:'bolder' }}>{user?.name[0].toUpperCase()}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>

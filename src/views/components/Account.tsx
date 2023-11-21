@@ -6,19 +6,19 @@ import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useForm } from "react-hook-form";
 import Password from "./Password";
 import Update from "./Update";
+import { useSelector } from "react-redux";
 import Logo from "./Logo";
 function Account() {
   return (
     <>
-      <IconButton href="/"sx={{ml:2}} >
+      <IconButton href="/" sx={{ ml: 2 }}>
         <Logo />
       </IconButton>
-      <Typography sx={{width:"100vw",borderBottom:"1px solid lightgray"}}  ></Typography>
       <Box
         sx={{
           ml: 60,
           mr: "auto",
-          mt: 10,
+          mt: 20,
           fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",
           display: "flex",
           flexDirection: "row",
@@ -27,11 +27,11 @@ function Account() {
         <Box
           sx={{ display: "flex", flexDirection: "column", width: 200, mt: 1.5 }}
         >
-          {" "}
           <Link style={{ textDecoration: "none", color: "#D4164B" }} to="/">
             <ArrowBackIosIcon sx={{ fontSize: 12 }} />
             Back
           </Link>
+
           <Typography
             className="account"
             sx={{
@@ -64,9 +64,7 @@ function Account() {
           <Typography sx={{ width: 300, mt: 2 }}>
             Personal Information
           </Typography>
-
           <Update />
-
           <Typography sx={{ mt: 5 }}>Change Your Password</Typography>
 
           <Password />
