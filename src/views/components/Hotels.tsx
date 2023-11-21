@@ -32,21 +32,26 @@ const handleViewDeal = (item:any) => {
 
     return (
       <>
-        <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "58vw" }}>
+        <Box sx={{ height: "100vh", overflowY: "auto", minWidth: "50vw",padding:"10px" }}>
         {filteredData?.map((item:any, i:any) => (
           <>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "row",
+                  padding:'10px',
+                  border:'1px solid lightgrey',
+                  borderRadius:'10px',
+                  m:1,
+                  width:'50vw'
                 }}
               >
                 <img
                   src={require(`./${item.src}`)}
                   alt="hotel pic"
                   style={{
-                    width: "300px",
-                    height: "250px",
+                    width: "250px",
+                    height: "200px",
                     borderTopLeftRadius: "20px",
                     borderBottomLeftRadius: "20px",
                   }}
@@ -58,14 +63,14 @@ const handleViewDeal = (item:any) => {
                     flexDirection: "column",
                     marginLeft: "20px",
                     marginTop: "30px",
-                    width: "500px",
                   }}
                 >
                   <Typography
                     sx={{
                       fontWeight: "bold",
-                      fontSize: "25px",
+                      fontSize: "20px",
                       opacity: 0.8,
+                      width:"250px"
                     }}
                   >
                     {item.name}
@@ -108,8 +113,8 @@ const handleViewDeal = (item:any) => {
                     margin: "20px",
                     marginLeft: "50px",
                     border: "1px solid lightgray",
-                    width: "300px",
-                    height: "80px",
+                    width: "310px",
+                    height: "85px",
                     borderRadius: "20px",
                     backgroundColor: "rgba(241,248,234)",
                     padding: 2,
@@ -164,9 +169,9 @@ const handleViewDeal = (item:any) => {
                     >
                       ₹{item.price}
                     </Typography>
-                    <Button
+                    <IconButton href="/billing" >    <Button
                       sx={{
-                        width: "140px",
+                        width: "120px",
                         backgroundColor: "#D4164B",
                         height: "35px",
                         color: "white",
@@ -177,7 +182,8 @@ const handleViewDeal = (item:any) => {
                       }}
                     >
                       View Deal <KeyboardArrowRightIcon />
-                    </Button>
+                    </Button></IconButton>
+                
                   </Box>
                 </Box>
               </Box>
