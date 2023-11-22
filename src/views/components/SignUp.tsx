@@ -37,7 +37,7 @@ const SignUp = ({ setLogReg }: any) => {
       setDisplay(true);
       enqueueSnackbar("Registered Successfully", {
         variant: "success",
-        autoHideDuration: 1000,
+        // autoHideDuration: 1000,
        
         
      })
@@ -45,20 +45,20 @@ const SignUp = ({ setLogReg }: any) => {
      setTimeout(()=>{
       setDisplay(false);
       setLogReg(false);
-     },1000)
+     },2000)
     }
     else{
       setDisplay(true);
       enqueueSnackbar("Email Already Registered", {
         variant: "error",
-        autoHideDuration: 1000,
+        // autoHideDuration: 1000,
        
         
      })
      setTimeout(()=>{
       setDisplay(false);
       setLogReg(false);
-     },1000)
+     },2000)
     }
   };
 
