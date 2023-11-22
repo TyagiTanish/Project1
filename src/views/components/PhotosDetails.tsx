@@ -14,9 +14,15 @@ const Item = styled(Paper)(({ theme }) => ({
 
 export default function PhotosDetails() {
   return (
-    <Box sx={{ width: "100%", mb: 3 }}>
+    <Box
+      sx={{
+        width: "100%",
+        mb: 3,
+        // border: "1px solid lightgray",
+      }}
+    >
       <Grid container>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -24,7 +30,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -32,7 +38,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -40,7 +46,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -48,7 +54,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -56,7 +62,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -64,7 +70,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -72,7 +78,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -80,7 +86,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -88,7 +94,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -96,7 +102,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
@@ -104,7 +110,7 @@ export default function PhotosDetails() {
             />
           </Item>
         </Grid>
-        <Grid item xs={3}>
+        <Grid item xs={2.9}>
           <Item>
             <img
               className="HotelDetailImage"
