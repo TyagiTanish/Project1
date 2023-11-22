@@ -17,7 +17,7 @@ function Password() {
     const { request } = useAuth();
     const onSubmit2=async(data:any)=>{
       const result= await request.put(`/password/${user._id}`,{
-          Password:data.oldpassword,
+          password:data.oldpassword,
           newpassword:data.newpassword
     });
    if(!result.data)
