@@ -65,8 +65,8 @@ const HotelsPage = () => {
         />
       </Stack>
 
-      <Stack direction={"row"} sx={{ml:5}} >
-        <Hotels  filteredData={filteredData}  />
+      <Stack direction={"row"} sx={{ m: 5 }}>
+        <Hotels filteredData={filteredData} />
         <SimpleMap />
       </Stack>
       <Footer />
