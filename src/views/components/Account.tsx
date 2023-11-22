@@ -22,10 +22,10 @@ function Account() {
   }
   return (
     <>
-    <IconButton href="/" sx={{ ml: 2 }}>
+    <IconButton href="/" sx={{ ml: 2}}>
     <Logo />
   </IconButton>
-   <Box sx={{  ml:60, mr:"auto", mt:20,    fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",display:"flex",flexDirection:"row"}}>
+   <Box sx={{  ml:60, mr:"auto", mt:10,    fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",display:"flex",flexDirection:"row"}}>
     <Box sx={{display:"flex",flexDirection:"column",width:200,mt:1.5}}> 
     <Link style={{textDecoration:"none",color:"#D4164B"}} to="/" ><ArrowBackIosIcon sx={{fontSize:12}}/>Back</Link>
     
@@ -42,7 +42,7 @@ function Account() {
 
    <Typography sx={{mt:5}}>Change Your Password</Typography>
 
-          <Typography
+          {/* <Typography
             className="account"
             sx={{
               mt: 2,
@@ -75,7 +75,7 @@ function Account() {
             Personal Information
           </Typography>
           <Update />
-          <Typography sx={{ mt: 5 }}>Change Your Password</Typography>
+          <Typography sx={{ mt: 5 }}>Change Your Password</Typography> */}
 
           <Password />
         </Box>
