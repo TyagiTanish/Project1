@@ -1,13 +1,12 @@
 import {
   Box,
   Button,
-  Card,
+
   FormHelperText,
 
   TextField,
   Typography,
 } from "@mui/material";
-import { mt } from "date-fns/locale";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -16,7 +15,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import { enqueueSnackbar } from "notistack";
 import {useDispatch} from "react-redux";
 import { userLogin } from "./redux/user/userSlice";
-import { useNavigate } from "react-router-dom";
+
 import Loaders from "./Loaders";
 
 
@@ -26,7 +25,7 @@ function SignUpComp({ setVerify, setLogReg }: any) {
   const [display,setDisplay]=useState(false);
   const [authentication, setAuthentication] = useState("");
 const dispatch = useDispatch();
-const navigate = useNavigate()
+
 
 
   const Onsubmit = async (value: any) => {
