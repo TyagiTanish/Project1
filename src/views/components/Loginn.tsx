@@ -54,12 +54,7 @@ const navigate = useNavigate()
         localStorage.setItem("authToken",result.data.token);
 
         },2000)
-        
-       
-        
-        console.log("hello,0000000000000");
-        
-       
+  
       }else{
         setAuthentication("Invalid Credentials")
       }

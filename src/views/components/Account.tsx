@@ -41,42 +41,6 @@ function Account() {
    <Update/>
 
    <Typography sx={{mt:5}}>Change Your Password</Typography>
-
-          {/* <Typography
-            className="account"
-            sx={{
-              mt: 2,
-              backgroundColor: "rgba(243,244,245)",
-              padding: 1,
-              width: 140,
-              cursor: "pointer",
-              fontSize: 15,
-            }}
-          >
-            Account Settings
-          </Typography>
-          <Box
-            sx={{
-              mt: 2,
-              paddingTop: 2,
-              fontSize: 16,
-              borderTop: "1px solid black",
-              width: 140,
-            }}
-          >
-            Log Out
-          </Box>
-        </Box>
-        <Box sx={{ display: "flex", flexDirection: "column" }}>
-          <Typography sx={{ fontSize: 30, fontWeight: "bold" }}>
-            Account Settings
-          </Typography>
-          <Typography sx={{ width: 300, mt: 2 }}>
-            Personal Information
-          </Typography>
-          <Update />
-          <Typography sx={{ mt: 5 }}>Change Your Password</Typography> */}
-
           <Password />
         </Box>
       </Box>

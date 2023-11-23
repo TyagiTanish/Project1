@@ -5,6 +5,7 @@ import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing";
+import MemberRegister from "../MemberRegister";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -24,6 +25,9 @@ const router = createBrowserRouter([
   },{
     path:'/billing',
     element:<Billing/>
+  },{
+    path:'memberRegister',
+    element:<MemberRegister/>
   }
 ]);
 
