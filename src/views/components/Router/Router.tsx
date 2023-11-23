@@ -5,6 +5,7 @@ import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing";
+import AddHotelAftrLgn from "../AddHotelAftrLgn";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,16 +16,21 @@ const router = createBrowserRouter([
     element: <MainPage />,
   },
   {
+    path: "AddHotel",
+    element: <AddHotelAftrLgn />,
+  },
+  {
     path: "/hotels",
     element: <HotelsPage />,
   },
   {
-    path:'/profile',
-    element:<Account/>
-  },{
-    path:'/billing',
-    element:<Billing/>
-  }
+    path: "/profile",
+    element: <Account />,
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
+  },
 ]);
 
 function Routes() {

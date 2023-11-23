@@ -1,7 +1,7 @@
 import * as React from "react";
 import "../../App.css";
 import Typography from "@mui/material/Typography";
-import { Box, Menu, MenuItem } from "@mui/material";
+import { Box, Button, Menu, MenuItem } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -12,8 +12,7 @@ import Footer from "./Footer";
 import { useSelector } from "react-redux";
 import HomeBody from "./HomeBody";
 import AccountMenu from "./ProfileBtn";
-
-
+import AddHotelAftrLgn from "./AddHotelAftrLgn";
 
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
@@ -42,6 +41,44 @@ export default function BasicCard() {
         >
           <Logo />
         </Typography>
+        {user ? (
+          <Box
+            sx={{
+              borderRight: "1px solid lightgray",
+              height: "100%",
+              borderLeft: "1px solid lightgray",
+              paddingLeft: 2,
+              paddingRight: 2,
+              ml: -3,
+            }}
+          >
+            <Box
+              sx={{
+                // position: "relative",
+                // display: "flex",
+                // justifyContent: "center",
+                // alignItems: "center",
+                // cursor: "pointer",
+                mt: 3,
+              }}
+            >
+              {/* <Button sx={{ border: "1px solid lightgray", borderRadius: 5 }}>
+              Add Hotel
+            </Button> */}
+              <Link
+                to="/AddHotel"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                  fontWeight: "bolder",
+                }}
+              >
+                {" "}
+                Add Hotel
+              </Link>
+            </Box>
+          </Box>
+        ) : null}
         <Box
           sx={{
             borderRight: "1px solid lightgray",
@@ -65,45 +102,49 @@ export default function BasicCard() {
             <CallIcon /> 0124-6201611
           </Box>
         </Box>
-{user?(<Box
-          sx={{
-            height: "100%",
-            mr: 10,
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-            width:'1%'
-          }}
-        ><AccountMenu/>
-        </Box>):(<Box
-          sx={{
-            height: "100%",
-            mr: 3,
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-            minWidth:"100px",
-          }}
-        >
+        {user ? (
+          <Box
+            sx={{
+              height: "100%",
+              mr: 5,
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+              width: "1%",
+            }}
+          >
+            <AccountMenu />
+          </Box>
+        ) : (
+          <Box
+            sx={{
+              height: "100%",
+              mr: 3,
+              position: "relative",
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              cursor: "pointer",
+              minWidth: "100px",
+            }}
+          >
+            {" "}
+            <PersonIcon sx={{ margin: 1 }} />
+            <Link
+              to="/login"
+              style={{
+                textDecoration: "none",
+                color: "black",
+                fontWeight: "bolder",
+              }}
+            >
               {" "}
-              <PersonIcon sx={{ margin: 1 }} />
-              <Link
-                to="/login"
-                style={{
-                  textDecoration: "none",
-                  color: "black",
-                  fontWeight: "bolder",
-                }}
-              >
-                {" "}
-                Login / SignUp
-              </Link>
-        </Box>)}
-        
+              Login / SignUp
+            </Link>
+          </Box>
+        )}
       </Box>
       <Box
         sx={{
