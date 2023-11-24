@@ -6,17 +6,9 @@ import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
-import { Hotel, Router } from "@mui/icons-material";
-import Hotels from "./views/components/Hotels";
+import {IntlProvider} from 'react-intl';
+import Locales from "./views/components/Locale";
 
-import Account from "./views/components/Account";
-import { BrowserRouter } from "react-router-dom";
-
-import SimpleMap from "./views/components/Map";
-import HotelsPage from "./views/components/HotelsPage";
-import Billing from "./views/components/Billing";
-import Routes from "./views/components/Router/Router";
-import Rooms from "./views/components/Rooms";
 
 function App() {
   const { request } = useAuth();
@@ -36,22 +28,26 @@ function App() {
       getUser();
     }
   });
-
+  // interface IntlConfig {
+  //   locale: string
+  //   formats: CustomFormats
+  //   messages: Record<string, string> | Record<string, MessageFormatElement[]>
+  //   defaultLocale: string
+  //   defaultFormats: CustomFormats
+  //   timeZone?: string
+  //   textComponent?: React.ComponentType | keyof React.ReactHTML
+  //   wrapRichTextChunksInFragment?: boolean
+  //   defaultRichTextElements?: Record<string, FormatXMLElementFn<React.ReactNode>>
+  //   onError(err: string): void
+  // }
   return (
     <>
+    <Locales>
     <SnackbarProvider>
-
-        
       <LoginSystem />
-      {/* <Hotels/> */}
-
-      {/* <LoginSystem /> */}
-      {/* <BrowserRouter><Billing/></BrowserRouter>       */}
-
-      {/* <SimpleMap/> */}
-      {/* <Rooms/> */}
       </SnackbarProvider>
       <Outlet />
+      </Locales>
     </>
   );
 }

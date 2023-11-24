@@ -13,9 +13,12 @@ import { useSelector } from "react-redux";
 import HomeBody from "./HomeBody";
 import AccountMenu from "./ProfileBtn";
 import AddHotelAftrLgn from "./AddHotelAftrLgn";
+import {useIntl, FormattedMessage} from 'react-intl'
+import Language from "./Language";
 
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
+  
   return (
     <>
       <Box
@@ -40,7 +43,10 @@ export default function BasicCard() {
           }}
         >
           <Logo />
+        </Typography> 
+        <Language/>
         </Typography>
+
         {user ? (
           <Stack
             sx={{
@@ -90,7 +96,7 @@ export default function BasicCard() {
             borderLeft:'1px solid lightgrey'
           }}
         >
-          <IconButton href="/memberRegister" sx={{fontSize:20}}  >List Your Property</IconButton>
+          <IconButton href="/memberRegister" sx={{fontSize:20}}  ><FormattedMessage defaultMessage="List Your Property"   /></IconButton>
         </Box>)}
           {" "}
           <Box
@@ -147,8 +153,7 @@ export default function BasicCard() {
                 fontWeight: "bolder",
               }}
             >
-              {" "}
-              Login / SignUp
+              <FormattedMessage defaultMessage="Login / SignUp"/>
             </Link>
           </Box>
         )}
@@ -184,7 +189,7 @@ export default function BasicCard() {
             />
             <Box className="drop">
               <Link style={{ fontWeight: "bold" }} to="/">
-                Popular Locations
+              <FormattedMessage defaultMessage="Popular Locations"/>
               </Link>
               <Link to="/hotels">Mg Road</Link>
               <Link to="/hotels">Rajaji nagar</Link>
