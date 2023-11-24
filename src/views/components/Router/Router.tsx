@@ -6,6 +6,7 @@ import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing";
 import MemberRegister from "../MemberRegister";
+import AddHotelAftrLgn from "../AddHotelAftrLgn";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -14,6 +15,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <MainPage />,
+  },
+  {
+    path: "AddHotel",
+    element: <AddHotelAftrLgn />,
   },
   {
     path: "/hotels",
@@ -28,7 +33,15 @@ const router = createBrowserRouter([
   },{
     path:'memberRegister',
     element:<MemberRegister/>
-  }
+  },
+  {
+    path: "/profile",
+    element: <Account />,
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
+  },
 ]);
 
 function Routes() {
