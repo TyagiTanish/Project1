@@ -45,7 +45,6 @@ export default function BasicCard() {
           <Logo />
         </Typography> 
         <Language/>
-        </Typography>
 
         {user ? (
           <Stack
