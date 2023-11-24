@@ -2,7 +2,7 @@ import * as React from "react";
 import "../../App.css";
 import Typography from "@mui/material/Typography";
 import { Box, IconButton, Menu, MenuItem, Stack } from "@mui/material";
-import { Box, Button, Menu, MenuItem } from "@mui/material";
+// import { Box, Button, Menu, MenuItem } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -41,7 +41,7 @@ export default function BasicCard() {
           }}
         >
           <Logo />
-        </Typography> 
+        </Typography>
         {user ? (
           <Box
             sx={{
@@ -97,11 +97,13 @@ export default function BasicCard() {
               alignItems: "center",
               cursor: "pointer",
               mt: 1,
-              borderRight:'1px solid lightgrey',
-              borderLeft:'1px solid lightgrey'
+              borderRight: "1px solid lightgrey",
+              borderLeft: "1px solid lightgrey",
             }}
           >
-            <IconButton href="/memberRegister" sx={{fontSize:20}}  >List Your Property</IconButton>
+            <IconButton href="/memberRegister" sx={{ fontSize: 20 }}>
+              List Your Property
+            </IconButton>
           </Box>{" "}
           <Box
             sx={{
@@ -112,57 +114,57 @@ export default function BasicCard() {
               cursor: "pointer",
               mt: 1,
               // mr:2,
-              borderRight:'1px solid lightgrey',
-              padding:3
+              borderRight: "1px solid lightgrey",
+              padding: 3,
             }}
           >
             <CallIcon /> 0124-6201611
           </Box>
-          </Box>
         </Box>
-        {user ? (
-          <Box
-            sx={{
-              height: "100%",
-              mr: 10,
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              width: "1%",
-            }}
-          >
-            <AccountMenu />
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              height: "100%",
-              mr: 3,
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              minWidth: "100px",
+      </Box>
+      {user ? (
+        <Box
+          sx={{
+            height: "100%",
+            mr: 10,
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            width: "1%",
+          }}
+        >
+          <AccountMenu />
+        </Box>
+      ) : (
+        <Box
+          sx={{
+            height: "100%",
+            mr: 3,
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            minWidth: "100px",
+          }}
+        >
+          {" "}
+          <PersonIcon sx={{ margin: 1 }} />
+          <Link
+            to="/login"
+            style={{
+              textDecoration: "none",
+              color: "black",
+              fontWeight: "bolder",
             }}
           >
             {" "}
-            <PersonIcon sx={{ margin: 1 }} />
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: "black",
-                fontWeight: "bolder",
-              }}
-            >
-              {" "}
-              Login / SignUp
-            </Link>
-          </Box>
-        )}
+            Login / SignUp
+          </Link>
+        </Box>
+      )}
       <Box
         sx={{
           width: "100%",

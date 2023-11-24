@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { Form } from "react-router-dom";
+import { Form, useNavigate } from "react-router-dom";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
@@ -13,17 +13,21 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import AddHotelLocation from "./AddHotelLocation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import HotelProfilePic from "./HotelProfilePic";
+// import HotelProfilePic from "./HotelProfilePic";
 import { useSelector } from "react-redux";
+import { useDropzone } from "react-dropzone";
+import { Chip, IconButton } from "@mui/material";
+import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
 
 export default function AddHotelAftrLgn() {
+  const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
   const { request } = useAuth();
   const [location, setLocation] = useState({
     longitude: 76.779419,
     latitude: 30.733315,
   });
-  const [pic, setPic] = useState();
+
   const [step, setStep] = React.useState(0);
   const handleStep = () => {
     if (step < 2) {
@@ -39,17 +43,49 @@ export default function AddHotelAftrLgn() {
       setStep(0);
     }
   };
+
+  const [files, setfile] = React.useState<any>([]);
+  const [error, setError] = React.useState("");
+  const [maxPhoto, setMaxPhoto] = React.useState(false);
+
+  const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
+    useDropzone();
+  React.useEffect(() => {
+    if (acceptedFiles.length > 1) {
+      setError("Only One file can be selected");
+    } else {
+      setfile(acceptedFiles);
+
+      setError("");
+    }
+  }, [acceptedFiles]);
+  React.useEffect(() => {
+    if (files.length > 0) {
+      setMaxPhoto(true);
+    } else {
+      setMaxPhoto(false);
+    }
+  }, [files]);
+  const handleDelete = (photo: any) => {
+    setfile((oldvalue: any) => {
+      if (oldvalue.length === 1) {
+        return [];
+      }
+      return oldvalue.filter((e: any) => e.name !== photo.name);
+    });
+  };
+
   const formData = new FormData();
   const onSubmit = async (data: any) => {
     data.longitude = location.longitude;
     data.latitude = location.latitude;
-    data.file = pic;
-    // formData.append("files",pic[0)
-    formData.append("file", data.file);
+    console.log(files[0]);
+    formData.append("files", files[0]);
     formData.set("hotelName", data.hotelName);
     formData.set("phone", data.phone);
     formData.set("password", data.password);
     formData.set("city", data.city);
+    formData.set("state", data.state);
     formData.set("postalCode", data.postalCode);
     formData.set("country", data.country);
     formData.set("lng", data.longitude);
@@ -58,15 +94,13 @@ export default function AddHotelAftrLgn() {
     // formData.set("data", data);
 
     if (step === 2) {
-      console.log(data);
+      console.log(formData);
       request.post("/addHotel", formData);
     }
     handleStep();
   };
   interface User {
     hotelName: string;
-    phone: string;
-    password: string;
     city: string;
     state: string;
     postalCode: string;
@@ -83,22 +117,6 @@ export default function AddHotelAftrLgn() {
           "should be a string or should atleat have one upper case letter"
         ),
       //   email: Yup.string().email("invalid email !").required("Email is Required"),
-      phone: Yup.string()
-        .required("This field is required")
-        .max(10, "Max length should be 10")
-        .matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
-      password: Yup.string()
-        .required("This field is required")
-        .min(8, "Pasword must be 8 or more characters")
-        .matches(
-          /(?=.*[a-z])(?=.*[A-Z])\w+/,
-          "Password ahould contain at least one uppercase and lowercase character"
-        )
-        .matches(/\d/, "Password should contain at least one number")
-        .matches(
-          /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-          "Password should contain at least one special character"
-        ),
     });
   }
   if (step === 1) {
@@ -207,17 +225,45 @@ export default function AddHotelAftrLgn() {
           >
             Add hotel & Get ₹500 OYO Money
           </Typography>
-          <Typography
-            sx={{
-              margin: 2,
-              fontWeight: "bold",
-              fontFamily: "Inter,sans-serif",
-              fontSize: "30px",
-              marginBottom: 1,
-            }}
-          >
-            Add Hotel
-          </Typography>
+          {step === 0 && (
+            <Typography
+              sx={{
+                margin: 2,
+                fontWeight: "bold",
+                fontFamily: "Inter,sans-serif",
+                fontSize: "30px",
+                marginBottom: 1,
+              }}
+            >
+              Add Hotel Deatils
+            </Typography>
+          )}
+          {step === 1 && (
+            <Typography
+              sx={{
+                margin: 2,
+                fontWeight: "bold",
+                fontFamily: "Inter,sans-serif",
+                fontSize: "30px",
+                marginBottom: 1,
+              }}
+            >
+              Add Hotel Location
+            </Typography>
+          )}
+          {step == 2 && (
+            <Typography
+              sx={{
+                margin: 2,
+                fontWeight: "bold",
+                fontFamily: "Inter,sans-serif",
+                fontSize: "30px",
+                marginBottom: 1,
+              }}
+            >
+              Point location
+            </Typography>
+          )}
 
           <CardContent>
             <Stack>
@@ -236,31 +282,53 @@ export default function AddHotelAftrLgn() {
                     <FormHelperText sx={{ color: "red" }}>
                       {errors.hotelName?.message}
                     </FormHelperText>
-                    <Typography sx={{ fontWeight: "bold" }}>Phone</Typography>
-                    <TextField
-                      sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
-                      id="demo-helper-text-aligned"
-                      placeholder="Enter Phone"
-                      {...register("phone")}
-                    />
-                    <FormHelperText sx={{ color: "red" }}>
-                      {errors.phone?.message}
-                    </FormHelperText>
-                    <Typography sx={{ fontWeight: "bold" }}>
-                      Password
-                    </Typography>
-                    <TextField
-                      sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
-                      type="password"
-                      id="demo-helper-text-aligned"
-                      placeholder="Enter Password"
-                      {...register("password")}
-                    />
-                    <FormHelperText sx={{ color: "red" }}>
-                      {errors.password?.message}
-                    </FormHelperText>
-                    <HotelProfilePic setPic={setPic} formData={formData} />
-                    {pic !== undefined ? (
+
+                    {/* <HotelProfilePic setPic={setPic} formData={formData} /> */}
+                    <div
+                      style={{
+                        display: "flex",
+                        padding: 10,
+                        width: "20vw",
+                        height: "5vw",
+                        // justifyTracks: "center",
+                        marginLeft: "-5rem",
+                      }}
+                    >
+                      <Typography {...getRootProps()}>
+                        <input {...getInputProps()} />
+                        {
+                          <IconButton
+                            sx={{
+                              alignItems: "center",
+                              border: "2px dashed lightgrey",
+                              borderRadius: 0,
+                              width: "10vw",
+                              height: "5vw",
+                              ml: 10,
+                            }}
+                          >
+                            <Typography sx={{ mt: 1 }}>
+                              <AddPhotoAlternateSharpIcon fontSize="large" />
+                              <Typography sx={{ fontSize: "10px" }}>
+                                Drop a Photo Here
+                              </Typography>
+                            </Typography>
+                          </IconButton>
+                        }
+                      </Typography>
+                    </div>
+                    {files.map((photo: any) => (
+                      <Chip
+                        label={photo.name}
+                        onDelete={() => handleDelete(photo)}
+                      ></Chip>
+                    ))}
+                    {error && (
+                      <FormHelperText sx={{ color: "red", ml: 2 }}>
+                        {error}
+                      </FormHelperText>
+                    )}
+                    {maxPhoto ? (
                       <Button
                         size="small"
                         variant="contained"
@@ -408,7 +476,12 @@ export default function AddHotelAftrLgn() {
 
             <Box sx={{ mt: 4 }}>
               To use Another Email for adding hotel{" "}
-              <Button sx={{ textTransform: "none" }}>Click here...</Button>
+              <Button
+                sx={{ textTransform: "none" }}
+                onClick={() => navigate("/memberRegister")}
+              >
+                Click here...
+              </Button>
             </Box>
           </CardContent>
         </Card>
