@@ -2,7 +2,6 @@ import * as React from "react";
 import "../../App.css";
 import Typography from "@mui/material/Typography";
 import { Box, IconButton, Menu, MenuItem, Stack } from "@mui/material";
-import { Box, Button, Menu, MenuItem } from "@mui/material";
 import CallIcon from "@mui/icons-material/Call";
 import PersonIcon from "@mui/icons-material/Person";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
@@ -43,7 +42,7 @@ export default function BasicCard() {
           <Logo />
         </Typography> 
         {user ? (
-          <Box
+          <Stack
             sx={{
               borderRight: "1px solid lightgray",
               height: "100%",
@@ -78,31 +77,22 @@ export default function BasicCard() {
                 Add Hotel
               </Link>
             </Box>
-          </Box>
-        ) : null}
-        <Box
+            </Stack>
+        ) : (<Box
           sx={{
-            borderRight: "1px solid lightgray",
-            height: "100%",
-            borderLeft: "1px solid lightgray",
-            paddingLeft: 2,
-            paddingRight: 2,
+            position: "relative",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            cursor: "pointer",
+            mt: 1,
+            borderRight:'1px solid lightgrey',
+            borderLeft:'1px solid lightgrey'
           }}
         >
-          <Box
-            sx={{
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              mt: 1,
-              borderRight:'1px solid lightgrey',
-              borderLeft:'1px solid lightgrey'
-            }}
-          >
-            <IconButton href="/memberRegister" sx={{fontSize:20}}  >List Your Property</IconButton>
-          </Box>{" "}
+          <IconButton href="/memberRegister" sx={{fontSize:20}}  >List Your Property</IconButton>
+        </Box>)}
+          {" "}
           <Box
             sx={{
               position: "relative",
@@ -118,8 +108,7 @@ export default function BasicCard() {
           >
             <CallIcon /> 0124-6201611
           </Box>
-          </Box>
-        </Box>
+  
         {user ? (
           <Box
             sx={{
@@ -163,6 +152,7 @@ export default function BasicCard() {
             </Link>
           </Box>
         )}
+        </Box>
       <Box
         sx={{
           width: "100%",
