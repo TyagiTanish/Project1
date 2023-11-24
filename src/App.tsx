@@ -42,14 +42,14 @@ function App() {
     <SnackbarProvider>
 
         
-      {/* <LoginSystem /> */}
+      <LoginSystem />
       {/* <Hotels/> */}
 
       {/* <LoginSystem /> */}
       {/* <BrowserRouter><Billing/></BrowserRouter>       */}
 
       {/* <SimpleMap/> */}
-      <Rooms/>
+      {/* <Rooms/> */}
       </SnackbarProvider>
       <Outlet />
     </>
