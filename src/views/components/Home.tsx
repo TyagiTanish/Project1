@@ -12,8 +12,8 @@ import Footer from "./Footer";
 import { useSelector } from "react-redux";
 import HomeBody from "./HomeBody";
 import AccountMenu from "./ProfileBtn";
-import AddHotelAftrLgn from "./AddHotelAftrLgn";
 
+import BusinessIcon from '@mui/icons-material/Business';
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
   return (
@@ -36,12 +36,13 @@ export default function BasicCard() {
             mt: 1,
             ml: 10,
             fontWeight: "bolder",
-            mr: 130,
+            mr: 160,
           }}
         >
           <Logo />
         </Typography>
         {user ? (
+          <>
           <Stack
             sx={{
               borderRight: "1px solid lightgray",
@@ -54,104 +55,133 @@ export default function BasicCard() {
           >
             <Box
               sx={{
-                // position: "relative",
-                // display: "flex",
-                // justifyContent: "center",
-                // alignItems: "center",
-                // cursor: "pointer",
-                mt: 3,
+                
+              display:"flex"
               }}
             >
               {/* <Button sx={{ border: "1px solid lightgray", borderRadius: 5 }}>
               Add Hotel
             </Button> */}
+             <BusinessIcon sx={{fontSize:"30px",mt:2}}/>
               <Link
                 to="/AddHotel"
                 style={{
                   textDecoration: "none",
                   color: "black",
-                  fontWeight: "bolder",
+      
+                
                 }}
               >
                 {" "}
+               
+                <Box sx={{mt:3.25,ml:1}}> 
                 Add Hotel
+                </Box>
               </Link>
             </Box>
             </Stack>
-        ) : (<Box
+             <Box
+             sx={{
+             
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+               cursor: "pointer",
+               // mt:0.8,
+               // ml:-10,
+               // mr:-19,
+              
+               
+             }}
+           >
+             <CallIcon sx={{mt:-0.5}}/> 0124-6201611
+           </Box>
+   
+            <Box
+             sx={{
+               height: "100%",
+             paddingLeft:2,
+             paddingRight:2,
+               position: "relative",
+               display: "flex",
+               justifyContent: "center",
+               alignItems: "center",
+               cursor: "pointer",
+               // width: "1%",
+               borderLeft:"1px solid lightgray "
+             }}
+           >
+             <AccountMenu />
+           </Box></>
+          
+        ) : (
+            <>
+        <Box
           sx={{
             position: "relative",
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             cursor: "pointer",
-            mt: 1,
+            mt: 0.3,
             borderRight:'1px solid lightgrey',
-            borderLeft:'1px solid lightgrey'
+            borderLeft:'1px solid lightgrey',
+            ml:-25,
+            mr:2,
+         
           }}
         >
-          <IconButton href="/memberRegister" sx={{fontSize:20}}  >List Your Property</IconButton>
-        </Box>)}
-          {" "}
-          <Box
-            sx={{
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              mt: 1,
-              // mr:2,
-              borderRight: "1px solid lightgrey",
-              padding: 3,
-            }}
-          >
-            <CallIcon /> 0124-6201611
-          </Box>
-  
-        {user ? (
-          <Box
-            sx={{
-              height: "100%",
-              mr: 10,
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              width: "1%",
-            }}
-          >
-            <AccountMenu />
-          </Box>
-        ) : (
-          <Box
-            sx={{
-              height: "100%",
-              mr: 3,
-              position: "relative",
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center",
-              cursor: "pointer",
-              minWidth: "100px",
-            }}
-          >
-            {" "}
-            <PersonIcon sx={{ margin: 1 }} />
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: "black",
-                fontWeight: "bolder",
-              }}
-            >
-              {" "}
-              Login / SignUp
-            </Link>
-          </Box>
+          <IconButton href="/memberRegister" sx={{fontSize:15,   color:"black", fontWeight:"bold"}} ><BusinessIcon sx={{mr:1}}/>List Your Property</IconButton>
+        </Box>
+                 <Box
+                 sx={{
+                   position: "relative",
+                   display: "flex",
+                   justifyContent: "center",
+                   alignItems: "center",
+                   cursor: "pointer",
+                   mt:1,
+                   ml:-10,
+                   borderRight: "1px solid lightgrey",
+                   padding:2 ,
+                 }}
+               >
+                 <CallIcon sx={{mt:-0.5}}/> 0124-6201611
+               </Box>
+               <Box
+                 sx={{
+                   height: "100%",
+                   mr: 3,
+                   position: "relative",
+                   display: "flex",
+                   justifyContent: "center",
+                   alignItems: "center",
+                   cursor: "pointer",
+                   minWidth: "100px",
+                   ml:-7
+                 }}
+               >
+                 {" "}
+                 <PersonIcon sx={{ margin: 1 ,marginTop:1.5}} />
+                 <Link
+                   to="/login"
+                   style={{
+                     textDecoration: "none",
+                     color: "black",
+                     fontWeight: "bolder",
+                     marginTop:8
+                   }}
+                 >
+                   {" "}
+                   Login / SignUp
+                 </Link>
+               </Box>
+               </>
         )}
+          {" "}
+
+  
+       
         </Box>
       <Box
         sx={{
