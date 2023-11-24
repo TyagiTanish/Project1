@@ -105,6 +105,7 @@ setMaxPhoto(true)
         .email("invalid email !")
         .required("Email is Required"),
       phone: Yup.string().required("Phone number is required"),
+      hotelName:Yup.string().required("Hotel Name is Required"),
     }));
 
   page === 5 &&
@@ -353,12 +354,10 @@ console.log(page)
                       <TextField
                         required
                         fullWidth
-                        id="email"
-                        autoComplete="email"
                         {...register("hotelName")}
-                        onChange={(e: any) => setEmail(e.target.value)}
+                        // onChange={(e: any) => setEmail(e.target.value)}
                       />
-                      <FormHelperText>{errors?.email?.message}</FormHelperText>
+                      <FormHelperText>{errors?.hotelName?.message}</FormHelperText>
                     </Grid>
                   </Grid>
                   <IconButton
