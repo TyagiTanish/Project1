@@ -25,7 +25,7 @@ function Account() {
     <IconButton href="/" sx={{ ml: 2}}>
     <Logo />
   </IconButton>
-   <Box sx={{  ml:60, mr:"auto", mt:10,    fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",display:"flex",flexDirection:"row"}}>
+   <Box sx={{  ml:72, mr:"auto", mt:10,    fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",display:"flex",flexDirection:"row"}}>
     <Box sx={{display:"flex",flexDirection:"column",width:200,mt:1.5}}> 
     <Link style={{textDecoration:"none",color:"#D4164B"}} to="/" ><ArrowBackIosIcon sx={{fontSize:12}}/>Back</Link>
     

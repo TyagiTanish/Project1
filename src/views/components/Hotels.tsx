@@ -187,7 +187,9 @@ function Hotels({ filteredData }: any) {
                         marginLeft: "120px",
                         marginTop: "-9px",
                         textTransform: "none",
+                      
                       }}
+                      className="btn2"
                     >
                       View Deal <KeyboardArrowRightIcon />
                     </Button>

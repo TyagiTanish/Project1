@@ -268,8 +268,8 @@ const onSubmit=async(data:any)=>
                
             {/* <Button onClick={upload}>Upload</Button>   */}
            
-          {display===3 ? <Button variant="contained" sx={{backgroundImage:"linear-gradient(270deg,#D11450,#EE2A24)",width:"100%", mt:2}} type="submit">Submit</Button> : (<>
-                <Button disabled sx={{ mt:1, width:"100%",border:"1px solid lightgray"}} type="submit">Submit</Button>
+          {display===3 ? <Button variant="contained" sx={{backgroundImage:"linear-gradient(270deg,#D11450,#EE2A24)",width:"100%", mt:2,fontWeight:"bold"}} type="submit">Submit</Button> : (<>
+                <Button disabled sx={{ mt:1, width:"100%",border:"1px solid lightgray",fontWeight:"bold"}} type="submit">Submit</Button>
           </>)}  
       
           </form>
