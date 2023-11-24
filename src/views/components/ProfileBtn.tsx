@@ -12,7 +12,7 @@ import Logout from '@mui/icons-material/Logout';
 import { useDispatch, useSelector } from 'react-redux';
 import { userLogout } from './redux/user/userSlice';
 import { Link } from 'react-router-dom';
-
+import PersonIcon from '@mui/icons-material/Person';
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const user = useSelector((state: any) => state.userReducer.user);
@@ -81,9 +81,9 @@ return (
         }}
         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-      > <Typography sx={{fontWeight:'bolder',m:2}}  >Hello,{user.Name}</Typography> 
+      > <Typography sx={{fontWeight:'bold',m:2,fontFamily:"Courier, monospace"}}  >Hello,{user.name}</Typography> 
         <MenuItem onClick={handleClose} sx={{display:'flex',flexDirection:'row'}} >
-          <Avatar /><Link to='/profile' style={{textDecoration:'none',color:'black'}}>Profile</Link>
+          <PersonIcon /><Link to='/profile' style={{textDecoration:'none',color:'black',marginTop:3}}>Profile</Link>
         </MenuItem>
         <Divider />
         <MenuItem onClick={handleLogOut}>

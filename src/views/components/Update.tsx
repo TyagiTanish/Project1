@@ -6,6 +6,7 @@ import { useSelector } from 'react-redux';
 
 import {useDispatch} from 'react-redux'
 import { userLogin } from './redux/user/userSlice';
+import { enqueueSnackbar } from 'notistack';
 function Update() {
 
 
@@ -26,7 +27,15 @@ function Update() {
             name:data.name
         });
      
-        console.log(result);
+      if(result.data){
+        enqueueSnackbar("Username updated successfully", {
+            variant:"success",
+          autoHideDuration: 1000,
+         
+          
+       })
+      }
+      
        const data2=await request.get('/getUserData');
        dispatch(userLogin(data2.data));
         
