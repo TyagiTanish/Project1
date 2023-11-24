@@ -1,38 +1,133 @@
-.App {
-  text-align: center;
+*{
+  margin:0;
+  padding: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+
+.oyo-cell {
+    margin: 8px;
+    width: 33.33333%;
+    width: -webkit-calc(33.33333% - 16px);
+    width: -moz-calc(33.33333% - 16px);
+    width: calc(33.33333% - 16px);
+    width: 470px;
+    margin-top: -20px;
+    /* margin-left: 1200px; */
+}
+.oyo-cell {
+    box-sizing: border-box;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+.abc{
+    position:"relative";
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerMDD__mddListWrapper {
+  height: 100%;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: space-around;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.abc:hover{
+  cursor:pointer;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+
+}
+.abc:hover .xyz {
+  transform: rotate(180deg);
+  transition:0.3s;
+}
+.drop {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  margin-top:40px;
+  border:1px solid lightgray;
+  background-color: white;
+  z-index: 1;
+}
+.xyz:hover{
+  transform: rotate(180deg);
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.linkStyle{
+  color:white;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.css-ahj2mt-MuiTypography-root {
+  margin: 0;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  width: 140px;
+}
+.drop a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.abc:hover .drop {display: block;}
+
+
+
+.nearby{
+  position: absolute;
+  /* top: calc(50% - 10px); */
+  /* top:10px; */
+  top:225px;
+  left:700px;
+  z-index:1;
+
+}
+.nearby2{
+  background: white;
+    display: flex;
+    align-items: center;
+    /* width: fit-content; */
+    /* min-width: 82px; */
+    max-width: 100px;
+    max-height: 40px;
+    cursor: pointer;
+
+}
+.ripple{
+  overflow: hidden;
+  position: relative;
+}
+.nearby3{
+  display: flex;
+    margin-right: 1px;
+}
+
+
+.account:hover{
+    border:"1px solid dotted "
+}
+
+.HotelDetailImage{
+  border-radius: 10px;
+  width:250px;
+  height: 150px;
+}
+.blur {
+  background: rgba(204, 200, 200, 0.2);
+  backdrop-filter: blur(7px); 
+  /* margin-top:-1000px; */
+  margin-top:-170px;
+  margin-left: -1400px;
+  height:100vh;
+  /* padding:50; */
+  width:1950px
+ 
 }
