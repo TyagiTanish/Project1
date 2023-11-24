@@ -16,6 +16,7 @@ import SimpleMap from "./views/components/Map";
 import HotelsPage from "./views/components/HotelsPage";
 import Billing from "./views/components/Billing";
 import Routes from "./views/components/Router/Router";
+import Rooms from "./views/components/Rooms";
 
 function App() {
   const { request } = useAuth();
@@ -41,14 +42,14 @@ function App() {
     <SnackbarProvider>
 
         
-      {/* <LoginSystem /> */}
+      <LoginSystem />
       {/* <Hotels/> */}
 
-      <LoginSystem />
+      {/* <LoginSystem /> */}
       {/* <BrowserRouter><Billing/></BrowserRouter>       */}
 
       {/* <SimpleMap/> */}
-
+      {/* <Rooms/> */}
       </SnackbarProvider>
       <Outlet />
     </>

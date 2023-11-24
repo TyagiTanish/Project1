@@ -11,7 +11,7 @@ import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import WineBarIcon from "@mui/icons-material/WineBar";
 function OverViewHotel() {
   return (
-    <Box sx={{ p: 5, border: "1px solid lightgray", mb: 2 }}>
+    <Box sx={{ p: 5, border: "1px solid lightgray", mb: 2, borderRadius: 5 }}>
       <Box
         sx={{
           display: "flex",
@@ -30,7 +30,9 @@ function OverViewHotel() {
         <Box sx={{ fontSize: 12, color: "gray" }}>Excellent</Box>
       </Box>
 
-      <Box sx={{ display: "flex", justifyContent: "space-evenly", mt: 2 }}>
+      <Box
+        sx={{ display: "flex", justifyContent: "space-evenly", mt: 2, ml: -1 }}
+      >
         <Box>
           <WifiIcon sx={{ fontSize: "large", mr: 1 }} />
           Wifi in lobby
@@ -45,29 +47,29 @@ function OverViewHotel() {
         </Box>
       </Box>
       <Box sx={{ display: "flex", mt: 2 }}>
-        <Box sx={{ ml: 23.5 }}>
+        <Box sx={{ ml: 19 }}>
           <AirlineSeatReclineExtraIcon sx={{ fontSize: "large", mr: 1 }} />
           Spa
         </Box>
-        <Box sx={{ ml: 30 }}>
+        <Box sx={{ ml: 26.5 }}>
           <LocalParkingIcon sx={{ fontSize: "large", mr: 1 }} />
           Parking
         </Box>
-        <Box sx={{ ml: 24 }}>
+        <Box sx={{ ml: 21 }}>
           <PetsIcon sx={{ fontSize: "large", mr: 1 }} />
           Pets
         </Box>
       </Box>
       <Box sx={{ display: "flex", mt: 2 }}>
-        <Box sx={{ ml: 23.5 }}>
+        <Box sx={{ ml: 19 }}>
           <AcUnitIcon sx={{ fontSize: "large", mr: 1 }} />
           A/C
         </Box>
-        <Box sx={{ ml: 30 }}>
+        <Box sx={{ ml: 26.5 }}>
           <RestaurantMenuIcon sx={{ fontSize: "large", mr: 1 }} />
           Restaurant
         </Box>
-        <Box sx={{ ml: 21 }}>
+        <Box sx={{ ml: 18 }}>
           <WineBarIcon sx={{ fontSize: "large", mr: 1 }} />
           Hotel bar
         </Box>

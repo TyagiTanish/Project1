@@ -7,9 +7,9 @@ import { IconButton } from "@mui/material";
 
 const AnyReactComponent = ({ text }: any) => <div>{text}</div>;
 
-export default function SimpleMap() {
+export default function SimpleMap({ setLocation }: any) {
   const location = useSelector((state: any) => state.userReducer.location);
-  const dispatch = useDispatch();
+  //   const dispatch = useDispatch();
   const defaultProps = {
     center: {
       lat: location?.latitude || 30.733315,
@@ -24,10 +24,12 @@ export default function SimpleMap() {
       latitude: value.center.lat,
       longitude: value.center.lng,
     };
-    dispatch(userLocation(data));
+
+    setLocation(data);
+    // dispatch(userLocation(data));
   };
   return (
-    <div style={{ height: "100vh", minWidth: "40vw", marginLeft: 17 }}>
+    <div style={{ height: "50vh", minWidth: "20vw" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}

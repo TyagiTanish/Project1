@@ -1,12 +1,13 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "../../pages/MainPage";
-import { Home } from "@mui/icons-material";
+
 import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing";
 import MemberRegister from "../MemberRegister";
 import MemberRegistrationPage from "../MemberRegistrationPage";
+import AddHotelAftrLgn from "../AddHotelAftrLgn";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/login",
     element: <MainPage />,
+  },
+  {
+    path: "AddHotel",
+    element: <AddHotelAftrLgn />,
   },
   {
     path: "/hotels",
@@ -27,9 +32,19 @@ const router = createBrowserRouter([
     path:'/billing',
     element:<Billing/>
   },{
-    path:'memberRegister',
+    path:'/memberRegister',
+
     element:<MemberRegistrationPage/>
-  }
+  },
+  {
+    path: "/profile",
+    element: <Account />,
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
+  },
+
 ]);
 
 function Routes() {
