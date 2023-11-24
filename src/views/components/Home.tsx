@@ -40,7 +40,7 @@ export default function BasicCard() {
           }}
         >
           <Logo />
-        </Typography> 
+        </Typography>
         {user ? (
           <Stack
             sx={{
@@ -102,8 +102,8 @@ export default function BasicCard() {
               cursor: "pointer",
               mt: 1,
               // mr:2,
-              borderRight:'1px solid lightgrey',
-              padding:3
+              borderRight: "1px solid lightgrey",
+              padding: 3,
             }}
           >
             <CallIcon /> 0124-6201611
