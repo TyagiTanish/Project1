@@ -204,6 +204,7 @@ console.log(page)
           m: 20,
           border: "1px solid lightgrey",
           padding: "5px",
+          background:'white'
         }}
       >
         <Box
@@ -243,7 +244,7 @@ console.log(page)
                   width: "50vw",
                   fontSize: 28,
                   fontWeight: "700",
-                  ml: 68,
+                  ml: 65,
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -271,7 +272,7 @@ console.log(page)
                   width: "50vw",
                   fontSize: 28,
                   fontWeight: "700",
-                  ml: 62,
+                  ml: 68,
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -279,7 +280,23 @@ console.log(page)
                 Pin Your Location On Map....
               </Typography>
             )}
-            {page === 4 && (
+            {
+              page === 4 && (
+                <Typography
+                sx={{
+                  width: "48vw",
+                  fontSize: 28,
+                  fontWeight: "700",
+                  ml: 75,
+                  mb: 2,
+                  opacity: 0.7,
+                }}
+              >
+               Choose a Photo....
+              </Typography>
+              )
+            }
+            {page === 5 && (
               <Typography
                 sx={{
                   width: "48vw",

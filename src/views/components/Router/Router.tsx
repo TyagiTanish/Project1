@@ -6,6 +6,7 @@ import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing";
 import MemberRegister from "../MemberRegister";
+import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 const router = createBrowserRouter([
   {
@@ -31,8 +32,9 @@ const router = createBrowserRouter([
     path:'/billing',
     element:<Billing/>
   },{
-    path:'memberRegister',
-    element:<MemberRegister/>
+    path:'/memberRegister',
+
+    element:<MemberRegistrationPage/>
   },
   {
     path: "/profile",
@@ -42,6 +44,7 @@ const router = createBrowserRouter([
     path: "/billing",
     element: <Billing />,
   },
+
 ]);
 
 function Routes() {
