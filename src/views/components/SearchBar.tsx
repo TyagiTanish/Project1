@@ -76,11 +76,18 @@ function error() {
           sx={{
             color: "white",
             fontWeight: "800",
+
+            ml: {xl:63,md:15},
+   
+            position: "absolute",
+            mt: 7,
+
             justifySelf:'center',
             fontSize:{lg:"32px",sm:'24px'},
-            position: "absolute",
+      
             textAlign:'center',
-            mt: 5,
+         
+
           }}
         >
           Over 157,000 hotels and homes across 35 countries
@@ -91,8 +98,12 @@ function error() {
               bgcolor:'white',
               position:"relative",
               width: "30%",
-              height: "31%",
-              mt: 2,
+              ml: {xl:35,md:10},
+              height: "20%",
+              mt: 5,
+
+           
+      
             }}
             placeholder="Search by city,hotel, or neighborhood"
             InputProps={{
@@ -117,8 +128,12 @@ function error() {
               width: {lg:"15%",sm:'25%'},
               bgcolor: "white",
               ml: 0,
-              height: "31%",
-              mt: 2,
+
+              height: "20%",
+              mt: 5,
+
+            
+
               fontWeight: "bolder",
             }}
             value={`${rooms.length} Room , ${guests} guest`}
@@ -135,7 +150,7 @@ function error() {
               height: "55px",
               width: "10%",
               borderRadius: 0,
-              mt: 2,
+              mt: 5,
             }}
           >
             Search

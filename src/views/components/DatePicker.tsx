@@ -12,7 +12,7 @@ export default function SingleInputDateRangePicker() {
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer
         components={["SingleInputDateRangeField"]}
-        sx={{ bgcolor: "white", padding: 0, mt: 2 }}
+        sx={{ bgcolor: "white", padding: 0, mt: 5 }}
       >
         <DateRangePicker
           slots={{ field: SingleInputDateRangeField }}

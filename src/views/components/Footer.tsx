@@ -26,11 +26,7 @@ function Footer() {
       >
         <Box sx={{ color: "white", display: "flex", alignItems: "center" }}>
           <Box
-          // sx={{
-          //   fontFamily: "sans-serif",
-          //   fontWeight: "900",
-          //   fontSize: "40px",
-          // }}
+            sx={{ml:{md:-5,xl:0}}}
           >
             <OyoLogo />
           </Box>
@@ -39,8 +35,10 @@ function Footer() {
             sx={{
               fontFamily: "sans-serif",
               fontWeight: "900",
-              ml: 3,
-              fontSize: "22px",
+              ml: {sm:-1},
+              fontSize: {xl:"22px",md:16},
+              width:{sm:400,xl:500},
+              mt:{md:-1,xl:0}
             }}
           >
             <FooterRytLogo />
@@ -53,7 +51,8 @@ function Footer() {
             color: "white",
             display: "flex",
             alignItems: "center",
-            fontSize: "22px",
+            fontSize: {xl:"22px",md:16},
+            mr:{xl:0,md:-6}
           }}
         >
           <Box
@@ -70,6 +69,7 @@ function Footer() {
                 background: "white",
                 ml: 2,
                 fontWeight: 700,
+                fontSize:{xl:15,md:12}
               }}
             >
               List Your Property
@@ -95,7 +95,7 @@ function Footer() {
             paddingRight: "24px",
           }}
         >
-          <Box>Download OYO app for exciting offers.</Box>
+          <Box sx={{fontSize:{xl:18,md:15}}}>Download OYO app for exciting offers.</Box>
           <Box>
             <AppStoreLogo />
             <PlayStoreLogo />
@@ -109,6 +109,8 @@ function Footer() {
             borderLeft: "1px solid white",
             paddingLeft: "24px",
             color: "white",
+            fontSize:{xl:18,md:13},
+            mr:2
           }}
         >
           <Link to="/" className="linkStyle">
@@ -128,6 +130,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            fontSize:{xl:18,md:13},
+            mr:1
           }}
         >
           <Link to="/" className="linkStyle">
@@ -150,6 +154,8 @@ function Footer() {
             flexDirection: "column",
             borderLeft: "1px solid white",
             paddingLeft: "24px",
+            fontSize:{xl:18,md:13},
+            mr:3
           }}
         >
           <Link to="/" className="linkStyle">
@@ -169,6 +175,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            fontSize:{xl:18,md:13},
+         
           }}
         >
           <Link to="/" className="linkStyle">
@@ -213,6 +221,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            ml:{xl:0,md:2},
+            fontSize:{xl:18,md:15}
           }}
         >
           <Link to="/" className="linkStyle">
@@ -251,6 +261,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            ml:{xl:0,md:2},
+            fontSize:{xl:18,md:15}
           }}
         >
           <Link to="/" className="linkStyle">
@@ -289,6 +301,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            fontSize:{xl:18,md:15},
+            ml:{xl:0,md:2},
           }}
         >
           <Link to="/" className="linkStyle">
@@ -327,6 +341,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            fontSize:{xl:18,md:15},
+            ml:{xl:0,md:2},
           }}
         >
           <Link to="/" className="linkStyle">
@@ -365,6 +381,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            fontSize:{xl:18,md:15},
+            ml:{xl:0,md:2},
           }}
         >
           <Link to="/" className="linkStyle">
@@ -403,6 +421,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
+            fontSize:{xl:18,md:15},
+            ml:{xl:0,md:2},
           }}
         >
           <Link to="/" className="linkStyle">

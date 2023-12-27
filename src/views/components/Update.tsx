@@ -46,15 +46,20 @@ function Update() {
   return (
     <form onSubmit={handleSubmit(onSubmit1)}>
       
-      <Typography sx={{fontWeight:"bold", mt:2, fontSize:15}}>First Name:</Typography>  
+      <Typography sx={{fontWeight:"bold", mt:2, fontSize:{xl:15,md:14}}}>First Name:</Typography>  
       
-      <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("name")} defaultValue={user?.name}/>
+      <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1,fontSize:{xl:15,md: 2}}} {...register("name")} defaultValue={user?.name} inputProps={{
+          style: {
+            height:15
+          },
+        }}/>
       
    
    
-   <Box><Button variant="contained" sx={{width:250,mt:2,textTransform:"none", fontWeight:"bold",fontSize:15,backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",}} type="submit">Update Personal Information</Button>
+   <Box><Button variant="contained" sx={{width:{lg:250,md:220},mt:2,textTransform:"none", fontWeight:"bold",fontSize:{xl:14,md:12},backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",}} type="submit">Update Personal Information</Button>
   
    </Box>
+ 
    </form>
   )
 }
