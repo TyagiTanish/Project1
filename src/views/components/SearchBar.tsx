@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, InputAdornment, TextField, Typography } from "@mui/material";
+import { Box, Button, IconButton, InputAdornment, Stack, TextField, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import Building1 from "./BuildingSvg";
 import "react-datepicker/dist/react-datepicker.css";
@@ -59,38 +59,51 @@ function error() {
           background: `linear-gradient(135.46deg,#d11450,#df293a)`,
           width: "100%",
           height: 250,
+          display:"flex",
+          justifyContent:'center',
           padding: "10px 0 32px",
         }}
       >
-        <Typography sx={{ position: "absolute", ml: 50, mt: 2 }}>
+        <Stack direction={'row'} justifyContent={"space-evenly"} position={"absolute"} ml={20} width={{lg:"90%",sm:'79%'}} >
+        <Typography sx={{mt: 2 }}>
           <Building1 />
         </Typography>
-
-        <Typography sx={{ position: "absolute", ml: 140, mt: 2 }}>
-          {" "}
+        <Typography sx={{mt: 2 }}>
           <Building1 />
         </Typography>
+        </Stack>
         <Box
           sx={{
             color: "white",
             fontWeight: "800",
+
             ml: {xl:63,md:15},
-            fontSize: "32px",
+   
             position: "absolute",
             mt: 7,
+
+            justifySelf:'center',
+            fontSize:{lg:"32px",sm:'24px'},
+      
+            textAlign:'center',
+         
+
           }}
         >
           Over 157,000 hotels and homes across 35 countries
         </Box>
-        <Typography sx={{ mt: 9, display: "flex", alignContent: "center" }}>
+        <Stack sx={{ mt: 9,width:'100%',justifyContent:'center' }} direction={"row"} >
           <TextField
             sx={{
-              backgroundColor: "white",
+              bgcolor:'white',
               position:"relative",
               width: "30%",
               ml: {xl:35,md:10},
               height: "20%",
               mt: 5,
+
+           
+      
             }}
             placeholder="Search by city,hotel, or neighborhood"
             InputProps={{
@@ -105,18 +118,22 @@ function error() {
             }}
           />
          
-          <Typography sx={{ position: "relative" }}>
+          <Typography sx={{ position: "relative",width:{lg:'20%',sm:'30%'} }}>
             <DateRangePickers />
           </Typography>
           <TextField
             id="outlined-basic"
             variant="outlined"
             sx={{
-              width: "15%",
+              width: {lg:"15%",sm:'25%'},
               bgcolor: "white",
               ml: 0,
+
               height: "20%",
               mt: 5,
+
+            
+
               fontWeight: "bolder",
             }}
             value={`${rooms.length} Room , ${guests} guest`}
@@ -138,7 +155,7 @@ function error() {
           >
             Search
           </Button>
-        </Typography>
+        </Stack>
       </Box>
       <RoomSelection
         anchorEl={anchorEl}

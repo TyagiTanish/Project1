@@ -13,181 +13,81 @@ import { useSelector } from "react-redux";
 import HomeBody from "./HomeBody";
 import AccountMenu from "./ProfileBtn";
 import AddHotelAftrLgn from "./AddHotelAftrLgn";
-import {useIntl, FormattedMessage} from 'react-intl'
+import { useIntl, FormattedMessage } from "react-intl";
 import Language from "./Language";
 
-import BusinessIcon from '@mui/icons-material/Business';
+import BusinessIcon from "@mui/icons-material/Business";
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
-  
+
   return (
     <>
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          borderBottom: "1px solid lightgray",
-          marginTop: 0,
-          flexDirection: "row",
-          boxShadow: "rgba(99, 99, 99, 0.2) 0px 2px 8px 0px",
-          width: "100%",
-          height: "70px",
-        }}
-      >
-        <Typography
-          sx={{
-            alignSelf: "center",
-            mt: 1,
-            ml: 10,
-            fontWeight: "bolder",
-            mr: 160,
-          }}
-        >
-          <Logo />
-        </Typography> 
+      <Stack direction={"row"} justifyContent={"space-between"}>
+        <Logo />
         {user ? (
           <>
-          <Stack
-            sx={{
-              borderRight: "1px solid lightgray",
-              height: "100%",
-              borderLeft: "1px solid lightgray",
-              paddingLeft: 2,
-              paddingRight: 2,
-              ml: -3,
-            }}
-          >
-            <Box
+            <Stack direction={"row"} spacing={2} >
+              <Stack direction={"row"} alignItems={"center"} spacing={1} >
+                <BusinessIcon sx={{ fontSize: "30px"}} />
+                <Link
+                  to="/AddHotel"
+                  style={{
+                    textDecoration: "none",
+                    color: "black",
+                    fontWeight:'bold'
+                  }}
+                >
+                  {" "}
+                  Add Hotel
+                </Link>
+              </Stack>
+            <Stack spacing={3}
               sx={{
-                
-              display:"flex"
+                alignItems: "center",
+                cursor: "pointer",
+               
               }}
+              direction={"row"}
             >
-              {/* <Button sx={{ border: "1px solid lightgray", borderRadius: 5 }}>
-              Add Hotel
-            </Button> */}
-             <BusinessIcon sx={{fontSize:"30px",mt:2}}/>
+              <CallIcon sx={{ mt: -0.5 }} /> 0124-6201611
+            </Stack>
+
+           
+              <AccountMenu />
+         
+            </Stack>
+          </>
+        ) : (
+          <Stack direction={"row"} spacing={2} alignItems={"center"}>
+            <Language />
+            <IconButton
+              href="/memberRegister"
+              sx={{ fontSize: 15, color: "black", fontWeight: "bold" }}
+            >
+              <BusinessIcon sx={{ mr: 1 }} />
+              <FormattedMessage defaultMessage="List Your Property" />
+            </IconButton>
+            <Stack direction={"row"}>
+              <CallIcon sx={{ mt: -0.5 }} /> 0124-6201611
+            </Stack>
+            <Stack direction={"row"} alignItems={"center"} spacing={2}>
+              {" "}
+              <PersonIcon />
               <Link
-                to="/AddHotel"
+                to="/login"
                 style={{
                   textDecoration: "none",
                   color: "black",
-      
-                
+                  fontWeight: "bolder",
                 }}
               >
                 {" "}
-               
-                <Box sx={{mt:3.25,ml:1}}> 
-                Add Hotel
-                </Box>
+                <FormattedMessage defaultMessage="Login / SignUp" />
               </Link>
-            </Box>
             </Stack>
-             <Box
-             sx={{
-             
-               display: "flex",
-               justifyContent: "center",
-               alignItems: "center",
-               cursor: "pointer",
-               // mt:0.8,
-               // ml:-10,
-               // mr:-19,
-              
-               
-             }}
-           >
-             <CallIcon sx={{mt:-0.5}}/> 0124-6201611
-           </Box>
-   
-            <Box
-             sx={{
-               height: "100%",
-             paddingLeft:2,
-             paddingRight:2,
-               position: "relative",
-               display: "flex",
-               justifyContent: "center",
-               alignItems: "center",
-               cursor: "pointer",
-               // width: "1%",
-               borderLeft:"1px solid lightgray "
-             }}
-           >
-             <AccountMenu />
-           </Box></>
-          
-        ) : (
-            <>
-            <Language/>
-        <Box
-          sx={{
-            position: "relative",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            cursor: "pointer",
-            mt: 0.3,
-            borderRight:'1px solid lightgrey',
-            borderLeft:'1px solid lightgrey',
-            ml:-25,
-            mr:2,
-         
-          }}
-        >
-          <IconButton href="/memberRegister" sx={{fontSize:15,   color:"black", fontWeight:"bold"}} ><BusinessIcon sx={{mr:1}}/><FormattedMessage defaultMessage="List Your Property"   /></IconButton>
-        </Box>
-                 <Box
-                 sx={{
-                   position: "relative",
-                   display: "flex",
-                   justifyContent: "center",
-                   alignItems: "center",
-                   cursor: "pointer",
-                   mt:1,
-                   ml:-10,
-                   borderRight: "1px solid lightgrey",
-                   padding:2 ,
-                 }}
-               >
-                 <CallIcon sx={{mt:-0.5}}/> 0124-6201611
-               </Box>
-               <Box
-                 sx={{
-                   height: "100%",
-                   mr: 3,
-                   position: "relative",
-                   display: "flex",
-                   justifyContent: "center",
-                   alignItems: "center",
-                   cursor: "pointer",
-                   minWidth: "100px",
-                   ml:-7
-                 }}
-               >
-                 {" "}
-                 <PersonIcon sx={{ margin: 1 ,marginTop:1.5}} />
-                 <Link
-                   to="/login"
-                   style={{
-                     textDecoration: "none",
-                     color: "black",
-                     fontWeight: "bolder",
-                     marginTop:8
-                   }}
-                 >
-                   {" "}
-                  <FormattedMessage defaultMessage="Login / SignUp" />
-                 </Link>
-               </Box>
-               </>
-        )}
-          {" "}
-
-  
-       
-        </Box>
+          </Stack>
+        )}{" "}
+      </Stack>
       <Box
         sx={{
           width: {xl:'100%',md:1026},
@@ -219,7 +119,7 @@ export default function BasicCard() {
             />
             <Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
               <Link style={{ fontWeight: "bold" }} to="/">
-              <FormattedMessage defaultMessage="Popular Locations"/>
+                <FormattedMessage defaultMessage="Popular Locations" />
               </Link>
               <Link to="/hotels">Mg Road</Link>
               <Link to="/hotels">Rajaji nagar</Link>
