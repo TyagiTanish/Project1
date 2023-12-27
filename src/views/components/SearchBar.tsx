@@ -86,13 +86,13 @@ function error() {
         >
           Over 157,000 hotels and homes across 35 countries
         </Box>
-        <Stack sx={{ mt: 9,width:'100%',justifyContent:'center'}} direction={"row"} >
+        <Stack sx={{ mt:7,width:'100%',justifyContent:'center'}} direction={"row"} >
           <TextField
             sx={{
               bgcolor:'white',
               position:"relative",
               width: "30%",
-              height: "31%",
+              height: "29%",
               mt: 5,
             }}
             placeholder="Search by city,hotel, or neighborhood"
@@ -119,7 +119,7 @@ function error() {
               bgcolor: "white",
               ml: 0,
 
-              height: "31%",
+              height: "29%",
               mt: 5,
 
             
