@@ -32,7 +32,6 @@ const handleChangeLanguage = (e:any) => {
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
         onClick={handleClick}
-        sx={{mt:2,ml:-27}}
       >
         <LanguageIcon fontSize='large' />
       </IconButton>
