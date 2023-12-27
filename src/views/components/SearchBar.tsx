@@ -76,29 +76,22 @@ function error() {
           sx={{
             color: "white",
             fontWeight: "800",
-
             ml: {xl:63,md:15},
-   
             position: "absolute",
             mt: 7,
-
             justifySelf:'center',
             fontSize:{lg:"32px",sm:'24px'},
-      
             textAlign:'center',
-         
-
           }}
         >
           Over 157,000 hotels and homes across 35 countries
         </Box>
-        <Stack sx={{ mt: 9,width:'100%',justifyContent:'center' }} direction={"row"} >
+        <Stack sx={{ mt: 9,width:'100%',justifyContent:'center'}} direction={"row"} >
           <TextField
             sx={{
               bgcolor:'white',
               position:"relative",
               width: "30%",
-              ml: {xl:35,md:10},
               height: "31%",
               mt: 5,
             }}
