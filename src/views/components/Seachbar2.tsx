@@ -61,19 +61,26 @@ function Seachbar2(props: any) {
   }
 
   return (
-    <Box sx={{ marginLeft: "-120px", width: "100vw", mb: "30px" }}>
+    <Box
+      sx={{
+        marginLeft: { sm: "-120px", lg: "-120px" },
+
+        width: "100vw",
+        mb: "30px",
+      }}
+    >
       <Typography sx={{ mt: 2, display: "flex", alignContent: "center" }}>
         <Box
           className="nearby"
           sx={{ marginTop: "-120px", marginLeft: "-60px" }}
         >
-          <Box></Box>
+          {/* <Box></Box> */}
         </Box>
         <TextField
           sx={{
             backgroundColor: "white",
             position: "relative",
-            width: "30%",
+            width: { sm: "30%", lg: "30%" },
             ml: "20%",
             height: "20%",
             mt: 2,
@@ -85,7 +92,7 @@ function Seachbar2(props: any) {
                 <IconButton
                   onClick={handleLocationClick}
                   sx={{
-                    fontSize: "15px",
+                    fontSize: { sm: "10px", lg: "15px" },
                     fontWeight: "bolder",
                     color: "black",
                   }}
@@ -101,14 +108,14 @@ function Seachbar2(props: any) {
           onChange={handleInputChange}
         />
 
-        <Typography sx={{ position: "relative" }}>
+        <Typography sx={{ position: "relative", width: { sm: "250px" } }}>
           <DateRangePickers />
         </Typography>
         <TextField
           id="outlined-basic"
           variant="outlined"
           sx={{
-            width: "15%",
+            width: { sm: "200px", lg: "15%" },
             bgcolor: "white",
             ml: 0,
             height: "20%",

@@ -1,4 +1,4 @@
-import { Box, Button, IconButton, Typography } from "@mui/material";
+import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -35,34 +35,39 @@ function Hotels({ filteredData }: any) {
         sx={{
           height: "100vh",
           overflowY: "auto",
-          maxWidth: "60vw",
-          padding: "10px",
+          // maxWidth: "60vw",
+          width: { sm: "65%", lg: "65%" },
+          padding: { sm: 0 },
         }}
       >
         {filteredData?.map((item: any, i: any) => (
           <>
-            <Box
+            <Stack
+              direction={"row"}
               sx={{
-                display: "flex",
-                flexDirection: "row",
+                // display: "stack",
+                // flexDirection: "row",
+                direction: "row",
                 padding: "10px",
                 border: "1px solid lightgrey",
                 borderRadius: "10px",
-                m: 1,
-                width: "50vw",
+                m: { sm: "5px", lg: 1 },
+                width: { sm: "420px", lg: "800px" },
               }}
             >
-              <img
-                src={require(`./${item.src}`)}
-                alt="hotel pic"
-                style={{
-                  width: "250px",
-                  height: "200px",
-                  borderTopLeftRadius: "20px",
-                  borderBottomLeftRadius: "20px",
-                }}
-              />
-
+              <Box sx={{ width: { sm: 100, lg: 300 } }}>
+                <img
+                  src={require(`./${item.src}`)}
+                  alt="hotel pic"
+                  style={{
+                    width: "14vh",
+                    height: "15vh",
+                    borderTopLeftRadius: "20px",
+                    borderBottomLeftRadius: "20px",
+                    marginTop: 2,
+                  }}
+                />
+              </Box>
               <Box
                 sx={{
                   display: "flex",
@@ -74,9 +79,9 @@ function Hotels({ filteredData }: any) {
                 <Typography
                   sx={{
                     fontWeight: "bold",
-                    fontSize: "20px",
+                    fontSize: { sm: "10px", lg: "20px" },
                     opacity: 0.8,
-                    width: "250px",
+                    width: { sm: "100px", lg: "250px" },
                   }}
                 >
                   {item.name}
@@ -85,7 +90,7 @@ function Hotels({ filteredData }: any) {
                   <Typography
                     sx={{
                       fontWeight: "bold",
-                      fontSize: "15px",
+                      fontSize: { sm: "12px", lg: "15px" },
                       opacity: 0.5,
                       marginTop: "10px",
                     }}
@@ -93,13 +98,19 @@ function Hotels({ filteredData }: any) {
                     Hotel
                   </Typography>
                   <Button
-                    sx={{ color: "grey", ml: 12, fontSize: 10 }}
+                    sx={{
+                      color: "grey",
+                      ml: { sm: 0, lg: 12 },
+                      mt: { sm: "6px" },
+                      fontSize: { sm: 8, lg: 10 },
+                      width: { sm: "85px", lg: 100 },
+                    }}
                     onClick={() => {
                       handleClick(i);
                     }}
                   >
                     View More
-                    <ExpandMoreIcon />
+                    <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
                   </Button>
                 </Box>
                 {/* <Typography
@@ -116,27 +127,27 @@ function Hotels({ filteredData }: any) {
 
               <Box
                 sx={{
-                  margin: "20px",
-                  marginLeft: "50px",
+                  // margin: "20px",
+                  marginLeft: { sm: "6px", lg: "50px" },
                   border: "1px solid lightgray",
-                  width: "310px",
+                  width: { sm: "160px", lg: "310px" },
                   height: "85px",
                   borderRadius: "20px",
                   backgroundColor: "rgba(241,248,234)",
-                  padding: 2,
+                  padding: { sm: 1, lg: 2 },
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
                 <Box
                   sx={{
-                    width: "90px",
+                    width: { sm: "60px", lg: "90px" },
                     border: "1px solid red",
-                    ml: 22,
-                    height: "25px",
+                    ml: { sm: 10, lg: 22 },
+                    height: { sm: "5px", lg: "25px" },
                     borderRadius: "15px",
                     color: "red",
-                    fontSize: "10px",
+                    fontSize: { sm: "7px", lg: "10px" },
                     padding: 1,
                     fontWeight: "bold",
                   }}
@@ -153,8 +164,18 @@ function Hotels({ filteredData }: any) {
                     flexDirection: "row",
                   }}
                 >
-                  <DoneIcon sx={{ fontSize: "15px", fontWeight: "bold" }} />{" "}
-                  <Typography sx={{ fontSize: "12px", fontWeight: "bold" }}>
+                  <DoneIcon
+                    sx={{
+                      fontSize: { sm: "12px", lg: "15px" },
+                      fontWeight: "bold",
+                    }}
+                  />{" "}
+                  <Typography
+                    sx={{
+                      fontSize: { sm: "10px", lg: "12px" },
+                      fontWeight: "bold",
+                    }}
+                  >
                     Free Cancelation
                   </Typography>
                 </Box>
@@ -169,7 +190,7 @@ function Hotels({ filteredData }: any) {
                   <Typography
                     sx={{
                       fontWeight: "bold",
-                      fontSize: "18px",
+                      fontSize: { sm: "14px", lg: "18px" },
                       opacity: 0.7,
                     }}
                   >
@@ -179,24 +200,33 @@ function Hotels({ filteredData }: any) {
                     {" "}
                     <Button
                       sx={{
-                        width: "120px",
+                        width: { sm: "80px", lg: "130px" },
                         backgroundColor: "#D4164B",
-                        height: "35px",
+                        height: { sm: "20px", lg: "30px" },
                         color: "white",
                         fontWeight: "bold",
-                        marginLeft: "120px",
+                        marginLeft: { sm: "10px", lg: "90px" },
                         marginTop: "-9px",
                         textTransform: "none",
-                      
+                        fontSize: { sm: "10px", lg: 20 },
                       }}
-                      className="btn2"
+                      // className="btn2"
                     >
-                      View Deal <KeyboardArrowRightIcon />
+                      View Deal{" "}
+                      <Box
+                        sx={{
+                          width: { sm: "3px", lg: "5px" },
+                          mt: { sm: "5px", lg: 1.3 },
+                        }}
+                      >
+                        {" "}
+                        <KeyboardArrowRightIcon />
+                      </Box>
                     </Button>
                   </IconButton>
                 </Box>
               </Box>
-            </Box>
+            </Stack>
 
             {/* </Box> */}
             {detailIndex === i ? (
