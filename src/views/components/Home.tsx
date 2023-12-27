@@ -190,7 +190,7 @@ export default function BasicCard() {
         </Box>
       <Box
         sx={{
-          width: "100%",
+          width: {xl:'100%',md:1026},
           height: "42px",
           alignItems: "center",
           backgroundColor: "#f3f5f7",
@@ -212,12 +212,12 @@ export default function BasicCard() {
             }}
           >
             {" "}
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Banglore</Box>
+            <Box sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Banglore</Box>
             <KeyboardArrowDownIcon
               className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
             />
-            <Box className="drop">
+            <Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
               <Link style={{ fontWeight: "bold" }} to="/">
               <FormattedMessage defaultMessage="Popular Locations"/>
               </Link>
@@ -237,14 +237,14 @@ export default function BasicCard() {
               paddingBottom: 0,
             }}
           >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Chennai</Box>
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Chennai</Box>
             <KeyboardArrowDownIcon
               className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
+              sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
             />
-            <Box className="drop">
+          <Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
               <Link style={{ fontWeight: "bold" }} to="/">
-                Popular Locations
+              <FormattedMessage defaultMessage="Popular Locations"/>
               </Link>
               <Link to="/hotels">Mg Road</Link>
               <Link to="/hotels">Rajaji nagar</Link>
@@ -262,14 +262,14 @@ export default function BasicCard() {
               paddingBottom: 0,
             }}
           >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Gurgaon</Box>
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Gurgaon</Box>
             <KeyboardArrowDownIcon
               className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
             />
-            <Box className="drop">
+<Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
               <Link style={{ fontWeight: "bold" }} to="/">
-                Popular Locations
+              <FormattedMessage defaultMessage="Popular Locations"/>
               </Link>
               <Link to="/hotels">Mg Road</Link>
               <Link to="/hotels">Rajaji nagar</Link>
@@ -287,12 +287,86 @@ export default function BasicCard() {
               paddingBottom: 0,
             }}
           >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Hyderabad</Box>
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Hyderabad</Box>
             <KeyboardArrowDownIcon
               className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
             />
-            <Box className="drop">
+<Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
+              <FormattedMessage defaultMessage="Popular Locations"/>
+              </Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
+            </Box>
+          </Box>
+
+          <Box
+            className="abc"
+            sx={{
+              display: "flex",
+              direction: "row",
+              height: "100%",
+              alignSelf: "center",
+              paddingLeft: 1,
+              paddingBottom: 0,
+            }}
+          >
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Kolkata</Box>
+            <KeyboardArrowDownIcon
+              className="xyz"
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
+            />
+<Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
+              <FormattedMessage defaultMessage="Popular Locations"/>
+              </Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
+            </Box>
+          </Box>
+          <Box
+            className="abc"
+            sx={{
+              display: "flex",
+              direction: "row",
+              height: "100%",
+              alignSelf: "center",
+              paddingLeft: 1,
+              paddingBottom: 0,
+            }}
+          >
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Mumbai</Box>
+            <KeyboardArrowDownIcon
+              className="xyz"
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
+            />
+<Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
+              <Link style={{ fontWeight: "bold" }} to="/hotels">
+              <FormattedMessage defaultMessage="Popular Locations"/>
+              </Link>
+              <Link to="/hotels">Mg Road</Link>
+              <Link to="/hotels">Rajaji nagar</Link>
+            </Box>
+          </Box>
+
+          <Box
+            className="abc"
+            sx={{
+              display: "flex",
+              direction: "row",
+              height: "100%",
+              alignSelf: "center",
+              paddingLeft: 1,
+              paddingBottom: 0,
+            }}
+          >
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Noida</Box>
+            <KeyboardArrowDownIcon
+              className="xyz"
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
+            />
+<Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
               <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
@@ -312,86 +386,12 @@ export default function BasicCard() {
               paddingBottom: 0,
             }}
           >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Kolkata</Box>
+            <Box  sx={{ color: "gray", marginTop: "10px" ,fontSize:{md:15,xl:16} }}>Pune</Box>
             <KeyboardArrowDownIcon
               className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
+             sx={{ marginTop: {xl:"9px", md:1.1}, color: "lightgray" ,fontSize:{md:20} }}
             />
-            <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/hotels">
-                Popular Locations
-              </Link>
-              <Link to="/hotels">Mg Road</Link>
-              <Link to="/hotels">Rajaji nagar</Link>
-            </Box>
-          </Box>
-          <Box
-            className="abc"
-            sx={{
-              display: "flex",
-              direction: "row",
-              height: "100%",
-              alignSelf: "center",
-              paddingLeft: 1,
-              paddingBottom: 0,
-            }}
-          >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Mumbai</Box>
-            <KeyboardArrowDownIcon
-              className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
-            />
-            <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/hotels">
-                Popular Locations
-              </Link>
-              <Link to="/hotels">Mg Road</Link>
-              <Link to="/hotels">Rajaji nagar</Link>
-            </Box>
-          </Box>
-
-          <Box
-            className="abc"
-            sx={{
-              display: "flex",
-              direction: "row",
-              height: "100%",
-              alignSelf: "center",
-              paddingLeft: 1,
-              paddingBottom: 0,
-            }}
-          >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Noida</Box>
-            <KeyboardArrowDownIcon
-              className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
-            />
-            <Box className="drop">
-              <Link style={{ fontWeight: "bold" }} to="/hotels">
-                Popular Locations
-              </Link>
-              <Link to="/hotels">Mg Road</Link>
-              <Link to="/hotels">Rajaji nagar</Link>
-            </Box>
-          </Box>
-
-          <Box
-            className="abc"
-            sx={{
-              display: "flex",
-              direction: "row",
-              height: "100%",
-              alignSelf: "center",
-              paddingLeft: 1,
-              paddingBottom: 0,
-            }}
-          >
-            <Box sx={{ color: "gray", marginTop: "10px" }}>Pune</Box>
-            <KeyboardArrowDownIcon
-              className="xyz"
-              sx={{ marginTop: "8px", color: "lightgray" }}
-            />
-            <Box className="drop">
+<Box className="drop" sx={{fontSize:{md:15,xl:16}}}>
               <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>

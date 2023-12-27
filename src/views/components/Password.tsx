@@ -48,11 +48,19 @@ function Password() {
    <form  onSubmit={handleSubmit(onSubmit2)}> 
     
    <Typography sx={{fontWeight:"bold", mt:2, fontSize:15}}>Old password:</Typography>  
-   <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("oldpassword")}/>
+   <TextField id="outlined-basic"  variant="outlined"  sx={{width:500,mt:1}} {...register("oldpassword")} inputProps={{
+          style: {
+            height: 15,
+          },
+        }}/>
   <Typography sx={{fontWeight:"bold", mt:2, fontSize:15}}>New password:</Typography>
-    <TextField id="outlined-basic"  sx={{width:500,mt:1}} {...register("newpassword")}/>
+    <TextField id="outlined-basic"  sx={{width:500,mt:1}} {...register("newpassword")} inputProps={{
+          style: {
+            height: 15,
+          },
+        }}/>
   
-  <Box><Button variant="contained" sx={{width:200,mt:2,textTransform:"none", fontWeight:"bold",fontSize:15,backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",}} type="submit">Change Password</Button></Box>
+  <Box><Button variant="contained" sx={{width:{lg:180,md:150},mt:{md:2},textTransform:"none", fontWeight:"bold",fontSize:{xl:14,md:12},backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",}} type="submit">Change Password</Button></Box>
   </form>
 
 
