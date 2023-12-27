@@ -42,8 +42,9 @@ return (
             aria-controls={open ? 'account-menu' : undefined}
             aria-haspopup="true"
             aria-expanded={open ? 'true' : undefined}
+
           >
-            <Avatar sx={{ width: 32, height: 32,fontWeight:'bolder' }}>{user?.name[0].toUpperCase()}</Avatar>
+            <Avatar sx={{ width: 32, height: 32,fontWeight:'bolder',mt:2 }}>{user?.name[0].toUpperCase()}</Avatar>
           </IconButton>
         </Tooltip>
       </Box>
