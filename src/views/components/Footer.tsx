@@ -15,7 +15,12 @@ import { grey } from "@mui/material/colors";
 import { useIntl, FormattedMessage } from "react-intl";
 function Footer() {
   return (
-    <Box sx={{ fontFamily: "sans-serif", mt: 5 }}>
+    <Box
+      sx={{
+        fontFamily: "sans-serif",
+        mt: 5,
+      }}
+    >
       <Box
         sx={{
           background: "#6D787D",

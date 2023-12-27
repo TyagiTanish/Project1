@@ -55,7 +55,9 @@ const HotelsPage = () => {
       <Stack direction={"row"}>
         <IconButton>
           <Link to="/">
-            <Logo />
+            <Box sx={{ width: { sm: 55 } }}>
+              <Logo />
+            </Box>
           </Link>
         </IconButton>
         <Seachbar2

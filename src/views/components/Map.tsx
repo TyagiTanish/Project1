@@ -3,7 +3,7 @@ import GoogleMapReact from "google-map-react";
 import { useDispatch, useSelector } from "react-redux";
 import { userLocation } from "./redux/user/userSlice";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 
 const AnyReactComponent = ({ text }: any) => <div>{text}</div>;
 
@@ -27,7 +27,13 @@ export default function SimpleMap() {
     dispatch(userLocation(data));
   };
   return (
-    <div style={{ height: "100vh", minWidth: "40vw", marginLeft: 17 }}>
+    <Box
+      sx={{
+        height: "100vh",
+        width: { sm: "10vh", lg: "20vw" },
+        marginLeft: 17,
+      }}
+    >
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
@@ -46,6 +52,6 @@ export default function SimpleMap() {
           }
         />
       </GoogleMapReact>
-    </div>
+    </Box>
   );
 }
