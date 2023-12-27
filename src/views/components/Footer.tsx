@@ -37,7 +37,7 @@ function Footer() {
               fontWeight: "900",
               ml: {sm:-1},
               fontSize: {xl:"22px",md:16},
-              width:{sm:400,xl:500},
+              width:{sm:400,xl:500,lg:'100%'},
               mt:{md:-1,xl:0}
             }}
           >

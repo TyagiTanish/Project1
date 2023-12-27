@@ -99,11 +99,8 @@ function error() {
               position:"relative",
               width: "30%",
               ml: {xl:35,md:10},
-              height: "20%",
+              height: "31%",
               mt: 5,
-
-           
-      
             }}
             placeholder="Search by city,hotel, or neighborhood"
             InputProps={{
@@ -129,7 +126,7 @@ function error() {
               bgcolor: "white",
               ml: 0,
 
-              height: "20%",
+              height: "31%",
               mt: 5,
 
             
