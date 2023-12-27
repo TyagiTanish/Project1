@@ -12,9 +12,15 @@ import AppStoreLogo from "../../assets/AppStoreLogo";
 import OyoLogo from "../../assets/OyoLogo";
 import FooterRytLogo from "../../assets/FooterRytLogo";
 import { grey } from "@mui/material/colors";
+import { useIntl, FormattedMessage } from "react-intl";
 function Footer() {
   return (
-    <Box sx={{ fontFamily: "sans-serif", mt: 5 }}>
+    <Box
+      sx={{
+        fontFamily: "sans-serif",
+        mt: 5,
+      }}
+    >
       <Box
         sx={{
           background: "#6D787D",
@@ -42,7 +48,7 @@ function Footer() {
             }}
           >
             <FooterRytLogo />
-            World's leading chain of hotels and homes
+            <FormattedMessage defaultMessage="World's leading chain of hotels and homes" />
           </Box>
         </Box>
 
