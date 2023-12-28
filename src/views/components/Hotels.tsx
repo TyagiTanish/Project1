@@ -36,7 +36,7 @@ function Hotels({ filteredData }: any) {
           height: "100vh",
           overflowY: "auto",
           // maxWidth: "60vw",
-          width: { sm: "65%", lg: "65%" },
+          width: { sm: "66%", lg: "55%" },
           padding: { sm: 0 },
         }}
       >
@@ -48,38 +48,39 @@ function Hotels({ filteredData }: any) {
                 // display: "stack",
                 // flexDirection: "row",
                 direction: "row",
-                padding: "10px",
+                padding: { sm: "5px", lg: "10px" },
                 border: "1px solid lightgrey",
                 borderRadius: "10px",
-                m: { sm: "5px", lg: 1 },
-                width: { sm: "420px", lg: "800px" },
+                m: { sm: "1px", lg: 1 },
+                width: { sm: "420px", lg: "910px" },
               }}
             >
               <Box sx={{ width: { sm: 100, lg: 300 } }}>
-                <img
-                  src={require(`./${item.src}`)}
-                  alt="hotel pic"
-                  style={{
-                    width: "14vh",
+                <Box
+                  component="img"
+                  sx={{
+                    width: { sm: "15vh", lg: "19vh" },
                     height: "15vh",
                     borderTopLeftRadius: "20px",
                     borderBottomLeftRadius: "20px",
                     marginTop: 2,
                   }}
+                  alt="The house from the offer."
+                  src={require(`./${item.src}`)}
                 />
               </Box>
               <Box
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: "20px",
-                  marginTop: "30px",
+                  marginLeft: { sm: "20px", lg: "-130px" },
+                  marginTop: { sm: "30px", lg: "20px" },
                 }}
               >
                 <Typography
                   sx={{
                     fontWeight: "bold",
-                    fontSize: { sm: "10px", lg: "20px" },
+                    fontSize: { sm: "12px", lg: "20px" },
                     opacity: 0.8,
                     width: { sm: "100px", lg: "250px" },
                   }}
@@ -90,7 +91,7 @@ function Hotels({ filteredData }: any) {
                   <Typography
                     sx={{
                       fontWeight: "bold",
-                      fontSize: { sm: "12px", lg: "15px" },
+                      fontSize: { sm: "12px", lg: "18px" },
                       opacity: 0.5,
                       marginTop: "10px",
                     }}
@@ -128,7 +129,7 @@ function Hotels({ filteredData }: any) {
               <Box
                 sx={{
                   // margin: "20px",
-                  marginLeft: { sm: "6px", lg: "50px" },
+                  marginLeft: { sm: "6px", lg: "150px" },
                   border: "1px solid lightgray",
                   width: { sm: "160px", lg: "310px" },
                   height: "85px",
