@@ -36,51 +36,65 @@ function MemberRegistrationPage() {
             <Typography
               sx={{
                 position: "absolute",
-          color: "white",
-          m: "12%",
-          width: "55%",
-          fontWeight: "bolder",
-          textAlign: "left",
-          ml:{xl:"12%",md:6}
+                color: "white",
+                m: { sm: "6%", md: "12%" },
+                width: "55%",
+                fontWeight: "bolder",
+                textAlign: "left",
+                ml: { xl: "12%", md: 6 },
               }}
             >
               {" "}
-              <Typography variant="h2"  sx={{fontSize:{xl:45,md:28},mt:{xl:0,md:15}}}>
+              <Typography
+                variant="h2"
+                sx={{
+                  fontSize: { xl: 45, md: 28, sm: 20 },
+                  mt: { xl: 0, md: 15, sm: 20 },
+                }}
+              >
                 There's a smarter way to OYO around
               </Typography>
-              <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11},mt:1,letterSpacing:1 }} >
+              <Typography
+                sx={{
+                  width: "77%",
+                  fontSize: { xl: 16, md: 11, sm: 9 },
+                  mt: 1,
+                  letterSpacing: 1,
+                }}
+              >
                 Sign up with phone number and get exclusive access to discounts
                 and savings on OYO stays and with our many travel partners.
               </Typography>
             </Typography>
-
             {/* {LogReg ? ( */}
-              {/* <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}> */}
-                {/* <SignUp setLogReg={setLogReg} /> */}
-              {/* </Box> */}
+            {/* <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}> */}
+            {/* <SignUp setLogReg={setLogReg} /> */}
+            {/* </Box> */}
             {/* ) : ( */}
-              {/* <> */}
-                {/* {" "} */}
-                {/* {verify ? ( */}
-                  {/* <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}> */}
-                    {/* <OtpVerification /> */}
-                    {/* <SignUpComp/> */}
-                    {/* <SignUp/> */}
-                  {/* </Box> */}
-                {/* ) : ( */}
-                  {/* <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}> */}
-                    {/* <OtpVerification /> */}``
-                    {/* <SignUpComp setVerify={setVerify} setLogReg={setLogReg} /> */}
-                    {/* <SignUp/> */}
-                  {/* </Box> */}
-                {/* )} */}
-              {/* </> */}
+            {/* <> */}
+            {/* {" "} */}
+            {/* {verify ? ( */}
+            {/* <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}> */}
+            {/* <OtpVerification /> */}
+            {/* <SignUpComp/> */}
+            {/* <SignUp/> */}
+            {/* </Box> */}
+            {/* ) : ( */}
+            {/* <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}> */}
+            {/* <OtpVerification /> */}``
+            {/* <SignUpComp setVerify={setVerify} setLogReg={setLogReg} /> */}
+            {/* <SignUp/> */}
+            {/* </Box> */}
+            {/* )} */}
+            {/* </> */}
             {/* )} */}
             {/* <Typography sx={{ width: "77%" }}> */}
-              {/* Sign up with phone number and get exclusive access to discounts */}
-              {/* and savings on OYO stays and with our many travel partners. */}
+            {/* Sign up with phone number and get exclusive access to discounts */}
+            {/* and savings on OYO stays and with our many travel partners. */}
             {/* </Typography> */}
-            <Box sx={{ml:{xl:'60vw',md:50}}} ><MemberRegister/></Box>
+            <Box sx={{ ml: { xl: "60vw", md: 50 } }}>
+              <MemberRegister />
+            </Box>
           </Box>
           <Footer />{" "}
         </>
@@ -92,4 +106,3 @@ function MemberRegistrationPage() {
 }
 
 export default MemberRegistrationPage;
-

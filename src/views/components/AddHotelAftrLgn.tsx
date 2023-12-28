@@ -18,6 +18,7 @@ import { useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
+import Footer from "./Footer";
 
 export default function AddHotelAftrLgn() {
   const navigate = useNavigate();
@@ -182,29 +183,42 @@ export default function AddHotelAftrLgn() {
           position: "absolute",
           color: "white",
           mt: "12%",
-        
+
           width: "55%",
           fontWeight: "bolder",
           textAlign: "left",
-          ml:{xl:"12%",md:6}
+          ml: { xl: "12%", md: 6, sm: 2 },
         }}
       >
         {" "}
-        <Typography variant="h2" sx={{fontSize:{xl:45,md:28},mt:{xl:0,md:15}}}>
+        <Typography
+          variant="h2"
+          sx={{
+            fontSize: { xl: 45, md: 28, sm: 20 },
+            mt: { xl: 0, md: 15, sm: 18 },
+          }}
+        >
           There's a smarter way to OYO around
         </Typography>
-        <Typography sx={{ width: "77%",fontSize:{xl:16,md:11},mt:1,letterSpacing:1 }} >
+        <Typography
+          sx={{
+            width: "77%",
+            fontSize: { xl: 16, md: 11, sm: 9 },
+            mt: 1,
+            letterSpacing: 1,
+          }}
+        >
           Sign up with phone number and get exclusive access to discounts and
           savings on OYO stays and with our many travel partners.
         </Typography>
       </Typography>
-      <Box sx={{position: "relative", ml: {xl:"70%",md:73} }}>
+      <Box sx={{ position: "relative", ml: { xl: "70%", md: 73, sm: 50 } }}>
         {/* {display && <Loaders />} */}
         <Card
           className="oyo-cell loginCard"
           sx={{
             border: "1px solid black",
-            width: {xl:470,md:400},
+            width: { xl: 470, md: 400, sm: 320 },
             // height: "40vh",
             mt: 20,
             b: "1px solid black",
@@ -215,13 +229,13 @@ export default function AddHotelAftrLgn() {
             sx={{
               backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
               margin: "0",
-              paddingLeft: {xl:"93px",md:"30px"},
+              paddingLeft: { xl: "93px", md: "30px", sm: 5 },
               paddingTop: "5px",
               paddingBottom: "5px",
               color: "white",
               fontWeight: "bold",
               width: "100%",
-              fontSize:{xl:17,md:16}
+              fontSize: { xl: 17, md: 16, sm: 13 },
             }}
             color="text.secondary"
             gutterBottom
@@ -234,7 +248,7 @@ export default function AddHotelAftrLgn() {
                 margin: 2,
                 fontWeight: "bold",
                 fontFamily: "Inter,sans-serif",
-                fontSize: {xl:"30px",md:"25px"},
+                fontSize: { xl: "30px", md: "25px", sm: 15 },
                 marginBottom: 1,
               }}
             >
@@ -247,7 +261,7 @@ export default function AddHotelAftrLgn() {
                 margin: 2,
                 fontWeight: "bold",
                 fontFamily: "Inter,sans-serif",
-                fontSize: {xl:"30px",md:"25px"},
+                fontSize: { xl: "30px", md: "25px", sm: 15 },
                 marginBottom: 1,
               }}
             >
@@ -260,7 +274,7 @@ export default function AddHotelAftrLgn() {
                 margin: 2,
                 fontWeight: "bold",
                 fontFamily: "Inter,sans-serif",
-                fontSize: {xl:"30px",md:"25px"},
+                fontSize: { xl: "30px", md: "25px", sm: 15 },
                 marginBottom: 1,
               }}
             >
@@ -273,7 +287,12 @@ export default function AddHotelAftrLgn() {
               {step === 0 ? (
                 <>
                   <Form>
-                    <Typography sx={{ fontWeight: "bold",fontSize:{xl:16,md:15} }}>
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: { xl: 16, md: 15, sm: 12 },
+                      }}
+                    >
                       Hotel name
                     </Typography>
                     <TextField
@@ -294,7 +313,7 @@ export default function AddHotelAftrLgn() {
                         width: "20vw",
                         height: "5vw",
                         // justifyTracks: "center",
-                        marginLeft: "-5rem",
+                        // marginLeft: "-5rem",
                       }}
                     >
                       <Typography {...getRootProps()}>
@@ -322,10 +341,12 @@ export default function AddHotelAftrLgn() {
                     </div>
                     {files.map((photo: any) => (
                       <Chip
-                      sx={{fontSize:{xl:"13px",md:"12px"},mt:1}}
+                        sx={{
+                          fontSize: { xl: "13px", md: "12px", sm: 10 },
+                          mt: 1,
+                        }}
                         label={photo.name}
                         onDelete={() => handleDelete(photo)}
-                        
                       ></Chip>
                     ))}
                     {error && (
@@ -338,7 +359,11 @@ export default function AddHotelAftrLgn() {
                         size="small"
                         variant="contained"
                         type="submit"
-                        sx={{ width: {xl:150,md:100}, mt: 3, fontSize: {xl:15,md:13} }}
+                        sx={{
+                          width: { xl: 150, md: 100, sm: 50 },
+                          mt: 3,
+                          fontSize: { xl: 15, md: 13, sm: 10 },
+                        }}
                         onClick={handleSubmit(onSubmit)}
                       >
                         Next
@@ -349,7 +374,11 @@ export default function AddHotelAftrLgn() {
                         variant="contained"
                         disabled
                         type="submit"
-                        sx={{ width: {xl:150,md:100}, mt: 3, fontSize: {xl:15,md:13} }}
+                        sx={{
+                          width: { xl: 150, md: 100, sm: 50 },
+                          mt: 3,
+                          fontSize: { xl: 15, md: 13, sm: 10 },
+                        }}
                         onClick={handleSubmit(onSubmit)}
                       >
                         Next
@@ -362,7 +391,12 @@ export default function AddHotelAftrLgn() {
                   <Form>
                     <Grid container spacing={2}>
                       <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:16,md:15}}}>
+                        <Typography
+                          sx={{
+                            fontWeight: "bold",
+                            fontSize: { xl: 16, md: 15, sm: 13 },
+                          }}
+                        >
                           City
                         </Typography>
                         <TextField
@@ -376,7 +410,12 @@ export default function AddHotelAftrLgn() {
                         </FormHelperText>
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:16,md:15}}}>
+                        <Typography
+                          sx={{
+                            fontWeight: "bold",
+                            fontSize: { xl: 16, md: 15, sm: 13 },
+                          }}
+                        >
                           State
                         </Typography>
                         <TextField
@@ -390,7 +429,12 @@ export default function AddHotelAftrLgn() {
                         </FormHelperText>
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:16,md:15}}}>
+                        <Typography
+                          sx={{
+                            fontWeight: "bold",
+                            fontSize: { xl: 16, md: 15, sm: 13 },
+                          }}
+                        >
                           Postal code
                         </Typography>
                         <TextField
@@ -404,7 +448,12 @@ export default function AddHotelAftrLgn() {
                         </FormHelperText>
                       </Grid>
                       <Grid item xs={12} sm={6}>
-                        <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:16,md:15}}}>
+                        <Typography
+                          sx={{
+                            fontWeight: "bold",
+                            fontSize: { xl: 16, md: 15, sm: 13 },
+                          }}
+                        >
                           Country
                         </Typography>
                         <TextField
@@ -431,14 +480,20 @@ export default function AddHotelAftrLgn() {
                       }}
                       onClick={handleStepBack}
                     >
-                      <ArrowBackIcon />
+                      <ArrowBackIcon
+                        sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                      />
                     </Button>
 
                     <Button
                       type="submit"
                       variant="contained"
                       onClick={handleSubmit(onSubmit)}
-                    sx={{ width: {xl:150,md:100}, mt: 3, fontSize: {xl:15,md:13} }}
+                      sx={{
+                        width: { xl: 150, md: 100, sm: 50 },
+                        mt: 3,
+                        fontSize: { xl: 15, md: 13, sm: 11 },
+                      }}
                     >
                       Next
                     </Button>
@@ -461,13 +516,19 @@ export default function AddHotelAftrLgn() {
                         }}
                         onClick={handleStepBack}
                       >
-                        <ArrowBackIcon />
+                        <ArrowBackIcon
+                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                        />
                       </Button>
                       <Button
                         size="small"
                         variant="contained"
                         type="submit"
-                      sx={{ width: {xl:150,md:100}, mt: 3, fontSize: {xl:15,md:13} }}
+                        sx={{
+                          width: { xl: 150, md: 100 },
+                          mt: 3,
+                          fontSize: { xl: 15, md: 13, sm: 11 },
+                        }}
                         // onClick={() => setStep(0)}
                         onClick={handleSubmit(onSubmit)}
                       >
@@ -479,10 +540,13 @@ export default function AddHotelAftrLgn() {
               ) : null}
             </Stack>
 
-            <Box sx={{ mt: 4 ,fontSize:{xl:15,md:13}}}>
+            <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
               To use Another Email for adding hotel{" "}
               <Button
-                sx={{ textTransform: "none" ,fontSize:{xl:15,md:13}}}
+                sx={{
+                  textTransform: "none",
+                  fontSize: { xl: 15, md: 13, sm: 10 },
+                }}
                 onClick={() => navigate("/memberRegister")}
               >
                 Click here...
@@ -490,6 +554,9 @@ export default function AddHotelAftrLgn() {
             </Box>
           </CardContent>
         </Card>
+      </Box>
+      <Box sx={{ mt: { sm: 30, md: 25, lg: 20 } }}>
+        <Footer />
       </Box>
     </Box>
   );
