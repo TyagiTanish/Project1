@@ -73,9 +73,7 @@ function Seachbar2(props: any) {
         <Box
           className="nearby"
           sx={{ marginTop: "-120px", marginLeft: "-60px" }}
-        >
-          {/* <Box></Box> */}
-        </Box>
+        ></Box>
         <TextField
           sx={{
             backgroundColor: "white",
@@ -108,7 +106,9 @@ function Seachbar2(props: any) {
           onChange={handleInputChange}
         />
 
-        <Typography sx={{ position: "relative", width: { sm: "250px" } }}>
+        <Typography
+          sx={{ position: "relative", width: { sm: "250px", lg: "300px" } }}
+        >
           <DateRangePickers />
         </Typography>
         <TextField
