@@ -15,13 +15,24 @@ function InfoHotelDetails({ item }: any) {
       sx={{
         border: "1px solid lightgrey",
         mb: 2,
-        width: "100%",
+        width: { sm: "95%", lg: "99%" },
         borderRadius: 5,
       }}
     >
-      <Box sx={{ fontWeight: 700, fontSize: 22, m: 2 }}>{item.name}</Box>
+      <Box sx={{ fontWeight: 700, fontSize: { sm: 12, lg: 20 }, m: 2 }}>
+        {item.name}
+      </Box>
 
-      <Box sx={{ pl: 4, pr: 4, pb: 4, textAlign: "justify", lineHeight: 2 }}>
+      <Box
+        sx={{
+          pl: { sm: 3, lg: 4 },
+          pr: { sm: 3, lg: 4 },
+          pb: { sm: 3, lg: 4 },
+          textAlign: "justify",
+          fontSize: { sm: 10, lg: 17 },
+          lineHeight: { sm: 1.3, lg: 2 },
+        }}
+      >
         Commanding a sweeping view of the Arabian Sea in India's commercial
         capital, The InterContinental Marine Drive is setting standards for
         personalised service for business and leisure travellers. The experience
@@ -34,63 +45,142 @@ function InfoHotelDetails({ item }: any) {
         time while on work. State-of-the-art business communication and meeting
         facilities further optimize time management.
       </Box>
-      <Box sx={{ fontWeight: 600, ml: 2, fontSize: 20 }}>Location</Box>
+      <Box sx={{ fontWeight: 600, ml: 2, fontSize: { sm: 12, lg: 20 } }}>
+        Location
+      </Box>
       <Box sx={{ m: 2 }}>
         <Map2 />
       </Box>
       <Box>
-        <Box sx={{ fontSize: 20, fontWeight: 600, ml: 2 }}>Top amenities</Box>
+        <Box sx={{ fontSize: { sm: 12, lg: 20 }, fontWeight: 600, ml: 2 }}>
+          Top amenities
+        </Box>
 
-        <Box sx={{ display: "flex", mt: 2 }}>
+        <Box
+          sx={{
+            display: "flex",
+            mt: 2,
+            fontSize: { sm: "small", lg: "large" },
+          }}
+        >
           <Box>
-            <WifiIcon sx={{ fontSize: "large", ml: 26.5 }} />
+            <WifiIcon
+              sx={{
+                fontSize: { sm: "small", lg: "large" },
+                ml: { sm: 9, lg: 20 },
+                mr: { sm: 0.5, lg: 1 },
+              }}
+            />
             Wifi in lobby
           </Box>
           <Box>
-            <NetworkWifiIcon sx={{ fontSize: "large", ml: 26 }} />
+            <NetworkWifiIcon
+              sx={{
+                fontSize: { sm: "small", lg: "large" },
+                ml: { sm: 4, lg: 25 },
+                mr: { sm: 0.5, lg: 1 },
+              }}
+            />
             Free WiFi
           </Box>
           <Box>
-            <PoolIcon sx={{ fontSize: "large", ml: 26.7 }} />
+            <PoolIcon
+              sx={{
+                fontSize: { sm: "small", lg: "large" },
+                ml: { sm: 4, lg: 24.5 },
+                mr: { sm: 0.5, lg: 1 },
+              }}
+            />
             Pool
           </Box>
         </Box>
-        <Box sx={{ display: "flex", mt: 2 }}>
-          <Box sx={{ ml: 26.5 }}>
-            <AirlineSeatReclineExtraIcon sx={{ fontSize: "large", mr: 1 }} />
+        <Box
+          sx={{
+            display: "flex",
+            mt: { sm: 1, lg: 2 },
+            fontSize: { sm: "small", lg: "large" },
+          }}
+        >
+          <Box sx={{ ml: { sm: 9, lg: 20.5 } }}>
+            <AirlineSeatReclineExtraIcon
+              sx={{
+                fontSize: { sm: "small", lg: "large" },
+                mr: { sm: 0.5, lg: 1 },
+              }}
+            />
             Spa
           </Box>
-          <Box sx={{ ml: 32.5 }}>
-            <LocalParkingIcon sx={{ fontSize: "large", mr: 1 }} />
+          <Box
+            sx={{
+              ml: { sm: 10, lg: 32.5 },
+              fontSize: { sm: "small", lg: "large" },
+            }}
+          >
+            <LocalParkingIcon
+              sx={{
+                fontSize: { sm: "small", lg: "large" },
+                mr: { sm: 0.5, lg: 1 },
+              }}
+            />
             Parking
           </Box>
-          <Box sx={{ ml: 26.7 }}>
-            <PetsIcon sx={{ fontSize: "large", mr: 1 }} />
+          <Box sx={{ ml: { sm: 5.3, lg: 26.7 } }}>
+            <PetsIcon
+              sx={{
+                fontSize: { sm: "small", lg: "large" },
+                mr: { sm: 0.5, lg: 1 },
+              }}
+            />
             Pets
           </Box>
         </Box>
-        <Box sx={{ display: "flex", mt: 2 }}>
-          <Box sx={{ ml: 26.5 }}>
-            <AcUnitIcon sx={{ fontSize: "large", mr: 1 }} />
+        <Box
+          sx={{
+            display: "flex",
+            mt: { sm: 1, lg: 2 },
+            fontSize: { sm: "small", lg: "large" },
+          }}
+        >
+          <Box sx={{ ml: { sm: 9, lg: 20.5 } }}>
+            <AcUnitIcon
+              sx={{
+                mr: { sm: 0.5, lg: 1 },
+                fontSize: { sm: "small", lg: "large" },
+              }}
+            />
             A/C
           </Box>
-          <Box sx={{ ml: 32.5 }}>
-            <RestaurantMenuIcon sx={{ fontSize: "large", mr: 1 }} />
+          <Box sx={{ ml: { sm: 10, lg: 32.5 } }}>
+            <RestaurantMenuIcon
+              sx={{
+                mr: { sm: 0.5, lg: 1 },
+                fontSize: { sm: "small", lg: "large" },
+              }}
+            />
             Restaurant
           </Box>
-          <Box sx={{ ml: 23.5 }}>
-            <WineBarIcon sx={{ fontSize: "large", mr: 1 }} />
+          <Box sx={{ ml: { sm: 3, lg: 23.5 } }}>
+            <WineBarIcon
+              sx={{
+                mr: { sm: 0.5, lg: 1 },
+                fontSize: { sm: "small", lg: "large" },
+              }}
+            />
             Hotel bar
           </Box>
         </Box>
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
-        <Box sx={{ mt: 3, mb: 3 }}>Arrival / Departure</Box>
-        <Box sx={{ mb: 1 }}>Check in: 15:00</Box>
-        <Box>Check out: 12:00</Box>
-        <Box sx={{ mt: 3, mb: 3 }}>Contact</Box>
-        <Box sx={{ mb: 1 }}>{item.name}</Box>
-        <Box sx={{ mb: 3 }}>
+        <Box sx={{ mt: 3, mb: { sm: 2, lg: 3 }, fontSize: { sm: 9, lg: 17 } }}>
+          Arrival / Departure
+        </Box>
+        <Box sx={{ mb: 1, fontSize: { sm: 9, lg: 15 } }}>Check in: 15:00</Box>
+        <Box sx={{ fontSize: { sm: 9, lg: 15 } }}>Check out: 12:00</Box>
+        <Box sx={{ mt: 3, mb: { sm: 2, lg: 3 }, fontSize: { sm: 9, lg: 17 } }}>
+          Contact
+        </Box>
+        <Box sx={{ mb: 1, fontSize: { sm: 9, lg: 15 } }}>{item.name}</Box>
+        <Box sx={{ mb: 3, fontSize: { sm: 9, lg: 15 } }}>
           Telephone: +91 2239879999 | Fax: +91 2239879600
         </Box>
       </Box>
