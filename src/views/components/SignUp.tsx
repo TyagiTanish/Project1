@@ -96,7 +96,9 @@ const FormSchema = Yup.object().shape({
       className="oyo-cell loginCard"
       sx={{
         border: "1px solid black",
-        width: {xl:470,md:400},
+        width: {xl:470,md:400,sm:380},
+        mt:{sm:20,md:0,xl:0},
+        ml:{sm:46,md:0,xl:0},
         // height: "40vh",
         b: "1px solid black",
       }}
@@ -113,9 +115,9 @@ const FormSchema = Yup.object().shape({
           // fontWeight: "bold",
           // width: "100%",
           minHeight: {xl:"30px",md:"20px"},
-            paddingTop:{xl:1,md:0.5},
-            paddingBottom:{md:0.5},
-            paddingLeft:{xl:"95px",md:"65px"},
+            paddingTop:{xl:1,md:0.5,sm:0.5},
+            paddingBottom:{md:0.5,sm:0.5},
+            paddingLeft:{xl:"95px",md:"65px",sm:'65px'},
             fontWeight: 700,
             color: "white",
             fontSize:{xl:"20px"}
@@ -130,7 +132,7 @@ const FormSchema = Yup.object().shape({
           margin: 2,
           fontWeight: "bold",
           fontFamily: "Inter,sans-serif",
-          fontSize: {xl:"30px",md:"25px"},
+          fontSize: {xl:"30px",md:"25px",sm:'25px'},
           marginBottom: 1,
         }}
       >
@@ -140,7 +142,7 @@ const FormSchema = Yup.object().shape({
       <CardContent>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Stack>
-            <Typography sx={{ fontWeight: "bold",fontSize:{xl:18,md:16} }}>Name</Typography>
+            <Typography sx={{ fontWeight: "bold",fontSize:{xl:18,md:16,sm:16} }}>Name</Typography>
             <TextField
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
@@ -149,14 +151,14 @@ const FormSchema = Yup.object().shape({
               {...register("name")}
             />
               <FormHelperText>{errors.name?.message}</FormHelperText>
-            <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:18,md:16}}}>Email</Typography>
+            <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:18,md:16,sm:16}}}>Email</Typography>
             <TextField
               sx={{ mb: 8, height: 2, border: "none" }}
               id="demo-helper-text-aligned"
               {...register("email")}
             />
             <FormHelperText>{errors.email?.message}</FormHelperText>
-            <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:18,md:16}}}>Phone No</Typography>
+            <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:18,md:16,sm:16}}}>Phone No</Typography>
             <TextField
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
@@ -165,7 +167,7 @@ const FormSchema = Yup.object().shape({
               {...register("phone")}
             />
               <FormHelperText>{errors.phone?.message}</FormHelperText>
-            <Typography sx={{ fontWeight: "bold",fontSize:{xl:18,md:16} }}>Password</Typography>
+            <Typography sx={{ fontWeight: "bold",fontSize:{xl:18,md:16,sm:16} }}>Password</Typography>
             <TextField
               // sx={{width:"400px"}}
               id="demo-helper-text-aligned"
@@ -190,7 +192,7 @@ const FormSchema = Yup.object().shape({
           </Button>
         </form>
       </CardContent>
-      <Box sx={{ display: "flex", width: 500, mt: 3, ml: {xl:4,md:4}, mb: 2 }}>
+      <Box sx={{ display: "flex", width: 500, mt: 3, ml: {xl:4,md:4,sm:4}, mb: 2 }}>
         <Typography sx={{ width: 200 }}> Already have an account?</Typography>
         <Button
           sx={{ mt: -1,ml:{xl:12,md:5}}}

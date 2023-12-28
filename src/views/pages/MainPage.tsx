@@ -41,14 +41,14 @@ function MainPage() {
                 fontWeight: "bolder",
                 textAlign: "left",
                 mt:30,
-                ml:{xl:"12%",md:6}
+                ml:{xl:"12%",md:6,sm:2}
               }}
             >
               {" "}
-              <Typography variant="h2" sx={{fontSize:{xl:45,md:28}}}>
+              <Typography variant="h2" sx={{fontSize:{xl:45,md:28,sm:26}}}>
                 There's a smarter way to OYO around
               </Typography>
-              <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11},mt:1,letterSpacing:1}}>
+              <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11,sm:11},mt:1,letterSpacing:1}}>
                 Sign up with phone number and get exclusive access to discounts
                 and savings on OYO stays and with our many travel partners.
               </Typography>
