@@ -73,7 +73,7 @@ function Hotels({ filteredData }: any) {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: { sm: "20px", lg: "-130px" },
+                  marginLeft: { sm: "25px", lg: "-130px" },
                   marginTop: { sm: "30px", lg: "20px" },
                 }}
               >
@@ -129,7 +129,7 @@ function Hotels({ filteredData }: any) {
               <Box
                 sx={{
                   // margin: "20px",
-                  marginLeft: { sm: "6px", lg: "150px" },
+                  marginLeft: { sm: "3px", lg: "150px" },
                   border: "1px solid lightgray",
                   width: { sm: "160px", lg: "310px" },
                   height: "85px",
