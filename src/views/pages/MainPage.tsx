@@ -40,33 +40,35 @@ function MainPage() {
                 width: "55%",
                 fontWeight: "bolder",
                 textAlign: "left",
+                mt:30,
+                ml:{xl:"12%",md:6}
               }}
             >
               {" "}
-              <Typography variant="h2">
+              <Typography variant="h2" sx={{fontSize:{xl:45,md:28}}}>
                 There's a smarter way to OYO around
               </Typography>
-              <Typography sx={{ width: "77%" }}>
+              <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11},mt:1,letterSpacing:1}}>
                 Sign up with phone number and get exclusive access to discounts
                 and savings on OYO stays and with our many travel partners.
               </Typography>
             </Typography>
 
             {LogReg ? (
-              <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+              <Box sx={{ml: {xl:"70%",md:72}, position: "absolute", mt: {xl:"10%", md:16} }}>
                 <SignUp setLogReg={setLogReg} />
               </Box>
             ) : (
               <>
                 {" "}
                 {verify ? (
-                  <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+                  <Box sx={{ ml: {xl:"70%",md:75}, position: "absolute", mt: {xl:"14%", md:25}}}>
                     <OtpVerification />
                     {/* <SignUpComp/> */}
                     {/* <SignUp/> */}
                   </Box>
                 ) : (
-                  <Box sx={{ ml: "70%", position: "absolute", mt: "10%" }}>
+                  <Box sx={{ ml: {xl:"70%",md:75}, position: "absolute", mt: {xl:"12%", md:25}}}>
                     {/* <OtpVerification /> */}``
                     <SignUpComp setVerify={setVerify} setLogReg={setLogReg} />
                     {/* <SignUp/> */}

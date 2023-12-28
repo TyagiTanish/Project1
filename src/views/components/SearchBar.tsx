@@ -98,7 +98,7 @@ function error() {
               bgcolor:'white',
               position:"relative",
               width: "30%",
-              ml: {xl:35,md:10},
+              ml: {xl:-1,md:0.5},
               height: "31%",
               mt: 5,
             }}
