@@ -22,39 +22,37 @@ export default function BasicCard() {
 
   return (
     <>
-      <Stack direction={"row"} justifyContent={"space-between"}>
+      <Stack direction={"row"} justifyContent={"space-between"} width={{lg:'97%'}}>
         <Logo />
         {user ? (
           <>
-            <Stack direction={"row"} spacing={2} >
-              <Stack direction={"row"} alignItems={"center"} spacing={1} >
-                <BusinessIcon sx={{ fontSize: "30px"}} />
+            <Stack direction={"row"} spacing={2}>
+              <Stack direction={"row"} alignItems={"center"} spacing={1}>
+                <BusinessIcon sx={{ fontSize: "30px" }} />
                 <Link
                   to="/AddHotel"
                   style={{
                     textDecoration: "none",
                     color: "black",
-                    fontWeight:'bold'
+                    fontWeight: "bold",
                   }}
                 >
                   {" "}
                   Add Hotel
                 </Link>
               </Stack>
-            <Stack spacing={3}
-              sx={{
-                alignItems: "center",
-                cursor: "pointer",
-               
-              }}
-              direction={"row"}
-            >
-              <CallIcon sx={{ mt: -0.5 }} /> 0124-6201611
-            </Stack>
+              <Stack
+                spacing={3}
+                sx={{
+                  alignItems: "center",
+                  cursor: "pointer",
+                }}
+                direction={"row"}
+              >
+                <CallIcon sx={{ mt: -0.5 }} /> 0124-6201611
+              </Stack>
 
-           
               <AccountMenu />
-         
             </Stack>
           </>
         ) : (
@@ -90,16 +88,19 @@ export default function BasicCard() {
       </Stack>
       <Box
         sx={{
-          width: "100%",
+          width: "98.2%",
           height: "42px",
           alignItems: "center",
           backgroundColor: "#f3f5f7",
           boxSizing: "border-box",
           marginTop: 0,
           padding: "2px 60px 0",
+        
         }}
       >
-        <Box className="headerMDD__mddListWrapper">
+        <Box
+          className="headerMDD__mddListWrapper"
+        >
           <Box
             className="abc"
             sx={{
@@ -266,7 +267,7 @@ export default function BasicCard() {
               className="xyz"
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
-            <Box className="drop">
+            <Box className="drop" sx={{ml:{sm:'-2%',lg:0}}} >
               <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
@@ -291,7 +292,7 @@ export default function BasicCard() {
               className="xyz"
               sx={{ marginTop: "8px", color: "lightgray" }}
             />
-            <Box className="drop">
+            <Box className="drop" sx={{ml:{sm:'-12%',lg:0}}} >
               <Link style={{ fontWeight: "bold" }} to="/hotels">
                 Popular Locations
               </Link>
