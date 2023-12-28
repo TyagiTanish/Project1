@@ -36,18 +36,19 @@ function MemberRegistrationPage() {
             <Typography
               sx={{
                 position: "absolute",
-                color: "white",
-                m: "12%",
-                width: "55%",
-                fontWeight: "bolder",
-                textAlign: "left",
+          color: "white",
+          m: "12%",
+          width: "55%",
+          fontWeight: "bolder",
+          textAlign: "left",
+          ml:{xl:"12%",md:6}
               }}
             >
               {" "}
-              <Typography variant="h2">
+              <Typography variant="h2"  sx={{fontSize:{xl:45,md:28},mt:{xl:0,md:15}}}>
                 There's a smarter way to OYO around
               </Typography>
-              <Typography sx={{ width: "77%" }}>
+              <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11},mt:1,letterSpacing:1 }} >
                 Sign up with phone number and get exclusive access to discounts
                 and savings on OYO stays and with our many travel partners.
               </Typography>
@@ -79,7 +80,7 @@ function MemberRegistrationPage() {
               {/* Sign up with phone number and get exclusive access to discounts */}
               {/* and savings on OYO stays and with our many travel partners. */}
             {/* </Typography> */}
-            <Box sx={{ml:'60vw'}} ><MemberRegister/></Box>
+            <Box sx={{ml:{xl:'60vw',md:50}}} ><MemberRegister/></Box>
           </Box>
           <Footer />{" "}
         </>

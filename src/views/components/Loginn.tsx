@@ -85,7 +85,7 @@ const dispatch = useDispatch();
         sx={{
           // height: "400px",
           maxHeight: "800px",
-          Width: "500px",
+          width:{xl:"500px",md:"380px"},
 
           fontFamily: "sans-serif",
           alignSelf: "flex-start",
@@ -96,11 +96,13 @@ const dispatch = useDispatch();
           sx={{
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-            minHeight: "30px",
-            paddingTop: 1,
-            paddingLeft: 6,
+            minHeight: {xl:"30px",md:"20px"},
+            paddingTop:{xl:1,md:0.5},
+            paddingBottom:{md:0.5},
+            paddingLeft:{xl:"95px",md:"65px"},
             fontWeight: 700,
             color: "white",
+            fontSize:{xl:"20px"}
           }}
         >
           Sign up & Get ₹500 OYO Money
@@ -110,21 +112,21 @@ const dispatch = useDispatch();
             paddingLeft: 3,
             paddingRight: 2,
             background: "white",
-            width: "450px",
+            width: {xl:"450px",md:"330px"},
           }}
         >
-          <Typography sx={{ fontSize: "32px", fontWeight: "700" }}>
+          <Typography sx={{ fontSize: {xl:"32px",md:"25px"}, fontWeight: "700" }}>
             Login
           </Typography>
-          <Typography sx={{ fontWeight: "700" }}>
+          <Typography sx={{ fontWeight: "700" ,fontSize:{xl:"16px",md:"16px"}}}>
             Please enter your email to continue
           </Typography>
           <form onSubmit={handleSubmit(Onsubmit)}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Box sx={{ fontWeight: "700", marginTop: 1 }}>email</Box>
+              <Box sx={{ fontWeight: "700", marginTop:3 ,fontSize:{xl:"16px",md:"16px"}}}>Email-</Box>
 
               <TextField
-                sx={{ fontWeight: "500", marginTop: 1 }}
+                sx={{ fontWeight: "500", marginTop: 0}}
                 {...register("email")}
               ></TextField>
               <FormHelperText sx={{ color: "red", m: 2 }}>
@@ -154,7 +156,7 @@ const dispatch = useDispatch();
                 Log In
               </Button>
             ) : (
-              <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
+              <Button type="submit" variant="contained" sx={{ marginTop: {xl:1,md:-2},fontSize:{xl:13,md:11},fontWeight:"500" }}>
                 Verify email
               </Button>
             )}
@@ -180,13 +182,13 @@ const dispatch = useDispatch();
           </Button> */}
           {/* </Box> */}
         </Box>
-        <Box sx={{ display: "flex", width: 500, mt: 8 }}>
-          <Typography sx={{ width: 200, ml: 9, mb: 2 }}>
+        <Box sx={{ display: "flex", width: {xl:500,md:400}, mt: 8 }}>
+          <Typography sx={{ width: 200, ml: {xl:5,md:2}, mb: 2 }}>
             {" "}
             Don't have an account?
           </Typography>
           <Button
-            sx={{ mt: -2 }}
+            sx={{ mt: -2,ml:{md:2,xl:10}}}
             onClick={() => {
               setLogReg(true);
             }}
