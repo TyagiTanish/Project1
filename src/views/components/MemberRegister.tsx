@@ -201,8 +201,10 @@ console.log(page)
     <>
       <Box
         sx={{
-          width: "420px",
-          m: 20,
+          width: {xl:"420px",md:400},
+          mt: 20,
+          ml:20,
+          mb:20,
           border: "1px solid lightgrey",
           padding: "5px",
           background:'white'
@@ -213,10 +215,12 @@ console.log(page)
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
             minHeight: "30px",
-            paddingTop: 1,
-            paddingLeft: 6,
+            paddingTop: {xl:1,md:1.2},
+            paddingLeft: 10,
             fontWeight: 700,
             color: "white",
+            fontSize:{xl:17,md:14}
+          
           }}
         >
           Sign up & Get ₹500 OYO Money
@@ -242,10 +246,10 @@ console.log(page)
             {page === 1 && (
               <Typography
                 sx={{
-                  width: "50vw",
-                  fontSize: 28,
+                  width: {xl:"50vw",md:"30vw"},
+                  fontSize: {xl:28,md:20},
                   fontWeight: "700",
-                  ml: 65,
+                  ml: {xl:65,md:2},
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -256,10 +260,10 @@ console.log(page)
             {page === 2 && (
               <Typography
                 sx={{
-                  width: "50vw",
-                  fontSize: 28,
+                  width: {xl:"50vw",md:"30vw"},
+                  fontSize: {xl:28,md:20},
                   fontWeight: "700",
-                  ml: 68,
+                  ml: {xl:65,md:2},
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -270,10 +274,10 @@ console.log(page)
             {page === 3 && (
               <Typography
                 sx={{
-                  width: "50vw",
-                  fontSize: 28,
+                  width: {xl:"50vw",md:"30vw"},
+                  fontSize: {xl:28,md:20},
                   fontWeight: "700",
-                  ml: 68,
+                  ml: {xl:65,md:2},
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -285,10 +289,10 @@ console.log(page)
               page === 4 && (
                 <Typography
                 sx={{
-                  width: "48vw",
-                  fontSize: 28,
+                width: {xl:"50vw",md:"30vw"},
+                  fontSize: {xl:28,md:20},
                   fontWeight: "700",
-                  ml: 75,
+                  ml: {xl:65,md:2},
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -300,10 +304,10 @@ console.log(page)
             {page === 5 && (
               <Typography
                 sx={{
-                  width: "48vw",
-                  fontSize: 28,
+                width: {xl:"50vw",md:"30vw"},
+                  fontSize: {xl:28,md:20},
                   fontWeight: "700",
-                  ml: 75,
+                  ml: {xl:65,md:2},
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -319,7 +323,7 @@ console.log(page)
                 >
                   <Grid container spacing={2} sx={{ ml: 1 }}>
                     <Grid item xs={12} sm={5}>
-                      <Typography>Name</Typography>
+                      <Typography sx={{fontSize:{xl:17,md:14}}}>Name</Typography>
                       <TextField
                         autoComplete="given-name"
                         required
@@ -331,14 +335,14 @@ console.log(page)
                       <FormHelperText>{errors?.name?.message}</FormHelperText>
                     </Grid>
                     <Grid item xs={12} sm={5}>
-                      <Typography>Phone No.</Typography>
+                      <Typography  sx={{fontSize:{xl:17,md:14}}}>Phone No.</Typography>
                       <TextField
                         variant="outlined"
                         {...register("phone")}
                       ></TextField>
                     </Grid>
                     <Grid item xs={12} sm={10}>
-                      <Typography>Email Address</Typography>
+                      <Typography  sx={{fontSize:{xl:17,md:14}}}>Email Address</Typography>
                       <TextField
                         required
                         fullWidth
@@ -350,7 +354,7 @@ console.log(page)
                       <FormHelperText>{errors?.email?.message}</FormHelperText>
                     </Grid>
                     <Grid item xs={12} sm={10}>
-                      <Typography>Hotel Name</Typography>
+                      <Typography  sx={{fontSize:{xl:17,md:14}}}>Hotel Name</Typography>
                       <TextField
                         required
                         fullWidth
@@ -368,9 +372,10 @@ console.log(page)
                     <ArrowBackIcon />
                   </IconButton>
                   <Button
-                    variant="contained"
-                    sx={{ width: "7vw" }}
-                    type="submit"
+                  size="small"
+                  variant="contained"
+                  type="submit"
+                  sx={{ width: {xl:150,md:100},  fontSize: {xl:15,md:13} ,mt:0}}
                     onClick={handleSubmit(Submit)}
                   >
                     Next
@@ -382,7 +387,7 @@ console.log(page)
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
-                    <Typography>City</Typography>
+                    <Typography  sx={{fontSize:{xl:17,md:14}}}>City</Typography>
                     <TextField
                       autoComplete="given-name"
                       required
@@ -393,7 +398,7 @@ console.log(page)
                     <FormHelperText>{errors?.city?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Typography>State</Typography>
+                    <Typography  sx={{fontSize:{xl:17,md:14}}}>State</Typography>
                     <TextField
                       variant="outlined"
                       {...register("state")}
@@ -401,12 +406,12 @@ console.log(page)
                     <FormHelperText>{errors?.state?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Typography>Pin Code </Typography>
+                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Pin Code </Typography>
                     <TextField required fullWidth {...register("pinCode")} />
                     <FormHelperText>{errors?.pinCode?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Typography>Country</Typography>
+                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Country</Typography>
                     <TextField required fullWidth {...register("country")} />
                     <FormHelperText>{errors?.country?.message}</FormHelperText>
                   </Grid>
@@ -440,9 +445,10 @@ console.log(page)
                     <ArrowBackIcon />
                   </IconButton>
                   <Button
-                    variant="contained"
-                    sx={{ height: "2vw", width: "7vw" }}
-                    type="submit"
+                  size="small"
+                  variant="contained"
+                  type="submit"
+                  sx={{ width: {xl:150,md:100}, mt: 0, fontSize: {xl:15,md:13} }}
                     onClick={handleNextClick}
                   >
                     Next
@@ -455,12 +461,12 @@ console.log(page)
               <>
                 <Form>
                   <Grid item xs={12}>
-                    <Typography>Password</Typography>
+                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Password</Typography>
                     <TextField required fullWidth {...register("password")} />
                     <FormHelperText>{errors?.password?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography>Confirm Password</Typography>
+                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Confirm Password</Typography>
                     <TextField required fullWidth />
                   </Grid>
                   <IconButton
@@ -470,9 +476,10 @@ console.log(page)
                     <ArrowBackIcon />
                   </IconButton>
                   <Button
+                    size="small"
                     variant="contained"
-                    sx={{ width: "7vw" }}
                     type="submit"
+                    sx={{ width: {xl:150,md:100}, mt: 0, fontSize: {xl:15,md:13} }}
                     onClick={handleSubmit(Submit)}
                   >
                     Submit
@@ -548,6 +555,7 @@ console.log(page)
                 </div>
                 {files.map((photo: any) => (
                   <Chip
+                  sx={{fontSize:{xl:"13px",md:"12px"},mt:1}}
                     label={photo.name}
                     onDelete={() => handleDelete(photo)}
                   ></Chip>
@@ -563,8 +571,10 @@ console.log(page)
 
                   {maxPhoto && (
                     <Button
-                      variant="contained"
-                      sx={{ mt: 5, height: "2vw", width: "7vw" }}
+                    size="small"
+                    variant="contained"
+                    type="submit"
+                    sx={{ width: {xl:150,md:100}, mt: 6, fontSize: {xl:15,md:13} ,height: "3vw"}}
                       onClick={handleNextClick}
                     >
                       Next
