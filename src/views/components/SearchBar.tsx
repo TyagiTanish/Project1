@@ -57,11 +57,12 @@ function error() {
       <Box
         sx={{
           background: `linear-gradient(135.46deg,#d11450,#df293a)`,
-          width: "100%",
+          width: "98.8%",
           height: 250,
           display:"flex",
           justifyContent:'center',
           padding: "10px 0 32px",
+          
         }}
       >
         <Stack direction={'row'} justifyContent={"space-evenly"} position={"absolute"} ml={20} width={{lg:"90%",sm:'79%'}} >
@@ -82,11 +83,12 @@ function error() {
             justifySelf:'center',
             fontSize:{lg:"32px",sm:'24px'},
             textAlign:'center',
+            
           }}
         >
           Over 157,000 hotels and homes across 35 countries
         </Box>
-        <Stack sx={{ mt:7,width:'100%',justifyContent:'center'}} direction={"row"} >
+        <Stack sx={{ mt:7,width:'100%',justifyContent:'center',}} direction={"row"} >
           <TextField
             sx={{
               bgcolor:'white',

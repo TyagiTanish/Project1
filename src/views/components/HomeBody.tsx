@@ -3,15 +3,15 @@ import React from "react";
 
 function HomeBody() {
   return (
-    <Box>
-      <Box sx={{ ml: "8%", mt: "5rem" }}>
+    <Box sx={{width:'98.8%'}} >
+      <Box sx={{ ml: "8%", mt: "5rem"}}>
         <img
           src="https://assets.oyoroomscdn.com/cmsMedia/f0be8dc3-e384-40b3-89f9-a0a0109159ce.jpg"
           alt="OYO"
-          width={"90%"}
+          width={"100%"}
         />
       </Box>
-      <Box sx={{ ml: "8%", mt: "5rem" }}>
+      <Box sx={{ ml: "8%", mt: "5rem"}}>
         <img
           src="https://assets.oyoroomscdn.com/cmsMedia/ac15627f-c423-4383-a43b-1402ef8c3a73.png"
           alt="Oyo"
