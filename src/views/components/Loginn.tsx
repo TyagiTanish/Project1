@@ -86,7 +86,8 @@ const dispatch = useDispatch();
           // height: "400px",
           maxHeight: "800px",
           width:{xl:"500px",md:"380px"},
-
+          ml:{sm:50,xl:0,md:0},
+          mt:{sm:25,xl:0,md:0},
           fontFamily: "sans-serif",
           alignSelf: "flex-start",
           backgroundColor: "white",
@@ -97,9 +98,9 @@ const dispatch = useDispatch();
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
             minHeight: {xl:"30px",md:"20px"},
-            paddingTop:{xl:1,md:0.5},
-            paddingBottom:{md:0.5},
-            paddingLeft:{xl:"95px",md:"65px"},
+            paddingTop:{xl:1,md:0.5,sm:0.5},
+            paddingBottom:{md:0.5,sm:0.5},
+            paddingLeft:{xl:"95px",md:"65px",sm:'50px'},
             fontWeight: 700,
             color: "white",
             fontSize:{xl:"20px"}
@@ -112,13 +113,13 @@ const dispatch = useDispatch();
             paddingLeft: 3,
             paddingRight: 2,
             background: "white",
-            width: {xl:"450px",md:"330px"},
+            width: {xl:"450px",md:"330px",height:'200px'},
           }}
         >
-          <Typography sx={{ fontSize: {xl:"32px",md:"25px"}, fontWeight: "700" }}>
+          <Typography sx={{ fontSize: {xl:"32px",md:"25px",sm:'25px'}, fontWeight: "700",ml:{sm:-1,md:-1,xl:0} }}>
             Login
           </Typography>
-          <Typography sx={{ fontWeight: "700" ,fontSize:{xl:"16px",md:"16px"}}}>
+          <Typography sx={{ fontWeight: "700" ,fontSize:{xl:"16px",md:"16px",sm:'16px'},mt:{sm:2}}}>
             Please enter your email to continue
           </Typography>
           <form onSubmit={handleSubmit(Onsubmit)}>
@@ -183,12 +184,12 @@ const dispatch = useDispatch();
           {/* </Box> */}
         </Box>
         <Box sx={{ display: "flex", width: {xl:500,md:400}, mt: 8 }}>
-          <Typography sx={{ width: 200, ml: {xl:5,md:2}, mb: 2 }}>
+          <Typography sx={{ width: 200, ml: {xl:5,md:2,sm:2}, mb: 2,mt:2 }}>
             {" "}
             Don't have an account?
           </Typography>
           <Button
-            sx={{ mt: -2,ml:{md:2,xl:10}}}
+            sx={{ mt: -.5,ml:{md:2,xl:10}}}
             onClick={() => {
               setLogReg(true);
             }}
