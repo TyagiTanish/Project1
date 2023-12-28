@@ -61,6 +61,10 @@
   text-decoration: none;
   margin-bottom: 10px;
 }
+.linkStyle:hover{
+  text-decoration: underline;
+  transition: 0.7sec;
+}
 .css-ahj2mt-MuiTypography-root {
   margin: 0;
   font-family: "Roboto","Helvetica","Arial",sans-serif;
