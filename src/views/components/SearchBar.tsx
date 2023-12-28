@@ -77,7 +77,6 @@ function error() {
           sx={{
             color: "white",
             fontWeight: "800",
-            ml: {xl:63,md:15},
             position: "absolute",
             mt: 7,
             justifySelf:'center',
