@@ -48,19 +48,19 @@ function Hotels({ filteredData }: any) {
                 // display: "stack",
                 // flexDirection: "row",
                 direction: "row",
-                padding: { sm: "5px", lg: "10px" },
+                padding: { sm: "5px", lg: "10px" ,md:"9px"},
                 border: "1px solid lightgrey",
                 borderRadius: "10px",
                 m: { sm: "1px", lg: 1 },
-                width: { sm: "420px", lg: "910px" },
+                width: { sm: "420px", lg: "910px" , md:"570px"},
               }}
             >
               <Box sx={{ width: { sm: 100, lg: 300 } }}>
                 <Box
                   component="img"
                   sx={{
-                    width: { sm: "15vh", lg: "19vh" },
-                    height: "15vh",
+                    width: { sm: "15vh", lg: "19vh",md:"140px" },
+                    height: {lg:"15vh", sm:"15vh", md:"20vh" },
                     borderTopLeftRadius: "20px",
                     borderBottomLeftRadius: "20px",
                     marginTop: 2,
@@ -73,16 +73,16 @@ function Hotels({ filteredData }: any) {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: { sm: "25px", lg: "-130px" },
-                  marginTop: { sm: "30px", lg: "20px" },
+                  marginLeft: { sm: "25px", xl:"-90px",md:"55px" },
+                  marginTop: { sm: "30px", xl: "20px" },
                 }}
               >
                 <Typography
                   sx={{
                     fontWeight: "bold",
-                    fontSize: { sm: "12px", lg: "20px" },
+                    fontSize: { sm: "12px", lg: "20px" ,md:"18px"},
                     opacity: 0.8,
-                    width: { sm: "100px", lg: "250px" },
+                    width: { sm: "100px", lg: "200px", md:"180px"},
                   }}
                 >
                   {item.name}
@@ -91,7 +91,7 @@ function Hotels({ filteredData }: any) {
                   <Typography
                     sx={{
                       fontWeight: "bold",
-                      fontSize: { sm: "12px", lg: "18px" },
+                      fontSize: { sm: "12px", lg: "18px",md:"14px" },
                       opacity: 0.5,
                       marginTop: "10px",
                     }}
@@ -103,8 +103,8 @@ function Hotels({ filteredData }: any) {
                       color: "grey",
                       ml: { sm: 0, lg: 12 },
                       mt: { sm: "6px" },
-                      fontSize: { sm: 8, lg: 10 },
-                      width: { sm: "85px", lg: 100 },
+                      fontSize: { sm: 8, lg: 10,md:10 },
+                      width: { sm: "85px", lg: 100 ,md:100},
                     }}
                     onClick={() => {
                       handleClick(i);
@@ -129,27 +129,31 @@ function Hotels({ filteredData }: any) {
               <Box
                 sx={{
                   // margin: "20px",
-                  marginLeft: { sm: "3px", lg: "150px" },
+                  marginLeft: { sm: "3px", lg: "110px", md:"40px" },
                   border: "1px solid lightgray",
-                  width: { sm: "160px", lg: "310px" },
+                  width: { sm: "160px", lg: "310px" ,md:"410px"},
                   height: "85px",
                   borderRadius: "20px",
-                  backgroundColor: "rgba(241,248,234)",
-                  padding: { sm: 1, lg: 2 },
+                  // backgroundColor: "rgba(241,248,234)",
+                  padding: { sm: 1, lg: 2 ,md:1},
                   display: "flex",
                   flexDirection: "column",
                 }}
               >
                 <Box
                   sx={{
-                    width: { sm: "60px", lg: "90px" },
+                    width: { sm: "60px", lg: "90px",md:"80px" },
                     border: "1px solid red",
-                    ml: { sm: 10, lg: 22 },
+                    ml: { sm: 10, lg: 22,md:9 },
                     height: { sm: "5px", lg: "25px" },
                     borderRadius: "15px",
                     color: "red",
-                    fontSize: { sm: "7px", lg: "10px" },
-                    padding: 1,
+                    fontSize: { sm: "7px", lg: "10px", md:"9px" },
+                  
+                   pt:{md:0.75},
+                   pr:{md:1},
+                   pb:{md:1.3},
+                   pl:{md:1.3},
                     fontWeight: "bold",
                   }}
                 >
@@ -167,13 +171,13 @@ function Hotels({ filteredData }: any) {
                 >
                   <DoneIcon
                     sx={{
-                      fontSize: { sm: "12px", lg: "15px" },
+                      fontSize: { sm: "12px", lg: "15px" ,md:"14px"},
                       fontWeight: "bold",
                     }}
                   />{" "}
                   <Typography
                     sx={{
-                      fontSize: { sm: "10px", lg: "12px" },
+                      fontSize: { sm: "10px", lg: "12px",md:"12px" },
                       fontWeight: "bold",
                     }}
                   >
@@ -191,7 +195,7 @@ function Hotels({ filteredData }: any) {
                   <Typography
                     sx={{
                       fontWeight: "bold",
-                      fontSize: { sm: "14px", lg: "18px" },
+                      fontSize: { sm: "14px", lg: "18px",md:"15px" },
                       opacity: 0.7,
                     }}
                   >
@@ -201,23 +205,25 @@ function Hotels({ filteredData }: any) {
                     {" "}
                     <Button
                       sx={{
-                        width: { sm: "80px", lg: "130px" },
+                        width: { sm: "80px", lg: "130px" ,md:"90px"},
                         backgroundColor: "#D4164B",
-                        height: { sm: "20px", lg: "30px" },
+                        height: { sm: "20px", lg: "30px" ,md:"25px"},
                         color: "white",
                         fontWeight: "bold",
                         marginLeft: { sm: "10px", lg: "90px" },
                         marginTop: "-9px",
                         textTransform: "none",
-                        fontSize: { sm: "10px", lg: 20 },
+                        fontSize: { sm: "10px", lg: 20 ,md:12},
+                                              
                       }}
                       // className="btn2"
                     >
                       View Deal{" "}
                       <Box
                         sx={{
-                          width: { sm: "3px", lg: "5px" },
-                          mt: { sm: "5px", lg: 1.3 },
+                          width: { sm: "3px", lg: "5px" , md:"4px"},
+                          mt: { sm: "5px", lg: 1.3},
+                          // ml:{md:-0.5}
                         }}
                       >
                         {" "}
