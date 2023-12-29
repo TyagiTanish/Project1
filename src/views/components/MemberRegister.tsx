@@ -54,7 +54,6 @@ export default function MemberRegister() {
     useDropzone();
   React.useEffect(() => {
     if (acceptedFiles.length > 1) {
-     
       setError("Only One file can be selected");
     } else {
       setfile(acceptedFiles);
@@ -62,14 +61,13 @@ export default function MemberRegister() {
       setError("");
     }
   }, [acceptedFiles]);
-React.useEffect(()=>{
-if(files.length > 0){
-setMaxPhoto(true)
-}else{
-  setMaxPhoto(false)
-}
-},[files])
-
+  React.useEffect(() => {
+    if (files.length > 0) {
+      setMaxPhoto(true);
+    } else {
+      setMaxPhoto(false);
+    }
+  }, [files]);
 
   var FormSchema: any;
   page === 2 &&
@@ -105,7 +103,7 @@ setMaxPhoto(true)
         .email("invalid email !")
         .required("Email is Required"),
       phone: Yup.string().required("Phone number is required"),
-      hotelName:Yup.string().required("Hotel Name is Required"),
+      hotelName: Yup.string().required("Hotel Name is Required"),
     }));
 
   page === 5 &&
@@ -133,7 +131,7 @@ setMaxPhoto(true)
     state: string;
     city: string;
     phone: string;
-    hotelName:string;
+    hotelName: string;
   }
 
   const {
@@ -163,30 +161,30 @@ setMaxPhoto(true)
     }
   };
 
-  const Submit = async (detail: any) => { 
+  const Submit = async (detail: any) => {
     if (page === 5) {
       detail.latitude = location.latitude;
       detail.longitude = location.longitude;
       const formdata = new FormData();
-      formdata.append("files",files[0]);
-      formdata.set("name",detail.name);
-      formdata.set("phone",detail.phone);
-      formdata.set("email",detail.email);
-      formdata.set("latitude",detail.latitude);
-      formdata.set("longitude",detail.longitude);
-      formdata.set("pinCode",detail.pinCode);
-      formdata.set("state",detail.state);
-      formdata.set("password",detail.password);
-      formdata.set("country",detail.country);
-      formdata.set("city",detail.city);
-      formdata.set('hotelName',detail.hotelName)
+      formdata.append("files", files[0]);
+      formdata.set("name", detail.name);
+      formdata.set("phone", detail.phone);
+      formdata.set("email", detail.email);
+      formdata.set("latitude", detail.latitude);
+      formdata.set("longitude", detail.longitude);
+      formdata.set("pinCode", detail.pinCode);
+      formdata.set("state", detail.state);
+      formdata.set("password", detail.password);
+      formdata.set("country", detail.country);
+      formdata.set("city", detail.city);
+      formdata.set("hotelName", detail.hotelName);
       await request.post("/registerMember", formdata);
     } else {
       handleNextClick();
     }
   };
 
-console.log(page)
+  console.log(page);
 
   const handleDelete = (photo: any) => {
     setfile((oldvalue: any) => {
@@ -201,13 +199,13 @@ console.log(page)
     <>
       <Box
         sx={{
-          width: {xl:"420px",md:400},
-          mt: 20,
-          ml:20,
-          mb:20,
+          width: { xl: "420px", md: 400, sm: 300 },
+          mt: { sm: 15, md: 20 },
+          ml: { sm: 55, md: 20 },
+          mb: 20,
           border: "1px solid lightgrey",
           padding: "5px",
-          background:'white'
+          background: "white",
         }}
       >
         <Box
@@ -215,12 +213,11 @@ console.log(page)
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
             minHeight: "30px",
-            paddingTop: {xl:1,md:1.2},
-            paddingLeft: 10,
+            paddingTop: { xl: 1, md: 1.2, sm: 1 },
+            paddingLeft: { sm: 6, md: 10 },
             fontWeight: 700,
             color: "white",
-            fontSize:{xl:17,md:14}
-          
+            fontSize: { xl: 17, md: 14, sm: 13 },
           }}
         >
           Sign up & Get ₹500 OYO Money
@@ -237,7 +234,7 @@ console.log(page)
           {/* <CssBaseline /> */}
           <Box
             sx={{
-              marginTop: 5,
+              marginTop: { sm: 1, md: 5 },
               display: "flex",
               flexDirection: "column",
               alignItems: "center",
@@ -246,10 +243,10 @@ console.log(page)
             {page === 1 && (
               <Typography
                 sx={{
-                  width: {xl:"50vw",md:"30vw"},
-                  fontSize: {xl:28,md:20},
+                  width: { xl: "50vw", md: "30vw" },
+                  fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: {xl:65,md:2},
+                  ml: { xl: 65, md: 2 },
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -260,10 +257,10 @@ console.log(page)
             {page === 2 && (
               <Typography
                 sx={{
-                  width: {xl:"50vw",md:"30vw"},
-                  fontSize: {xl:28,md:20},
+                  width: { xl: "50vw", md: "30vw" },
+                  fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: {xl:65,md:2},
+                  ml: { xl: 65, md: 2 },
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -274,10 +271,10 @@ console.log(page)
             {page === 3 && (
               <Typography
                 sx={{
-                  width: {xl:"50vw",md:"30vw"},
-                  fontSize: {xl:28,md:20},
+                  width: { xl: "50vw", md: "30vw" },
+                  fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: {xl:65,md:2},
+                  ml: { xl: 65, md: 2 },
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -285,29 +282,27 @@ console.log(page)
                 Pin Your Location On Map....
               </Typography>
             )}
-            {
-              page === 4 && (
-                <Typography
+            {page === 4 && (
+              <Typography
                 sx={{
-                width: {xl:"50vw",md:"30vw"},
-                  fontSize: {xl:28,md:20},
+                  width: { xl: "50vw", md: "30vw" },
+                  fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: {xl:65,md:2},
+                  ml: { xl: 65, md: 2 },
                   mb: 2,
                   opacity: 0.7,
                 }}
               >
-               Choose a Photo....
+                Choose a Photo....
               </Typography>
-              )
-            }
+            )}
             {page === 5 && (
               <Typography
                 sx={{
-                width: {xl:"50vw",md:"30vw"},
-                  fontSize: {xl:28,md:20},
+                  width: { xl: "50vw", md: "30vw" },
+                  fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: {xl:65,md:2},
+                  ml: { xl: 65, md: 2 },
                   mb: 2,
                   opacity: 0.7,
                 }}
@@ -319,11 +314,19 @@ console.log(page)
             {page === 1 && (
               <>
                 <Form
+
                   style={{ marginTop: 3, textAlign: "left", }}
+
                 >
                   <Grid container spacing={2} sx={{ ml: 1 }}>
                     <Grid item xs={12} sm={5}>
-                      <Typography sx={{fontSize:{xl:17,md:14}}}>Name</Typography>
+                      <Typography
+                        sx={{
+                          fontSize: { xl: 17, md: 14, sm: 13 },
+                        }}
+                      >
+                        Name
+                      </Typography>
                       <TextField
                         autoComplete="given-name"
                         required
@@ -335,14 +338,18 @@ console.log(page)
                       <FormHelperText>{errors?.name?.message}</FormHelperText>
                     </Grid>
                     <Grid item xs={12} sm={5}>
-                      <Typography  sx={{fontSize:{xl:17,md:14}}}>Phone No.</Typography>
+                      <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                        Phone No.
+                      </Typography>
                       <TextField
                         variant="outlined"
                         {...register("phone")}
                       ></TextField>
                     </Grid>
                     <Grid item xs={12} sm={10}>
-                      <Typography  sx={{fontSize:{xl:17,md:14}}}>Email Address</Typography>
+                      <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                        Email Address
+                      </Typography>
                       <TextField
                         required
                         fullWidth
@@ -354,28 +361,42 @@ console.log(page)
                       <FormHelperText>{errors?.email?.message}</FormHelperText>
                     </Grid>
                     <Grid item xs={12} sm={10}>
-                      <Typography  sx={{fontSize:{xl:17,md:14}}}>Hotel Name</Typography>
+                      <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                        Hotel Name
+                      </Typography>
                       <TextField
                         required
                         fullWidth
                         {...register("hotelName")}
                         // onChange={(e: any) => setEmail(e.target.value)}
                       />
-                      <FormHelperText>{errors?.hotelName?.message}</FormHelperText>
+                      <FormHelperText>
+                        {errors?.hotelName?.message}
+                      </FormHelperText>
                     </Grid>
                   </Grid>
                   <IconButton
-                    sx={{ borderRadius: "50px", border: "1px solid", m: 5 }}
+                    sx={{
+                      borderRadius: "50px",
+                      border: "1px solid",
+                      m: { md: 5, sm: 2 },
+                    }}
                     // onClick={() => setPage((prev) => prev - 1)}
                     disabled
                   >
-                    <ArrowBackIcon />
+                    <ArrowBackIcon
+                      sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                    />
                   </IconButton>
                   <Button
-                  size="small"
-                  variant="contained"
-                  type="submit"
-                  sx={{ width: {xl:150,md:100},  fontSize: {xl:15,md:13} ,mt:0}}
+                    size="small"
+                    variant="contained"
+                    type="submit"
+                    sx={{
+                      width: { xl: 150, md: 100, sm: 50 },
+                      fontSize: { xl: 15, md: 13, sm: 12 },
+                      mt: 0,
+                    }}
                     onClick={handleSubmit(Submit)}
                   >
                     Next
@@ -387,7 +408,9 @@ console.log(page)
               <Form>
                 <Grid container spacing={2}>
                   <Grid item xs={12} sm={6}>
-                    <Typography  sx={{fontSize:{xl:17,md:14}}}>City</Typography>
+                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                      City
+                    </Typography>
                     <TextField
                       autoComplete="given-name"
                       required
@@ -398,7 +421,9 @@ console.log(page)
                     <FormHelperText>{errors?.city?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Typography  sx={{fontSize:{xl:17,md:14}}}>State</Typography>
+                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                      State
+                    </Typography>
                     <TextField
                       variant="outlined"
                       {...register("state")}
@@ -406,25 +431,39 @@ console.log(page)
                     <FormHelperText>{errors?.state?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Pin Code </Typography>
+                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                      Pin Code{" "}
+                    </Typography>
                     <TextField required fullWidth {...register("pinCode")} />
                     <FormHelperText>{errors?.pinCode?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12} sm={6}>
-                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Country</Typography>
+                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                      Country
+                    </Typography>
                     <TextField required fullWidth {...register("country")} />
                     <FormHelperText>{errors?.country?.message}</FormHelperText>
                   </Grid>
                 </Grid>
                 <IconButton
-                  sx={{ borderRadius: "50px", border: "1px solid", m: 5 }}
+                  sx={{
+                    borderRadius: "50px",
+                    border: "1px solid",
+                    m: { md: 5, sm: 2 },
+                  }}
                   onClick={() => setPage((prev) => prev - 1)}
                 >
-                  <ArrowBackIcon />
+                  <ArrowBackIcon
+                    sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                  />
                 </IconButton>
                 <Button
                   variant="contained"
-                  sx={{ width: "7vw" }}
+                  sx={{
+                    // width: "7vw"
+                    width: { xl: 150, md: 100, sm: 50 },
+                    fontSize: { xl: 15, md: 13, sm: 12 },
+                  }}
                   type="submit"
                   onClick={handleSubmit(Submit)}
                 >
@@ -439,16 +478,26 @@ console.log(page)
                 </Typography>
                 <Stack direction={"row"} sx={{ mr: 2, alignItems: "center" }}>
                   <IconButton
-                    sx={{ borderRadius: "50px", border: "1px solid", m: 5 }}
+                    sx={{
+                      borderRadius: "50px",
+                      border: "1px solid",
+                      m: { md: 5, sm: 2 },
+                    }}
                     onClick={() => setPage((prev) => prev - 1)}
                   >
-                    <ArrowBackIcon />
+                    <ArrowBackIcon
+                      sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                    />
                   </IconButton>
                   <Button
-                  size="small"
-                  variant="contained"
-                  type="submit"
-                  sx={{ width: {xl:150,md:100}, mt: 0, fontSize: {xl:15,md:13} }}
+                    size="small"
+                    variant="contained"
+                    type="submit"
+                    sx={{
+                      width: { xl: 150, md: 100, sm: 50 },
+                      mt: 0,
+                      fontSize: { xl: 15, md: 13, sm: 12 },
+                    }}
                     onClick={handleNextClick}
                   >
                     Next
@@ -461,25 +510,39 @@ console.log(page)
               <>
                 <Form>
                   <Grid item xs={12}>
-                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Password</Typography>
+                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
+                      Password
+                    </Typography>
                     <TextField required fullWidth {...register("password")} />
                     <FormHelperText>{errors?.password?.message}</FormHelperText>
                   </Grid>
                   <Grid item xs={12}>
-                    <Typography  sx={{fontSize:{xl:17,md:14}}}>Confirm Password</Typography>
+                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
+                      Confirm Password
+                    </Typography>
                     <TextField required fullWidth />
                   </Grid>
                   <IconButton
-                    sx={{ borderRadius: "50px", border: "1px solid", m: 5 }}
+                    sx={{
+                      borderRadius: "50px",
+                      border: "1px solid",
+                      m: { md: 5, sm: 2 },
+                    }}
                     onClick={() => setPage((prev) => prev - 1)}
                   >
-                    <ArrowBackIcon />
+                    <ArrowBackIcon
+                      sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                    />
                   </IconButton>
                   <Button
                     size="small"
                     variant="contained"
                     type="submit"
-                    sx={{ width: {xl:150,md:100}, mt: 0, fontSize: {xl:15,md:13} }}
+                    sx={{
+                      width: { xl: 150, md: 100 },
+                      mt: 0,
+                      fontSize: { xl: 15, md: 13 },
+                    }}
                     onClick={handleSubmit(Submit)}
                   >
                     Submit
@@ -493,7 +556,8 @@ console.log(page)
                   <Typography
                     sx={{
                       width: "100%",
-                      padding: "10px",
+                      padding: { sm: 0, md: "10px" },
+                      ml: { sm: -3 },
                       fontWeight: "bold",
                     }}
                   >
@@ -505,12 +569,16 @@ console.log(page)
                     <Button
                       variant="contained"
                       onClick={() => setPage(1)}
-                      sx={{ mr: 5 }}
+                      sx={{
+                        mr: { md: 5, sm: 2 },
+                        fontSize: { md: 13, sm: 11 },
+                      }}
                     >
                       Back
                     </Button>
                     <Button
                       variant="contained"
+                      sx={{ fontSize: { md: 13, sm: 11 } }}
                       onClick={() => navigate("/login")}
                     >
                       Continue
@@ -540,7 +608,7 @@ console.log(page)
                           borderRadius: 0,
                           width: "10vw",
                           height: "5vw",
-                          ml: 10,
+                          ml: { sm: 2, md: 5, lg: 10 },
                         }}
                       >
                         <Typography sx={{ mt: 1 }}>
@@ -555,7 +623,7 @@ console.log(page)
                 </div>
                 {files.map((photo: any) => (
                   <Chip
-                  sx={{fontSize:{xl:"13px",md:"12px"},mt:1}}
+                    sx={{ fontSize: { xl: "13px", md: "12px" }, mt: 1 }}
                     label={photo.name}
                     onDelete={() => handleDelete(photo)}
                   ></Chip>
@@ -563,18 +631,30 @@ console.log(page)
                 {error && <FormHelperText>{error}</FormHelperText>}
                 <Stack direction={"row"} sx={{ alignContent: "center" }}>
                   <IconButton
-                    sx={{ borderRadius: "50px", border: "1px solid", m: 5 }}
+                    sx={{
+                      borderRadius: "50px",
+                      border: "1px solid",
+                      m: 5,
+                      ml: { sm: -12 },
+                    }}
                     onClick={() => setPage((prev) => prev - 1)}
                   >
-                    <ArrowBackIcon />
+                    <ArrowBackIcon
+                      sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                    />
                   </IconButton>
 
                   {maxPhoto && (
                     <Button
-                    size="small"
-                    variant="contained"
-                    type="submit"
-                    sx={{ width: {xl:150,md:100}, mt: 6, fontSize: {xl:15,md:13} ,height: "3vw"}}
+                      size="small"
+                      variant="contained"
+                      type="submit"
+                      sx={{
+                        width: { xl: 150, md: 100 },
+                        mt: 6,
+                        fontSize: { xl: 15, md: 13 },
+                        height: "3vw",
+                      }}
                       onClick={handleNextClick}
                     >
                       Next
@@ -583,7 +663,10 @@ console.log(page)
                   {!maxPhoto && (
                     <Button
                       variant="contained"
-                      sx={{ mt: 5, height: "2vw", width: "7vw" }}
+                      sx={{
+                        width: { xl: 150, md: 100, sm: 50 },
+                        fontSize: { xl: 15, md: 13, sm: 12 },
+                      }}
                       disabled
                     >
                       Next
