@@ -5,7 +5,6 @@ import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Seachbar2 from "./Seachbar2";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import HotelDetails from "./HotelDetails";
-
 import Footer from "./Footer";
 import HomeBody from "./HomeBody";
 import Logo from "./Logo";
@@ -208,10 +207,13 @@ function Hotels({ filteredData,screenSize }: any) {
                   >
                     ₹{item.price}
                   </Typography>
-                  <IconButton href="/billing">
-                    {" "}
+                 
+               
                     <Button
+                   href="/billing"
+                  
                       sx={{
+                        "&:hover": { backgroundColor: "#D4164B"} ,
                         width: { sm: "80px", lg: "130px" ,md:"90px"},
                         backgroundColor: "#D4164B",
                         height: { sm: "20px", lg: "30px" ,md:"25px"},
@@ -225,7 +227,7 @@ function Hotels({ filteredData,screenSize }: any) {
                       }}
                       // className="btn2"
                     >
-                      View Deal{" "}
+                      View Deal
                       <Box
                         sx={{
                           width: { sm: "3px", lg: "5px" , md:"4px"},
@@ -237,7 +239,7 @@ function Hotels({ filteredData,screenSize }: any) {
                         <KeyboardArrowRightIcon />
                       </Box>
                     </Button>
-                  </IconButton>
+                  
                 </Box>
               </Box>
             </Stack>
