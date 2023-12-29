@@ -13,7 +13,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 
-function Hotels({ filteredData }: any) {
+function Hotels({ filteredData,screenSize }: any) {
   const navigate = useNavigate();
   const [detailIndex, setDetailIndex] = useState<any>("");
   const [openModule, setOpenModule] = useState<any>("info");
@@ -29,17 +29,23 @@ function Hotels({ filteredData }: any) {
     navigate("/billing");
   };
 
+
+  console.log("screenSize ..........",screenSize);
+  
   return (
     <>
+    
       <Box
         sx={{
           height: "100vh",
           overflowY: "auto",
           // maxWidth: "60vw",
-          width: { sm: "66%", lg: "55%" },
+          width: { sm: "100%", lg: "55%" },
           padding: { sm: 0 },
         }}
       >
+        {screenSize <= 768 ? (<Box><img src={require('./Map.jpg')} width={"20%"} height={"80px"} style={{borderRadius:'10px',marginLeft:'75%'}}></img></Box>):<></>}
+       
         {filteredData?.map((item: any, i: any) => (
           <>
             <Stack
@@ -52,15 +58,15 @@ function Hotels({ filteredData }: any) {
                 border: "1px solid lightgrey",
                 borderRadius: "10px",
                 m: { sm: "1px", lg: 1 },
-                width: { sm: "420px", lg: "910px" },
+                width: { sm: "720px", lg: "910px" },
               }}
             >
               <Box sx={{ width: { sm: 100, lg: 300 } }}>
                 <Box
                   component="img"
                   sx={{
-                    width: { sm: "15vh", lg: "19vh" },
-                    height: "15vh",
+                    width: { sm: "20vh", lg: "19vh" },
+                    height: "20vh",
                     borderTopLeftRadius: "20px",
                     borderBottomLeftRadius: "20px",
                     marginTop: 2,
@@ -73,16 +79,16 @@ function Hotels({ filteredData }: any) {
                 sx={{
                   display: "flex",
                   flexDirection: "column",
-                  marginLeft: { sm: "25px", lg: "-130px" },
+                  marginLeft: { sm: 10, lg: "-130px" },
                   marginTop: { sm: "30px", lg: "20px" },
                 }}
               >
                 <Typography
                   sx={{
                     fontWeight: "bold",
-                    fontSize: { sm: "12px", lg: "20px" },
+                    fontSize: { sm: "16px", lg: "20px" },
                     opacity: 0.8,
-                    width: { sm: "100px", lg: "250px" },
+                    width: { sm: "100%", lg: "250px" },
                   }}
                 >
                   {item.name}
@@ -129,7 +135,7 @@ function Hotels({ filteredData }: any) {
               <Box
                 sx={{
                   // margin: "20px",
-                  marginLeft: { sm: "3px", lg: "150px" },
+                  marginLeft: { sm: 30, lg: "150px" },
                   border: "1px solid lightgray",
                   width: { sm: "160px", lg: "310px" },
                   height: "85px",

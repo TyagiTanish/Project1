@@ -1,5 +1,5 @@
 import { Box, IconButton, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import SimpleMap from "./Map";
 import Footer from "./Footer";
 import Seachbar2 from "./Seachbar2";
@@ -42,6 +42,7 @@ const HotelsPage = () => {
   ]);
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(hotels);
+  const [screenSize,setScreenSize] = useState(window.innerWidth);
 
   const filterData = (searchTerm: any) => {
     const filteredData = hotels.filter((item: any) =>
@@ -49,6 +50,14 @@ const HotelsPage = () => {
     );
     setFilteredData(filteredData);
   };
+
+useEffect(()=>{
+ 
+  const handleWindowSize = () =>{
+    setScreenSize(window.innerWidth);
+  }
+window.addEventListener('resize',handleWindowSize);
+})
 
   return (
     <>
@@ -66,11 +75,10 @@ const HotelsPage = () => {
           filterData={filterData}
         />
       </Stack>
-
-      <Stack direction={"row"} sx={{ m: 5 }}>
-        <Hotels filteredData={filteredData} />
-        <SimpleMap />
-      </Stack>
+          <Stack direction={"row"} sx={{ m: 5 }}>
+            <Hotels filteredData={filteredData}  screenSize={screenSize} />
+            {screenSize <=768 ?(<></>):<SimpleMap />}
+          </Stack>
       <Footer />
     </>
   );

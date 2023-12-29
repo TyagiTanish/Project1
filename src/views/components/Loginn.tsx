@@ -4,6 +4,8 @@ import {
 
   FormHelperText,
 
+  Stack,
+
   TextField,
   Typography,
 } from "@mui/material";
@@ -23,6 +25,7 @@ function SignUpComp({ setVerify, setLogReg }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
   const [display,setDisplay]=useState(false);
+
   const [authentication, setAuthentication] = useState("");
 const dispatch = useDispatch();
 
@@ -83,37 +86,34 @@ const dispatch = useDispatch();
     {display && <Loaders/>}
       <Box
         sx={{
-          // height: "400px",
-          maxHeight: "800px",
-          width:{xl:"500px",md:"380px"},
-          ml:{sm:50,xl:0,md:0},
+          ml:{sm:48,xl:0,md:0},
           mt:{sm:25,xl:0,md:0},
           fontFamily: "sans-serif",
           alignSelf: "flex-start",
           backgroundColor: "white",
         }}
       >
-        <Box
+        <Typography
           sx={{
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-            minHeight: {xl:"30px",md:"20px"},
-            paddingTop:{xl:1,md:0.5,sm:0.5},
-            paddingBottom:{md:0.5,sm:0.5},
-            paddingLeft:{xl:"95px",md:"65px",sm:'50px'},
+            // minHeight: {xl:"30px",md:"20px"},
+            // paddingTop:{xl:1,md:0.5,sm:0.5},
+            // paddingBottom:{md:0.5,sm:0.5},
+            // paddingLeft:{xl:"95px",md:"65px",sm:'50px'},
             fontWeight: 700,
             color: "white",
-            fontSize:{xl:"20px"}
+            fontSize:{xl:"20px"},
+            textAlign:'center'
           }}
         >
           Sign up & Get ₹500 OYO Money
-        </Box>
+        </Typography>
         <Box
           sx={{
             paddingLeft: 3,
             paddingRight: 2,
             background: "white",
-            width: {xl:"450px",md:"330px",height:'200px'},
           }}
         >
           <Typography sx={{ fontSize: {xl:"32px",md:"25px",sm:'25px'}, fontWeight: "700",ml:{sm:-1,md:-1,xl:0} }}>
@@ -153,50 +153,47 @@ const dispatch = useDispatch();
                 </Typography>
               )}
             {state ? (
-              <Button type="submit" variant="contained" sx={{ marginTop: 2 }}>
+              <>
+              <Button type="submit" variant="contained" sx={{mt:'2%'}} >
                 Log In
               </Button>
+               <Stack sx={{alignItems:'center'}} direction={"row"} >
+               <Typography sx={{ width: 200}}>
+                 {" "}
+                 Don't have an account?
+               </Typography>
+               <Button
+                
+                 onClick={() => {
+                   setLogReg(true);
+                 }}
+               >
+                 Register here
+               </Button>
+             </Stack>
+             </>
             ) : (
-              <Button type="submit" variant="contained" sx={{ marginTop: {xl:1,md:-2},fontSize:{xl:13,md:11},fontWeight:"500" }}>
+              <>
+              <Button type="submit" variant="contained" sx={{ fontWeight:"500" }}>
                 Verify email
               </Button>
+               <Stack sx={{alignItems:'center'}} direction={"row"} >
+               <Typography sx={{ width: 200, }}>
+                 Don't have an account?
+               </Typography>
+               <Button
+                 onClick={() => {
+                   setLogReg(true);
+                 }}
+               >
+                 Register here
+               </Button>
+             </Stack>
+             </>
             )}
           </form>
-          {/* <Box sx={{ display: "flex", fontWeight: " 600 ", marginTop: 1 }}>
-          {state ? (
-            <p>Prefer to Proceed with email verification instead?</p>
-          ) : (
-            <p>Prefer to Sign in with password instead?</p>
-          )} */}
-
-          {/* <Button
-            sx={{ color: "red", marginTop: -1 }}
-            onClick={() => {
-              if (state) {
-                setState(false);
-              } else {
-                setState(true);
-              }
-            }}
-          >
-            Click here
-          </Button> */}
-          {/* </Box> */}
         </Box>
-        <Box sx={{ display: "flex", width: {xl:500,md:400}, mt: 8 }}>
-          <Typography sx={{ width: 200, ml: {xl:5,md:2,sm:2}, mb: 2,mt:2 }}>
-            {" "}
-            Don't have an account?
-          </Typography>
-          <Button
-            sx={{ mt: -.5,ml:{md:2,xl:10}}}
-            onClick={() => {
-              setLogReg(true);
-            }}
-          >
-            Register here
-          </Button>
-        </Box>
+       
       </Box>
       </Box>
     </>

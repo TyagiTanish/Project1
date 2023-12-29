@@ -126,11 +126,4 @@
 .blur {
   background: rgba(204, 200, 200, 0.2);
   backdrop-filter: blur(7px); 
-  /* margin-top:-1000px; */
-  margin-top:-170px;
-  margin-left: -1400px;
-  height:100vh;
-  /* padding:50; */
-  width:1950px
- 
 }
