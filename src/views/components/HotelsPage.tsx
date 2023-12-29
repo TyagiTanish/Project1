@@ -61,12 +61,10 @@ window.addEventListener('resize',handleWindowSize);
 
   return (
     <>
-      <Stack direction={"row"}>
+      <Stack direction={screenSize<1024 ? "column" : "row"} mt={2} >
         <IconButton>
           <Link to="/">
-            <Box sx={{ width: { sm: 55 } }}>
               <Logo />
-            </Box>
           </Link>
         </IconButton>
         <Seachbar2
@@ -75,10 +73,10 @@ window.addEventListener('resize',handleWindowSize);
           filterData={filterData}
         />
       </Stack>
-          <Stack direction={"row"} sx={{ m: {md:2,xl:5,sm:3}}}>
+      <Stack direction={"row"} sx={{ m: {md:2,xl:5,sm:3}}}>
             <Hotels filteredData={filteredData}  screenSize={screenSize} />
             {screenSize <=768 ?(<></>):<SimpleMap />}
-          </Stack>
+      </Stack>
       <Footer />
     </>
   );

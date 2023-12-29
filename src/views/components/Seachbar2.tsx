@@ -61,28 +61,21 @@ function Seachbar2(props: any) {
   }
 
   return (
-    <Box
+    <Stack
+    direction={'row'}
       sx={{
-        marginLeft: { sm: "-120px", lg: "-120px" },
-
         width: "100vw",
-        mb: "30px",
+        mb: "20px",
+        alignItems:'center',
+        justifyContent:'center',
       }}
     >
-      <Typography sx={{ mt: 2, display: "flex", alignContent: "center" }}>
-        <Box
-          className="nearby"
-          sx={{ marginTop: "-120px", marginLeft: "-60px" }}
-        ></Box>
-        <TextField
+   
+      <TextField
           sx={{
             backgroundColor: "white",
-            position: "relative",
-            width: { sm: "30%", lg: "30%" },
-            ml: "20%",
-            height: "20%",
-            mt: 2,
             borderRadius: 3,
+            mt:1,
           }}
           InputProps={{
             endAdornment: (
@@ -105,44 +98,20 @@ function Seachbar2(props: any) {
           value={props.searchTerm}
           onChange={handleInputChange}
         />
-
-        <Typography
-          sx={{ position: "relative", width: { sm: "250px", lg: "300px" } }}
-        >
-          <DateRangePickers />
-        </Typography>
+          <DateRangePickers />    
         <TextField
           id="outlined-basic"
           variant="outlined"
           sx={{
-            width: { sm: "200px", lg: "15%" },
             bgcolor: "white",
-            ml: 0,
-            height: "20%",
-            mt: 2,
             fontWeight: "bolder",
+            mt:1
           }}
           value={`${rooms.length} Room , ${guests} guest`}
           onClick={(event: any) => handleClick(event)}
         />
-        {/* 
-     <Button
-       variant="contained"
-       sx={{
-         bgcolor: "green",
-         "&:hover": { bgcolor: "#1ab64f" },
-         color: "white",
-         fontWeight: "bolder",
-         height: "55px",
-         width: "10%",
-       
-         mt: 2,
-       }}
-     >
-       Search
-     </Button> */}
-      </Typography>
-    </Box>
+ 
+    </Stack>
   );
 }
 

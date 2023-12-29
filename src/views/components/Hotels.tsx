@@ -1,4 +1,11 @@
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Chip,
+  IconButton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -38,10 +45,8 @@ function Hotels({ filteredData, screenSize }: any) {
     <>
       <Box
         sx={{
-          padding: { sm: 0 },
           height: "100vh",
           overflowY: "auto",
-          width: { sm: "100%", lg: "55%", md: "66%" },
         }}
       >
         {screenSize <= 768 ? (
@@ -76,7 +81,7 @@ function Hotels({ filteredData, screenSize }: any) {
                   }}
                 >
                   {" "}
-                  <LocationOnIcon fontSize="small"  /> ViewMap
+                  <LocationOnIcon fontSize="small" /> ViewMap
                 </IconButton>
               </>
             ) : (
@@ -93,55 +98,52 @@ function Hotels({ filteredData, screenSize }: any) {
                 <Stack
                   direction={"row"}
                   sx={{
+                    p:2,
+                    m:2,
+                    justifyContent:"space-between",
                     // display: "stack",
                     // flexDirection: "row",
                     direction: "row",
-                    padding: { sm: "5px", lg: "10px", md: "9px" },
+                    // padding: { sm: "5px", lg: "10px", md: "9px" },
                     border: "1px solid lightgrey",
                     borderRadius: "10px",
-                    m: { sm: "1px", lg: 1 },
-                    width: { sm: "86vh", lg: "910px", md: "570px" },
+                    // m: { sm: "1px", lg: 1 },
+                    // width: { sm: "86vh", lg: "910px", md: "570px" },
                   }}
                 >
-                  <Box sx={{ width: { sm: 100, lg: 300 } }}>
+                 
                     <Box
                       component="img"
                       sx={{
-                        width: { sm: "200px ", lg: "19vh", md: "140px" },
+                        width: { sm: "150px ", lg: "200px", md: "140px" },
                         height: { lg: "200px", sm: "15vh", md: "20vh" },
                         borderTopLeftRadius: "20px",
                         borderBottomLeftRadius: "20px",
-                        marginTop: 2,
+
                       }}
                       alt="The house from the offer."
                       src={require(`./${item.src}`)}
                     />
-                  </Box>
-                  <Box
-                    sx={{
-                      display: "flex",
-                      flexDirection: "column",
-                      marginLeft: { sm: "15%", xl: "-90px", md: "55px" },
-                      marginTop: { sm: "30px", xl: "20px" },
-                    }}
-                  >
+
+
+                  <Stack m={2} width={300}>
                     <Typography
                       sx={{
                         fontWeight: "bold",
-                        fontSize: { sm: "15px", lg: "20px", md: "18px" },
+                        // fontSize: { sm: "15px", lg: "20px", md: "18px" },
                         opacity: 0.8,
-                        width: { sm: "150px", lg: "200px", md: "180px" },
+                        // width: { sm: "150px", lg: "200px", md: "180px" },
                       }}
                     >
                       {item.name}
                     </Typography>
-                    <Box sx={{ display: "flex" }}>
+                    <Stack direction={"row"} sx={{alignItems:'center'}}>
                       <Typography
                         sx={{
                           fontWeight: "bold",
                           fontSize: { sm: "12px", lg: "18px", md: "14px" },
                           opacity: 0.5,
-                          marginTop: "10px",
+                          // marginTop: "10px",
                         }}
                       >
                         Hotel
@@ -149,10 +151,10 @@ function Hotels({ filteredData, screenSize }: any) {
                       <Button
                         sx={{
                           color: "grey",
-                          ml: { sm: 0, lg: 12 },
-                          mt: { sm: "6px" },
+                          // ml: { sm: 0, lg: 12 },
+                          // mt: { sm: "6px" },
                           fontSize: { sm: 8, lg: 10, md: 10 },
-                          width: { sm: "85px", lg: 100, md: 100 },
+                          // width: { sm: "85px", lg: 100, md: 100 },
                         }}
                         onClick={() => {
                           handleClick(i);
@@ -161,7 +163,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         View More
                         <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
                       </Button>
-                    </Box>
+                    </Stack>
                     {/* <Typography
                     sx={{
                       fontWeight: "bold",
@@ -169,78 +171,56 @@ function Hotels({ filteredData, screenSize }: any) {
                       opacity: 0.5,
                       marginTop: "5px",
                     }}
-                  >
+                   >
                     {item.rating}
-                  </Typography> */}
-                  </Box>
+                   </Typography> */}
+                  </Stack>
 
-                  <Box
+
+                  <Stack
+                  direction={"row"}
+                  spacing={2}
                     sx={{
                       // margin: "20px",
-                      marginLeft: { sm: "120px", lg: "110px", md: "35px" },
+                      // marginLeft: { sm: "120px", lg: "110px", md: "35px" },
                       border: "1px solid lightgray",
-                      width: { sm: "250px", lg: "310px", md: "410px" },
+                      // width: { sm: "100%", lg: "310px", md: "410px" },
                       height: "85px",
                       borderRadius: "20px",
                       // backgroundColor: "rgba(241,248,234)",
                       padding: { sm: 1, lg: 2, md: 1 },
-                      display: "flex",
-                      flexDirection: "column",
-                      marginTop:{sm:'8px'}
+                      // display: "flex",
+                      // flexDirection: "column",
+                      marginTop: { sm: "8px" },
                     }}
                   >
-                    <Box
-                      sx={{
-                        width: { sm: "75px", lg: "90px", md: "80px" },
-                        border: "1px solid red",
-                        ml: { sm: 12, lg: 22, md: 9 },
-                        height: { sm: "15px", lg: "25px",md:'25px' },
-                        borderRadius: "15px",
-                        color: "red",
-                        fontSize: { sm: "9px", lg: "10px", md: "9px" },
-
-                        pt: { md: 0.75, sm: 0.75},
-                        pr: { md: 1, sm: 1 },
-                        pb: { md: 1.3, sm:0},
-                        pl: { md: 1.3, sm: 1 },
-                        fontWeight: "bold",
-                      }}
-                    >
-                      Our Lowest Price
-                    </Box>
-
-                    <Box
-                      sx={{
-                        color: "#D4164B",
-                        fontWeight: "bold",
-                        fontSize: "8px",
-                        display: "flex",
-                        flexDirection: "row",
-                      }}
-                    >
-                      <DoneIcon
+                     <Stack spacing={1}>
+                      <Stack
+                        direction={"row"}
                         sx={{
-                          fontSize: { sm: "12px", lg: "15px", md: "14px" },
+                          color: "#D4164B",
                           fontWeight: "bold",
-                        }}
-                      />{" "}
-                      <Typography
-                        sx={{
-                          fontSize: { sm: "10px", lg: "12px", md: "12px" },
-                          fontWeight: "bold",
+                          // fontSize: "8px",
+                          // display: "flex",
+                          // flexDirection: "row",
                         }}
                       >
-                        Free Cancelation
-                      </Typography>
-                    </Box>
-                    <Box
-                      sx={{
-                        display: "flex",
-                        flexDirection: "row",
-                        marginTop: "10px",
-                        marginLeft: "5px",
-                      }}
-                    >
+                        <DoneIcon
+                          sx={{
+                            fontSize: { sm: "12px", lg: "15px", md: "14px" },
+                            fontWeight: "bold",
+                          }}
+                        />
+                        <Typography
+                          sx={{
+                            fontSize: { sm: "10px", lg: "12px", md: "12px" },
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Free Cancelation
+                        </Typography>
+                      </Stack>
+
                       <Typography
                         sx={{
                           fontWeight: "bold",
@@ -250,37 +230,28 @@ function Hotels({ filteredData, screenSize }: any) {
                       >
                         ₹{item.price}
                       </Typography>
-                      <IconButton href="/billing">
-                        {" "}
-                        <Button
-                          sx={{
-                            width: { sm: "90px", lg: "130px", md: "90px" },
-                            backgroundColor: "#D4164B",
-                            height: { sm: "25px", lg: "30px", md: "25px" },
-                            color: "white",
-                            fontWeight: "bold",
-                            marginLeft: { sm: "20px", lg: "90px" },
-                            marginTop: "-9px",
-                            textTransform: "none",
-                            fontSize: { sm:10, lg: 20, md: 12 },
-                          }}
-                          // className="btn2"
-                        >
-                          View Deal{" "}
-                          <Box
-                            sx={{
-                              width: { sm: "3px", lg: "5px", md: "4px" },
-                              mt: { sm: "5px", lg: 1.3 },
-                              // ml:{md:-0.5}
-                            }}
-                          >
-                            {" "}
-                            <KeyboardArrowRightIcon />
-                          </Box>
-                        </Button>
-                      </IconButton>
-                    </Box>
-                  </Box>
+                    </Stack>
+                    <Stack spacing={1}>
+                      <Chip
+                        label="Our Lowest Price"
+                        variant="outlined"
+                        color="error"
+                        sx={{ width: 150, float: "right" }}
+                      />
+                      <Button
+                        variant="contained"
+                        href="/billing"
+                        endIcon={<KeyboardArrowRightIcon />}
+                        sx={{
+                          backgroundColor: "#D4164B",
+                        }}
+                      >
+                        View Deal
+                      </Button>
+                    </Stack>
+
+                   
+                  </Stack>
                 </Stack>
 
                 {/* </Box> */}
