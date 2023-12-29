@@ -33,11 +33,12 @@ function Hotels({ filteredData }: any) {
     <>
       <Box
         sx={{
+          padding:{sm:0},
           height: "100vh",
           overflowY: "auto",
           // maxWidth: "60vw",
           width: { sm: "66%", lg: "55%" },
-          padding: { sm: 0 },
+        
         }}
       >
         {filteredData?.map((item: any, i: any) => (
