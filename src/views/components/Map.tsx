@@ -30,12 +30,12 @@ export default function SimpleMap() {
     <Box
       sx={{
         height: "100vh",
-        width: { sm: "10vh", lg: "20vw" },
-        marginLeft: 17,
+        width: { sm: 200, lg: 800 },
+        // marginLeft: 17,
       }}
     >
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
+        bootstrapURLKeys={{ key: "AIzaSyDEZ3SEb_VoWvsv0AXCsGT_Mg9f4L0gATQ" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onChange={(value) => handleChange(value)}
