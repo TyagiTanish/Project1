@@ -5,6 +5,9 @@ import OverViewHotel from "./OverViewHotel";
 import PhotosDetails from "./PhotosDetails";
 import ReviewDetails from "./ReviewDetails";
 import InfoHotelDetails from "./InfoHotelDetails";
+
+import { useIntl, FormattedMessage } from "react-intl";
+
 function HotelDetails({
   i,
   item,
@@ -22,7 +25,7 @@ function HotelDetails({
         sx={{
           display: "flex",
           width: { sm: "150px", lg: "400px" },
-          ml: {xl:"30%",sm:"30%",md:"230px"},
+          ml: { xl: "30%", sm: "30%", md: "230px" },
           justifyContent: "space-evenly",
         }}
       >
@@ -32,24 +35,24 @@ function HotelDetails({
               color: "Black",
               fontWeight: 500,
               borderBottom: "1px solid Blue",
-              fontSize: { sm: 8, lg: 14,md:12},
+              fontSize: { sm: 8, lg: 14, md: 12 },
             }}
             onClick={() => {
               setOpenModule("Overview");
               setActiveButton("Overview");
             }}
           >
-            Overview
+            <FormattedMessage defaultMessage="Overview" />
           </Button>
         ) : (
           <Button
-            sx={{ color: "grey", fontSize: { sm: 8, lg: 14,md:10 } }}
+            sx={{ color: "grey", fontSize: { sm: 8, lg: 14, md: 10 } }}
             onClick={() => {
               setOpenModule("Overview");
               setActiveButton("Overview");
             }}
           >
-            Overview
+            <FormattedMessage defaultMessage="Overview" />
           </Button>
         )}
         {activeButton === "info" ? (
@@ -58,24 +61,24 @@ function HotelDetails({
               color: "Black",
               fontWeight: 500,
               borderBottom: "1px solid Blue",
-              fontSize: { sm: 8, lg: 14,md:12 },
+              fontSize: { sm: 8, lg: 14, md: 12 },
             }}
             onClick={() => {
               setOpenModule("info");
               setActiveButton("info");
             }}
           >
-            Info
+            <FormattedMessage defaultMessage="Info" />
           </Button>
         ) : (
           <Button
-            sx={{ color: "grey", fontSize: { sm: 8, lg: 14 ,md:10} }}
+            sx={{ color: "grey", fontSize: { sm: 8, lg: 14, md: 10 } }}
             onClick={() => {
               setOpenModule("info");
               setActiveButton("info");
             }}
           >
-            Info
+            <FormattedMessage defaultMessage="Info" />
           </Button>
         )}
         {activeButton === "Photos" ? (
@@ -84,24 +87,24 @@ function HotelDetails({
               color: "Black",
               fontWeight: 500,
               borderBottom: "1px solid Blue",
-              fontSize: { sm: 8, lg: 14,md:12 },
+              fontSize: { sm: 8, lg: 14, md: 12 },
             }}
             onClick={() => {
               setOpenModule("Photos");
               setActiveButton("Photos");
             }}
           >
-            Photos
+            <FormattedMessage defaultMessage="Photos" />
           </Button>
         ) : (
           <Button
-            sx={{ color: "grey", fontSize: { sm: 8, lg: 14,md:10 } }}
+            sx={{ color: "grey", fontSize: { sm: 8, lg: 14, md: 10 } }}
             onClick={() => {
               setOpenModule("Photos");
               setActiveButton("Photos");
             }}
           >
-            Photos
+            <FormattedMessage defaultMessage="Photos" />
           </Button>
         )}
 

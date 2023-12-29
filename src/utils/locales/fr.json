@@ -1,8 +1,38 @@
 {
+  "+QNm85": [
+    {
+      "type": 0,
+      "value": "Parking"
+    }
+  ],
   "+R6HRl": [
     {
       "type": 0,
       "value": "Inscrivez votre propriété"
+    }
+  ],
+  "11oARw": [
+    {
+      "type": 0,
+      "value": "Pool"
+    }
+  ],
+  "3KiaqX": [
+    {
+      "type": 0,
+      "value": "Arrivée: 15h00"
+    }
+  ],
+  "5V00Mx": [
+    {
+      "type": 0,
+      "value": "Offrant une vue imprenable sur la mer d'Oman dans la capitale commerciale de l'Inde, l'InterContinental Marine Drive établit des normes en matière de service personnalisé pour les voyageurs d'affaires et de loisirs. L'expérience commence lorsque l'horizon scintillant de Mumbai, appelé à juste titre le Collier de la Reine, vous accueille. Entrez dans l'InterContinental Marine Drive et l'attention chaleureuse et personnalisée vous aidera à vous détendre. L'InterContinental Marine Drive est stratégiquement situé au cœur du quartier des affaires et financier de Mumbai, à 1,5 km de Nariman Point et à 3 km de la principale zone commerçante de Colaba. Vous offrant le luxe primordial de gagner du temps pendant votre travail. Les installations de communication et de réunion d'affaires ultramodernes optimisent davantage la gestion du temps."
+    }
+  ],
+  "8oWVZA": [
+    {
+      "type": 0,
+      "value": "Restaurant"
     }
   ],
   "8uXS99": [
@@ -11,10 +41,88 @@
       "value": "Lieux populaires"
     }
   ],
+  "9khnVR": [
+    {
+      "type": 0,
+      "value": "Photos"
+    }
+  ],
+  "9rwIcL": [
+    {
+      "type": 0,
+      "value": "Climatisation"
+    }
+  ],
+  "9uOFF3": [
+    {
+      "type": 0,
+      "value": "Aperçu"
+    }
+  ],
+  "GodOg+": [
+    {
+      "type": 0,
+      "value": "Arrivée Départ"
+    }
+  ],
   "Hm2NzP": [
     {
       "type": 0,
       "value": "Première chaîne mondiale d'hôtels et de résidences"
+    }
+  ],
+  "JH2EfS": [
+    {
+      "type": 0,
+      "value": "Animaux domestiques"
+    }
+  ],
+  "RiZXe1": [
+    {
+      "type": 0,
+      "value": "Bar de l'hôtel"
+    }
+  ],
+  "dmGKS5": [
+    {
+      "type": 0,
+      "value": "Départ: 12h00"
+    }
+  ],
+  "h9FUr8": [
+    {
+      "type": 0,
+      "value": "Wifi gratuit"
+    }
+  ],
+  "kUDcH0": [
+    {
+      "type": 0,
+      "value": "Spa"
+    }
+  ],
+  "l4GiZS": [
+    {
+      "type": 0,
+      "value": "Téléphone : +91 2239879999 | Télécopie : +91 2239879600"
+    }
+  ],
+  "lhgV6Z": [
+    {
+      "type": 0,
+      "value": "Équipements haut de gamme"
+    }
+  ],
+  "rvirM2": [
+    {
+      "type": 0,
+      "value": "Emplacement"
+    }
+  ],
+  "uXYcYf": [
+    {
+      "type": 0,
+      "value": "Wi-Fi dans le hall"
     }
   ],
   "wNLUau": [
@@ -23,10 +131,22 @@
       "value": "Se connecter S'inscrire"
     }
   ],
+  "we4Lby": [
+    {
+      "type": 0,
+      "value": "Info"
+    }
+  ],
   "yGgJD/": [
     {
       "type": 0,
       "value": "Banglore"
+    }
+  ],
+  "zFegDD": [
+    {
+      "type": 0,
+      "value": "Contact"
     }
   ]
 }
