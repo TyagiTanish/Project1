@@ -19,6 +19,7 @@ import {useDispatch} from "react-redux";
 import { userLogin } from "./redux/user/userSlice";
 
 import Loaders from "./Loaders";
+import { FormattedMessage } from "react-intl";
 
 
 function SignUpComp({ setVerify, setLogReg }: any) {
@@ -107,7 +108,7 @@ const dispatch = useDispatch();
             textAlign:'center'
           }}
         >
-          Sign up & Get ₹500 OYO Money
+          <FormattedMessage defaultMessage="Sign up & Get ₹500 OYO Money" />
         </Typography>
         <Box
           sx={{
@@ -117,10 +118,10 @@ const dispatch = useDispatch();
           }}
         >
           <Typography sx={{ fontSize: {xl:"32px",md:"25px",sm:'25px'}, fontWeight: "700",ml:{sm:-1,md:-1,xl:0} }}>
-            Login
+          <FormattedMessage defaultMessage="Login" />  
           </Typography>
           <Typography sx={{ fontWeight: "700" ,fontSize:{xl:"16px",md:"16px",sm:'16px'},mt:{sm:2}}}>
-            Please enter your email to continue
+          <FormattedMessage defaultMessage=" Please enter your email to continue" />    
           </Typography>
           <form onSubmit={handleSubmit(Onsubmit)}>
             <Box sx={{ display: "flex", flexDirection: "column" }}>
@@ -137,7 +138,7 @@ const dispatch = useDispatch();
             </Box>
             {state && (
               <Box sx={{ fontWeight: "700", marginTop: 1 }}>
-                <label htmlFor="password">Password</label>
+                <label htmlFor="password"> <FormattedMessage defaultMessage="Password " /></label>
                 <br />
                 <TextField
                   id="password"
@@ -155,12 +156,12 @@ const dispatch = useDispatch();
             {state ? (
               <>
               <Button type="submit" variant="contained" sx={{mt:'2%'}} >
-                Log In
+              <FormattedMessage defaultMessage="Log In " /> 
               </Button>
                <Stack sx={{alignItems:'center'}} direction={"row"} >
                <Typography sx={{ width: 200}}>
                  {" "}
-                 Don't have an account?
+                 <FormattedMessage defaultMessage="Don't have an account? " />    
                </Typography>
                <Button
                 
@@ -168,25 +169,25 @@ const dispatch = useDispatch();
                    setLogReg(true);
                  }}
                >
-                 Register here
+                 <FormattedMessage defaultMessage="Register here" />      
                </Button>
              </Stack>
              </>
             ) : (
               <>
               <Button type="submit" variant="contained" sx={{ fontWeight:"500" }}>
-                Verify email
+              <FormattedMessage defaultMessage="  Verify email" />     
               </Button>
                <Stack sx={{alignItems:'center'}} direction={"row"} >
                <Typography sx={{ width: 200, }}>
-                 Don't have an account?
+               <FormattedMessage defaultMessage="   Don't have an account?" /> 
                </Typography>
                <Button
                  onClick={() => {
                    setLogReg(true);
                  }}
                >
-                 Register here
+                <FormattedMessage defaultMessage="    Register here" />  
                </Button>
              </Stack>
              </>
