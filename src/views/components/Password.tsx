@@ -5,7 +5,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import { useDispatch, useSelector } from "react-redux";
 import { enqueueSnackbar } from "notistack";
 import { userLogin } from "./redux/user/userSlice";
-
+import { useIntl, FormattedMessage } from "react-intl";
 function Password() {
   const { register, handleSubmit } = useForm();
 
@@ -38,7 +38,7 @@ function Password() {
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
-        Old password:
+       <FormattedMessage defaultMessage=" Old password:"/>  
       </Typography>
       <TextField
         id="outlined-basic"
@@ -54,7 +54,7 @@ function Password() {
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
-        New password:
+        <FormattedMessage defaultMessage=" New password:"/>  
       </Typography>
       <TextField
         id="outlined-basic"
@@ -80,7 +80,7 @@ function Password() {
           }}
           type="submit"
         >
-          Change Password
+            <FormattedMessage defaultMessage="  Change Password"/> 
         </Button>
       </Box>
     </form>

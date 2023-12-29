@@ -6,7 +6,7 @@ import OtpVerification from "../components/OtpVerification";
 import SignUp from "../components/SignUp";
 import { useSelector } from "react-redux";
 import BasicCard from "../components/Home";
-
+import { FormattedMessage } from "react-intl";
 function MainPage() {
   const [verify, setVerify]: any = useState(0);
   const [LogReg, setLogReg] = useState(false);
@@ -46,11 +46,11 @@ function MainPage() {
             >
               {" "}
               <Typography variant="h2" sx={{fontSize:{xl:45,md:28,sm:26}}}>
-                There's a smarter way to OYO around
+              <FormattedMessage defaultMessage="There's a smarter way to OYO around"/>   
               </Typography>
               <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11,sm:11},mt:1,letterSpacing:1}}>
-                Sign up with phone number and get exclusive access to discounts
-                and savings on OYO stays and with our many travel partners.
+              <FormattedMessage defaultMessage="  Sign up with phone number and get exclusive access to discounts
+                and savings on OYO stays and with our many travel partners."/>   
               </Typography>
             </Typography>
 
