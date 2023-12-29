@@ -15,14 +15,10 @@ import Loaders from "./Loaders";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 
-
-
-
 const SignUp = ({ setLogReg }: any) => {
   const { request } = useAuth();
 
   const [display, setDisplay] = React.useState(false);
-
   const onSubmit = async (data: any) => {
     // console.log(data);
     const result = await request.post("/Register", {
@@ -32,53 +28,59 @@ const SignUp = ({ setLogReg }: any) => {
       password: data.password,
     });
 
-    if(result.data){
+    if (result.data) {
       setDisplay(true);
       enqueueSnackbar("Registered Successfully", {
         variant: "success",
         // autoHideDuration: 1000,
-       
-        
-     })
-     
-     setTimeout(()=>{
-      setDisplay(false);
-      setLogReg(false);
-     },2000)
-    }
-    else{
+      });
+
+      setTimeout(() => {
+        setDisplay(false);
+        setLogReg(false);
+      }, 2000);
+    } else {
       setDisplay(true);
       enqueueSnackbar("Email Already Registered", {
         variant: "error",
         // autoHideDuration: 1000,
-       
-        
-     })
-     setTimeout(()=>{
-      setDisplay(false);
-      setLogReg(false);
-     },2000)
+      });
+      setTimeout(() => {
+        setDisplay(false);
+        setLogReg(false);
+      }, 2000);
     }
   };
 
-interface User{
-  name:string,
-  email:string,
-  phone:string,
-  password:string,
-
-}
-const FormSchema = Yup.object().shape({
-  name: Yup.string().required('First Name is required').min(3).matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
-  email: Yup.string().email('invalid email !').required("Email is Required"),
-  phone:Yup.string().required("This field is required").max(10,"Max length should be 10").matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
-  password: Yup.string()
-  .required("This field is required")
-  .min(8, "Pasword must be 8 or more characters")
-  .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "Password ahould contain at least one uppercase and lowercase character")
-  .matches(/\d/, "Password should contain at least one number")
-  .matches(/[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/, "Password should contain at least one special character"),
-})
+  interface User {
+    name: string;
+    email: string;
+    phone: string;
+    password: string;
+  }
+  const FormSchema = Yup.object().shape({
+    name: Yup.string()
+      .required("First Name is required")
+      .min(3)
+      .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
+    email: Yup.string().email("invalid email !").required("Email is Required"),
+    phone: Yup.string()
+      .required("This field is required")
+      .max(10, "Max length should be 10")
+      .matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
+    password: Yup.string()
+      .required("This field is required")
+      .min(8, "Pasword must be 8 or more characters")
+      .matches(
+        /(?=.*[a-z])(?=.*[A-Z])\w+/,
+        "Password ahould contain at least one uppercase and lowercase character"
+      )
+      .matches(/\d/, "Password should contain at least one number")
+      .matches(
+        /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
+        "Password should contain at least one special character"
+      ),
+  });
 
   const {
     register,
@@ -89,122 +91,121 @@ const FormSchema = Yup.object().shape({
   });
 
   return (
-<>
-<Box sx={{width:"100%", position:"relative"}}>
-    {display && <Loaders/>}
-    <Card
-      className="oyo-cell loginCard"
-      sx={{
-        border: "1px solid black",
-        width: {xl:470,md:400,sm:380},
-        mt:{sm:20,md:0,xl:0},
-        ml:{sm:46,md:0,xl:0},
-        // height: "40vh",
-        b: "1px solid black",
-      }}
-    >
-       
-      <Typography
-        sx={{
-          backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-          // margin: "0",
-          // paddingLeft: "50px",
-          // paddingTop: "5px",
-          // paddingBottom: "5px",
-          // color: "white",
-          // fontWeight: "bold",
-          // width: "100%",
-          minHeight: {xl:"30px",md:"20px"},
-            paddingTop:{xl:1,md:0.5,sm:0.5},
-            paddingBottom:{md:0.5,sm:0.5},
-            paddingLeft:{xl:"95px",md:"65px",sm:'65px'},
-            fontWeight: 700,
-            color: "white",
-            fontSize:{xl:"20px"}
-        }}
-        color="text.secondary"
-        gutterBottom
-      >
-        Sign up & Get ₹500 OYO Money
-      </Typography>
-      <Typography
-        sx={{
-          margin: 2,
-          fontWeight: "bold",
-          fontFamily: "Inter,sans-serif",
-          fontSize: {xl:"30px",md:"25px",sm:'25px'},
-          marginBottom: 1,
-        }}
-      >
-        Sign Up
-      </Typography>
-
-      <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Stack>
-            <Typography sx={{ fontWeight: "bold",fontSize:{xl:18,md:16,sm:16} }}>Name</Typography>
-            <TextField
-              // sx={{width:"400px"}}
-              id="demo-helper-text-aligned"
-              // label="name"
-              sx={{ mb: 8, height: 2 }}
-              {...register("name")}
-            />
-              <FormHelperText>{errors.name?.message}</FormHelperText>
-            <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:18,md:16,sm:16}}}>Email</Typography>
-            <TextField
-              sx={{ mb: 8, height: 2, border: "none" }}
-              id="demo-helper-text-aligned"
-              {...register("email")}
-            />
-            <FormHelperText>{errors.email?.message}</FormHelperText>
-            <Typography sx={{ fontWeight: "bold" ,fontSize:{xl:18,md:16,sm:16}}}>Phone No</Typography>
-            <TextField
-              // sx={{width:"400px"}}
-              id="demo-helper-text-aligned"
-              // label="name"
-              sx={{ mb: 8, height: 2 }}
-              {...register("phone")}
-            />
-              <FormHelperText>{errors.phone?.message}</FormHelperText>
-            <Typography sx={{ fontWeight: "bold",fontSize:{xl:18,md:16,sm:16} }}>Password</Typography>
-            <TextField
-              // sx={{width:"400px"}}
-              id="demo-helper-text-aligned"
-              // label="name"
-              type="password"
-              sx={{ mb: 8, height: 2 }}
-              {...register("password")}
-            />
-              <FormHelperText>{errors.password?.message}</FormHelperText>
-            {/* <Typography sx={{ fontWeight: "bold" }}>
-              Enter four-digit passcode
-            </Typography> */}
-            {/* <TextField sx={{ mb: 8, height: 2 }} id="demo-helper-text-aligned"     {...register("otp")}/> */}
-          </Stack>
-          <Button
-            size="small"
-            variant="contained"
-            type="submit"
-            sx={{ width: 150, mt: {xl:3,md:1}, ml: 0.5, fontSize: {xl:15} }}
-          >
-            SignUp
-          </Button>
-        </form>
-      </CardContent>
-      <Box sx={{ display: "flex", width: 500, mt: 3, ml: {xl:4,md:4,sm:4}, mb: 2 }}>
-        <Typography sx={{ width: 200 }}> Already have an account?</Typography>
-        <Button
-          sx={{ mt: -1,ml:{xl:12,md:5}}}
-          onClick={() => {
-            setLogReg(false);
+    <>
+      <Box sx={{ width: "100%", position: "relative" }}>
+        {display && <Loaders />}
+        <Card
+          className="oyo-cell loginCard"
+          sx={{
+            border: "1px solid black",
+            mt: { sm: 10, md: 0, xl: 0 },
+            ml: { sm: 46, md: 0, xl: 0 },
+            width: { sm: 380 },
+            b: "1px solid black",
           }}
         >
-          Login here
-        </Button>
+          <Typography
+            sx={{
+              backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
+              textAlign: "center",
+              fontWeight: 700,
+              color: "white",
+              fontSize: { xl: "20px" },
+            }}
+            color="text.secondary"
+            gutterBottom
+          >
+            Sign up & Get ₹500 OYO Money
+          </Typography>
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontFamily: "Inter,sans-serif",
+              fontSize: { xl: "30px", md: "25px", sm: "25px" },
+              m: 2,
+            }}
+          >
+            Sign Up
+          </Typography>
+
+          <CardContent>
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Stack>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xl: 18, md: 16, sm: 16 },
+                  }}
+                >
+                  Name
+                </Typography>
+                <TextField
+                  id="demo-helper-text-aligned"
+                  {...register("name")}
+                />
+                <FormHelperText>{errors.name?.message}</FormHelperText>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xl: 18, md: 16, sm: 16 },
+                  }}
+                >
+                  Email
+                </Typography>
+                <TextField
+                  sx={{ border: "none" }}
+                  id="demo-helper-text-aligned"
+                  {...register("email")}
+                />
+                <FormHelperText>{errors.email?.message}</FormHelperText>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xl: 18, md: 16, sm: 16 },
+                  }}
+                >
+                  Phone No
+                </Typography>
+                <TextField
+                  id="demo-helper-text-aligned"
+                  {...register("phone")}
+                />
+                <FormHelperText>{errors.phone?.message}</FormHelperText>
+                <Typography
+                  sx={{
+                    fontWeight: "bold",
+                    fontSize: { xl: 18, md: 16, sm: 16 },
+                  }}
+                >
+                  Password
+                </Typography>
+                <TextField
+                  id="demo-helper-text-aligned"
+                  type="password"
+                  {...register("password")}
+                />
+                <FormHelperText>{errors.password?.message}</FormHelperText>
+              </Stack>
+              <Button size="small" variant="contained" type="submit">
+                SignUp
+              </Button>
+            </form>
+          </CardContent>
+          <Stack direction={"row"} alignItems={"center"} margin={2}>
+            <Typography sx={{ width: 200 }}>
+              {" "}
+              Already have an account?
+            </Typography>
+            <Button
+              onClick={() => {
+                setLogReg(false);
+              }}
+            >
+              Login here
+            </Button>
+          </Stack>
+        </Card>
       </Box>
-    </Card>
-    </Box>
     </>
   );
 };

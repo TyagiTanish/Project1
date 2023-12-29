@@ -22,7 +22,7 @@ function HotelDetails({
         sx={{
           display: "flex",
           width: { sm: "150px", lg: "400px" },
-          ml: "30%",
+          ml: {xl:"30%",sm:"30%",md:"230px"},
           justifyContent: "space-evenly",
         }}
       >
@@ -32,7 +32,7 @@ function HotelDetails({
               color: "Black",
               fontWeight: 500,
               borderBottom: "1px solid Blue",
-              fontSize: { sm: 8, lg: 14 },
+              fontSize: { sm: 8, lg: 14,md:12},
             }}
             onClick={() => {
               setOpenModule("Overview");
@@ -43,7 +43,7 @@ function HotelDetails({
           </Button>
         ) : (
           <Button
-            sx={{ color: "grey", fontSize: { sm: 8, lg: 14 } }}
+            sx={{ color: "grey", fontSize: { sm: 8, lg: 14,md:10 } }}
             onClick={() => {
               setOpenModule("Overview");
               setActiveButton("Overview");
@@ -58,7 +58,7 @@ function HotelDetails({
               color: "Black",
               fontWeight: 500,
               borderBottom: "1px solid Blue",
-              fontSize: { sm: 8, lg: 14 },
+              fontSize: { sm: 8, lg: 14,md:12 },
             }}
             onClick={() => {
               setOpenModule("info");
@@ -69,7 +69,7 @@ function HotelDetails({
           </Button>
         ) : (
           <Button
-            sx={{ color: "grey", fontSize: { sm: 8, lg: 14 } }}
+            sx={{ color: "grey", fontSize: { sm: 8, lg: 14 ,md:10} }}
             onClick={() => {
               setOpenModule("info");
               setActiveButton("info");
@@ -84,7 +84,7 @@ function HotelDetails({
               color: "Black",
               fontWeight: 500,
               borderBottom: "1px solid Blue",
-              fontSize: { sm: 8, lg: 14 },
+              fontSize: { sm: 8, lg: 14,md:12 },
             }}
             onClick={() => {
               setOpenModule("Photos");
@@ -95,7 +95,7 @@ function HotelDetails({
           </Button>
         ) : (
           <Button
-            sx={{ color: "grey", fontSize: { sm: 8, lg: 14 } }}
+            sx={{ color: "grey", fontSize: { sm: 8, lg: 14,md:10 } }}
             onClick={() => {
               setOpenModule("Photos");
               setActiveButton("Photos");

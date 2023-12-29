@@ -32,7 +32,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+                width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -52,7 +52,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -72,7 +72,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -92,7 +92,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -112,7 +112,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -132,7 +132,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -152,7 +152,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -172,7 +172,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -192,7 +192,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -212,7 +212,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+              width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -232,7 +232,7 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
+                width: { sm: 100, lg: 218 ,md:120},
                 // height: "15vh",
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
@@ -252,8 +252,8 @@ export default function PhotosDetails() {
             <Box
               component="img"
               sx={{
-                width: { sm: 100, lg: 218 },
-                height: { sm: 67, lg: 145.5 },
+                width: { sm: 100, lg: 218 ,md:120},
+                height: { sm: 67, lg: 145.5 ,md:80},
                 // borderTopLeftRadius: "20px",
                 // borderBottomLeftRadius: "20px",
                 borderRadius: "5px",

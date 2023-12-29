@@ -314,7 +314,9 @@ export default function MemberRegister() {
             {page === 1 && (
               <>
                 <Form
-                  style={{ marginTop: 3, textAlign: "left", width: "300px" }}
+
+                  style={{ marginTop: 3, textAlign: "left", }}
+
                 >
                   <Grid container spacing={2} sx={{ ml: 1 }}>
                     <Grid item xs={12} sm={5}>
