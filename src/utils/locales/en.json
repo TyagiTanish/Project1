@@ -5,10 +5,46 @@
       "value": "List Your Property"
     }
   ],
+  "/2PAGq": [
+    {
+      "type": 0,
+      "value": "Phone No"
+    }
+  ],
   "1umnAX": [
     {
       "type": 0,
       "value": "Personal Information"
+    }
+  ],
+  "25WwxF": [
+    {
+      "type": 0,
+      "value": "Don't have an account?"
+    }
+  ],
+  "39AHJm": [
+    {
+      "type": 0,
+      "value": "Sign Up"
+    }
+  ],
+  "3rvTzG": [
+    {
+      "type": 0,
+      "value": "SignUp"
+    }
+  ],
+  "4OjOXO": [
+    {
+      "type": 0,
+      "value": "Please enter your email to continue"
+    }
+  ],
+  "5sg7KC": [
+    {
+      "type": 0,
+      "value": "Password"
     }
   ],
   "7444aR": [
@@ -23,16 +59,34 @@
       "value": "Popular Locations"
     }
   ],
+  "AyGauy": [
+    {
+      "type": 0,
+      "value": "Login"
+    }
+  ],
   "FrO6L4": [
     {
       "type": 0,
       "value": "First Name:"
     }
   ],
+  "GPLny2": [
+    {
+      "type": 0,
+      "value": "Register here"
+    }
+  ],
   "H0JBH6": [
     {
       "type": 0,
       "value": "Log Out"
+    }
+  ],
+  "HAlOn1": [
+    {
+      "type": 0,
+      "value": "Name"
     }
   ],
   "HBbJIL": [
@@ -53,6 +107,12 @@
       "value": "World's leading chain of hotels and homes"
     }
   ],
+  "KkDJ/P": [
+    {
+      "type": 0,
+      "value": "Sign up & Get ₹500 OYO Money"
+    }
+  ],
   "NQgbYA": [
     {
       "type": 0,
@@ -69,6 +129,12 @@
     {
       "type": 0,
       "value": "Old password:"
+    }
+  ],
+  "UFXy0j": [
+    {
+      "type": 0,
+      "value": "Verify email"
     }
   ],
   "Y2s5iu": [
@@ -99,6 +165,24 @@
     {
       "type": 0,
       "value": "Update Personal Information"
+    }
+  ],
+  "r2Jjms": [
+    {
+      "type": 0,
+      "value": "Log In"
+    }
+  ],
+  "sy+pv5": [
+    {
+      "type": 0,
+      "value": "Email"
+    }
+  ],
+  "uCk8r+": [
+    {
+      "type": 0,
+      "value": "Already have an account?"
     }
   ],
   "wNLUau": [

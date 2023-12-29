@@ -17,9 +17,25 @@
   "jvaZOr": { "defaultMessage": "Changez votre mot de passe" },
   "Hl6eet": { "defaultMessage": "Chennai" },
   "7444aR": { "defaultMessage": "Kolkata" },
-  "HBbJIL": { "defaultMessage": "There's a smarter way to OYO around" },
+  "HBbJIL": { "defaultMessage": "Il existe un moyen plus intelligent de OYO" },
   "Y2s5iu": {
-    "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
-  }
- 
+    "defaultMessage": "Inscrivez-vous avec un numéro de téléphone et obtenez un accès exclusif à des réductions et des économies sur les séjours OYO et auprès de nos nombreux partenaires de voyage."
+  },
+  "25WwxF": { "defaultMessage": "Vous n'avez pas de compte ?" },
+  "4OjOXO": { "defaultMessage": "Veuillez entrer votre email pour continuer" },
+  "5sg7KC": { "defaultMessage": "Mot de passe" },
+  "AyGauy": { "defaultMessage": "Se connecter" },
+  "GPLny2": { "defaultMessage": "Inscrivez-vous ici" },
+  "KkDJ/P": {
+    "defaultMessage": "Inscrivez-vous et obtenez 500 ₹ d'argent OYO"
+  },
+  "UFXy0j": { "defaultMessage": "Vérifier les courriels" },
+  "qwx3Nk": { "defaultMessage": "Mettre à jour les informations personnelles" },
+  "r2Jjms": { "defaultMessage": "Se connecter" },
+  "/2PAGq": { "defaultMessage": "Pas de téléphone" },
+  "39AHJm": { "defaultMessage": "S'inscrire" },
+  "3rvTzG": { "defaultMessage": "S'inscrire" },
+  "HAlOn1": { "defaultMessage": "Nom" },
+  "sy+pv5": { "defaultMessage": "E-mail" },
+  "uCk8r+": { "defaultMessage": "Vous avez déjà un compte?" }
 }
