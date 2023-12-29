@@ -100,7 +100,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     border: "1px solid lightgrey",
                     borderRadius: "10px",
                     m: { sm: "1px", lg: 1 },
-                    width: { sm: "92vh", lg: "910px", md: "570px" },
+                    width: { sm: "86vh", lg: "910px", md: "570px" },
                   }}
                 >
                   <Box sx={{ width: { sm: 100, lg: 300 } }}>
@@ -177,7 +177,7 @@ function Hotels({ filteredData, screenSize }: any) {
                   <Box
                     sx={{
                       // margin: "20px",
-                      marginLeft: { sm: "150px", lg: "110px", md: "40px" },
+                      marginLeft: { sm: "120px", lg: "110px", md: "35px" },
                       border: "1px solid lightgray",
                       width: { sm: "250px", lg: "310px", md: "410px" },
                       height: "85px",
@@ -186,21 +186,22 @@ function Hotels({ filteredData, screenSize }: any) {
                       padding: { sm: 1, lg: 2, md: 1 },
                       display: "flex",
                       flexDirection: "column",
+                      marginTop:{sm:'8px'}
                     }}
                   >
                     <Box
                       sx={{
-                        width: { sm: "90px", lg: "90px", md: "80px" },
+                        width: { sm: "75px", lg: "90px", md: "80px" },
                         border: "1px solid red",
-                        ml: { sm: 10, lg: 22, md: 9 },
-                        height: { sm: "25px", lg: "25px" },
+                        ml: { sm: 12, lg: 22, md: 9 },
+                        height: { sm: "15px", lg: "25px",md:'25px' },
                         borderRadius: "15px",
                         color: "red",
-                        fontSize: { sm: "10px", lg: "10px", md: "9px" },
+                        fontSize: { sm: "9px", lg: "10px", md: "9px" },
 
-                        pt: { md: 0.75, sm: 0.75 },
+                        pt: { md: 0.75, sm: 0.75},
                         pr: { md: 1, sm: 1 },
-                        pb: { md: 1.3, sm: 1 },
+                        pb: { md: 1.3, sm:0},
                         pl: { md: 1.3, sm: 1 },
                         fontWeight: "bold",
                       }}
@@ -243,7 +244,7 @@ function Hotels({ filteredData, screenSize }: any) {
                       <Typography
                         sx={{
                           fontWeight: "bold",
-                          fontSize: { sm: "14px", lg: "18px", md: "15px" },
+                          fontSize: { sm: "15px", lg: "18px", md: "15px" },
                           opacity: 0.7,
                         }}
                       >
@@ -253,15 +254,15 @@ function Hotels({ filteredData, screenSize }: any) {
                         {" "}
                         <Button
                           sx={{
-                            width: { sm: "80px", lg: "130px", md: "90px" },
+                            width: { sm: "90px", lg: "130px", md: "90px" },
                             backgroundColor: "#D4164B",
-                            height: { sm: "20px", lg: "30px", md: "25px" },
+                            height: { sm: "25px", lg: "30px", md: "25px" },
                             color: "white",
                             fontWeight: "bold",
-                            marginLeft: { sm: "10px", lg: "90px" },
+                            marginLeft: { sm: "20px", lg: "90px" },
                             marginTop: "-9px",
                             textTransform: "none",
-                            fontSize: { sm: "10px", lg: 20, md: 12 },
+                            fontSize: { sm:10, lg: 20, md: 12 },
                           }}
                           // className="btn2"
                         >

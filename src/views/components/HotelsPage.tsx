@@ -75,7 +75,7 @@ window.addEventListener('resize',handleWindowSize);
           filterData={filterData}
         />
       </Stack>
-          <Stack direction={"row"} sx={{ m: {md:2,xl:5} }}>
+          <Stack direction={"row"} sx={{ m: {md:2,xl:5,sm:3}}}>
             <Hotels filteredData={filteredData}  screenSize={screenSize} />
             {screenSize <=768 ?(<></>):<SimpleMap />}
           </Stack>
