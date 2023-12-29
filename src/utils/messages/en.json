@@ -1,16 +1,34 @@
 {
+  "+QNm85": {
+    "defaultMessage": "Parking"
+  },
   "+R6HRl": {
     "defaultMessage": "List Your Property"
   },
+<<<<<<< .merge_file_lJCLmL
   "1umnAX": {
     "defaultMessage": "Personal Information"
   },
   "7444aR": {
     "defaultMessage": "Kolkata"
+=======
+  "11oARw": {
+    "defaultMessage": "Pool"
+  },
+  "3KiaqX": {
+    "defaultMessage": "Check in: 15:00"
+  },
+  "5V00Mx": {
+    "defaultMessage": "Commanding a sweeping view of the Arabian Sea in India's commercial capital, The InterContinental Marine Drive is setting standards for personalised service for business and leisure travellers. The experience begins as Mumbai's glittering skyline, aptly called the Queen's Necklace welcomes you. Step into the InterContinental Marine Drive and the warm, personalised attention helps you relax. The InterContinental Marine Drive is strategically located in the heart of Mumbai's business & financial district, 1.5 kms from Nariman Point and 3 kms from the Main Shopping Area of Colaba. Offering you the all-important luxury of saving time while on work. State-of-the-art business communication and meeting facilities further optimize time management."
+  },
+  "8oWVZA": {
+    "defaultMessage": "Restaurant"
+>>>>>>> .merge_file_bdVdJS
   },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
   },
+<<<<<<< .merge_file_lJCLmL
   "FrO6L4": {
     "defaultMessage": "First Name:"
   },
@@ -22,10 +40,24 @@
   },
   "Hl6eet": {
     "defaultMessage": "Chennai"
+=======
+  "9khnVR": {
+    "defaultMessage": "Photos"
+  },
+  "9rwIcL": {
+    "defaultMessage": "A/C"
+  },
+  "9uOFF3": {
+    "defaultMessage": "Overview"
+  },
+  "GodOg+": {
+    "defaultMessage": "Arrival / Departure"
+>>>>>>> .merge_file_bdVdJS
   },
   "Hm2NzP": {
     "defaultMessage": "World's leading chain of hotels and homes"
   },
+<<<<<<< .merge_file_lJCLmL
   "NQgbYA": {
     "defaultMessage": "Account Settings"
   },
@@ -49,8 +81,42 @@
   },
   "qwx3Nk": {
     "defaultMessage": "Update Personal Information"
+=======
+  "JH2EfS": {
+    "defaultMessage": "Pets"
+  },
+  "RiZXe1": {
+    "defaultMessage": "Hotel bar"
+  },
+  "dmGKS5": {
+    "defaultMessage": "Check out: 12:00"
+  },
+  "h9FUr8": {
+    "defaultMessage": "Free WiFi"
+  },
+  "kUDcH0": {
+    "defaultMessage": "Spa"
+  },
+  "l4GiZS": {
+    "defaultMessage": "Telephone: +91 2239879999 | Fax: +91 2239879600"
+  },
+  "lhgV6Z": {
+    "defaultMessage": "Top amenities"
+  },
+  "rvirM2": {
+    "defaultMessage": "Location"
+  },
+  "uXYcYf": {
+    "defaultMessage": "Wifi in lobby"
+>>>>>>> .merge_file_bdVdJS
   },
   "wNLUau": {
     "defaultMessage": "Login / SignUp"
+  },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
+  "zFegDD": {
+    "defaultMessage": "Contact"
   }
 }
