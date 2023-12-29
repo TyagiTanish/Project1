@@ -5,13 +5,12 @@
   "+R6HRl": {
     "defaultMessage": "List Your Property"
   },
-<<<<<<< .merge_file_lJCLmL
   "1umnAX": {
     "defaultMessage": "Personal Information"
   },
   "7444aR": {
     "defaultMessage": "Kolkata"
-=======
+  },
   "11oARw": {
     "defaultMessage": "Pool"
   },
@@ -23,12 +22,10 @@
   },
   "8oWVZA": {
     "defaultMessage": "Restaurant"
->>>>>>> .merge_file_bdVdJS
   },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
   },
-<<<<<<< .merge_file_lJCLmL
   "FrO6L4": {
     "defaultMessage": "First Name:"
   },
@@ -40,7 +37,7 @@
   },
   "Hl6eet": {
     "defaultMessage": "Chennai"
-=======
+  },
   "9khnVR": {
     "defaultMessage": "Photos"
   },
@@ -52,12 +49,10 @@
   },
   "GodOg+": {
     "defaultMessage": "Arrival / Departure"
->>>>>>> .merge_file_bdVdJS
   },
   "Hm2NzP": {
     "defaultMessage": "World's leading chain of hotels and homes"
   },
-<<<<<<< .merge_file_lJCLmL
   "NQgbYA": {
     "defaultMessage": "Account Settings"
   },
@@ -80,8 +75,7 @@
     "defaultMessage": "Change Your Password"
   },
   "qwx3Nk": {
-    "defaultMessage": "Update Personal Information"
-=======
+    "defaultMessage": "Update Personal Information"},
   "JH2EfS": {
     "defaultMessage": "Pets"
   },
@@ -108,7 +102,6 @@
   },
   "uXYcYf": {
     "defaultMessage": "Wifi in lobby"
->>>>>>> .merge_file_bdVdJS
   },
   "wNLUau": {
     "defaultMessage": "Login / SignUp"
