@@ -8,6 +8,7 @@ import Password from "./Password";
 import Update from "./Update";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "./redux/user/userSlice";
+import { FormattedMessage } from "react-intl";
 import Logo from "./Logo";
 function Account() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function Account() {
         >
           <Link style={{ textDecoration: "none", color: "#D4164B" }} to="/">
             <ArrowBackIosIcon sx={{ fontSize: { sm: 10, md: 12, xl: 14 } }} />
-            Back
+           <FormattedMessage defaultMessage="Back"/>
           </Link>
 
           <Typography
@@ -56,7 +57,7 @@ function Account() {
               fontSize: { xl: 14, md: 14, sm: 12 },
             }}
           >
-            Account Settings
+            <FormattedMessage defaultMessage="Account Settings"/>
           </Typography>
           <Box
             sx={{
@@ -69,25 +70,25 @@ function Account() {
             }}
             onClick={handleLogOut}
           >
-            Log Out
+             <FormattedMessage defaultMessage="Log Out"/> 
           </Box>
         </Box>
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Typography
             sx={{ fontSize: { xl: 30, md: 23, sm: 15 }, fontWeight: "bold" }}
           >
-            Account Settings
+          <FormattedMessage defaultMessage="Account Settings"/> 
           </Typography>
           <Typography
             sx={{ width: 300, mt: 2, fontSize: { xl: 18, md: 16, sm: 14 } }}
           >
-            Personal Information
+             <FormattedMessage defaultMessage="Personal Information"/>
           </Typography>
 
           <Update />
 
           <Typography sx={{ fontSize: { xl: 18, md: 16, sm: 14 }, mt: 5 }}>
-            Change Your Password
+             <FormattedMessage defaultMessage="Change Your Password"/> 
           </Typography>
           <Password />
         </Box>

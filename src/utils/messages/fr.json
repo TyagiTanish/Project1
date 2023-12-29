@@ -2,6 +2,24 @@
   "+R6HRl": { "defaultMessage": "Inscrivez votre propriété" },
   "8uXS99": { "defaultMessage": "Lieux populaires" },
   "wNLUau": { "defaultMessage": "Se connecter S'inscrire" },
-  "yGgJD/":{"defaultMessage":"Banglore"},
-  "Hm2NzP":{"defaultMessage":"Première chaîne mondiale d'hôtels et de résidences"}
+  "yGgJD/": { "defaultMessage": "Banglore" },
+  "Hm2NzP": {
+    "defaultMessage": "Première chaîne mondiale d'hôtels et de résidences"
+  },
+  "1umnAX": { "defaultMessage": "informations personnelles" },
+  "FrO6L4": { "defaultMessage": "Prénom:" },
+  "H0JBH6": { "defaultMessage": "Se déconnecter" },
+  "NQgbYA": { "defaultMessage": "Paramètres du compte" },
+  "QiKKFz": { "defaultMessage": "Changer le mot de passe" },
+  "U41zpQ": { "defaultMessage": "Ancien mot de passe:" },
+  "cyR7Kh": { "defaultMessage": "Dos" },
+  "gCsYTJ": { "defaultMessage": "Nouveau mot de passe:" },
+  "jvaZOr": { "defaultMessage": "Changez votre mot de passe" },
+  "Hl6eet": { "defaultMessage": "Chennai" },
+  "7444aR": { "defaultMessage": "Kolkata" },
+  "HBbJIL": { "defaultMessage": "There's a smarter way to OYO around" },
+  "Y2s5iu": {
+    "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
+  }
+ 
 }

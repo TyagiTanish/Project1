@@ -3,7 +3,7 @@ import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
-
+import { useIntl, FormattedMessage } from "react-intl";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./redux/user/userSlice";
 import { enqueueSnackbar } from "notistack";
@@ -37,7 +37,7 @@ function Update() {
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
-        First Name:
+        <FormattedMessage defaultMessage="First Name:"/>
       </Typography>
 
       <TextField
@@ -66,7 +66,7 @@ function Update() {
           }}
           type="submit"
         >
-          Update Personal Information
+          <FormattedMessage defaultMessage="Update Personal Information"/>
         </Button>
       </Box>
     </form>

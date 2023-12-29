@@ -154,7 +154,7 @@ export default function BasicCard() {
                 fontSize: { md: 15, xl: 16 },
               }}
             >
-              Chennai
+             <FormattedMessage defaultMessage="Chennai" /> 
             </Box>
             <KeyboardArrowDownIcon
               className="xyz"
@@ -265,7 +265,7 @@ export default function BasicCard() {
                 fontSize: { md: 15, xl: 16 },
               }}
             >
-              Kolkata
+               <FormattedMessage defaultMessage=" Kolkata" />
             </Box>
             <KeyboardArrowDownIcon
               className="xyz"
