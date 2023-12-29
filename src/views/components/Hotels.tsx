@@ -37,11 +37,12 @@ function Hotels({ filteredData,screenSize }: any) {
     
       <Box
         sx={{
+          padding:{sm:0},
           height: "100vh",
           overflowY: "auto",
           // maxWidth: "60vw",
-          width: { sm: "100%", lg: "55%" },
-          padding: { sm: 0 },
+          width: { sm: "66%", lg: "55%" },
+        
         }}
       >
         {screenSize <= 768 ? (<Box><img src={require('./Map.jpg')} width={"20%"} height={"80px"} style={{borderRadius:'10px',marginLeft:'75%'}}></img></Box>):<></>}
