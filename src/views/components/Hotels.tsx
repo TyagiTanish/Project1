@@ -188,7 +188,6 @@ function Hotels({ filteredData, screenSize }: any) {
                       flexDirection: "column",
                     }}
                   >
-
                     <Box
                       sx={{
                         width: { sm: "90px", lg: "90px", md: "80px" },
@@ -212,37 +211,6 @@ function Hotels({ filteredData, screenSize }: any) {
                     <Box
                       sx={{
                         color: "#D4164B",
-                    Free Cancelation
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    display: "flex",
-                    flexDirection: "row",
-                    marginTop: "10px",
-                    marginLeft: "5px",
-                  }}
-                >
-                  <Typography
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: { sm: "14px", lg: "18px",md:"15px" },
-                      opacity: 0.7,
-                    }}
-                  >
-                    ₹{item.price}
-                  </Typography>
-                 
-               
-                    <Button
-                   href="/billing"
-                  
-                      sx={{
-                        "&:hover": { backgroundColor: "#D4164B"} ,
-                        width: { sm: "80px", lg: "130px" ,md:"90px"},
-                        backgroundColor: "#D4164B",
-                        height: { sm: "20px", lg: "30px" ,md:"25px"},
-                        color: "white",
                         fontWeight: "bold",
                         fontSize: "8px",
                         display: "flex",
@@ -256,9 +224,6 @@ function Hotels({ filteredData, screenSize }: any) {
                         }}
                       />{" "}
                       <Typography
-
-                      View Deal
-                      <Box
                         sx={{
                           fontSize: { sm: "10px", lg: "12px", md: "12px" },
                           fontWeight: "bold",
@@ -286,7 +251,6 @@ function Hotels({ filteredData, screenSize }: any) {
                       </Typography>
                       <IconButton href="/billing">
                         {" "}
-
                         <Button
                           sx={{
                             width: { sm: "80px", lg: "130px", md: "90px" },
@@ -317,15 +281,6 @@ function Hotels({ filteredData, screenSize }: any) {
                     </Box>
                   </Box>
                 </Stack>
-
-                        <KeyboardArrowRightIcon />
-                      </Box>
-                    </Button>
-                  
-                </Box>
-              </Box>
-            </Stack>
-
 
                 {/* </Box> */}
                 {detailIndex === i ? (
