@@ -5,6 +5,7 @@ import OverViewHotel from "./OverViewHotel";
 import PhotosDetails from "./PhotosDetails";
 import ReviewDetails from "./ReviewDetails";
 import InfoHotelDetails from "./InfoHotelDetails";
+import { FormattedMessage } from "react-intl";
 function HotelDetails({
   i,
   item,
@@ -39,7 +40,7 @@ function HotelDetails({
               setActiveButton("Overview");
             }}
           >
-            Overview
+            <FormattedMessage defaultMessage={'Overview'} />
           </Button>
         ) : (
           <Button
@@ -49,7 +50,7 @@ function HotelDetails({
               setActiveButton("Overview");
             }}
           >
-            Overview
+                <FormattedMessage defaultMessage={'Overview'} />
           </Button>
         )}
         {activeButton === "info" ? (
