@@ -11,10 +11,46 @@
       "value": "Inscrivez votre propriété"
     }
   ],
+  "/2PAGq": [
+    {
+      "type": 0,
+      "value": "Pas de téléphone"
+    }
+  ],
   "1umnAX": [
     {
       "type": 0,
       "value": "informations personnelles"
+    }
+  ],
+  "25WwxF": [
+    {
+      "type": 0,
+      "value": "Vous n'avez pas de compte ?"
+    }
+  ],
+  "39AHJm": [
+    {
+      "type": 0,
+      "value": "S'inscrire"
+    }
+  ],
+  "3rvTzG": [
+    {
+      "type": 0,
+      "value": "S'inscrire"
+    }
+  ],
+  "4OjOXO": [
+    {
+      "type": 0,
+      "value": "Veuillez entrer votre email pour continuer"
+    }
+  ],
+  "5sg7KC": [
+    {
+      "type": 0,
+      "value": "Mot de passe"
     }
   ],
   "7444aR": [
@@ -52,10 +88,10 @@
       "value": "Lieux populaires"
     }
   ],
-  "BJMiT/": [
+  "AyGauy": [
     {
       "type": 0,
-      "value": "Yayyyy! you just saved ₹856 on this booking!"
+      "value": "Se connecter"
     }
   ],
   "FrO6L4": [
@@ -64,10 +100,28 @@
       "value": "Prénom:"
     }
   ],
+  "GPLny2": [
+    {
+      "type": 0,
+      "value": "Inscrivez-vous ici"
+    }
+  ],
   "H0JBH6": [
     {
       "type": 0,
       "value": "Se déconnecter"
+    }
+  ],
+  "HAlOn1": [
+    {
+      "type": 0,
+      "value": "Nom"
+    }
+  ],
+  "HBbJIL": [
+    {
+      "type": 0,
+      "value": "Il existe un moyen plus intelligent de OYO"
     }
   ],
   "Hl6eet": [
@@ -105,6 +159,12 @@
       "value": "Première chaîne mondiale d'hôtels et de résidences"
     }
   ],
+  "KkDJ/P": [
+    {
+      "type": 0,
+      "value": "Inscrivez-vous et obtenez 500 ₹ d'argent OYO"
+    }
+  ],
   "NQgbYA": [
     {
       "type": 0,
@@ -123,10 +183,16 @@
       "value": "Ancien mot de passe:"
     }
   ],
-  "cK29jO": [
+  "UFXy0j": [
     {
       "type": 0,
-      "value": "We will use these details to share your booking information"
+      "value": "Vérifier les courriels"
+    }
+  ],
+  "Y2s5iu": [
+    {
+      "type": 0,
+      "value": "Inscrivez-vous avec un numéro de téléphone et obtenez un accès exclusif à des réductions et des économies sur les séjours OYO et auprès de nos nombreux partenaires de voyage."
     }
   ],
   "cyR7Kh": [
@@ -141,31 +207,31 @@
       "value": "Nouveau mot de passe:"
     }
   ],
-  "gloqA9": [
-    {
-      "type": 0,
-      "value": "Enter Your Details"
-    }
-  ],
   "jvaZOr": [
     {
       "type": 0,
       "value": "Changez votre mot de passe"
     }
   ],
-  "k9RO76": [
-    {
-      "type": 0,
-      "value": "Modify your Booking"
-    }
-  ],
-  "q5Xl0M": [
-    {
-      "type": 0,
-      "value": "Verify"
-    }
-  ],
   "qwx3Nk": [
+    {
+      "type": 0,
+      "value": "Mettre à jour les informations personnelles"
+    }
+  ],
+  "r2Jjms": [
+    {
+      "type": 0,
+      "value": "Se connecter"
+    }
+  ],
+  "sy+pv5": [
+    {
+      "type": 0,
+      "value": "E-mail"
+    }
+  ],
+  "uCk8r+": [
     {
       "type": 0,
       "value": "Update Personal Information"}],

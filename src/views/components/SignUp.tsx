@@ -14,6 +14,7 @@ import { enqueueSnackbar } from "notistack";
 import Loaders from "./Loaders";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
+import { FormattedMessage } from "react-intl";
 
 const SignUp = ({ setLogReg }: any) => {
   const { request } = useAuth();
@@ -115,7 +116,7 @@ const SignUp = ({ setLogReg }: any) => {
             color="text.secondary"
             gutterBottom
           >
-            Sign up & Get ₹500 OYO Money
+           <FormattedMessage defaultMessage="  Sign up & Get ₹500 OYO Money"/>   
           </Typography>
           <Typography
             sx={{
@@ -125,7 +126,7 @@ const SignUp = ({ setLogReg }: any) => {
               m: 2,
             }}
           >
-            Sign Up
+           <FormattedMessage defaultMessage="  Sign Up"/>   
           </Typography>
 
           <CardContent>
@@ -137,7 +138,7 @@ const SignUp = ({ setLogReg }: any) => {
                     fontSize: { xl: 18, md: 16, sm: 16 },
                   }}
                 >
-                  Name
+                  <FormattedMessage defaultMessage="  Name"/>   
                 </Typography>
                 <TextField
                   id="demo-helper-text-aligned"
@@ -150,7 +151,7 @@ const SignUp = ({ setLogReg }: any) => {
                     fontSize: { xl: 18, md: 16, sm: 16 },
                   }}
                 >
-                  Email
+                  <FormattedMessage defaultMessage="   Email"/>  
                 </Typography>
                 <TextField
                   sx={{ border: "none" }}
@@ -164,7 +165,7 @@ const SignUp = ({ setLogReg }: any) => {
                     fontSize: { xl: 18, md: 16, sm: 16 },
                   }}
                 >
-                  Phone No
+                 <FormattedMessage defaultMessage="  Phone No"/>  
                 </Typography>
                 <TextField
                   id="demo-helper-text-aligned"
@@ -177,7 +178,7 @@ const SignUp = ({ setLogReg }: any) => {
                     fontSize: { xl: 18, md: 16, sm: 16 },
                   }}
                 >
-                  Password
+                   <FormattedMessage defaultMessage="    Password"/>
                 </Typography>
                 <TextField
                   id="demo-helper-text-aligned"
@@ -187,14 +188,14 @@ const SignUp = ({ setLogReg }: any) => {
                 <FormHelperText>{errors.password?.message}</FormHelperText>
               </Stack>
               <Button size="small" variant="contained" type="submit">
-                SignUp
+              <FormattedMessage defaultMessage="   SignUp"/>  
               </Button>
             </form>
           </CardContent>
           <Stack direction={"row"} alignItems={"center"} margin={2}>
             <Typography sx={{ width: 200 }}>
               {" "}
-              Already have an account?
+              <FormattedMessage defaultMessage=" Already have an account?"/>    
             </Typography>
             <Button
               onClick={() => {
