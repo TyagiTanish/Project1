@@ -18,7 +18,7 @@ export default function SimpleMap() {
     zoom: 15,
   };
   const handleChange = (value: any) => {
-    console.log(value.center);
+  
 
     const data: any = {
       latitude: value.center.lat,
@@ -29,13 +29,14 @@ export default function SimpleMap() {
   return (
     <Box
       sx={{
-        height: "100vh",
-        width: { sm: "10vh", lg: "20vw" },
-        marginLeft: 17,
+        height: "99vh",
+        width: { sm: "10vh", xl: "40vw",md:"40vw" },
+        marginLeft: {md:2},
+        marginTop:{xl:"9px",md:"2px"}
       }}
     >
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
+        bootstrapURLKeys={{ key: "AIzaSyDEZ3SEb_VoWvsv0AXCsGT_Mg9f4L0gATQ" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onChange={(value) => handleChange(value)}
