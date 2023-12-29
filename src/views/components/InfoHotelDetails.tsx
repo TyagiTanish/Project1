@@ -15,7 +15,7 @@ function InfoHotelDetails({ item }: any) {
       sx={{
         border: "1px solid lightgrey",
         mb: 2,
-        width: { sm: "95%", lg: "99%" ,md:610},
+        width: { sm: "98%", lg: "99%" ,md:590},
         borderRadius: 5,
       }}
     >

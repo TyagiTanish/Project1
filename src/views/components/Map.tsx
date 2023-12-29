@@ -30,7 +30,7 @@ export default function SimpleMap() {
     <Box
       sx={{
         height: "99vh",
-        width: { sm: "10vh", xl: "40vw",md:"40vw" },
+        width: { sm: "96vh", xl: "40vw",md:"40vw" },
         marginLeft: {md:2},
         marginTop:{xl:"9px",md:"2px"}
 
