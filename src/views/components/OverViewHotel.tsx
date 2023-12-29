@@ -9,11 +9,12 @@ import PetsIcon from "@mui/icons-material/Pets";
 import AcUnitIcon from "@mui/icons-material/AcUnit";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import WineBarIcon from "@mui/icons-material/WineBar";
+import { useIntl, FormattedMessage } from "react-intl";
 function OverViewHotel() {
   return (
     <Box
       sx={{
-        p: { sm: 4, lg: 5, md:5 },
+        p: { sm: 4, lg: 5, md: 5 },
         border: "1px solid lightgray",
         mb: 2,
         borderRadius: 5,
@@ -56,7 +57,7 @@ function OverViewHotel() {
               mr: { sm: 0.5, lg: 1 ,md:1},
             }}
           />
-          Wifi in lobby
+          <FormattedMessage defaultMessage="Wifi in lobby" />
         </Box>
         <Box>
           <NetworkWifiIcon
@@ -66,7 +67,7 @@ function OverViewHotel() {
               mr: { sm: 0.5, lg: 1,md:1 },
             }}
           />
-          Free WiFi
+          <FormattedMessage defaultMessage="Free WiFi" />
         </Box>
         <Box>
           <PoolIcon
@@ -76,7 +77,7 @@ function OverViewHotel() {
               mr: { sm: 0.5, lg: 1 ,md:1},
             }}
           />
-          Pool
+          <FormattedMessage defaultMessage="Pool" />
         </Box>
       </Box>
       <Box
@@ -93,7 +94,7 @@ function OverViewHotel() {
               mr: { sm: 0.5, lg: 1 ,md:1},
             }}
           />
-          Spa
+          <FormattedMessage defaultMessage="Spa" />
         </Box>
         <Box
           sx={{
@@ -108,7 +109,7 @@ function OverViewHotel() {
             
             }}
           />
-          Parking
+          <FormattedMessage defaultMessage=" Parking" />
         </Box>
         <Box sx={{ ml: { sm: 10.7, lg: 22,md:10} }}>
           <PetsIcon
@@ -117,7 +118,7 @@ function OverViewHotel() {
               mr: { sm: 0.5, lg: 1,md:1 },
             }}
           />
-          Pets
+          <FormattedMessage defaultMessage="Pets" />
         </Box>
       </Box>
       <Box
@@ -134,7 +135,7 @@ function OverViewHotel() {
            fontSize: { sm: "medium", lg: "large" , md:"15px" },
             }}
           />
-          A/C
+          <FormattedMessage defaultMessage="A/C" />
         </Box>
         <Box sx={{ ml: { sm: 13.7, lg: 28.5,md:12 } }}>
           <RestaurantMenuIcon
@@ -143,7 +144,7 @@ function OverViewHotel() {
            fontSize: { sm: "medium", lg: "large" , md:"15px" },
             }}
           />
-          Restaurant
+          <FormattedMessage defaultMessage=" Restaurant" />
         </Box>
         <Box sx={{ ml: { sm: 7.5, lg: 18.5 ,md:7.5} }}>
           <WineBarIcon
@@ -152,7 +153,7 @@ function OverViewHotel() {
            fontSize: { sm: "medium", lg: "large" , md:"15px" },
             }}
           />
-          Hotel bar
+          <FormattedMessage defaultMessage="Hotel bar" />
         </Box>
       </Box>
     </Box>

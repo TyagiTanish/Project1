@@ -1,10 +1,17 @@
 {
+  "+QNm85": [
+    {
+      "type": 0,
+      "value": "Parking"
+    }
+  ],
   "+R6HRl": [
     {
       "type": 0,
       "value": "List Your Property"
     }
   ],
+<<<<<<< .merge_file_Elr187
   "1umnAX": [
     {
       "type": 0,
@@ -15,6 +22,30 @@
     {
       "type": 0,
       "value": "Kolkata"
+=======
+  "11oARw": [
+    {
+      "type": 0,
+      "value": "Pool"
+    }
+  ],
+  "3KiaqX": [
+    {
+      "type": 0,
+      "value": "Check in: 15:00"
+    }
+  ],
+  "5V00Mx": [
+    {
+      "type": 0,
+      "value": "Commanding a sweeping view of the Arabian Sea in India's commercial capital, The InterContinental Marine Drive is setting standards for personalised service for business and leisure travellers. The experience begins as Mumbai's glittering skyline, aptly called the Queen's Necklace welcomes you. Step into the InterContinental Marine Drive and the warm, personalised attention helps you relax. The InterContinental Marine Drive is strategically located in the heart of Mumbai's business & financial district, 1.5 kms from Nariman Point and 3 kms from the Main Shopping Area of Colaba. Offering you the all-important luxury of saving time while on work. State-of-the-art business communication and meeting facilities further optimize time management."
+    }
+  ],
+  "8oWVZA": [
+    {
+      "type": 0,
+      "value": "Restaurant"
+>>>>>>> .merge_file_vmcVXf
     }
   ],
   "8uXS99": [
@@ -23,6 +54,7 @@
       "value": "Popular Locations"
     }
   ],
+<<<<<<< .merge_file_Elr187
   "FrO6L4": [
     {
       "type": 0,
@@ -45,6 +77,30 @@
     {
       "type": 0,
       "value": "Chennai"
+=======
+  "9khnVR": [
+    {
+      "type": 0,
+      "value": "Photos"
+    }
+  ],
+  "9rwIcL": [
+    {
+      "type": 0,
+      "value": "A/C"
+    }
+  ],
+  "9uOFF3": [
+    {
+      "type": 0,
+      "value": "Overview"
+    }
+  ],
+  "GodOg+": [
+    {
+      "type": 0,
+      "value": "Arrival / Departure"
+>>>>>>> .merge_file_vmcVXf
     }
   ],
   "Hm2NzP": [
@@ -53,6 +109,7 @@
       "value": "World's leading chain of hotels and homes"
     }
   ],
+<<<<<<< .merge_file_Elr187
   "NQgbYA": [
     {
       "type": 0,
@@ -99,12 +156,78 @@
     {
       "type": 0,
       "value": "Update Personal Information"
+=======
+  "JH2EfS": [
+    {
+      "type": 0,
+      "value": "Pets"
+    }
+  ],
+  "RiZXe1": [
+    {
+      "type": 0,
+      "value": "Hotel bar"
+    }
+  ],
+  "dmGKS5": [
+    {
+      "type": 0,
+      "value": "Check out: 12:00"
+    }
+  ],
+  "h9FUr8": [
+    {
+      "type": 0,
+      "value": "Free WiFi"
+    }
+  ],
+  "kUDcH0": [
+    {
+      "type": 0,
+      "value": "Spa"
+    }
+  ],
+  "l4GiZS": [
+    {
+      "type": 0,
+      "value": "Telephone: +91 2239879999 | Fax: +91 2239879600"
+    }
+  ],
+  "lhgV6Z": [
+    {
+      "type": 0,
+      "value": "Top amenities"
+    }
+  ],
+  "rvirM2": [
+    {
+      "type": 0,
+      "value": "Location"
+    }
+  ],
+  "uXYcYf": [
+    {
+      "type": 0,
+      "value": "Wifi in lobby"
+>>>>>>> .merge_file_vmcVXf
     }
   ],
   "wNLUau": [
     {
       "type": 0,
       "value": "Login / SignUp"
+    }
+  ],
+  "we4Lby": [
+    {
+      "type": 0,
+      "value": "Info"
+    }
+  ],
+  "zFegDD": [
+    {
+      "type": 0,
+      "value": "Contact"
     }
   ]
 }

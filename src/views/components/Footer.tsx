@@ -13,14 +13,14 @@ import OyoLogo from "../../assets/OyoLogo";
 import FooterRytLogo from "../../assets/FooterRytLogo";
 import { grey } from "@mui/material/colors";
 import { useIntl, FormattedMessage } from "react-intl";
+
 function Footer() {
   return (
     <Box
       sx={{
         fontFamily: "sans-serif",
         mt: 5,
-        width:'98.8%',
-     
+        width: "98.8%",
       }}
     >
       <Box
@@ -30,13 +30,11 @@ function Footer() {
           display: "flex",
           justifyContent: "space-between",
           borderBottom: "1px solid white",
-          alignItems:'center'
+          alignItems: "center",
         }}
       >
         <Box sx={{ color: "white", display: "flex", alignItems: "center" }}>
-          <Box
-            sx={{ml:{md:-5,xl:0,sm:-9}}}
-          >
+          <Box sx={{ ml: { md: -5, xl: 0, sm: -9 } }}>
             <OyoLogo />
           </Box>
 
@@ -44,14 +42,12 @@ function Footer() {
             sx={{
               fontFamily: "sans-serif",
               fontWeight: "900",
-              ml:-1,
-              fontSize: {xl:"22px",md:16,sm:'15px'},
-              width:{sm:350,xl:500,lg:'100%'},
-              mt:{md:-1,xl:0,sm:0},
-             
+              ml: -1,
+              fontSize: { xl: "22px", md: 16, sm: "15px" },
+              width: { sm: 350, xl: 500, lg: "100%" },
+              mt: { md: -1, xl: 0, sm: 0 },
             }}
           >
-
             <FormattedMessage defaultMessage="World's leading chain of hotels and homes" />
           </Box>
         </Box>
@@ -61,9 +57,9 @@ function Footer() {
             color: "white",
             display: "flex",
             alignItems: "center",
-            fontSize: {xl:"22px",md:16,sm:11},
-            mr:{xl:0,md:-6,sm:-6},
-            ml:{sm:-8,lg:0}
+            fontSize: { xl: "22px", md: 16, sm: 11 },
+            mr: { xl: 0, md: -6, sm: -6 },
+            ml: { sm: -8, lg: 0 },
           }}
         >
           <Box
@@ -80,7 +76,7 @@ function Footer() {
                 background: "white",
                 // ml: 2,
                 fontWeight: 700,
-                fontSize:{xl:15,md:12,sm:8}
+                fontSize: { xl: 15, md: 12, sm: 8 },
               }}
             >
               List Your Property
@@ -97,7 +93,6 @@ function Footer() {
           justifyContent: "space-evenly",
           borderBottom: "1px solid white",
           color: "white",
-          
         }}
       >
         <Box
@@ -107,7 +102,9 @@ function Footer() {
             paddingRight: "24px",
           }}
         >
-          <Box sx={{fontSize:{xl:18,md:15,sm:12}}}>Download OYO app for exciting offers.</Box>
+          <Box sx={{ fontSize: { xl: 18, md: 15, sm: 12 } }}>
+            Download OYO app for exciting offers.
+          </Box>
           <Box>
             <AppStoreLogo />
             <PlayStoreLogo />
@@ -121,8 +118,8 @@ function Footer() {
             borderLeft: "1px solid white",
             paddingLeft: "24px",
             color: "white",
-            fontSize:{xl:18,md:13,sm:12},
-            mr:2
+            fontSize: { xl: 18, md: 13, sm: 12 },
+            mr: 2,
           }}
         >
           <Link to="/" className="linkStyle">
@@ -142,8 +139,8 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            fontSize:{xl:18,md:13,sm:12},
-            mr:1
+            fontSize: { xl: 18, md: 13, sm: 12 },
+            mr: 1,
           }}
         >
           <Link to="/" className="linkStyle">
@@ -166,8 +163,8 @@ function Footer() {
             flexDirection: "column",
             borderLeft: "1px solid white",
             paddingLeft: "24px",
-            fontSize:{xl:18,md:13,sm:12},
-            mr:3
+            fontSize: { xl: 18, md: 13, sm: 12 },
+            mr: 3,
           }}
         >
           <Link to="/" className="linkStyle">
@@ -187,8 +184,7 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            fontSize:{xl:18,md:13,sm:12},
-         
+            fontSize: { xl: 18, md: 13, sm: 12 },
           }}
         >
           <Link to="/" className="linkStyle">
@@ -233,9 +229,9 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            ml:{xl:4,md:5,sm:4},
-            fontSize:{xl:18,md:15,sm:12},
-            width:'40%'
+            ml: { xl: 4, md: 5, sm: 4 },
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            width: "40%",
           }}
         >
           <Link to="/" className="linkStyle">
@@ -274,9 +270,9 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            ml:{xl:0,md:2,sm:4},
-            fontSize:{xl:18,md:15,sm:12},
-            width:'40%'
+            ml: { xl: 0, md: 2, sm: 4 },
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            width: "40%",
           }}
         >
           <Link to="/" className="linkStyle">
@@ -315,9 +311,9 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            fontSize:{xl:18,md:15,sm:12},
-            ml:{xl:0,md:2,sm:4},
-            width:'40%'
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            ml: { xl: 0, md: 2, sm: 4 },
+            width: "40%",
           }}
         >
           <Link to="/" className="linkStyle">
@@ -356,9 +352,9 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            fontSize:{xl:18,md:15,sm:12},
-            ml:{xl:0,md:2,sm:4},
-            width:'40%'
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            ml: { xl: 0, md: 2, sm: 4 },
+            width: "40%",
           }}
         >
           <Link to="/" className="linkStyle">
@@ -397,9 +393,9 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            fontSize:{xl:18,md:15,sm:12},
-            ml:{xl:0,md:2,sm:4},
-            width:'40%'
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            ml: { xl: 0, md: 2, sm: 4 },
+            width: "40%",
           }}
         >
           <Link to="/" className="linkStyle">
@@ -438,9 +434,9 @@ function Footer() {
           sx={{
             display: "flex",
             flexDirection: "column",
-            fontSize:{xl:18,md:15,sm:12},
-            ml:{xl:0,md:2,sm:4},
-            width:'40%'
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            ml: { xl: 0, md: 2, sm: 4 },
+            width: "40%",
           }}
         >
           <Link to="/" className="linkStyle">
