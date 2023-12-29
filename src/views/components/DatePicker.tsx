@@ -13,7 +13,7 @@ export default function SingleInputDateRangePicker() {
         <DateRangePicker
           slots={{ field: SingleInputDateRangeField }}
           sx={{ bgcolor: "white" }}
-          // name="allowedRange"
+          name="allowedRange"
           defaultValue={[dayjs(Date.now()), dayjs(Date.now())]}
         />
       </DemoContainer>
