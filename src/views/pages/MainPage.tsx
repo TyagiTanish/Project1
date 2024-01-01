@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography, colors } from "@mui/material";
 import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
 import { useState } from "react";
@@ -7,15 +7,18 @@ import SignUp from "../components/SignUp";
 import { useSelector } from "react-redux";
 import BasicCard from "../components/Home";
 import { FormattedMessage } from "react-intl";
+import Loaders from "../components/Loaders";
 function MainPage() {
   const [verify, setVerify]: any = useState(0);
   const [LogReg, setLogReg] = useState(false);
   const [email, setEmail]: any = useState("");
+  const [display, setDisplay] = useState(false);
   const user = useSelector((state: any) => state.userReducer.user);
   return (
     <>
       {!user ? (
         <>
+        {display && <Box sx={{background:'blur'}} ><Loaders/></Box>}
           <Box
             sx={{
               background: `
@@ -28,58 +31,55 @@ function MainPage() {
               height: "100vh",
               // backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              display: "block",
               opacity: "80%",
+              display: "flex",
+              justifyContent: "center",
             }}
           >
-            <Typography
-              sx={{
-                position: "absolute",
-                color: "white",
-                m: "12%",
-                width: "55%",
-                fontWeight: "bolder",
-                textAlign: "left",
-                mt:30,
-                ml:{xl:"12%",md:6,sm:2}
-              }}
+            <Stack
+              direction={{ xs: "column", sm: "row", md: "row", xl: "row" }}
+              alignItems={"center"}
+              m={5}
+              sx={{ width: "100%" }}
+              spacing={6}
             >
-              {" "}
-              <Typography variant="h2" sx={{fontSize:{xl:45,md:28,sm:26}}}>
-              <FormattedMessage defaultMessage="There's a smarter way to OYO around"/>   
-              </Typography>
-              <Typography sx={{ width: "77%" ,fontSize:{xl:16,md:11,sm:11},mt:1,letterSpacing:1}}>
-              <FormattedMessage defaultMessage="  Sign up with phone number and get exclusive access to discounts
-                and savings on OYO stays and with our many travel partners."/>   
-              </Typography>
-            </Typography>
-
-            {LogReg ? (
-              <Box sx={{ml: {xl:"70%",md:72}, position: "absolute", mt: {xl:"10%", md:16} }}>
-                <SignUp setLogReg={setLogReg} />
-              </Box>
-            ) : (
-              <>
-                {" "}
-                {verify ? (
-                  <Box sx={{ ml: {xl:"70%",md:75}, position: "absolute", mt: {xl:"14%", md:25}}}>
-                    <OtpVerification />
-                    {/* <SignUpComp/> */}
-                    {/* <SignUp/> */}
-                  </Box>
+              <Stack
+                sx={{
+                  color: "white",
+                  fontWeight: "bolder",
+                  textAlign: "left",
+                }}
+                direction={"column"}
+              >
+                <Typography variant="h4">
+                  <FormattedMessage defaultMessage="There's a smarter way to OYO around" />
+                </Typography>
+                <Typography
+                  sx={{
+                    fontSize: { xl: 16, md: 15, sm: 11 },
+                    letterSpacing: 1,
+                  }}
+                >
+                  <FormattedMessage
+                    defaultMessage="  Sign up with phone number and get exclusive access to discounts
+                and savings on OYO stays and with our many travel partners."
+                  />
+                </Typography>
+              </Stack>
+              <Box>
+                {LogReg ? (
+                  <SignUp setLogReg={setLogReg} setDisplay={setDisplay} />
                 ) : (
-                  <Box sx={{ ml: {xl:"70%",md:75}, position: "absolute", mt: {xl:"12%", md:25}}}>
-                    {/* <OtpVerification /> */}``
-                    <SignUpComp setVerify={setVerify} setLogReg={setLogReg} />
-                    {/* <SignUp/> */}
-                  </Box>
+                  <>
+                    {verify ? (
+                      <OtpVerification />
+                    ) : (
+                      <SignUpComp setVerify={setVerify} setLogReg={setLogReg} />
+                    )}
+                  </>
                 )}
-              </>
-            )}
-            {/* <Typography sx={{ width: "77%" }}>
-              Sign up with phone number and get exclusive access to discounts
-              and savings on OYO stays and with our many travel partners.
-            </Typography> */}
+              </Box>
+            </Stack>
           </Box>
           <Footer />{" "}
         </>
