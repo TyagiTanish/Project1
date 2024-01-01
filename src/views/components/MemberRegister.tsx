@@ -591,26 +591,19 @@ export default function MemberRegister() {
             )}
             {page === 4 && (
               <>
-                <div
-                  style={{
-                    display: "flex",
-                    padding: 10,
-                    width: "20vw",
-                    height: "5vw",
-                    justifyTracks: "center",
-                  }}
-                >
+              <Stack spacing={5} direction={"column"} sx={{m:2}}>
+             
                   <Typography {...getRootProps()}>
                     <input {...getInputProps()} />
                     {
                       <IconButton
                         sx={{
-                          alignItems: "center",
+                         
                           border: "2px dashed lightgrey",
                           borderRadius: 0,
-                          width: "10vw",
-                          height: "5vw",
-                          ml: { sm: 2, md: 5, lg: 10 },
+                          width: {xl:"10vw",md:"12vw"},
+                          height: {xl:"5vw", md:"10vw"},
+                          // ml: { sm: 2, md: 5, lg: 10 },
                         }}
                       >
                         <Typography sx={{ mt: 1 }}>
@@ -622,14 +615,15 @@ export default function MemberRegister() {
                       </IconButton>
                     }
                   </Typography>
-                </div>
+              </Stack>
                 {files.map((photo: any) => (
                   <Chip
-                    sx={{ fontSize: { xl: "13px", md: "12px" }, mt:1}}
+                    sx={{ fontSize: { xl: "13px", md: "12px" }, mt:1, alignContent:"center",}}
                     label={photo.name}
                     onDelete={() => handleDelete(photo)}
                   ></Chip>
                 ))}
+              
                 {error && <FormHelperText>{error}</FormHelperText>}
                 <Stack direction={"row"} sx={{ alignContent: "center",justifyContent:"center" , m:2}} spacing={7}>
                   <IconButton
@@ -671,39 +665,13 @@ export default function MemberRegister() {
                     </Button>
                   )}
                 </Stack>
+             
               </>
             )}
 
-            {/* 
-            {page !== 5 ? (
-              <>
-                {page === 1 ? (
-                  <IconButton
-                    disabled
-                    sx={{ borderRadius: "50px", border: "1px solid", m: 5 }}
-                    onClick={() => setPage((prev) => prev - 1)}
-                  >
-                    <ArrowBackIcon />
-                  </IconButton>
-                ) : (
-               
-                )}
-                {page !== 4 ? (
-               
-                ) : (
-              
-                )}
-              </>
-            ) : (
-              <>
-                
-               
-              </>
-            )} */}
+    
           </Box>
-          {/* </Container> */}
-          {/* </ThemeProvider> */}
-     
+        
      </Stack>
     </>
   );

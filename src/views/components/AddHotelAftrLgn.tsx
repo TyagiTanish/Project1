@@ -173,21 +173,23 @@ export default function AddHotelAftrLgn() {
         height: "100vh",
         // backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        display: "block",
+        display:"flex",
+        justifyContent:"center",
         opacity: "80%",
         position: "absolute",
       }}
     >
+      <Stack  direction={"row"} alignItems={"center"} spacing={3} justifyContent={'space-evenly'} width={"100%"} >
       <Typography
         sx={{
-          position: "absolute",
           color: "white",
-          mt: "12%",
-
-          width: "55%",
+          border:"1px solid black", 
           fontWeight: "bolder",
           textAlign: "left",
-          ml: { xl: "12%", md: 6, sm: 2 },
+        
+          alignContent:"end",
+         
+          width:{sm:'40%',xl:"50%"}
         }}
       >
         {" "}
@@ -195,14 +197,14 @@ export default function AddHotelAftrLgn() {
           variant="h2"
           sx={{
             fontSize: { xl: 45, md: 28, sm: 20 },
-            mt: { xl: 0, md: 15, sm: 18 },
+            
           }}
         >
           There's a smarter way to OYO around
         </Typography>
         <Typography
           sx={{
-            width: "77%",
+           
             fontSize: { xl: 16, md: 11, sm: 9 },
             mt: 1,
             letterSpacing: 1,
@@ -212,30 +214,31 @@ export default function AddHotelAftrLgn() {
           savings on OYO stays and with our many travel partners.
         </Typography>
       </Typography>
-      <Box sx={{ position: "relative", ml: { xl: "70%", md: 73, sm: 50 } }}>
+      <Box sx={{ position: "relative"}}>
         {/* {display && <Loaders />} */}
         <Card
           className="oyo-cell loginCard"
           sx={{
             border: "1px solid black",
-            width: { xl: 470, md: 400, sm: 320 },
-            // height: "40vh",
-            mt: 20,
+            width:{sm:"90%"},
+          
             b: "1px solid black",
-            background: "#E0E0E0",
+            background: "white",
           }}
         >
           <Typography
             sx={{
               backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
               margin: "0",
-              paddingLeft: { xl: "93px", md: "30px", sm: 5 },
-              paddingTop: "5px",
-              paddingBottom: "5px",
+              // paddingLeft: { xl: "93px", md: "30px", sm: 5 },
+              // paddingTop: "5px",
+              // paddingBottom: "5px",
               color: "white",
               fontWeight: "bold",
               width: "100%",
               fontSize: { xl: 17, md: 16, sm: 13 },
+              textAlign:"center",
+              p:"1%"
             }}
             color="text.secondary"
             gutterBottom
@@ -245,24 +248,24 @@ export default function AddHotelAftrLgn() {
           {step === 0 && (
             <Typography
               sx={{
-                margin: 2,
+                m:"1%",
                 fontWeight: "bold",
                 fontFamily: "Inter,sans-serif",
                 fontSize: { xl: "30px", md: "25px", sm: 15 },
-                marginBottom: 1,
+                textAlign:"center"
               }}
             >
-              Add Hotel Details
+              Add Hotel Details...
             </Typography>
           )}
           {step === 1 && (
             <Typography
               sx={{
-                margin: 2,
+                m:"1%",
                 fontWeight: "bold",
                 fontFamily: "Inter,sans-serif",
                 fontSize: { xl: "30px", md: "25px", sm: 15 },
-                marginBottom: 1,
+                textAlign:"center"
               }}
             >
               Add Hotel Location
@@ -271,11 +274,11 @@ export default function AddHotelAftrLgn() {
           {step == 2 && (
             <Typography
               sx={{
-                margin: 2,
+                m:"1%",
                 fontWeight: "bold",
                 fontFamily: "Inter,sans-serif",
                 fontSize: { xl: "30px", md: "25px", sm: 15 },
-                marginBottom: 1,
+                textAlign:"center"
               }}
             >
               Point location
@@ -287,6 +290,8 @@ export default function AddHotelAftrLgn() {
               {step === 0 ? (
                 <>
                   <Form>
+                  <Stack direction={"column"} spacing={3} margin={"2%"} justifyContent={"center"}>
+                    <Stack>
                     <Typography
                       sx={{
                         fontWeight: "bold",
@@ -296,7 +301,7 @@ export default function AddHotelAftrLgn() {
                       Hotel name
                     </Typography>
                     <TextField
-                      sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
+                      // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
                       id="demo-helper-text-aligned"
                       placeholder="Enter Hotel Name"
                       {...register("hotelName")}
@@ -304,29 +309,21 @@ export default function AddHotelAftrLgn() {
                     <FormHelperText sx={{ color: "red" }}>
                       {errors.hotelName?.message}
                     </FormHelperText>
-
+                    </Stack>
                     {/* <HotelProfilePic setPic={setPic} formData={formData} /> */}
-                    <div
-                      style={{
-                        display: "flex",
-                        padding: 10,
-                        width: "20vw",
-                        height: "5vw",
-                        // justifyTracks: "center",
-                        // marginLeft: "-5rem",
-                      }}
-                    >
+                    {/* <Stack spacing={5} direction={"column"} sx={{m:2}}> */}
                       <Typography {...getRootProps()}>
                         <input {...getInputProps()} />
                         {
                           <IconButton
                             sx={{
-                              alignItems: "center",
                               border: "2px dashed lightgrey",
                               borderRadius: 0,
-                              width: "10vw",
-                              height: "5vw",
-                              ml: 10,
+                              width: {xl:"10vw",md:"12vw"},
+                              height: {xl:"5vw", md:"10vw"},
+                              display:"flex",
+                              flexDirection:"column",
+                              justifyContent:"center"
                             }}
                           >
                             <Typography sx={{ mt: 1 }}>
@@ -338,7 +335,8 @@ export default function AddHotelAftrLgn() {
                           </IconButton>
                         }
                       </Typography>
-                    </div>
+                    {/* </Stack> */}
+                    <Stack direction={"column"} spacing={2}>
                     {files.map((photo: any) => (
                       <Chip
                         sx={{
@@ -356,41 +354,40 @@ export default function AddHotelAftrLgn() {
                     )}
                     {maxPhoto ? (
                       <Button
-                        size="small"
-                        variant="contained"
-                        type="submit"
-                        sx={{
-                          width: { xl: 150, md: 100, sm: 50 },
-                          mt: 3,
-                          fontSize: { xl: 15, md: 13, sm: 10 },
-                        }}
+                      size="small"
+                      variant="contained"
+                      type="submit"
+                      sx={{
+                      
+                        fontSize: { xl: 15, md: 13 },
+                  
+                      }}
                         onClick={handleSubmit(onSubmit)}
                       >
                         Next
                       </Button>
                     ) : (
                       <Button
-                        size="small"
-                        variant="contained"
-                        disabled
-                        type="submit"
-                        sx={{
-                          width: { xl: 150, md: 100, sm: 50 },
-                          mt: 3,
-                          fontSize: { xl: 15, md: 13, sm: 10 },
-                        }}
+                      variant="contained"
+                      sx={{
+                      
+                        fontSize: { xl: 15, md: 13, sm: 12 },
+                      }}
+                      disabled
                         onClick={handleSubmit(onSubmit)}
                       >
                         Next
                       </Button>
                     )}
+                    </Stack>
+                   </Stack>
                   </Form>
                 </>
               ) : step === 1 ? (
                 <>
                   <Form>
-                    <Grid container spacing={2}>
-                      <Grid item xs={12} sm={6}>
+                  <Stack spacing={2} justifyContent={"center"} direction={"row"} sx={{m:"2%"}}>
+                   <Stack>
                         <Typography
                           sx={{
                             fontWeight: "bold",
@@ -400,7 +397,7 @@ export default function AddHotelAftrLgn() {
                           City
                         </Typography>
                         <TextField
-                          sx={{ mb: 8, height: 2, border: "none" }}
+                         sx={{width:"80%"}}
                           id="demo-helper-text-aligned"
                           placeholder="Enter City"
                           {...register("city")}
@@ -408,8 +405,9 @@ export default function AddHotelAftrLgn() {
                         <FormHelperText sx={{ color: "red" }}>
                           {errors.city?.message}
                         </FormHelperText>
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
+                        </Stack>
+                    <Stack>
+                      
                         <Typography
                           sx={{
                             fontWeight: "bold",
@@ -419,7 +417,7 @@ export default function AddHotelAftrLgn() {
                           State
                         </Typography>
                         <TextField
-                          sx={{ mb: 8, height: 2, border: "none" }}
+                        sx={{width:"80%"}}
                           id="demo-helper-text-aligned"
                           placeholder="Enter State"
                           {...register("state")}
@@ -427,8 +425,10 @@ export default function AddHotelAftrLgn() {
                         <FormHelperText sx={{ color: "red" }}>
                           {errors.state?.message}
                         </FormHelperText>
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
+                        </Stack>
+                        </Stack>
+                        <Stack spacing={1} justifyContent={"center"} direction={"row"}>
+                   <Stack>
                         <Typography
                           sx={{
                             fontWeight: "bold",
@@ -438,7 +438,7 @@ export default function AddHotelAftrLgn() {
                           Postal code
                         </Typography>
                         <TextField
-                          sx={{ mb: 8, height: 2, border: "none" }}
+                           sx={{width:"80%"}}
                           id="demo-helper-text-aligned"
                           placeholder="Enter Postal code"
                           {...register("postalCode")}
@@ -446,18 +446,19 @@ export default function AddHotelAftrLgn() {
                         <FormHelperText sx={{ color: "red" }}>
                           {errors.postalCode?.message}
                         </FormHelperText>
-                      </Grid>
-                      <Grid item xs={12} sm={6}>
+                        </Stack>
+                    <Stack>
+                     
                         <Typography
                           sx={{
                             fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
+                           
                           }}
                         >
                           Country
                         </Typography>
                         <TextField
-                          sx={{ mb: 8, height: 2, border: "none" }}
+                           sx={{width:"80%"}}
                           id="demo-helper-text-aligned"
                           placeholder="Enter Country"
                           {...register("country")}
@@ -465,15 +466,14 @@ export default function AddHotelAftrLgn() {
                         <FormHelperText sx={{ color: "red" }}>
                           {errors.country?.message}
                         </FormHelperText>
-                      </Grid>
-                    </Grid>
+                        </Stack>
+                    </Stack>
                     {/* <Box sx={{ display: "flex" }}> */}
                     <Button
                       size="small"
                       variant="contained"
                       sx={{
-                        mt: 3,
-                        ml: 0.5,
+                      
                         fontSize: 15,
                         background: "lightgray",
                         color: "black",
@@ -490,8 +490,8 @@ export default function AddHotelAftrLgn() {
                       variant="contained"
                       onClick={handleSubmit(onSubmit)}
                       sx={{
-                        width: { xl: 150, md: 100, sm: 50 },
-                        mt: 3,
+                       
+
                         fontSize: { xl: 15, md: 13, sm: 11 },
                       }}
                     >
@@ -508,8 +508,7 @@ export default function AddHotelAftrLgn() {
                         size="small"
                         variant="contained"
                         sx={{
-                          mt: 3,
-                          ml: 0.5,
+                         
                           fontSize: 15,
                           background: "lightgray",
                           color: "black",
@@ -555,9 +554,7 @@ export default function AddHotelAftrLgn() {
           </CardContent>
         </Card>
       </Box>
-      <Box sx={{ mt: { sm: 30, md: 25, lg: 20 } }}>
-        <Footer />
-      </Box>
+      </Stack>
     </Box>
   );
 }
