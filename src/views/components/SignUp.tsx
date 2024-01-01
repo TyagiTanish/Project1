@@ -93,17 +93,10 @@ const SignUp = ({ setLogReg }: any) => {
 
   return (
     <>
-      <Box sx={{ width: "100%", position: "relative" }}>
+      <Box>
         {display && <Loaders />}
         <Card
-          className="oyo-cell loginCard"
-          sx={{
-            border: "1px solid black",
-            mt: { sm: 10, md: 0, xl: 0 },
-            ml: { sm: 46, md: 0, xl: 0 },
-            width: { sm: 380 },
-            b: "1px solid black",
-          }}
+          sx={{minWidth:400}}
         >
           <Typography
             sx={{
@@ -128,7 +121,6 @@ const SignUp = ({ setLogReg }: any) => {
           >
            <FormattedMessage defaultMessage="  Sign Up"/>   
           </Typography>
-
           <CardContent>
             <form onSubmit={handleSubmit(onSubmit)}>
               <Stack>
@@ -187,16 +179,13 @@ const SignUp = ({ setLogReg }: any) => {
                 />
                 <FormHelperText>{errors.password?.message}</FormHelperText>
               </Stack>
-              <Button size="small" variant="contained" type="submit">
+              <Button size="small" variant="contained" type="submit" sx={{mt:2}} >
               <FormattedMessage defaultMessage="   SignUp"/>  
               </Button>
             </form>
           </CardContent>
-          <Stack direction={"row"} alignItems={"center"} margin={2}>
-            <Typography sx={{ width: 200 }}>
-              {" "}
+          <Stack direction={"row"} alignItems={"center"} margin={2} justifyContent={"space-between"} >
               <FormattedMessage defaultMessage=" Already have an account?"/>    
-            </Typography>
             <Button
               onClick={() => {
                 setLogReg(false);

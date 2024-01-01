@@ -1,11 +1,8 @@
 import {
   Box,
   Button,
-
   FormHelperText,
-
   Stack,
-
   TextField,
   Typography,
 } from "@mui/material";
@@ -15,22 +12,19 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { enqueueSnackbar } from "notistack";
-import {useDispatch} from "react-redux";
+import { useDispatch } from "react-redux";
 import { userLogin } from "./redux/user/userSlice";
 
 import Loaders from "./Loaders";
 import { FormattedMessage } from "react-intl";
 
-
-function SignUpComp({ setVerify, setLogReg }: any) {
+function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
-  const [display,setDisplay]=useState(false);
+  
 
   const [authentication, setAuthentication] = useState("");
-const dispatch = useDispatch();
-
-
+  const dispatch = useDispatch();
 
   const Onsubmit = async (value: any) => {
     if (!value.password) {
@@ -45,23 +39,19 @@ const dispatch = useDispatch();
         setAuthentication("email not Found");
         setState(false);
       }
-    }else{
+    } else {
       const result = await request.post("/auth", value);
       console.log(result.data);
-      
-      if(result.data){
+
+      if (result.data) {
         setDisplay(true);
-        setTimeout(()=>{
-
-           dispatch(userLogin(result.data.data))
-        localStorage.setItem("authToken",result.data.token);
-
-        },2000)
-  
-      }else{
-        setAuthentication("Invalid Credentials")
+        setTimeout(() => {
+          dispatch(userLogin(result.data.data));
+          localStorage.setItem("authToken", result.data.token);
+        }, 2000);
+      } else {
+        setAuthentication("Invalid Credentials");
       }
-    
     }
   };
   const FormSchema = Yup.object().shape({
@@ -82,18 +72,8 @@ const dispatch = useDispatch();
   });
   return (
     <>
-
-<Box sx={{width:"100%", position:"relative"}}>
-    {display && <Loaders/>}
-      <Box
-        sx={{
-          ml:{sm:48,xl:0,md:0},
-          mt:{sm:25,xl:0,md:0},
-          fontFamily: "sans-serif",
-          alignSelf: "flex-start",
-          backgroundColor: "white",
-        }}
-      >
+      
+      <Box width={{ sm: 350,md:400,xl:400}}  >
         <Typography
           sx={{
             // background: "#D4164B",
@@ -104,98 +84,127 @@ const dispatch = useDispatch();
             // paddingLeft:{xl:"95px",md:"65px",sm:'50px'},
             fontWeight: 700,
             color: "white",
-            fontSize:{xl:"20px"},
-            textAlign:'center'
+            fontSize: { xl: "20px" },
+            textAlign: "center",
           }}
         >
           <FormattedMessage defaultMessage="Sign up & Get ₹500 OYO Money" />
         </Typography>
         <Box
           sx={{
-            paddingLeft: 3,
-            paddingRight: 2,
+            // paddingLeft: 3,
+            // paddingRight: 2,
+            p:2,
             background: "white",
           }}
         >
-          <Typography sx={{ fontSize: {xl:"32px",md:"25px",sm:'25px'}, fontWeight: "700",ml:{sm:-1,md:-1,xl:0} }}>
-          <FormattedMessage defaultMessage="Login" />  
+          <Typography
+            sx={{
+              fontSize: { xl: "32px", md: "25px", sm: "25px" },
+              fontWeight: "700",
+              // ml: { sm: -1, md: -1, xl: 0 },
+              
+            }}
+          >
+            <FormattedMessage defaultMessage="Login" />
           </Typography>
-          <Typography sx={{ fontWeight: "700" ,fontSize:{xl:"16px",md:"16px",sm:'16px'},mt:{sm:2}}}>
-          <FormattedMessage defaultMessage=" Please enter your email to continue" />    
+          <Typography
+            sx={{
+              fontWeight: "700",
+              fontSize: { xl: "16px", md: "16px", sm: "18px" },
+              mt: { sm: 1 },
+              color:'InfoText'
+            }}
+          >
+            <FormattedMessage defaultMessage=" Please enter your email to continue" />
           </Typography>
           <form onSubmit={handleSubmit(Onsubmit)}>
-            <Box sx={{ display: "flex", flexDirection: "column" }}>
-              <Box sx={{ fontWeight: "700", marginTop:3 ,fontSize:{xl:"16px",md:"16px"}}}>Email-</Box>
-
-              <TextField
-                sx={{ fontWeight: "500", marginTop: 0}}
-                {...register("email")}
-              ></TextField>
+            <Stack>
+               <b style={{marginTop:10,marginBottom:0}} ><FormattedMessage defaultMessage={"Email-"} /></b>
+                <br />
+                <TextField
+                  sx={{ fontWeight: "500", marginTop: -2 }}
+                  {...register("email")}
+                ></TextField>
+            
               <FormHelperText sx={{ color: "red", m: 2 }}>
                 {errors.email?.message}
               </FormHelperText>
-              
-            </Box>
-            {state && (
-              <Box sx={{ fontWeight: "700", marginTop: 1 }}>
-                <label htmlFor="password"> <FormattedMessage defaultMessage="Password " /></label>
-                <br />
-                <TextField
-                  id="password"
-                  type="password"
-                  sx={{ fontWeight: "500", minWidth: "100%" }}
-                  {...register("password")}
-                ></TextField>
-              </Box>
-            )}
-            {authentication && (
-                <Typography sx={{ fontSize: "small", m: 2, color: "red" }}>
-                  {authentication}
-                </Typography>
+
+              {state && (
+            <>
+                    <b><FormattedMessage defaultMessage="Password " /></b>
+                  <br />
+                  <TextField
+                    id="password"
+                    type="password"
+                    sx={{ fontWeight: "500",mt:-2 }}
+                    {...register("password")}
+                  ></TextField>
+             </>
               )}
+            </Stack>
+            {authentication && (
+              <Typography sx={{ fontSize: "small", m: 2, color: "red" }}>
+                {authentication}
+              </Typography>
+            )}
             {state ? (
               <>
-              <Button type="submit" variant="contained" sx={{mt:'2%'}} >
-              <FormattedMessage defaultMessage="Log In " /> 
-              </Button>
-               <Stack sx={{alignItems:'center'}} direction={"row"} >
-               <Typography sx={{ width: 200}}>
-                 {" "}
-                 <FormattedMessage defaultMessage="Don't have an account? " />    
-               </Typography>
-               <Button
+                <Button type="submit" variant="contained" sx={{ mt: "4%" }}>
+                  <FormattedMessage defaultMessage="Log In " />
+                </Button>
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: { sm: "14px" },
                 
-                 onClick={() => {
-                   setLogReg(true);
-                 }}
-               >
-                 <FormattedMessage defaultMessage="Register here" />      
-               </Button>
-             </Stack>
-             </>
+                  }}
+                  direction={"row"}
+                >
+                  <FormattedMessage defaultMessage="Don't have an account? " />
+
+                  <Button
+                    onClick={() => {
+                      setLogReg(true);
+                    }}
+                  >
+                    <FormattedMessage defaultMessage="Register here" />
+                  </Button>
+                </Stack>
+              </>
             ) : (
               <>
-              <Button type="submit" variant="contained" sx={{ fontWeight:"500" }}>
-              <FormattedMessage defaultMessage="  Verify email" />     
-              </Button>
-               <Stack sx={{alignItems:'center'}} direction={"row"} >
-               <Typography sx={{ width: 200, }}>
-               <FormattedMessage defaultMessage="   Don't have an account?" /> 
-               </Typography>
-               <Button
-                 onClick={() => {
-                   setLogReg(true);
-                 }}
-               >
-                <FormattedMessage defaultMessage="    Register here" />  
-               </Button>
-             </Stack>
-             </>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  sx={{ fontWeight: "500" }}
+                >
+                  <FormattedMessage defaultMessage="  Verify email" />
+                </Button>
+                <Stack
+                  sx={{
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    fontSize: { sm: "14px" },
+                  }}
+                  direction={"row"}
+                >
+                  <FormattedMessage defaultMessage="   Don't have an account?" />
+                  <Button
+                    onClick={() => {
+                      setLogReg(true);
+                    }}
+                    sx={{ fontSize: { sm: "14px" } }}
+                  >
+                    <FormattedMessage defaultMessage="    Register here" />
+                  </Button>
+                </Stack>
+              </>
             )}
           </form>
         </Box>
-       
-      </Box>
       </Box>
     </>
   );

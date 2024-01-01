@@ -19,6 +19,7 @@ import Logo from "./Logo";
 import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
+import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 
 function Hotels({ filteredData, screenSize }: any) {
   const navigate = useNavigate();
@@ -98,9 +99,9 @@ function Hotels({ filteredData, screenSize }: any) {
                 <Stack
                   direction={"row"}
                   sx={{
-                    p:2,
-                    m:2,
-                    justifyContent:"space-between",
+                    p: 2,
+                    m: 2,
+                    justifyContent: "space-between",
                     // display: "stack",
                     // flexDirection: "row",
                     direction: "row",
@@ -111,20 +112,17 @@ function Hotels({ filteredData, screenSize }: any) {
                     // width: { sm: "86vh", lg: "910px", md: "570px" },
                   }}
                 >
-                 
-                    <Box
-                      component="img"
-                      sx={{
-                        width: { sm: "150px ", lg: "200px", md: "140px" },
-                        height: { lg: "200px", sm: "15vh", md: "20vh" },
-                        borderTopLeftRadius: "20px",
-                        borderBottomLeftRadius: "20px",
-
-                      }}
-                      alt="The house from the offer."
-                      src={require(`./${item.src}`)}
-                    />
-
+                  <Box
+                    component="img"
+                    sx={{
+                      width: { sm: "150px ", lg: "200px", md: "140px" },
+                      height: { lg: "200px", sm: "15vh", md: "20vh" },
+                      borderTopLeftRadius: "20px",
+                      borderBottomLeftRadius: "20px",
+                    }}
+                    alt="The house from the offer."
+                    src={require(`./${item.src}`)}
+                  />
 
                   <Stack m={2} width={300}>
                     <Typography
@@ -137,7 +135,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     >
                       {item.name}
                     </Typography>
-                    <Stack direction={"row"} sx={{alignItems:'center'}}>
+                    <Stack direction={"row"} sx={{ alignItems: "center" }}>
                       <Typography
                         sx={{
                           fontWeight: "bold",
@@ -176,10 +174,9 @@ function Hotels({ filteredData, screenSize }: any) {
                    </Typography> */}
                   </Stack>
 
-
                   <Stack
-                  direction={"row"}
-                  spacing={2}
+                    direction={"row"}
+                    spacing={2}
                     sx={{
                       // margin: "20px",
                       // marginLeft: { sm: "120px", lg: "110px", md: "35px" },
@@ -194,7 +191,7 @@ function Hotels({ filteredData, screenSize }: any) {
                       marginTop: { sm: "8px" },
                     }}
                   >
-                     <Stack spacing={1}>
+                    <Stack spacing={1}>
                       <Stack
                         direction={"row"}
                         sx={{
@@ -249,8 +246,6 @@ function Hotels({ filteredData, screenSize }: any) {
                         View Deal
                       </Button>
                     </Stack>
-
-                   
                   </Stack>
                 </Stack>
 
@@ -270,6 +265,15 @@ function Hotels({ filteredData, screenSize }: any) {
           </>
         ) : (
           <>
+            <IconButton
+              sx={{ marginLeft: "95%", marginTop: "-1%" }}
+              onClick={() => {
+                setDisplay(true);
+                SetDisplayMap(true);
+              }}
+            >
+              <HighlightOffIcon />
+            </IconButton>
             <SimpleMap />
           </>
         )}

@@ -64,10 +64,11 @@ function Seachbar2(props: any) {
     <Stack
     direction={'row'}
       sx={{
-        width: "100vw",
+        width: {md:"100vw",xl:'100vw',sm:'95vw'},
         mb: "20px",
         alignItems:'center',
         justifyContent:'center',
+        alignSelf:'center'
       }}
     >
    
