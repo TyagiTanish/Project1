@@ -197,57 +197,57 @@ export default function MemberRegister() {
 
   return (
     <>
-      <Box
+      {/* <Box
         sx={{
-          width: { xl: "420px", md: 400, sm: 300 },
-          mt: { sm: 15, md: 20 },
-          ml: { sm: 55, md: 20 },
+          // width: { xl: "420px", md: 400, sm: 300 },
+        
           mb: 20,
           border: "1px solid lightgrey",
           padding: "5px",
           background: "white",
         }}
-      >
+      > */}
+      <Stack direction={"column"}
+      sx={{ border: "1px solid lightgrey",
+     
+      background: "white",     width:{sm:"40vw",xl:"25vw"}}}>
         <Box
           sx={{
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-            minHeight: "30px",
-            paddingTop: { xl: 1, md: 1.2, sm: 1 },
-            paddingLeft: { sm: 6, md: 10 },
+            // minHeight: "30px",
+            // paddingTop: { xl: 1, md: 1.2, sm: 1 },
+            // paddingLeft: { sm: 6, md: 10 },
+            textAlign:"center",
+            p:"1%",
             fontWeight: 700,
             color: "white",
             fontSize: { xl: 17, md: 14, sm: 13 },
+        
           }}
         >
           Sign up & Get ₹500 OYO Money
         </Box>
         <Box
           sx={{
-            paddingLeft: 3,
-            paddingRight: 2,
+           
             background: "white",
           }}
         >
-          {/* <ThemeProvider theme={theme}> */}
-          {/* <Container component="main" maxWidth="xs"> */}
-          {/* <CssBaseline /> */}
+       
           <Box
             sx={{
-              marginTop: { sm: 1, md: 5 },
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
+              // marginTop: { sm: 1, md: 5 },
+                  textAlign:"center"
             }}
           >
             {page === 1 && (
               <Typography
                 sx={{
-                  width: { xl: "50vw", md: "30vw" },
+                  
                   fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: { xl: 65, md: 2 },
-                  mb: 2,
+                  alignContent:"center",
                   opacity: 0.7,
                 }}
               >
@@ -257,11 +257,10 @@ export default function MemberRegister() {
             {page === 2 && (
               <Typography
                 sx={{
-                  width: { xl: "50vw", md: "30vw" },
+                
                   fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: { xl: 65, md: 2 },
-                  mb: 2,
+                  justifyContent:"center",
                   opacity: 0.7,
                 }}
               >
@@ -271,11 +270,10 @@ export default function MemberRegister() {
             {page === 3 && (
               <Typography
                 sx={{
-                  width: { xl: "50vw", md: "30vw" },
+               
                   fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: { xl: 65, md: 2 },
-                  mb: 2,
+                  justifyContent:"center",
                   opacity: 0.7,
                 }}
               >
@@ -285,11 +283,10 @@ export default function MemberRegister() {
             {page === 4 && (
               <Typography
                 sx={{
-                  width: { xl: "50vw", md: "30vw" },
+                 
                   fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: { xl: 65, md: 2 },
-                  mb: 2,
+                  justifyContent:"center",
                   opacity: 0.7,
                 }}
               >
@@ -299,27 +296,25 @@ export default function MemberRegister() {
             {page === 5 && (
               <Typography
                 sx={{
-                  width: { xl: "50vw", md: "30vw" },
                   fontSize: { xl: 28, md: 20 },
                   fontWeight: "700",
-                  ml: { xl: 65, md: 2 },
-                  mb: 2,
+                  justifyContent:"center",
                   opacity: 0.7,
                 }}
               >
                 Enter Your Password....
               </Typography>
             )}
-
+</Box>
             {page === 1 && (
               <>
                 <Form
 
-                  style={{ marginTop: 3, textAlign: "left", }}
-
+            
                 >
-                  <Grid container spacing={2} sx={{ ml: 1 }}>
-                    <Grid item xs={12} sm={5}>
+                  {/* <Grid container spacing={2} justifyContent={"center"} direction={"column"}> */}
+                  <Stack spacing={2} justifyContent={"center"} direction={"column"} sx={{m:"6%"}}>
+                  <Stack>
                       <Typography
                         sx={{
                           fontSize: { xl: 17, md: 14, sm: 13 },
@@ -336,8 +331,8 @@ export default function MemberRegister() {
                         {...register("name")}
                       />
                       <FormHelperText>{errors?.name?.message}</FormHelperText>
-                    </Grid>
-                    <Grid item xs={12} sm={5}>
+                      </Stack>
+                    <Stack>
                       <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                         Phone No.
                       </Typography>
@@ -345,8 +340,8 @@ export default function MemberRegister() {
                         variant="outlined"
                         {...register("phone")}
                       ></TextField>
-                    </Grid>
-                    <Grid item xs={12} sm={10}>
+                  </Stack>
+                  <Stack>
                       <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                         Email Address
                       </Typography>
@@ -359,8 +354,8 @@ export default function MemberRegister() {
                         onChange={(e: any) => setEmail(e.target.value)}
                       />
                       <FormHelperText>{errors?.email?.message}</FormHelperText>
-                    </Grid>
-                    <Grid item xs={12} sm={10}>
+                      </Stack>
+                    <Stack>
                       <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                         Hotel Name
                       </Typography>
@@ -373,8 +368,8 @@ export default function MemberRegister() {
                       <FormHelperText>
                         {errors?.hotelName?.message}
                       </FormHelperText>
-                    </Grid>
-                  </Grid>
+                      </Stack>
+                    </Stack>
                   <IconButton
                     sx={{
                       borderRadius: "50px",
@@ -393,7 +388,7 @@ export default function MemberRegister() {
                     variant="contained"
                     type="submit"
                     sx={{
-                      width: { xl: 150, md: 100, sm: 50 },
+                      // width: { xl: 150, md: 100, sm: 50 },
                       fontSize: { xl: 15, md: 13, sm: 12 },
                       mt: 0,
                     }}
@@ -406,8 +401,8 @@ export default function MemberRegister() {
             )}
             {page === 2 && (
               <Form>
-                <Grid container spacing={2}>
-                  <Grid item xs={12} sm={6}>
+              <Stack spacing={2} justifyContent={"center"} direction={"column"} sx={{m:"6%"}}>
+                 <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                       City
                     </Typography>
@@ -419,8 +414,8 @@ export default function MemberRegister() {
                       {...register("city")}
                     />
                     <FormHelperText>{errors?.city?.message}</FormHelperText>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
+                    </Stack>
+                 <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                       State
                     </Typography>
@@ -429,22 +424,22 @@ export default function MemberRegister() {
                       {...register("state")}
                     ></TextField>
                     <FormHelperText>{errors?.state?.message}</FormHelperText>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
+                    </Stack>
+               <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                       Pin Code{" "}
                     </Typography>
                     <TextField required fullWidth {...register("pinCode")} />
                     <FormHelperText>{errors?.pinCode?.message}</FormHelperText>
-                  </Grid>
-                  <Grid item xs={12} sm={6}>
+                   </Stack>
+                 <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                       Country
                     </Typography>
                     <TextField required fullWidth {...register("country")} />
                     <FormHelperText>{errors?.country?.message}</FormHelperText>
-                  </Grid>
-                </Grid>
+                    </Stack>
+                </Stack>
                 <IconButton
                   sx={{
                     borderRadius: "50px",
@@ -458,13 +453,17 @@ export default function MemberRegister() {
                   />
                 </IconButton>
                 <Button
+                  // variant="contained"
+                 
+                  size="small"
                   variant="contained"
-                  sx={{
-                    // width: "7vw"
-                    width: { xl: 150, md: 100, sm: 50 },
-                    fontSize: { xl: 15, md: 13, sm: 12 },
-                  }}
                   type="submit"
+                  sx={{
+                    // width: { xl: 150, md: 100, sm: 50 },
+                    fontSize: { xl: 15, md: 13, sm: 12 },
+                    mt: 0,
+                  }}
+             
                   onClick={handleSubmit(Submit)}
                 >
                   Next
@@ -490,13 +489,14 @@ export default function MemberRegister() {
                     />
                   </IconButton>
                   <Button
+                
                     size="small"
                     variant="contained"
                     type="submit"
                     sx={{
-                      width: { xl: 150, md: 100, sm: 50 },
-                      mt: 0,
+                      // width: { xl: 150, md: 100, sm: 50 },
                       fontSize: { xl: 15, md: 13, sm: 12 },
+                      mt: 0,
                     }}
                     onClick={handleNextClick}
                   >
@@ -509,19 +509,21 @@ export default function MemberRegister() {
             {page === 5 && (
               <>
                 <Form>
-                  <Grid item xs={12}>
+                <Stack spacing={2} justifyContent={"center"} direction={"column"} sx={{m:"6%"}}>
+                 <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
                       Password
                     </Typography>
                     <TextField required fullWidth {...register("password")} />
                     <FormHelperText>{errors?.password?.message}</FormHelperText>
-                  </Grid>
-                  <Grid item xs={12}>
+                    </Stack>
+                 <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
                       Confirm Password
                     </Typography>
                     <TextField required fullWidth />
-                  </Grid>
+                    </Stack>
+                    </Stack>
                   <IconButton
                     sx={{
                       borderRadius: "50px",
@@ -535,30 +537,30 @@ export default function MemberRegister() {
                     />
                   </IconButton>
                   <Button
-                    size="small"
-                    variant="contained"
-                    type="submit"
-                    sx={{
-                      width: { xl: 150, md: 100 },
-                      mt: 0,
-                      fontSize: { xl: 15, md: 13 },
-                    }}
+                     size="small"
+                     variant="contained"
+                     type="submit"
+                     sx={{
+                       // width: { xl: 150, md: 100, sm: 50 },
+                       fontSize: { xl: 15, md: 13, sm: 12 },
+                       mt: 0,
+                     }}
                     onClick={handleSubmit(Submit)}
                   >
                     Submit
                   </Button>
+                 
                 </Form>
               </>
             )}
             {page === 6 && (
               <>
-                <Box sx={{ width: "20vw", padding: "10px" }}>
+                <Box>
                   <Typography
                     sx={{
-                      width: "100%",
-                      padding: { sm: 0, md: "10px" },
-                      ml: { sm: -3 },
-                      fontWeight: "bold",
+                      width: "90%",
+                      m:"5%"
+                     
                     }}
                   >
                     Email Already Exist If You want to continue with this email
@@ -623,19 +625,16 @@ export default function MemberRegister() {
                 </div>
                 {files.map((photo: any) => (
                   <Chip
-                    sx={{ fontSize: { xl: "13px", md: "12px" }, mt: 1 }}
+                    sx={{ fontSize: { xl: "13px", md: "12px" }, mt:1}}
                     label={photo.name}
                     onDelete={() => handleDelete(photo)}
                   ></Chip>
                 ))}
                 {error && <FormHelperText>{error}</FormHelperText>}
-                <Stack direction={"row"} sx={{ alignContent: "center" }}>
+                <Stack direction={"row"} sx={{ alignContent: "center",justifyContent:"center" , m:2}} spacing={7}>
                   <IconButton
                     sx={{
-                      borderRadius: "50px",
-                      border: "1px solid",
-                      m: 5,
-                      ml: { sm: -12 },
+                      
                     }}
                     onClick={() => setPage((prev) => prev - 1)}
                   >
@@ -650,10 +649,9 @@ export default function MemberRegister() {
                       variant="contained"
                       type="submit"
                       sx={{
-                        width: { xl: 150, md: 100 },
-                        mt: 6,
+                      
                         fontSize: { xl: 15, md: 13 },
-                        height: "3vw",
+                  
                       }}
                       onClick={handleNextClick}
                     >
@@ -705,8 +703,8 @@ export default function MemberRegister() {
           </Box>
           {/* </Container> */}
           {/* </ThemeProvider> */}
-        </Box>
-      </Box>
+     
+     </Stack>
     </>
   );
 }
