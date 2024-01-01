@@ -74,7 +74,7 @@ function MainPage() {
                     {verify ? (
                       <OtpVerification />
                     ) : (
-                      <SignUpComp setVerify={setVerify} setLogReg={setLogReg} />
+                      <SignUpComp setVerify={setVerify} setLogReg={setLogReg} setDisplay={setDisplay}  />
                     )}
                   </>
                 )}

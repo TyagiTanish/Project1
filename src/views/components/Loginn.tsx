@@ -48,6 +48,7 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
         setTimeout(() => {
           dispatch(userLogin(result.data.data));
           localStorage.setItem("authToken", result.data.token);
+          setDisplay(false)
         }, 2000);
       } else {
         setAuthentication("Invalid Credentials");
