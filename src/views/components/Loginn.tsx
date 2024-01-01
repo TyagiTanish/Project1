@@ -30,7 +30,6 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
     if (!value.password) {
       const result = await request.post("/auth", value);
       console.log(result.data);
-
       if (result.data) {
         setState(true);
         setAuthentication("");
