@@ -16,7 +16,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
 
-const SignUp = ({ setLogReg }: any) => {
+const SignUp = ({ setLogReg}: any) => {
   const { request } = useAuth();
 
   const [display, setDisplay] = React.useState(false);
