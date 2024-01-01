@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Stack, Typography } from "@mui/material";
 import SignUpComp from "../components/Loginn";
 import Footer from "../components/Footer";
 import { useState } from "react";
@@ -29,35 +29,43 @@ function MemberRegistrationPage() {
               height: "100vh",
               // backgroundRepeat: "no-repeat",
               backgroundSize: "cover",
-              display: "block",
+              // display: "block",
               opacity: "80%",
+              display:"flex",
+              justifyContent:"center",
+              // flexDirection:"column"
+            
             }}
           >
+           <Stack direction={"row"} alignItems={"center"} spacing={4} justifyContent={'space-around'} width={"100%"}>
             <Typography
               sx={{
-                position: "absolute",
+                // position: "absolute",
                 color: "white",
-                m: { sm: "6%", md: "12%" },
-                width: "55%",
+                // m: { sm: "6%", md: "12%" },
+                // width: "55%",
                 fontWeight: "bolder",
                 textAlign: "left",
-                ml: { xl: "12%", md: 6 },
+                // ml: { xl: "12%", md: 6 },
+                alignContent:"end",
+               
+                width:{sm:'40%'}
               }}
             >
               {" "}
               <Typography
                 variant="h2"
                 sx={{
-                  fontSize: { xl: 45, md: 28, sm: 20 },
-                  mt: { xl: 0, md: 15, sm: 20 },
+                  fontSize: { xl: 45, md: 28, sm: 26 },
+                  // mt: { xl: 0, md: 15, sm: 20 },
                 }}
               >
                 There's a smarter way to OYO around
               </Typography>
               <Typography
                 sx={{
-                  width: "77%",
-                  fontSize: { xl: 16, md: 11, sm: 9 },
+                  // width: "77%",
+                  fontSize: { xl: 16, md: 11, sm: 15 },
                   mt: 1,
                   letterSpacing: 1,
                 }}
@@ -92,10 +100,12 @@ function MemberRegistrationPage() {
             {/* Sign up with phone number and get exclusive access to discounts */}
             {/* and savings on OYO stays and with our many travel partners. */}
             {/* </Typography> */}
-            <Box sx={{ ml: { xl: "60vw", md: 50 } }}>
+            <Box>
               <MemberRegister />
             </Box>
+            </Stack>
           </Box>
+          
           <Footer />{" "}
         </>
       ) : (
