@@ -29,9 +29,9 @@ export default function SimpleMap({ setLocation }: any) {
     // dispatch(userLocation(data));
   };
   return (
-    <div style={{ height: "50vh", minWidth: "20vw" }}>
+    <div >
       <GoogleMapReact
-        bootstrapURLKeys={{ key: "" }}
+        bootstrapURLKeys={{ key: "AIzaSyDEZ3SEb_VoWvsv0AXCsGT_Mg9f4L0gATQ" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onChange={(value) => handleChange(value)}
