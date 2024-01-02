@@ -17,14 +17,25 @@ import { useIntl, FormattedMessage } from "react-intl";
 import Language from "./Language";
 
 import BusinessIcon from "@mui/icons-material/Business";
+import TabletNavbar from "./TabletNavbar";
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
 
+  const [data,updateData]=React.useState<any>(window.innerWidth);
+  React.useEffect(()=>{
+    const setData=()=>{
+      updateData(window.innerWidth);
+      console.log(data);
+    }
+      window.addEventListener('resize',setData);
+  })
   return (
     <>
+
       <Stack direction={"row"} justifyContent={"space-between"} width={"98.8%"}>
         <Logo />
-        {user ? (
+        {data<=768 ?  <TabletNavbar/>: 
+        (user ? (
           <>
             <Stack direction={"row"} spacing={2}>
               <Stack direction={"row"} alignItems={"center"} spacing={1}>
@@ -84,8 +95,10 @@ export default function BasicCard() {
               </Link>
             </Stack>
           </Stack>
-        )}{" "}
+       ) )}{" "}
       </Stack>
+      {data==768 ? false : 
+      <>
       <Box
         sx={{
           width: { xl: "100%", md: 1026 },
@@ -397,6 +410,7 @@ export default function BasicCard() {
           <Box>All Cities</Box>
         </Box>
       </Box>
+    </>}
       <SearchBar />
       <HomeBody />
       <Footer />
