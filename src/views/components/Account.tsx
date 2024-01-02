@@ -22,7 +22,7 @@ function Account() {
   return (
     <>
       <IconButton href="/" sx={{ ml: { md: 0.5 }, width: "200px" }}>
-        <Logo />
+        <Logo /> 
       </IconButton>
       <Box
         sx={{
