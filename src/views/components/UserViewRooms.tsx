@@ -30,7 +30,7 @@ function UserViewRooms() {
        
       ]);
   return (
-    <Stack spacing={40} direction={"row"} marginLeft={'7%'} marginTop={'4%'}    >
+    <Stack spacing={40} direction={"row"} marginLeft={'7%'} marginTop={'4%'}>
             {data?.map((item)=>(
                 <Stack sx={{width:"18%",}} boxShadow={4} direction={"column"} spacing={1} padding={1}>      
                  <Box
