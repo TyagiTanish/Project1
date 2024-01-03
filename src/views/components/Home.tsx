@@ -97,7 +97,7 @@ export default function BasicCard() {
           </Stack>
        ) )}{" "}
       </Stack>
-      {data==768 ? false : 
+      {data<=768 ? false : 
       <>
       <Box
         sx={{
