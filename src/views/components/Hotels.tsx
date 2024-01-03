@@ -20,6 +20,8 @@ import { Link, useNavigate } from "react-router-dom";
 import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
+import { triggerAsyncId } from "async_hooks";
+import ViewDeal from "./ViewDeal";
 
 function Hotels({ filteredData, screenSize }: any) {
   const navigate = useNavigate();
@@ -27,7 +29,7 @@ function Hotels({ filteredData, screenSize }: any) {
   const [openModule, setOpenModule] = useState<any>("info");
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
-
+  const [open,setOpen]=useState(false);
   const handleClick = (index: any) => {
     setDetailIndex(index);
 
@@ -39,8 +41,8 @@ function Hotels({ filteredData, screenSize }: any) {
   const handleViewDeal = (item: any) => {
     navigate("/billing");
   };
+  
 
-  console.log("screenSize ..........", screenSize);
 
   return (
     <>
@@ -237,9 +239,12 @@ function Hotels({ filteredData, screenSize }: any) {
                       />
                       <Button
                         variant="contained"
-                        href="/billing"
+                        // href="/billing"
+                        href='/viewDeal'
                         endIcon={<KeyboardArrowRightIcon />}
                         sx={{
+                          '&:hover': {
+                            backgroundColor: '#D4164B'},
                           backgroundColor: "#D4164B",
                         }}
                       >
@@ -278,6 +283,7 @@ function Hotels({ filteredData, screenSize }: any) {
           </>
         )}
       </Box>
+    
     </>
   );
 }
