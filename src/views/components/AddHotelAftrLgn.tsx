@@ -173,387 +173,374 @@ export default function AddHotelAftrLgn() {
         height: "100vh",
         // backgroundRepeat: "no-repeat",
         backgroundSize: "cover",
-        display:"flex",
-        justifyContent:"center",
+        display: "flex",
+        justifyContent: "center",
         opacity: "80%",
         position: "absolute",
       }}
     >
-      <Stack  direction={"row"} alignItems={"center"} spacing={3} justifyContent={'space-evenly'} width={"100%"} >
-      <Typography
-        sx={{
-          color: "white",
-          border:"1px solid black", 
-          fontWeight: "bolder",
-          textAlign: "left",
-        
-          alignContent:"end",
-         
-          width:{sm:'40%',xl:"50%"}
-        }}
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        justifyContent={"center"}
+        spacing={3}
       >
-        {" "}
-        <Typography
-          variant="h2"
-          sx={{
-            fontSize: { xl: 45, md: 28, sm: 20 },
-            
-          }}
-        >
-          There's a smarter way to OYO around
-        </Typography>
         <Typography
           sx={{
-           
-            fontSize: { xl: 16, md: 11, sm: 9 },
-            mt: 1,
-            letterSpacing: 1,
+            color: "white",
+            fontWeight: "bolder",
+            textAlign: "left",
+
+            alignContent: "end",
+            p: 5,
+            width: { sm: "40%", xl: "50%" },
           }}
         >
-          Sign up with phone number and get exclusive access to discounts and
-          savings on OYO stays and with our many travel partners.
-        </Typography>
-      </Typography>
-      <Box sx={{ position: "relative"}}>
-        {/* {display && <Loaders />} */}
-        <Card
-          className="oyo-cell loginCard"
-          sx={{
-            border: "1px solid black",
-            width:{sm:"90%"},
-          
-            b: "1px solid black",
-            background: "white",
-          }}
-        >
+          {" "}
+          <Typography
+            variant="h2"
+            sx={{
+              fontSize: { xl: 45, md: 28, sm: 20 },
+            }}
+          >
+            There's a smarter way to OYO around
+          </Typography>
           <Typography
             sx={{
-              backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-              margin: "0",
-              // paddingLeft: { xl: "93px", md: "30px", sm: 5 },
-              // paddingTop: "5px",
-              // paddingBottom: "5px",
-              color: "white",
-              fontWeight: "bold",
-              width: "100%",
-              fontSize: { xl: 17, md: 16, sm: 13 },
-              textAlign:"center",
-              p:"1%"
+              fontSize: { xl: 16, md: 11, sm: 9 },
+              mt: 1,
+              letterSpacing: 1,
             }}
-            color="text.secondary"
-            gutterBottom
           >
-            Add hotel & Get ₹500 OYO Money
+            Sign up with phone number and get exclusive access to discounts and
+            savings on OYO stays and with our many travel partners.
           </Typography>
-          {step === 0 && (
-            <Typography
-              sx={{
-                m:"1%",
-                fontWeight: "bold",
-                fontFamily: "Inter,sans-serif",
-                fontSize: { xl: "30px", md: "25px", sm: 15 },
-                textAlign:"center"
-              }}
-            >
-              Add Hotel Details...
-            </Typography>
-          )}
-          {step === 1 && (
-            <Typography
-              sx={{
-                m:"1%",
-                fontWeight: "bold",
-                fontFamily: "Inter,sans-serif",
-                fontSize: { xl: "30px", md: "25px", sm: 15 },
-                textAlign:"center"
-              }}
-            >
-              Add Hotel Location
-            </Typography>
-          )}
-          {step == 2 && (
-            <Typography
-              sx={{
-                m:"1%",
-                fontWeight: "bold",
-                fontFamily: "Inter,sans-serif",
-                fontSize: { xl: "30px", md: "25px", sm: 15 },
-                textAlign:"center"
-              }}
-            >
-              Point location
-            </Typography>
-          )}
+        </Typography>
+        <Box sx={{ position: "relative" }}>
+          {/* {display && <Loaders />} */}
+          <Card
+            className="oyo-cell loginCard"
+            sx={{
+              border: "1px solid black",
+              width: { sm: "90%" },
 
-          <CardContent>
-            <Stack>
-              {step === 0 ? (
-                <>
-                  <Form>
-                  <Stack direction={"column"} spacing={3} margin={"2%"} justifyContent={"center"}>
-                    <Stack>
-                    <Typography
-                      sx={{
-                        fontWeight: "bold",
-                        fontSize: { xl: 16, md: 15, sm: 12 },
-                      }}
-                    >
-                      Hotel name
-                    </Typography>
-                    <TextField
-                      // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
-                      id="demo-helper-text-aligned"
-                      placeholder="Enter Hotel Name"
-                      {...register("hotelName")}
-                    />
-                    <FormHelperText sx={{ color: "red" }}>
-                      {errors.hotelName?.message}
-                    </FormHelperText>
-                    </Stack>
-                    {/* <HotelProfilePic setPic={setPic} formData={formData} /> */}
-                    {/* <Stack spacing={5} direction={"column"} sx={{m:2}}> */}
-                      <Typography {...getRootProps()}>
-                        <input {...getInputProps()} />
-                        {
-                          <IconButton
+              b: "1px solid black",
+              background: "white",
+            }}
+          >
+            <Typography
+              sx={{
+                backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
+                margin: "0",
+                color: "white",
+                fontWeight: "bold",
+                fontSize: { xl: 17, md: 16, sm: 13 },
+                textAlign: "center",
+                p: "1%",
+              }}
+              color="text.secondary"
+              gutterBottom
+            >
+              Add hotel & Get ₹500 OYO Money
+            </Typography>
+            {step === 0 && (
+              <Typography
+                sx={{
+                  m: "1%",
+                  fontWeight: "bold",
+                  fontFamily: "Inter,sans-serif",
+                  fontSize: { xl: "30px", md: "25px", sm: 15 },
+                  textAlign: "center",
+                }}
+              >
+                Add Hotel Details...
+              </Typography>
+            )}
+            {step === 1 && (
+              <Typography
+                sx={{
+                  m: "1%",
+                  fontWeight: "bold",
+                  fontFamily: "Inter,sans-serif",
+                  fontSize: { xl: "30px", md: "25px", sm: 15 },
+                  textAlign: "center",
+                }}
+              >
+                Add Hotel Location
+              </Typography>
+            )}
+            {step == 2 && (
+              <Typography
+                sx={{
+                  m: "1%",
+                  fontWeight: "bold",
+                  fontFamily: "Inter,sans-serif",
+                  fontSize: { xl: "30px", md: "25px", sm: 15 },
+                  textAlign: "center",
+                }}
+              >
+                Point location
+              </Typography>
+            )}
+
+            <CardContent>
+              <Stack>
+                {step === 0 ? (
+                  <>
+                    <Form>
+                      <Stack
+                        direction={"column"}
+                        spacing={3}
+                        margin={"2%"}
+                        justifyContent={"center"}
+                      >
+                        <Stack>
+                          <Typography
                             sx={{
-                              border: "2px dashed lightgrey",
-                              borderRadius: 0,
-                              width: {xl:"10vw",md:"12vw"},
-                              height: {xl:"5vw", md:"10vw"},
-                              display:"flex",
-                              flexDirection:"column",
-                              justifyContent:"center"
+                              fontWeight: "bold",
+                              fontSize: { xl: 16, md: 15, sm: 12 },
                             }}
                           >
-                            <Typography sx={{ mt: 1 }}>
-                              <AddPhotoAlternateSharpIcon fontSize="large" />
-                              <Typography sx={{ fontSize: "10px" }}>
-                                Drop a Photo Here
+                            Hotel name
+                          </Typography>
+                          <TextField
+                            // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
+                            id="demo-helper-text-aligned"
+                            placeholder="Enter Hotel Name"
+                            {...register("hotelName")}
+                          />
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.hotelName?.message}
+                          </FormHelperText>
+                        </Stack>
+                        {/* <HotelProfilePic setPic={setPic} formData={formData} /> */}
+                        {/* <Stack spacing={5} direction={"column"} sx={{m:2}}> */}
+                        <Typography {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          {
+                            <IconButton
+                              sx={{
+                                border: "2px dashed lightgrey",
+                                borderRadius: 0,
+                                width: { xl: "10vw", md: "12vw" },
+                                height: { xl: "5vw", md: "10vw" },
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "center",
+                              }}
+                            >
+                              <Typography sx={{ mt: 1 }}>
+                                <AddPhotoAlternateSharpIcon fontSize="large" />
+                                <Typography sx={{ fontSize: "10px" }}>
+                                  Drop a Photo Here
+                                </Typography>
                               </Typography>
-                            </Typography>
-                          </IconButton>
-                        }
-                      </Typography>
-                    {/* </Stack> */}
-                    <Stack direction={"column"} spacing={2}>
-                    {files.map((photo: any) => (
-                      <Chip
-                        sx={{
-                          fontSize: { xl: "13px", md: "12px", sm: 10 },
-                          mt: 1,
-                        }}
-                        label={photo.name}
-                        onDelete={() => handleDelete(photo)}
-                      ></Chip>
-                    ))}
-                    {error && (
-                      <FormHelperText sx={{ color: "red", ml: 2 }}>
-                        {error}
-                      </FormHelperText>
-                    )}
-                    {maxPhoto ? (
-                      <Button
-                      size="small"
-                      variant="contained"
-                      type="submit"
-                      sx={{
-                      
-                        fontSize: { xl: 15, md: 13 },
-                  
-                      }}
-                        onClick={handleSubmit(onSubmit)}
+                            </IconButton>
+                          }
+                        </Typography>
+                        {/* </Stack> */}
+                        <Stack direction={"column"} spacing={2}>
+                          {files.map((photo: any) => (
+                            <Chip
+                              sx={{
+                                fontSize: { xl: "13px", md: "12px", sm: 10 },
+                                mt: 1,
+                              }}
+                              label={photo.name}
+                              onDelete={() => handleDelete(photo)}
+                            ></Chip>
+                          ))}
+                          {error && (
+                            <FormHelperText sx={{ color: "red", ml: 2 }}>
+                              {error}
+                            </FormHelperText>
+                          )}
+                          {maxPhoto ? (
+                            <Button
+                              size="small"
+                              variant="contained"
+                              type="submit"
+                              sx={{
+                                fontSize: { xl: 15, md: 13 },
+                              }}
+                              onClick={handleSubmit(onSubmit)}
+                            >
+                              Next
+                            </Button>
+                          ) : (
+                            <Button
+                              variant="contained"
+                              sx={{
+                                fontSize: { xl: 15, md: 13, sm: 12 },
+                              }}
+                              disabled
+                              onClick={handleSubmit(onSubmit)}
+                            >
+                              Next
+                            </Button>
+                          )}
+                        </Stack>
+                      </Stack>
+                    </Form>
+                  </>
+                ) : step === 1 ? (
+                  <>
+                    <Form>
+                      <Stack
+                        spacing={2}
+                        justifyContent={"center"}
+                        direction={"row"}
                       >
-                        Next
-                      </Button>
-                    ) : (
-                      <Button
-                      variant="contained"
-                      sx={{
-                      
-                        fontSize: { xl: 15, md: 13, sm: 12 },
-                      }}
-                      disabled
-                        onClick={handleSubmit(onSubmit)}
+                        <Stack>
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                              fontSize: { xl: 16, md: 15, sm: 13 },
+                            }}
+                          >
+                            City
+                          </Typography>
+                          <TextField
+                            id="demo-helper-text-aligned"
+                            placeholder="Enter City"
+                            {...register("city")}
+                          />{" "}
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.city?.message}
+                          </FormHelperText>
+                        </Stack>
+                        <Stack>
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                              fontSize: { xl: 16, md: 15, sm: 13 },
+                            }}
+                          >
+                            State
+                          </Typography>
+                          <TextField
+                            id="demo-helper-text-aligned"
+                            placeholder="Enter State"
+                            {...register("state")}
+                          />{" "}
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.state?.message}
+                          </FormHelperText>
+                        </Stack>
+                      </Stack>
+                      <Stack
+                        spacing={2}
+                        justifyContent={"center"}
+                        direction={"row"}
                       >
-                        Next
-                      </Button>
-                    )}
-                    </Stack>
-                   </Stack>
-                  </Form>
-                </>
-              ) : step === 1 ? (
-                <>
-                  <Form>
-                  <Stack spacing={2} justifyContent={"center"} direction={"row"} sx={{m:"2%"}}>
-                   <Stack>
-                        <Typography
+                        <Stack>
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                              fontSize: { xl: 16, md: 15, sm: 13 },
+                            }}
+                          >
+                            Postal code
+                          </Typography>
+                          <TextField
+                            id="demo-helper-text-aligned"
+                            placeholder="Enter Postal code"
+                            {...register("postalCode")}
+                          />{" "}
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.postalCode?.message}
+                          </FormHelperText>
+                        </Stack>
+                        <Stack>
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                            }}
+                          >
+                            Country
+                          </Typography>
+                          <TextField
+                            id="demo-helper-text-aligned"
+                            placeholder="Enter Country"
+                            {...register("country")}
+                          />{" "}
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.country?.message}
+                          </FormHelperText>
+                        </Stack>
+                      </Stack>
+                      {/* <Box sx={{ display: "flex" }}> */}
+                      <Stack
+                        direction={"row"}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        padding={2}
+                        spacing={2}
+                      >
+                          <ArrowBackIcon
+                            sx={{ borderRadius:'50%',height:'2rem',width:'1.5rem',padding:1,bgcolor:'lightgray'}}
+                            onClick={handleStepBack}
+                          />
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          onClick={handleSubmit(onSubmit)}
                           sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
+                            fontSize: { xl: 15, md: 13, sm: 11 },
                           }}
                         >
-                          City
-                        </Typography>
-                        <TextField
-                         sx={{width:"80%"}}
-                          id="demo-helper-text-aligned"
-                          placeholder="Enter City"
-                          {...register("city")}
-                        />{" "}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors.city?.message}
-                        </FormHelperText>
-                        </Stack>
-                    <Stack>
-                      
-                        <Typography
+                          Next
+                        </Button>
+                      </Stack>
+                    </Form>
+                  </>
+                ) : step === 2 ? (
+                  <>
+                  <Box width={'20rem'} height={'10rem'} ><AddHotelLocation setLocation={setLocation} /></Box>
+                    <Form>
+                    <Stack
+                        direction={"row"}
+                        justifyContent={"center"}
+                        alignItems={"center"}
+                        padding={2}
+                        spacing={2}
+                      >
+                          <ArrowBackIcon
+                            sx={{ borderRadius:'50%',height:'2rem',width:'1.5rem',padding:1,bgcolor:'lightgray'}}
+                            onClick={handleStepBack}
+                          />
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          onClick={handleSubmit(onSubmit)}
                           sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
+                            fontSize: { xl: 15, md: 13, sm: 11 },
                           }}
                         >
-                          State
-                        </Typography>
-                        <TextField
-                        sx={{width:"80%"}}
-                          id="demo-helper-text-aligned"
-                          placeholder="Enter State"
-                          {...register("state")}
-                        />{" "}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors.state?.message}
-                        </FormHelperText>
-                        </Stack>
-                        </Stack>
-                        <Stack spacing={1} justifyContent={"center"} direction={"row"}>
-                   <Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
-                          }}
-                        >
-                          Postal code
-                        </Typography>
-                        <TextField
-                           sx={{width:"80%"}}
-                          id="demo-helper-text-aligned"
-                          placeholder="Enter Postal code"
-                          {...register("postalCode")}
-                        />{" "}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors.postalCode?.message}
-                        </FormHelperText>
-                        </Stack>
-                    <Stack>
-                     
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                           
-                          }}
-                        >
-                          Country
-                        </Typography>
-                        <TextField
-                           sx={{width:"80%"}}
-                          id="demo-helper-text-aligned"
-                          placeholder="Enter Country"
-                          {...register("country")}
-                        />{" "}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors.country?.message}
-                        </FormHelperText>
-                        </Stack>
-                    </Stack>
-                    {/* <Box sx={{ display: "flex" }}> */}
-                    <Button
-                      size="small"
-                      variant="contained"
-                      sx={{
-                      
-                        fontSize: 15,
-                        background: "lightgray",
-                        color: "black",
-                      }}
-                      onClick={handleStepBack}
-                    >
-                      <ArrowBackIcon
-                        sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                      />
-                    </Button>
+                         ADD Hotel
+                        </Button>
+                      </Stack>
+                    </Form>
+                   
+                  </>
+                ) : null}
+              </Stack>
 
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      onClick={handleSubmit(onSubmit)}
-                      sx={{
-                       
-
-                        fontSize: { xl: 15, md: 13, sm: 11 },
-                      }}
-                    >
-                      Next
-                    </Button>
-                  </Form>
-                </>
-              ) : step === 2 ? (
-                <>
-                  <AddHotelLocation setLocation={setLocation} />
-                  <Form>
-                    <Box>
-                      <Button
-                        size="small"
-                        variant="contained"
-                        sx={{
-                         
-                          fontSize: 15,
-                          background: "lightgray",
-                          color: "black",
-                        }}
-                        onClick={handleStepBack}
-                      >
-                        <ArrowBackIcon
-                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                        />
-                      </Button>
-                      <Button
-                        size="small"
-                        variant="contained"
-                        type="submit"
-                        sx={{
-                          width: { xl: 150, md: 100 },
-                          mt: 3,
-                          fontSize: { xl: 15, md: 13, sm: 11 },
-                        }}
-                        // onClick={() => setStep(0)}
-                        onClick={handleSubmit(onSubmit)}
-                      >
-                        Add Hotel
-                      </Button>
-                    </Box>
-                  </Form>
-                </>
-              ) : null}
-            </Stack>
-
-            <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
-              To use Another Email for adding hotel{" "}
-              <Button
-                sx={{
-                  textTransform: "none",
-                  fontSize: { xl: 15, md: 13, sm: 10 },
-                }}
-                onClick={() => navigate("/memberRegister")}
-              >
-                Click here...
-              </Button>
-            </Box>
-          </CardContent>
-        </Card>
-      </Box>
+              <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
+                To use Another Email for adding hotel{" "}
+                <Button
+                  sx={{
+                    textTransform: "none",
+                    fontSize: { xl: 15, md: 13, sm: 10 },
+                  }}
+                  onClick={() => navigate("/memberRegister")}
+                >
+                  Click here...
+                </Button>
+              </Box>
+            </CardContent>
+          </Card>
+        </Box>
       </Stack>
     </Box>
   );
