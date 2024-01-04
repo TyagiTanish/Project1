@@ -5,7 +5,14 @@ import { Form, useNavigate } from "react-router-dom";
 import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
-import { FormHelperText, Stack, TextField } from "@mui/material";
+import {
+  Checkbox,
+  FormControlLabel,
+  FormGroup,
+  FormHelperText,
+  Stack,
+  TextField,
+} from "@mui/material";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Box from "@mui/material/Box";
@@ -19,6 +26,14 @@ import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
 import Footer from "./Footer";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
+import PoolIcon from "@mui/icons-material/Pool";
+import RoomServiceIcon from "@mui/icons-material/RoomService";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import WineBarIcon from "@mui/icons-material/WineBar";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 export default function AddHotelAftrLgn() {
   const navigate = useNavigate();
@@ -31,7 +46,7 @@ export default function AddHotelAftrLgn() {
 
   const [step, setStep] = React.useState(0);
   const handleStep = () => {
-    if (step < 2) {
+    if (step < 3) {
       setStep(step + 1);
     } else {
       setStep(0);
@@ -48,6 +63,48 @@ export default function AddHotelAftrLgn() {
   const [files, setfile] = React.useState<any>([]);
   const [error, setError] = React.useState("");
   const [maxPhoto, setMaxPhoto] = React.useState(false);
+
+  const [arr, setArr]: any = React.useState([]);
+  const amenitie = [
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
+    { id: "pool", label: "Pool", icon: <PoolIcon /> },
+    { id: "roomService", label: "Room Service", icon: <RoomServiceIcon /> },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon /> },
+    { id: "dryClean", label: "DryClean", icon: <DryCleaningIcon /> },
+    { id: "bar", label: "Bar", icon: <WineBarIcon /> },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
+    { id: "pool", label: "Pool", icon: <PoolIcon /> },
+    { id: "roomService", label: "Room Service", icon: <RoomServiceIcon /> },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon /> },
+    { id: "dryClean", label: "DryClean", icon: <DryCleaningIcon /> },
+    { id: "bar", label: "Bar", icon: <WineBarIcon /> },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
+  ];
+
+  const [screenSize, setScreenSize] = React.useState(window.outerWidth);
+  React.useEffect(() => {
+    setScreenSize(window.innerWidth);
+    const handleWindowSize = () => {
+      setScreenSize(window.outerWidth);
+    };
+    console.log("screenSize", screenSize);
+
+    window.addEventListener("resize", handleWindowSize);
+  });
+
+  const change = (e: any) => {
+    const value = e.target.value;
+
+    if (arr.find((item: any) => item === value)) {
+      // arr.delete(value);
+      setArr(arr.filter((i: any) => i !== value));
+    } else {
+      arr.push(value);
+    }
+  };
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
@@ -78,6 +135,10 @@ export default function AddHotelAftrLgn() {
 
   const formData = new FormData();
   const onSubmit = async (data: any) => {
+    if (step === 2) {
+      data.amenities = arr;
+    }
+
     data.longitude = location.longitude;
     data.latitude = location.latitude;
     console.log(files[0]);
@@ -92,10 +153,10 @@ export default function AddHotelAftrLgn() {
     formData.set("lng", data.longitude);
     formData.set("lat", data.latitude);
     formData.set("email", user.email);
-    // formData.set("data", data);
-
-    if (step === 2) {
-      console.log(formData);
+    formData.set("amenities", data.amenities);
+    console.log(data);
+    if (step === 3) {
+      // console.log(formData);
       request.post("/addHotel", formData);
     }
     handleStep();
@@ -106,6 +167,7 @@ export default function AddHotelAftrLgn() {
     state: string;
     postalCode: string;
     country: string;
+    amenities: [];
   }
   var FormSchema: any = "";
   if (step === 0) {
@@ -149,8 +211,13 @@ export default function AddHotelAftrLgn() {
         ),
     });
   }
-  if (step === 2) {
+  if (step === 3) {
     FormSchema = Yup.object().shape({});
+  }
+  if (step === 2) {
+    FormSchema = Yup.object().shape({
+      amenities: Yup.array().min(1),
+    });
   }
   const {
     register,
@@ -182,17 +249,16 @@ export default function AddHotelAftrLgn() {
       <Stack
         direction={"row"}
         alignItems={"center"}
-        justifyContent={"center"}
         spacing={3}
+        justifyContent={"space-evenly"}
+        width={"100%"}
       >
         <Typography
           sx={{
             color: "white",
             fontWeight: "bolder",
             textAlign: "left",
-
             alignContent: "end",
-            p: 5,
             width: { sm: "40%", xl: "50%" },
           }}
         >
@@ -232,8 +298,12 @@ export default function AddHotelAftrLgn() {
               sx={{
                 backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
                 margin: "0",
+                // paddingLeft: { xl: "93px", md: "30px", sm: 5 },
+                // paddingTop: "5px",
+                // paddingBottom: "5px",
                 color: "white",
                 fontWeight: "bold",
+                width: "100%",
                 fontSize: { xl: 17, md: 16, sm: 13 },
                 textAlign: "center",
                 p: "1%",
@@ -269,7 +339,7 @@ export default function AddHotelAftrLgn() {
                 Add Hotel Location
               </Typography>
             )}
-            {step == 2 && (
+            {step == 3 && (
               <Typography
                 sx={{
                   m: "1%",
@@ -280,6 +350,18 @@ export default function AddHotelAftrLgn() {
                 }}
               >
                 Point location
+              </Typography>
+            )}
+            {step === 2 && (
+              <Typography
+                sx={{
+                  fontSize: { xl: 28, md: 20 },
+                  fontWeight: "700",
+                  textAlign: "center",
+                  opacity: 0.7,
+                }}
+              >
+                Enter Hotel Amenities....
               </Typography>
             )}
 
@@ -390,6 +472,7 @@ export default function AddHotelAftrLgn() {
                         spacing={2}
                         justifyContent={"center"}
                         direction={"row"}
+                        sx={{ m: "2%" }}
                       >
                         <Stack>
                           <Typography
@@ -401,6 +484,7 @@ export default function AddHotelAftrLgn() {
                             City
                           </Typography>
                           <TextField
+                            sx={{ width: "80%" }}
                             id="demo-helper-text-aligned"
                             placeholder="Enter City"
                             {...register("city")}
@@ -419,6 +503,7 @@ export default function AddHotelAftrLgn() {
                             State
                           </Typography>
                           <TextField
+                            sx={{ width: "80%" }}
                             id="demo-helper-text-aligned"
                             placeholder="Enter State"
                             {...register("state")}
@@ -429,7 +514,7 @@ export default function AddHotelAftrLgn() {
                         </Stack>
                       </Stack>
                       <Stack
-                        spacing={2}
+                        spacing={1}
                         justifyContent={"center"}
                         direction={"row"}
                       >
@@ -443,6 +528,7 @@ export default function AddHotelAftrLgn() {
                             Postal code
                           </Typography>
                           <TextField
+                            sx={{ width: "80%" }}
                             id="demo-helper-text-aligned"
                             placeholder="Enter Postal code"
                             {...register("postalCode")}
@@ -460,6 +546,7 @@ export default function AddHotelAftrLgn() {
                             Country
                           </Typography>
                           <TextField
+                            sx={{ width: "80%" }}
                             id="demo-helper-text-aligned"
                             placeholder="Enter Country"
                             {...register("country")}
@@ -470,59 +557,185 @@ export default function AddHotelAftrLgn() {
                         </Stack>
                       </Stack>
                       {/* <Box sx={{ display: "flex" }}> */}
-                      <Stack
-                        direction={"row"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                        padding={2}
-                        spacing={2}
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                          fontSize: 15,
+                          background: "lightgray",
+                          color: "black",
+                        }}
+                        onClick={handleStepBack}
                       >
-                          <ArrowBackIcon
-                            sx={{ borderRadius:'50%',height:'2rem',width:'1.5rem',padding:1,bgcolor:'lightgray'}}
-                            onClick={handleStepBack}
-                          />
+                        <ArrowBackIcon
+                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                        />
+                      </Button>
+
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        onClick={handleSubmit(onSubmit)}
+                        sx={{
+                          fontSize: { xl: 15, md: 13, sm: 11 },
+                        }}
+                      >
+                        Next
+                      </Button>
+                    </Form>
+                  </>
+                ) : step === 3 ? (
+                  <>
+                    <AddHotelLocation setLocation={setLocation} />
+                    <Form>
+                      <Box>
                         <Button
-                          type="submit"
+                          size="small"
                           variant="contained"
-                          onClick={handleSubmit(onSubmit)}
+                          sx={{
+                            fontSize: 15,
+                            background: "lightgray",
+                            color: "black",
+                          }}
+                          onClick={handleStepBack}
+                        >
+                          <ArrowBackIcon
+                            sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                          />
+                        </Button>
+                        <Button
+                          size="small"
+                          variant="contained"
+                          type="submit"
                           sx={{
                             fontSize: { xl: 15, md: 13, sm: 11 },
                           }}
+                          // onClick={() => setStep(0)}
+                          onClick={handleSubmit(onSubmit)}
                         >
-                          Next
+                          Add Hotel
                         </Button>
-                      </Stack>
+                      </Box>
                     </Form>
                   </>
                 ) : step === 2 ? (
-                  <>
-                  <Box width={'20rem'} height={'10rem'} ><AddHotelLocation setLocation={setLocation} /></Box>
-                    <Form>
-                    <Stack
-                        direction={"row"}
-                        justifyContent={"center"}
-                        alignItems={"center"}
-                        padding={2}
-                        spacing={2}
-                      >
-                          <ArrowBackIcon
-                            sx={{ borderRadius:'50%',height:'2rem',width:'1.5rem',padding:1,bgcolor:'lightgray'}}
-                            onClick={handleStepBack}
-                          />
-                        <Button
-                          type="submit"
-                          variant="contained"
-                          onClick={handleSubmit(onSubmit)}
-                          sx={{
-                            fontSize: { xl: 15, md: 13, sm: 11 },
-                          }}
+                  <Form>
+                    <Stack ml={2} direction={"column"} maxWidth={400}>
+                      {screenSize > 768 ? (
+                        <Grid
+                          container
+                          rowSpacing={1}
+                          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
                         >
-                         ADD Hotel
-                        </Button>
-                      </Stack>
-                    </Form>
-                   
-                  </>
+                          {amenitie.map((item, index) => (
+                            <Grid item xs={5}>
+                              <FormGroup>
+                                <Stack
+                                  direction={"row"}
+                                  alignItems={"center"}
+                                  spacing={1}
+                                >
+                                  {item.icon}
+                                  {arr.includes(index.toString()) ? (
+                                    <FormControlLabel
+                                      control={
+                                        <Checkbox
+                                          value={index}
+                                          defaultChecked
+                                          onChange={(e) => {
+                                            change(e);
+                                          }}
+                                        />
+                                      }
+                                      label={item.label}
+                                    />
+                                  ) : (
+                                    <FormControlLabel
+                                      control={
+                                        <Checkbox
+                                          value={index}
+                                          onChange={(e) => {
+                                            change(e);
+                                          }}
+                                        />
+                                      }
+                                      label={item.label}
+                                    />
+                                  )}
+                                </Stack>
+                              </FormGroup>
+                            </Grid>
+                          ))}
+                        </Grid>
+                      ) : (
+                        <Box sx={{ maxHeight: "400px", overflowY: "auto" }}>
+                          {amenitie.map((item, index) => (
+                            <FormGroup>
+                              <Stack
+                                direction={"row"}
+                                alignItems={"center"}
+                                spacing={1}
+                              >
+                                {item.icon}
+                                {arr.includes(index.toString()) ? (
+                                  <FormControlLabel
+                                    control={
+                                      <Checkbox
+                                        value={index}
+                                        defaultChecked
+                                        onChange={(e) => {
+                                          change(e);
+                                        }}
+                                      />
+                                    }
+                                    label={item.label}
+                                  />
+                                ) : (
+                                  <FormControlLabel
+                                    control={
+                                      <Checkbox
+                                        value={index}
+                                        onChange={(e) => {
+                                          change(e);
+                                        }}
+                                      />
+                                    }
+                                    label={item.label}
+                                  />
+                                )}
+                              </Stack>
+                            </FormGroup>
+                          ))}
+                        </Box>
+                      )}
+                    </Stack>
+
+                    <Button
+                      size="small"
+                      variant="contained"
+                      sx={{
+                        fontSize: 15,
+                        background: "lightgray",
+                        color: "black",
+                      }}
+                      onClick={handleStepBack}
+                    >
+                      <ArrowBackIcon
+                        sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                      />
+                    </Button>
+
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      onClick={handleSubmit(onSubmit)}
+                      sx={{
+                        fontSize: { xl: 15, md: 13, sm: 11 },
+                      }}
+                    >
+                      Next
+                    </Button>
+                  </Form>
                 ) : null}
               </Stack>
 
