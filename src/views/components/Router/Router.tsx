@@ -9,6 +9,7 @@ import MemberRegister from "../MemberRegister";
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
+import RoomDetail from "../HotelOwner/Rooms/RoomDetail";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -50,7 +51,6 @@ const router = createBrowserRouter([
     path:'/viewDeal',
     element:<ViewDeal/>
   }
-
 ]);
 
 function Routes() {

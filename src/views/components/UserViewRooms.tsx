@@ -1,7 +1,27 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
+import RoomDetailBox from "./HotelOwner/Rooms/RoomDetailsDialog";
+import RoomDialog from "./RoomDialog";
 
 function UserViewRooms() {
+  const [open,setOpen]=useState(false);
+  const [open2,setOpen2]=useState(false);
+  const [details,setDetails]=useState({});
+  const handleOpen=()=>{
+      setOpen(true);
+  }
+  const handleDialog=(item:any)=>{
+    setOpen2(true);
+   setDetails(item)
+    
+  }
+  const handleClose=()=>{
+    setOpen2(false);
+   
+    
+  }
+  console.log('details are', details);
+  
     const [data] = useState([
         {
           name: "king Bed Room",
@@ -30,7 +50,8 @@ function UserViewRooms() {
        
       ]);
   return (
-    <Stack spacing={40} direction={"row"} marginLeft={'7%'} marginTop={'4%'}>
+    <>
+    <Stack justifyContent={'space-evenly'} direction={"row"}  marginTop={'4%'} marginBottom={'4%'}>
             {data?.map((item)=>(
                 <Stack sx={{width:"18%",}} boxShadow={4} direction={"column"} spacing={1} padding={1}>      
                  <Box
@@ -43,21 +64,27 @@ function UserViewRooms() {
                 alt="The house from the offer."
                 src={item.src}
               />
-            <Typography sx={{textAlign:'center',fontWeight:"bold",fontSize:18}}>{item.name}</Typography>
-            <Typography sx={{fontSize:14}}>{item.description.slice(0,90)}...</Typography>
-           <Stack direction={'row'} spacing={5} justifyContent={'space-between'}> <Typography sx={{fontSize:15}}>Member Bed and Breakfast</Typography><Typography sx={{fontWeight:"bold"}}>{item.memberBedPrice}</Typography></Stack>
-           <Stack direction={'row'} spacing={5} justifyContent={'space-between'}> <Typography sx={{fontSize:15}}>Bed and Breakfast</Typography><Typography sx={{fontWeight:"bold"}}>{item.bedAndBreakfastPrice}</Typography></Stack>
-           <Button sx={{textTransform:'capitalize'  ,backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",color:'white',fontWeight:'bold'}}>Select & Book</Button>
-              </Stack>
+            <Typography sx={{textAlign:'center',fontWeight:"bold",fontSize:{xl:18,md:15,sm:14}}}>{item.name}</Typography>
+            <Typography sx={{fontSize:{xl:14,md:13,sm:12}}}>{item.description.slice(0,90)}...</Typography>
+           <Stack direction={'row'}  justifyContent={'space-between'}> <Typography sx={{fontSize:{xl:15,md:14,sm:13}}}>Member Bed and Breakfast</Typography><Typography sx={{fontWeight:"bold",fontSize:{xl:15,md:14,sm:13}}}>{item.memberBedPrice}</Typography></Stack>
+           <Stack direction={'row'} justifyContent={'space-between'}> <Typography sx={{fontSize:{xl:15,md:14,sm:13}}}>Bed and Breakfast</Typography><Typography sx={{fontWeight:"bold",fontSize:{xl:15,md:14,sm:13}}}>{item.bedAndBreakfastPrice}</Typography></Stack>
+           <Button sx={{textTransform:'capitalize'  ,backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",color:'white',fontWeight:'bold'}} onClick={()=>{
+            handleOpen();
+            handleDialog(item)
+           }}>Select & Book</Button>
+            </Stack>
                    
                 
                       
                          
                        
-                         
+                   
                      
             ))}
- </Stack>
+        </Stack>
+           {open && <RoomDialog open={open2} handleClose={handleClose} details={details}/>}
+        </>
+
   );
 }
 
