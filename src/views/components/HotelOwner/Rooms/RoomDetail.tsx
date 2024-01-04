@@ -35,12 +35,13 @@ const RoomDetail = ({ room, index, setOpen, setDetailedRoom }: any) => {
                 <Stack direction={"column"} spacing={0.2}>
                   {room?.src?.map((image: any, index: number) => {
                    return <>
-                      {index > 0 && (
+                      {index !=roomImage && (
                         <img
                           width={100}
                           height={60}
                           src={require(`../../${image?.url}`)}
                           onClick={() => setRoomImage(index)}
+                          style={{}}
                         />
                       )}
                     </>
