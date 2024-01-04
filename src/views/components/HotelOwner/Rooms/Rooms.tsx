@@ -16,20 +16,20 @@ export default function AllRooms() {
       rating: "excellent",
       src: [
         { url: "pic1.jpg" },
-        { url: "pic4.jpg" },
+        { url: "pic4.jpeg" },
         { url: "pic3.jpg" },
-        { url: "pic5.jpg" },
+        { url: "pic5.jpeg" },
       ],
     },
-    {
+    { 
       name: "Bentewood Resort",
       price: "2000/-",
       rating: "excellent",
       src: [
         { url: "pic2.jpg" },
         { url: "pic3.jpg" },
-        { url: "pic4.jpg" },
-        { url: "pic5.jpg" },
+        { url: "pic4.jpeg" },
+        { url: "pic5.jpeg" },
       ],
     },
     {
@@ -38,9 +38,9 @@ export default function AllRooms() {
       rating: "excellent",
       src: [
         { url: "pic3.jpg" },
-        { url: "pic3.jpg" },
-        { url: "pic4.jpg" },
-        { url: "pic5.jpg" },
+        { url: "pic1.jpg" },
+        { url: "pic4.jpeg" },
+        { url: "pic5.jpeg" },
       ],
     },
     {
@@ -48,10 +48,10 @@ export default function AllRooms() {
       price: "5000/-",
       rating: "excellent",
       src: [
-        { url: "pic4.jpg" },
+        { url: "pic4.jpeg" },
         { url: "pic3.jpg" },
-        { url: "pic4.jpg" },
-        { url: "pic5.jpg" },
+        { url: "pic4.jpeg" },
+        { url: "pic5.jpeg" },
       ],
     },
     {
@@ -61,8 +61,8 @@ export default function AllRooms() {
       src: [
         { url: "pic5.jpg" },
         { url: "pic3.jpg" },
-        { url: "pic4.jpg" },
-        { url: "pic5.jpg" },
+        { url: "pic4.jpeg" },
+        { url: "pic5.jpeg" },
       ],
     },
   ]);

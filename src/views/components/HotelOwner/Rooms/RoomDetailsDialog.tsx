@@ -4,6 +4,7 @@ import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
 import {
   Box,
+  Grid,
   IconButton,
   Popper,
   Stack,
@@ -12,8 +13,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
-import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
+
 export default function RoomDetailBox({
   open,
   setOpen,
@@ -28,13 +28,20 @@ export default function RoomDetailBox({
   const handleClose = () => {
     setOpen(false);
   };
-
+const [screenSize,setScreenSize] = React.useState(window.innerWidth);
   const [roomImage, setRoomImage] = React.useState(0);
   const [popper, setPopper] = React.useState(false);
   const roomIndex = React.useMemo(() => {
     setDetailedRoom(Detailedroom);
     console.log(roomImage);
   }, [Detailedroom, roomImage]);
+
+  
+const ScreenSize =React.useEffect(()=>{
+  setScreenSize(window.innerWidth)
+  window.addEventListener('resize',()=>setScreenSize(window.innerWidth))
+})
+
 
   return (
     <Dialog
@@ -48,22 +55,8 @@ export default function RoomDetailBox({
         <Stack
           direction={"row"}
           alignItems={"center"}
-          sx={{ float: "right", mt: "-2%", mr: "-2%" }}
+          sx={{ float: "right", mt: "-2%", mr: "-2%", }}
         >
-          <Tooltip title={"Delete"}>
-            <IconButton
-              onMouseOver={() => setPopper(true)}
-              onMouseLeave={() => setPopper(false)}
-            >
-              <DeleteOutlineOutlinedIcon />
-            </IconButton>
-          </Tooltip>
-          <Tooltip title={"Edit"}>
-            <IconButton>
-              <ModeEditOutlineOutlinedIcon fontSize="medium" />
-            </IconButton>
-          </Tooltip>
-
           <Tooltip title={'Close'}>
             <IconButton onClick={() => setOpen(false)}>
               <CloseIcon />
@@ -79,9 +72,8 @@ export default function RoomDetailBox({
             borderRight={"1px solid lightgray"}
           >
             <Stack direction={"row"} spacing={0.2}>
-              <img
-                width={400}
-                height={350}
+              <Box component={'img'}
+               width={{xl:'75%',md:'65%',sm:'55%',xs:'50%',lg:'75%'}}
                 src={require(`../../${Rooms[Detailedroom]?.src[roomImage]?.url}`)}
               />
               <>
@@ -91,9 +83,9 @@ export default function RoomDetailBox({
                       return (
                         <>
                           {index != roomImage && (
-                            <img
-                              width={120}
-                              height={116}
+                            <Box component={'img'}
+                              width={{xl:'85%',sm:80,md:'80%'}}
+                              height={{xl:'50%',sm:50,md:'60%'}}
                               src={require(`../../${image?.url}`)}
                               onClick={() => setRoomImage(index)}
                             />
@@ -129,13 +121,12 @@ export default function RoomDetailBox({
             </Typography>
             <hr color="lightgray" />
             <br />
-            <Stack
-              direction={"row"}
-              justifyContent={"space-between"}
-              spacing={0}
+            <Grid container
+              // direction={screenSize <=768 ? "column":"row"}     
+              spacing={2}
               alignItems={"center"}
             >
-              <Stack spacing={1}>
+              <Grid item spacing={2}>
                 <li>Ac</li>
                 <li>42” LED Smart TV</li>
                 <li>Coffee and tea maker</li>
@@ -143,8 +134,8 @@ export default function RoomDetailBox({
                 <li>Bath amenities</li>
                 <li>Bath robes and slippers</li>
                 <li>Minibar upon request</li>
-              </Stack>
-              <Stack spacing={1}>
+              </Grid>
+              <Grid  item spacing={2}>
                 <li>24-hour room service</li>
                 <li>Complimentary water bottles</li>
                 <li>In-room safe</li>
@@ -152,8 +143,8 @@ export default function RoomDetailBox({
                 <li>Complimentary high-speed Wi-Fi</li>
                 <li>Daily newspaper upon request</li>
                 <li>Extra bed upon request</li>
-              </Stack>
-            </Stack>
+              </Grid>
+            </Grid>
             <Stack paddingTop={20.2}>
               <hr></hr>
 
