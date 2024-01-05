@@ -186,8 +186,7 @@ export default function MemberRegister() {
     }));
   page === 5 &&
     (FormSchema = Yup.object().shape({
-      amenities: Yup.array().min(1),
-      amenities55: Yup.string(),
+      amenities: Yup.array().min(1, "Check at list one amenity"),
     }));
   interface User {
     name: string;
@@ -230,9 +229,9 @@ export default function MemberRegister() {
   };
 
   const Submit = async (detail: any) => {
-    if (page === 5) {
-      detail.amenities = arr;
-    }
+    // if (page === 5) {
+    detail.amenities = arr;
+    // }
 
     if (page === 6) {
       detail.latitude = location.latitude;
@@ -734,6 +733,9 @@ export default function MemberRegister() {
                       ))}
                     </Box>
                   )}
+                  <FormHelperText sx={{ mt: 2, color: "red" }}>
+                    {errors?.amenities?.message}
+                  </FormHelperText>
                 </Stack>
 
                 <IconButton
