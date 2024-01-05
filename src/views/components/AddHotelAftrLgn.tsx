@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Form, useNavigate } from "react-router-dom";
@@ -105,6 +105,7 @@ export default function AddHotelAftrLgn() {
       arr.push(value);
     }
   };
+  // useEffect(() => {}, [arr]);
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
@@ -136,12 +137,14 @@ export default function AddHotelAftrLgn() {
   const formData = new FormData();
   const onSubmit = async (data: any) => {
     if (step === 2) {
+      setArr(arr);
       data.amenities = arr;
     }
+    data.amenities = arr;
 
     data.longitude = location.longitude;
     data.latitude = location.latitude;
-    console.log(files[0]);
+    // console.log(files[0]);
     formData.append("files", files[0]);
     formData.set("hotelName", data.hotelName);
     formData.set("phone", data.phone);
@@ -158,6 +161,7 @@ export default function AddHotelAftrLgn() {
     if (step === 3) {
       // console.log(formData);
       request.post("/addHotel", formData);
+      navigate("/");
     }
     handleStep();
   };
@@ -211,14 +215,15 @@ export default function AddHotelAftrLgn() {
         ),
     });
   }
+  if (step === 2) {
+    FormSchema = Yup.object().shape({
+      amenities: Yup.array().min(1, "Select at least one amenity"),
+    });
+  }
   if (step === 3) {
     FormSchema = Yup.object().shape({});
   }
-  if (step === 2) {
-    FormSchema = Yup.object().shape({
-      amenities: Yup.array().min(1),
-    });
-  }
+
   const {
     register,
     handleSubmit,
@@ -243,7 +248,8 @@ export default function AddHotelAftrLgn() {
         display: "flex",
         justifyContent: "center",
         opacity: "80%",
-        position: "absolute",
+        position: "fixed",
+        minWidth: 500,
       }}
     >
       <Stack
@@ -266,7 +272,7 @@ export default function AddHotelAftrLgn() {
           <Typography
             variant="h2"
             sx={{
-              fontSize: { xl: 45, md: 28, sm: 20 },
+              fontSize: { xl: 45, md: 28, sm: 25 },
             }}
           >
             There's a smarter way to OYO around
@@ -288,10 +294,11 @@ export default function AddHotelAftrLgn() {
             className="oyo-cell loginCard"
             sx={{
               border: "1px solid black",
-              width: { sm: "90%" },
-
+              width: { sm: "80%" },
+              float: "right",
               b: "1px solid black",
               background: "white",
+              m: "2%",
             }}
           >
             <Typography
@@ -303,7 +310,7 @@ export default function AddHotelAftrLgn() {
                 // paddingBottom: "5px",
                 color: "white",
                 fontWeight: "bold",
-                width: "100%",
+                // width: "100%",
                 fontSize: { xl: 17, md: 16, sm: 13 },
                 textAlign: "center",
                 p: "1%",
@@ -373,7 +380,7 @@ export default function AddHotelAftrLgn() {
                       <Stack
                         direction={"column"}
                         spacing={3}
-                        margin={"2%"}
+                        // margin={"2%"}
                         justifyContent={"center"}
                       >
                         <Stack>
@@ -387,7 +394,7 @@ export default function AddHotelAftrLgn() {
                           </Typography>
                           <TextField
                             // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
-                            id="demo-helper-text-aligned"
+
                             placeholder="Enter Hotel Name"
                             {...register("hotelName")}
                           />
@@ -467,128 +474,139 @@ export default function AddHotelAftrLgn() {
                   </>
                 ) : step === 1 ? (
                   <>
-                    <Form>
-                      <Stack
-                        spacing={2}
-                        justifyContent={"center"}
-                        direction={"row"}
-                        sx={{ m: "2%" }}
-                      >
-                        <Stack>
-                          <Typography
-                            sx={{
-                              fontWeight: "bold",
-                              fontSize: { xl: 16, md: 15, sm: 13 },
-                            }}
-                          >
-                            City
-                          </Typography>
-                          <TextField
-                            sx={{ width: "80%" }}
-                            id="demo-helper-text-aligned"
-                            placeholder="Enter City"
-                            {...register("city")}
-                          />{" "}
-                          <FormHelperText sx={{ color: "red" }}>
-                            {errors.city?.message}
-                          </FormHelperText>
+                    <Stack maxWidth={{ sm: 300, md: 400, lg: 500 }}>
+                      <Form>
+                        <Stack
+                          spacing={2}
+                          // justifyContent={"center"}
+                          direction={"row"}
+                          sx={{ m: "2%" }}
+                        >
+                          <Stack>
+                            <Typography
+                              sx={{
+                                fontWeight: "bold",
+                                fontSize: { xl: 16, md: 15, sm: 13 },
+                              }}
+                            >
+                              City
+                            </Typography>
+                            <TextField
+                              sx={{ width: "80%" }}
+                              placeholder="Enter City"
+                              {...register("city")}
+                            />
+                            <FormHelperText sx={{ color: "red" }}>
+                              {errors.city?.message}
+                            </FormHelperText>
+                          </Stack>
+                          <Stack>
+                            <Typography
+                              sx={{
+                                fontWeight: "bold",
+                                fontSize: { xl: 16, md: 15, sm: 13 },
+                              }}
+                            >
+                              State
+                            </Typography>
+                            <TextField
+                              sx={{ width: "80%" }}
+                              id="demo-helper-text-aligned"
+                              placeholder="Enter State"
+                              {...register("state")}
+                            />{" "}
+                            <FormHelperText sx={{ color: "red" }}>
+                              {errors.state?.message}
+                            </FormHelperText>
+                          </Stack>
                         </Stack>
-                        <Stack>
-                          <Typography
-                            sx={{
-                              fontWeight: "bold",
-                              fontSize: { xl: 16, md: 15, sm: 13 },
-                            }}
-                          >
-                            State
-                          </Typography>
-                          <TextField
-                            sx={{ width: "80%" }}
-                            id="demo-helper-text-aligned"
-                            placeholder="Enter State"
-                            {...register("state")}
-                          />{" "}
-                          <FormHelperText sx={{ color: "red" }}>
-                            {errors.state?.message}
-                          </FormHelperText>
+                        <Stack
+                          spacing={1}
+                          justifyContent={"center"}
+                          direction={"row"}
+                          p={1}
+                        >
+                          <Stack>
+                            <Typography
+                              sx={{
+                                fontWeight: "bold",
+                                fontSize: { xl: 16, md: 15, sm: 13 },
+                              }}
+                            >
+                              Postal code
+                            </Typography>
+                            <TextField
+                              sx={{ width: "80%" }}
+                              id="demo-helper-text-aligned"
+                              placeholder="Enter Postal code"
+                              {...register("postalCode")}
+                            />{" "}
+                            <FormHelperText sx={{ color: "red" }}>
+                              {errors.postalCode?.message}
+                            </FormHelperText>
+                          </Stack>
+                          <Stack>
+                            <Typography
+                              sx={{
+                                fontWeight: "bold",
+                                fontSize: { xl: 16, md: 15, sm: 13 },
+                              }}
+                            >
+                              Country
+                            </Typography>
+                            <TextField
+                              sx={{ width: "80%" }}
+                              id="demo-helper-text-aligned"
+                              placeholder="Enter Country"
+                              {...register("country")}
+                            />{" "}
+                            <FormHelperText sx={{ color: "red" }}>
+                              {errors.country?.message}
+                            </FormHelperText>
+                          </Stack>
                         </Stack>
-                      </Stack>
-                      <Stack
-                        spacing={1}
-                        justifyContent={"center"}
-                        direction={"row"}
-                      >
-                        <Stack>
-                          <Typography
+                        {/* <Box sx={{ display: "flex" }}> */}
+                        <Stack direction={"row"} spacing={1}>
+                          <Button
+                            size="small"
+                            variant="contained"
                             sx={{
-                              fontWeight: "bold",
-                              fontSize: { xl: 16, md: 15, sm: 13 },
+                              fontSize: 15,
+                              background: "lightgray",
+                              color: "black",
                             }}
+                            id="stepBackButton"
+                            onClick={handleStepBack}
                           >
-                            Postal code
-                          </Typography>
-                          <TextField
-                            sx={{ width: "80%" }}
-                            id="demo-helper-text-aligned"
-                            placeholder="Enter Postal code"
-                            {...register("postalCode")}
-                          />{" "}
-                          <FormHelperText sx={{ color: "red" }}>
-                            {errors.postalCode?.message}
-                          </FormHelperText>
-                        </Stack>
-                        <Stack>
-                          <Typography
-                            sx={{
-                              fontWeight: "bold",
-                            }}
-                          >
-                            Country
-                          </Typography>
-                          <TextField
-                            sx={{ width: "80%" }}
-                            id="demo-helper-text-aligned"
-                            placeholder="Enter Country"
-                            {...register("country")}
-                          />{" "}
-                          <FormHelperText sx={{ color: "red" }}>
-                            {errors.country?.message}
-                          </FormHelperText>
-                        </Stack>
-                      </Stack>
-                      {/* <Box sx={{ display: "flex" }}> */}
-                      <Button
-                        size="small"
-                        variant="contained"
-                        sx={{
-                          fontSize: 15,
-                          background: "lightgray",
-                          color: "black",
-                        }}
-                        onClick={handleStepBack}
-                      >
-                        <ArrowBackIcon
-                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                        />
-                      </Button>
+                            <ArrowBackIcon
+                              sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                            />
+                          </Button>
 
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        onClick={handleSubmit(onSubmit)}
-                        sx={{
-                          fontSize: { xl: 15, md: 13, sm: 11 },
-                        }}
-                      >
-                        Next
-                      </Button>
-                    </Form>
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            onClick={handleSubmit(onSubmit)}
+                            sx={{
+                              fontSize: { xl: 15, md: 13, sm: 11 },
+                            }}
+                          >
+                            Next
+                          </Button>
+                        </Stack>
+                      </Form>
+                    </Stack>
                   </>
                 ) : step === 3 ? (
                   <>
                     <AddHotelLocation setLocation={setLocation} />
                     <Form>
-                      <Box>
+                      <Stack
+                        direction={"row"}
+                        spacing={1}
+                        mt={2}
+                        minWidth={{ lg: 500, md: 400, sm: 350 }}
+                      >
                         <Button
                           size="small"
                           variant="contained"
@@ -597,6 +615,7 @@ export default function AddHotelAftrLgn() {
                             background: "lightgray",
                             color: "black",
                           }}
+                          id="stepBackButton"
                           onClick={handleStepBack}
                         >
                           <ArrowBackIcon
@@ -615,12 +634,16 @@ export default function AddHotelAftrLgn() {
                         >
                           Add Hotel
                         </Button>
-                      </Box>
+                      </Stack>
                     </Form>
                   </>
                 ) : step === 2 ? (
                   <Form>
-                    <Stack ml={2} direction={"column"} maxWidth={400}>
+                    <Stack
+                      ml={2}
+                      direction={"column"}
+                      maxWidth={{ lg: 500, md: 400 }}
+                    >
                       {screenSize > 768 ? (
                         <Grid
                           container
@@ -668,7 +691,7 @@ export default function AddHotelAftrLgn() {
                           ))}
                         </Grid>
                       ) : (
-                        <Box sx={{ maxHeight: "400px", overflowY: "auto" }}>
+                        <Box sx={{ maxHeight: "200px", overflowY: "auto" }}>
                           {amenitie.map((item, index) => (
                             <FormGroup>
                               <Stack
@@ -708,33 +731,39 @@ export default function AddHotelAftrLgn() {
                           ))}
                         </Box>
                       )}
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.amenities?.message}
+                      </FormHelperText>
                     </Stack>
 
-                    <Button
-                      size="small"
-                      variant="contained"
-                      sx={{
-                        fontSize: 15,
-                        background: "lightgray",
-                        color: "black",
-                      }}
-                      onClick={handleStepBack}
-                    >
-                      <ArrowBackIcon
-                        sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                      />
-                    </Button>
+                    <Stack direction={"row"} spacing={1} mt={2}>
+                      <Button
+                        size="small"
+                        variant="contained"
+                        sx={{
+                          fontSize: 15,
+                          background: "lightgray",
+                          color: "black",
+                        }}
+                        id="stepBackButton"
+                        onClick={handleStepBack}
+                      >
+                        <ArrowBackIcon
+                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                        />
+                      </Button>
 
-                    <Button
-                      type="submit"
-                      variant="contained"
-                      onClick={handleSubmit(onSubmit)}
-                      sx={{
-                        fontSize: { xl: 15, md: 13, sm: 11 },
-                      }}
-                    >
-                      Next
-                    </Button>
+                      <Button
+                        type="submit"
+                        variant="contained"
+                        onClick={handleSubmit(onSubmit)}
+                        sx={{
+                          fontSize: { xl: 15, md: 13, sm: 11 },
+                        }}
+                      >
+                        Next
+                      </Button>
+                    </Stack>
                   </Form>
                 ) : null}
               </Stack>

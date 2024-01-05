@@ -118,3 +118,6 @@
   background: rgba(204, 200, 200, 0.2);
   backdrop-filter: blur(7px); 
 }
+#stepBackButton:hover{
+  background-color: gray;
+}
