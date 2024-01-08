@@ -129,7 +129,7 @@
 .img-container {
   display: flex;
   overflow: hidden;
-  width: 100%;
+ width:'50%';
   border: 5px solid #ffffff;
   border-radius: 10px;
 }
