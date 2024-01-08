@@ -15,7 +15,7 @@ import RoomSelection from "./RoomSelection";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { useDispatch } from "react-redux";
 import { userLocation } from "./redux/user/userSlice";
-
+import { useNavigate } from "react-router-dom";
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -27,7 +27,7 @@ function SearchBar() {
   const [guests, setGuests] = useState(0);
   const [render, setRender] = React.useState(0);
   const dispatch = useDispatch();
-
+  const navigate = useNavigate();
   useEffect(() => {
     var result = 0;
     rooms.forEach((element: any) => {
@@ -84,7 +84,11 @@ function SearchBar() {
             <Building1 />
           </Typography>
         </Stack>
-        <Stack direction={"column"} justifyContent={"center"} alignItems={"center"} >
+        <Stack
+          direction={"column"}
+          justifyContent={"center"}
+          alignItems={"center"}
+        >
           <Box
             sx={{
               color: "white",
@@ -97,7 +101,11 @@ function SearchBar() {
             Over 157,000 hotels and homes across 35 countries
           </Box>
           <Stack
-            sx={{ alignItems: "center", textAlign: "center",width:{md:'100%',sm:'98%'}  }}
+            sx={{
+              alignItems: "center",
+              textAlign: "center",
+              width: { md: "100%", sm: "98%" },
+            }}
             direction={"row"}
             zIndex={0}
           >
@@ -119,7 +127,7 @@ function SearchBar() {
                       Near me
                     </IconButton>
                   </InputAdornment>
-                )
+                ),
               }}
             />
             <Box marginTop={-1}>
@@ -146,6 +154,9 @@ function SearchBar() {
                 fontWeight: "bolder",
                 height: "100%",
                 borderRadius: 0,
+              }}
+              onClick={() => {
+                navigate("./hotels");
               }}
             >
               Search
