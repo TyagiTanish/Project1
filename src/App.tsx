@@ -1,15 +1,18 @@
 import "./App.css";
-import { Outlet, RouterProvider } from "react-router-dom";
+import { Outlet, Router, RouterProvider } from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
-import {IntlProvider} from 'react-intl';
+import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
-import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
+
 import HotelOwnerView from "./views/layout/HotelOwnerView";
+// import AllRooms from "./views/components/HotelOwner/Rooms/Rooms";
+import Rooms from "./views/components/Rooms";
+
 
 function App() {
   const { request } = useAuth();
@@ -43,16 +46,16 @@ function App() {
   // }
   return (
     <>
+
     <Locales>
     <SnackbarProvider>
-      {/* <LoginSystem />    */}
-      <AllRooms/>
-      {/* <HotelOwnerView/> */}
-   
+      {/* <LoginSystem />  */}
+        <HotelOwnerView/>
+
       </SnackbarProvider>
       <Outlet />
+
       </Locales>
-     
     </>
   );
 }
