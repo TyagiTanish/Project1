@@ -73,7 +73,7 @@ function HotelInfo(props: any) {
         </Stack>
         
         </Stack>
-        <HotelAmenities/>
+        {/* <HotelAmenities/> */}
     </>
   );
 }

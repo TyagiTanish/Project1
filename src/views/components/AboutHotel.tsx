@@ -6,6 +6,7 @@ import BedIcon from "@mui/icons-material/Bed";
 import HdrAutoIcon from "@mui/icons-material/HdrAuto";
 import HotelInfo from "./HotelInfo";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
+import { Box } from "@mui/system";
 function AboutHotel(props: any) {
   console.log("item", props.toGet);
   const [activeButton, setActiveButton] = React.useState("info");
@@ -122,7 +123,7 @@ function AboutHotel(props: any) {
           </Stack>
         </Stack>
         {activeButton==='info' &&  <HotelInfo toGet={props.toGet}/>}
-        {activeButton === 'rooms' && <AllRooms/>}
+        {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>}
       </Stack>
     </>
   );
