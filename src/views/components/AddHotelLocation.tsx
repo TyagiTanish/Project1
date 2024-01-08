@@ -29,7 +29,7 @@ export default function SimpleMap({ setLocation }: any) {
     // dispatch(userLocation(data));
   };
   return (
-    <div >
+    <div style={{ height: "30vh", minWidth: "10vw" }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "AIzaSyDEZ3SEb_VoWvsv0AXCsGT_Mg9f4L0gATQ" }}
         defaultCenter={defaultProps.center}

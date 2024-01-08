@@ -6,11 +6,11 @@ import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
-import {IntlProvider} from 'react-intl';
+import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
+import AllRooms from "./views/components/HotelOwner/Rooms/Rooms";
+import Rooms from "./views/components/Rooms";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
-
-
 
 function App() {
   const { request } = useAuth();
@@ -52,7 +52,6 @@ function App() {
       </SnackbarProvider>
       <Outlet />
       </Locales>
-     
     </>
   );
 }
