@@ -8,7 +8,8 @@ import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import WineBarIcon from "@mui/icons-material/WineBar";
 import GroupsIcon from "@mui/icons-material/Groups";
 import '../../App.css'
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
+import { Stack } from "@mui/system";
 const amenitie = [
     { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
     { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
@@ -69,7 +70,12 @@ const HotelAmenities = () => {
       </Box>
       <Box className="img-container" ref={elementRef}>
       {amenitie.map((item:any)=>(
-        <div>Hello</div>
+        <> 
+              
+        <Typography>{item.label}</Typography>
+        <Typography>{item.icon}</Typography>
+     </>
+
       ))}
       </Box>
     </>

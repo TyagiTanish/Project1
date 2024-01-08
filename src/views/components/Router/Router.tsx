@@ -9,7 +9,6 @@ import MemberRegister from "../MemberRegister";
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
-
 const router = createBrowserRouter([
   {
     path: "/",
