@@ -118,7 +118,6 @@
   background: rgba(204, 200, 200, 0.2);
   backdrop-filter: blur(7px); 
 }
-
 .button-contianer {
   display: flex;
   justify-content: space-between;
@@ -127,10 +126,10 @@
 .img-container {
   display: flex;
   overflow: hidden;
-  width: 100%;
+ width:'50%';
   border: 5px solid #ffffff;
   border-radius: 10px;
-=======
+}
 #stepBackButton:hover{
   background-color: gray;
 }
