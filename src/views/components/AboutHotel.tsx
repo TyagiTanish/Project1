@@ -8,7 +8,7 @@ import HotelInfo from "./HotelInfo";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box } from "@mui/system";
 function AboutHotel(props: any) {
-  console.log("item", props.toGet);
+ 
   const [activeButton, setActiveButton] = React.useState("info");
   return (
     <>
