@@ -13,6 +13,7 @@ import {
   Stack,
   TextField,
 } from "@mui/material";
+
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Box from "@mui/material/Box";
@@ -34,7 +35,7 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import WineBarIcon from "@mui/icons-material/WineBar";
 import GroupsIcon from "@mui/icons-material/Groups";
-
+import ReactQuill, { Quill } from "react-quill";
 export default function AddHotelAftrLgn() {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -46,7 +47,7 @@ export default function AddHotelAftrLgn() {
 
   const [step, setStep] = React.useState(0);
   const handleStep = () => {
-    if (step < 3) {
+    if (step < 4) {
       setStep(step + 1);
     } else {
       setStep(0);
@@ -83,6 +84,13 @@ export default function AddHotelAftrLgn() {
     { id: "bar", label: "Bar", icon: <WineBarIcon /> },
     { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
   ];
+
+  const [content, setContent] = useState("");
+
+  // Handle content change
+  const handleContentChange = (newContent: any) => {
+    setContent(newContent);
+  };
 
   const [screenSize, setScreenSize] = React.useState(window.outerWidth);
   React.useEffect(() => {
@@ -136,7 +144,7 @@ export default function AddHotelAftrLgn() {
 
   const formData = new FormData();
   const onSubmit = async (data: any) => {
-    if (step === 2) {
+    if (step === 3) {
       setArr(arr);
       data.amenities = arr;
     }
@@ -158,7 +166,7 @@ export default function AddHotelAftrLgn() {
     formData.set("email", user.email);
     formData.set("amenities", data.amenities);
     console.log(data);
-    if (step === 3) {
+    if (step === 4) {
       // console.log(formData);
       request.post("/addHotel", formData);
       navigate("/");
@@ -215,12 +223,12 @@ export default function AddHotelAftrLgn() {
         ),
     });
   }
-  if (step === 2) {
+  if (step === 3) {
     FormSchema = Yup.object().shape({
       amenities: Yup.array().min(1, "Select at least one amenity"),
     });
   }
-  if (step === 3) {
+  if (step === 4) {
     FormSchema = Yup.object().shape({});
   }
 
@@ -346,7 +354,7 @@ export default function AddHotelAftrLgn() {
                 Add Hotel Location
               </Typography>
             )}
-            {step == 3 && (
+            {step == 4 && (
               <Typography
                 sx={{
                   m: "1%",
@@ -359,7 +367,7 @@ export default function AddHotelAftrLgn() {
                 Point location
               </Typography>
             )}
-            {step === 2 && (
+            {step === 3 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -369,6 +377,18 @@ export default function AddHotelAftrLgn() {
                 }}
               >
                 Enter Hotel Amenities....
+              </Typography>
+            )}
+            {step === 2 && (
+              <Typography
+                sx={{
+                  fontSize: { xl: 28, md: 20 },
+                  fontWeight: "700",
+                  textAlign: "center",
+                  opacity: 0.7,
+                }}
+              >
+                Enter Hotel Discription....
               </Typography>
             )}
 
@@ -597,7 +617,7 @@ export default function AddHotelAftrLgn() {
                       </Form>
                     </Stack>
                   </>
-                ) : step === 3 ? (
+                ) : step === 4 ? (
                   <>
                     <AddHotelLocation setLocation={setLocation} />
                     <Form>
@@ -637,7 +657,7 @@ export default function AddHotelAftrLgn() {
                       </Stack>
                     </Form>
                   </>
-                ) : step === 2 ? (
+                ) : step === 3 ? (
                   <Form>
                     <Stack
                       ml={2}
@@ -765,6 +785,59 @@ export default function AddHotelAftrLgn() {
                       </Button>
                     </Stack>
                   </Form>
+                ) : step === 2 ? (
+                  <>
+                    <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}>
+                      <Form>
+                        <Stack
+                          spacing={1}
+                          justifyContent={"center"}
+                          direction={"row"}
+                          p={1}
+                        >
+                          <Stack>
+                            <ReactQuill
+                              theme="snow"
+                              value={content}
+                              onChange={setContent}
+                            />
+                            <FormHelperText sx={{ color: "red" }}>
+                              {errors.country?.message}
+                            </FormHelperText>
+                          </Stack>
+                        </Stack>
+                        {/* <Box sx={{ display: "flex" }}> */}
+                        <Stack direction={"row"} spacing={1}>
+                          <Button
+                            size="small"
+                            variant="contained"
+                            sx={{
+                              fontSize: 15,
+                              background: "lightgray",
+                              color: "black",
+                            }}
+                            id="stepBackButton"
+                            onClick={handleStepBack}
+                          >
+                            <ArrowBackIcon
+                              sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                            />
+                          </Button>
+
+                          <Button
+                            type="submit"
+                            variant="contained"
+                            onClick={handleSubmit(onSubmit)}
+                            sx={{
+                              fontSize: { xl: 15, md: 13, sm: 11 },
+                            }}
+                          >
+                            Next
+                          </Button>
+                        </Stack>
+                      </Form>
+                    </Stack>
+                  </>
                 ) : null}
               </Stack>
 
