@@ -1,5 +1,5 @@
 import "./App.css";
-import { Outlet, RouterProvider } from "react-router-dom";
+import { Outlet, Router, RouterProvider } from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
@@ -8,6 +8,8 @@ import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
 import {IntlProvider} from 'react-intl';
 import Locales from "./views/components/Locale";
+import HotelOwnerView from "./views/layout/HotelOwnerView";
+
 
 
 function App() {
@@ -44,7 +46,9 @@ function App() {
     <>
     <Locales>
     <SnackbarProvider>
-      <LoginSystem /> 
+      {/* <LoginSystem />  */}
+        <HotelOwnerView/>
+
       </SnackbarProvider>
       <Outlet />
       </Locales>
