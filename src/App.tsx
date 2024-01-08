@@ -41,9 +41,8 @@ function App() {
   //   defaultRichTextElements?: Record<string, FormatXMLElementFn<React.ReactNode>>
   //   onError(err: string): void
   // }
-  return (
+  return ( 
     <>
-
     <Locales>
     <SnackbarProvider>
       {/* <LoginSystem />    */}
@@ -51,7 +50,6 @@ function App() {
       <HotelOwnerView/>
       </SnackbarProvider>
       <Outlet />
-
       </Locales>
     </>
   );
