@@ -39,9 +39,14 @@
     "react-dom": "^18.2.0",
     "react-dropzone": "^14.2.3",
     "react-hook-form": "^7.48.2",
+    "react-icons": "^4.12.0",
     "react-intl": "^6.5.5",
     "react-js-loader": "^0.1.3",
+<<<<<<< .merge_file_grwywo
     "react-pro-sidebar": "^1.1.0-alpha.1",
+=======
+    "react-quill": "^2.0.0",
+>>>>>>> .merge_file_66gAsp
     "react-redux": "^8.1.3",
     "react-router-dom": "^6.19.0",
     "react-scripts": "5.0.1",
