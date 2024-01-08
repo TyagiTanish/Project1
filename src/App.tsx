@@ -9,6 +9,7 @@ import { useEffect } from "react";
 import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
 import AllRooms from "./views/components/HotelOwner/Rooms/Rooms";
+import Rooms from "./views/components/Rooms";
 
 function App() {
   const { request } = useAuth();
@@ -44,8 +45,9 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          <LoginSystem />
+          {/* <LoginSystem /> */}
           {/* <AllRooms/> */}
+          <Rooms />
         </SnackbarProvider>
         <Outlet />
       </Locales>
