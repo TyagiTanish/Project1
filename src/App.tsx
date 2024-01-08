@@ -8,11 +8,8 @@ import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
 import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
-
+import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
-// import AllRooms from "./views/components/HotelOwner/Rooms/Rooms";
-import Rooms from "./views/components/Rooms";
-
 
 function App() {
   const { request } = useAuth();
@@ -49,9 +46,10 @@ function App() {
 
     <Locales>
     <SnackbarProvider>
-      {/* <LoginSystem />  */}
-        <HotelOwnerView/>
-
+      {/* <LoginSystem />    */}
+      <AllRooms/>
+      {/* <HotelOwnerView/> */}
+   
       </SnackbarProvider>
       <Outlet />
 
