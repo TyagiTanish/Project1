@@ -20,7 +20,10 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Logo from "../components/Logo";
 import { Stack } from "@mui/material";
-
+import DashboardIcon from '@mui/icons-material/Dashboard';
+import BedIcon from '@mui/icons-material/Bed';
+import SearchHotels from "../components/SearchHotels";
+import AboutHotel from "../components/AboutHotel";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -94,7 +97,156 @@ const Drawer = styled(MuiDrawer, {
 export default function HotelOwnerView() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
+  const [open2,setOpen2]=React.useState(false);
 
+  const [hotels] = React.useState([
+    {
+      name: "Hotel mountain face by snow",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+  
+      location:'usa123',
+      amenities:['abc,xyz'],
+      ownerName:'pallavi',
+      ownerEmail:'abc@gmailcom'
+    },
+    {
+      name: "Bentewood Resort",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "JW Marriot Mumbai Sahar",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Niranta Transit",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Hotel Kohinoor Continental",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Hotel mountain face by snow",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Bentewood Resort",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "JW Marriot Mumbai Sahar",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Niranta Transit",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Hotel Kohinoor Continental",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Niranta Transit",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Hotel Kohinoor Continental",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Hotel mountain face by snow",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+    {
+      name: "Bentewood Resort",
+      city:'xyz',
+      state:'abc',
+      country:'alberta',
+      pinCode:'123',
+      id:'abc@gmailcom',
+      location:'usa123',
+      amenities:['abc,xyz']
+    },
+
+  ]);
+  const [toGet,setToGet]=React.useState(hotels[0]);
+  console.log();
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -103,98 +255,180 @@ export default function HotelOwnerView() {
     setOpen(false);
   };
 
+  const handleClick=()=>{
+    if(open2===false)
+    {
+      setOpen2(true);
+    }
+  else{
+    setOpen2(false)
+  }
+
+    
+  }
+  console.log(toGet);
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-      <AppBar position="fixed" open={open}  sx={{bgcolor:'white'}} >
-        <Toolbar>
-            <Stack direction={"row"} spacing={3}  alignItems={'center'} >   {!open && <Logo />}
-          <IconButton
-            color="inherit"
-            aria-label="open drawer"
-            onClick={handleDrawerOpen}
-            edge="start"
-            sx={{
-              marginRight: 5,
-              ...(open && { display: "none" }),
-            }}
-          >
-            <MenuIcon  sx={{color:'black'}} />
+
+    
+    <><Box sx={{ display: "flex" }}>
+    <CssBaseline />
+    <AppBar position="fixed" open={open}  sx={{bgcolor:'white'}}>
+      <Toolbar>
+          <Stack direction={"row"} spacing={3}  alignItems={'center'} height={"2vh"}>   {!open && <Logo />}
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          onClick={handleDrawerOpen}
+          edge="start"
+          sx={{
+            marginRight: 5,
+            ...(open && { display: "none" }),
+          }}
+        >
+          <MenuIcon  sx={{color:'black'}} />
+        </IconButton>
+    </Stack>
+      </Toolbar>
+    </AppBar>
+    <Drawer variant="permanent" open={open}>
+      <DrawerHeader>
+        <Stack direction={"row"} width={"100%"} height={"2vh"} alignItems={"center"} justifyContent={'space-between'} >
+          <Box>
+            <Logo />
+          </Box>{" "}
+          <IconButton onClick={handleDrawerClose}>
+            {theme.direction === "rtl" ? (
+              <MenuIcon />
+            ) : (
+        
+                <MenuIcon />
+              
+            )}
           </IconButton>
-      </Stack>
-        </Toolbar>
-      </AppBar>
-      <Drawer variant="permanent" open={open}>
-        <DrawerHeader>
-          <Stack direction={"row"} width={"100%"} height={"3vh"} alignItems={"center"} justifyContent={'space-between'} >
-            <Box>
-              <Logo />
-            </Box>{" "}
-            <IconButton onClick={handleDrawerClose}>
-              {theme.direction === "rtl" ? (
-                <ChevronRightIcon />
-              ) : (
-          
-                  <ChevronLeftIcon />
-                
-              )}
-            </IconButton>
-          </Stack>
-        </DrawerHeader>
-        <Divider />
-        <List>
-          {["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+        </Stack>
+      </DrawerHeader>
+   
+      <List >
+    
+       {open &&  <Typography sx={{ml:2,fontSize:14,fontWeight:'bold'}}>DashBoard</Typography>}
+      <ListItem disablePadding sx={{ display: "block"}} >
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                "&:hover": {
+                  borderRadius:100,
+                  backgroundColor:'lightGray'
+                },
+              }}
+            
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-        <Divider />
-        <List>
-          {["All mail", "Trash", "Spam"].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: "block" }}>
-              <ListItemButton
+             {open===true ?   <DashboardIcon fontSize="small"/> :  <DashboardIcon sx={{fontSize:'25px'}}/>} 
+              </ListItemIcon>
+              <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
+            </ListItemButton>
+          </ListItem>
+          <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                "&:hover": {
+                  borderRadius:100,
+                  backgroundColor:'lightGray'
+                },
+              }}
+              onClick={handleClick}
+            >
+              <ListItemIcon
                 sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
+                  minWidth: 0,
+                  mr: open ? 3 : "auto",
+                  justifyContent: "center",
                 }}
               >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-                </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
-              </ListItemButton>
-            </ListItem>
-          ))}
-        </List>
-      </Drawer>
-      <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+             {open===true ?   <BedIcon fontSize="small"/> :  <BedIcon sx={{fontSize:'25px'}}/>} 
+              </ListItemIcon>
+              <ListItemText primary={'All Hotels'} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+      </List>
+   
+      <List >
+    
+    {open &&  <Typography sx={{ml:2,fontSize:14,fontWeight:'bold'}}>DashBoard</Typography>}
+   <ListItem disablePadding sx={{ display: "block"}} >
+         <ListItemButton
+           sx={{
+             minHeight: 48,
+             justifyContent: open ? "initial" : "center",
+             px: 2.5,
+             "&:hover": {
+               borderRadius:100,
+               backgroundColor:'lightGray'
+             },
+           }}
+         >
+           <ListItemIcon
+             sx={{
+               minWidth: 0,
+               mr: open ? 3 : "auto",
+               justifyContent: "center",
+             }}
+           >
+          {open===true ?   <DashboardIcon fontSize="small"/> :  <DashboardIcon sx={{fontSize:'25px'}}/>} 
+           </ListItemIcon>
+           <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
+         </ListItemButton>
+       </ListItem>
+       <ListItem disablePadding sx={{ display: "block" }}>
+         <ListItemButton
+           sx={{
+             minHeight: 48,
+             justifyContent: open ? "initial" : "center",
+             px: 2.5,
+             "&:hover": {
+               borderRadius:100,
+               backgroundColor:'lightGray'
+             },
+           }}
+         >
+           <ListItemIcon
+             sx={{
+               minWidth: 0,
+               mr: open ? 3 : "auto",
+               justifyContent: "center",
+             }}
+           >
+          {open===true ?   <BedIcon fontSize="small"/> :  <BedIcon sx={{fontSize:'25px'}}/>} 
+           </ListItemIcon>
+           <ListItemText primary={'All Hotels'} sx={{ opacity: open ? 1 : 0 }} />
+         </ListItemButton>
+       </ListItem>
+   </List>
+    </Drawer>
+  
+  {/* console.log(open2); */}
+  <Box  sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-      </Box>
-    </Box>
+             <Stack direction={'row'} spacing={2}>  {open2 && <SearchHotels hotels={hotels} setToGet={setToGet}/>} {open2 && <AboutHotel toGet={toGet}/>}</Stack>
+
+          
+  </Box>
+  </Box>
+  {/* <SearchHotels/> */}
+
+  </>
+    
+  
   );
 }

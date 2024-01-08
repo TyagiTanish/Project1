@@ -79,7 +79,7 @@ window.addEventListener('resize',handleWindowSize);
       </Stack>
       <Footer />
     </>
-  );
+  );  
 };
 
 export default HotelsPage;
