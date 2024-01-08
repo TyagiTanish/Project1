@@ -47,8 +47,8 @@ function App() {
     <Locales>
     <SnackbarProvider>
       {/* <LoginSystem />    */}
-      <AllRooms/>
-      {/* <HotelOwnerView/> */}
+      {/* <AllRooms/> */}
+      <HotelOwnerView/>
    
       </SnackbarProvider>
       <Outlet />
