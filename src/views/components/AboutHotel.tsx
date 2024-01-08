@@ -5,6 +5,7 @@ import DashboardIcon from "@mui/icons-material/Dashboard";
 import BedIcon from "@mui/icons-material/Bed";
 import HdrAutoIcon from "@mui/icons-material/HdrAuto";
 import HotelInfo from "./HotelInfo";
+import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 function AboutHotel(props: any) {
   console.log("item", props.toGet);
   const [activeButton, setActiveButton] = React.useState("info");
@@ -121,6 +122,7 @@ function AboutHotel(props: any) {
           </Stack>
         </Stack>
         {activeButton==='info' &&  <HotelInfo toGet={props.toGet}/>}
+        {activeButton === 'rooms' && <AllRooms/>}
       </Stack>
     </>
   );

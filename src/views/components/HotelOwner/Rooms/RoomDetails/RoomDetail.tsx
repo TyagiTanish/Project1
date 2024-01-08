@@ -36,11 +36,9 @@ const [editBox,setEditBox] = useState(false);
     setEditBox(true)
   }
 
-
-
   return (
     <>
-    <Grid item xs={2} sm={5} md={4} xl={2} key={index}>
+    <Grid item xs={2} sm={6} md={4} xl={4} key={index}>
       <Item>
         <Stack direction={"column"} spacing={{xl:2,md:4}} textAlign={"left"}>
           <Box>
