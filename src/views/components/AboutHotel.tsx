@@ -89,7 +89,7 @@ function AboutHotel(props: any) {
             {" "}
             {activeButton === "rooms" ? (
               <Stack spacing={1} direction={"row"} color={"#D2042D"}>
-                <BedIcon />
+                <BedIcon /> 
                 <Typography>All Rooms</Typography>
               </Stack>
             ) : (
