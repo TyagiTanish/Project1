@@ -61,7 +61,7 @@ export default function RoomDetailModal({
 
   const Images = React.useMemo(() => {
     return Rooms[Detailedroom].src.map((image: any) => ({
-      url: require(`../../${image.url}`),
+      url: require(`../../../${image.url}`),
     }));
   }, [Detailedroom]);
 

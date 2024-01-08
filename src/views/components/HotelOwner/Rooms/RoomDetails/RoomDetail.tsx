@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@mui/x-date-pickers";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
-import EditRoomDetails from "./EditRoomDetails/EditRoomDetailsDialogBox";
+import EditRoomDetails from "../EditRoomDetails/EditRoomDetailsDialogBox";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const RoomDetail = ({ room, index, setOpen, setDetailedRoom }: any) => {
+const RoomDetail = ({ room, index, setOpen, setDetailedRoom,setRender}: any) => {
   const [roomImage, setRoomImage] = useState(0);
 const [editBox,setEditBox] = useState(false);
   const HandleOpenModal = () => {
@@ -36,11 +36,9 @@ const [editBox,setEditBox] = useState(false);
     setEditBox(true)
   }
 
-
-
   return (
     <>
-    <Grid item xs={2} sm={5} md={4} xl={2} key={index}>
+    <Grid item xs={2} sm={6} md={4} xl={4} key={index} >
       <Item>
         <Stack direction={"column"} spacing={{xl:2,md:4}} textAlign={"left"}>
           <Box>
@@ -48,7 +46,7 @@ const [editBox,setEditBox] = useState(false);
               <Box component={'img'}
                 width={{xl:'75%',md:'60%',sm:'65%',xs:'50%'}}
                 height={181.8}
-                src={require(`../../${room?.src[roomImage]?.url}`)}
+                src={require(`../../../${room?.src[roomImage]?.url}`)}
               />
               <>
                 <Stack direction={"column"} spacing={0.2}>
@@ -59,13 +57,12 @@ const [editBox,setEditBox] = useState(false);
                           <Box component={'img'}
                             width={100}
                             height={60}
-                            src={require(`../../${image?.url}`)}
+                            src={require(`../../../${image?.url}`)}
                             onClick={() => setRoomImage(index)}
-                        
                           />
                         )}
                       </>
-                    );
+                    );  
                   })}
                 </Stack>
               </>
@@ -75,7 +72,7 @@ const [editBox,setEditBox] = useState(false);
             <Box>
               Hotel mountain Face By snow
               <br />
-              <b>Type</b>
+              <b>{room?.type}</b>
             </Box>
             <Stack
               direction={"row"}
@@ -118,7 +115,7 @@ const [editBox,setEditBox] = useState(false);
         </Stack>
       </Item>
     </Grid>
-    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox}  />
+    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room} setRender={setRender} />
     </>
   );
 };

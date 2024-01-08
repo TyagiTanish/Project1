@@ -74,7 +74,7 @@ const ScreenSize =React.useEffect(()=>{
             <Stack direction={"row"} spacing={0.2}>
               <Box component={'img'}
                width={{xl:'75%',md:'65%',sm:'55%',xs:'50%',lg:'75%'}}
-                src={require(`../../${Rooms[Detailedroom]?.src[roomImage]?.url}`)}
+                src={require(`../../../${Rooms[Detailedroom]?.src[roomImage]?.url}`)}
               />
               <>
                 <Stack direction={"column"} spacing={0.2}>
@@ -86,7 +86,7 @@ const ScreenSize =React.useEffect(()=>{
                             <Box component={'img'}
                               width={{xl:'85%',sm:80,md:'80%'}}
                               height={{xl:'50%',sm:50,md:'60%'}}
-                              src={require(`../../${image?.url}`)}
+                              src={require(`../../../${image?.url}`)}
                               onClick={() => setRoomImage(index)}
                             />
                           )}
@@ -108,10 +108,7 @@ const ScreenSize =React.useEffect(()=>{
               </Typography>
               <hr color="lightgray" />
               <Typography width={"100%"}>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-                Expedita tempore provident tempora quisquam fuga, nihil beatae
-                voluptate veniam doloribus cum at omnis fugit qui perferendis
-                laboriosam, reiciendis rerum consequatur neque?
+            {Rooms[Detailedroom].description}
               </Typography>
             </Stack>
           </Stack>
