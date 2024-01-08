@@ -48,6 +48,8 @@ function App() {
       {/* <LoginSystem />    */}
       {/* <AllRooms/> */}
       <HotelOwnerView/>
+
+
       </SnackbarProvider>
       <Outlet />
       </Locales>
