@@ -71,7 +71,6 @@ const HotelAmenities = () => {
       <Box className="img-container" ref={elementRef}>
       {amenitie.map((item:any)=>(
         <> 
-              
         <Typography>{item.label}</Typography>
         <Typography>{item.icon}</Typography>
      </>

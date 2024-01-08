@@ -424,8 +424,6 @@ export default function HotelOwnerView() {
   <Box  sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
              <Stack direction={'row'} spacing={2}>  {open2 && <SearchHotels hotels={hotels} setToGet={setToGet}/>}  {open2 && <AboutHotel toGet={toGet}/>}</Stack>
-
-          
   </Box>
   </Box>
   {/* <SearchHotels/> */}

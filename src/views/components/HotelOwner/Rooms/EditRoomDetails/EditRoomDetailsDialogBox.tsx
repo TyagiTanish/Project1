@@ -20,6 +20,7 @@ import {
   Box,
   Chip,
   Divider,
+  FormHelperText,
   Grid,
   IconButton,
   Stack,
@@ -30,13 +31,17 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import Editor from "./TextEditorForDescription";
 import ImagePreview from "./ImagePreview";
-import { wrap } from "module";
+import * as Yup from "yup";
 import Dropzone from "react-dropzone";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 export default function EditRoomDetails({
   editBox,
   setEditBox,
   room,
-  setRender,
+  Rooms,
+  Detailedroom,
+  setRooms,
 }: any) {
   const theme = useTheme();
   const [imagePreView, setImagePreView] = React.useState(false);
@@ -61,6 +66,30 @@ export default function EditRoomDetails({
     { id: "bar", label: "Bar", icon: <WineBarIcon /> },
     { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
   ];
+
+  const FormSchema = Yup.object().shape({
+    name: Yup.string().required("Name is required"),
+    type: Yup.string().required("type is required"),
+    // description: Yup.string().required("description is required"),
+    amenities: Yup.array().min(1, "minimum one amenity required"),
+    price: Yup.string().required("price is required"),
+  });
+
+  interface User {
+    name: string;
+    type: string;
+    // description:string;
+    price: string;
+  }
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<User>({
+    resolver: yupResolver(FormSchema),
+  });
+
   const handleClickOpen = () => {
     setEditBox(true);
   };
@@ -88,6 +117,16 @@ export default function EditRoomDetails({
     });
     // setRender((oldValue:any) =>oldValue+1)
   };
+
+  const submitDetails = (value: any) => {
+    setEditRoom({
+      ...editRoom,
+      name: value.name,
+      price: value.price,
+      type: value.type,
+    });  
+  };
+
   React.useEffect(() => {
     setPreviewIndex(previewIndex);
   }, [previewIndex, editRoom]);
@@ -116,18 +155,26 @@ export default function EditRoomDetails({
       </DialogTitle>
       <Divider />
       <DialogContent>
-        <Stack direction={"row"} spacing={5} justifyContent={"space-between"}>
+        <Stack
+          direction={"row"}
+          spacing={5}
+          justifyContent={"space-between"}
+          component={"form"}
+          onSubmit={handleSubmit(submitDetails)}
+        >
           <Stack spacing={5} maxWidth={500}>
             <Stack spacing={2}>
               <TextField
                 variant="outlined"
                 label={"Room Name"}
                 defaultValue={editRoom?.name}
+                {...register("name")}
               />
               <TextField
                 variant="outlined"
                 label={"Room Type"}
                 defaultValue={editRoom?.type}
+                {...register("type")}
               />
             </Stack>
 
@@ -186,7 +233,21 @@ export default function EditRoomDetails({
                     <section>
                       <div {...getRootProps()}>
                         <input {...getInputProps()} />
-                        {<Button variant="contained"  size="small"  color={"error"}  sx={{ float:'right',fontWeight:'bolder',color:'white' }}  disabled={editRoom.src.length === 4 ? true:false } >Upload</Button>}
+                        {
+                          <Button
+                            variant="contained"
+                            size="small"
+                            color={"error"}
+                            sx={{
+                              float: "right",
+                              fontWeight: "bolder",
+                              color: "white",
+                            }}
+                            disabled={editRoom.src.length === 4 ? true : false}
+                          >
+                            Upload
+                          </Button>
+                        }
                       </div>
                     </section>
                   )}
@@ -217,12 +278,16 @@ export default function EditRoomDetails({
                   />
                 )}
               />
+              {/* <FormHelperText>{errors.amenities}</FormHelperText> */}
               <TextField
                 variant="outlined"
                 label={"Room Price"}
                 defaultValue={editRoom.price}
+                {...register("price")}
               />
-              <Button variant="contained" color="success" >Save Changes</Button>
+              <Button variant="contained" color="success" type="submit">
+                Save Changes
+              </Button>
             </Stack>
           </Stack>
         </Stack>

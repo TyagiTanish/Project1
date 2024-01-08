@@ -14,7 +14,6 @@ const Editor = ({room}:any) => {
 
   return (
     <Box>
-    
       <QuillEditor
         theme="snow"
         value={value}

@@ -6,7 +6,7 @@ import RoomDetailModal from "./RoomDetailsModal";
 import RoomDetailBox from "./RoomDetailsDialog";
 
 export default function AllRooms() {
-  const [render,setRender] = React.useState(0);
+  const [render, setRender] = React.useState(0);
   const [open, setOpen] = React.useState(false);
   const [Detailedroom, setDetailedRoom] = React.useState<number>(0);
   const [Rooms, setRooms] = React.useState([
@@ -91,13 +91,18 @@ export default function AllRooms() {
       type: "Deluxe",
     },
   ]);
+
+  React.useEffect(() => {
+    setRooms(Rooms);
+  }, [Rooms,render]);
+
   return (
     <>
       <Box sx={{ flexGrow: 1 }} padding={10}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 1, sm: 10, md: 12, xl: 8 }}
+          columns={{ xs: 1, sm: 10, md: 8, xl: 8 }}
         >
           {Rooms?.map((room, index) => (
             <RoomDetail
@@ -105,7 +110,11 @@ export default function AllRooms() {
               index={index}
               setOpen={setOpen}
               setDetailedRoom={setDetailedRoom}
+              Rooms={Rooms}
+              Detailedroom={Detailedroom}
+              setRooms={setRooms}
               setRender={setRender}
+              render={render}
             />
           ))}
         </Grid>
