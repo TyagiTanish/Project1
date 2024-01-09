@@ -35,7 +35,8 @@ import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import WineBarIcon from "@mui/icons-material/WineBar";
 import GroupsIcon from "@mui/icons-material/Groups";
-import ReactQuill, { Quill } from "react-quill";
+
+import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
 export default function AddHotelAftrLgn() {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -87,11 +88,6 @@ export default function AddHotelAftrLgn() {
 
   const [content, setContent] = useState("");
 
-  // Handle content change
-  const handleContentChange = (newContent: any) => {
-    setContent(newContent);
-  };
-
   const [screenSize, setScreenSize] = React.useState(window.outerWidth);
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
@@ -113,7 +109,6 @@ export default function AddHotelAftrLgn() {
       arr.push(value);
     }
   };
-  // useEffect(() => {}, [arr]);
 
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
@@ -144,12 +139,15 @@ export default function AddHotelAftrLgn() {
 
   const formData = new FormData();
   const onSubmit = async (data: any) => {
+    console.log(data);
     if (step === 3) {
       setArr(arr);
       data.amenities = arr;
     }
     data.amenities = arr;
-
+    if (step === 2) {
+      data.discription = content;
+    }
     data.longitude = location.longitude;
     data.latitude = location.latitude;
     // console.log(files[0]);
@@ -165,12 +163,14 @@ export default function AddHotelAftrLgn() {
     formData.set("lat", data.latitude);
     formData.set("email", user.email);
     formData.set("amenities", data.amenities);
+    formData.set("discription", data.discription);
     console.log(data);
     if (step === 4) {
       // console.log(formData);
       request.post("/addHotel", formData);
       navigate("/");
     }
+
     handleStep();
   };
   interface User {
@@ -180,6 +180,7 @@ export default function AddHotelAftrLgn() {
     postalCode: string;
     country: string;
     amenities: [];
+    discription: string;
   }
   var FormSchema: any = "";
   if (step === 0) {
@@ -221,6 +222,12 @@ export default function AddHotelAftrLgn() {
           /(?=.*[a-z])(?=.*[A-Z])\w+/,
           "should be a string or should atleat have one upper case letter"
         ),
+    });
+  }
+  if (step === 2) {
+    FormSchema = Yup.object().shape({
+      // discription: Yup.string().min(1, "This field is required"),
+      discription: Yup.string(),
     });
   }
   if (step === 3) {
@@ -787,25 +794,25 @@ export default function AddHotelAftrLgn() {
                   </Form>
                 ) : step === 2 ? (
                   <>
+                    {/* {console.log(content)} */}
                     <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}>
                       <Form>
-                        <Stack
-                          spacing={1}
-                          justifyContent={"center"}
-                          direction={"row"}
-                          p={1}
-                        >
-                          <Stack>
-                            <ReactQuill
-                              theme="snow"
-                              value={content}
-                              onChange={setContent}
-                            />
-                            <FormHelperText sx={{ color: "red" }}>
-                              {errors.country?.message}
-                            </FormHelperText>
-                          </Stack>
+                        <Stack>
+                          {/* <ReactQuill
+                            theme="snow"
+                            value={content}
+                            onChange={setContent}
+                          /> */}
+                          <AddDiscription
+                            setContent={setContent}
+                            content={content}
+                          />
+
+                          {/* <FormHelperText sx={{ color: "red" }}>
+                            {errors.discription?.message}
+                          </FormHelperText> */}
                         </Stack>
+
                         {/* <Box sx={{ display: "flex" }}> */}
                         <Stack direction={"row"} spacing={1}>
                           <Button
