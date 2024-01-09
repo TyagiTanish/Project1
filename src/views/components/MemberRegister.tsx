@@ -250,7 +250,11 @@ export default function MemberRegister() {
       formdata.set("city", detail.city);
       formdata.set("hotelName", detail.hotelName);
       formdata.set("amenities", detail.amenities);
-      await request.post("/registerMember", formdata);
+      const result = await request.post("/registerMember", formdata);
+     
+      console.log(result.data);
+      
+      navigate('/login');
     } else {
       handleNextClick();
     }
