@@ -101,153 +101,8 @@ export default function HotelOwnerView() {
   const [open, setOpen] = React.useState(true);
   const [open2,setOpen2]=React.useState(false);
 const navigate = useNavigate()
-  const [hotels] = React.useState([
-    {
-      name: "Hotel mountain face by snow",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-  
-      location:'usa123',
-      amenities:['abc,xyz'],
-      ownerName:'pallavi',
-      ownerEmail:'abc@gmailcom'
-    },
-    {
-      name: "Bentewood Resort",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "JW Marriot Mumbai Sahar",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Niranta Transit",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Hotel Kohinoor Continental",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Hotel mountain face by snow",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Bentewood Resort",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "JW Marriot Mumbai Sahar",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Niranta Transit",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Hotel Kohinoor Continental",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Niranta Transit",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Hotel Kohinoor Continental",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Hotel mountain face by snow",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
-    {
-      name: "Bentewood Resort",
-      city:'xyz',
-      state:'abc',
-      country:'alberta',
-      pinCode:'123',
-      id:'abc@gmailcom',
-      location:'usa123',
-      amenities:['abc,xyz']
-    },
+  // const [toGet,setToGet]=React.useState(hotels[0]);
 
-  ]);
-  const [toGet,setToGet]=React.useState(hotels[0]);
-  console.log();
   
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -268,7 +123,6 @@ const navigate = useNavigate()
 
     
   }
-  console.log(toGet);
   return (
 
     
@@ -421,15 +275,11 @@ const navigate = useNavigate()
        </ListItem>
    </List>
     </Drawer>
-  
-  {/* console.log(open2); */}
   <Box  sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
              <Outlet/> 
   </Box>
   </Box>
-  {/* <SearchHotels/> */}
-  {/* <Outlet/> */}
 
   </>
     

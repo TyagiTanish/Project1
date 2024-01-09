@@ -15,7 +15,11 @@ import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<CustomerRoutes><HomePage /></CustomerRoutes> ,
+    element: (
+      <CustomerRoutes>
+        <HomePage />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/login",
@@ -27,18 +31,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/hotels",
-    element: <CustomerRoutes>
+    element: (
+      <CustomerRoutes>
         <HotelsPage />
       </CustomerRoutes>
-    ,
+    ),
   },
   {
     path: "/profile",
-    element: <CustomerRoutes><Account /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <Account />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/billing",
-    element:<CustomerRoutes><Billing /></CustomerRoutes> ,
+    element: (
+      <CustomerRoutes>
+        <Billing />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/memberRegister",
@@ -47,22 +60,38 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <CustomerRoutes><Account /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <Account />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/viewDeal",
-    element: <CustomerRoutes><ViewDeal /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <ViewDeal />
+      </CustomerRoutes>
+    ),
   },
   {
-    path:'/member',
-    element:<MemberRoute><HotelOwnerView/></MemberRoute>,
-    children:[
+    path: "/member",
+    element: (
+      <MemberRoute>
+        <HotelOwnerView />
+      </MemberRoute>
+    ),
+    children: [
       {
-        path:'/member/hotels',
-        element:<MemberRoute><Allhotels/></MemberRoute>
-      }
-    ]
-    }
+        path: "/member/hotels",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
+      },
+    ],
+  },
 ]);
 
 function Routes() {
