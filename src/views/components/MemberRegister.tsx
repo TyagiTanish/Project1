@@ -39,6 +39,7 @@ import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
 import { useDropzone } from "react-dropzone";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
+import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
 
 function Copyright(props: any) {
   return (
@@ -86,7 +87,7 @@ export default function MemberRegister() {
       setMaxPhoto(false);
     }
   }, [files]);
-
+  const [content, setContent] = React.useState("");
   const [arr, setArr]: any = React.useState([]);
   const amenitie = [
     { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
@@ -169,7 +170,7 @@ export default function MemberRegister() {
       hotelName: Yup.string().required("Hotel Name is Required"),
     }));
 
-  page === 6 &&
+  page === 7 &&
     (FormSchema = Yup.object().shape({
       password: Yup.string()
         .required("This field is required")
@@ -184,6 +185,11 @@ export default function MemberRegister() {
           "Password should contain at least one special character"
         ),
     }));
+  if (page === 6) {
+    FormSchema = Yup.object().shape({
+      discription: Yup.string(),
+    });
+  }
   page === 5 &&
     (FormSchema = Yup.object().shape({
       amenities: Yup.array().min(1, "Check at list one amenity"),
@@ -199,6 +205,7 @@ export default function MemberRegister() {
     phone: string;
     hotelName: string;
     amenities: [];
+    discription: string;
   }
 
   const {
@@ -221,7 +228,7 @@ export default function MemberRegister() {
       if (!data) {
         setPage((prev) => prev + 1);
       } else {
-        setPage(7);
+        setPage(8);
       }
     } else {
       setPage((prev) => prev + 1);
@@ -229,11 +236,13 @@ export default function MemberRegister() {
   };
 
   const Submit = async (detail: any) => {
-    // if (page === 5) {
     detail.amenities = arr;
-    // }
 
-    if (page === 6) {
+    // if (page === 6) {
+    detail.discription = content;
+    // }
+    // console.log(detail);
+    if (page === 7) {
       detail.latitude = location.latitude;
       detail.longitude = location.longitude;
       const formdata = new FormData();
@@ -250,7 +259,13 @@ export default function MemberRegister() {
       formdata.set("city", detail.city);
       formdata.set("hotelName", detail.hotelName);
       formdata.set("amenities", detail.amenities);
-      await request.post("/registerMember", formdata);
+
+      const result = await request.post("/registerMember", formdata);
+     
+      console.log(result.data);
+      
+      navigate('/login');
+
     } else {
       handleNextClick();
     }
@@ -269,16 +284,6 @@ export default function MemberRegister() {
 
   return (
     <>
-      {/* <Box
-        sx={{
-          // width: { xl: "420px", md: 400, sm: 300 },
-        
-          mb: 20,
-          border: "1px solid lightgrey",
-          padding: "5px",
-          background: "white",
-        }}
-      > */}
       <Stack
         direction={"column"}
         sx={{
@@ -364,6 +369,18 @@ export default function MemberRegister() {
               </Typography>
             )}
             {page === 6 && (
+              <Typography
+                sx={{
+                  fontSize: { xl: 28, md: 20 },
+                  fontWeight: "700",
+                  alignContent: "center",
+                  opacity: 0.7,
+                }}
+              >
+                Enter hotel discription....
+              </Typography>
+            )}
+            {page === 7 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -591,7 +608,7 @@ export default function MemberRegister() {
             </>
           )}
 
-          {page === 6 && (
+          {page === 7 && (
             <>
               <Form>
                 <Stack
@@ -767,7 +784,45 @@ export default function MemberRegister() {
               </Form>
             </>
           )}
-          {page === 7 && (
+          {page === 6 && (
+            <>
+              <Form>
+                <Stack justifyItems={"center"} ml={"10%"}>
+                  <AddDiscription setContent={setContent} content={content} />
+
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors.discription?.message}
+                  </FormHelperText>
+                </Stack>
+                <IconButton
+                  sx={{
+                    borderRadius: "50px",
+                    border: "1px solid",
+                    m: 2,
+                  }}
+                  onClick={() => setPage((prev) => prev - 1)}
+                >
+                  <ArrowBackIcon
+                    sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                  />
+                </IconButton>
+                <Button
+                  size="small"
+                  variant="contained"
+                  type="submit"
+                  sx={{
+                    // width: { xl: 150, md: 100, sm: 50 },
+                    fontSize: { xl: 15, md: 13, sm: 12 },
+                    mt: 0,
+                  }}
+                  onClick={handleSubmit(Submit)}
+                >
+                  Next
+                </Button>
+              </Form>
+            </>
+          )}
+          {page === 8 && (
             <>
               <Box>
                 <Typography
