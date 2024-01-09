@@ -50,7 +50,7 @@ function App() {
       <LoginSystem />   
       {/* <AllRooms/> */}
       {/* <HotelOwnerView/> */}
-
+{/* <Rooms/> */}
       </SnackbarProvider>
       {/* <Outlet /> */}
 

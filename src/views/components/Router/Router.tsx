@@ -19,9 +19,9 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      <CustomerRoutes>
-        <HomePage />
-      </CustomerRoutes>
+      // <CustomerRoutes>
+      <HomePage />
+      // </CustomerRoutes>
     ),
   },
   {
@@ -35,9 +35,9 @@ const router = createBrowserRouter([
   {
     path: "/hotels",
     element: (
-      <CustomerRoutes>
-        <HotelsPage />
-      </CustomerRoutes>
+      // <CustomerRoutes>
+      <HotelsPage />
+      // </CustomerRoutes>
     ),
   },
   {
@@ -72,28 +72,35 @@ const router = createBrowserRouter([
   {
     path: "/viewDeal",
     element: (
-      <CustomerRoutes>
-        <ViewDeal />
-      </CustomerRoutes>
+      // <CustomerRoutes>
+      <ViewDeal />
+      // </CustomerRoutes>
     ),
   },
   {
-    path:'/member',
-    element:<MemberRoute><HotelOwnerView/></MemberRoute>,
-    children:[
+    path: "/member",
+    element: (
+      <MemberRoute>
+        <HotelOwnerView />
+      </MemberRoute>
+    ),
+    children: [
       {
-        path:'/member/hotels',
-        element:<MemberRoute><Allhotels/></MemberRoute>,
-        children:[
+        path: "/member/hotels",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
+        children: [
           {
-            path:'/member/hotels/rooms',
-            element:<AllRooms/>
+            path: "/member/hotels/rooms",
+            element: <AllRooms />,
           },
-         
-        ]
-      }
-    ]
-  }
+        ],
+      },
+    ],
+  },
 ]);
 
 function Routes() {
