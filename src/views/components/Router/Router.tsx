@@ -1,6 +1,6 @@
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import MainPage from "../../pages/MainPage";
-
+import CustomerRoutes from "./Authentication/CustomerRoutes";
 import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
@@ -9,11 +9,15 @@ import MemberRegister from "../MemberRegister";
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
+import HotelOwnerView from "../../layout/HotelOwnerView";
+
+import MemberRoute from "./Authentication/MemberRoutes";
+import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <HomePage />,
- 
+    element:<CustomerRoutes><HomePage /></CustomerRoutes> ,
   },
   {
     path: "/login",
@@ -25,30 +29,42 @@ const router = createBrowserRouter([
   },
   {
     path: "/hotels",
-    element: <HotelsPage />,
-  },
-  {
-    path:'/profile',
-    element:<Account/>
-  },{
-    path:'/billing',
-    element:<Billing/>
-  },{
-    path:'/memberRegister',
-
-    element:<MemberRegistrationPage/>
+    element: <CustomerRoutes>
+        <HotelsPage />
+      </CustomerRoutes>
+    ,
   },
   {
     path: "/profile",
-    element: <Account />,
+    element: <CustomerRoutes><Account /></CustomerRoutes>,
   },
   {
     path: "/billing",
-    element: <Billing />,
+    element:<CustomerRoutes><Billing /></CustomerRoutes> ,
   },
   {
-    path:'/viewDeal',
-    element:<ViewDeal/>
+    path: "/memberRegister",
+
+    element: <MemberRegistrationPage />,
+  },
+  {
+    path: "/profile",
+    element: <CustomerRoutes><Account /></CustomerRoutes>,
+  },
+  {
+    path: "/viewDeal",
+    element: <CustomerRoutes><ViewDeal /></CustomerRoutes>,
+  },
+  {
+
+    path:'/member',
+    element:<MemberRoute><HotelOwnerView/></MemberRoute>,
+    children:[
+      {
+        path:'/member/hotels',
+        element:<MemberRoute><Allhotels/></MemberRoute>
+      }
+    ]
   }
 ]);
 

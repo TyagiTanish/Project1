@@ -44,14 +44,16 @@ function App() {
   // }
   return (
     <>
-      <Locales>
-        <SnackbarProvider>
-          {/* <LoginSystem /> */}
-          <Rooms />
-          {/* <AllRooms/> */}
-          {/* <HotelOwnerView/> */}
-        </SnackbarProvider>
-        <Outlet />
+
+    <Locales>
+    <SnackbarProvider>
+      <LoginSystem />   
+      {/* <AllRooms/> */}
+      {/* <HotelOwnerView/> */}
+
+      </SnackbarProvider>
+      {/* <Outlet /> */}
+
       </Locales>
     </>
   );
