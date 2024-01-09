@@ -14,10 +14,9 @@ function AboutHotel() {
     <>
       {" "}
       <Stack
-        width={"80%"}
-        direction={"column"}
+              direction={"column"}
         spacing={8}
-        sx={{ border: "1px solid lightgray", p: 2 }}
+        sx={{ border: "1px solid lightgray", p: 2 ,width:{xl:'70%'}}}
       >
         {" "}
         <Stack>

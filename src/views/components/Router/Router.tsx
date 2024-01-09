@@ -10,8 +10,10 @@ import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
 import HotelOwnerView from "../../layout/HotelOwnerView";
+
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -75,23 +77,16 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/member",
-    element: (
-      <MemberRoute>
-        <HotelOwnerView />
-      </MemberRoute>
-    ),
-    children: [
+
+    path:'/member',
+    element:<MemberRoute><HotelOwnerView/></MemberRoute>,
+    children:[
       {
-        path: "/member/hotels",
-        element: (
-          <MemberRoute>
-            <Allhotels />
-          </MemberRoute>
-        ),
-      },
-    ],
-  },
+        path:'/member/hotels',
+        element:<MemberRoute><Allhotels/></MemberRoute>
+      }
+    ]
+  }
 ]);
 
 function Routes() {

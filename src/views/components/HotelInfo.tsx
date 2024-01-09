@@ -73,7 +73,11 @@ function HotelInfo(props: any) {
         </Stack>
         
         </Stack>
-        {/* <HotelAmenities/> */}
+        <Stack direction={'column'} spacing={4}>
+          <Typography  sx={{ fontWeight: "bold", fontSize: 22 }}>Hotel Amenities</Typography>
+        <HotelAmenities/>
+        </Stack>
+      
     </>
   );
 }
