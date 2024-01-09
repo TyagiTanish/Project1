@@ -28,6 +28,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import Autocomplete from "@mui/material/Autocomplete";
+import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -42,6 +43,7 @@ const style = {
   pr: 10,
   borderRadius: 1,
 };
+
 const highlights = [
   { Highlight: "A/C" },
   { Highlight: "42' LED Smart TV" },
@@ -68,6 +70,8 @@ function Rooms() {
   const [file, setFile] = useState([] as any);
   const [photos, setphotos] = useState(false);
   const [roomHighlight, setRoomHighlight] = useState([""]);
+  const [content, setContent] = useState<any>("");
+
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
   };
@@ -147,18 +151,9 @@ function Rooms() {
       type: type,
       price: data.price,
       roomHighlight: roomHighlight,
+      discription: content,
     };
-    // data.roomHighlight = roomHighlight;
-    // for (let i = 0; i < file.length; i++) {
-    //   formData.append("files", file[i]);
-    // }
 
-    // formData.set("roomNo", data?.roomNo);
-    // formData.set("type", type);
-    // formData.set("price", data?.price);
-    // formData.set("roomHighlight", data?.roomHighlight);
-    // console.log(formData, data, type);
-    // console.log(formData);
     console.log(formData);
     await request.post("/uploadRooms", formData);
   };
@@ -272,7 +267,13 @@ function Rooms() {
                 <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
                   {errors.roomHighlight?.message}
                 </FormHelperText>
-                <Typography sx={{ fontWeight: "bold" }}>
+                <Typography sx={{ fontWeight: "bold", mt: 3 }}>
+                  Add Room Discription
+                </Typography>
+                <Stack width={"125%"}>
+                  <AddDiscription setContent={setContent} content={content} />
+                </Stack>
+                <Typography sx={{ fontWeight: "bold", mt: 1 }}>
                   Add Room Photos
                 </Typography>
                 <Typography sx={{ fontSize: "10px" }}>
