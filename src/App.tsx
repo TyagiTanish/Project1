@@ -53,6 +53,7 @@ function App() {
 
       </SnackbarProvider>
       {/* <Outlet /> */}
+
       </Locales>
     </>
   );
