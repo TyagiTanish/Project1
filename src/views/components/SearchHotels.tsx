@@ -13,19 +13,19 @@ function SearchHotels() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const { request } = useAuth();
-  const filterData = (searchTerm: any) => {
-    const filteredData = hotels.filter((item: any) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredData);
-  };
+  // const filterData = (searchTerm: any) => {
+  //   const filteredData = hotels.filter((item: any) =>
+  //     item.name.toLowerCase().includes(searchTerm.toLowerCase())
+  //   );
+  //   setFilteredData(filteredData);
+  // };
 
   console.log(filteredData);
 
   const handleInputChange = (event: any) => {
     const { value } = event.target;
     setSearchTerm(value);
-    filterData(value);
+    // filterData(value);
   };
 
 useEffect(()=>{

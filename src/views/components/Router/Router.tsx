@@ -65,10 +65,7 @@ const router = createBrowserRouter([
         element:<MemberRoute><Allhotels/></MemberRoute>
       }
     ]
-    }
-    path:'/viewDeal',
-    element:<ViewDeal/>
-  },
+  }
 ]);
 
 function Routes() {
