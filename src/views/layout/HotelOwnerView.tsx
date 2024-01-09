@@ -25,7 +25,7 @@ import BedIcon from "@mui/icons-material/Bed";
 import SearchHotels from "../components/SearchHotels";
 import AboutHotel from "../components/AboutHotel";
 import { Navigate, Outlet } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -99,8 +99,8 @@ const Drawer = styled(MuiDrawer, {
 export default function HotelOwnerView() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const [open2, setOpen2] = React.useState(false);
-
+  const [open2,setOpen2]=React.useState(false);
+const navigate = useNavigate()
   const [hotels] = React.useState([
     {
       name: "Hotel mountain face by snow",
@@ -288,6 +288,25 @@ export default function HotelOwnerView() {
                   ...(open && { display: "none" }),
                 }}
               >
+
+             {open===true ?   <DashboardIcon fontSize="small"/> :  <DashboardIcon sx={{fontSize:'25px'}}/>} 
+              </ListItemIcon>
+              <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
+            </ListItemButton>
+          </ListItem>
+        <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItemButton
+        
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? "initial" : "center",
+                px: 2.5,
+                "&:hover": {
+                  borderRadius:100,
+                  backgroundColor:'lightGray'
+                },
+              }}
+              onClick={()=>navigate('/member/hotels')} 
                 <MenuIcon sx={{ color: "black" }} />
               </IconButton>
             </Stack>
@@ -301,6 +320,7 @@ export default function HotelOwnerView() {
               height={"2vh"}
               alignItems={"center"}
               justifyContent={"space-between"}
+
             >
               <Box>
                 <Logo />
@@ -431,6 +451,76 @@ export default function HotelOwnerView() {
                   },
                 }}
               >
+             {open===true ?   <BedIcon fontSize="small"/> :  <BedIcon sx={{fontSize:'25px'}}/>} 
+              </ListItemIcon>
+              <ListItemText primary={'All Hotels'} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+          </ListItem>
+      </List>
+   
+      <List >
+    
+    {open &&  <Typography sx={{ml:2,fontSize:14,fontWeight:'bold'}}>DashBoard</Typography>}
+   <ListItem disablePadding sx={{ display: "block"}} >
+         <ListItemButton
+           sx={{
+             minHeight: 48,
+             justifyContent: open ? "initial" : "center",
+             px: 2.5,
+             "&:hover": {
+               borderRadius:100,
+               backgroundColor:'lightGray'
+             },
+           }}
+         >
+           <ListItemIcon
+             sx={{
+               minWidth: 0,
+               mr: open ? 3 : "auto",
+               justifyContent: "center",
+             }}
+           >
+          {open===true ?   <DashboardIcon fontSize="small"/> :  <DashboardIcon sx={{fontSize:'25px'}}/>} 
+           </ListItemIcon>
+           <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
+         </ListItemButton>
+       </ListItem>
+       <ListItem disablePadding sx={{ display: "block" }} >
+         <ListItemButton
+       
+           sx={{
+             minHeight: 48,
+             justifyContent: open ? "initial" : "center",
+             px: 2.5,
+             "&:hover": {
+               borderRadius:100,
+               backgroundColor:'lightGray'
+             },
+           }}
+         >
+           <ListItemIcon
+             sx={{
+               minWidth: 0,
+               mr: open ? 3 : "auto",
+               justifyContent: "center",
+             }}
+           >
+          {open===true ?   <BedIcon fontSize="small"/> :  <BedIcon sx={{fontSize:'25px'}}/>} 
+           </ListItemIcon>
+           <ListItemText primary={'All Hotels'} sx={{ opacity: open ? 1 : 0 }} />
+         </ListItemButton>
+       </ListItem>
+   </List>
+    </Drawer>
+  
+  {/* console.log(open2); */}
+  <Box  sx={{ flexGrow: 1, p: 3 }}>
+        <DrawerHeader />
+             <Outlet/> 
+  </Box>
+  </Box>
+  {/* <SearchHotels/> */}
+  {/* <Outlet/> */
                 <ListItemIcon
                   sx={{
                     minWidth: 0,

@@ -9,12 +9,12 @@ import {
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import useAuth from "../../Hooks/useAuth/useAuth";
-function SearchHotels(props: any) {
+function SearchHotels() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const { request } = useAuth();
   const filterData = (searchTerm: any) => {
-    const filteredData = props.hotels.filter((item: any) =>
+    const filteredData = hotels.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filteredData);
@@ -78,9 +78,9 @@ useEffect(()=>{
             width={"70%"}
             alignItems={"center"}
             sx={{ cursor: "pointer" }}
-            onClick={() => {
-              props.setToGet(item);
-            }}
+            // onClick={() => {
+            //   props.setToGet(item);
+            // }}
           >
             {" "}
             <Avatar sx={{ width: 32, height: 32 }}>
