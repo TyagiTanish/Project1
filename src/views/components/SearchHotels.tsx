@@ -8,12 +8,13 @@ import {
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
-function SearchHotels(props: any) {
+function SearchHotels() {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(props.hotels);
+  const [hotels,setHotels] = useState([])
+  const [filteredData, setFilteredData] = useState(hotels);
 
   const filterData = (searchTerm: any) => {
-    const filteredData = props.hotels.filter((item: any) =>
+    const filteredData = hotels.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
     );
     setFilteredData(filteredData);
@@ -67,15 +68,15 @@ function SearchHotels(props: any) {
             width={"70%"}
             alignItems={"center"}
             sx={{ cursor: "pointer" }}
-            onClick={() => {
-              props.setToGet(item);
-            }}
+            // onClick={() => {
+            //   props.setToGet(item);
+            // }}
           >
             {" "}
             <Avatar sx={{ width: 32, height: 32 }}>
               {item.name[0].toUpperCase()}
             </Avatar>
-            <Typography sx={{ fontSize: 16 }}>{item.name}</Typography>
+            <Typography sx={{ fontSize: 16 }}>{item?.name}</Typography>
           </Stack>
         ))}{" "}
       </Stack>

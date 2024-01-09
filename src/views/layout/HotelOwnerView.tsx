@@ -25,7 +25,7 @@ import BedIcon from '@mui/icons-material/Bed';
 import SearchHotels from "../components/SearchHotels";
 import AboutHotel from "../components/AboutHotel";
 import { Navigate, Outlet } from "react-router";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -100,7 +100,7 @@ export default function HotelOwnerView() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [open2,setOpen2]=React.useState(false);
-
+const navigate = useNavigate()
   const [hotels] = React.useState([
     {
       name: "Hotel mountain face by snow",
@@ -340,6 +340,7 @@ export default function HotelOwnerView() {
           </ListItem>
         <ListItem disablePadding sx={{ display: "block" }}>
             <ListItemButton
+        
               sx={{
                 minHeight: 48,
                 justifyContent: open ? "initial" : "center",
@@ -349,7 +350,7 @@ export default function HotelOwnerView() {
                   backgroundColor:'lightGray'
                 },
               }}
-              onClick={handleClick}
+              onClick={()=>navigate('/member/hotels')} 
             >
               <ListItemIcon
                 sx={{
@@ -393,8 +394,9 @@ export default function HotelOwnerView() {
            <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
          </ListItemButton>
        </ListItem>
-       <ListItem disablePadding sx={{ display: "block" }}>
+       <ListItem disablePadding sx={{ display: "block" }} >
          <ListItemButton
+       
            sx={{
              minHeight: 48,
              justifyContent: open ? "initial" : "center",
@@ -423,11 +425,11 @@ export default function HotelOwnerView() {
   {/* console.log(open2); */}
   <Box  sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
-             <Stack direction={'row'} spacing={2}>  {open2 && <SearchHotels hotels={hotels} setToGet={setToGet}/>}  {open2 && <AboutHotel toGet={toGet}/>}</Stack>
+             <Outlet/> 
   </Box>
   </Box>
   {/* <SearchHotels/> */}
-  <Outlet/>
+  {/* <Outlet/> */}
 
   </>
     

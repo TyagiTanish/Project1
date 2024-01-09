@@ -17,11 +17,12 @@ import { userLogin } from "./redux/user/userSlice";
 
 import Loaders from "./Loaders";
 import { FormattedMessage } from "react-intl";
+import { Navigate, useNavigate } from "react-router-dom";
 
 function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
-  
+  const navigate = useNavigate()
 
   const [authentication, setAuthentication] = useState("");
   const dispatch = useDispatch();
@@ -48,6 +49,11 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
           dispatch(userLogin(result.data.data));
           localStorage.setItem("authToken", result.data.token);
           setDisplay(false)
+          if(result.data.role==='customer'){
+            navigate('/');
+          }else{
+            navigate('/member');
+          }
         }, 2000);
       } else {
         setAuthentication("Invalid Credentials");

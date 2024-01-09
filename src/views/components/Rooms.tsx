@@ -96,7 +96,7 @@ function Rooms() {
     setDisplay(acceptedFiles.length);
   };
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
-    maxFiles: 3,
+    maxFiles: 4,
   });
 
   useEffect(() => {
@@ -419,7 +419,7 @@ function Rooms() {
 
                 {/* <Button onClick={upload}>Upload</Button>   */}
 
-                {display === 3 ? (
+                {display === 4 ? (
                   <Button
                     variant="contained"
                     sx={{

@@ -26,7 +26,6 @@ import { useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
-import Footer from "./Footer";
 import LocalParkingIcon from "@mui/icons-material/LocalParking";
 import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
 import PoolIcon from "@mui/icons-material/Pool";

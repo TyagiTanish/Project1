@@ -10,6 +10,7 @@ import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
 import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
+import Rooms from "./views/components/Rooms";
 
 function App() {
   const { request } = useAuth();
@@ -45,13 +46,13 @@ function App() {
     <>
     <Locales>
     <SnackbarProvider>
-      {/* <LoginSystem />    */}
+      <LoginSystem />   
       {/* <AllRooms/> */}
-      <HotelOwnerView/>
-
+      {/* <HotelOwnerView/> */}
+{/* <Rooms/> */}
 
       </SnackbarProvider>
-      <Outlet />
+      {/* <Outlet /> */}
       </Locales>
     </>
   );

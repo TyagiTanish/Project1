@@ -7,7 +7,7 @@ import HdrAutoIcon from "@mui/icons-material/HdrAuto";
 import HotelInfo from "./HotelInfo";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box } from "@mui/system";
-function AboutHotel(props: any) {
+function AboutHotel() {
  
   const [activeButton, setActiveButton] = React.useState("info");
   return (
@@ -22,7 +22,7 @@ function AboutHotel(props: any) {
         {" "}
         <Stack>
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
-            {props?.toGet?.name}
+            {/* {props?.toGet?.name} */}
           </Typography>
         </Stack>
         <Stack
@@ -122,7 +122,7 @@ function AboutHotel(props: any) {
             )}
           </Stack>
         </Stack>
-        {activeButton==='info' &&  <HotelInfo toGet={props.toGet}/>}
+        {/* {activeButton==='info' &&  <HotelInfo toGet={props.toGet}/>} */}
         {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>}
       </Stack>
     </>
