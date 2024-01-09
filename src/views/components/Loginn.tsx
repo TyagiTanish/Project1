@@ -17,12 +17,13 @@ import { userLogin } from "./redux/user/userSlice";
 
 import Loaders from "./Loaders";
 import { FormattedMessage } from "react-intl";
+import { useNavigate } from "react-router-dom";
 
 function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
   
-
+  const navigate=useNavigate();
   const [authentication, setAuthentication] = useState("");
   const dispatch = useDispatch();
 
@@ -40,15 +41,23 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
       }
     } else {
       const result = await request.post("/auth", value);
-      console.log(result.data);
-
+      console.log('data is ..............',result.data?.data?.role);
+        // console.log();
+        
       if (result.data) {
         setDisplay(true);
         setTimeout(() => {
           dispatch(userLogin(result.data.data));
           localStorage.setItem("authToken", result.data.token);
           setDisplay(false)
+          if(result.data?.data?.role==='member'){
+            navigate('/member')
+          }
+          else{
+              navigate('/')
+          }
         }, 2000);
+        
       } else {
         setAuthentication("Invalid Credentials");
       }

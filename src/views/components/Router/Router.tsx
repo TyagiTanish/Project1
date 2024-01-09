@@ -9,6 +9,7 @@ import MemberRegister from "../MemberRegister";
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
+import HotelOwnerView from "../../layout/HotelOwnerView";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -49,6 +50,10 @@ const router = createBrowserRouter([
   {
     path:'/viewDeal',
     element:<ViewDeal/>
+  },
+  {
+    path:'/member',
+    element:<HotelOwnerView/>
   }
 ]);
 
