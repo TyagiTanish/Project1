@@ -426,8 +426,7 @@ const navigate = useNavigate()
              <Outlet/> 
   </Box>
   </Box>
-  {/* <SearchHotels/> */}
-  {/* <Outlet/> */}
+
 
   </>
     

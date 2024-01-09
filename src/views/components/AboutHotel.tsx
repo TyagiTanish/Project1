@@ -7,8 +7,9 @@ import HdrAutoIcon from "@mui/icons-material/HdrAuto";
 import HotelInfo from "./HotelInfo";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box } from "@mui/system";
+import { Outlet, useNavigate } from "react-router-dom";
 function AboutHotel() {
- 
+ const navigate=useNavigate()
   const [activeButton, setActiveButton] = React.useState("info");
   return (
     <>
@@ -85,9 +86,9 @@ function AboutHotel() {
             width={"10"}
             onClick={() => {
               setActiveButton("rooms");
+              navigate('/member/hotels/rooms')
             }}
           >
-            {" "}
             {activeButton === "rooms" ? (
               <Stack spacing={1} direction={"row"} color={"#D2042D"}>
                 <BedIcon /> 
@@ -122,7 +123,8 @@ function AboutHotel() {
           </Stack>
         </Stack>
         {/* {activeButton==='info' &&  <HotelInfo toGet={props.toGet}/>} */}
-        {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>}
+        {/* {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>} */}
+        <Outlet/>
       </Stack>
     </>
   );

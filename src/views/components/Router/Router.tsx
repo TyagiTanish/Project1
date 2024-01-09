@@ -13,6 +13,7 @@ import HotelOwnerView from "../../layout/HotelOwnerView";
 
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+import AllRooms from "../HotelOwner/Rooms/RoomDetails/Rooms";
 
 const router = createBrowserRouter([
   {
@@ -77,13 +78,19 @@ const router = createBrowserRouter([
     ),
   },
   {
-
     path:'/member',
     element:<MemberRoute><HotelOwnerView/></MemberRoute>,
     children:[
       {
         path:'/member/hotels',
-        element:<MemberRoute><Allhotels/></MemberRoute>
+        element:<MemberRoute><Allhotels/></MemberRoute>,
+        children:[
+          {
+            path:'/member/hotels/rooms',
+            element:<AllRooms/>
+          },
+         
+        ]
       }
     ]
   }
