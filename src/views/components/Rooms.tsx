@@ -154,7 +154,7 @@ function Rooms() {
       discription: content,
     };
 
-    console.log(formData);
+    // console.log(formData);
     await request.post("/uploadRooms", formData);
   };
 
