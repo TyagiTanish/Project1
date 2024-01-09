@@ -62,7 +62,7 @@ useEffect(()=>{
           sx={{ width: "80%", borderRadius: 30 }}
           value={searchTerm}
           onChange={handleInputChange}
-        ></TextField>{" "}
+        ></TextField>
       </Stack>
       <Stack
         direction={"column"}

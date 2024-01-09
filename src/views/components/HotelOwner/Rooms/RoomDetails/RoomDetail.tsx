@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import { Link } from "react-router-dom";
 import { ArrowRightIcon } from "@mui/x-date-pickers";
@@ -24,7 +24,7 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const RoomDetail = ({ room, index, setOpen, setDetailedRoom,setRender}: any) => {
+const RoomDetail = ({ room, index, setOpen, setDetailedRoom,Rooms,Detailedroom,setRooms}: any) => {
   const [roomImage, setRoomImage] = useState(0);
 const [editBox,setEditBox] = useState(false);
   const HandleOpenModal = () => {
@@ -35,6 +35,10 @@ const [editBox,setEditBox] = useState(false);
   const handleOpenEditBox = ()=>{
     setEditBox(true)
   }
+  useEffect(()=>{
+setRooms(Rooms)
+console.log("Rooms");
+  },[Rooms])
 
   return (
     <>
@@ -115,7 +119,7 @@ const [editBox,setEditBox] = useState(false);
         </Stack>
       </Item>
     </Grid>
-    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room} setRender={setRender} />
+    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  Rooms={Rooms} Detailedroom={Detailedroom} setRooms={setRooms} />
     </>
   );
 };

@@ -1,6 +1,11 @@
 import {
+  Avatar,
   Box,
   Button,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
   FormControl,
   FormHelperText,
   IconButton,
@@ -8,10 +13,11 @@ import {
   Modal,
   Select,
   SelectChangeEvent,
+  Stack,
   TextField,
   Typography,
 } from "@mui/material";
-
+import ClearIcon from "@mui/icons-material/Clear";
 import React, { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import Chip from "@mui/material/Chip";
@@ -61,10 +67,11 @@ function Rooms() {
   const [display, setDisplay] = useState(0);
   const [file, setFile] = useState([] as any);
   const [photos, setphotos] = useState(false);
+  const [roomHighlight, setRoomHighlight] = useState([""]);
   const handleChange = (event: SelectChangeEvent) => {
     setType(event.target.value as string);
   };
-
+  const [files1, setFiles1] = useState<any>([]);
   // const onDrop = React.useCallback(
 
   //   (acceptedFiles: any) => {
@@ -72,7 +79,6 @@ function Rooms() {
   //   },
   //   []
   // );
-  console.log(file);
   const handleDelete = (photo: any) => {
     // if(file.length===1){
     //   setNext(true)
@@ -89,27 +95,39 @@ function Rooms() {
     setFile(acceptedFiles);
     setDisplay(acceptedFiles.length);
   };
-  const { getRootProps, getInputProps, acceptedFiles } = useDropzone();
+  const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
+    maxFiles: 3,
+  });
 
   useEffect(() => {
-    setFile(acceptedFiles);
+    // setFile(acceptedFiles);
     setDisplay(acceptedFiles.length);
     if (acceptedFiles.length === 0) {
       setphotos(false);
     } else {
       setphotos(true);
     }
-  }, [acceptedFiles]);
 
+    setFile(
+      acceptedFiles.map((file) => {
+        const previewURL = URL.createObjectURL(file);
+        console.log("Preview URL:", previewURL);
+        return { ...file, preview: previewURL };
+      })
+    );
+  }, [acceptedFiles]);
+  console.log(acceptedFiles);
   interface User {
     roomNo: string;
     price: string;
+    roomHighlight?: any[];
   }
   const FormSchema = Yup.object().shape({
     roomNo: Yup.string().required("Room Number is required").min(3),
     price: Yup.string()
       .required("Price is required!")
       .min(3, "Should be above 1k"),
+    roomHighlight: Yup.array(),
   });
 
   const {
@@ -121,16 +139,30 @@ function Rooms() {
   });
 
   const onSubmit = async (data: any) => {
-    const formData = new FormData();
-    for (let i = 0; i < file.length; i++) {
-      formData.append("files", file[i]);
-    }
-    formData.set("roomNo", data.roomNo);
-    formData.set("type", type);
-    formData.set("price", data.price);
+    // const formData = new FormData();
+    // data.roomHighlight = roomHighlight;
+    const formData = {
+      files: file,
+      roomNo: data.roomNo,
+      type: type,
+      price: data.price,
+      roomHighlight: roomHighlight,
+    };
+    // data.roomHighlight = roomHighlight;
+    // for (let i = 0; i < file.length; i++) {
+    //   formData.append("files", file[i]);
+    // }
 
-    await request.post("/upload", formData);
+    // formData.set("roomNo", data?.roomNo);
+    // formData.set("type", type);
+    // formData.set("price", data?.price);
+    // formData.set("roomHighlight", data?.roomHighlight);
+    // console.log(formData, data, type);
+    // console.log(formData);
+    console.log(formData);
+    await request.post("/uploadRooms", formData);
   };
+
   return (
     <>
       <Button onClick={handleOpen}>Open modal</Button>
@@ -168,8 +200,6 @@ function Rooms() {
 
                 <Box>
                   <FormControl sx={{ width: 235 }}>
-                    {/* <InputLabel
-         id="demo-simple-select-label"></InputLabel> */}
                     <Typography sx={{ fontWeight: "bold" }}>
                       Type of Room
                     </Typography>
@@ -219,8 +249,9 @@ function Rooms() {
                   multiple
                   id="tags-filled"
                   options={highlights.map((item) => item.Highlight)}
-                  defaultValue={[highlights[0].Highlight]}
+                  // defaultValue={[highlights[0].Highlight]}
                   freeSolo
+                  onChange={(event, value) => setRoomHighlight(value)}
                   renderTags={(value: readonly string[], getTagProps) =>
                     value.map((option: string, index: number) => (
                       <Chip
@@ -234,13 +265,18 @@ function Rooms() {
                     <TextField
                       {...params}
                       variant="outlined"
-                      // label="Room's Highlight"
-                      placeholder="Favorites"
+                      placeholder="Room's Highlight"
                     />
                   )}
                 />
+                <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                  {errors.roomHighlight?.message}
+                </FormHelperText>
                 <Typography sx={{ fontWeight: "bold" }}>
                   Add Room Photos
+                </Typography>
+                <Typography sx={{ fontSize: "10px" }}>
+                  Upload 3 photos
                 </Typography>
                 <div
                   style={{
@@ -260,22 +296,10 @@ function Rooms() {
                         width: "20vw",
                       }}
                     >
-                      {/* {next && <Typography sx={{color:"#EE2A24",width:"10vw",mt:2.5,fontWeight:"bold",ml:-1}}>Upload Your Picture</Typography>}   */}
                       <Typography {...getRootProps()}>
                         <input {...getInputProps()} />
                         {
-                          <IconButton
-                            // sx={{
-                            // alignItems: "left",
-                            // border: "2px dashed lightgrey",
-                            // borderRadius: 0,
-                            // width: "6vw",
-                            // height: "5vw",
-                            // ml: -1,
-
-                            // }}
-                            sx={{ ml: -4, mt: 2 }}
-                          >
+                          <IconButton sx={{ ml: -4, mt: 2 }}>
                             <Typography sx={{}}>
                               <AddAPhotoIcon fontSize="small" />
                               <Typography sx={{ fontSize: "10px" }}>
@@ -289,13 +313,81 @@ function Rooms() {
 
                       <Box sx={{ width: "14vw", ml: 0.3 }}>
                         {" "}
-                        {file?.map((photo: any, index: any) => (
-                          <Chip
-                            label={photo.name}
-                            onDelete={() => handleDelete(photo)}
-                            sx={{ mb: 0.5 }}
-                          ></Chip>
-                        ))}
+                        <Stack direction={"row"}>
+                          {file?.map((photo: any, index: any) => (
+                            // <Chip
+                            //   style={Object.assign({}, avatarImageStyle, {
+                            //     color: "grey",
+                            //   })}
+                            //   label={photo.name}
+                            //   avatar={
+                            //     <Avatar
+                            //       alt="Photo"
+                            //       src={photo.preview}
+                            //       sx={{ height: 200 }}
+                            //     />
+                            //   }
+                            //   onDelete={() => handleDelete(photo)}
+                            //   sx={{ mb: 0.5 }}
+                            // ></Chip>
+                            <Stack direction={"row"}>
+                              {/* <Box
+                                component="img"
+                                sx={{
+                                  height: 70,
+                                  width: 70,
+                                  p: 0.5,
+                                }}
+                                // borderRadius={"50%"}
+                                alt="Preview image"
+                                src={photo.preview}
+                                
+                              />
+                              <Box
+                                onClick={() => {
+                                  handleDelete(photo);
+                                }}
+                              >
+                                <ClearIcon fontSize="small" />
+                              </Box> */}
+
+                              <Box
+                                // component="div"
+                                sx={{
+                                  position: "relative",
+                                  height: 70,
+                                  width: 70,
+                                  p: 0.5,
+                                }}
+                              >
+                                <img
+                                  alt="Preview image"
+                                  src={photo.preview}
+                                  style={{
+                                    width: "100%",
+                                    height: "100%",
+                                  }}
+                                />
+                                <span
+                                  style={{
+                                    position: "absolute",
+                                    // top: "90%",
+                                    left: "70%",
+                                    borderRadius: "50%",
+                                    height: 20,
+                                    // transform: "translate(-50%, -50%)",
+                                    color: "red", // Change color as needed
+                                    cursor: "pointer",
+                                    background: "white",
+                                  }}
+                                  onClick={() => handleDelete(photo)} // Add your click event handler
+                                >
+                                  <ClearIcon fontSize="small" />
+                                </span>
+                              </Box>
+                            </Stack>
+                          ))}
+                        </Stack>
                       </Box>
                     </Box>
                   ) : (
@@ -334,7 +426,7 @@ function Rooms() {
                       backgroundImage:
                         "linear-gradient(270deg,#D11450,#EE2A24)",
                       width: "100%",
-                      mt: 2,
+                      mt: 5,
                       fontWeight: "bold",
                     }}
                     type="submit"
