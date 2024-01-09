@@ -19,9 +19,9 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: (
-      // <CustomerRoutes>
+      <CustomerRoutes>
       <HomePage />
-      // </CustomerRoutes>
+      </CustomerRoutes>
     ),
   },
   {
@@ -72,9 +72,9 @@ const router = createBrowserRouter([
   {
     path: "/viewDeal",
     element: (
-      // <CustomerRoutes>
+      <CustomerRoutes>
       <ViewDeal />
-      // </CustomerRoutes>
+      </CustomerRoutes>
     ),
   },
   {
