@@ -10,7 +10,7 @@ import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
 import HotelOwnerView from "../../layout/HotelOwnerView";
-
+import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 import AllRooms from "../HotelOwner/Rooms/RoomDetails/Rooms";
@@ -95,6 +95,16 @@ const router = createBrowserRouter([
       },
 
       {
+        path: "/member/profile",
+        element: (
+          <MemberRoute>
+            <MemberAccount />
+          </MemberRoute>
+        ),
+      },
+
+
+      {
         path: "/member/hotels/:id",
         element: (
           <MemberRoute>
@@ -102,6 +112,7 @@ const router = createBrowserRouter([
           </MemberRoute>
         ),
       },
+
 
     ],
   },
