@@ -6,35 +6,33 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 
 function HotelInfo() {
     const [data,setData]=useState<any>({});
-    const id=useParams();
+    const {id}=useParams();
+
+    
+console.log("id:",id);
+
+
     const { request } = useAuth();
    useEffect(()=>{
-    if(Object.keys(id).length === 0)
+    if(!id)
     {
       const get=async()=>{
          const result= await request.get('/hotels');
           setData(result.data[0])
-         
+          console.log(result)
       }
         get();
    
-
-      
     }
     else{
       const get=async()=>{
-    
-        
           const result= await request.get(`/getInfo/${id}`);
-          console.log(result.data);
-          
+  
       }
       get();
     }
    
    },[])
-   console.log('data is ............',data);
-   console.log(data?.photo);
    
   return (
     <>
@@ -91,39 +89,6 @@ function HotelInfo() {
         
         </Stack>
       </Stack>
-      {/* <Stack  spacing={2}>
-        {" "}
-        <Box
-          sx={{ fontWeight: "bold", fontSize: 22 }}
-          justifyItems={"space-evenly"}
-        >
-            Owner Details:
-        </Box>
-        <Stack></Stack>
-        <Stack direction={'row'} justifyContent={'space-evenly'}>
-          {" "}
-          <Stack spacing={1} direction={"column"} >
-            <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-                Owner Name:
-            </Typography>
-            <Typography>
-             
-            </Typography>
-          </Stack>
-          <Stack spacing={1} direction={"column"} >
-            <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-              Owner Email:
-            </Typography>
-            <Typography>
-      
-              </Typography>
-          </Stack>
-        
-        </Stack> */
-        
-        /* </Stack> */}
-      
-      
     </>
   );
 }

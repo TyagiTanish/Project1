@@ -92,7 +92,7 @@ const router = createBrowserRouter([
             <Allhotels />
           </MemberRoute>
         ),
-        children: [
+      },
           {
             path: "/member/hotels/:id",
             element: (
@@ -101,8 +101,6 @@ const router = createBrowserRouter([
               </MemberRoute>
             ),
           },
-        ],
-      },
     ],
   },
 ]);
