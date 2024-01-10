@@ -15,7 +15,7 @@ function Password() {
 
   const { request } = useAuth();
   const onSubmit2 = async (data: any) => {
-    const result = await request.put(`/password/${user._id}`, {
+    const result = await request.put(`/password/${user?._id}`, {
       password: data.oldpassword,
       newpassword: data.newpassword,
     });
@@ -38,7 +38,7 @@ function Password() {
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
-       <FormattedMessage defaultMessage=" Old password:"/>  
+        <FormattedMessage defaultMessage=" Old password:" />
       </Typography>
       <TextField
         id="outlined-basic"
@@ -54,7 +54,7 @@ function Password() {
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
-        <FormattedMessage defaultMessage=" New password:"/>  
+        <FormattedMessage defaultMessage=" New password:" />
       </Typography>
       <TextField
         id="outlined-basic"
@@ -80,7 +80,7 @@ function Password() {
           }}
           type="submit"
         >
-            <FormattedMessage defaultMessage="  Change Password"/> 
+          <FormattedMessage defaultMessage="  Change Password" />
         </Button>
       </Box>
     </form>

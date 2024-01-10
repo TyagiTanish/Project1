@@ -20,10 +20,10 @@ import { FormattedMessage } from "react-intl";
 
 import { Navigate, useNavigate } from "react-router-dom";
 
-function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
+function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [authentication, setAuthentication] = useState("");
   const dispatch = useDispatch();
 
@@ -41,22 +41,21 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
       }
     } else {
       const result = await request.post("/auth", value);
-      console.log('data is ..............',result.data?.data?.role);
-        // console.log();
-        
+      console.log("data is ..............", result.data?.data?.role);
+      // console.log();
+
       if (result.data) {
         setDisplay(true);
         setTimeout(() => {
           dispatch(userLogin(result.data.data));
           localStorage.setItem("authToken", result.data.token);
-          setDisplay(false)
-          if(result.data.role==='customer'){
-            navigate('/');
-          }else{
-            navigate('/member');
+          setDisplay(false);
+          if (result.data.role === "customer") {
+            navigate("/");
+          } else {
+            navigate("/member");
           }
         }, 2000);
-        
       } else {
         setAuthentication("Invalid Credentials");
       }
@@ -80,8 +79,7 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
   });
   return (
     <>
-      
-      <Box width={{ sm: 350,md:400,xl:400}}  >
+      <Box width={{ sm: 350, md: 400, xl: 400 }}>
         <Typography
           sx={{
             // background: "#D4164B",
@@ -102,7 +100,7 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
           sx={{
             // paddingLeft: 3,
             // paddingRight: 2,
-            p:2,
+            p: 2,
             background: "white",
           }}
         >
@@ -111,7 +109,6 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
               fontSize: { xl: "32px", md: "25px", sm: "25px" },
               fontWeight: "700",
               // ml: { sm: -1, md: -1, xl: 0 },
-              
             }}
           >
             <FormattedMessage defaultMessage="Login" />
@@ -121,35 +118,39 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
               fontWeight: "700",
               fontSize: { xl: "16px", md: "16px", sm: "18px" },
               mt: { sm: 1 },
-              color:'InfoText'
+              color: "InfoText",
             }}
           >
             <FormattedMessage defaultMessage=" Please enter your email to continue" />
           </Typography>
           <form onSubmit={handleSubmit(Onsubmit)}>
             <Stack>
-               <b style={{marginTop:10,marginBottom:0}} ><FormattedMessage defaultMessage={"Email-"} /></b>
-                <br />
-                <TextField
-                  sx={{ fontWeight: "500", marginTop: -2 }}
-                  {...register("email")}
-                ></TextField>
-            
+              <b style={{ marginTop: 10, marginBottom: 0 }}>
+                <FormattedMessage defaultMessage={"Email-"} />
+              </b>
+              <br />
+              <TextField
+                sx={{ fontWeight: "500", marginTop: -2 }}
+                {...register("email")}
+              ></TextField>
+
               <FormHelperText sx={{ color: "red", m: 2 }}>
                 {errors.email?.message}
               </FormHelperText>
 
               {state && (
-            <>
-                    <b><FormattedMessage defaultMessage="Password " /></b>
+                <>
+                  <b>
+                    <FormattedMessage defaultMessage="Password " />
+                  </b>
                   <br />
                   <TextField
                     id="password"
                     type="password"
-                    sx={{ fontWeight: "500",mt:-2 }}
+                    sx={{ fontWeight: "500", mt: -2 }}
                     {...register("password")}
                   ></TextField>
-             </>
+                </>
               )}
             </Stack>
             {authentication && (
@@ -167,7 +168,6 @@ function SignUpComp({ setVerify, setLogReg,setDisplay }: any) {
                     alignItems: "center",
                     justifyContent: "space-between",
                     fontSize: { sm: "14px" },
-                
                   }}
                   direction={"row"}
                 >
