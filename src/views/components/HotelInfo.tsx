@@ -5,90 +5,99 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 
 function HotelInfo() {
-    const [data,setData]=useState<any>({});
-    const id=useParams();
-    const { request } = useAuth();
-   useEffect(()=>{
-    if(Object.keys(id).length === 0)
-    {
-      const get=async()=>{
-         const result= await request.get('/hotels');
-          setData(result.data[0])
-         
-      }
-        get();
-   
-
-      
-    }
-    else{
-      const get=async()=>{
-    
+  const [data, setData] = useState<any>([]);
+  const id = useParams();
+  const { request } = useAuth();
+  useEffect(() => {
+    if (Object.keys(id).length === 0) {
+      const get = async () => {
+        const result = await request.get("/hotels");
+        setData(result?.data[1]?.hotelInfo);
+       
         
-          const result= await request.get(`/getInfo/${id}`);
-          console.log(result.data);
-          
-      }
+      };
+      get();
+    } else {
+      const get = async () => {
+        const result = await request.get(`/getInfo/${id.id}`);
+        setData(result?.data[1]?.hotelInfo);
+   
+      };
       get();
     }
-   
-   },[])
-   console.log('data is ............',data);
-   console.log(data?.photo);
-   
+  }, [id]);
+
+  console.log("data is ............", data);
+  // console.log(data[0].photo);
+
   return (
     <>
-   <Stack direction={'row'}   spacing={10}  boxShadow={2} borderRadius={'20px'} alignItems={'center'}> 
-    <img src={`http://localhost:8000/${data?.photo}`} alt="Profile pic " style={{width:250, height:200,borderTopLeftRadius:'20px', borderBottomLeftRadius:'20x'}} />
-    <Typography sx={{fontWeight:'bold' , fontSize:25}}>{data?.hotelName}</Typography>
-    </Stack>
+      <Stack
+        direction={"row"}
+        spacing={6}
+        boxShadow={2}
+        borderRadius={"20px"}
+        // alignItems={"center"}
+      >
+     
+        <Box
+          component="img"
+          sx={{
+            width: { sm: "150px ", lg: "220px", md: "140px" },
+            height: { lg: "200px", sm: "15vh", md: "20vh" },
+            borderTopLeftRadius: "20px",
+            borderBottomLeftRadius: "20px",
+          }}
+          alt="The house from the offer."
+          src={`http://localhost:8000/${data[0]?.photo}`}
+        />
+        <Stack direction={'column'} padding={2} spacing={2} width={'80%'}>
+           <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>
+          {data[0]?.hotelName}
+        </Typography>
+        <Typography width={'100%'} sx={{fontSize:15}}>
+          {data[0]?.discription}
+        </Typography>
+        </Stack>
+     
+      </Stack>
       <Stack spacing={4}>
         {" "}
         <Box
           sx={{ fontWeight: "bold", fontSize: 22 }}
           justifyItems={"space-evenly"}
         >
-         Location Info:
+          Location Info:
         </Box>
-        <Stack direction={'row'} justifyContent={'space-evenly'}>
+        <Stack direction={"row"} justifyContent={"space-evenly"}>
           {" "}
-          <Stack spacing={1} direction={"column"} >
+          <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
               City:
             </Typography>
-            <Typography>
-              {data?.city}
-            </Typography>
+            <Typography>{data[0]?.city}</Typography>
           </Stack>
-          <Stack spacing={1} direction={"column"} >
+          <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-                State:
+              State:
             </Typography>
-            <Typography>
-              {data?.state}
-              </Typography>
+            <Typography>{data[0]?.state}</Typography>
           </Stack>
-        
         </Stack>
-        <Stack direction={'row'} justifyContent={'space-evenly'}>
+        <Stack direction={"row"} justifyContent={"space-evenly"}>
           {" "}
-          <Stack spacing={1} direction={"column"} >
+          <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-                Country
+              Country
             </Typography>
-            <Typography>
-              {data?.country}
-              </Typography>
+            <Typography>{data[0]?.country}</Typography>
           </Stack>
-          <Stack spacing={1} direction={"column"} >
+          <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-                Pin Code
+              Pin Code
             </Typography>
-            <Typography>
-              {data?.pinCode}
-              </Typography>
+            <Typography>{data[0]?.pinCode}</Typography>
           </Stack>
-        
         </Stack>
       </Stack>
       {/* <Stack  spacing={2}>
@@ -120,10 +129,7 @@ function HotelInfo() {
           </Stack>
         
         </Stack> */
-        
-        /* </Stack> */}
-      
-      
+      /* </Stack> */}
     </>
   );
 }
