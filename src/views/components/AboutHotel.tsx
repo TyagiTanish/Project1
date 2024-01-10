@@ -122,7 +122,7 @@ function AboutHotel() {
           </Stack>
         </Stack>
         {activeButton==='info' &&  <HotelInfo />}
-        {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>}
+        {/* {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>} */}
       </Stack>
     </>
   );
