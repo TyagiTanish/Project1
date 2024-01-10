@@ -9,6 +9,8 @@ import {
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import { useNavigate } from "react-router-dom";
+
 function SearchHotels() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -19,7 +21,7 @@ function SearchHotels() {
   //   );
   //   setFilteredData(filteredData);
   // };
-
+  const navigate=useNavigate();
   console.log(filteredData);
 
   const handleInputChange = (event: any) => {
@@ -30,16 +32,26 @@ function SearchHotels() {
 
 useEffect(()=>{
   const get=(async()=>{
-    const result= await request.get('/hotels');
+    const result= await request.get('/searchHotels');
+    
+    // console.log(result?.data[1]);
+   
+    console.log(result.data);
     setFilteredData(result.data)
-    console.log(filteredData);
     
   })
   get();
   ;
 },[])
+console.log(filteredData);
+const handleClick=(data:any)=>{
+  navigate(`/member/hotels/${data}`) 
+  // console.log(data);
+  
+  
+}
   return (
-    <Box sx={{ border: "1px solid lightgray", borderRadius: 1 , width:{xl:'40%', md:'50%'},overflowX:'hidden', overflowY:'scroll'}} >
+    <Box sx={{ border: "1px solid lightgray", borderRadius: 1 , width:{xl:'30%', md:'5%'},overflowX:'hidden', overflowY:'scroll'}} >
       <Stack alignItems={"left"} padding={2} paddingLeft={4}>
         <TextField
           variant="outlined"
@@ -71,16 +83,17 @@ useEffect(()=>{
         paddingLeft={"5%"}
         paddingBottom={"1%"}
       >
-        {filteredData?.map((item: any) => (
+        {filteredData?.map((item: any,i:any) => (
           <Stack
             direction={"row"}
             spacing={4}
             width={"70%"}
             alignItems={"center"}
             sx={{ cursor: "pointer" }}
-            // onClick={() => {
-            //   props.setToGet(item);
-            // }}
+            onClick={() => {
+             handleClick(item?._id);
+          
+            }}
           >
             {" "}
             <Avatar sx={{ width: 32, height: 32 }}>

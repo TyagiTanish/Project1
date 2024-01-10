@@ -92,13 +92,8 @@ const router = createBrowserRouter([
             <Allhotels />
           </MemberRoute>
         ),
-        children: [
-          {
-            path: "/member/hotels/rooms",
-            element: <AllRooms />,
-          },
-        ],
       },
+
       {
         path: "/member/profile",
         element: (
@@ -107,6 +102,18 @@ const router = createBrowserRouter([
           </MemberRoute>
         ),
       },
+
+
+      {
+        path: "/member/hotels/:id",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
+      },
+
+
     ],
   },
 ]);
