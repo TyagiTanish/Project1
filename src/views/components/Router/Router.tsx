@@ -20,7 +20,7 @@ const router = createBrowserRouter([
     path: "/",
     element: (
       <CustomerRoutes>
-      <HomePage />
+        <HomePage />
       </CustomerRoutes>
     ),
   },
@@ -73,7 +73,7 @@ const router = createBrowserRouter([
     path: "/viewDeal",
     element: (
       <CustomerRoutes>
-      <ViewDeal />
+        <ViewDeal />
       </CustomerRoutes>
     ),
   },
@@ -94,8 +94,12 @@ const router = createBrowserRouter([
         ),
         children: [
           {
-            path: "/member/hotels/rooms",
-            element: <AllRooms />,
+            path: "/member/hotels/:id",
+            element: (
+              <MemberRoute>
+                <Allhotels />
+              </MemberRoute>
+            ),
           },
         ],
       },

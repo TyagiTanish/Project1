@@ -29,54 +29,10 @@ const amenitie = [
     { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
   ];
 const HotelAmenities = () => {
-  const elementRef = useRef(null);
-  const [arrowDisable, setArrowDisable] = useState(true);
-  const unsplashed = "https://source.unsplash.com/200x200/";
-
-  const handleHorizantalScroll = (element:any, speed:any, distance:any, step:any) => {
-    let scrollAmount = 0;
-    const slideTimer = setInterval(() => {
-      element.scrollLeft += step;
-      scrollAmount += Math.abs(step);
-      if (scrollAmount >= distance) {
-        clearInterval(slideTimer);
-      }
-      if (element.scrollLeft === 0) {
-        setArrowDisable(true);
-      } else {
-        setArrowDisable(false);
-      }
-    }, speed);
-  };
-
+  
   return (
     <>
-      <Box className="button-contianer">
-        <button
-          onClick={() => {
-            handleHorizantalScroll(elementRef.current, 25, 100, -10);
-          }}
-          disabled={arrowDisable}
-        >
-          Left
-        </button>
-        <button
-          onClick={() => {
-            handleHorizantalScroll(elementRef.current, 25, 100, 10);
-          }}
-        >
-          Right
-        </button>
-      </Box>
-      <Box className="img-container" ref={elementRef}>
-      {amenitie.map((item:any)=>(
-        <> 
-        <Typography>{item.label}</Typography>
-        <Typography>{item.icon}</Typography>
-     </>
-
-      ))}
-      </Box>
+ 
     </>
   );
 };
