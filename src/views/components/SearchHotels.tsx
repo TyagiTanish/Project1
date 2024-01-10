@@ -32,22 +32,16 @@ function SearchHotels() {
 
 useEffect(()=>{
   const get=(async()=>{
-    const result= await request.get('/searchHotels');
-    
-    // console.log(result?.data[1]);
-   
-    console.log(result.data);
+    const result= await request.get('/hotels');
     setFilteredData(result.data)
+    // console.log(filteredData);
     
   })
   get();
   ;
 },[])
-console.log(filteredData);
 const handleClick=(data:any)=>{
-  navigate(`/member/hotels/${data}`) 
-  // console.log(data);
-  
+  navigate(`/member/hotels/${data}`)
   
 }
   return (
@@ -83,7 +77,7 @@ const handleClick=(data:any)=>{
         paddingLeft={"5%"}
         paddingBottom={"1%"}
       >
-        {filteredData?.map((item: any,i:any) => (
+        {filteredData?.map((item: any) => (
           <Stack
             direction={"row"}
             spacing={4}
