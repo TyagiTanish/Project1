@@ -56,9 +56,7 @@ function HotelInfo() {
            <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>
           {data[0]?.hotelName}
         </Typography>
-        <Typography width={'100%'} sx={{fontSize:15}}>
-          {data[0]?.discription}
-        </Typography>
+        <Box dangerouslySetInnerHTML={{ __html: data[0]?.discription }} sx={{ flex: 1 }} />
         </Stack>
      
       </Stack>
