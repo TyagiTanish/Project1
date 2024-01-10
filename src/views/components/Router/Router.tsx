@@ -5,7 +5,7 @@ import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing";
-import MemberRegister from "../MemberRegister";
+
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
@@ -13,8 +13,8 @@ import HotelOwnerView from "../../layout/HotelOwnerView";
 
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
-import AboutHotel from "../AboutHotel";
-import SearchHotels from "../SearchHotels";
+
+;
 
 const router = createBrowserRouter([
   {
