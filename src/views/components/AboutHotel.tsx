@@ -1,29 +1,26 @@
-import { Divider, Stack, Typography } from "@mui/material";
+import { Divider, Stack, Tab, Typography } from "@mui/material";
 import React from "react";
-import InfoIcon from "@mui/icons-material/Info";
-import DashboardIcon from "@mui/icons-material/Dashboard";
-import BedIcon from "@mui/icons-material/Bed";
-import HdrAutoIcon from "@mui/icons-material/HdrAuto";
 import HotelInfo from "./HotelInfo";
-import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
-import { Box } from "@mui/system";
+import TabList from '@mui/lab/TabList';
+import TabContext from '@mui/lab/TabContext';
+import TabPanel from '@mui/lab/TabPanel';
+import { Outlet, useNavigate } from "react-router-dom";
 function AboutHotel() {
- 
+ const navigate=useNavigate()
   const [activeButton, setActiveButton] = React.useState("info");
   return (
     <>
-      {" "}
+    <TabContext value={activeButton} >
       <Stack
               direction={"column"}
         spacing={8}
         sx={{ border: "1px solid lightgray", p: 2 ,width:{xl:'70%'}}}
       >
-        {" "}
         <Stack>
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
-            {/* {props?.toGet?.name} */}
           </Typography>
         </Stack>
+<<<<<<< HEAD
         <Stack
           direction={"row"}
           justifyContent={"space-evenly"}
@@ -123,7 +120,20 @@ function AboutHotel() {
         </Stack>
         {activeButton==='info' &&  <HotelInfo />}
         {/* {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>} */}
+=======
+        <TabList  onChange={(event: React.SyntheticEvent, newValue: string)=>setActiveButton(newValue)} >
+         
+          <Tab label={'info'}  value={'info'}   />
+          <Tab label="DashBoard" value={"dashboard"} />
+          <Tab label="All Rooms" value={"rooms"} />
+          <Tab label="Amenities"  value={"amenities"}  />
+      
+        </TabList>
+        <TabPanel value="info" ><HotelInfo/></TabPanel>
+
+>>>>>>> main
       </Stack>
+      </TabContext>
     </>
   );
 }

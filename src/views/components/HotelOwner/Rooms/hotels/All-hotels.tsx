@@ -5,7 +5,7 @@ import { Stack } from '@mui/material'
 
 const Allhotels = () => {
   return (
-    <Stack direction={'row'} >
+    <Stack direction={'row'} spacing={1}  >
         <SearchHotels/>  
         <AboutHotel/>
     </Stack>

@@ -20,12 +20,14 @@ import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Logo from "../components/Logo";
 import { Stack } from "@mui/material";
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import BedIcon from '@mui/icons-material/Bed';
+import DashboardIcon from "@mui/icons-material/Dashboard";
+import BedIcon from "@mui/icons-material/Bed";
 import SearchHotels from "../components/SearchHotels";
 import AboutHotel from "../components/AboutHotel";
 import { Navigate, Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
+import Menu from "./Menu";
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -99,11 +101,155 @@ const Drawer = styled(MuiDrawer, {
 export default function HotelOwnerView() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
-  const [open2,setOpen2]=React.useState(false);
-const navigate = useNavigate()
-  // const [toGet,setToGet]=React.useState(hotels[0]);
+  const [open2, setOpen2] = React.useState(false);
+  const navigate = useNavigate();
+  const [hotels] = React.useState([
+    {
+      name: "Hotel mountain face by snow",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+
+      location: "usa123",
+      amenities: ["abc,xyz"],
+      ownerName: "pallavi",
+      ownerEmail: "abc@gmailcom",
+    },
+    {
+      name: "Bentewood Resort",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "JW Marriot Mumbai Sahar",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Niranta Transit",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Hotel Kohinoor Continental",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Hotel mountain face by snow",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Bentewood Resort",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "JW Marriot Mumbai Sahar",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Niranta Transit",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Hotel Kohinoor Continental",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Niranta Transit",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Hotel Kohinoor Continental",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Hotel mountain face by snow",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+    {
+      name: "Bentewood Resort",
+      city: "xyz",
+      state: "abc",
+      country: "alberta",
+      pinCode: "123",
+      id: "abc@gmailcom",
+      location: "usa123",
+      amenities: ["abc,xyz"],
+    },
+  ]);
+  const [toGet, setToGet] = React.useState(hotels[0]);
   console.log();
-  
+
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -112,178 +258,211 @@ const navigate = useNavigate()
     setOpen(false);
   };
 
-  const handleClick=()=>{
-    if(open2===false)
-    {
+  const handleClick = () => {
+    if (open2 === false) {
       setOpen2(true);
+    } else {
+      setOpen2(false);
     }
-  else{
-    setOpen2(false)
-  }
-
-    
-  }
-  // console.log(toGet);
+  };
+  console.log(toGet);
   return (
+    <>
+      <Box sx={{ display: "flex" }}>
+        <CssBaseline />
+        <AppBar position="fixed" open={open} sx={{ bgcolor: "white" }}>
+          <Toolbar>
+            <Stack
+              direction={"row"}
+              spacing={3}
+              alignItems={"center"}
+              height={"2vh"}
+            >
+              {" "}
+              {!open && <Logo />}
+              <IconButton
+                color="inherit"
+                aria-label="open drawer"
+                onClick={handleDrawerOpen}
+                edge="start"
+                sx={{
+                  marginRight: 5,
+                  ...(open && { display: "none" }),
+                }}
+              >
+                <MenuIcon sx={{ color: "black" }} />
+              </IconButton>
+            </Stack>
+            <Box ml={{ lg: "93%", md: "87%", sm: "80%" }}>
+              <Menu />
+            </Box>
+          </Toolbar>
+        </AppBar>
 
-    
-    <><Box sx={{ display: "flex" }}>
-    <CssBaseline />
-    <AppBar position="fixed" open={open}  sx={{bgcolor:'white'}}>
-      <Toolbar>
-          <Stack direction={"row"} spacing={3}  alignItems={'center'} height={"2vh"}>   {!open && <Logo />}
-        <IconButton
-          color="inherit"
-          aria-label="open drawer"
-          onClick={handleDrawerOpen}
-          edge="start"
-          sx={{
-            marginRight: 5,
-            ...(open && { display: "none" }),
-          }}
-        >
-          <MenuIcon  sx={{color:'black'}} />
-        </IconButton>
-    </Stack>
-      </Toolbar>
-    </AppBar>
-    <Drawer variant="permanent" open={open}>
-      <DrawerHeader>
-        <Stack direction={"row"} width={"100%"} height={"2vh"} alignItems={"center"} justifyContent={'space-between'} >
-          <Box>
-            <Logo />
-          </Box>{" "}
-          <IconButton onClick={handleDrawerClose}>
-            {theme.direction === "rtl" ? (
-              <MenuIcon />
-            ) : (
-        
-                <MenuIcon />
-              
+        <Drawer variant="permanent" open={open}>
+          <DrawerHeader>
+            <Stack
+              direction={"row"}
+              width={"100%"}
+              height={"2vh"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+            >
+              <Box>
+                <Logo />
+              </Box>{" "}
+              <IconButton onClick={handleDrawerClose}>
+                {theme.direction === "rtl" ? <MenuIcon /> : <MenuIcon />}
+              </IconButton>
+            </Stack>
+          </DrawerHeader>
+
+          <List>
+            {open && (
+              <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
+                DashBoard
+              </Typography>
             )}
-          </IconButton>
-        </Stack>
-      </DrawerHeader>
-   
-      <List >
-    
-       {open &&  <Typography sx={{ml:2,fontSize:14,fontWeight:'bold'}}>DashBoard</Typography>}
-      <ListItem disablePadding sx={{ display: "block"}} >
-            <ListItemButton
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  borderRadius:100,
-                  backgroundColor:'lightGray'
-                },
-              }}
-            
-            >
-              <ListItemIcon
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
                 }}
               >
-             {open===true ?   <DashboardIcon fontSize="small"/> :  <DashboardIcon sx={{fontSize:'25px'}}/>} 
-              </ListItemIcon>
-              <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
-            </ListItemButton>
-          </ListItem>
-        <ListItem disablePadding sx={{ display: "block" }}>
-            <ListItemButton
-        
-              sx={{
-                minHeight: 48,
-                justifyContent: open ? "initial" : "center",
-                px: 2.5,
-                "&:hover": {
-                  borderRadius:100,
-                  backgroundColor:'lightGray'
-                },
-              }}
-              onClick={()=>navigate('/member/hotels')} 
-            >
-              <ListItemIcon
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <DashboardIcon fontSize="small" />
+                  ) : (
+                    <DashboardIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"DashBoard"}
+                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
                 sx={{
-                  minWidth: 0,
-                  mr: open ? 3 : "auto",
-                  justifyContent: "center",
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
                 }}
-              
+                onClick={() => navigate("/member/hotels")}
               >
-             {open===true ?   <BedIcon fontSize="small"/> :  <BedIcon sx={{fontSize:'25px'}}/>} 
-              </ListItemIcon>
-              <ListItemText primary={'All Hotels'} sx={{ opacity: open ? 1 : 0 }} />
-            </ListItemButton>
-          </ListItem>
-      </List>
-   
-      <List >
-    
-    {open &&  <Typography sx={{ml:2,fontSize:14,fontWeight:'bold'}}>DashBoard</Typography>}
-   <ListItem disablePadding sx={{ display: "block"}} >
-         <ListItemButton
-           sx={{
-             minHeight: 48,
-             justifyContent: open ? "initial" : "center",
-             px: 2.5,
-             "&:hover": {
-               borderRadius:100,
-               backgroundColor:'lightGray'
-             },
-           }}
-         >
-           <ListItemIcon
-             sx={{
-               minWidth: 0,
-               mr: open ? 3 : "auto",
-               justifyContent: "center",
-             }}
-           >
-          {open===true ?   <DashboardIcon fontSize="small"/> :  <DashboardIcon sx={{fontSize:'25px'}}/>} 
-           </ListItemIcon>
-           <ListItemText primary={'DashBoard'} sx={{ opacity: open ? 1 : 0, fontSize:10}} />
-         </ListItemButton>
-       </ListItem>
-       <ListItem disablePadding sx={{ display: "block" }} >
-         <ListItemButton
-       
-           sx={{
-             minHeight: 48,
-             justifyContent: open ? "initial" : "center",
-             px: 2.5,
-             "&:hover": {
-               borderRadius:100,
-               backgroundColor:'lightGray'
-             },
-           }}
-         >
-           <ListItemIcon
-             sx={{
-               minWidth: 0,
-               mr: open ? 3 : "auto",
-               justifyContent: "center",
-             }}
-           >
-          {open===true ?   <BedIcon fontSize="small"/> :  <BedIcon sx={{fontSize:'25px'}}/>} 
-           </ListItemIcon>
-           <ListItemText primary={'All Hotels'} sx={{ opacity: open ? 1 : 0 }} />
-         </ListItemButton>
-       </ListItem>
-   </List>
-    </Drawer>
-  <Box  sx={{ flexGrow: 1, p: 3 }}>
-        <DrawerHeader />
-             <Outlet/> 
-  </Box>
-  </Box>
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <BedIcon fontSize="small" />
+                  ) : (
+                    <BedIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"All Hotels"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
+          </List>
 
-  </>
-    
-  
+          <List>
+            {open && (
+              <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
+                DashBoard
+              </Typography>
+            )}
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <DashboardIcon fontSize="small" />
+                  ) : (
+                    <DashboardIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"DashBoard"}
+                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <BedIcon fontSize="small" />
+                  ) : (
+                    <BedIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"All Hotels"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
+          </List>
+        </Drawer>
+        <Box sx={{ flexGrow: 1, p: 3 }}>
+          <DrawerHeader />
+          <Outlet />
+        </Box>
+      </Box>
+    </>
   );
 }

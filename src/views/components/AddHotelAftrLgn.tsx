@@ -794,9 +794,9 @@ export default function AddHotelAftrLgn() {
                 ) : step === 2 ? (
                   <>
                     {/* {console.log(content)} */}
-                    <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}>
+                    <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}> 
                       <Form>
-                        <Stack>
+                   
                           {/* <ReactQuill
                             theme="snow"
                             value={content}
@@ -810,10 +810,10 @@ export default function AddHotelAftrLgn() {
                           {/* <FormHelperText sx={{ color: "red" }}>
                             {errors.discription?.message}
                           </FormHelperText> */}
-                        </Stack>
+                      
 
                         {/* <Box sx={{ display: "flex" }}> */}
-                        <Stack direction={"row"} spacing={1}>
+                        <Stack direction={"row"} spacing={1} mt={3} >
                           <Button
                             size="small"
                             variant="contained"

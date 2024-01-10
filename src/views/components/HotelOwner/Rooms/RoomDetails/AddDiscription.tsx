@@ -13,7 +13,7 @@ const AddDiscription = ({ setContent, content }: any) => {
   //   const [value, setValue] = useState();
 
   return (
-    <Box>
+    <Box width={400} >
       <QuillEditor
         theme="snow"
         value={content}
@@ -21,7 +21,7 @@ const AddDiscription = ({ setContent, content }: any) => {
           setContent(value);
           //   console.log(content);
         }}
-        style={{ width: "80%" }}
+
       />
     </Box>
   );

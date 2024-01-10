@@ -1,5 +1,6 @@
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 
 
 interface props {
@@ -8,21 +9,17 @@ interface props {
 
 const CustomerRoutes = ({children}:props) => {
   const user = useSelector((state: any) => state.userReducer.user);
-  if (user) { 
-    if(user.role==='customer'){
-        return children
-    }else{
-      if(user.role==='member'){
-        return <Navigate to='/member' />
-      }else{
-        return <Navigate to='/' />
-      }
-      
+  const navigate = useNavigate();
+  
+  useEffect(()=>{
+    if(user && user?.role!=="customer")
+    {
+      navigate("/member");
     }
-  }
-  else{
-  return <Navigate to="/" />;
-  }
+  },[user])
+
+  return children;
+
 };
 
 export default CustomerRoutes;

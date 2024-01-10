@@ -10,16 +10,24 @@ import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
 import HotelOwnerView from "../../layout/HotelOwnerView";
-
+import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+<<<<<<< HEAD
 
 ;
+=======
+import AllRooms from "../HotelOwner/Rooms/RoomDetails/Rooms";
+>>>>>>> main
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element:<HomePage />,
+    element: (
+      <CustomerRoutes>
+        <HomePage />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/login",
@@ -31,18 +39,27 @@ const router = createBrowserRouter([
   },
   {
     path: "/hotels",
-    element: <CustomerRoutes>
-        <HotelsPage />
-      </CustomerRoutes>
-    ,
+    element: (
+      // <CustomerRoutes>
+      <HotelsPage />
+      // </CustomerRoutes>
+    ),
   },
   {
     path: "/profile",
-    element: <CustomerRoutes><Account /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <Account />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/billing",
-    element:<CustomerRoutes><Billing /></CustomerRoutes> ,
+    element: (
+      <CustomerRoutes>
+        <Billing />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/memberRegister",
@@ -51,28 +68,59 @@ const router = createBrowserRouter([
   },
   {
     path: "/profile",
-    element: <CustomerRoutes><Account /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <Account />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/viewDeal",
-    element: <CustomerRoutes><ViewDeal /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <ViewDeal />
+      </CustomerRoutes>
+    ),
   },
   {
-
-    path:'/member',
-    element:<MemberRoute><HotelOwnerView/></MemberRoute>,
-    children:[
+    path: "/member",
+    element: (
+      <MemberRoute>
+        <HotelOwnerView />
+      </MemberRoute>
+    ),
+    children: [
       {
-        path:'/member/hotels',
-        element:<MemberRoute><Allhotels/></MemberRoute>
+        path: "/member/hotels",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
       },
-      {
-        path:'/member/hotels/:id',
-        element:<MemberRoute><Allhotels/></MemberRoute>
-      }
 
-    ]
-  }
+      {
+        path: "/member/profile",
+        element: (
+          <MemberRoute>
+            <MemberAccount />
+          </MemberRoute>
+        ),
+      },
+
+
+      {
+        path: "/member/hotels/:id",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
+      },
+
+
+    ],
+  },
 ]);
 
 function Routes() {
