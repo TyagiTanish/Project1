@@ -93,14 +93,16 @@ const router = createBrowserRouter([
           </MemberRoute>
         ),
       },
-          {
-            path: "/member/hotels/:id",
-            element: (
-              <MemberRoute>
-                <Allhotels />
-              </MemberRoute>
-            ),
-          },
+
+      {
+        path: "/member/hotels/:id",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
+      },
+
     ],
   },
 ]);
