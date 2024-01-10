@@ -20,12 +20,13 @@ function AboutHotel() {
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
           </Typography>
         </Stack>
-
-        <TabList  onChange={(event: React.SyntheticEvent, newValue: string)=>setActiveButton(newValue)}>
-          <Tab label  value='info'/>
+        <TabList  onChange={(event: React.SyntheticEvent, newValue: string)=>setActiveButton(newValue)} >
+         
+          <Tab label={'info'}  value={'info'}   />
           <Tab label="DashBoard" value={"dashboard"} />
           <Tab label="All Rooms" value={"rooms"} />
           <Tab label="Amenities"  value={"amenities"}  />
+      
         </TabList>
         <TabPanel value="info" ><HotelInfo/></TabPanel>
 
