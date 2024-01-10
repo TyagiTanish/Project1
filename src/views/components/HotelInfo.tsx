@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 
 function HotelInfo() {
+
   const [data, setData] = useState<any>([]);
   const id = useParams();
   const { request } = useAuth();
@@ -100,6 +101,7 @@ function HotelInfo() {
           </Stack>
         </Stack>
       </Stack>
+
       {/* <Stack  spacing={2}>
         {" "}
         <Box
@@ -130,6 +132,7 @@ function HotelInfo() {
         
         </Stack> */
       /* </Stack> */}
+
     </>
   );
 }

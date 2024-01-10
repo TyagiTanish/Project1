@@ -93,6 +93,7 @@ const router = createBrowserRouter([
           </MemberRoute>
         ),
       },
+
       {
         path: "/member/hotels/:id",
         element: (
@@ -101,6 +102,7 @@ const router = createBrowserRouter([
           </MemberRoute>
         ),
       },
+
     ],
   },
 ]);

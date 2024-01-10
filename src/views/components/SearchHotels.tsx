@@ -92,6 +92,7 @@ const handleClick=(data:any)=>{
             sx={{ cursor: "pointer" }}
             onClick={() => {
              handleClick(item?._id);
+          
             }}
           >
             {" "}
