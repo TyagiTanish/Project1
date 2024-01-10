@@ -259,7 +259,7 @@ export default function MemberRegister() {
       formdata.set("city", detail.city);
       formdata.set("hotelName", detail.hotelName);
       formdata.set("amenities", detail.amenities);
-
+      formdata.set("discription", detail.discription);
       const result = await request.post("/registerMember", formdata);
      
       console.log(result.data);
