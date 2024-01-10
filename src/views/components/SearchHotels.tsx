@@ -9,6 +9,8 @@ import {
 import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import { useNavigate } from "react-router-dom";
+
 function SearchHotels() {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
@@ -19,7 +21,7 @@ function SearchHotels() {
   //   );
   //   setFilteredData(filteredData);
   // };
-
+  const navigate=useNavigate();
   console.log(filteredData);
 
   const handleInputChange = (event: any) => {
@@ -32,14 +34,18 @@ useEffect(()=>{
   const get=(async()=>{
     const result= await request.get('/hotels');
     setFilteredData(result.data)
-    console.log(filteredData);
+    // console.log(filteredData);
     
   })
   get();
   ;
 },[])
+const handleClick=(data:any)=>{
+  navigate(`/member/hotels/${data}`)
+  
+}
   return (
-    <Box sx={{ border: "1px solid lightgray", borderRadius: 1 , width:{xl:'40%', md:'50%'},overflowX:'hidden', overflowY:'scroll'}} >
+    <Box sx={{ border: "1px solid lightgray", borderRadius: 1 , width:{xl:'30%', md:'5%'},overflowX:'hidden', overflowY:'scroll'}} >
       <Stack alignItems={"left"} padding={2} paddingLeft={4}>
         <TextField
           variant="outlined"
@@ -78,9 +84,9 @@ useEffect(()=>{
             width={"70%"}
             alignItems={"center"}
             sx={{ cursor: "pointer" }}
-            // onClick={() => {
-            //   props.setToGet(item);
-            // }}
+            onClick={() => {
+             handleClick(item?._id);
+            }}
           >
             {" "}
             <Avatar sx={{ width: 32, height: 32 }}>
