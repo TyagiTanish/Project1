@@ -92,16 +92,14 @@ const router = createBrowserRouter([
             <Allhotels />
           </MemberRoute>
         ),
-        children: [
-          {
-            path: "/member/hotels/:id",
-            element: (
-              <MemberRoute>
-                <Allhotels />
-              </MemberRoute>
-            ),
-          },
-        ],
+      },
+      {
+        path: "/member/hotels/:id",
+        element: (
+          <MemberRoute>
+            <Allhotels />
+          </MemberRoute>
+        ),
       },
     ],
   },
