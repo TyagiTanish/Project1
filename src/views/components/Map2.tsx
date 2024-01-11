@@ -1,6 +1,6 @@
 import React from "react";
 import GoogleMapReact from "google-map-react";
-import { IconButton } from "@mui/material";
+import { Box, IconButton } from "@mui/material";
 
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 
@@ -18,7 +18,7 @@ export default function SimpleMap() {
     console.log(value);
   };
   return (
-    <div style={{ height: "200px", minWidth: "48vw" }}>
+    <Box sx={{ height: "200px", minWidth: { sm: "48vw", lg: "35vw" } }}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
@@ -35,7 +35,7 @@ export default function SimpleMap() {
           }
         />
       </GoogleMapReact>
-    </div>
+    </Box>
   );
 }
 
