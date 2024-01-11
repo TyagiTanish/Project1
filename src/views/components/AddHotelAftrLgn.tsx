@@ -149,7 +149,6 @@ export default function AddHotelAftrLgn() {
     }
     data.longitude = location.longitude;
     data.latitude = location.latitude;
-    // console.log(files[0]);
     formData.append("files", files[0]);
     formData.set("hotelName", data.hotelName);
     formData.set("phone", data.phone);
@@ -794,26 +793,24 @@ export default function AddHotelAftrLgn() {
                 ) : step === 2 ? (
                   <>
                     {/* {console.log(content)} */}
-                    <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}> 
+                    <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}>
                       <Form>
-                   
-                          {/* <ReactQuill
+                        {/* <ReactQuill
                             theme="snow"
                             value={content}
                             onChange={setContent}
                           /> */}
-                          <AddDiscription
-                            setContent={setContent}
-                            content={content}
-                          />
+                        <AddDiscription
+                          setContent={setContent}
+                          content={content}
+                        />
 
-                          {/* <FormHelperText sx={{ color: "red" }}>
+                        {/* <FormHelperText sx={{ color: "red" }}>
                             {errors.discription?.message}
                           </FormHelperText> */}
-                      
 
                         {/* <Box sx={{ display: "flex" }}> */}
-                        <Stack direction={"row"} spacing={1} mt={3} >
+                        <Stack direction={"row"} spacing={1} mt={3}>
                           <Button
                             size="small"
                             variant="contained"
