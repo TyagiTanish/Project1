@@ -29,12 +29,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import Autocomplete from "@mui/material/Autocomplete";
 import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
+import { useParams } from "react-router-dom";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
   left: "50%",
   transform: "translate(-50%, -50%)",
-  width: 400,
   bgcolor: "background.paper",
   border: "1px solid lightgray",
   boxShadow: 24,
@@ -42,6 +42,8 @@ const style = {
   pl: 10,
   pr: 10,
   borderRadius: 1,
+ height:900,
+ overflow:'auto'
 };
 
 const highlights = [
@@ -122,12 +124,12 @@ function Rooms() {
   }, [acceptedFiles]);
   console.log(acceptedFiles);
   interface User {
-    roomNo: string;
+    roomQuantity: string;
     price: string;
     roomHighlight?: any[];
   }
   const FormSchema = Yup.object().shape({
-    roomNo: Yup.string().required("Room Number is required").min(3),
+    roomQuantity: Yup.string().required("Room Number is required"),
     price: Yup.string()
       .required("Price is required!")
       .min(3, "Should be above 1k"),
@@ -141,35 +143,52 @@ function Rooms() {
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
-
+  const id = useParams();
   const onSubmit = async (data: any) => {
+
+    console.log("files.....",roomHighlight);
     // const formData = new FormData();
     // data.roomHighlight = roomHighlight;
-    const formData = {
-      files: file,
-      roomNo: data.roomNo,
-      type: type,
-      price: data.price,
-      roomHighlight: roomHighlight,
-      discription: content,
-    };
+  const formData:any = new FormData()
+  for (const file of acceptedFiles) {
+    formData.append('files',file)
+  }
+  formData.set("roomQuantity",data.roomQuantity)
+  formData.set("type",type)
+  formData.set("price",data.price)
+  formData.append("roomHighlight",JSON.stringify(roomHighlight))
+  formData.set("discription",content)
+    // const formData = {
+    //   files: form,
+    //   roomQuantity: data.roomQuantity,
+    //   type: type,
+    //   price: data.price,
+    //   roomHighlight: roomHighlight,
+    //   discription: content,
+    // };
 
-    // console.log(formData);
-    await request.post("/uploadRooms", formData);
+if(Object.keys(id).length === 0){
+  await request.post("/uploadRooms",formData);
+
+}else{
+  await request.post(`/uploadRooms/${id.id}`, formData);
+}
+
   };
 
   return (
     <>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <Button onClick={handleOpen} variant="contained" color="error" sx={{float:'right'}} >Add Room +</Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
+        
       >
         <>
-          <Box>
-            <Box sx={style}>
+          <Box  >
+            <Box sx={style} >
               <Box
                 sx={{
                   color: "#EE2A24",
@@ -182,18 +201,7 @@ function Rooms() {
               </Box>
               <center></center>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <Typography sx={{ fontWeight: "bold" }}>Room No:</Typography>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  sx={{ width: 400, mb: 2 }}
-                  {...register("roomNo")}
-                />
-                <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
-                  {errors.roomNo?.message}
-                </FormHelperText>
-
-                <Box>
+                <Box >
                   <FormControl sx={{ width: 235 }}>
                     <Typography sx={{ fontWeight: "bold" }}>
                       Type of Room
@@ -215,6 +223,16 @@ function Rooms() {
                     </Select>
                   </FormControl>
                 </Box>
+                    <Typography sx={{ fontWeight: "bold" }}>Room Quantity</Typography>
+                <TextField
+                  id="outlined-basic"
+                  variant="outlined"
+                  sx={{ width: 400, mb: 2 }}
+                  {...register("roomQuantity")}
+                />
+                <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                  {errors.roomQuantity?.message}
+                </FormHelperText>
                 <Typography sx={{ fontWeight: "bold" }}>Price</Typography>
                 <TextField
                   id="outlined-basic"
@@ -261,6 +279,7 @@ function Rooms() {
                       {...params}
                       variant="outlined"
                       placeholder="Room's Highlight"
+                    sx={{width:400}}
                     />
                   )}
                 />
@@ -277,7 +296,7 @@ function Rooms() {
                   Add Room Photos
                 </Typography>
                 <Typography sx={{ fontSize: "10px" }}>
-                  Upload 3 photos
+                  Upload 4 photos
                 </Typography>
                 <div
                   style={{
@@ -316,41 +335,9 @@ function Rooms() {
                         {" "}
                         <Stack direction={"row"}>
                           {file?.map((photo: any, index: any) => (
-                            // <Chip
-                            //   style={Object.assign({}, avatarImageStyle, {
-                            //     color: "grey",
-                            //   })}
-                            //   label={photo.name}
-                            //   avatar={
-                            //     <Avatar
-                            //       alt="Photo"
-                            //       src={photo.preview}
-                            //       sx={{ height: 200 }}
-                            //     />
-                            //   }
-                            //   onDelete={() => handleDelete(photo)}
-                            //   sx={{ mb: 0.5 }}
-                            // ></Chip>
+                    
                             <Stack direction={"row"}>
-                              {/* <Box
-                                component="img"
-                                sx={{
-                                  height: 70,
-                                  width: 70,
-                                  p: 0.5,
-                                }}
-                                // borderRadius={"50%"}
-                                alt="Preview image"
-                                src={photo.preview}
-                                
-                              />
-                              <Box
-                                onClick={() => {
-                                  handleDelete(photo);
-                                }}
-                              >
-                                <ClearIcon fontSize="small" />
-                              </Box> */}
+                       
 
                               <Box
                                 // component="div"
@@ -400,8 +387,8 @@ function Rooms() {
                             alignItems: "center",
                             border: "2px dashed lightgrey",
                             borderRadius: 0,
-                            width: "6vw",
-                            height: "5vw",
+                            width: "10vw",
+                            height: "10vw",
                             ml: 15,
                           }}
                         >
@@ -439,7 +426,7 @@ function Rooms() {
                     <Button
                       disabled
                       sx={{
-                        mt: 1,
+                        mt: 14,
                         width: "100%",
                         border: "1px solid lightgray",
                         fontWeight: "bold",

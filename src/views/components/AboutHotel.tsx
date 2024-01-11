@@ -5,6 +5,8 @@ import TabList from '@mui/lab/TabList';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import { Outlet, useNavigate } from "react-router-dom";
+import Rooms from "./Rooms";
+import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 function AboutHotel() {
  const navigate=useNavigate()
   const [activeButton, setActiveButton] = React.useState("info");
@@ -29,7 +31,7 @@ function AboutHotel() {
       
         </TabList>
         <TabPanel value="info" ><HotelInfo/></TabPanel>
-
+        <TabPanel value="rooms"><Rooms/><AllRooms/></TabPanel>
       </Stack>
       </TabContext>
     </>
