@@ -4,97 +4,37 @@ import Grid from "@mui/material/Grid";
 import RoomDetail from "./RoomDetail";
 import RoomDetailModal from "./RoomDetailsModal";
 import RoomDetailBox from "./RoomDetailsDialog";
+import { useParams } from "react-router-dom";
+import useAuth from "../../../../../Hooks/useAuth/useAuth";
 
 export default function AllRooms() {
   const [render, setRender] = React.useState(0);
+  const {request} = useAuth()
+  const id = useParams()
   const [open, setOpen] = React.useState(false);
   const [Detailedroom, setDetailedRoom] = React.useState<number>(0);
-  const [Rooms, setRooms] = React.useState([
-    {
-      name: "Hotel mountain face by snow",
-      price: "8000/-",
-      rating: "excellent",
-      src: [
-        { url: "pic1.jpg" },
-        { url: "pic4.jpeg" },
-        { url: "pic3.jpg" },
-        { url: "pic5.jpeg" },
-      ],
-      description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. In id ab sint
-        vitae dolorum aliquam laboriosam voluptatibus cupiditate facilis
-        recusandae corrupti iste perferendis magni vel, nam reiciendis error
-        laborum ipsam.`,
-      type: "Deluxe",
-    },
-    {
-      name: "Bentewood Resort",
-      price: "2000/-",
-      rating: "excellent",
-      src: [
-        { url: "pic2.jpg" },
-        { url: "pic3.jpg" },
-        { url: "pic4.jpeg" },
-        { url: "pic5.jpeg" },
-      ],
-      description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. In id ab sint
-        vitae dolorum aliquam laboriosam voluptatibus cupiditate facilis
-        recusandae corrupti iste perferendis magni vel, nam reiciendis error
-        laborum ipsam.`,
-      type: "Deluxe",
-    },
-    {
-      name: "JW Marriot Mumbai Sahar",
-      price: "3000/-",
-      rating: "excellent",
-      src: [
-        { url: "pic3.jpg" },
-        { url: "pic1.jpg" },
-        { url: "pic4.jpeg" },
-        { url: "pic5.jpeg" },
-      ],
-      description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. In id ab sint
-        vitae dolorum aliquam laboriosam voluptatibus cupiditate facilis
-        recusandae corrupti iste perferendis magni vel, nam reiciendis error
-        laborum ipsam.`,
-      type: "Deluxe",
-    },
-    {
-      name: "Niranta Transit",
-      price: "5000/-",
-      rating: "excellent",
-      src: [
-        { url: "pic4.jpeg" },
-        { url: "pic3.jpg" },
-        { url: "pic4.jpeg" },
-        { url: "pic5.jpeg" },
-      ],
-      description: `Lorem ipsum dolor sit amet, consectetur adipisicing elit. In id ab sint
-        vitae dolorum aliquam laboriosam voluptatibus cupiditate facilis
-        recusandae corrupti iste perferendis magni vel, nam reiciendis error
-        laborum ipsam.`,
-      type: "Deluxe",
-    },
-    {
-      name: "Hotel Kohinoor Continental",
-      price: "9000/-",
-      rating: "excellent",
-      src: [
-        { url: "pic5.jpg" },
-        { url: "pic3.jpg" },
-        { url: "pic4.jpeg" },
-        { url: "pic5.jpeg" },
-      ],
-      description: `Lorem Tanish sit amet, consectetur adipisicing elit. In id ab sint
-        vitae dolorum aliquam laboriosam voluptatibus cupiditate facilis
-        recusandae corrupti iste perferendis magni vel, nam reiciendis error
-        laborum ipsam.`,
-      type: "Deluxe",
-    },
-  ]);
+  const [Rooms, setRooms] = React.useState([]);
+ 
+    const get = async () =>{
+      if(Object.keys(id).length === 0){
+      const result = await request.get('/hotels');
+      setRooms(result?.data[1].hotelInfo[0].rooms);
+    }else{
+      const result = await request.get(`/hotels/${id.id}`)
+      setRooms(result?.data[1].hotelInfo[0].rooms)
+  }}
+
+// console.log("rooms..................",Rooms);
+
 
   React.useEffect(() => {
     setRooms(Rooms);
+   
   }, [Rooms,render]);
+
+React.useEffect(()=>{
+    get()
+},[id])
 
   return (
     <>

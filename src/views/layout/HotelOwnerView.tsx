@@ -294,7 +294,7 @@ export default function HotelOwnerView() {
               </IconButton>
             </Stack>
             <Box ml={{ lg: "93%", md: "87%", sm: "80%" }}>
-              <Menu />
+              {/* <Menu /> */}
             </Box>
           </Toolbar>
         </AppBar>
