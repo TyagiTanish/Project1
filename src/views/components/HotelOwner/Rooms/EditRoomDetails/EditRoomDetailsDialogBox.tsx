@@ -119,6 +119,8 @@ export default function EditRoomDetails({
   };
 
   const submitDetails = (value: any) => {
+    console.log(value);
+    
     setEditRoom({
       ...editRoom,
       name: value.name,
