@@ -13,12 +13,8 @@ import HotelOwnerView from "../../layout/HotelOwnerView";
 import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
-<<<<<<< HEAD
 
 ;
-=======
-import AllRooms from "../HotelOwner/Rooms/RoomDetails/Rooms";
->>>>>>> main
 
 const router = createBrowserRouter([
   {

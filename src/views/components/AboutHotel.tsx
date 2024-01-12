@@ -5,6 +5,7 @@ import TabList from '@mui/lab/TabList';
 import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import { Outlet, useNavigate } from "react-router-dom";
+import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 function AboutHotel() {
  const navigate=useNavigate()
   const [activeButton, setActiveButton] = React.useState("info");
@@ -20,107 +21,6 @@ function AboutHotel() {
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
           </Typography>
         </Stack>
-<<<<<<< HEAD
-        <Stack
-          direction={"row"}
-          justifyContent={"space-evenly"}
-          sx={{ cursor: "pointer" }}
-        >
-          <Stack
-            spacing={1}
-            width={"10"}
-            onClick={() => {
-              setActiveButton("info");
-            }}
-          >
-            {" "}
-            {activeButton === "info" ? (
-              <>
-                <Stack direction={"column"} spacing={5}>
-                  <Stack spacing={1} direction={"row"} color={"#D2042D"}>
-                    <InfoIcon />
-                    <Typography>Info</Typography>
-                  </Stack>
-                 
-                </Stack>
-             
-              </>
-            ) : (
-              <Stack spacing={1} direction={"row"} color={"gray"}>
-                <InfoIcon />
-                <Typography>Info</Typography>
-              </Stack>
-            )}
-          </Stack>
-          <Stack
-            spacing={1}
-            width={"10"}
-            onClick={() => {
-              setActiveButton("dashboard");
-            }}
-          >
-            {" "}
-            {/* <Stack spacing={1} direction={"row"}>
-            <DashboardIcon />
-            <Typography>DashBoard</Typography>
-          </Stack>
-          */}
-            {activeButton === "dashboard" ? (
-              <Stack spacing={1} direction={"row"} color={"#D2042D"}>
-                <DashboardIcon />
-                <Typography>DashBoard</Typography>
-              </Stack>
-            ) : (
-              <Stack spacing={1} direction={"row"} color={"gray"}>
-                <DashboardIcon />
-                <Typography>DashBoard</Typography>
-              </Stack>
-            )}
-          </Stack>
-          <Stack
-            spacing={1}
-            width={"10"}
-            onClick={() => {
-              setActiveButton("rooms");
-            }}
-          >
-            {" "}
-            {activeButton === "rooms" ? (
-              <Stack spacing={1} direction={"row"} color={"#D2042D"}>
-                <BedIcon /> 
-                <Typography>All Rooms</Typography>
-              </Stack>
-            ) : (
-              <Stack spacing={1} direction={"row"} color={"gray"}>
-                <BedIcon />
-                <Typography>All Rooms</Typography>
-              </Stack>
-            )}
-          </Stack>
-          <Stack
-            spacing={1}
-            width={"10"}
-            onClick={() => {
-              setActiveButton("amenities");
-            }}
-          >
-            {" "}
-            {activeButton === "amenities" ? (
-              <Stack spacing={1} direction={"row"} color={"#D2042D"}>
-                <HdrAutoIcon />
-                <Typography>Amenities</Typography>
-              </Stack>
-            ) : (
-              <Stack spacing={1} direction={"row"} color={"gray"}>
-                <HdrAutoIcon />
-                <Typography>Amenities</Typography>
-              </Stack>
-            )}
-          </Stack>
-        </Stack>
-        {activeButton==='info' &&  <HotelInfo />}
-        {/* {activeButton === 'rooms' && <Box height={'65vh'} overflow={'auto'} ><AllRooms/></Box>} */}
-=======
         <TabList  onChange={(event: React.SyntheticEvent, newValue: string)=>setActiveButton(newValue)} >
          
           <Tab label={'info'}  value={'info'}   />
@@ -130,8 +30,7 @@ function AboutHotel() {
       
         </TabList>
         <TabPanel value="info" ><HotelInfo/></TabPanel>
-
->>>>>>> main
+        <TabPanel value="rooms" ><AllRooms/></TabPanel>
       </Stack>
       </TabContext>
     </>
