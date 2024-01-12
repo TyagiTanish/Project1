@@ -5,6 +5,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import {
   Box,
+  Checkbox,
   Grid,
   IconButton,
   Popper,
@@ -121,7 +122,7 @@ export default function RoomDetailBox({
               />
             </Stack>
           </Stack>
-          <Stack padding={2} spacing={1}>
+          <Stack padding={2} spacing={2}>
             <Typography sx={{ fontWeight: "bolder", color: "gray" }}>
               Room Highlights
             </Typography>
@@ -136,7 +137,11 @@ export default function RoomDetailBox({
             >
               {Rooms[Detailedroom]?.amenities?.map((item: any, index: any) => (
                 <>
-                <Typography alignItems={'center'}><CheckIcon fontSize="small" sx={{ml:2}}  />{item}</Typography>
+                <Typography alignItems={'center'} width={220} >
+                  {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
+                  <Checkbox disabled checked />
+                {item}
+                </Typography>
                 </>
               ))}
             </Stack>
