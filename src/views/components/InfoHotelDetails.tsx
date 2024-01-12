@@ -149,15 +149,6 @@ function InfoHotelDetails({ item }: any) {
           <Grid container spacing={2}>
             {ShowAmenities.map((item) => (
               <Grid item xs={3}>
-                {/* <CardHeader
-                  className={"MuiCardHeader-root"}
-                  title={row.id}
-                  subheader={row.icon}
-                  classes={{
-                    title: "MuiCardHeader-title",
-                    subheader: "MuiCardHeader-subheader",
-                  }}
-                /> */}
                 <Stack sx={{ fontSize: "10px", ml: 5 }}>
                   <Box sx={{ fontSize: "small" }}>{item.icon}</Box>
                   {item.label}
