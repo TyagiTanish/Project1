@@ -2,6 +2,7 @@ import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
+import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
 import {
   Box,
   Grid,
@@ -13,7 +14,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-
+import CheckIcon from '@mui/icons-material/Check';
 export default function RoomDetailBox({
   open,
   setOpen,
@@ -28,7 +29,7 @@ export default function RoomDetailBox({
   const handleClose = () => {
     setOpen(false);
   };
-const [screenSize,setScreenSize] = React.useState(window.innerWidth);
+  const [screenSize, setScreenSize] = React.useState(window.innerWidth);
   const [roomImage, setRoomImage] = React.useState(0);
   const [popper, setPopper] = React.useState(false);
   const roomIndex = React.useMemo(() => {
@@ -36,12 +37,11 @@ const [screenSize,setScreenSize] = React.useState(window.innerWidth);
     console.log(roomImage);
   }, [Detailedroom, roomImage]);
 
-  
-const ScreenSize =React.useEffect(()=>{
-  setScreenSize(window.innerWidth)
-  window.addEventListener('resize',()=>setScreenSize(window.innerWidth))
-})
 
+  const ScreenSize = React.useEffect(() => {
+    setScreenSize(window.innerWidth);
+    window.addEventListener("resize", () => setScreenSize(window.innerWidth));
+  });
 
   return (
     <Dialog
@@ -55,9 +55,9 @@ const ScreenSize =React.useEffect(()=>{
         <Stack
           direction={"row"}
           alignItems={"center"}
-          sx={{ float: "right", mt: "-2%", mr: "-2%", }}
+          sx={{ float: "right", mt: "-2%", mr: "-2%" }}
         >
-          <Tooltip title={'Close'}>
+          <Tooltip title={"Close"}>
             <IconButton onClick={() => setOpen(false)}>
               <CloseIcon />
             </IconButton>
@@ -72,21 +72,29 @@ const ScreenSize =React.useEffect(()=>{
             borderRight={"1px solid lightgray"}
           >
             <Stack direction={"row"} spacing={0.2}>
-              <Box component={'img'}
-               width={{xl:'75%',md:'65%',sm:'55%',xs:'50%',lg:'75%'}}
-                src={require(`../../../${Rooms[Detailedroom]?.src[roomImage]?.url}`)}
+              <Box
+                component={"img"}
+                width={{
+                  xl: "75%",
+                  md: "65%",
+                  sm: "55%",
+                  xs: "50%",
+                  lg: "75%",
+                }}
+                src={`http://localhost:8000/${Rooms[Detailedroom]?.photos[roomImage]?.path}`}
               />
               <>
                 <Stack direction={"column"} spacing={0.2}>
-                  {Rooms[Detailedroom]?.src?.map(
+                  {Rooms[Detailedroom]?.photos?.map(
                     (image: any, index: number) => {
                       return (
                         <>
                           {index != roomImage && (
-                            <Box component={'img'}
-                              width={{xl:'85%',sm:80,md:'80%'}}
-                              height={{xl:'50%',sm:50,md:'60%'}}
-                              src={require(`../../../${image?.url}`)}
+                            <Box
+                              component={"img"}
+                              width={{ xl: "85%", sm: 80, md: "80%" }}
+                              height={{ xl: "50%", sm: 50, md: "60%" }}
+                              src={`http://localhost:8000/${image?.path}`}
                               onClick={() => setRoomImage(index)}
                             />
                           )}
@@ -98,18 +106,19 @@ const ScreenSize =React.useEffect(()=>{
               </>
             </Stack>
             <Stack spacing={2}>
-              <Box sx={{ fontWeight: "bolder", fontSize: "25px" }}>
-                Hotel Mountain Face{" "}
-              </Box>
+              <Box sx={{ fontWeight: "bolder", fontSize: "25px" }}></Box>
               <Typography
                 style={{ width: "40%", color: "gray", fontWeight: "bolder" }}
               >
                 Room Description
               </Typography>
               <hr color="lightgray" />
-              <Typography width={"100%"}>
-            {Rooms[Detailedroom].description}
-              </Typography>
+              <Box
+                dangerouslySetInnerHTML={{
+                  __html: Rooms[Detailedroom]?.discription,
+                }}
+                sx={{ flex: 1 }}
+              />
             </Stack>
           </Stack>
           <Stack padding={2} spacing={1}>
@@ -118,30 +127,19 @@ const ScreenSize =React.useEffect(()=>{
             </Typography>
             <hr color="lightgray" />
             <br />
-            <Grid container
-              // direction={screenSize <=768 ? "column":"row"}     
-              spacing={2}
+            <Stack
+            gap={4}
               alignItems={"center"}
+              direction={'row'}
+              width={500}
+              flexWrap={"wrap"}
             >
-              <Grid item spacing={2}>
-                <li>Ac</li>
-                <li>42” LED Smart TV</li>
-                <li>Coffee and tea maker</li>
-                <li>Hair dryer</li>
-                <li>Bath amenities</li>
-                <li>Bath robes and slippers</li>
-                <li>Minibar upon request</li>
-              </Grid>
-              <Grid  item spacing={2}>
-                <li>24-hour room service</li>
-                <li>Complimentary water bottles</li>
-                <li>In-room safe</li>
-                <li>Iron and ironing board</li>
-                <li>Complimentary high-speed Wi-Fi</li>
-                <li>Daily newspaper upon request</li>
-                <li>Extra bed upon request</li>
-              </Grid>
-            </Grid>
+              {Rooms[Detailedroom]?.amenities?.map((item: any, index: any) => (
+                <>
+                <Typography alignItems={'center'}><CheckIcon fontSize="small" sx={{ml:2}}  />{item}</Typography>
+                </>
+              ))}
+            </Stack>
             <Stack paddingTop={20.2}>
               <hr></hr>
 
@@ -161,7 +159,7 @@ const ScreenSize =React.useEffect(()=>{
                     fontSize={"25px"}
                     fontWeight={"bolder"}
                   >
-                    <CurrencyRupeeIcon /> {Rooms[Detailedroom].price}
+                    <CurrencyRupeeIcon /> {Rooms[Detailedroom]?.price}
                   </Stack>
                 </Stack>
 

@@ -35,10 +35,12 @@ const [editBox,setEditBox] = useState(false);
   const handleOpenEditBox = ()=>{
     setEditBox(true)
   }
-  useEffect(()=>{
-setRooms(Rooms)
-console.log("Rooms");
-  },[Rooms])
+ 
+  
+//   useEffect(()=>{
+// setRooms(Rooms)
+// console.log("Rooms");
+//   },[Rooms])
 
   return (
     <>
@@ -50,18 +52,18 @@ console.log("Rooms");
               <Box component={'img'}
                 width={{xl:'75%',md:'60%',sm:'65%',xs:'50%'}}
                 height={181.8}
-                src={require(`../../../${room?.src[roomImage]?.url}`)}
+                src={`http://localhost:8000/${room?.photos[roomImage]?.path}`}
               />
               <>
                 <Stack direction={"column"} spacing={0.2}>
-                  {room?.src?.map((image: any, index: number) => {
+                  {room?.photos?.map((image: any, index: number) => {
                     return (
                       <>
                         {index != roomImage && (
                           <Box component={'img'}
                             width={100}
                             height={60}
-                            src={require(`../../../${image?.url}`)}
+                            src={`http://localhost:8000/${image?.path}`}
                             onClick={() => setRoomImage(index)}
                           />
                         )}
@@ -74,9 +76,7 @@ console.log("Rooms");
           </Box>
           <Stack fontSize={20}>
             <Box>
-              Hotel mountain Face By snow
-              <br />
-              <b>{room?.type}</b>
+              <b>{room?.roomType}</b>
             </Box>
             <Stack
               direction={"row"}
@@ -119,7 +119,7 @@ console.log("Rooms");
         </Stack>
       </Item>
     </Grid>
-    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  Rooms={Rooms} Detailedroom={Detailedroom} setRooms={setRooms} />
+    {/* <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  Rooms={Rooms} Detailedroom={Detailedroom} setRooms={setRooms} /> */}
     </>
   );
 };

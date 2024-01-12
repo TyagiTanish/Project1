@@ -166,12 +166,7 @@ export default function EditRoomDetails({
         >
           <Stack spacing={5} maxWidth={500}>
             <Stack spacing={2}>
-              <TextField
-                variant="outlined"
-                label={"Room Name"}
-                defaultValue={editRoom?.name}
-                {...register("name")}
-              />
+           
               <TextField
                 variant="outlined"
                 label={"Room Type"}
@@ -202,14 +197,14 @@ export default function EditRoomDetails({
                 Room Images
               </Typography>
               <Stack m={2} direction={"row"} gap={2} flexWrap={"wrap"}>
-                {editRoom?.src?.map((image: any, index: any) => (
+                {editRoom?.photos?.map((image: any, index: any) => (
                   <Tooltip title={"click to see preview"}>
                     <Box
                       component={"data"}
                       onClick={() => handlePreviewImage(index)}
                     >
                       <Chip
-                        label={`${image?.url}`}
+                        label={`${image?.path}`}
                         style={{ cursor: "pointer" }}
                         onDelete={() => handleDelete(index)}
                       />

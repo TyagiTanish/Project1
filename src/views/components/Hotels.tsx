@@ -6,6 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+// import "mapbox-gl/dist/mapbox-gl.css";
 import React, { useEffect, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -29,7 +30,7 @@ function Hotels({ filteredData, screenSize }: any) {
   const [openModule, setOpenModule] = useState<any>("info");
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
-  const [open,setOpen]=useState(false);
+  const [open, setOpen] = useState(false);
   const handleClick = (index: any) => {
     setDetailIndex(index);
 
@@ -41,8 +42,6 @@ function Hotels({ filteredData, screenSize }: any) {
   const handleViewDeal = (item: any) => {
     navigate("/billing");
   };
-  
-
 
   return (
     <>
@@ -104,14 +103,9 @@ function Hotels({ filteredData, screenSize }: any) {
                     p: 2,
                     m: 2,
                     justifyContent: "space-between",
-                    // display: "stack",
-                    // flexDirection: "row",
                     direction: "row",
-                    // padding: { sm: "5px", lg: "10px", md: "9px" },
                     border: "1px solid lightgrey",
                     borderRadius: "10px",
-                    // m: { sm: "1px", lg: 1 },
-                    // width: { sm: "86vh", lg: "910px", md: "570px" },
                   }}
                 >
                   <Box
@@ -123,7 +117,8 @@ function Hotels({ filteredData, screenSize }: any) {
                       borderBottomLeftRadius: "20px",
                     }}
                     alt="The house from the offer."
-                    src={require(`./${item.src}`)}
+                    // src={require(`./${item.photo}`)}
+                    src={`http://localhost:8000/${item?.photo}`}
                   />
 
                   <Stack m={2} width={300}>
@@ -135,7 +130,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         // width: { sm: "150px", lg: "200px", md: "180px" },
                       }}
                     >
-                      {item.name}
+                      {item.hotelName}
                     </Typography>
                     <Stack direction={"row"} sx={{ alignItems: "center" }}>
                       <Typography
@@ -240,11 +235,12 @@ function Hotels({ filteredData, screenSize }: any) {
                       <Button
                         variant="contained"
                         // href="/billing"
-                        href='/viewDeal'
+                        href="/viewDeal"
                         endIcon={<KeyboardArrowRightIcon />}
                         sx={{
-                          '&:hover': {
-                            backgroundColor: '#D4164B'},
+                          "&:hover": {
+                            backgroundColor: "#D4164B",
+                          },
                           backgroundColor: "#D4164B",
                         }}
                       >
@@ -283,7 +279,6 @@ function Hotels({ filteredData, screenSize }: any) {
           </>
         )}
       </Box>
-    
     </>
   );
 }
