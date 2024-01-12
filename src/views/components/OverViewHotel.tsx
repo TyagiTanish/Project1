@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import React from "react";
 import WifiIcon from "@mui/icons-material/Wifi";
 import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
@@ -10,7 +10,56 @@ import AcUnitIcon from "@mui/icons-material/AcUnit";
 import RestaurantMenuIcon from "@mui/icons-material/RestaurantMenu";
 import WineBarIcon from "@mui/icons-material/WineBar";
 import { useIntl, FormattedMessage } from "react-intl";
-function OverViewHotel() {
+
+import Map2 from "./Map2";
+import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
+import RoomServiceIcon from "@mui/icons-material/RoomService";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import GroupsIcon from "@mui/icons-material/Groups";
+function OverViewHotel({ item }: any) {
+  const amenitie = [
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: "0" },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon />, index: "1" },
+    { id: "pool", label: "Pool", icon: <PoolIcon />, index: "2" },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <RoomServiceIcon />,
+      index: "3",
+    },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon />, index: "4" },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <DryCleaningIcon />,
+      index: "5",
+    },
+    { id: "bar", label: "Bar", icon: <WineBarIcon />, index: "6" },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: "7" },
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: "8" },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon />, index: "9" },
+    { id: "pool", label: "Pool", icon: <PoolIcon />, index: "10" },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <RoomServiceIcon />,
+      index: "11",
+    },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon />, index: "12" },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <DryCleaningIcon />,
+      index: "13",
+    },
+    { id: "bar", label: "Bar", icon: <WineBarIcon />, index: "14" },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: "15" },
+  ];
+
+  const ShowAmenities = amenitie.filter((v, i) =>
+    item.amenities[0].includes(+i)
+  );
   return (
     <Box
       sx={{
@@ -50,119 +99,16 @@ function OverViewHotel() {
           Excellent
         </Box>
       </Box>
-      <Box
-        sx={{
-          display: "flex",
-          mt: 2,
-          fontSize: { sm: "medium", lg: "large", md: "14px" },
-        }}
-      >
-        <Box>
-          <WifiIcon
-            sx={{
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-              ml: { sm: 8, lg: 18, md: 8 },
-              mr: { sm: 0.5, lg: 1, md: 1 },
-            }}
-          />
-          <FormattedMessage defaultMessage="Wifi in lobby" />
-        </Box>
-        <Box>
-          <NetworkWifiIcon
-            sx={{
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-              ml: { sm: 6, lg: 20, md: 6 },
-              mr: { sm: 0.5, lg: 1, md: 1 },
-            }}
-          />
-          <FormattedMessage defaultMessage="Free WiFi" />
-        </Box>
-        <Box>
-          <PoolIcon
-            sx={{
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-              ml: { sm: 9, lg: 20, md: 9 },
-              mr: { sm: 0.5, lg: 1, md: 1 },
-            }}
-          />
-          <FormattedMessage defaultMessage="Pool" />
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          mt: { sm: 1, lg: 2 },
-          fontSize: { sm: "medium", lg: "large", md: "15px" },
-        }}
-      >
-        <Box sx={{ ml: { sm: 8, lg: 18, md: 8 } }}>
-          <AirlineSeatReclineExtraIcon
-            sx={{
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-              mr: { sm: 0.5, lg: 1, md: 1 },
-            }}
-          />
-          <FormattedMessage defaultMessage="Spa" />
-        </Box>
-        <Box
-          sx={{
-            ml: { sm: 13.5, lg: 28.3, md: 12.3 },
-            fontSize: { sm: "medium", lg: "large", md: "15px" },
-          }}
-        >
-          <LocalParkingIcon
-            sx={{
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-              mr: { sm: 0.5, lg: 1, md: 1 },
-            }}
-          />
-          <FormattedMessage defaultMessage=" Parking" />
-        </Box>
-        <Box sx={{ ml: { sm: 10.7, lg: 22, md: 10 } }}>
-          <PetsIcon
-            sx={{
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-              mr: { sm: 0.5, lg: 1, md: 1 },
-            }}
-          />
-          <FormattedMessage defaultMessage="Pets" />
-        </Box>
-      </Box>
-      <Box
-        sx={{
-          display: "flex",
-          mt: { sm: 1, lg: 2 },
-          fontSize: { sm: "medium", lg: "large", md: "15px" },
-        }}
-      >
-        <Box sx={{ ml: { sm: 8, lg: 18, md: 8 } }}>
-          <AcUnitIcon
-            sx={{
-              mr: { sm: 0.5, lg: 1, md: 1 },
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-            }}
-          />
-          <FormattedMessage defaultMessage="A/C" />
-        </Box>
-        <Box sx={{ ml: { sm: 13.7, lg: 28.5, md: 12 } }}>
-          <RestaurantMenuIcon
-            sx={{
-              mr: { sm: 0.5, lg: 1, md: 1 },
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-            }}
-          />
-          <FormattedMessage defaultMessage=" Restaurant" />
-        </Box>
-        <Box sx={{ ml: { sm: 7.5, lg: 18.5, md: 7.5 } }}>
-          <WineBarIcon
-            sx={{
-              mr: { sm: 0.5, lg: 1, md: 1 },
-              fontSize: { sm: "medium", lg: "large", md: "15px" },
-            }}
-          />
-          <FormattedMessage defaultMessage="Hotel bar" />
-        </Box>
-      </Box>
+      <Grid container spacing={2}>
+        {ShowAmenities.map((item) => (
+          <Grid item xs={3}>
+            <Stack sx={{ fontSize: "10px", ml: 5 }}>
+              <Box sx={{ fontSize: "small" }}>{item.icon}</Box>
+              {item.label}
+            </Stack>
+          </Grid>
+        ))}
+      </Grid>
     </Box>
   );
 }
