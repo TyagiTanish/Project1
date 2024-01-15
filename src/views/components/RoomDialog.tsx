@@ -12,6 +12,7 @@ import {
 import React from "react";
 import CloseIcon from "@mui/icons-material/Close";
 function RoomDialog(props: any) {
+  console.log(props?.details);
   return (
     <Dialog onClose={props.handleClose} open={props.open} maxWidth="lg">
       <Stack
@@ -19,7 +20,9 @@ function RoomDialog(props: any) {
         direction={"row"}
         alignItems={"center"}
       >
-        <DialogTitle sx={{fontWeight:'bold'}}>{props.details.name}</DialogTitle>{" "}
+        <DialogTitle sx={{ fontWeight: "bold" }}>
+          {props.details?.roomType}
+        </DialogTitle>{" "}
         <Tooltip title="Close">
           <IconButton>
             <CloseIcon
@@ -42,7 +45,7 @@ function RoomDialog(props: any) {
                 backgroundSize: "cover",
               }}
               alt="The house from the offer."
-              src={props?.details?.src}
+              src={`http://localhost:8000/${props?.details?.photos[1].path}`}
             />
           </Stack>
           <Stack
@@ -50,25 +53,35 @@ function RoomDialog(props: any) {
             spacing={2}
             overflow={"scroll"}
             height={"55.5%"}
-            marginTop={'2%'}
+            marginTop={"2%"}
           >
             <Typography fontWeight={"bold"} fontSize={18}>
               Room Description
             </Typography>
-            <Typography fontSize={14}>{props.details.description}</Typography>
+            {/* <Typography fontSize={14}>{props.details.description}</Typography> */}
+            <Box
+              dangerouslySetInnerHTML={{
+                __html: props?.details?.discription,
+              }}
+              sx={{ flex: 1 }}
+            />
             <Typography fontWeight={"bold"} fontSize={18}>
               Hotel Amenities
             </Typography>
             <Stack spacing={1}>
-              <li>Ac</li>
+              {/* <li>Ac</li>
               <li>42” LED Smart TV</li>
               <li>Coffee and tea maker</li>
               <li>Hair dryer</li>
               <li>Bath amenities</li>
               <li>Bath robes and slippers</li>
-              <li>Minibar upon request</li>
+              <li>Minibar upon request</li> */}
+              {props?.details?.amenities.map((item: any, i: any) => (
+                // console.log(item)
+                <li>{item}</li>
+              ))}
             </Stack>
-            <Stack spacing={1}>
+            {/* <Stack spacing={1}>
               <li>24-hour room service</li>
               <li>Complimentary water bottles</li>
               <li>In-room safe</li>
@@ -76,11 +89,10 @@ function RoomDialog(props: any) {
               <li>Complimentary high-speed Wi-Fi</li>
               <li>Daily newspaper upon request</li>
               <li>Extra bed upon request</li>
-            </Stack>
+            </Stack> */}
           </Stack>
         </Stack>
-       
-    
+
         <Stack width={"50%"}>
           <Stack height={"75%"}></Stack>
           <Divider />
@@ -91,7 +103,7 @@ function RoomDialog(props: any) {
                 From
               </Typography>
               <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
-                ₹12,150
+                {/* ₹12,150 */}₹{props?.details?.price}/-
               </Typography>
               <Typography sx={{ fontSize: 13, color: "gray" }}>
                 Avg/Night
@@ -137,7 +149,6 @@ function RoomDialog(props: any) {
           </Stack>
         </Stack>
       </Stack>
-   
     </Dialog>
   );
 }

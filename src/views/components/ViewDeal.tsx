@@ -1,5 +1,5 @@
 import { Box, Button, Divider, Stack, Typography } from "@mui/material";
-import React, { useState } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -8,7 +8,33 @@ import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import ViewDetails from "./ViewDetails";
 import UserViewRooms from "./UserViewRooms";
+import useAuth from "../../Hooks/useAuth/useAuth";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
 function ViewDeal() {
+  const { id } = useParams();
+  const [filterData, setFilteredData] = useState<any>([]);
+  // console.log(id);
+  // const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  // console.log(hotelId);
+  const [hotels, sethotels] = useState<any>([]);
+  const { request } = useAuth();
+
+  const getHotels = async () => {
+    const result = await request.get(`/getHotel/${id}`);
+    sethotels(result.data);
+    // console.log(hotels);
+  };
+
+  useEffect(() => {
+    getHotels();
+  }, []);
+
+  useMemo(() => {
+    setFilteredData(hotels);
+    // console.log(filterData);
+  }, [hotels]);
+
   const [open, setOpen] = useState(false);
   const handleOpen = () => {
     if (open === true) {
@@ -17,11 +43,13 @@ function ViewDeal() {
       setOpen(true);
     }
   };
+
   return (
     <>
       <Stack width={"99.9%"} boxShadow={3}>
         <Logo />
       </Stack>
+
       <Stack alignItems={"center"}>
         <Stack margin={6} spacing={8} direction={"row"} width={"90%"}>
           <Box
@@ -31,15 +59,18 @@ function ViewDeal() {
               height: "auto",
             }}
             alt="The house from the offer."
-            src={require(`./pic2.jpg`)}
+            // src={require(`./pic2.jpg`)}
+            src={`http://localhost:8000/${filterData[0]?.photo}`}
           />
           <Stack direction={"column"} spacing={1}>
             <Typography sx={{ fontSize: 22 }}>
-              Hotel Mountain face by snow
+              {filterData[0]?.hotelName}
             </Typography>
             <Stack direction={"row"} spacing={1}>
               <LocationOnIcon fontSize="small" />
-              <Typography fontSize={14}>Juhu Tara Road Mumbai</Typography>
+              <Typography fontSize={14}>
+                {filterData[0]?.city},{filterData[0]?.state}
+              </Typography>
             </Stack>
             <Stack
               direction={"row"}
@@ -70,7 +101,7 @@ function ViewDeal() {
           </Stack>
         </Stack>
       </Stack>
-      {open && <ViewDetails />}
+      {open && <ViewDetails hotels={hotels} />}
       <Stack
         direction={"row"}
         sx={{ fontSize: 10, color: "#0096FF", cursor: "pointer" }}
@@ -89,7 +120,7 @@ function ViewDeal() {
       </Stack>
 
       <Divider sx={{ borderBottomWidth: 20 }} />
-      <UserViewRooms />
+      <UserViewRooms hotels={hotels} />
     </>
   );
 }

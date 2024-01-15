@@ -22,9 +22,13 @@ import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { triggerAsyncId } from "async_hooks";
-import ViewDeal from "./ViewDeal";
+
+import { useDispatch, useSelector } from "react-redux";
+import { hotelId } from "./redux/user/userSlice";
 
 function Hotels({ filteredData, screenSize }: any) {
+  const dispatch = useDispatch();
+
   const navigate = useNavigate();
   const [detailIndex, setDetailIndex] = useState<any>("");
   const [openModule, setOpenModule] = useState<any>("info");
@@ -42,7 +46,9 @@ function Hotels({ filteredData, screenSize }: any) {
   const handleViewDeal = (item: any) => {
     navigate("/billing");
   };
-
+  const setRedux = (id: any) => {
+    dispatch(hotelId(id));
+  };
   return (
     <>
       <Box
@@ -235,7 +241,12 @@ function Hotels({ filteredData, screenSize }: any) {
                       <Button
                         variant="contained"
                         // href="/billing"
-                        href="/viewDeal"
+                        // href="/viewDeal"
+                        onClick={() => {
+                          setRedux(item._id);
+                          navigate(`/viewDeal/${item._id}`);
+                          // <ViewDeal />;
+                        }}
                         endIcon={<KeyboardArrowRightIcon />}
                         sx={{
                           "&:hover": {
