@@ -22,15 +22,17 @@ import { Form } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { render } from "react-dom";
+import {  useSelector } from "react-redux";
 function EditHotel(props: any) {
-  const [value, setValue] = useState(props.data[0]?.discription);
+  const [value, setValue] = useState(props.data?.discription);
   const [imagePreView, setImagePreView] = React.useState(false);
   const [previewIndex, setPreviewIndex] = React.useState<any>("");
-  const [photoValue, setPhotoValue] = useState(props.data[0]?.photo.slice(7));
+  const [photoValue, setPhotoValue] = useState(props.data?.photo.slice(7));
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<any>([]);
   const url = "http://localhost:8000/";
   const { request } = useAuth();
+  const user = useSelector((state: any) => state.userReducer.user);
   const handleDelete = () => {
     setOpen(true);
     setPhotoValue("");
@@ -47,7 +49,7 @@ function EditHotel(props: any) {
       );
       imageUrl = urls?.[0]?.preview;
     } else {
-      imageUrl = url + props.data[0]?.photo;
+      imageUrl = url + props.data?.photo;
     }
     return imageUrl;
   }, [acceptedFiles, props.data]);
@@ -57,7 +59,7 @@ function EditHotel(props: any) {
   };
   React.useEffect(() => {
     if (open === false) {
-      setPhotoValue(props.data[0]?.photo.slice(7));
+      setPhotoValue(props.data?.photo.slice(7));
     } else {
       setFile(acceptedFiles);
       setPhotoValue("");
@@ -76,19 +78,20 @@ function EditHotel(props: any) {
       if (file.length === 1) {
         formData.append("files", file[0]);
       }
-      formData.set("_id", props.data[0]?._id);
-      formData.set("hotelName", data.hotelName);
-      formData.set("city", data.city);
-      formData.set("state", data.state);
-      formData.set("pinCode", data.pinCode);
-      formData.set("country", data.country);
+      formData.set("_id", props.data?._id);
+      formData.set("hotelName", data?.hotelName);
+      formData.set("city", data?.city);
+      formData.set("state", data?.state);
+      formData.set("pinCode", data?.pinCode);
+      formData.set("country", data?.country);
       formData.set("discription", value);
-      formData.set("name", data.ownerName);
-      formData.set("email", data.email);
-      formData.set("ownerId", props.ownerData?.user?._id);
+      formData.set("name", user.name);
+   
       const result = await request.put("/updateHotel", formData);
-      props.setData(result?.data[1]?.hotelInfo);
-      props.setOwnerData(result?.data[0]);
+      props.setData(result?.data[0]);
+      // localStorage.setItem("name",data.ownerName);
+     
+     
     };
     get();
   };
@@ -132,20 +135,20 @@ function EditHotel(props: any) {
               <TextField
                 variant="outlined"
                 label={"Hotel Name"}
-                defaultValue={props.data[0]?.hotelName}
+                defaultValue={props.data?.hotelName}
                 {...register("hotelName")}
               />
               <Stack direction={"row"} spacing={2}>
                 <TextField
                   variant="outlined"
                   label={"City"}
-                  defaultValue={props.data[0]?.city}
+                  defaultValue={props.data?.city}
                   {...register("city")}
                 />
                 <TextField
                   variant="outlined"
                   label={"Pin Code"}
-                  defaultValue={props.data[0]?.pinCode}
+                  defaultValue={props.data?.pinCode}
                   {...register("pinCode")}
                 />
               </Stack>
@@ -153,27 +156,30 @@ function EditHotel(props: any) {
                 <TextField
                   variant="outlined"
                   label={"State"}
-                  defaultValue={props.data[0]?.state}
+                  defaultValue={props.data?.state}
                   {...register("state")}
                 />
                 <TextField
                   variant="outlined"
                   label={"country"}
-                  defaultValue={props.data[0]?.country}
+                  defaultValue={props.data?.country}
                   {...register("country")}
                 />
               </Stack>
               <TextField
+              disabled
                 variant="outlined"
-                label={"Owner  Name"}
-                defaultValue={props.ownerData?.user?.name}
+                label={"Owner Name"}
+                defaultValue={user.name}
                 {...register("ownerName")}
               />
               <TextField
+         
                 variant="outlined"
                 label={"Owner's Email"}
-                defaultValue={props.ownerData?.user?.email}
+                defaultValue={user.email}
                 {...register("email")}
+                disabled
               />
             </Stack>
           </Stack>
