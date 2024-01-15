@@ -20,10 +20,10 @@ function App() {
   const getUser = async () => {
     const authToken = localStorage.getItem("authToken");
     try {
-      if(!authToken)
-      {
-     return  navigate('/login');
-      }
+    //   if(!authToken)
+    //   {
+    //  return  navigate('/login');
+    //   }
       const userData = (await request.get(`/getUserData`)).data;
       dispatch(userLogin(userData));
     } catch (error) {
