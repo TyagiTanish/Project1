@@ -9,10 +9,11 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 function RoomDialog(props: any) {
   console.log(props?.details);
+  const [roomImage, setRoomImage] = useState(0);
   return (
     <Dialog onClose={props.handleClose} open={props.open} maxWidth="lg">
       <Stack
@@ -36,7 +37,7 @@ function RoomDialog(props: any) {
       <Divider />
       <Stack direction={"row"} padding={2} overflow={"hidden"}>
         <Stack width={"50%"}>
-          <Stack direction={"column"} spacing={4}>
+          {/* <Stack direction={"column"} spacing={4}>
             <Box
               component="img"
               sx={{
@@ -47,13 +48,45 @@ function RoomDialog(props: any) {
               alt="The house from the offer."
               src={`http://localhost:8000/${props?.details?.photos[1].path}`}
             />
-          </Stack>
+          </Stack> */}
+          <Box>
+            <Stack direction={"row"} spacing={0.2}>
+              <Box
+                component={"img"}
+                width={{ xl: "60%", md: "60%", sm: "65%", xs: "50%" }}
+                // height={181.8}
+                src={`http://localhost:8000/${props?.details?.photos[roomImage]?.path}`}
+              />
+              <>
+                <Stack direction={"column"} spacing={0.2}>
+                  {props?.details?.photos?.map((image: any, index: number) => {
+                    return (
+                      <>
+                        {index != roomImage && (
+                          <Box
+                            component={"img"}
+                            width={100}
+                            height={{ lg: 90 }}
+                            src={`http://localhost:8000/${image?.path}`}
+                            onClick={() => setRoomImage(index)}
+                          />
+                        )}
+                      </>
+                    );
+                  })}
+                </Stack>
+              </>
+            </Stack>
+          </Box>
           <Stack
             direction={"column"}
             spacing={2}
             overflow={"scroll"}
             height={"55.5%"}
             marginTop={"2%"}
+            // width={"%"}
+            p={1}
+            textAlign={"justify"}
           >
             <Typography fontWeight={"bold"} fontSize={18}>
               Room Description
