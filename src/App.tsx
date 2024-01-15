@@ -1,5 +1,5 @@
 import "./App.css";
-import { Outlet, Router, RouterProvider } from "react-router-dom";
+import { Navigate, Outlet, Router, RouterProvider, useNavigate } from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
@@ -15,21 +15,27 @@ import Rooms from "./views/components/Rooms";
 function App() {
   const { request } = useAuth();
   const dispatch = useDispatch();
+    const navigate= useNavigate();
 
   const getUser = async () => {
     const authToken = localStorage.getItem("authToken");
     try {
+      if(!authToken)
+      {
+     return  navigate('/login');
+      }
       const userData = (await request.get(`/getUserData`)).data;
       dispatch(userLogin(userData));
     } catch (error) {
       localStorage.removeItem("authToken");
     }
   };
+
+
   useEffect(() => {
-    if (localStorage.getItem("authToken")) {
       getUser();
-    }
   });
+
   // interface IntlConfig {
   //   locale: string
   //   formats: CustomFormats

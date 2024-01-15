@@ -32,7 +32,6 @@ function HotelInfo() {
   const handleOpenEditBox=()=>{
     setOpen(true);
   }
-  console.log(ownerData);
 const handleClose=()=>{
   setOpen(false)
 }

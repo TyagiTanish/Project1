@@ -62,7 +62,7 @@ const highlights = [
   { Highlight: "Daily newspaper upon request" },
   { Highlight: "Extra bed upon request" },
 ];
-function Rooms() {
+function AddRooms() {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -78,22 +78,14 @@ function Rooms() {
     setType(event.target.value as string);
   };
   const [files1, setFiles1] = useState<any>([]);
-  // const onDrop = React.useCallback(
-
-  //   (acceptedFiles: any) => {
-  //     setFile(acceptedFiles);
-  //   },
-  //   []
-  // );
+ 
   const handleDelete = (photo: any) => {
-    // if(file.length===1){
-    //   setNext(true)
-    // }
+   
 
     var acceptedFiles = file.filter((pic: any) => {
       return pic !== photo;
     });
-    // console.log(acceptedFiles);
+
 
     if (acceptedFiles.length === 0) {
       setphotos(false);
@@ -106,7 +98,6 @@ function Rooms() {
   });
 
   useEffect(() => {
-    // setFile(acceptedFiles);
     setDisplay(acceptedFiles.length);
     if (acceptedFiles.length === 0) {
       setphotos(false);
@@ -117,12 +108,11 @@ function Rooms() {
     setFile(
       acceptedFiles.map((file) => {
         const previewURL = URL.createObjectURL(file);
-        console.log("Preview URL:", previewURL);
         return { ...file, preview: previewURL };
       })
     );
   }, [acceptedFiles]);
-  console.log(acceptedFiles);
+
   interface User {
     roomQuantity: string;
     price: string;
@@ -146,7 +136,7 @@ function Rooms() {
   const id = useParams();
   const onSubmit = async (data: any) => {
 
-    console.log("files.....",roomHighlight);
+
     // const formData = new FormData();
     // data.roomHighlight = roomHighlight;
   const formData:any = new FormData()
@@ -446,4 +436,4 @@ if(Object.keys(id).length === 0){
   );
 }
 
-export default Rooms;
+export default AddRooms;

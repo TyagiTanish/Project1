@@ -32,6 +32,7 @@ function EditHotel(props: any) {
   const [photoValue, setPhotoValue] = useState(props.data[0]?.photo.slice(7));
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<any>([]);
+  
   const handlePreviewImage = () => {
     setImagePreView(true);
     // setPreviewIndex(photoValue);
@@ -67,10 +68,10 @@ function EditHotel(props: any) {
  
   } = useForm();
 
-  const onSubmit=(data:any)=>{
-      console.log('form Data is -',data);
+  // const onSubmit=(data:any)=>{
+  //     console.log('form Data is -',data);
       
-  }
+  // }
   return (
     <Dialog
       //   fullScreen={fullScreen}
@@ -104,7 +105,7 @@ function EditHotel(props: any) {
         >
         
           <Stack spacing={4} maxWidth={500}>
-          <Form onSubmit={handleSubmit((data) => console.log(data))}>
+          <form onSubmit={handleSubmit((data) => {console.log(data)})}>
             <Stack spacing={5}>
              <TextField
                 variant="outlined"
@@ -157,7 +158,7 @@ function EditHotel(props: any) {
               
             </Stack>
             {/* <Button type="submit" value="submit">submit</Button> */}
-</Form>
+</form>
         
           </Stack>
           <Stack

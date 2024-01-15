@@ -35,7 +35,6 @@ export default function RoomDetailBox({
   const [popper, setPopper] = React.useState(false);
   const roomIndex = React.useMemo(() => {
     setDetailedRoom(Detailedroom);
-    console.log(roomImage);
   }, [Detailedroom, roomImage]);
 
 

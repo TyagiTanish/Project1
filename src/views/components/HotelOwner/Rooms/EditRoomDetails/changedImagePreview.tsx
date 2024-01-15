@@ -9,31 +9,27 @@ import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import { Box, Divider, IconButton, Stack, Typography } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-export default function ImagePreview({
-  imagePreView,
-  setImagePreView,
-  room,
-  previewIndex,
-}: any) {
+export default function ChangedImagePreview({changedImagePreview,setChangedImagePreView,changedPhoto,ChangedImageIndex}:any){
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = () => {
-    setImagePreView(false);
+    setChangedImagePreView(false);
   };
+// console.log(changedPhoto[ChangedImageIndex]);
 
 
   return (
     <Dialog
       fullScreen={fullScreen}
-      open={imagePreView}
+      open={changedImagePreview}
       onClose={handleClose}
       aria-labelledby="responsive-dialog-title"
       maxWidth={"md"}
     >
       <DialogTitle>
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'}  >
-          <Typography variant="h6" >{room?.photos[previewIndex]?.filename}</Typography>
+          <Typography variant="h6" >{changedPhoto[ChangedImageIndex]?.preview}</Typography>
           <IconButton onClick={handleClose}>
             <CloseIcon />
           </IconButton>
@@ -44,7 +40,7 @@ export default function ImagePreview({
         <Box
           component={"img"}
           width={450}
-          src={`http://localhost:8000/${room.photos[previewIndex]?.path}`}
+          src={changedPhoto[ChangedImageIndex]?.preview}
         />
       </DialogContent>
     </Dialog>
