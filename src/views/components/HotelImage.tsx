@@ -17,7 +17,9 @@ function HotelImage(props:any) {
     >
       <DialogTitle>
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'}  >
+
          <Typography variant="h6" >{props.photoValue}</Typography> 
+
           <IconButton onClick={handleClose}>
             <CloseIcon />
           </IconButton>
@@ -30,7 +32,9 @@ function HotelImage(props:any) {
           component={"img"}
           width={450}
           src={props.previewIndex}
+
         /> 
+
         
       </DialogContent>
     </Dialog>
