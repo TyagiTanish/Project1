@@ -14,7 +14,6 @@ import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 
-;
 
 const router =[
   {
@@ -71,7 +70,7 @@ const router =[
     ),
   },
   {
-    path: "viewDeal",
+    path: "/viewDeal/:id",
     element: (
       <CustomerRoutes>
         <ViewDeal />
@@ -104,7 +103,6 @@ const router =[
         ),
       },
 
-
       {
         path: "/member/hotels/:id",
         element: (
@@ -113,8 +111,6 @@ const router =[
           </MemberRoute>
         ),
       },
-
-
     ],
   },
 ];

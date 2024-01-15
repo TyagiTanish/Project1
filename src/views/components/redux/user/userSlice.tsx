@@ -5,6 +5,7 @@ export const userSlice = createSlice({
     user: null,
     location: null,
     locale: "en",
+    hotelId: null,
   },
   reducers: {
     userLogin: (state: any, action: any) => {
@@ -19,9 +20,12 @@ export const userSlice = createSlice({
     locale: (state: any, action: any) => {
       state.locale = action.payload;
     },
+    hotelId: (state: any, action: any) => {
+      state.hotelId = action.payload;
+    },
   },
 });
 // Action creators
-export const { userLogin, userLogout, userLocation, locale } =
+export const { userLogin, userLogout, userLocation, locale, hotelId } =
   userSlice.actions;
 export default userSlice.reducer;

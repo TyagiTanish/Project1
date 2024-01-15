@@ -42,15 +42,12 @@ const HotelsPage = () => {
   // ]);
   const [hotels, sethotels] = useState<any>();
   const { request } = useAuth();
-
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState(hotels);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const getHotels = async () => {
     const result = await request.get("/getHotels");
     sethotels(result.data);
-    // setFilteredData(result.data);
-    // console.log(result.data);
   };
   useEffect(() => {
     getHotels();
@@ -58,7 +55,7 @@ const HotelsPage = () => {
   useMemo(() => {
     setFilteredData(hotels);
   }, [hotels]);
-  // console.log(filteredData, hotels, "_____________________________");
+
   const filterData = (searchTerm: any) => {
     const filteredData = hotels.filter((item: any) =>
       item.name.toLowerCase().includes(searchTerm.toLowerCase())
