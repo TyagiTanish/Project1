@@ -17,7 +17,7 @@ function HotelImage(props:any) {
     >
       <DialogTitle>
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'}  >
-         <Typography variant="h6" >{props.previewIndex}</Typography> 
+         <Typography variant="h6" ></Typography> 
           <IconButton onClick={handleClose}>
             <CloseIcon />
           </IconButton>
@@ -25,17 +25,12 @@ function HotelImage(props:any) {
       </DialogTitle>
       <Divider/>
       <DialogContent>
-        {props.open===false ? 
+      
         <Box
           component={"img"}
           width={450}
-          src={`http://localhost:8000/${props.previewIndex}`}
-        /> :
-         <Box
-        component={"img"}
-        width={450}
-        src={`./props.previewIndex`}
-      />}
+          src={props.previewIndex}
+        />
         
       </DialogContent>
     </Dialog>

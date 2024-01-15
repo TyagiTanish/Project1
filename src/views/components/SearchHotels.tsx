@@ -10,39 +10,33 @@ import React, { useEffect, useState } from "react";
 import SearchIcon from "@mui/icons-material/Search";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useNavigate } from "react-router-dom";
-
-function SearchHotels() {
-  const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
-  const { request } = useAuth();
-  // const filterData = (searchTerm: any) => {
-  //   const filteredData = hotels.filter((item: any) =>
-  //     item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-  //   setFilteredData(filteredData);
-  // };
-  const navigate=useNavigate();
-
-  const handleInputChange = (event: any) => {
-    const { value } = event.target;
-    setSearchTerm(value);
-    // filterData(value);
-  };
-
-useEffect(()=>{
-  const get=(async()=>{
-    const result= await request.get('/searchHotels');
-    setFilteredData(result.data) 
-  })
-  get();
-  ;
-},[])
-const handleClick=(data:any)=>{
-  navigate(`/member/hotels/${data}`) 
-
-  
-  
-}
+function SearchHotels({filteredData,handleClick,handleInputChange,searchTerm}:any) {
+//   const [searchTerm, setSearchTerm] = useState("");
+//   const [filteredData, setFilteredData] = useState([]);
+//   const { request } = useAuth();
+//   // const filterData = (searchTerm: any) => {
+//   //   const filteredData = hotels.filter((item: any) =>
+//   //     item.name.toLowerCase().includes(searchTerm.toLowerCase())
+//   //   );
+//   //   setFilteredData(filteredData);
+//   // };
+//   const navigate=useNavigate();
+//   const handleInputChange = (event: any) => {
+//     const { value } = event.target;
+//     setSearchTerm(value);
+//     // filterData(value);
+//   };
+// useEffect(()=>{
+//   const get=(async()=>{
+//     const result= await request.get('/searchHotels');
+//     setFilteredData(result.data)
+//   })
+//   get();
+//   ;
+// },[])
+// const handleClick=(data:any)=>{
+//   navigate(`/member/hotels/${data}`)
+// }
   return (
     <Box sx={{ border: "1px solid lightgray", borderRadius: 1 , width:{xl:'30%', md:'5%'},overflowX:'hidden', overflowY:'scroll'}} >
       <Stack alignItems={"left"} padding={2} paddingLeft={4}>
@@ -85,7 +79,6 @@ const handleClick=(data:any)=>{
             sx={{ cursor: "pointer" }}
             onClick={() => {
              handleClick(item?._id);
-          
             }}
           >
             {" "}
@@ -101,5 +94,4 @@ const handleClick=(data:any)=>{
     </Box>
   );
 }
-
 export default SearchHotels;

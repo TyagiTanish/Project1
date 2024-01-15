@@ -6,18 +6,28 @@ import PlaceIcon from "@mui/icons-material/Place";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditHotel from "./EditHotel";
-function HotelInfo() {
+import DeleteModal from "./DeleteModal";
+function HotelInfo({setRender}:any) {
   const [data, setData] = useState<any>([]);
   const [ownerData, setOwnerData] = useState<any>([]);
   const [open,setOpen]=useState(false);
   const id = useParams();
   const { request } = useAuth();
+  const [open2, setOpen2] = React.useState(false);
+  const handleClickOpen = () => {
+    setOpen(true);
+  };
+  const handleClickOpen2 = () => {
+    setOpen2(true);
+  };
+  const handleCloseDelete = () => {
+    setOpen2(false);
+  };
   useEffect(() => {
     if (Object.keys(id).length === 0) {
       const get = async () => {
         const result = await request.get("/hotels");
-        setData(result?.data[1]?.hotelInfo);
-
+        setData(result?.data[1]?.hotelInfo)
         setOwnerData(result?.data[0]);
       };
       get();
@@ -38,7 +48,7 @@ const handleClose=()=>{
   return (
     <>
       <Stack alignItems={"center"} marginLeft={-6}>
-        <Stack direction={'row'} justifyContent={'space-around'}>   
+        <Stack direction={'row'} justifyContent={'space-around'}>
          <Stack margin={6} spacing={5} direction={"row"} width={"90%"}>
           <Box
             component="img"
@@ -59,31 +69,24 @@ const handleClose=()=>{
               </Typography>
             </Stack>
           </Stack>
-        
         </Stack>
         <Stack direction={'row'} spacing={2}>
-            <Tooltip title={"Delete"} style={{cursor:'pointer'}}>
-              {/* <IconButton style={{ fontSize: "14px" }}> */}
+            <Tooltip title={"Delete"} style={{cursor:'pointer'}} onClick={handleClickOpen2}>
                 <DeleteOutlineOutlinedIcon
                   fontSize="medium"
                   sx={{ color: "lightgray", "&:hover": { color: "black" } }}
                 />
-              {/* </IconButton> */}
             </Tooltip>
-
             <Tooltip title={"Edit"} style={{cursor:'pointer'}} onClick={()=>handleOpenEditBox()}>
-              {/* <IconButton style={{ fontSize: "14px" }}> */}
                 <ModeEditOutlineOutlinedIcon
                   fontSize="medium"
                   sx={{ color: "lightgray", "&:hover": { color: "black" } }}
                 />
-              {/* </IconButton> */}
             </Tooltip>
           </Stack>
           </Stack>
-    
       </Stack>
-      <Stack direction={"column"} spacing={2} marginBottom={5}>
+      <Stack direction={"column"} spacing={2} marginBottom={5} width={600}>
         <Typography sx={{ fontSize: 22, fontWeight: "bold" }}>
           Description
         </Typography>
@@ -113,9 +116,9 @@ const handleClose=()=>{
         </Stack>
       </Stack>
       {/* <Box>  </Box> */}
-      {open && <EditHotel open={open} setOpen={setOpen} handleClose={handleClose}  data={data} ownerData={ownerData}/>}
+      {open && <EditHotel open={open} setOpen={setOpen} handleClose={handleClose}  data={data} ownerData={ownerData} setData={setData} setOwnerData={setOwnerData} setRender={setRender}/>}
+      {open2 && <DeleteModal open2={open2} handleClickOpen2={handleClickOpen2} handleCloseDelete={handleCloseDelete} _id={data[0]?._id}/>}
     </>
   );
 }
-
 export default HotelInfo;
