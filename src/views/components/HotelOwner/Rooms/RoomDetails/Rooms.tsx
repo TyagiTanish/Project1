@@ -6,6 +6,8 @@ import RoomDetailModal from "./RoomDetailsModal";
 import RoomDetailBox from "./RoomDetailsDialog";
 import { useParams } from "react-router-dom";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
+import AddRooms from "../../../Rooms";
+
 
 export default function AllRooms() {
   const [render, setRender] = React.useState(0);
@@ -20,11 +22,10 @@ export default function AllRooms() {
       const result = await request.get('/hotels');
       setRooms(result?.data[1].hotelInfo[0].rooms);
     }else{
-      const result = await request.get(`/hotels/${id.id}`)
+      const result = await request.get(`/getInfo/${id.id}`)
       setRooms(result?.data[1].hotelInfo[0].rooms)
   }}
 
-// console.log("rooms..................",Rooms);
 
 
   React.useEffect(() => {
@@ -38,12 +39,14 @@ React.useEffect(()=>{
 
   return (
     <>
+    <AddRooms/>
       <Box sx={{ flexGrow: 1 }} padding={10}>
         <Grid
           container
           spacing={{ xs: 2, md: 3 }}
           columns={{ xs: 1, sm: 10, md: 8, xl: 8 }}
         >
+          
           {Rooms?.map((room, index) => (
             <RoomDetail
               room={room}

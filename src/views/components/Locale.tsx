@@ -19,7 +19,7 @@ export interface LocalsProps {
 const Locales = ({ children }: LocalsProps) => {
   const [messages, setMessages] = useState<any>();
   const customization = useSelector((state:any)=>state.userReducer.locale)
-  console.log(customization);
+
   
   useEffect(() => {
     loadLocaleData(customization).then((d) => {

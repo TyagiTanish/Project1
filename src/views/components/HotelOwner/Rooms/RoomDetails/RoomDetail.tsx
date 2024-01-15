@@ -119,7 +119,7 @@ const [editBox,setEditBox] = useState(false);
         </Stack>
       </Item>
     </Grid>
-    {/* <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  Rooms={Rooms} Detailedroom={Detailedroom} setRooms={setRooms} /> */}
+    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  Rooms={Rooms} Detailedroom={Detailedroom} setRooms={setRooms} />
     </>
   );
 };

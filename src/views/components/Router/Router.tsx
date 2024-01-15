@@ -1,4 +1,4 @@
-import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { createBrowserRouter, RouterProvider, useRoutes } from "react-router-dom";
 import MainPage from "../../pages/MainPage";
 import CustomerRoutes from "./Authentication/CustomerRoutes";
 import HomePage from "../Home";
@@ -16,7 +16,7 @@ import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 
 ;
 
-const router = createBrowserRouter([
+const router =[
   {
     path: "/",
     element: (
@@ -71,7 +71,7 @@ const router = createBrowserRouter([
     ),
   },
   {
-    path: "/viewDeal",
+    path: "viewDeal",
     element: (
       <CustomerRoutes>
         <ViewDeal />
@@ -117,14 +117,10 @@ const router = createBrowserRouter([
 
     ],
   },
-]);
+];
 
 function Routes() {
-  return (
-    <>
-      <RouterProvider router={router} />
-    </>
-  );
+  return useRoutes(router)
 }
 
 export default Routes;

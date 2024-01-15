@@ -28,38 +28,44 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
   const dispatch = useDispatch();
 
   const Onsubmit = async (value: any) => {
-    if (!value.password) {
-      const result = await request.post("/auth", value);
-      console.log(result.data);
-      if (result.data) {
-        setState(true);
-        setAuthentication("");
+    try {
+      if (!value.password) {
+        const result = await request.post("/auth", value);
+        console.log(result.data);
+        if (result.data) {
+          setState(true);
+          setAuthentication("");
+        } else {
+          enqueueSnackbar("Authentication Failed", { variant: "error" });
+          setAuthentication("email not Found");
+          setState(false);
+        }
       } else {
-        enqueueSnackbar("Authentication Failed", { variant: "error" });
-        setAuthentication("email not Found");
-        setState(false);
+        const result = await request.post("/auth", value);
+        console.log("data is ..............", result.data?.data?.role);
+        // console.log();
+  
+        if (result.data) {
+          setDisplay(true);
+          setTimeout(() => {
+            dispatch(userLogin(result.data.data));
+            localStorage.setItem("authToken", result.data.token);
+            setDisplay(false);
+            if (result.data.role === "customer") {
+              navigate("/");
+            } else {
+              navigate("/member");
+            }
+          }, 2000);
+        } else {
+          setAuthentication("Invalid Credentials");
+        }
       }
-    } else {
-      const result = await request.post("/auth", value);
-      console.log("data is ..............", result.data?.data?.role);
-      // console.log();
-
-      if (result.data) {
-        setDisplay(true);
-        setTimeout(() => {
-          dispatch(userLogin(result.data.data));
-          localStorage.setItem("authToken", result.data.token);
-          setDisplay(false);
-          if (result.data.role === "customer") {
-            navigate("/");
-          } else {
-            navigate("/member");
-          }
-        }, 2000);
-      } else {
-        setAuthentication("Invalid Credentials");
-      }
+    } catch (error) {
+      console.log(error);
+      
     }
+  
   };
   const FormSchema = Yup.object().shape({
     email: Yup.string().email("invalid email !").required("email is Required"),

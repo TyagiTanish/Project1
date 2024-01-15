@@ -22,7 +22,6 @@ function SearchHotels() {
   //   setFilteredData(filteredData);
   // };
   const navigate=useNavigate();
-  console.log(filteredData);
 
   const handleInputChange = (event: any) => {
     const { value } = event.target;
@@ -33,20 +32,14 @@ function SearchHotels() {
 useEffect(()=>{
   const get=(async()=>{
     const result= await request.get('/searchHotels');
-    
-    // console.log(result?.data[1]);
-   
-    console.log(result.data);
-    setFilteredData(result.data)
-    
+    setFilteredData(result.data) 
   })
   get();
   ;
 },[])
-console.log(filteredData);
 const handleClick=(data:any)=>{
   navigate(`/member/hotels/${data}`) 
-  // console.log(data);
+
   
   
 }
