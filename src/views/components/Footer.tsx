@@ -74,7 +74,7 @@ function Footer() {
                 color: "#616161",
                 textTransform: "none",
                 background: "white",
-                // ml: 2,
+                ml: 2,
                 fontWeight: 700,
                 fontSize: { xl: 15, md: 12, sm: 8 },
               }}

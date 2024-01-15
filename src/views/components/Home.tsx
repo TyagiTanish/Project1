@@ -416,8 +416,8 @@ export default function BasicCard() {
                   <Link style={{ fontWeight: "bold" }} to="/hotels">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
-                  <Link to="/">Mg Road</Link>
-                  <Link to="/">Rajaji nagar</Link>
+                  <Link to="/hotels">Mg Road</Link>
+                  <Link to="/hotels">Rajaji nagar</Link>
                 </Box>
               </Box>
               <Box>All Cities</Box>
