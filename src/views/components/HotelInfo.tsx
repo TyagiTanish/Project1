@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { Box, Stack, Tooltip, Typography } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
@@ -8,6 +8,7 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditHotel from "./EditHotel";
 import {  useSelector } from "react-redux";
 import DeleteModal from "./DeleteModal";
+import { enqueueSnackbar } from "notistack";
 function HotelInfo({setRender}:any) {
   const [data, setData] = useState<any>([]);
   const [ownerData, setOwnerData] = useState<any>([]);
@@ -25,12 +26,30 @@ function HotelInfo({setRender}:any) {
   const handleCloseDelete = () => {
     setOpen2(false);
   };
+  const handleDelete=async()=>{
+    setRender((prev:any)=>prev+1)
+    const result = await request.delete(`/deleteHotel/${data?._id}`);
+    if(!result.data){
+        navigate('/');
+        enqueueSnackbar("You No longer have any Hotel", {
+          variant: "warning",
+          autoHideDuration: 2000,
+        });
+    }
+  }
+  const navigate= useNavigate();
   useEffect(() => {
+ 
     if (Object.keys(id).length === 0) {
       const get = async () => {
         const result = await request.get("/hotels");
+       if(result.data.length){
         setData(result?.data[0])
-        // setOwnerData(result?.data);
+       }
+       else{
+          // navigate('/')
+       }
+     
       
         
       };
@@ -43,7 +62,7 @@ function HotelInfo({setRender}:any) {
       };
       get();
     }
-  }, [id]);
+  }, [id,handleDelete]);
   const handleOpenEditBox=()=>{
     setOpen(true);
   }
@@ -125,7 +144,7 @@ const handleClose=()=>{
       </Stack>
       {/* <Box>  </Box> */}
       {open && <EditHotel open={open} setOpen={setOpen} handleClose={handleClose}  data={data}  setData={setData} setOwnerData={setOwnerData} setRender={setRender}/>}
-      {open2 && <DeleteModal open2={open2} handleClickOpen2={handleClickOpen2} handleCloseDelete={handleCloseDelete} _id={data?._id}/>}
+      {open2 && <DeleteModal open2={open2} handleClickOpen2={handleClickOpen2} handleCloseDelete={handleCloseDelete}  handleDelete={handleDelete}/>}
     </>
   );
 }
