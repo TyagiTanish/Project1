@@ -1,4 +1,8 @@
-import { createBrowserRouter, RouterProvider, useRoutes } from "react-router-dom";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  useRoutes,
+} from "react-router-dom";
 import MainPage from "../../pages/MainPage";
 import CustomerRoutes from "./Authentication/CustomerRoutes";
 import HomePage from "../Home";
@@ -14,8 +18,7 @@ import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 
-
-const router =[
+const router = [
   {
     path: "/",
     element: (
@@ -29,8 +32,13 @@ const router =[
     element: <MainPage />,
   },
   {
-    path: "AddHotel",
-    element: <AddHotelAftrLgn />,
+    path: "/AddHotel",
+
+    element: (
+      <CustomerRoutes>
+        <AddHotelAftrLgn />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/hotels",
@@ -116,7 +124,7 @@ const router =[
 ];
 
 function Routes() {
-  return useRoutes(router)
+  return useRoutes(router);
 }
 
 export default Routes;
