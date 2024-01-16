@@ -30,6 +30,7 @@ import * as Yup from "yup";
 import Autocomplete from "@mui/material/Autocomplete";
 import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
 import { useParams } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -42,8 +43,8 @@ const style = {
   pl: 10,
   pr: 10,
   borderRadius: 1,
- height:900,
- overflow:'auto'
+  height: 900,
+  overflow: "auto",
 };
 
 const highlights = [
@@ -62,7 +63,7 @@ const highlights = [
   { Highlight: "Daily newspaper upon request" },
   { Highlight: "Extra bed upon request" },
 ];
-function AddRooms() {
+function AddRooms({ setRender }: any) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -78,14 +79,11 @@ function AddRooms() {
     setType(event.target.value as string);
   };
   const [files1, setFiles1] = useState<any>([]);
- 
-  const handleDelete = (photo: any) => {
-   
 
+  const handleDelete = (photo: any) => {
     var acceptedFiles = file.filter((pic: any) => {
       return pic !== photo;
     });
-
 
     if (acceptedFiles.length === 0) {
       setphotos(false);
@@ -129,56 +127,67 @@ function AddRooms() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
+    defaultValues: { roomQuantity: "", price: "", roomHighlight: [] },
   });
   const id = useParams();
   const onSubmit = async (data: any) => {
-
-
     // const formData = new FormData();
     // data.roomHighlight = roomHighlight;
-  const formData:any = new FormData()
-  for (const file of acceptedFiles) {
-    formData.append('files',file)
-  }
-  formData.set("roomQuantity",data.roomQuantity)
-  formData.set("type",type)
-  formData.set("price",data.price)
-  formData.append("roomHighlight",JSON.stringify(roomHighlight))
-  formData.set("discription",content)
-    // const formData = {
-    //   files: form,
-    //   roomQuantity: data.roomQuantity,
-    //   type: type,
-    //   price: data.price,
-    //   roomHighlight: roomHighlight,
-    //   discription: content,
-    // };
-
-if(Object.keys(id).length === 0){
-  await request.post("/uploadRooms",formData);
-
-}else{
-  await request.post(`/uploadRooms/${id.id}`, formData);
-}
-
+    const formData: any = new FormData();
+    for (const file of acceptedFiles) {
+      formData.append("files", file);
+    }
+    formData.set("roomQuantity", data.roomQuantity);
+    formData.set("type", type);
+    formData.set("price", data.price);
+    formData.append("roomHighlight", JSON.stringify(roomHighlight));
+    formData.set("discription", content);
+    if (Object.keys(id).length === 0) {
+      await request.post("/uploadRooms", formData);
+      enqueueSnackbar("room added successfully", { variant: "success" });
+      setRender((prev: any) => prev + 1);
+      handleClose();
+      reset()
+      setRoomHighlight([""])
+      setType('')
+      setFile([]);
+      setContent("")
+    } else {
+      await request.post(`/uploadRooms/${id.id}`, formData);
+      enqueueSnackbar("room added successfully", { variant: "success" });
+      setRender((prev: any) => prev + 1);
+      handleClose();
+      reset()
+      setRoomHighlight([""])
+      setType("")
+      setFile([])
+      setContent("")
+    }
   };
 
   return (
     <>
-      <Button onClick={handleOpen} variant="contained" color="error" sx={{float:'right'}} >Add Room +</Button>
+      <Button
+        onClick={handleOpen}
+        variant="contained"
+        color="error"
+        sx={{ float: "right" }}
+      >
+        Add Room +
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-        
       >
         <>
-          <Box  >
-            <Box sx={style} >
+          <Box>
+            <Box sx={style}>
               <Box
                 sx={{
                   color: "#EE2A24",
@@ -191,7 +200,7 @@ if(Object.keys(id).length === 0){
               </Box>
               <center></center>
               <form onSubmit={handleSubmit(onSubmit)}>
-                <Box >
+                <Box>
                   <FormControl sx={{ width: 235 }}>
                     <Typography sx={{ fontWeight: "bold" }}>
                       Type of Room
@@ -213,7 +222,9 @@ if(Object.keys(id).length === 0){
                     </Select>
                   </FormControl>
                 </Box>
-                    <Typography sx={{ fontWeight: "bold" }}>Room Quantity</Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  Room Quantity
+                </Typography>
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
@@ -269,7 +280,7 @@ if(Object.keys(id).length === 0){
                       {...params}
                       variant="outlined"
                       placeholder="Room's Highlight"
-                    sx={{width:400}}
+                      sx={{ width: 400 }}
                     />
                   )}
                 />
@@ -320,15 +331,11 @@ if(Object.keys(id).length === 0){
                           // <Button>Add photos</Button>
                         }
                       </Typography>
-
                       <Box sx={{ width: "14vw", ml: 0.3 }}>
                         {" "}
                         <Stack direction={"row"}>
                           {file?.map((photo: any, index: any) => (
-                    
                             <Stack direction={"row"}>
-                       
-
                               <Box
                                 // component="div"
                                 sx={{
