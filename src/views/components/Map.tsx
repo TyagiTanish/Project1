@@ -74,14 +74,14 @@ const SimpleMap = () => {
         location?.longitude || 76.779419,
         location?.latitude || 30.733315,
       ],
-      zoom: 12,
+      zoom: 15,
     });
     map.addControl(new mapboxgl.NavigationControl());
       // Array of marker coordinates
       const markerCoordinates = [
-        [ 76.779419,  30.733315],
-        [-74.6, 40.2],
-        [-74.7, 40.3],
+        [ location?.longitude,location?.latitude],
+        [76.779419, 30.7325],
+        [76.779419, 30.73335],
       ];
   
       // Add markers to the map

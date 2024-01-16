@@ -16,6 +16,7 @@ import { ArrowRightIcon } from "@mui/x-date-pickers";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditRoomDetails from "../EditRoomDetails/EditRoomDetailsDialogBox";
+import OnDeleteDialogBox from "../EditRoomDetails/DeleteRoomDialogBox";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -24,9 +25,13 @@ const Item = styled(Paper)(({ theme }) => ({
   color: theme.palette.text.secondary,
 }));
 
-const RoomDetail = ({ room, index, setOpen, setDetailedRoom,Rooms,Detailedroom,setRooms}: any) => {
+const RoomDetail = ({ room, index, setOpen, setDetailedRoom,setRender}: any) => {
   const [roomImage, setRoomImage] = useState(0);
 const [editBox,setEditBox] = useState(false);
+const [deleteOpen,setdeleteOpen] = useState(false)
+const [roomId,setRoomId] = useState(room._id);
+
+
   const HandleOpenModal = () => {
     setOpen(true);
     setDetailedRoom(index);
@@ -36,11 +41,10 @@ const [editBox,setEditBox] = useState(false);
     setEditBox(true)
   }
  
-  
-//   useEffect(()=>{
-// setRooms(Rooms)
-// console.log("Rooms");
-//   },[Rooms])
+  const handleDeleteRoom = ()=>{
+    setdeleteOpen(true)
+  }
+console.log("room",room);
 
   return (
     <>
@@ -84,7 +88,7 @@ const [editBox,setEditBox] = useState(false);
               justifyContent={"right"}
             >
               <Tooltip title={"Delete"}>
-                <IconButton style={{ fontSize: "14px",  }}>
+                <IconButton style={{ fontSize: "14px",  }} onClick={handleDeleteRoom} >
                   <DeleteOutlineOutlinedIcon fontSize="medium" sx={{color: "lightgray",'&:hover':{color:'black'}}} />
                 </IconButton>
               </Tooltip>
@@ -119,7 +123,8 @@ const [editBox,setEditBox] = useState(false);
         </Stack>
       </Item>
     </Grid>
-    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  Rooms={Rooms} Detailedroom={Detailedroom} setRooms={setRooms} />
+    <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  setRender={setRender}  />
+    <OnDeleteDialogBox deleteOpen={deleteOpen} setdeleteOpen={setdeleteOpen}  roomId={roomId} setRender={setRender}   />
     </>
   );
 };

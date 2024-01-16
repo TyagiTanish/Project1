@@ -111,14 +111,14 @@ const handleClose=()=>{
           <Stack spacing={1}>
             <Typography>Owner Name -</Typography>
             <Typography sx={{ fontSize: 14 }}>
-             {user.name}
+             {user?.name}
             </Typography>
           </Stack>
           <Stack spacing={1}>
             <Typography>Owner Email -</Typography>
             <Typography sx={{ fontSize: 14 }}>
               {/* {ownerData?.user?.email} */}
-              {user.email}
+              {user?.email}
             </Typography>
           </Stack>
         </Stack>

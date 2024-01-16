@@ -37,13 +37,12 @@ import Dropzone from "react-dropzone";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
+import { enqueueSnackbar } from "notistack";
 export default function EditRoomDetails({
   editBox,
   setEditBox,
   room,
-  Rooms,
-  Detailedroom,
-  setRooms,
+ setRender
 }: any) {
   const theme = useTheme();
   const [imagePreView, setImagePreView] = React.useState(false);
@@ -51,14 +50,19 @@ export default function EditRoomDetails({
   const [editRoom, setEditRoom] = React.useState(room);
   const [changedPhoto, setChangedPhoto] = React.useState<any>([]);
   const [updatedPhoto,setUpdatedPhoto] = React.useState([] as any)
-  const [photos, setPhotos] = React.useState(editRoom?.photos);
+  const [photos, setPhotos] = React.useState<any>(room?.photos);
   const [changedImagePreview, setChangedImagePreView] = React.useState(false);
   const [ChangedImageIndex, setChangedImageIndex] = React.useState<any>();
   const [description, setDescription] = React.useState(editRoom.discription);
-  const [Amenities, setAmenities] = React.useState<any>([editRoom.amenities]);
+  const [Amenities, setAmenities] = React.useState<any>(editRoom.amenities);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const {request}  = useAuth()
 
+
+  React.useEffect(()=>{
+    setPhotos(room?.photos);
+    setEditRoom(room);
+  },[room])
 
   const amenities = [
     { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
@@ -141,7 +145,10 @@ export default function EditRoomDetails({
     formData.set("photos", JSON.stringify(photos));
     formData.set("id",editRoom?._id)
     request.post('/editRoom',formData);
-    
+    enqueueSnackbar("Details updated Successfully",{variant:'success'})
+    setRender((prev:any)=>prev+1)
+    handleClose()
+    setChangedPhoto([])
   };
 
   React.useEffect(() => {
