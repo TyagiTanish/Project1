@@ -401,7 +401,7 @@ export default function AddHotelAftrLgn() {
               <Stack>
                 {step === 0 ? (
                   <>
-                    <Form>
+                    <form>
                       <Stack
                         direction={"column"}
                         spacing={3}
@@ -495,12 +495,12 @@ export default function AddHotelAftrLgn() {
                           )}
                         </Stack>
                       </Stack>
-                    </Form>
+                    </form>
                   </>
                 ) : step === 1 ? (
                   <>
                     <Stack maxWidth={{ sm: 300, md: 400, lg: 500 }}>
-                      <Form>
+                      <form>
                         <Stack
                           spacing={2}
                           // justifyContent={"center"}
@@ -619,13 +619,13 @@ export default function AddHotelAftrLgn() {
                             Next
                           </Button>
                         </Stack>
-                      </Form>
+                      </form>
                     </Stack>
                   </>
                 ) : step === 4 ? (
                   <>
                     <AddHotelLocation setLocation={setLocation} />
-                    <Form>
+                    <form>
                       <Stack
                         direction={"row"}
                         spacing={1}
@@ -660,10 +660,10 @@ export default function AddHotelAftrLgn() {
                           Add Hotel
                         </Button>
                       </Stack>
-                    </Form>
+                    </form>
                   </>
                 ) : step === 3 ? (
-                  <Form>
+                  <form>
                     <Stack
                       ml={2}
                       direction={"column"}
@@ -789,12 +789,12 @@ export default function AddHotelAftrLgn() {
                         Next
                       </Button>
                     </Stack>
-                  </Form>
+                  </form>
                 ) : step === 2 ? (
                   <>
                     {/* {console.log(content)} */}
                     <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}>
-                      <Form>
+                      <form>
                         {/* <ReactQuill
                             theme="snow"
                             value={content}
@@ -838,7 +838,7 @@ export default function AddHotelAftrLgn() {
                             Next
                           </Button>
                         </Stack>
-                      </Form>
+                      </form>
                     </Stack>
                   </>
                 ) : null}

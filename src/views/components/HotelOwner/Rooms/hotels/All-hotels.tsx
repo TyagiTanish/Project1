@@ -6,11 +6,13 @@ import { useNavigate } from 'react-router-dom'
 import useAuth from '../../../../../Hooks/useAuth/useAuth';
 import SearchHotels from '../../../SearchHotels';
 import AboutHotel from '../../../AboutHotel';
+import Message from '../../../Message';
 
 const Allhotels = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [render,setRender] = useState(1)
+  const [open,setOpen]=useState(false);
   const { request } = useAuth();
   // const filterData = (searchTerm: any) => {
   //   const filteredData = hotels.filter((item: any) =>
@@ -31,8 +33,10 @@ const handleInputChange = useCallback((event: any)=>{
 useEffect(()=>{
   const get=(async()=>{
     const result= await request.get('/searchHotels');
+   
+      setFilteredData(result.data)
+
   
-    setFilteredData(result.data)
   })
   get();
   console.log(render);
@@ -45,8 +49,12 @@ const handleClick = useCallback((data:any)=>{
 // }
   return (
     <Stack direction={'row'} spacing={1}  >
-        <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
-        <AboutHotel setRender={setRender}/>
+        {/* <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
+        <AboutHotel setRender={setRender}/> */}
+        {open===false ? 
+        <> <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
+        <AboutHotel setRender={setRender}/></>
+        : <Message/>}
     </Stack>
   )
 }

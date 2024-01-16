@@ -407,7 +407,7 @@ export default function MemberRegister() {
           </Box>
           {page === 1 && (
             <>
-              <Form>
+              <form>
                 {/* <Grid container spacing={2} justifyContent={"center"} direction={"column"}> */}
                 <Stack
                   spacing={2}
@@ -497,11 +497,11 @@ export default function MemberRegister() {
                 >
                   Next
                 </Button>
-              </Form>
+              </form>
             </>
           )}
           {page === 2 && (
-            <Form>
+            <form>
               <Stack
                 spacing={2}
                 justifyContent={"center"}
@@ -571,7 +571,7 @@ export default function MemberRegister() {
               >
                 Next
               </Button>
-            </Form>
+            </form>
           )}
           {page === 3 && (
             <>
@@ -610,7 +610,7 @@ export default function MemberRegister() {
 
           {page === 7 && (
             <>
-              <Form>
+              <form>
                 <Stack
                   spacing={2}
                   justifyContent={"center"}
@@ -656,12 +656,12 @@ export default function MemberRegister() {
                 >
                   Submit
                 </Button>
-              </Form>
+              </form>
             </>
           )}
           {page === 5 && (
             <>
-              <Form>
+              <form>
                 <Stack ml={4} direction={"column"}>
                   {screenSize > 768 ? (
                     <Grid
@@ -781,12 +781,12 @@ export default function MemberRegister() {
                 >
                   Next
                 </Button>
-              </Form>
+              </form>
             </>
           )}
           {page === 6 && (
             <>
-              <Form>
+              <form>
                 <Stack justifyItems={"center"} ml={"10%"}>
                   <AddDiscription setContent={setContent} content={content} />
 
@@ -819,7 +819,7 @@ export default function MemberRegister() {
                 >
                   Next
                 </Button>
-              </Form>
+              </form>
             </>
           )}
           {page === 8 && (
