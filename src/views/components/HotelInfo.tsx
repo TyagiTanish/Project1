@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth/useAuth";
-import { Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import { Box, Stack, Tooltip, Typography } from "@mui/material";
 import PlaceIcon from "@mui/icons-material/Place";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditHotel from "./EditHotel";
+import {  useSelector } from "react-redux";
 import DeleteModal from "./DeleteModal";
 function HotelInfo({setRender}:any) {
   const [data, setData] = useState<any>([]);
@@ -14,6 +15,7 @@ function HotelInfo({setRender}:any) {
   const id = useParams();
   const { request } = useAuth();
   const [open2, setOpen2] = React.useState(false);
+  const user = useSelector((state: any) => state.userReducer.user);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -27,14 +29,17 @@ function HotelInfo({setRender}:any) {
     if (Object.keys(id).length === 0) {
       const get = async () => {
         const result = await request.get("/hotels");
-        setData(result?.data[1]?.hotelInfo)
-        setOwnerData(result?.data[0]);
+        setData(result?.data[0])
+        // setOwnerData(result?.data);
+      
+        
       };
       get();
     } else {
       const get = async () => {
         const result = await request.get(`/getInfo/${id.id}`);
-        setData(result?.data[1]?.hotelInfo);
+        setData(result?.data[0]);
+
       };
       get();
     }
@@ -57,15 +62,17 @@ const handleClose=()=>{
               height: "auto",
             }}
             alt="The house from the offer."
-            src={`http://localhost:8000/${data[0]?.photo}`}
+            src={`http://localhost:8000/${data?.photo}`}
           />
           <Stack direction={"column"} spacing={1}>
-            <Typography sx={{ fontSize: 22 }}>{data[0]?.hotelName}</Typography>
+            <Typography sx={{ fontSize: 22 }}>
+              {data?.hotelName}
+              </Typography>
             <Stack direction={"row"} spacing={1}>
               <PlaceIcon fontSize="small" />
               <Typography fontSize={15}>
-                {data[0]?.city}-{data[0]?.pinCode},{data[0]?.state},
-                {data[0]?.country}
+                {data?.city}-{data?.pinCode},{data?.state},
+                {data?.country}
               </Typography>
             </Stack>
           </Stack>
@@ -86,13 +93,13 @@ const handleClose=()=>{
           </Stack>
           </Stack>
       </Stack>
-      <Stack direction={"column"} spacing={2} marginBottom={5} width={600}>
+      <Stack direction={"column"} spacing={2} marginBottom={5} width={1000}>
         <Typography sx={{ fontSize: 22, fontWeight: "bold" }}>
           Description
         </Typography>
-        {/* <Typography sx={{fontSize:16}}>{data[0]?.discription}</Typography> */}
+        {/* <Typography sx={{fontSize:16}}>{data?.discription}</Typography> */}
         <Box
-          dangerouslySetInnerHTML={{ __html: data[0]?.discription }}
+          dangerouslySetInnerHTML={{ __html: data?.discription }}
           sx={{ flex: 1, fontSize: 15, letterSpacing: 1 }}
         />
       </Stack>
@@ -104,20 +111,21 @@ const handleClose=()=>{
           <Stack spacing={1}>
             <Typography>Owner Name -</Typography>
             <Typography sx={{ fontSize: 14 }}>
-              {ownerData?.user?.name}
+             {user.name}
             </Typography>
           </Stack>
           <Stack spacing={1}>
             <Typography>Owner Email -</Typography>
             <Typography sx={{ fontSize: 14 }}>
-              {ownerData?.user?.email}
+              {/* {ownerData?.user?.email} */}
+              {user.email}
             </Typography>
           </Stack>
         </Stack>
       </Stack>
       {/* <Box>  </Box> */}
-      {open && <EditHotel open={open} setOpen={setOpen} handleClose={handleClose}  data={data} ownerData={ownerData} setData={setData} setOwnerData={setOwnerData} setRender={setRender}/>}
-      {open2 && <DeleteModal open2={open2} handleClickOpen2={handleClickOpen2} handleCloseDelete={handleCloseDelete} _id={data[0]?._id}/>}
+      {open && <EditHotel open={open} setOpen={setOpen} handleClose={handleClose}  data={data}  setData={setData} setOwnerData={setOwnerData} setRender={setRender}/>}
+      {open2 && <DeleteModal open2={open2} handleClickOpen2={handleClickOpen2} handleCloseDelete={handleCloseDelete} _id={data?._id}/>}
     </>
   );
 }
