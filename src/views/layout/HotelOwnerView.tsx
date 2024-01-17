@@ -415,7 +415,7 @@ export default function HotelOwnerView() {
                   )}
                 </ListItemIcon>
                 <ListItemText
-                  primary={"Bookings"}
+                  primary={"Booking Requests"}
                   sx={{ opacity: open ? 1 : 0 }}
                 />
               </ListItemButton>
