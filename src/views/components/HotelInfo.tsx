@@ -26,6 +26,7 @@ function HotelInfo({ setRender }: any) {
   const handleCloseDelete = () => {
     setOpen2(false);
   };
+
   const handleDelete = async () => {
     setRender((prev: any) => prev + 1);
     const result = await request.delete(`/deleteHotel/${data?._id}`, {
@@ -37,6 +38,7 @@ function HotelInfo({ setRender }: any) {
         variant: "warning",
         autoHideDuration: 2000,
       });
+
     }
   };
   const navigate = useNavigate();
