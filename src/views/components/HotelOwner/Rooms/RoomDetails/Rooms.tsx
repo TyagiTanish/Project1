@@ -29,7 +29,6 @@ export default function AllRooms() {
   }}
 
 
-
   React.useEffect(() => {
     get()
   }, [render,id]);

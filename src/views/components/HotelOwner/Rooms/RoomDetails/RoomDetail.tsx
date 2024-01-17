@@ -124,7 +124,7 @@ console.log("room",room);
       </Item>
     </Grid>
     <EditRoomDetails  editBox={editBox} setEditBox={setEditBox} room={room}  setRender={setRender}  />
-    <OnDeleteDialogBox deleteOpen={deleteOpen} setdeleteOpen={setdeleteOpen}  roomId={roomId} setRender={setRender}   />
+    <OnDeleteDialogBox deleteOpen={deleteOpen} setdeleteOpen={setdeleteOpen}  roomId={roomId} setRender={setRender} />
     </>
   );
 };

@@ -27,8 +27,8 @@ function HotelInfo({setRender}:any) {
     setOpen2(false);
   };
   const handleDelete=async()=>{
-    setRender((prev:any)=>prev+1)
     const result = await request.delete(`/deleteHotel/${data?._id}`);
+    setRender((prev:any)=>prev+1)
     if(!result.data){
         navigate('/');
         enqueueSnackbar("You No longer have any Hotel", {
@@ -62,7 +62,7 @@ function HotelInfo({setRender}:any) {
       };
       get();
     }
-  }, [id,handleDelete]);
+  }, [id]);
   const handleOpenEditBox=()=>{
     setOpen(true);
   }

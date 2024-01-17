@@ -16,6 +16,7 @@ export default function OnDeleteDialogBox({deleteOpen,setdeleteOpen,roomId,setRe
   const fullScreen = useMediaQuery(theme.breakpoints.down('md'));
 const {request} = useAuth()
 const id = useParams()
+console.log(id);
 
   const handleClose = () => {
     setdeleteOpen(false);
@@ -27,7 +28,7 @@ const id = useParams()
         enqueueSnackbar("Room Deleted Successfully",{variant:'success'});
         handleClose()
     }else{
-        await request.delete(`/deleteRoom/${id}`,{params:{roomid:roomId}})
+        await request.delete(`/deleteRoom/${id.id}`,{params:{roomid:roomId}})
         setRender(((prev:any)=>prev+1))
         enqueueSnackbar("Room Deleted Successfully",{variant:'success'});
         handleClose()

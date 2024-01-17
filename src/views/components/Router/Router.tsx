@@ -17,6 +17,8 @@ import HotelOwnerView from "../../layout/HotelOwnerView";
 import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
+import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 
 const router = [
   {
@@ -119,6 +121,10 @@ const router = [
           </MemberRoute>
         ),
       },
+      {
+        path:'/member/bookings',
+        element:(<MemberRoute><Bookings/></MemberRoute>)
+      }
     ],
   },
 ];

@@ -28,6 +28,8 @@ import { Navigate, Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Menu from "./Menu";
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -386,9 +388,41 @@ export default function HotelOwnerView() {
                 />
               </ListItemButton>
             </ListItem>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+                onClick={() => navigate("/member/bookings")}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <CalendarMonthIcon />
+                  ) : (
+                    <BedIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Bookings"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
           </List>
 
-          <List>
+          {/* <List>
             {open && (
               <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
                 DashBoard
@@ -456,7 +490,7 @@ export default function HotelOwnerView() {
                 />
               </ListItemButton>
             </ListItem>
-          </List>
+          </List> */}
         </Drawer>
         <Box sx={{ flexGrow: 1, p: 3 }}>
           <DrawerHeader />
