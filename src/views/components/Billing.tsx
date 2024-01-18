@@ -5,41 +5,43 @@ import {
   CardContent,
   Checkbox,
   IconButton,
-  MenuItem,
   Stack,
   TextField,
   Typography,
+  FormHelperText,
 } from "@mui/material";
+
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { Link } from "react-router-dom";
-import LooksOneIcon from "@mui/icons-material/LooksOne";
 import Logo from "./Logo";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 const Billing = () => {
-  const currencies = [
-    {
-      value: "USA",
-      label: "+1",
-    },
-    {
-      value: "IND",
-      label: "+91",
-    },
-    {
-      value: "BTC",
-      label: "฿",
-    },
-    {
-      value: "JPY",
-      label: "¥",
-    },
-  ];
+  const { request } = useAuth();
+  // const currencies = [
+  //   {
+  //     value: "USA",
+  //     label: "+1",
+  //   },
+  //   {
+  //     value: "IND",
+  //     label: "+91",
+  //   },
+  //   {
+  //     value: "BTC",
+  //     label: "฿",
+  //   },
+  //   {
+  //     value: "JPY",
+  //     label: "¥",
+  //   },
+  // ];
   const [isVisible, setIsVisible] = useState(false);
 
   const [guest, setGuest] = useState<any>(false);
-  const [submitButton, setSubmitButton] = useState<any>(false);
+  const [submitButton, setSubmitButton] = useState(false);
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -57,23 +59,39 @@ const Billing = () => {
     }
   };
   interface User {
-    fullName: string;
-    phone: string;
-    quantity: string;
-    bookFrom: string;
-    bookTo: string;
-    guests: string;
-    email: string;
-    guestName: string;
-    guestEmail: string;
+    fullName: any;
+    phone: any;
+    // quantity: string;
+    // bookFrom: string;
+    // bookTo: string;
+    // guests: string;
+    email: any;
+    guestName: string | undefined;
+    guestEmail: string | undefined;
   }
+  const FormSchema = Yup.object().shape({
+    fullName: Yup.string()
+      .required("First Name is required")
+      .min(3)
+      .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
+    email: Yup.string().email("invalid email !").required("Email is Required"),
+    phone: Yup.string()
+      .required("This field is required")
+      .max(10, "Max length should be 10")
+      .matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
+    guestName: Yup.string().notRequired(),
+    guestEmail: Yup.string().notRequired(),
+  });
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm<User>();
+  } = useForm<any, User>({
+    resolver: yupResolver(FormSchema),
+  });
   const Submit = (data: any) => {
-    console.log(data);
+    request.post("/bookRoom", data);
   };
   return (
     <>
@@ -81,129 +99,8 @@ const Billing = () => {
         <Logo />
       </IconButton>
       <Stack direction={"row"} justifyContent={"space-evenly"}>
-        {/* <Stack>
-          <Box
-            sx={{
-              mt: { xl: 15, md: 14, sm: 10 },
-              ml: { xl: 80, md: 35, sm: 20 },
-            }}
-          >
-            {" "}
-            <Link
-              to="/hotels"
-              style={{
-                // fontSize: "18px",
-                textDecoration: "none",
-                color: "rgb(238, 42, 36)",
-                // width: 50,
-              }}
-            >
-              <Stack
-                direction={"row"}
-                // sx={{ width: { xl: "220px", md: "200px", sm: "180px" } }}
-              >
-                <ArrowBackIosNewIcon
-                  sx={{
-                    fontSize: { xl: 20, md: 16, sm: 14 },
-                    mt: { xl: 0.5, md: 0.2, sm: 0.4 },
-                    mr: { xl: 0.5, md: 0.5, sm: 0.5 },
-                  }}
-                />
-                <Typography sx={{ fontSize: { xl: 20, md: 16, sm: 14 } }}>
-                  Modify your Booking
-                </Typography>
-              </Stack>
-            </Link>
-            <Typography
-              sx={{
-                mt: 5,
-                ml: { xl: 18, md: 14, sm: 16 },
-                color: "rgb(211, 140, 23)",
-              }}
-            >
-              🎉 Yay! you just saved ₹856 on this booking!
-            </Typography>
-            <Stack
-              direction={"row"}
-              sx={{ mt: 5, ml: 3, alignItems: "center" }}
-            >
-              <LooksOneIcon sx={{ fontSize: { xl: 24, md: 20 }, mt: -0.5 }} />
-              <Typography
-                sx={{
-                  fontSize: { xl: 20, md: 18, sm: 16 },
-                  fontWeight: "Bolder",
-                }}
-              >
-                {" "}
-                Enter Your Details
-              </Typography>{" "}
-            </Stack>
-            <Typography
-              sx={{ mt: 5, ml: 3, fontSize: { xl: 17, md: 15, sm: 13 } }}
-            >
-              We will use these details to share your booking information
-            </Typography> */}
-        {/* <form>
-              <Stack direction={"row"} sx={{ m: 3, alignItems: "center" }}>
-              <TextField
-                variant="outlined"
-                label="Full Name"
-                {...register("fullName")}
-                sx={{
-                  fontWeight: "bolder",
-                  width: { xl: "13vw", md: "22vw", sm: "20vw" },
-                }}
-              ></TextField>{" "}
-              <Stack direction={"row"} sx={{ ml: { xl: 11, md: 5, sm: 3 } }}>
-                <TextField
-                  id="standard-select-currency"
-                  select
-                  defaultValue="IND"
-                  variant="standard"
-                  sx={{ mt: 2 }}
-                >
-                  {currencies.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-                <TextField
-                  id="standard-password-input"
-                  label="Phone Number"
-                  {...register("phone")}
-                  type="password"
-                  autoComplete="current-password"
-                  variant="standard"
-                />
-              </Stack>
-              </Stack>
-              <Stack direction={"row"} sx={{ alignItems: "center" }}>
-                <TextField
-                  variant="outlined"
-                  label="email"
-                  {...register("email")}
-                  sx={{ ml: 3, width: { xl: "20vw", md: "31vw" } }}
-                ></TextField>
-                <Button
-                  variant="contained"
-                  sx={{
-                    ml: 2,
-                    width: 200,
-                    height: "50px",
-                    backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",
-                  }}
-                >
-                  Verify
-                </Button>
-              </Stack>
-            </form> */}
-        {/* </Box> */}
-        {/* 
-          <Box></Box>
-        </Stack> */}
         <Stack width={"40%"}>
-          <form>
+          <form onSubmit={handleSubmit(Submit)}>
             <Stack border={"2px solid lightgray"} borderRadius={"10px"} p={2}>
               <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
                 Full Name *
@@ -214,6 +111,12 @@ const Billing = () => {
                 {...register("fullName")}
                 fullWidth
               />
+              <FormHelperText sx={{ color: "red" }}>
+                {/* {errors.fullName?.message} */}
+                {errors.fullName &&
+                  typeof errors.fullName === "string" &&
+                  errors.fullName}
+              </FormHelperText>
               <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                 Email *
               </Typography>
@@ -223,6 +126,12 @@ const Billing = () => {
                 {...register("email")}
                 fullWidth
               />
+              <FormHelperText sx={{ color: "red" }}>
+                {/* {errors.fullName?.message} */}
+                {errors.email &&
+                  typeof errors.email === "string" &&
+                  errors.email}
+              </FormHelperText>
               <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                 Phone No. *
               </Typography>
@@ -248,6 +157,12 @@ const Billing = () => {
 
                 // autoComplete="current-password"
               />
+              <FormHelperText sx={{ color: "red" }}>
+                {/* {errors.fullName?.message} */}
+                {errors.phone &&
+                  typeof errors.phone === "string" &&
+                  errors.phone}
+              </FormHelperText>
               <Stack direction={"row"} ml={-1}>
                 <Checkbox onChange={handleCheckbox} />
                 <Typography sx={{ mt: 1 }}>
@@ -293,18 +208,33 @@ const Billing = () => {
                   and Privacy Policy .
                 </Typography>
               </Stack>
-              <Button
-                type="submit"
-                onClick={handleSubmit(Submit)}
-                sx={{
-                  width: "30%",
-                  m: 2,
-                  background: `linear-gradient(135.46deg,#d11450,#df293a)`,
-                  color: "white",
-                }}
-              >
-                Book Now
-              </Button>
+              {submitButton ? (
+                <Button
+                  type="submit"
+                  sx={{
+                    width: "30%",
+                    m: 2,
+                    background: `linear-gradient(135.46deg,#d11450,#df293a)`,
+                    color: "white",
+                  }}
+                >
+                  Book Now
+                </Button>
+              ) : (
+                <Button
+                  type="submit"
+                  onClick={handleSubmit(Submit)}
+                  sx={{
+                    width: "30%",
+                    m: 2,
+                    background: `lightgrey`,
+                    color: "white",
+                  }}
+                  disabled
+                >
+                  Book Now
+                </Button>
+              )}
             </Stack>
           </form>
         </Stack>
