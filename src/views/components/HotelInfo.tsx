@@ -11,12 +11,9 @@ import DeleteModal from "./DeleteModal";
 import { enqueueSnackbar } from "notistack";
 function HotelInfo({ setRender }: any) {
   const [data, setData] = useState<any>([]);
-
   const [ownerData, setOwnerData] = useState<any>([]);
-
   const [open,setOpen]=useState(false);
   const [handle,setHandle]=useState(0);
-
   const { request } = useAuth();
   const [open2, setOpen2] = React.useState(false);
   const user = useSelector((state: any) => state.userReducer.user);
@@ -132,7 +129,6 @@ function HotelInfo({ setRender }: any) {
         <Typography sx={{ fontSize:{xl:22,md:16}, fontWeight: "bold" }}>
           Description
         </Typography>
-        {/* <Typography sx={{fontSize:16}}>{data?.discription}</Typography> */}
         <Box
           dangerouslySetInnerHTML={{ __html: data?.discription }}
           sx={{ flex: 1, fontSize: {xl:15,md:12} ,letterSpacing: 1 }}
@@ -160,7 +156,6 @@ function HotelInfo({ setRender }: any) {
           </Stack>
         </Stack>
       </Stack>
-      {/* <Box>  </Box> */}
       {open && (
         <EditHotel
           open={open}
@@ -180,7 +175,7 @@ function HotelInfo({ setRender }: any) {
           handleDelete={handleDelete}
         />
       )}
-    </>
-  );
-}
+      </Stack>
+</>
+)}
 export default HotelInfo;
