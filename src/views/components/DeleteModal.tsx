@@ -22,8 +22,7 @@ const Transition = React.forwardRef(function Transition(
   return <Slide direction="up" ref={ref} {...props} />;
 });
 export default function AlertDialogSlide({handleCloseDelete,open2,_id,handleDelete}:any) {
-  const { request } = useAuth();
-  const navigate = useNavigate();
+
 
 
   return (

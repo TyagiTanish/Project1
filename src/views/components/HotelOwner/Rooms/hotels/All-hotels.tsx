@@ -10,7 +10,7 @@ import Message from '../../../Message';
 
 const Allhotels = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState<any>([]);
   const [render,setRender] = useState(1)
   const [open,setOpen]=useState(false);
   const { request } = useAuth();
@@ -39,8 +39,10 @@ useEffect(()=>{
   
   })
   get();
-  console.log(render);
+  
+
 },[render])
+
 const handleClick = useCallback((data:any)=>{
   navigate(`/member/hotels/${data}`)
 },[navigate])
@@ -52,8 +54,8 @@ const handleClick = useCallback((data:any)=>{
         {/* <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
         <AboutHotel setRender={setRender}/> */}
         {open===false ? 
-        <> <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
-        <AboutHotel setRender={setRender}/></>
+        <> <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm} data={{id:filteredData[0]?._id}}/>
+        <AboutHotel setRender={setRender} data={filteredData[0]} /></>
         : <Message/>}
     </Stack>
   )
