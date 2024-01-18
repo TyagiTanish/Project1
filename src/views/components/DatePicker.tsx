@@ -45,7 +45,7 @@ export default function ResponsiveDateRangePickers() {
           <DateRangePicker 
           slots={{ field: SingleInputDateRangeField }}
           name="allowedRange"
-            defaultValue={[dayjs(date), dayjs(date)]}
+          defaultValue={[dayjs(Date.now()), dayjs(Date.now())]}
             sx={{
               [`.${pickersLayoutClasses.contentWrapper}`]: {
                 alignItems: "center",
