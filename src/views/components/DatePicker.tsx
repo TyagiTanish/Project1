@@ -2,7 +2,7 @@
 // import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 // import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
-// import { SingleInputDateRangeField } from "@mui/x-date-pickers-pro/SingleInputDateRangeField";
+import { SingleInputDateRangeField } from "@mui/x-date-pickers-pro/SingleInputDateRangeField";
 // import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
 // import dayjs from "dayjs";
 
@@ -41,31 +41,23 @@ console.log(typeof date);
 export default function ResponsiveDateRangePickers() {
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer
-        components={[
-          "DateRangePicker",
-          "MobileDateRangePicker",
-          "DesktopDateRangePicker",
-          "StaticDateRangePicker",
-        ]}
-        sx={{ background:'white',pt:0,border:"none" }}
-       
-      > 
-        <DemoItem component="StaticDateRangePicker">
+      <DemoContainer components={["SingleInputDateRangeField"]}> 
           <DateRangePicker 
-            name="MobileDateRangePicker"
+          slots={{ field: SingleInputDateRangeField }}
+          name="allowedRange"
             defaultValue={[dayjs(date), dayjs(date)]}
             sx={{
               [`.${pickersLayoutClasses.contentWrapper}`]: {
                 alignItems: "center",
               },
+              bgcolor:'white',
+              border:'none'
             }}
             onChange={(e: any) => {
               console.log(e);
             }}
             minDate={dayjs(new Date())}
           />
-        </DemoItem>
       </DemoContainer>
     </LocalizationProvider>
   );
