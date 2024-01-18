@@ -20,26 +20,23 @@ export default function AllRooms() {
     const get = async () =>{
       if(Object.keys(id).length === 0){
       const result = await request.get('/hotels');
-      setRooms(result?.data[1].hotelInfo[0].rooms);
+      setRooms(result?.data[0]?.rooms);
+      // console.log(result.data);
+      
     }else{
       const result = await request.get(`/getInfo/${id.id}`)
-      setRooms(result?.data[1].hotelInfo[0].rooms)
+      setRooms(result?.data[0]?.rooms)
   }}
 
 
-
   React.useEffect(() => {
-    setRooms(Rooms);
-   
-  }, [Rooms,render]);
-
-React.useEffect(()=>{
     get()
-},[id])
+  }, [render,id]);
+
 
   return (
     <>
-    <AddRooms/>
+    <AddRooms setRender={setRender} />
       <Box sx={{ flexGrow: 1 }} padding={10}>
         <Grid
           container
@@ -53,11 +50,7 @@ React.useEffect(()=>{
               index={index}
               setOpen={setOpen}
               setDetailedRoom={setDetailedRoom}
-              Rooms={Rooms}
-              Detailedroom={Detailedroom}
-              setRooms={setRooms}
               setRender={setRender}
-              render={render}
             />
           ))}
         </Grid>

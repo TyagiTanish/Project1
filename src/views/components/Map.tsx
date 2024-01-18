@@ -60,8 +60,12 @@ import mapboxgl from "mapbox-gl";
 
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux";
+import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
+import { Box } from "@mui/material";
 
-const SimpleMap = () => {
+const SimpleMap = ({filteredData}:any) => {
+
+  
   const location = useSelector((state: any) => state.userReducer.location);
   useEffect(() => {
     mapboxgl.accessToken =
@@ -74,26 +78,43 @@ const SimpleMap = () => {
         location?.longitude || 76.779419,
         location?.latitude || 30.733315,
       ],
-      zoom: 12,
+      zoom: 15,
     });
     map.addControl(new mapboxgl.NavigationControl());
-      // Array of marker coordinates
-      const markerCoordinates = [
-        [ 76.779419,  30.733315],
-        [-74.6, 40.2],
-        [-74.7, 40.3],
-      ];
-  
-      // Add markers to the map
-      markerCoordinates.forEach((coord:any) => {
-        new mapboxgl.Marker()
-          .setLngLat(coord)
-          .addTo(map);
-      });
-    return () => map.remove();
-  }, [location]);
+    // Array of marker coordinates
+   
+    const locations = filteredData?.map((item:any)=>
+    {
+      const coordinates = [JSON.parse(item?.location?.longitude),JSON.parse(item?.location?.latitude)];
+      const title = item?.hotelName;
+      const description=`${item?.city}, ${item?.state}, ${item?.country}`;
+      const image = item.photo
+      return {title,description,coordinates,image};
+    }
+); 
+    // Add markers to the map
+    locations?.forEach((location: any) => {
+      const popup = new mapboxgl.Popup()
+        .setLngLat(location.coordinates)
+        .setHTML(`<h3>${location.title}</h3><p>${location.description}</p>`);
 
-  return <div id="map" style={{ width: "40vw", height: "82vh" }} />;
+      new mapboxgl.Marker()
+        .setLngLat(location.coordinates)
+        .setPopup(popup)
+        .addTo(map);
+    });
+
+    return () => map.remove();
+  }, [location,filteredData]);
+
+
+useEffect(()=>{
+  console.log(filteredData);
+  
+},[filteredData])
+
+
+  return <Box id="map" sx={{ width:{xl:700,sm:700}, height: {sm:600,xl:800,md:1000} }} />;
 };
 
 export default SimpleMap;

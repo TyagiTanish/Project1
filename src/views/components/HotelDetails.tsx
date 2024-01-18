@@ -151,7 +151,7 @@ function HotelDetails({
       ) : openModule === "Overview" ? (
         <OverViewHotel item={item} />
       ) : openModule === "Photos" ? (
-        <PhotosDetails />
+        <PhotosDetails item={item} />
       ) : (
         <ReviewDetails />
       )}

@@ -37,28 +37,32 @@ import Dropzone from "react-dropzone";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
+import { enqueueSnackbar } from "notistack";
+import { useParams } from "react-router-dom";
 export default function EditRoomDetails({
   editBox,
   setEditBox,
   room,
-  Rooms,
-  Detailedroom,
-  setRooms,
+  setRender,
 }: any) {
   const theme = useTheme();
   const [imagePreView, setImagePreView] = React.useState(false);
   const [previewIndex, setPreviewIndex] = React.useState(0);
   const [editRoom, setEditRoom] = React.useState(room);
   const [changedPhoto, setChangedPhoto] = React.useState<any>([]);
-  const [updatedPhoto,setUpdatedPhoto] = React.useState([] as any)
-  const [photos, setPhotos] = React.useState(editRoom?.photos);
+  const [updatedPhoto, setUpdatedPhoto] = React.useState([] as any);
+  const [photos, setPhotos] = React.useState<any>(room?.photos);
   const [changedImagePreview, setChangedImagePreView] = React.useState(false);
   const [ChangedImageIndex, setChangedImageIndex] = React.useState<any>();
   const [description, setDescription] = React.useState(editRoom.discription);
-  const [Amenities, setAmenities] = React.useState<any>([editRoom.amenities]);
+  const [Amenities, setAmenities] = React.useState<any>(editRoom.amenities);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
-  const {request}  = useAuth()
+  const { request } = useAuth();
 
+  React.useEffect(() => {
+    setPhotos(room?.photos);
+    setEditRoom(room);
+  }, [room]);
 
   const amenities = [
     { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
@@ -131,17 +135,29 @@ export default function EditRoomDetails({
     setChangedImagePreView(true);
   };
 
-  const submitDetails = (value: any) => {
+  const id = useParams();
+
+  const submitDetails = async(value: any) => {
     const formData = new FormData();
     formData.set("type", value?.type);
     formData.set("price", value?.price);
-    formData.set("description",description);
+    formData.set("description", description);
     formData.set("amenities", JSON.stringify(Amenities));
     updatedPhoto.map((image: any) => formData.append("files", image));
     formData.set("photos", JSON.stringify(photos));
-    formData.set("id",editRoom?._id)
-    request.post('/editRoom',formData);
-    
+    formData.set("id", editRoom?._id);
+
+    if (Object.keys(id).length === 0) {
+      await request.post("/editRoom", formData);
+    } else {
+      console.log("hello");
+      
+     await request.post(`/editRoom/${id.id}`, formData);
+    }
+    enqueueSnackbar("Details updated Successfully", { variant: "success" });
+    setRender((prev: any) => prev + 1);
+    handleClose();
+    setChangedPhoto([]);
   };
 
   React.useEffect(() => {
@@ -246,7 +262,7 @@ export default function EditRoomDetails({
                           return { ...file, preview: previewURL };
                         })
                       );
-                      setUpdatedPhoto(acceptedFiles)
+                      setUpdatedPhoto(acceptedFiles);
                     }}
                   >
                     {({ getRootProps, getInputProps }) => (
@@ -279,7 +295,7 @@ export default function EditRoomDetails({
                   multiple
                   options={amenities?.map((item: any) => item.label)}
                   onChange={(event, value) => setAmenities(value)}
-                  defaultValue={editRoom?.amenities.map((item:any)=>item)}
+                  defaultValue={editRoom?.amenities.map((item: any) => item)}
                   freeSolo
                   renderTags={(value: readonly string[], getTagProps: any) =>
                     value.map((option: string, index: number) => (

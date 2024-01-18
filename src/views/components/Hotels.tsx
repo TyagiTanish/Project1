@@ -43,6 +43,7 @@ function Hotels({ filteredData, screenSize }: any) {
     }
   };
 
+
   const handleViewDeal = (item: any) => {
     navigate("/billing");
   };
@@ -286,7 +287,7 @@ function Hotels({ filteredData, screenSize }: any) {
             >
               <HighlightOffIcon />
             </IconButton>
-            <SimpleMap />
+            <SimpleMap filteredData={filteredData} />
           </>
         )}
       </Box>

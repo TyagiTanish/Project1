@@ -6,16 +6,17 @@ import PlaceIcon from "@mui/icons-material/Place";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditHotel from "./EditHotel";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import DeleteModal from "./DeleteModal";
 import { enqueueSnackbar } from "notistack";
-function HotelInfo({setRender}:any) {
+function HotelInfo({ setRender }: any) {
   const [data, setData] = useState<any>([]);
 
   const [ownerData, setOwnerData] = useState<any>([]);
+
   const [open,setOpen]=useState(false);
   const [handle,setHandle]=useState(0);
- 
+
   const { request } = useAuth();
   const [open2, setOpen2] = React.useState(false);
   const user = useSelector((state: any) => state.userReducer.user);
@@ -28,6 +29,7 @@ function HotelInfo({setRender}:any) {
   const handleCloseDelete = () => {
     setOpen2(false);
   };
+
   const handleDelete=async()=>{
   
     const result = await request.delete(`/deleteHotel/${data?._id}`);
@@ -44,42 +46,40 @@ function HotelInfo({setRender}:any) {
   }
   const id = useParams();
   const navigate= useNavigate();
+
   useEffect(() => {
- 
     if (Object.keys(id).length === 0) {
       const get = async () => {
         const result = await request.get("/hotels");
-       if(result.data.length){
-        setData(result?.data[0])
-       }
-       else{
+        if (result.data.length) {
+          setData(result?.data[0]);
+        } else {
           // navigate('/')
-       }
-     
-      
-        
+        }
       };
       get();
     } else {
       const get = async () => {
         const result = await request.get(`/getInfo/${id.id}`);
         setData(result?.data[0]);
-
       };
       get();
     
     }
 
+
   }, [id,handle]);
   const handleOpenEditBox=()=>{
+
     setOpen(true);
-  }
-const handleClose=()=>{
-  setOpen(false)
-}
+  };
+  const handleClose = () => {
+    setOpen(false);
+  };
   return (
     <>
       <Stack alignItems={"center"} marginLeft={-6}>
+
         <Stack direction={'row'} justifyContent={'space-around'}>
          <Stack margin={6} spacing={5} direction={"row"} width={"90%"}>
           <Box
@@ -101,24 +101,32 @@ const handleClose=()=>{
                 {data?.city}-{data?.pinCode},{data?.state},
                 {data?.country}
               </Typography>
+
             </Stack>
           </Stack>
+          <Stack direction={"row"} spacing={2}>
+            <Tooltip
+              title={"Delete"}
+              style={{ cursor: "pointer" }}
+              onClick={handleClickOpen2}
+            >
+              <DeleteOutlineOutlinedIcon
+                fontSize="medium"
+                sx={{ color: "lightgray", "&:hover": { color: "black" } }}
+              />
+            </Tooltip>
+            <Tooltip
+              title={"Edit"}
+              style={{ cursor: "pointer" }}
+              onClick={() => handleOpenEditBox()}
+            >
+              <ModeEditOutlineOutlinedIcon
+                fontSize="medium"
+                sx={{ color: "lightgray", "&:hover": { color: "black" } }}
+              />
+            </Tooltip>
+          </Stack>
         </Stack>
-        <Stack direction={'row'} spacing={2}>
-            <Tooltip title={"Delete"} style={{cursor:'pointer'}} onClick={handleClickOpen2}>
-                <DeleteOutlineOutlinedIcon
-                  fontSize="medium"
-                  sx={{ color: "lightgray", "&:hover": { color: "black" } }}
-                />
-            </Tooltip>
-            <Tooltip title={"Edit"} style={{cursor:'pointer'}} onClick={()=>handleOpenEditBox()}>
-                <ModeEditOutlineOutlinedIcon
-                  fontSize="medium"
-                  sx={{ color: "lightgray", "&:hover": { color: "black" } }}
-                />
-            </Tooltip>
-          </Stack>
-          </Stack>
       </Stack>
       <Stack direction={"column"} spacing={2} marginBottom={5} sx={{width:{xl:1000,md:500,sm:310}}}>
         <Typography sx={{ fontSize:{xl:22,md:16}, fontWeight: "bold" }}>
@@ -136,23 +144,42 @@ const handleClose=()=>{
         </Typography>
         <Stack direction={"row"} spacing={10}>
           <Stack spacing={1}>
+
             <Typography sx={{ fontSize:{xl:18,md:14}}}>Owner Name -</Typography>
             <Typography sx={{ fontSize: {xl:15,md:12} }}>
              {user.name}
             </Typography>
+
           </Stack>
           <Stack spacing={1}>
             <Typography sx={{ fontSize:{xl:18,md:14}}}>Owner Email -</Typography>
             <Typography sx={{ fontSize: {xl:15,md:12} }}>
               {/* {ownerData?.user?.email} */}
-              {user.email}
+              {user?.email}
             </Typography>
           </Stack>
         </Stack>
       </Stack>
       {/* <Box>  </Box> */}
-      {open && <EditHotel open={open} setOpen={setOpen} handleClose={handleClose}  data={data}  setData={setData} setOwnerData={setOwnerData} setRender={setRender}/>}
-      {open2 && <DeleteModal open2={open2} handleClickOpen2={handleClickOpen2} handleCloseDelete={handleCloseDelete}  handleDelete={handleDelete}/>}
+      {open && (
+        <EditHotel
+          open={open}
+          setOpen={setOpen}
+          handleClose={handleClose}
+          data={data}
+          setData={setData}
+          setOwnerData={setOwnerData}
+          setRender={setRender}
+        />
+      )}
+      {open2 && (
+        <DeleteModal
+          open2={open2}
+          handleClickOpen2={handleClickOpen2}
+          handleCloseDelete={handleCloseDelete}
+          handleDelete={handleDelete}
+        />
+      )}
     </>
   );
 }
