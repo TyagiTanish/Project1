@@ -10,14 +10,16 @@ import {
   Typography,
   FormHelperText,
 } from "@mui/material";
-
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Logo from "./Logo";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import io from "socket.io-client";
 
+
+const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
 const Billing = () => {
   const { request } = useAuth();
   // const currencies = [
@@ -92,7 +94,14 @@ const Billing = () => {
   });
   const Submit = (data: any) => {
     request.post("/bookRoom", data);
+    console.log(data);
+    socket.emit("send_Message",data)
   };
+  useEffect(()=>{
+      socket.on("recieved_Message",(data:any)=>{
+          alert(data.fullName);
+      })
+  },[socket])
   return (
     <>
       <IconButton href="/" sx={{ ml: 2 }}>
