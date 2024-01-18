@@ -11,9 +11,12 @@ import DeleteModal from "./DeleteModal";
 import { enqueueSnackbar } from "notistack";
 function HotelInfo({ setRender }: any) {
   const [data, setData] = useState<any>([]);
+
   const [ownerData, setOwnerData] = useState<any>([]);
-  const [open, setOpen] = useState(false);
-  const id = useParams();
+
+  const [open,setOpen]=useState(false);
+  const [handle,setHandle]=useState(0);
+
   const { request } = useAuth();
   const [open2, setOpen2] = React.useState(false);
   const user = useSelector((state: any) => state.userReducer.user);
@@ -27,21 +30,23 @@ function HotelInfo({ setRender }: any) {
     setOpen2(false);
   };
 
-  const handleDelete = async () => {
-    setRender((prev: any) => prev + 1);
-    const result = await request.delete(`/deleteHotel/${data?._id}`, {
-      params: { data: data },
-    });
-    if (!result.data) {
-      navigate("/");
-      enqueueSnackbar("You No longer have any Hotel", {
-        variant: "warning",
-        autoHideDuration: 2000,
-      });
-
+  const handleDelete=async()=>{
+  
+    const result = await request.delete(`/deleteHotel/${data?._id}`);
+    setRender((prev:any)=>prev+1);
+    setHandle((prev:any)=>prev+1)
+    if(!result.data){
+        navigate('/');
+        enqueueSnackbar("You No longer have any Hotel", {
+          variant: "warning",
+          autoHideDuration: 2000,
+        });
     }
-  };
-  const navigate = useNavigate();
+    navigate('/member/hotels')
+  }
+  const id = useParams();
+  const navigate= useNavigate();
+
   useEffect(() => {
     if (Object.keys(id).length === 0) {
       const get = async () => {
@@ -59,9 +64,13 @@ function HotelInfo({ setRender }: any) {
         setData(result?.data[0]);
       };
       get();
+    
     }
-  }, [id, handleDelete]);
-  const handleOpenEditBox = () => {
+
+
+  }, [id,handle]);
+  const handleOpenEditBox=()=>{
+
     setOpen(true);
   };
   const handleClose = () => {
@@ -70,25 +79,29 @@ function HotelInfo({ setRender }: any) {
   return (
     <>
       <Stack alignItems={"center"} marginLeft={-6}>
-        <Stack direction={"row"} justifyContent={"space-around"}>
-          <Stack margin={6} spacing={5} direction={"row"} width={"90%"}>
-            <Box
-              component="img"
-              sx={{
-                width: "30%",
-                height: "auto",
-              }}
-              alt="The house from the offer."
-              src={`http://localhost:8000/${data?.photo}`}
-            />
-            <Stack direction={"column"} spacing={1}>
-              <Typography sx={{ fontSize: 22 }}>{data?.hotelName}</Typography>
-              <Stack direction={"row"} spacing={1}>
-                <PlaceIcon fontSize="small" />
-                <Typography fontSize={15}>
-                  {data?.city}-{data?.pinCode},{data?.state},{data?.country}
-                </Typography>
-              </Stack>
+
+        <Stack direction={'row'} justifyContent={'space-around'}>
+         <Stack margin={6} spacing={5} direction={"row"} width={"90%"}>
+          <Box
+            component="img"
+            sx={{
+              width: "30%",
+              height: "auto",
+            }}
+            alt="The house from the offer."
+            src={`http://localhost:8000/${data?.photo}`}
+          />
+          <Stack direction={"column"} spacing={1}>
+            <Typography sx={{ fontSize: {xl:22,md:16}}}>
+              {data?.hotelName}
+              </Typography>
+            <Stack direction={"row"} spacing={1}>
+              <PlaceIcon fontSize="small" />
+              <Typography fontSize={{xl:15,md:12}}>
+                {data?.city}-{data?.pinCode},{data?.state},
+                {data?.country}
+              </Typography>
+
             </Stack>
           </Stack>
           <Stack direction={"row"} spacing={2}>
@@ -115,28 +128,32 @@ function HotelInfo({ setRender }: any) {
           </Stack>
         </Stack>
       </Stack>
-      <Stack direction={"column"} spacing={2} marginBottom={5} width={1000}>
-        <Typography sx={{ fontSize: 22, fontWeight: "bold" }}>
+      <Stack direction={"column"} spacing={2} marginBottom={5} sx={{width:{xl:1000,md:500,sm:310}}}>
+        <Typography sx={{ fontSize:{xl:22,md:16}, fontWeight: "bold" }}>
           Description
         </Typography>
         {/* <Typography sx={{fontSize:16}}>{data?.discription}</Typography> */}
         <Box
           dangerouslySetInnerHTML={{ __html: data?.discription }}
-          sx={{ flex: 1, fontSize: 15, letterSpacing: 1 }}
+          sx={{ flex: 1, fontSize: {xl:15,md:12} ,letterSpacing: 1 }}
         />
       </Stack>
       <Stack direction={"column"} spacing={2}>
-        <Typography sx={{ fontSize: 22, fontWeight: "bold" }}>
+        <Typography sx={{ fontSize:{xl:22,md:16}, fontWeight: "bold" }}>
           Owner Details
         </Typography>
         <Stack direction={"row"} spacing={10}>
           <Stack spacing={1}>
-            <Typography>Owner Name -</Typography>
-            <Typography sx={{ fontSize: 14 }}>{user?.name}</Typography>
+
+            <Typography sx={{ fontSize:{xl:18,md:14}}}>Owner Name -</Typography>
+            <Typography sx={{ fontSize: {xl:15,md:12} }}>
+             {user.name}
+            </Typography>
+
           </Stack>
           <Stack spacing={1}>
-            <Typography>Owner Email -</Typography>
-            <Typography sx={{ fontSize: 14 }}>
+            <Typography sx={{ fontSize:{xl:18,md:14}}}>Owner Email -</Typography>
+            <Typography sx={{ fontSize: {xl:15,md:12} }}>
               {/* {ownerData?.user?.email} */}
               {user?.email}
             </Typography>
