@@ -18,6 +18,7 @@ import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
 import Rooms from "./views/components/Rooms";
 import Billing from "./views/components/Billing";
+import Client from "./views/components/client";
 
 function App() {
   const { request } = useAuth();
@@ -31,9 +32,9 @@ function App() {
       //   {
       //  return  navigate('/login');
       //   }
-      const userData = (await request.get(`/getUserData`)).data;
+      // const userData = (await request.get(`/getUserData`)).data;
 
-      dispatch(userLogin(userData));
+      // dispatch(userLogin(userData));
     } catch (error) {
       localStorage.removeItem("authToken");
     }
@@ -59,12 +60,13 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          <LoginSystem />
-          {/* <Billing /> */}
+          {/* <LoginSystem /> */}
+          <Billing />
 
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
           {/* <Rooms/> */}
+          {/* <Client/> */}
         </SnackbarProvider>
         {/* <Outlet /> */}
       </Locales>

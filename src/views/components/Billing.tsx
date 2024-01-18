@@ -10,13 +10,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Link } from "react-router-dom";
 import LooksOneIcon from "@mui/icons-material/LooksOne";
 import Logo from "./Logo";
+import io from "socket.io-client";
 
+
+const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
 const Billing = () => {
   const currencies = [
     {
@@ -74,7 +77,13 @@ const Billing = () => {
   } = useForm<User>();
   const Submit = (data: any) => {
     console.log(data);
+    socket.emit("send_Message",data)
   };
+  useEffect(()=>{
+      socket.on("recieved_Message",(data)=>{
+          alert(data.fullName);
+      })
+  },[socket])
   return (
     <>
       <IconButton href="/" sx={{ ml: 2 }}>
