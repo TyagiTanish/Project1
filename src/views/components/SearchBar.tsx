@@ -130,8 +130,7 @@ function SearchBar() {
                 ),
               }}
             />
-            <Box marginTop={-1}>
-              
+            <Box>
               <DateRangePickers />
             </Box>
             <TextField
