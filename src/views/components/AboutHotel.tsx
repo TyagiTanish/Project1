@@ -6,7 +6,7 @@ import TabContext from '@mui/lab/TabContext';
 import TabPanel from '@mui/lab/TabPanel';
 import { Outlet, useNavigate } from "react-router-dom";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
-function AboutHotel({setRender}:any) {
+function AboutHotel({setRender,data}:any) {
  const navigate=useNavigate()
   const [activeButton, setActiveButton] = React.useState("info");
   return (
@@ -15,7 +15,7 @@ function AboutHotel({setRender}:any) {
       <Stack
               direction={"column"}
         spacing={8}
-        sx={{ border: "1px solid lightgray", p: 2 ,width:{xl:'70%'}}}
+        sx={{ border: "1px solid lightgray", p: 1 ,width:{xl:'70%',md:'70%',sm:'65%'}}}
       >
         <Stack>
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
@@ -27,7 +27,7 @@ function AboutHotel({setRender}:any) {
           <Tab label="All Rooms" value={"rooms"} />
           <Tab label="Amenities"  value={"amenities"}  />
         </TabList>
-        <TabPanel value="info" ><HotelInfo setRender={setRender}/></TabPanel>
+        <TabPanel value="info" ><HotelInfo setRender={setRender} data={data}/></TabPanel>
         <TabPanel value="rooms" ><AllRooms/></TabPanel>
       </Stack>
       </TabContext>

@@ -1,5 +1,11 @@
 import "./App.css";
-import { Navigate, Outlet, Router, RouterProvider, useNavigate } from "react-router-dom";
+import {
+  Navigate,
+  Outlet,
+  Router,
+  RouterProvider,
+  useNavigate,
+} from "react-router-dom";
 import LoginSystem from "./views/components/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
@@ -11,30 +17,30 @@ import Locales from "./views/components/Locale";
 import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
 import Rooms from "./views/components/Rooms";
+import Billing from "./views/components/Billing";
 
 function App() {
   const { request } = useAuth();
   const dispatch = useDispatch();
-    const navigate= useNavigate();
+  const navigate = useNavigate();
 
   const getUser = async () => {
     const authToken = localStorage.getItem("authToken");
     try {
-    //   if(!authToken)
-    //   {
-    //  return  navigate('/login');
-    //   }
+      //   if(!authToken)
+      //   {
+      //  return  navigate('/login');
+      //   }
       const userData = (await request.get(`/getUserData`)).data;
-      
+
       dispatch(userLogin(userData));
     } catch (error) {
       localStorage.removeItem("authToken");
     }
   };
 
-
   useEffect(() => {
-      getUser();
+    getUser();
   });
 
   // interface IntlConfig {
@@ -51,16 +57,16 @@ function App() {
   // }
   return (
     <>
+      <Locales>
+        <SnackbarProvider>
+          <LoginSystem />
+          {/* <Billing /> */}
 
-    <Locales>
-    <SnackbarProvider>
-      <LoginSystem />   
-      {/* <AllRooms/> */}
-      {/* <HotelOwnerView/> */}
-{/* <Rooms/> */}
-      </SnackbarProvider>
-      {/* <Outlet /> */}
-
+          {/* <AllRooms/> */}
+          {/* <HotelOwnerView/> */}
+          {/* <Rooms/> */}
+        </SnackbarProvider>
+        {/* <Outlet /> */}
       </Locales>
     </>
   );

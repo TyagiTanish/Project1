@@ -104,7 +104,7 @@ function EditHotel(props: any) {
       open={props.open}
       onClose={props.handleClose}
       aria-labelledby="responsive-dialog-title"
-      maxWidth={"xl"}
+      maxWidth={"lg"}
     >
       <DialogTitle>
         <Stack
