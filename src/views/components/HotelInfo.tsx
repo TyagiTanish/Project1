@@ -98,7 +98,6 @@ function HotelInfo({ setRender }: any) {
                 {data?.city}-{data?.pinCode},{data?.state},
                 {data?.country}
               </Typography>
-
             </Stack>
           </Stack>
           <Stack direction={"row"} spacing={2}>
@@ -143,7 +142,7 @@ function HotelInfo({ setRender }: any) {
 
             <Typography sx={{ fontSize:{xl:18,md:14}}}>Owner Name -</Typography>
             <Typography sx={{ fontSize: {xl:15,md:12} }}>
-             {user.name}
+             {user?.name}
             </Typography>
 
           </Stack>
