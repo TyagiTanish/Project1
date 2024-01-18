@@ -19,6 +19,9 @@ import HotelOwnerView from "./views/layout/HotelOwnerView";
 import Rooms from "./views/components/Rooms";
 import Billing from "./views/components/Billing";
 import PayementPage from "./views/components/Bookings/PaymentGateway/payement";
+import PayByRazorPay from "./views/components/Bookings/PaymentGateway/payement";
+import PaymentGateway from "./views/components/Bookings/PaymentGateway/payement";
+import Booking from "./views/components/Bookings/PaymentGateway/payement";
 
 function App() {
   const { request } = useAuth();
@@ -60,9 +63,8 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          {/* <LoginSystem /> */}
+          <LoginSystem />
           {/* <Billing /> */}
-<PayementPage/>
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
           {/* <Rooms/> */}
