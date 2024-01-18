@@ -88,7 +88,7 @@ const HotelsPage = () => {
         {filteredData !== undefined ? (
           <Hotels filteredData={filteredData} screenSize={screenSize} />
         ) : null}
-        {screenSize <= 768 ? <></> : <SimpleMap filteredData={filteredData}  />}
+        {screenSize <= 768 ? <></> : <SimpleMap filteredData={filteredData} />}
       </Stack>
       <Footer />
     </>
