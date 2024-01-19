@@ -60,9 +60,9 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          {/* <LoginSystem /> */}
-          {/* <Billing /> */}
-<PayementPage/>
+          <LoginSystem />
+          <Billing />
+          {/* <PayementPage/> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
           {/* <Rooms/> */}
