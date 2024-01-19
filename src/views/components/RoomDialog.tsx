@@ -11,9 +11,11 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
 function RoomDialog(props: any) {
   console.log(props?.details);
   const [roomImage, setRoomImage] = useState(0);
+  const navigate = useNavigate();
   return (
     <Dialog onClose={props.handleClose} open={props.open} maxWidth="lg">
       <Stack
@@ -175,7 +177,9 @@ function RoomDialog(props: any) {
                 color: "white",
                 fontWeight: "bold",
                 mt: "2%",
+              
               }}
+              onClick={()=>{navigate('/billing')}}
             >
               Book Now
             </Button>
