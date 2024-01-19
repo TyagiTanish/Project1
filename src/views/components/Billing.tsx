@@ -10,6 +10,7 @@ import {
   Typography,
   FormHelperText,
 } from "@mui/material";
+import moment from "moment";
 import React, { useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import Logo from "./Logo";
@@ -18,6 +19,7 @@ import * as Yup from "yup";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
 
+import dayjs from "dayjs";
 
 const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
 const Billing = () => {
@@ -40,6 +42,29 @@ const Billing = () => {
   //     label: "¥",
   //   },
   // ];
+  const [difference, setDifference] = useState<any>(null);
+
+  const data: any = localStorage.getItem("Date");
+  var startdate: any = "";
+  var enddate: any = "";
+  if (data) {
+    startdate = dayjs(JSON.parse(data).startDate);
+    enddate = dayjs(JSON.parse(data).endDate);
+  }
+  const calculateDifference = () => {
+    const diff = enddate.diff(startdate);
+    const duration = moment.duration(diff);
+
+    setDifference({
+      days: duration.days() + 1,
+    });
+  };
+  useEffect(() => {
+    if (data) {
+      calculateDifference();
+    }
+  }, []);
+  // console.log(difference.days);
   const [isVisible, setIsVisible] = useState(false);
 
   const [guest, setGuest] = useState<any>(false);
@@ -249,7 +274,7 @@ const Billing = () => {
         </Stack>
         <Stack>
           <Card sx={{ mb: 4 }}>
-            <CardContent>Hello there</CardContent>
+            <CardContent>{`${difference?.days} nights`}</CardContent>
           </Card>
         </Stack>
       </Stack>
