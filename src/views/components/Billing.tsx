@@ -10,13 +10,15 @@ import {
   Typography,
   FormHelperText,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useReducer, useState } from "react";
 import { useForm } from "react-hook-form";
 import Logo from "./Logo";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
+import { useSelector } from "react-redux";
+
 
 
 const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
@@ -92,11 +94,20 @@ const Billing = () => {
   } = useForm<any, User>({
     resolver: yupResolver(FormSchema),
   });
+  const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const Submit = (data: any) => {
     // request.post("/bookRoom", data);
-    console.log(data);
-    socket.emit("send_Message",data)
+    const result={
+      fullName:data.fullName,
+      email:data.email,
+      phone:data.phone,
+      hotelId:hotelId
+    }
+    console.log(result);
+    socket.emit("send_Message",result);
+
   };
+
   useEffect(()=>{
       socket.on("recieved",(data:any)=>{
           alert(data);
