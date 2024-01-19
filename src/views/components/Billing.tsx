@@ -93,13 +93,13 @@ const Billing = () => {
     resolver: yupResolver(FormSchema),
   });
   const Submit = (data: any) => {
-    request.post("/bookRoom", data);
+    // request.post("/bookRoom", data);
     console.log(data);
     socket.emit("send_Message",data)
   };
   useEffect(()=>{
-      socket.on("recieved_Message",(data:any)=>{
-          alert(data.fullName);
+      socket.on("recieved",(data:any)=>{
+          alert(data);
       })
   },[socket])
   return (
