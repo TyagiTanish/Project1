@@ -13,7 +13,6 @@ import {
 
 import moment from "moment";
 
-
 import React, { useEffect, useReducer, useState } from "react";
 
 import { useForm } from "react-hook-form";
@@ -24,10 +23,11 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
 
-
 import dayjs from "dayjs";
 
-const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
+const socket = io("http://localhost:8000", {
+  transports: ["websocket", "polling", "flashsocket"],
+});
 const Billing = () => {
   const { request } = useAuth();
   // const currencies = [
@@ -70,7 +70,7 @@ const Billing = () => {
       calculateDifference();
     }
   }, []);
-  // console.log(difference.days);
+
   const [isVisible, setIsVisible] = useState(false);
 
   const [guest, setGuest] = useState<any>(false);
@@ -91,6 +91,11 @@ const Billing = () => {
       setIsVisible(!isVisible);
     }
   };
+  const roomsGuests: any = localStorage.getItem("Rooms&Guests");
+  const totalRooms: any = JSON.parse(roomsGuests)?.Rooms;
+  const totalGuests: any = JSON.parse(roomsGuests)?.Guests;
+  console.log(roomsGuests, totalRooms);
+
   interface User {
     fullName: any;
     phone: any;
@@ -126,24 +131,46 @@ const Billing = () => {
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const Submit = (data: any) => {
     // request.post("/bookRoom", data);
-    const result={
-      fullName:data.fullName,
-      email:data.email,
-      phone:data.phone,
-      hotelId:hotelId
-    }
+    const result = {
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      hotelId: hotelId,
+    };
     console.log(result);
-    socket.emit("send_Message",result);
-
+    socket.emit("send_Message", result);
   };
 
-  useEffect(()=>{
-      socket.on("recieved",(data:any)=>{
-          alert(data);
-      })
-  },[socket])
+  useEffect(() => {
+    socket.on("recieved", (data: any) => {
+      alert(data);
+    });
+  }, [socket]);
   return (
-    <>
+    <Box
+      sx={{
+        // background: `
+        // linear-gradient(
+        //   rgba(0, 0, 0, 1),
+        //   rgba(0, 0, 0, 0.1)
+        //  ),`,
+        //  url(${Billingbackground}) no-repeat`,
+        width: "100%",
+        height: "100vh",
+        // backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        // display: "flex",
+        // justifyContent: "center",
+        opacity: "80%",
+        position: "fixed",
+        minWidth: 500,
+      }}
+      // sx={{
+      //   backgroundImage: `url(${Billingbackground})`,
+      //   Size: "cover",
+      //   position: "absolute",
+      // }}
+    >
       <IconButton href="/" sx={{ ml: 2 }}>
         <Logo />
       </IconButton>
@@ -287,13 +314,28 @@ const Billing = () => {
             </Stack>
           </form>
         </Stack>
-        <Stack>
-          <Card sx={{ mb: 4 }}>
-            <CardContent>{`${difference?.days} nights`}</CardContent>
+        <Stack sx={{ width: "20%" }}>
+          <Card
+            sx={{
+              mb: 4,
+              backgroundColor: "lightgray",
+
+              fontWeight: 800,
+              textAlign: "center",
+            }}
+          >
+            <CardContent>
+              <Stack>
+                <Stack>{`Total days: ${difference?.days}`}</Stack>
+                <Stack>{`Total Rooms: ${totalRooms}`}</Stack>
+                <Stack>{`Total Guests: ${totalGuests}`}</Stack>
+                <Stack fontSize={20}>Total Price:</Stack>
+              </Stack>
+            </CardContent>
           </Card>
         </Stack>
       </Stack>
-    </>
+    </Box>
   );
 };
 

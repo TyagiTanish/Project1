@@ -33,7 +33,6 @@ function App() {
       //  return  navigate('/login');
       //   }
       // const userData = (await request.get(`/getUserData`)).data;
-
       // dispatch(userLogin(userData));
     } catch (error) {
       localStorage.removeItem("authToken");
@@ -61,7 +60,7 @@ function App() {
       <Locales>
         <SnackbarProvider>
           <LoginSystem />
-          <Billing />
+          {/* <Billing /> */}
           {/* <PayementPage/> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
