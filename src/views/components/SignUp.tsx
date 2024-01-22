@@ -6,10 +6,11 @@ import CardContent from "@mui/material/CardContent";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import "../../App.css";
-import { FormHelperText, Stack, TextField } from "@mui/material";
+import { FormControl, FormHelperText, IconButton, InputAdornment, InputLabel, OutlinedInput, Stack, TextField } from "@mui/material";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
-
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import { enqueueSnackbar } from "notistack";
 import Loaders from "./Loaders";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -18,7 +19,7 @@ import { FormattedMessage } from "react-intl";
 
 const SignUp = ({ setLogReg}: any) => {
   const { request } = useAuth();
-
+  const [showPassword, setShowPassword] = React.useState(false);
   const [display, setDisplay] = React.useState(false);
   const onSubmit = async (data: any) => {
     // console.log(data);
@@ -28,7 +29,9 @@ const SignUp = ({ setLogReg}: any) => {
       email: data.email,
       password: data.password,
     });
+   
 
+   
     if (result.data) {
       setDisplay(true);
       enqueueSnackbar("Registered Successfully", {
@@ -90,6 +93,12 @@ const SignUp = ({ setLogReg}: any) => {
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
+
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
 
   return (
     <>
@@ -172,14 +181,32 @@ const SignUp = ({ setLogReg}: any) => {
                 >
                    <FormattedMessage defaultMessage="    Password"/>
                 </Typography>
-                <TextField
-                  id="demo-helper-text-aligned"
-                  type="password"
-                  {...register("password")}
-                />
+                <FormControl sx={{  width: '44ch' }} variant="outlined">
+           
+          <OutlinedInput
+            id="outlined-adornment-password"
+            {...register("password")}
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                  
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+             
+            }
+         
+          />
+        </FormControl>
                 <FormHelperText>{errors.password?.message}</FormHelperText>
               </Stack>
-              <Button size="small" variant="contained" type="submit" sx={{mt:2}} >
+              <Button size="small" variant="contained" type="submit" sx={{mt:2,textTransform:'none'}} >
               <FormattedMessage defaultMessage="   SignUp"/>  
               </Button>
             </form>
