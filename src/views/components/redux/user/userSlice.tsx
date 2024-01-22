@@ -23,9 +23,18 @@ export const userSlice = createSlice({
     hotelId: (state: any, action: any) => {
       state.hotelId = action.payload;
     },
+    roomDetails: (state: any, action: any) => {
+      state.roomDetails = action.payload;
+    },
   },
 });
 // Action creators
-export const { userLogin, userLogout, userLocation, locale, hotelId } =
-  userSlice.actions;
+export const {
+  userLogin,
+  userLogout,
+  userLocation,
+  locale,
+  hotelId,
+  roomDetails,
+} = userSlice.actions;
 export default userSlice.reducer;
