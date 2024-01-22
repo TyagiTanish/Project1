@@ -23,6 +23,7 @@ import PayByRazorPay from "./views/components/Bookings/PaymentGateway/payement";
 import PaymentGateway from "./views/components/Bookings/PaymentGateway/payement";
 import Booking from "./views/components/Bookings/PaymentGateway/payement";
 import Bookings from "./views/components/HotelOwner/Rooms/Booking/BookingRequests";
+import Client from "./views/components/client";
 
 function App() {
   const { request } = useAuth();
@@ -36,9 +37,8 @@ function App() {
       //   {
       //  return  navigate('/login');
       //   }
-      const userData = (await request.get(`/getUserData`)).data;
-
-      dispatch(userLogin(userData));
+      // const userData = (await request.get(`/getUserData`)).data;
+      // dispatch(userLogin(userData));
     } catch (error) {
       localStorage.removeItem("authToken");
     }
@@ -66,9 +66,11 @@ function App() {
         <SnackbarProvider>
           {/* <LoginSystem /> */}
           {/* <Billing /> */}
+          {/* <PayementPage/> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
           {/* <Rooms/> */}
+          {/* <Client/> */}
         </SnackbarProvider>
         {/* <Outlet /> */}
       </Locales>

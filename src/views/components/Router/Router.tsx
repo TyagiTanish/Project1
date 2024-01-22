@@ -88,6 +88,10 @@ const router = [
     ),
   },
   {
+    path:'/billing',
+    element:<Billing/>
+  },
+  {
     path: "/member",
     element: (
       <MemberRoute>
