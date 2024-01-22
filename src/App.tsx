@@ -22,6 +22,7 @@ import PayementPage from "./views/components/Bookings/PaymentGateway/payement";
 import PayByRazorPay from "./views/components/Bookings/PaymentGateway/payement";
 import PaymentGateway from "./views/components/Bookings/PaymentGateway/payement";
 import Booking from "./views/components/Bookings/PaymentGateway/payement";
+import Bookings from "./views/components/HotelOwner/Rooms/Booking/BookingRequests";
 
 function App() {
   const { request } = useAuth();
@@ -63,7 +64,7 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          <LoginSystem />
+          {/* <LoginSystem /> */}
           {/* <Billing /> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
