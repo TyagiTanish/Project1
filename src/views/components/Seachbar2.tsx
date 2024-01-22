@@ -31,7 +31,8 @@ function Seachbar2(props: any) {
     props.setSearchTerm(value);
     props.filterData(value);
   };
-
+  const data: any = localStorage.getItem("Rooms&Guests");
+  const parsedData = JSON.parse(data);
   useEffect(() => {
     var result = 0;
     rooms.forEach((element: any) => {
@@ -62,56 +63,55 @@ function Seachbar2(props: any) {
 
   return (
     <Stack
-    direction={'row'}
+      direction={"row"}
       sx={{
-        width: {md:"100vw",xl:'100vw',sm:'95vw'},
+        width: { md: "100vw", xl: "100vw", sm: "95vw" },
         mb: "20px",
-        alignItems:'center',
-        justifyContent:'center',
-        alignSelf:'center'
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
       }}
     >
-   
       <TextField
-          sx={{
-            backgroundColor: "white",
-            borderRadius: 3,
-            mt:1,
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton
-                  onClick={handleLocationClick}
-                  sx={{
-                    fontSize: { sm: "10px", lg: "15px" },
-                    fontWeight: "bolder",
-                    color: "black",
-                  }}
-                >
-                  <MyLocationIcon />
-                  Near me
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          placeholder="Search by city,hote, or neighborhood"
-          value={props.searchTerm}
-          onChange={handleInputChange}
-        />
-          <DateRangePickers />    
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          sx={{
-            bgcolor: "white",
-            fontWeight: "bolder",
-            mt:1
-          }}
-          value={`${rooms.length} Room , ${guests} guest`}
-          onClick={(event: any) => handleClick(event)}
-        />
- 
+        sx={{
+          backgroundColor: "white",
+          borderRadius: 3,
+          mt: 1,
+        }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="start">
+              <IconButton
+                onClick={handleLocationClick}
+                sx={{
+                  fontSize: { sm: "10px", lg: "15px" },
+                  fontWeight: "bolder",
+                  color: "black",
+                }}
+              >
+                <MyLocationIcon />
+                Near me
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+        placeholder="Search by city,hote, or neighborhood"
+        value={props.searchTerm}
+        onChange={handleInputChange}
+      />
+      <DateRangePickers />
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
+        sx={{
+          bgcolor: "white",
+          fontWeight: "bolder",
+          mt: 1,
+        }}
+        // value={`${rooms.length} Room , ${guests} guest`}
+        value={`${parsedData.Rooms} Room , ${parsedData.Guests} guest`}
+        onClick={(event: any) => handleClick(event)}
+      />
     </Stack>
   );
 }

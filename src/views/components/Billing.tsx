@@ -10,7 +10,11 @@ import {
   Typography,
   FormHelperText,
 } from "@mui/material";
+
+import moment from "moment";
+
 import React, { useEffect, useReducer, useState } from "react";
+
 import { useForm } from "react-hook-form";
 import Logo from "./Logo";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,9 +23,11 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
 
+import dayjs from "dayjs";
 
-
-const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
+const socket = io("http://localhost:8000", {
+  transports: ["websocket", "polling", "flashsocket"],
+});
 const Billing = () => {
   const { request } = useAuth();
   // const currencies = [
@@ -42,6 +48,29 @@ const Billing = () => {
   //     label: "¥",
   //   },
   // ];
+  const [difference, setDifference] = useState<any>(null);
+
+  const data: any = localStorage.getItem("Date");
+  var startdate: any = "";
+  var enddate: any = "";
+  if (data) {
+    startdate = dayjs(JSON.parse(data).startDate);
+    enddate = dayjs(JSON.parse(data).endDate);
+  }
+  const calculateDifference = () => {
+    const diff = enddate.diff(startdate);
+    const duration = moment.duration(diff);
+
+    setDifference({
+      days: duration.days() + 1,
+    });
+  };
+  useEffect(() => {
+    if (data) {
+      calculateDifference();
+    }
+  }, []);
+
   const [isVisible, setIsVisible] = useState(false);
   const [display,setDisplay]=useState(false);
   const [guest, setGuest] = useState<any>(false);
@@ -63,6 +92,11 @@ const Billing = () => {
       setIsVisible(!isVisible);
     }
   };
+  const roomsGuests: any = localStorage.getItem("Rooms&Guests");
+  const totalRooms: any = JSON.parse(roomsGuests)?.Rooms;
+  const totalGuests: any = JSON.parse(roomsGuests)?.Guests;
+  console.log(roomsGuests, totalRooms);
+
   interface User {
     fullName: any;
     phone: any;
@@ -98,13 +132,14 @@ const Billing = () => {
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const Submit = (data: any) => {
     // request.post("/bookRoom", data);
-    const result={
-      fullName:data.fullName,
-      email:data.email,
-      phone:data.phone,
-      hotelId:hotelId
-    }
+    const result = {
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      hotelId: hotelId,
+    };
     console.log(result);
+
     socket.emit("send_Message",result);
     setDisplay(true);
   
@@ -116,9 +151,31 @@ const Billing = () => {
       })
      
   },[socket])
-
   return (
-    <>
+    <Box
+      sx={{
+        // background: `
+        // linear-gradient(
+        //   rgba(0, 0, 0, 1),
+        //   rgba(0, 0, 0, 0.1)
+        //  ),`,
+        //  url(${Billingbackground}) no-repeat`,
+        width: "100%",
+        height: "100vh",
+        // backgroundRepeat: "no-repeat",
+        backgroundSize: "cover",
+        // display: "flex",
+        // justifyContent: "center",
+        opacity: "80%",
+        position: "fixed",
+        minWidth: 500,
+      }}
+      // sx={{
+      //   backgroundImage: `url(${Billingbackground})`,
+      //   Size: "cover",
+      //   position: "absolute",
+      // }}
+    >
       <IconButton href="/" sx={{ ml: 2 }}>
         <Logo />
       </IconButton>
@@ -263,14 +320,29 @@ const Billing = () => {
           </form>
           {display && <Stack color={'red'} marginTop={3}>{text}</Stack>}
         </Stack>
-        <Stack>
-          <Card sx={{ mb: 4 }}>
-            <CardContent>Hello there</CardContent>
+        <Stack sx={{ width: "20%" }}>
+          <Card
+            sx={{
+              mb: 4,
+              backgroundColor: "lightgray",
+
+              fontWeight: 800,
+              textAlign: "center",
+            }}
+          >
+            <CardContent>
+              <Stack>
+                <Stack>{`Total days: ${difference?.days}`}</Stack>
+                <Stack>{`Total Rooms: ${totalRooms}`}</Stack>
+                <Stack>{`Total Guests: ${totalGuests}`}</Stack>
+                <Stack fontSize={20}>Total Price:</Stack>
+              </Stack>
+            </CardContent>
           </Card>
         </Stack>
       </Stack>
-   
     </>
+
   );
 };
 
