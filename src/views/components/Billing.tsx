@@ -145,6 +145,11 @@ const Billing = () => {
       email: data.email,
       phone: data.phone,
       hotelId: hotelId,
+      days:difference?.days,
+      roomId:roomDetails?.roomId,
+      startDate:startdate,
+      endDate:enddate,
+      guests:totalGuests
     };
     console.log(result);
 
