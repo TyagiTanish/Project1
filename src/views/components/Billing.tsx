@@ -12,6 +12,7 @@ import {
   CardHeader,
   Divider,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import moment from "moment";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -32,8 +33,11 @@ const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 const Billing = () => {
+  const navigate = useNavigate();
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const userId = useSelector((state: any) => state.userReducer.user);
+  // console.log(userId?._id);
   const roomDetails = useSelector(
     (state: any) => state.userReducer.roomDetails
   );
@@ -134,6 +138,7 @@ const Billing = () => {
     data.totalPrice = totalPrice;
     data.totalRooms = totalRooms;
     data.roomId = roomDetails?.roomId;
+    data.userId = userId?._id;
     request.post("/bookRoom", data);
     const result = {
       fullName: data.fullName,
