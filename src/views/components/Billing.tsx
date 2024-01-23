@@ -9,10 +9,12 @@ import {
   TextField,
   Typography,
   FormHelperText,
+  CardHeader,
+  Divider,
 } from "@mui/material";
-
+import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import moment from "moment";
-
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import React, { useEffect, useReducer, useState } from "react";
 
 import { useForm } from "react-hook-form";
@@ -24,30 +26,27 @@ import io from "socket.io-client";
 import { useSelector } from "react-redux";
 
 import dayjs from "dayjs";
+import { format } from "date-fns";
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 const Billing = () => {
+  const [hotelDetail, sethotelDetail] = useState<any>({});
+  const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const roomDetails = useSelector(
+    (state: any) => state.userReducer.roomDetails
+  );
+  // console.log("Hotel Id", hotelId, "roomDetails", roomDetails);
   const { request } = useAuth();
-  // const currencies = [
-  //   {
-  //     value: "USA",
-  //     label: "+1",
-  //   },
-  //   {
-  //     value: "IND",
-  //     label: "+91",
-  //   },
-  //   {
-  //     value: "BTC",
-  //     label: "฿",
-  //   },
-  //   {
-  //     value: "JPY",
-  //     label: "¥",
-  //   },
-  // ];
+  const fetchHotel: any = async () => {
+    const result = await request.get(`/getHotel/${hotelId}`);
+    console.log(result.data);
+    sethotelDetail(result.data);
+  };
+  useEffect(() => {
+    fetchHotel();
+  }, []);
   const [difference, setDifference] = useState<any>(null);
 
   const data: any = localStorage.getItem("Date");
@@ -57,6 +56,7 @@ const Billing = () => {
     startdate = dayjs(JSON.parse(data).startDate);
     enddate = dayjs(JSON.parse(data).endDate);
   }
+
   const calculateDifference = () => {
     const diff = enddate.diff(startdate);
     const duration = moment.duration(diff);
@@ -72,9 +72,10 @@ const Billing = () => {
   }, []);
 
   const [isVisible, setIsVisible] = useState(false);
-
+  const [display, setDisplay] = useState(false);
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
+  const [text, setText] = useState("Please wait , your request is preeceding");
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -94,15 +95,11 @@ const Billing = () => {
   const roomsGuests: any = localStorage.getItem("Rooms&Guests");
   const totalRooms: any = JSON.parse(roomsGuests)?.Rooms;
   const totalGuests: any = JSON.parse(roomsGuests)?.Guests;
-  console.log(roomsGuests, totalRooms);
+  // console.log(roomsGuests, totalRooms);
 
   interface User {
     fullName: any;
     phone: any;
-    // quantity: string;
-    // bookFrom: string;
-    // bookTo: string;
-    // guests: string;
     email: any;
     guestName: string | undefined;
     guestEmail: string | undefined;
@@ -128,9 +125,16 @@ const Billing = () => {
   } = useForm<any, User>({
     resolver: yupResolver(FormSchema),
   });
-  const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const totalPrice = roomDetails?.price * totalRooms * difference?.days;
   const Submit = (data: any) => {
-    // request.post("/bookRoom", data);
+    data.startdate = startdate;
+    data.enddate = enddate;
+    data.totalGuests = totalGuests;
+    data.totalDays = difference?.days;
+    data.totalPrice = totalPrice;
+    data.totalRooms = totalRooms;
+    data.roomId = roomDetails?.roomId;
+    request.post("/bookRoom", data);
     const result = {
       fullName: data.fullName,
       email: data.email,
@@ -138,43 +142,25 @@ const Billing = () => {
       hotelId: hotelId,
     };
     console.log(result);
+
     socket.emit("send_Message", result);
+    setDisplay(true);
   };
 
   useEffect(() => {
-    socket.on("recieved", (data: any) => {
-      alert(data);
-    });
+    socket.on("recieved", (data: any) => {});
   }, [socket]);
   return (
-    <Box
-      sx={{
-        // background: `
-        // linear-gradient(
-        //   rgba(0, 0, 0, 1),
-        //   rgba(0, 0, 0, 0.1)
-        //  ),`,
-        //  url(${Billingbackground}) no-repeat`,
-        width: "100%",
-        height: "100vh",
-        // backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        // display: "flex",
-        // justifyContent: "center",
-        opacity: "80%",
-        position: "fixed",
-        minWidth: 500,
-      }}
-      // sx={{
-      //   backgroundImage: `url(${Billingbackground})`,
-      //   Size: "cover",
-      //   position: "absolute",
-      // }}
-    >
+    <Box>
       <IconButton href="/" sx={{ ml: 2 }}>
         <Logo />
       </IconButton>
-      <Stack direction={"row"} justifyContent={"space-evenly"}>
+      <Stack
+        direction={"row"}
+        spacing={10}
+        justifyItems={"center"}
+        ml={{ sm: 10, md: 15, lg: 20, xl: 30 }}
+      >
         <Stack width={"40%"}>
           <form onSubmit={handleSubmit(Submit)}>
             <Stack border={"2px solid lightgray"} borderRadius={"10px"} p={2}>
@@ -278,58 +264,125 @@ const Billing = () => {
             </Stack>
             <Stack border={"1px solid lightgrey"} borderRadius={"10px"} mt={2}>
               <Stack direction={"row"}>
-                <Checkbox onChange={handleCheckboxSubmit} />
+                <Checkbox onChange={handleCheckboxSubmit} sx={{ mt: -2 }} />
                 <Typography mt={1}>
                   By proceeding with this booking, I agree to OYO's Terms of Use
-                  and Privacy Policy .
+                  and Privacy Policy.
                 </Typography>
               </Stack>
-              {submitButton ? (
-                <Button
-                  type="submit"
-                  sx={{
-                    width: "30%",
-                    m: 2,
-                    background: `linear-gradient(135.46deg,#d11450,#df293a)`,
-                    color: "white",
-                  }}
-                >
-                  Book Now
-                </Button>
-              ) : (
-                <Button
-                  type="submit"
-                  onClick={handleSubmit(Submit)}
-                  sx={{
-                    width: "30%",
-                    m: 2,
-                    background: `lightgrey`,
-                    color: "white",
-                  }}
-                  disabled
-                >
-                  Book Now
-                </Button>
-              )}
+              <Button
+                type="submit"
+                sx={{
+                  width: "30%",
+                  m: 2,
+                }}
+                color="error"
+                variant="contained"
+                disabled={!submitButton}
+              >
+                Book Now
+              </Button>
             </Stack>
           </form>
+          {display && (
+            <Stack color={"red"} marginTop={3}>
+              {text}
+            </Stack>
+          )}
         </Stack>
-        <Stack sx={{ width: "20%" }}>
+        <Stack>
           <Card
             sx={{
-              mb: 4,
-              backgroundColor: "lightgray",
-
-              fontWeight: 800,
-              textAlign: "center",
+              backgroundColor: "#f5f5f5",
             }}
           >
             <CardContent>
+              <Stack direction={"row"} spacing={4} alignItems={"center"}>
+                <Stack direction={"column"} justifyContent={"space-between"}>
+                  <h3 style={{ marginBottom: "1rem" }}>
+                    {hotelDetail[0]?.hotelName}
+                  </h3>
+                  <Stack>
+                    <Stack
+                      fontSize={{ sm: "small", md: "medium" }}
+                      color={"gray"}
+                    >
+                      {hotelDetail[0]?.city} - {hotelDetail[0]?.pinCode} ,
+                      {hotelDetail[0]?.state}, {hotelDetail[0]?.country}
+                    </Stack>
+                    <Stack
+                      mt={3}
+                      textAlign={"left"}
+                      fontSize={"13px"}
+                      fontWeight={"bolder"}
+                    >{` ${difference?.days} Night`}</Stack>
+                  </Stack>
+                </Stack>
+                <Stack width={90}>
+                  <img
+                    src={`http://localhost:8000/${hotelDetail[0]?.photo}`}
+                    alt="Hotel Image"
+                    style={{ borderRadius: "5px", marginTop: "-1rem" }}
+                  />
+                </Stack>
+              </Stack>
+              <Stack
+                direction={"row"}
+                justifyContent={"space-between"}
+                mt={3}
+                fontSize={{ sm: "small", md: "medium" }}
+              >
+                <Stack
+                  fontWeight={"bolder"}
+                  direction={"row"}
+                  alignItems={"center"}
+                  spacing={2}
+                >
+                  <CalendarMonthIcon style={{ marginRight: 4 }} />
+                  {`${startdate.$d.toDateString().slice(0, 10)}`} --{" "}
+                  {`${enddate.$d.toDateString().slice(0, 10)}`}
+                  <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
+                    {totalRooms} Room {totalGuests} Guest
+                  </Stack>
+                </Stack>
+              </Stack>
+              <Divider sx={{ marginTop: 2 }} />
+              <Stack textAlign={"left"} mt={3} fontWeight={"bolder"}>
+                {roomDetails?.type}
+              </Stack>
               <Stack>
-                <Stack>{`Total days: ${difference?.days}`}</Stack>
-                <Stack>{`Total Rooms: ${totalRooms}`}</Stack>
-                <Stack>{`Total Guests: ${totalGuests}`}</Stack>
-                <Stack fontSize={20}>Total Price:</Stack>
+                <Stack
+                  direction={"row"}
+                  justifyContent={"space-between"}
+                  mt={3}
+                >
+                  <Stack
+                    fontSize={{ sm: "small", md: "medium" }}
+                  >{`Room price for ${difference?.days} Night X ${totalGuests} Guest `}</Stack>
+                  <Stack
+                    fontSize={{ sm: "small", md: "medium" }}
+                    fontWeight={"bolder"}
+                  >
+                    {roomDetails?.price}
+                  </Stack>
+                </Stack>
+                <Divider sx={{ marginTop: 3 }} />
+                <Stack
+                  direction={"row"}
+                  justifyContent={"space-between"}
+                  mt={3}
+                  fontSize={{ sm: "small", md: "medium", lg: "large" }}
+                >
+                  <Stack>Payable Amount</Stack>
+                  <Stack direction={"row"} fontWeight={"bolder"}>
+                    <CurrencyRupeeIcon
+                      sx={{
+                        fontSize: { sm: "small", md: "medium", lg: "large" },
+                      }}
+                    />
+                    {totalPrice}
+                  </Stack>
+                </Stack>
               </Stack>
             </CardContent>
           </Card>

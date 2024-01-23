@@ -117,8 +117,9 @@ function ViewDetails({ hotels }: any) {
       <Grid container spacing={2} sx={{ mb: 4, ml: { lg: 5, md: 0 } }}>
         {ShowAmenities.map((item) => (
           <Grid item xs={2}>
-            <Stack sx={{ fontSize: "10px", ml: 5 }}>
-              <Box sx={{ fontSize: "small" }}>{item.icon}</Box>
+            <Stack sx={{ fontSize:{xl:'16px',md:'12px',sm:'12px'}}} direction={'column'} alignItems={'center'}>
+              <Box fontSize='small'>{item.icon}
+              </Box>
               {item.label}
             </Stack>
           </Grid>
