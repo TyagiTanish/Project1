@@ -10,10 +10,11 @@ import {
   Typography,
   FormHelperText,
   CardHeader,
+  Divider,
 } from "@mui/material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import moment from "moment";
-
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import React, { useEffect, useReducer, useState } from "react";
 
 import { useForm } from "react-hook-form";
@@ -25,6 +26,7 @@ import io from "socket.io-client";
 import { useSelector } from "react-redux";
 
 import dayjs from "dayjs";
+import { format } from "date-fns";
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
@@ -45,24 +47,6 @@ const Billing = () => {
   useEffect(() => {
     fetchHotel();
   }, []);
-  // const currencies = [
-  //   {
-  //     value: "USA",
-  //     label: "+1",
-  //   },
-  //   {
-  //     value: "IND",
-  //     label: "+91",
-  //   },
-  //   {
-  //     value: "BTC",
-  //     label: "฿",
-  //   },
-  //   {
-  //     value: "JPY",
-  //     label: "¥",
-  //   },
-  // ];
   const [difference, setDifference] = useState<any>(null);
 
   const data: any = localStorage.getItem("Date");
@@ -88,10 +72,10 @@ const Billing = () => {
   }, []);
 
   const [isVisible, setIsVisible] = useState(false);
-  const [display,setDisplay]=useState(false);
+  const [display, setDisplay] = useState(false);
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
-  const [text,setText]=useState('Please wait , your request is preeceding')
+  const [text, setText] = useState("Please wait , your request is preeceding");
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -116,10 +100,6 @@ const Billing = () => {
   interface User {
     fullName: any;
     phone: any;
-    // quantity: string;
-    // bookFrom: string;
-    // bookTo: string;
-    // guests: string;
     email: any;
     guestName: string | undefined;
     guestEmail: string | undefined;
@@ -169,17 +149,13 @@ const Billing = () => {
     };
     console.log(result);
 
-    socket.emit("send_Message",result);
+    socket.emit("send_Message", result);
     setDisplay(true);
-  
   };
 
-  useEffect(()=>{
-      socket.on("recieved",(data:any)=>{
-          // alert(data);
-      })
-     
-  },[socket])
+  useEffect(() => {
+    socket.on("recieved", (data: any) => {});
+  }, [socket]);
   return (
     <Box>
       <IconButton href="/" sx={{ ml: 2 }}>
@@ -300,63 +276,59 @@ const Billing = () => {
                   and Privacy Policy.
                 </Typography>
               </Stack>
-              {submitButton ? (
-                <Button
-                  type="submit"
-                  sx={{
-                    width: "30%",
-                    m: 2,
-                    background: `linear-gradient(135.46deg,#d11450,#df293a)`,
-                    color: "white",
-                  }}
-                >
-                  Book Now
-                </Button>
-              ) : (
-                <Button
-                  type="submit"
-                  onClick={handleSubmit(Submit)}
-                  sx={{
-                    width: "30%",
-                    m: 2,
-                    background: `lightgrey`,
-                    color: "white",
-                  }}
-                  disabled
-                >
-                  Book Now
-                </Button>
-              )}
+              <Button
+                type="submit"
+                sx={{
+                  width: "30%",
+                  m: 2,
+                }}
+                color="error"
+                variant="contained"
+                disabled={!submitButton}
+              >
+                Book Now
+              </Button>
             </Stack>
           </form>
-          {display && <Stack color={'red'} marginTop={3}>{text}</Stack>}
+          {display && (
+            <Stack color={"red"} marginTop={3}>
+              {text}
+            </Stack>
+          )}
         </Stack>
         <Stack>
           <Card
             sx={{
-              backgroundColor: "lightgrey",
+              backgroundColor: "#f5f5f5",
             }}
           >
             <CardContent>
-              <h3 style={{ marginBottom: "1rem" }}>
-                {hotelDetail[0]?.hotelName}
-              </h3>
-              <Stack direction={"row"} justifyContent={"space-between"}>
-                <Stack>
-                  <Stack fontSize={{ sm: "small", md: "medium" }}>
-                    {hotelDetail[0]?.city} - {hotelDetail[0]?.pinCode} ,
-                    {hotelDetail[0]?.state}, {hotelDetail[0]?.country}
+              <Stack direction={"row"} spacing={4} alignItems={"center"}>
+                <Stack direction={"column"} justifyContent={"space-between"}>
+                  <h3 style={{ marginBottom: "1rem" }}>
+                    {hotelDetail[0]?.hotelName}
+                  </h3>
+                  <Stack>
+                    <Stack
+                      fontSize={{ sm: "small", md: "medium" }}
+                      color={"gray"}
+                    >
+                      {hotelDetail[0]?.city} - {hotelDetail[0]?.pinCode} ,
+                      {hotelDetail[0]?.state}, {hotelDetail[0]?.country}
+                    </Stack>
+                    <Stack
+                      mt={3}
+                      textAlign={"left"}
+                      fontSize={"13px"}
+                      fontWeight={"bolder"}
+                    >{` ${difference?.days} Night`}</Stack>
                   </Stack>
-                  <Stack
-                    mt={3}
-                    textAlign={"left"}
-                  >{` ${difference?.days} Night`}</Stack>
                 </Stack>
-                <Stack width={70}>
+                <Stack width={90}>
                   <img
                     src={`http://localhost:8000/${hotelDetail[0]?.photo}`}
                     alt="Hotel Image"
-                    style={{ borderRadius: "10px", marginTop: "-1rem" }}
+                    style={{ borderRadius: "5px", marginTop: "-1rem" }}
                   />
                 </Stack>
               </Stack>
@@ -366,49 +338,63 @@ const Billing = () => {
                 mt={3}
                 fontSize={{ sm: "small", md: "medium" }}
               >
-                <Stack>
-                  {`${startdate.$d.toISOString().slice(0, 10)}`} /{" "}
-                  {`${enddate.$d.toISOString().slice(0, 10)}`}
-                </Stack>
-                <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
-                  {totalRooms} Room {totalGuests} Guest
+                <Stack
+                  fontWeight={"bolder"}
+                  direction={"row"}
+                  alignItems={"center"}
+                  spacing={2}
+                >
+                  <CalendarMonthIcon style={{ marginRight: 4 }} />
+                  {`${startdate.$d.toDateString().slice(0, 10)}`} --{" "}
+                  {`${enddate.$d.toDateString().slice(0, 10)}`}
+                  <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
+                    {totalRooms} Room {totalGuests} Guest
+                  </Stack>
                 </Stack>
               </Stack>
-              <Stack textAlign={"left"} mt={3}>
+              <Divider sx={{ marginTop: 2 }} />
+              <Stack textAlign={"left"} mt={3} fontWeight={"bolder"}>
                 {roomDetails?.type}
               </Stack>
-              <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
+              <Stack>
                 <Stack
-                  fontSize={{ sm: "small", md: "medium" }}
-                >{`Room price for ${difference?.days} Night X ${totalGuests} Guest `}</Stack>
-                <Stack fontSize={{ sm: "small", md: "medium" }}>
-                  {roomDetails?.price}
+                  direction={"row"}
+                  justifyContent={"space-between"}
+                  mt={3}
+                >
+                  <Stack
+                    fontSize={{ sm: "small", md: "medium" }}
+                  >{`Room price for ${difference?.days} Night X ${totalGuests} Guest `}</Stack>
+                  <Stack
+                    fontSize={{ sm: "small", md: "medium" }}
+                    fontWeight={"bolder"}
+                  >
+                    {roomDetails?.price}
+                  </Stack>
                 </Stack>
-              </Stack>
-
-              <Stack
-                direction={"row"}
-                justifyContent={"space-between"}
-                mt={3}
-                fontSize={{ sm: "small", md: "medium", lg: "large" }}
-              >
-                <Stack>Payable Amount</Stack>
-                <Stack direction={"row"}>
-                  <CurrencyRupeeIcon
-                    sx={{
-                      fontSize: { sm: "small", md: "medium", lg: "large" },
-                    }}
-                  />
-                  {totalPrice}
+                <Divider sx={{ marginTop: 3 }} />
+                <Stack
+                  direction={"row"}
+                  justifyContent={"space-between"}
+                  mt={3}
+                  fontSize={{ sm: "small", md: "medium", lg: "large" }}
+                >
+                  <Stack>Payable Amount</Stack>
+                  <Stack direction={"row"} fontWeight={"bolder"}>
+                    <CurrencyRupeeIcon
+                      sx={{
+                        fontSize: { sm: "small", md: "medium", lg: "large" },
+                      }}
+                    />
+                    {totalPrice}
+                  </Stack>
                 </Stack>
               </Stack>
             </CardContent>
           </Card>
         </Stack>
       </Stack>
-      </Box>
-    // </>
-  
+    </Box>
   );
 };
 

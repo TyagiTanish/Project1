@@ -8,7 +8,7 @@ import CustomerRoutes from "./Authentication/CustomerRoutes";
 import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
-import Billing from "../Billing";
+import Billing from "../Billing/Billing";
 
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
