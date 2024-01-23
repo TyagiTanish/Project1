@@ -41,7 +41,6 @@ export default function Bookings() {
             const data=await  request.get('/bookingDetails');
             console.log(data.data)
             setData(data.data);
-            
             }
            get();
       }
