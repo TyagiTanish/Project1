@@ -127,19 +127,25 @@ const Billing = () => {
   });
   const totalPrice = roomDetails?.price * totalRooms * difference?.days;
   const Submit = (data: any) => {
-    data.startdate = startdate;
-    data.enddate = enddate;
-    data.totalGuests = totalGuests;
-    data.totalDays = difference?.days;
-    data.totalPrice = totalPrice;
-    data.totalRooms = totalRooms;
-    data.roomId = roomDetails?.roomId;
-    request.post("/bookRoom", data);
+    // data.startdate = startdate;
+    // data.enddate = enddate;
+    // data.totalGuests = totalGuests;
+    // data.totalDays = difference?.days;
+    // data.totalPrice = totalPrice;
+    // data.totalRooms = totalRooms;
+    // data.roomId = roomDetails?.roomId;
+    // data.hotelId=hotelId
+    // request.post("/bookRoom", data);
     const result = {
       fullName: data.fullName,
       email: data.email,
       phone: data.phone,
       hotelId: hotelId,
+      days:difference?.days,
+      roomId:roomDetails?.roomId,
+      startDate:startdate,
+      endDate:enddate,
+      guests:totalGuests
     };
     console.log(result);
 
