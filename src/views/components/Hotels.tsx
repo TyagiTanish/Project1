@@ -43,10 +43,9 @@ function Hotels({ filteredData, screenSize }: any) {
     }
   };
 
-
-  const handleViewDeal = (item: any) => {
-    navigate("/billing");
-  };
+  // const handleViewDeal = (item: any) => {
+  //   navigate("/billing");
+  // };
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
