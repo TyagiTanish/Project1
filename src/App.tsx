@@ -12,18 +12,9 @@ import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
-import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
-import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
-import HotelOwnerView from "./views/layout/HotelOwnerView";
-import Rooms from "./views/components/Rooms";
-import Billing from "./views/components/Billing";
-import PayementPage from "./views/components/Bookings/PaymentGateway/payement";
-import PayByRazorPay from "./views/components/Bookings/PaymentGateway/payement";
-import PaymentGateway from "./views/components/Bookings/PaymentGateway/payement";
-import Booking from "./views/components/Bookings/PaymentGateway/payement";
-import Bookings from "./views/components/HotelOwner/Rooms/Booking/BookingRequests";
-import Client from "./views/components/client";
+import PaymentForm from "./views/components/Bookings/PaymentGateway/PaymentForm";
+import Booking from "./views/components/Bookings/PaymentGateway/PaymentPage";
 
 function App() {
   const { request } = useAuth();
@@ -37,8 +28,9 @@ function App() {
       //   {
       //  return  navigate('/login');
       //   }
-      // const userData = (await request.get(`/getUserData`)).data;
-      // dispatch(userLogin(userData));
+      const userData = (await request.get(`/getUserData`)).data;
+
+      dispatch(userLogin(userData));
     } catch (error) {
       localStorage.removeItem("authToken");
     }
@@ -64,13 +56,11 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          {/* <LoginSystem /> */}
+          <LoginSystem />
           {/* <Billing /> */}
-          {/* <PayementPage/> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
           {/* <Rooms/> */}
-          {/* <Client/> */}
         </SnackbarProvider>
         {/* <Outlet /> */}
       </Locales>
