@@ -11,6 +11,7 @@ import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import { Button, Stack, Typography } from "@mui/material";
 import DialogBox from "./DialogBox";
+import { ChildProcess } from "child_process";
 
 
 const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
@@ -32,7 +33,8 @@ export default function Bookings() {
   const [open, setOpen] = React.useState(false);
  const [handle,sethandle]=React.useState("");
   const { request } = useAuth();                   
-  const [data,setData]=React.useState<any>([])
+  const [data,setData]=React.useState<any>([]);
+  const [display,setDisplay]=React.useState({})
   React.useEffect(()=>{
     socket.on("recieved",(data)=>{
       if(data)
@@ -51,13 +53,17 @@ export default function Bookings() {
 const handleClickOpen = (data:any) => {
   setOpen(true);
   console.log(data)
+  setDisplay(data);
 };
 
 const handleClose = (value: string) => {
   setOpen(false);
 
 };
-
+const handleClickAccept=async(id:any)=>{
+    const data=await request.put(`/bookingAccept/${id}`);
+    setData(data.data)
+}
 const handleClick=async(id:any)=>{
   const data=await request.delete(`/bookingDelete/${id}`);
   setData(data.data)
@@ -68,14 +74,12 @@ React.useMemo(async()=>{
    
    setData(data.data)
 },[]);
-
-
+// React.useMemo(async()=>{
+//     console.log(data)
+// },[data]);
   return (
     <>
     <Stack direction={'column'} spacing={4}>
-
-
-
     <Typography sx={{fontWeight:"bold",fontSize:30}}>Requests-</Typography>
     {data.length===0 ? <Typography sx={{width:400,color:'red'}}>No Bookings till now*</Typography> 
     :
@@ -99,7 +103,8 @@ React.useMemo(async()=>{
         </TableHead>
         <TableBody>
           {data?.map((item: any) => (
-            <TableRow
+            item.status == 'pending' && (
+              <TableRow
               key={item.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
@@ -110,12 +115,12 @@ React.useMemo(async()=>{
             
               {/* <TableCell align="left"></TableCell> */}
               <TableCell align="left">
-                <Button  variant="contained" sx={{textTransform:'capitalize', backgroundImage: "linear-gradient(270deg,green,green)",marginRight:5}} onClick={()=>{handleClick(item._id)}}>Accept</Button>
+                <Button  variant="contained" sx={{textTransform:'capitalize', backgroundImage: "linear-gradient(270deg,green,green)",marginRight:5}} onClick={()=>{handleClickAccept(item._id)}}>Accept</Button>
                 <Button  variant="contained" sx={{textTransform:'capitalize',    backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",}} onClick={()=>{handleClick(item._id)}}>Reject</Button>
                 <Button  variant="contained" sx={{textTransform:'capitalize',ml:5}} onClick={()=>{handleClickOpen(item)}}>View</Button>
                 </TableCell>
            
-            </TableRow>
+            </TableRow>)
           ))}
         </TableBody>
       </Table>
@@ -123,7 +128,7 @@ React.useMemo(async()=>{
     
          </Stack>
        {open && <DialogBox
-
+        data={display}
         open={open}
         onClose={handleClose}
       />}
