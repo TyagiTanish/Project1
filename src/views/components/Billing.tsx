@@ -88,9 +88,10 @@ const Billing = () => {
   }, []);
 
   const [isVisible, setIsVisible] = useState(false);
-
+  const [display,setDisplay]=useState(false);
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
+  const [text,setText]=useState('Please wait , your request is preeceding')
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -161,14 +162,18 @@ const Billing = () => {
       hotelId: hotelId,
     };
     console.log(result);
-    socket.emit("send_Message", result);
+
+    socket.emit("send_Message",result);
+    setDisplay(true);
+  
   };
 
-  useEffect(() => {
-    socket.on("recieved", (data: any) => {
-      alert(data);
-    });
-  }, [socket]);
+  useEffect(()=>{
+      socket.on("recieved",(data:any)=>{
+          // alert(data);
+      })
+     
+  },[socket])
   return (
     <Box>
       <IconButton href="/" sx={{ ml: 2 }}>
@@ -318,6 +323,7 @@ const Billing = () => {
               )}
             </Stack>
           </form>
+          {display && <Stack color={'red'} marginTop={3}>{text}</Stack>}
         </Stack>
         <Stack>
           <Card
@@ -394,7 +400,8 @@ const Billing = () => {
           </Card>
         </Stack>
       </Stack>
-    </Box>
+    </>
+
   );
 };
 
