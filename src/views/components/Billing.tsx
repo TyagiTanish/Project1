@@ -11,6 +11,7 @@ import {
   FormHelperText,
   CardHeader,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import moment from "moment";
 
@@ -30,8 +31,11 @@ const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 const Billing = () => {
+  const navigate = useNavigate();
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const userId = useSelector((state: any) => state.userReducer.user);
+  // console.log(userId?._id);
   const roomDetails = useSelector(
     (state: any) => state.userReducer.roomDetails
   );
@@ -88,10 +92,10 @@ const Billing = () => {
   }, []);
 
   const [isVisible, setIsVisible] = useState(false);
-  const [display,setDisplay]=useState(false);
+  const [display, setDisplay] = useState(false);
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
-  const [text,setText]=useState('Please wait , your request is preeceding')
+  const [text, setText] = useState("Please wait , your request is preeceding");
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -154,6 +158,7 @@ const Billing = () => {
     data.totalPrice = totalPrice;
     data.totalRooms = totalRooms;
     data.roomId = roomDetails?.roomId;
+    data.userId = userId?._id;
     request.post("/bookRoom", data);
     const result = {
       fullName: data.fullName,
@@ -163,17 +168,15 @@ const Billing = () => {
     };
     console.log(result);
 
-    socket.emit("send_Message",result);
+    socket.emit("send_Message", result);
     setDisplay(true);
-  
   };
 
-  useEffect(()=>{
-      socket.on("recieved",(data:any)=>{
-          // alert(data);
-      })
-     
-  },[socket])
+  useEffect(() => {
+    socket.on("recieved", (data: any) => {
+      // alert(data);
+    });
+  }, [socket]);
   return (
     <Box>
       <IconButton href="/" sx={{ ml: 2 }}>
@@ -294,12 +297,29 @@ const Billing = () => {
                   and Privacy Policy.
                 </Typography>
               </Stack>
-              {submitButton ? (
+              {!submitButton ? (
                 <Button
                   type="submit"
                   sx={{
                     width: "30%",
                     m: 2,
+                    background: `lightgrey`,
+                    color: "white",
+                  }}
+                  disabled
+                >
+                  Book Now
+                </Button>
+              ) : !userId?._id ? (
+                <Button
+                  // type="Button"
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                  sx={{
+                    width: "30%",
+                    m: 2,
+
                     background: `linear-gradient(135.46deg,#d11450,#df293a)`,
                     color: "white",
                   }}
@@ -313,22 +333,26 @@ const Billing = () => {
                   sx={{
                     width: "30%",
                     m: 2,
-                    background: `lightgrey`,
+
+                    background: `linear-gradient(135.46deg,#d11450,#df293a)`,
                     color: "white",
                   }}
-                  disabled
                 >
                   Book Now
                 </Button>
               )}
             </Stack>
           </form>
-          {display && <Stack color={'red'} marginTop={3}>{text}</Stack>}
+          {display && (
+            <Stack color={"red"} marginTop={3}>
+              {text}
+            </Stack>
+          )}
         </Stack>
         <Stack>
           <Card
             sx={{
-              backgroundColor: "lightgrey",
+              backgroundColor: "#F5F5F5",
             }}
           >
             <CardContent>
@@ -400,8 +424,7 @@ const Billing = () => {
           </Card>
         </Stack>
       </Stack>
-    </>
-
+    </Box>
   );
 };
 
