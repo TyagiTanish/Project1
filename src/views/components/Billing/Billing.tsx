@@ -31,19 +31,23 @@ import PaymentDialogBox from "./paymentDialogBox";
 import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
 
+
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 const Billing = () => {
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const user = useSelector((state:any)=>state.userReducer.user)
   const roomDetails = useSelector(
     (state: any) => state.userReducer.roomDetails
   );
   // console.log("Hotel Id", hotelId, "roomDetails", roomDetails);
   const { request } = useAuth();
-  const fetchHotel: any = async () => {
-    const result = await request.get(`/getHotel/${hotelId}`);
+
+
+  const fetchHotel: any = async () => {                           //function to get all hotel details 
+    const result = await request.get(`/getHotel/${hotelId}`);     
     sethotelDetail(result.data);
   };
   useEffect(() => {
@@ -178,6 +182,7 @@ const [bookingId,setBookingId] = useState();
                 <TextField
                   variant="outlined"
                   placeholder="Enter your name"
+                  defaultValue={user?.name}
                   {...register("fullName")}
                   fullWidth
                 />
@@ -193,6 +198,7 @@ const [bookingId,setBookingId] = useState();
                 <TextField
                   variant="outlined"
                   placeholder="Email"
+                  defaultValue={user?.email}
                   {...register("email")}
                   fullWidth
                 />
@@ -224,7 +230,7 @@ const [bookingId,setBookingId] = useState();
                   // id="standard-password-input"
                   placeholder="Phone Number"
                   {...register("phone")}
-
+                  defaultValue={user?.phone}
                   // autoComplete="current-password"
                 />
                 <FormHelperText sx={{ color: "red" }}>
