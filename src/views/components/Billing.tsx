@@ -74,7 +74,7 @@ const Billing = () => {
       calculateDifference();
     }
   }, []);
-
+  const [result,setResult]=useState<any>({});
   const [isVisible, setIsVisible] = useState(false);
   const [display, setDisplay] = useState(false);
   const [guest, setGuest] = useState<any>(false);
@@ -151,8 +151,8 @@ const Billing = () => {
       endDate:enddate,
       guests:totalGuests
     };
-    console.log(result);
-
+    
+    setResult(result)
     socket.emit("send_Message", result);
     setDisplay(true);
   };

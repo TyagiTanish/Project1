@@ -21,6 +21,7 @@ import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import ShowCustomerBooking from "../ShowCustomerBooking";
 import BookingDetails from "../BookingDetails";
+import AcceptedBookings from "../AcceptedBookings";
 
 const router = [
   {
@@ -140,13 +141,13 @@ const router = [
         ),
       },
       {
-        path: "/member/bookings",
-        element: (
-          <MemberRoute>
-            <Bookings />
-          </MemberRoute>
-        ),
+        path:'/member/bookings',
+        element:(<MemberRoute><Bookings/></MemberRoute>)
       },
+      {
+        path:'/member/acceptedBookings',
+        element:(<MemberRoute><AcceptedBookings/></MemberRoute>)
+      }
     ],
   },
 ];

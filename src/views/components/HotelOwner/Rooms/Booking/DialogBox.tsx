@@ -26,7 +26,7 @@ function DialogBox(props: any) {
     setDisplay(result[0]);
   }, []);
 
-  console.log("dataaaaaaaaa", display);
+
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <DialogTitle textAlign={"center"}>{hotel?.hotelName}</DialogTitle>
@@ -77,7 +77,7 @@ function DialogBox(props: any) {
                 </Stack>
                 <Stack direction={"column"}>
                   <Stack sx={{ fontSize: 15, width: 100 }}>23-05-23</Stack>
-                  <Stack sx={{ fontSize: 15 }}>Success</Stack>
+                  <Stack sx={{ fontSize: 15 }}>{data.paymentStatus}</Stack>
                 </Stack>
               </Stack>
             </Stack>
@@ -108,6 +108,10 @@ function DialogBox(props: any) {
             <Stack direction={'row'} spacing={2}>
               <Typography >Type of room</Typography>
               <Typography sx={{fontSize:15}}>{display.roomType}</Typography>
+            </Stack>
+            <Stack direction={'row'} spacing={2}>
+              <Typography >Total No. of Days-</Typography>
+              <Typography sx={{fontSize:15}}>{data.totalDays}</Typography>
             </Stack>
           </Stack>
     

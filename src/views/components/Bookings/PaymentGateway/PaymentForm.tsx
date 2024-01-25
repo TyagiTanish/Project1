@@ -1,10 +1,13 @@
 // PaymentForm.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
-
+import io from "socket.io-client";
+const socket = io("http://localhost:8000", {
+  transports: ["websocket", "polling", "flashsocket"],
+});
 const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice }: any) => {
   const stripe = useStripe();
   const elements = useElements();
@@ -59,6 +62,7 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice }: any
         setTimeout(() => {
           setDisplayLoader(false);
         });
+        socket.emit("send_Message", result);
       } else {
         setDisplayLoader(false);
         console.error("Payment failed:", result.error);

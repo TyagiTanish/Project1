@@ -10,7 +10,7 @@ const Booking = ({setDisplayLoader,setDisplay,bookingId,totalPrice}:any) => {
     <StripeProvider>
      
           <Box sx={{ width: 400,padding: 2,border:'1px solid lightgray' }}  >
-            <PaymentForm setDisplayLoader={setDisplayLoader} setDisplay={setDisplay} bookingId={bookingId} totalPrice={totalPrice} />
+            <PaymentForm setDisplayLoader={setDisplayLoader} setDisplay={setDisplay} bookingId={bookingId} totalPrice={totalPrice}  />
           </Box>
     
     </StripeProvider>
