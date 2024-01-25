@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import Locales from "./views/components/Locale";
 import PaymentForm from "./views/components/Bookings/PaymentGateway/PaymentForm";
 import Booking from "./views/components/Bookings/PaymentGateway/PaymentPage";
+import ShowCustomerBooking from "./views/components/ShowCustomerBooking";
 
 function App() {
   const { request } = useAuth();
@@ -57,6 +58,7 @@ function App() {
       <Locales>
         <SnackbarProvider>
           <LoginSystem />
+          {/* <ShowCustomerBooking /> */}
           {/* <Billing /> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
