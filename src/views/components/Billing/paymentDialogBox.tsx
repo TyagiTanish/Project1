@@ -21,7 +21,7 @@ export default function PaymentDialogBox({
   totalPrice,
   setDisplayLoader,
   bookingId,
-
+  result
 }: any) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -46,7 +46,7 @@ export default function PaymentDialogBox({
           <DialogContentText>
             <Stack direction={"row"} spacing={3} >
               <Box>
-                <Booking  setDisplayLoader={setDisplayLoader} setDisplay={setDisplay} bookingId={bookingId} totalPrice={totalPrice} />
+                <Booking  setDisplayLoader={setDisplayLoader} setDisplay={setDisplay} bookingId={bookingId} totalPrice={totalPrice} result={result} />
               </Box>
            <Box>   
             <BillingDetailsCard

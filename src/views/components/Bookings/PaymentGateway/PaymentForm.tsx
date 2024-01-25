@@ -8,7 +8,7 @@ import io from "socket.io-client";
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
-const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice }: any) => {
+const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result }: any) => {
   const stripe = useStripe();
   const elements = useElements();
   const [error, setError] = useState(null);
@@ -62,7 +62,7 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice }: any
         setTimeout(() => {
           setDisplayLoader(false);
         });
-        socket.emit("send_Message", result);
+        socket.emit("response", true);
       } else {
         setDisplayLoader(false);
         console.error("Payment failed:", result.error);

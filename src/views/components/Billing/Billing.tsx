@@ -78,6 +78,7 @@ const Billing = () => {
     }
   }, []);
 const [bookingId,setBookingId] = useState();
+const [result,setResult]=useState<any>({});
   const [displayLoader, setDisplayLoader] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [display, setDisplay] = useState(false);
@@ -144,19 +145,28 @@ const [bookingId,setBookingId] = useState();
     data.roomId = roomDetails?.roomId;
     const value = await request.post("/bookRoom", { data, hotelId });
     setBookingId(value.data.bookingId)
-    
-   
-    
-
+    const result = {
+      fullName: data.fullName,
+      email: data.email,
+      phone: data.phone,
+      hotelId: hotelId,
+      days:difference?.days,
+      roomId:roomDetails?.roomId,
+      startDate:startdate,
+      endDate:enddate,
+      guests:totalGuests
+    };
+    setResult(result)
     setDisplay(true);
+    // socket.emit("send_Message", result);
   };
 
   useEffect(() => {
     socket.on("recieved", (data: any) => {});
   }, [socket]);
-  const handleClick=()=>{
-    socket.emit("response", true);
-  }
+  // const handleClick=()=>{
+  //   socket.emit("response", true);
+  // }
   return (
     <>
       {displayLoader ? (<Loader />):(
@@ -296,7 +306,7 @@ const [bookingId,setBookingId] = useState();
                   color="error"
                   variant="contained"
                   disabled={!submitButton}
-                  onClick={handleClick}
+                  // onClick={handleClick}
                 >
                  Pay Now
                 </Button>
@@ -329,6 +339,7 @@ const [bookingId,setBookingId] = useState();
         totalPrice={totalPrice}
         setDisplayLoader={setDisplayLoader}
         bookingId={bookingId}
+        result={result}
       />
       </>
       )}
