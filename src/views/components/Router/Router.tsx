@@ -19,6 +19,8 @@ import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
+import ShowCustomerBooking from "../ShowCustomerBooking";
+import BookingDetails from "../BookingDetails";
 
 const router = [
   {
@@ -32,6 +34,10 @@ const router = [
   {
     path: "/login",
     element: <MainPage />,
+  },
+  {
+    path: "/myBookings",
+    element: <ShowCustomerBooking />,
   },
   {
     path: "/AddHotel",
@@ -88,8 +94,16 @@ const router = [
     ),
   },
   {
-    path:'/billing',
-    element:<Billing/>
+    path: "/myBookings/:id",
+    element: (
+      <CustomerRoutes>
+        <BookingDetails />
+      </CustomerRoutes>
+    ),
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
   },
   {
     path: "/member",
@@ -126,9 +140,13 @@ const router = [
         ),
       },
       {
-        path:'/member/bookings',
-        element:(<MemberRoute><Bookings/></MemberRoute>)
-      }
+        path: "/member/bookings",
+        element: (
+          <MemberRoute>
+            <Bookings />
+          </MemberRoute>
+        ),
+      },
     ],
   },
 ];
