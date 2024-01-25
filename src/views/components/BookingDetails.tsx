@@ -92,6 +92,8 @@ function BookingDetails() {
           <Divider sx={{ width: "90%", alignSelf: "center", mt: 3 }} />
           <Divider sx={{ width: "90%", alignSelf: "center" }} />
           <Divider sx={{ width: "90%", alignSelf: "center" }} />
+
+          <Stack></Stack>
         </Stack>
       </Stack>
     </>
