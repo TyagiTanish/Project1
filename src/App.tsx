@@ -15,6 +15,7 @@ import { useEffect } from "react";
 import Locales from "./views/components/Locale";
 import PaymentForm from "./views/components/Bookings/PaymentGateway/PaymentForm";
 import Booking from "./views/components/Bookings/PaymentGateway/PaymentPage";
+import HotelOwnerView from "./views/layout/HotelOwnerView";
 
 function App() {
   const { request } = useAuth();

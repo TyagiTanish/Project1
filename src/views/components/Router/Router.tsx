@@ -19,6 +19,7 @@ import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
 import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
+import AcceptedBookings from "../AcceptedBookings";
 
 const router = [
   {
@@ -128,6 +129,10 @@ const router = [
       {
         path:'/member/bookings',
         element:(<MemberRoute><Bookings/></MemberRoute>)
+      },
+      {
+        path:'/member/acceptedBookings',
+        element:(<MemberRoute><AcceptedBookings/></MemberRoute>)
       }
     ],
   },

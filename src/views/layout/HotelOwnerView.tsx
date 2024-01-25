@@ -29,7 +29,7 @@ import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Menu from "./Menu";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -270,7 +270,7 @@ export default function HotelOwnerView() {
   console.log(toGet);
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Box sx={{ display: "flex" }}> 
         <CssBaseline />
         <AppBar position="fixed" open={open} sx={{ bgcolor: "white" }}>
           <Toolbar>
@@ -409,14 +409,46 @@ export default function HotelOwnerView() {
                   }}
                 >
                   {open === true ? (
-                    <CalendarMonthIcon />
+                    <CalendarMonthIcon fontSize="small" />
                   ) : (
-                    <BedIcon sx={{ fontSize: "25px" }} />
+                    <CalendarMonthIcon sx={{ fontSize: "25px" }} />
                   )}
                 </ListItemIcon>
                 <ListItemText
                   primary={"Booking Requests"}
                   sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+                onClick={() => navigate("/member/acceptedBookings")}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <InsertInvitationIcon fontSize="small" />
+                  ) : (
+                    <InsertInvitationIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"My Bookings"}
+                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
                 />
               </ListItemButton>
             </ListItem>

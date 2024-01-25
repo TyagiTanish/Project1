@@ -35,6 +35,7 @@ const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 const Billing = () => {
+ 
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const roomDetails = useSelector(
@@ -140,21 +141,18 @@ const [bookingId,setBookingId] = useState();
     const value = await request.post("/bookRoom", { data, hotelId });
     setBookingId(value.data.bookingId)
     
-    // const result = {
-    //   fullName: data.fullName,
-    //   email: data.email,
-    //   phone: data.phone,
-    //   hotelId: hotelId,
-    // };
-    // console.log(result);
+   
+    
 
-    // socket.emit("send_Message", result);
     setDisplay(true);
   };
 
   useEffect(() => {
     socket.on("recieved", (data: any) => {});
   }, [socket]);
+  const handleClick=()=>{
+    socket.emit("response", true);
+  }
   return (
     <>
       {displayLoader ? (<Loader />):(
@@ -292,6 +290,7 @@ const [bookingId,setBookingId] = useState();
                   color="error"
                   variant="contained"
                   disabled={!submitButton}
+                  onClick={handleClick}
                 >
                  Pay Now
                 </Button>
@@ -315,7 +314,7 @@ const [bookingId,setBookingId] = useState();
         </Stack>
       </Box>
       <PaymentDialogBox
-        display={display}
+      display={display}
         setDisplay={setDisplay}
         hotelDetail={hotelDetail}
         roomDetails={roomDetails}
