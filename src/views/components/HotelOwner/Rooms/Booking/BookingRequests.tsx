@@ -6,12 +6,13 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import io from "socket.io-client";
+
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import { Button, Stack, Typography } from "@mui/material";
 import DialogBox from "./DialogBox";
 import { ChildProcess } from "child_process";
+import io from "socket.io-client";
 
 
 const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
@@ -35,20 +36,7 @@ export default function Bookings() {
   const { request } = useAuth();                   
   const [data,setData]=React.useState<any>([]);
   const [display,setDisplay]=React.useState({})
-  React.useEffect(()=>{
-    socket.on("recieved",(data)=>{
-      if(data)
-      {
-            const get=async()=>{
-            const data=await  request.get('/bookingDetails');
-            console.log(data.data)
-            setData(data.data);
-            }
-           get();
-      }
-      
-    })
-},[socket])
+
 const handleClickOpen = (data:any) => {
   setOpen(true);
   console.log(data)
@@ -66,16 +54,29 @@ const handleClickAccept=async(id:any)=>{
 const handleClick=async(id:any)=>{
   const data=await request.delete(`/bookingDelete/${id}`);
   setData(data.data)
-  console.log(id)
+ 
 }
 React.useMemo(async()=>{
    const data= await request.get('/bookingDetails');
    
    setData(data.data)
 },[]);
-// React.useMemo(async()=>{
-//     console.log(data)
-// },[data]);
+React.useMemo(()=>{
+  socket.on("recieved",(data)=>{
+    console.log('data is ------------>',data)
+    if(data)
+    {
+          const get=async()=>{
+          const data=await  request.get('/bookingDetails');
+         
+          setData(data.data);
+          
+          }
+         get();
+    }
+    
+  })
+},[socket])
   return (
     <>
     <Stack direction={'column'} spacing={4}>
