@@ -33,7 +33,7 @@ export default function ImagePreview({
     >
       <DialogTitle>
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'}  >
-          <Typography variant="h6" >{room?.photos[previewIndex]?.filename}</Typography>
+          <Typography variant="h6" width={400} overflow={"hidden"} >{room?.photos[previewIndex]?.filename}</Typography>
           <IconButton onClick={handleClose}>
             <CloseIcon />
           </IconButton>

@@ -29,7 +29,7 @@ export default function ChangedImagePreview({changedImagePreview,setChangedImage
     >
       <DialogTitle>
         <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'}  >
-          <Typography variant="h6" >{changedPhoto[ChangedImageIndex]?.preview}</Typography>
+          <Typography variant="h6" width={400} overflow={"hidden"}   >{changedPhoto[ChangedImageIndex]?.preview}</Typography>
           <IconButton onClick={handleClose}>
             <CloseIcon />
           </IconButton>

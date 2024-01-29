@@ -11,6 +11,15 @@ import UserViewRooms from "./UserViewRooms";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+
+
+/**
+* To show Details of a specific hotel. Markdown is *Hotels*.
+*/
+
+
+
+
 function ViewDeal() {
   const { id } = useParams();
   const [filterData, setFilteredData] = useState<any>([]);

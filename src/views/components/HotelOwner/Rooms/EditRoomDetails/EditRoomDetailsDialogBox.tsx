@@ -229,7 +229,7 @@ export default function EditRoomDetails({
                       >
                         <Chip
                           label={`${image?.path}`}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer",width:200}}
                           onDelete={() => handleDelete(index)}
                         />
                       </Box>
@@ -246,7 +246,7 @@ export default function EditRoomDetails({
                       >
                         <Chip
                           label={`${photo?.path}`}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer",width:200}}
                           onDelete={() => handleDeleteChangedPhoto(index)}
                         />
                       </Box>
