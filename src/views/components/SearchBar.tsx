@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import Building1 from "./BuildingSvg";
 import "react-datepicker/dist/react-datepicker.css";
 import DateRangePickers from "./DatePicker";
@@ -25,17 +25,30 @@ function SearchBar() {
   };
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const [guests, setGuests] = useState(0);
+  const [totalRooms, setTotalRooms] = useState(0);
   const [render, setRender] = React.useState(0);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
     var result = 0;
+    var totalRooms = 0;
     rooms.forEach((element: any) => {
       result = result + +element.guest;
+      totalRooms = totalRooms + 1;
     });
+    setTotalRooms(totalRooms);
     setGuests(result);
+
     setRooms(rooms);
   }, [render, rooms]);
+  console.log(totalRooms, guests);
+  // useMemo(() => {
+  localStorage.setItem(
+    "Rooms&Guests",
+    JSON.stringify({ Rooms: totalRooms, Guests: guests })
+  );
+  //   );
+  // }, [guests]);
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
@@ -130,7 +143,7 @@ function SearchBar() {
                 ),
               }}
             />
-            <Box marginTop={-1}>
+            <Box mt={-1}>
               <DateRangePickers />
             </Box>
             <TextField

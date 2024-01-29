@@ -12,12 +12,10 @@ import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import { useEffect } from "react";
-import { IntlProvider } from "react-intl";
 import Locales from "./views/components/Locale";
-import AllRooms from "./views/components/HotelOwner/Rooms/RoomDetails/Rooms";
+import PaymentForm from "./views/components/Bookings/PaymentGateway/PaymentForm";
+import Booking from "./views/components/Bookings/PaymentGateway/PaymentPage";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
-import Rooms from "./views/components/Rooms";
-import Billing from "./views/components/Billing";
 
 function App() {
   const { request } = useAuth();
@@ -59,9 +57,9 @@ function App() {
     <>
       <Locales>
         <SnackbarProvider>
-          {/* <LoginSystem /> */}
-          <Billing />
-
+          <LoginSystem />
+          {/* <ShowCustomerBooking /> */}
+          {/* <Billing /> */}
           {/* <AllRooms/> */}
           {/* <HotelOwnerView/> */}
           {/* <Rooms/> */}

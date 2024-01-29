@@ -8,7 +8,7 @@ import CustomerRoutes from "./Authentication/CustomerRoutes";
 import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
-import Billing from "../Billing";
+import Billing from "../Billing/Billing";
 
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
@@ -17,6 +17,11 @@ import HotelOwnerView from "../../layout/HotelOwnerView";
 import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
+import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
+import ShowCustomerBooking from "../ShowCustomerBooking";
+import BookingDetails from "../BookingDetails";
+import AcceptedBookings from "../AcceptedBookings";
 
 const router = [
   {
@@ -32,12 +37,16 @@ const router = [
     element: <MainPage />,
   },
   {
+    path: "/myBookings",
+    element: <ShowCustomerBooking />,
+  },
+  {
     path: "/AddHotel",
 
     element: (
-      <CustomerRoutes>
+    
         <AddHotelAftrLgn />
-      </CustomerRoutes>
+     
     ),
   },
   {
@@ -86,6 +95,18 @@ const router = [
     ),
   },
   {
+    path: "/myBookings/:id",
+    element: (
+      <CustomerRoutes>
+        <BookingDetails />
+      </CustomerRoutes>
+    ),
+  },
+  {
+    path: "/billing",
+    element: <Billing />,
+  },
+  {
     path: "/member",
     element: (
       <MemberRoute>
@@ -119,6 +140,14 @@ const router = [
           </MemberRoute>
         ),
       },
+      {
+        path:'/member/bookings',
+        element:(<MemberRoute><Bookings/></MemberRoute>)
+      },
+      {
+        path:'/member/acceptedBookings',
+        element:(<MemberRoute><AcceptedBookings/></MemberRoute>)
+      }
     ],
   },
 ];

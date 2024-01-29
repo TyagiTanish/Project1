@@ -11,9 +11,23 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { hotelId, roomDetails } from "./redux/user/userSlice";
+
 function RoomDialog(props: any) {
-  console.log(props?.details);
+  // console.log(props?.details);
   const [roomImage, setRoomImage] = useState(0);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  // const setRedux = (id: any) => {
+  const reduxValue: any = {
+    price: props?.details?.price,
+    type: props?.details?.roomType,
+    roomId: props?.details?._id,
+  };
+  dispatch(roomDetails(reduxValue));
+  // };
   return (
     <Dialog onClose={props.handleClose} open={props.open} maxWidth="lg">
       <Stack
@@ -175,6 +189,9 @@ function RoomDialog(props: any) {
                 color: "white",
                 fontWeight: "bold",
                 mt: "2%",
+              }}
+              onClick={() => {
+                navigate("/billing");
               }}
             >
               Book Now

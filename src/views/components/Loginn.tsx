@@ -1,11 +1,19 @@
 import {
   Box,
   Button,
+  FormControl,
   FormHelperText,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  OutlinedInput,
   Stack,
   TextField,
   Typography,
 } from "@mui/material";
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -26,7 +34,13 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
   const navigate = useNavigate();
   const [authentication, setAuthentication] = useState("");
   const dispatch = useDispatch();
+  const [showPassword, setShowPassword] = React.useState(false);
 
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
+
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
   const Onsubmit = async (value: any) => {
     try {
       if (!value.password) {
@@ -150,12 +164,35 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                     <FormattedMessage defaultMessage="Password " />
                   </b>
                   <br />
-                  <TextField
+                  {/* <TextField
                     id="password"
                     type="password"
                     sx={{ fontWeight: "500", mt: -2 }}
                     {...register("password")}
-                  ></TextField>
+                  ></TextField> */}
+               <FormControl sx={{ width: '41ch' }} variant="outlined">
+               <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+          <OutlinedInput
+            id="outlined-adornment-password"
+            {...register("password")}
+            type={showPassword ? 'text' : 'password'}
+            endAdornment={
+              <InputAdornment position="end">
+                <IconButton
+                  aria-label="toggle password visibility"
+                  onClick={handleClickShowPassword}
+                  onMouseDown={handleMouseDownPassword}
+                  edge="end"
+                  
+                >
+                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                </IconButton>
+              </InputAdornment>
+             
+            }
+            label="Password"
+          />
+        </FormControl>
                 </>
               )}
             </Stack>

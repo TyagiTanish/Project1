@@ -18,40 +18,7 @@ function UserViewRooms({ hotels }: any) {
   const handleClose = () => {
     setOpen2(false);
   };
-  // console.log('details are', details);
 
-  // const [data] = useState([
-  //   {
-  //     name: "king Bed Room",
-  //     price: "8000/-",
-  //     memberBedPrice: "₹12,150",
-  //     bedAndBreakfastPrice: "₹13,900",
-  //     description:
-  //       "Enjoy the view of the Pawan Hans helipad from this spacious room where quirky décor and colourful designs echo the spirit of Mumbai. This modern space offers one king bed, a sitting area with sofa and coffee table, and a bathroom with walk-in shower and vanity.",
-  //     src: "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partner-images/f0/59/4e8aed8865804976696d186756580f2101ce75f5e850a95d5764d7a22376.jpeg",
-  //   },
-  //   {
-  //     name: "Delux Rooom",
-  //     price: "2000/-",
-  //     description:
-  //       "Enjoy the view of the Pawan Hans helipad from this spacious room where quirky décor and colourful designs echo the spirit of Mumbai. This modern space offers one king bed, a sitting area with sofa and coffee table, and a bathroom with walk-in shower and vanity.",
-  //     src: "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partner-images/ca/e5/8f98a5b561be94024ec63202de7a2b879ee977038e22977faea3318350ea.jpeg",
-  //     memberBedPrice: "₹12,150",
-  //     bedAndBreakfastPrice: "₹13,900",
-  //   },
-  //   {
-  //     name: "Super Delux",
-  //     price: "3000/-",
-  //     memberBedPrice: "₹12,150",
-  //     description:
-  //       "Enjoy the view of the Pawan Hans helipad from this spacious room where quirky décor and colourful designs echo the spirit of Mumbai. This modern space offers one king bed, a sitting area with sofa and coffee table, and a bathroom with walk-in shower and vanity.",
-  //     bedAndBreakfastPrice: "₹13,900",
-  //     src: "https://imgcy.trivago.com/c_limit,d_dummy.jpeg,f_auto,h_1300,q_auto,w_2000/partner-images/40/2d/6eb3dd7250cf1be30505ca5c14f0e6f995774ce250ae57a0c809666c4a27.jpeg",
-  //   },
-  // ]);
-  // const data = hotels[0];
-  // console.log(hotels[0].rooms[0].roomType);
-  // console.log(hotels[0]?.rooms);
   return (
     <>
       <Stack
