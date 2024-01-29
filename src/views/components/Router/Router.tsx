@@ -104,7 +104,7 @@ const router = [
   },
   {
     path: "/billing",
-    element: <Billing />,
+    element: <CustomerRoutes><Billing /></CustomerRoutes>,
   },
   {
     path: "/member",

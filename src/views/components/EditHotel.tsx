@@ -6,6 +6,7 @@ import CloseIcon from "@mui/icons-material/Close";
 import QuillEditor from "react-quill";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
 import {
+  Autocomplete,
   Box,
   Button,
   Chip,
@@ -22,9 +23,10 @@ import { Form } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { render } from "react-dom";
-import {  useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 function EditHotel(props: any) {
   const [value, setValue] = useState(props.data?.discription);
+  const [category,setcategory] = useState<any>(props?.data?.categories)
   const [imagePreView, setImagePreView] = React.useState(false);
   const [previewIndex, setPreviewIndex] = React.useState<any>("");
   const [photoValue, setPhotoValue] = useState(props.data?.photo.slice(7));
@@ -86,18 +88,22 @@ function EditHotel(props: any) {
       formData.set("country", data?.country);
       formData.set("discription", value);
       formData.set("name", user.name);
-   
+      formData.set("categories",JSON.stringify(category))
       const result = await request.put("/updateHotel", formData);
       props.setData(result?.data[0]);
       // localStorage.setItem("name",data.ownerName);
-     
-     
     };
     get();
   };
-  const handleClick=()=>{
-     props.setRender((prev:any)=>prev+1);
-  }
+  const handleClick = () => {
+    props.setRender((prev: any) => prev + 1);
+  };
+
+
+const handleCategoryChange = (value:any) =>{
+  setcategory(value)
+}
+
   return (
     <Dialog
       //   fullScreen={fullScreen}
@@ -167,14 +173,13 @@ function EditHotel(props: any) {
                 />
               </Stack>
               <TextField
-              disabled
+                disabled
                 variant="outlined"
                 label={"Owner Name"}
                 defaultValue={user.name}
                 {...register("ownerName")}
               />
               <TextField
-         
                 variant="outlined"
                 label={"Owner's Email"}
                 defaultValue={user.email}
@@ -207,7 +212,7 @@ function EditHotel(props: any) {
                       >
                         <Chip
                           label={photoValue}
-                          style={{ cursor: "pointer" }}
+                          style={{ cursor: "pointer",width:300}}
                           onDelete={() => handleDelete()}
                         />
                       </Box>
@@ -242,6 +247,33 @@ function EditHotel(props: any) {
               <Box></Box>
             </Box>
             <Stack spacing={2}>
+              <Stack>
+                <Autocomplete             //Adding or deleting Category 
+                  multiple
+                  id="tags-filled"
+                  options={category?.map((option:any) => option)}
+                  defaultValue={props?.data?.categories}
+                  freeSolo
+                  renderTags={(value: readonly string[], getTagProps: any) =>
+                    value.map((option: string, index: number) => (
+                      <Chip
+                        variant="outlined"
+                        label={option}
+                        {...getTagProps({ index })}
+                      />
+                    ))
+                  }
+
+                  onChange={(event,value)=>handleCategoryChange(value)}
+                  renderInput={(params: any) => (
+                    <TextField
+                      {...params}
+                      variant="filled"
+                      placeholder="Add Category"
+                    />
+                  )}
+                />
+              </Stack>
               <Stack spacing={1}>
                 <label style={{ fontSize: "18px " }}>Room Description:</label>
                 <Box width={500}>

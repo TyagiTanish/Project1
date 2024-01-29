@@ -27,6 +27,9 @@ function RoomDialog(props: any) {
     roomId: props?.details?._id,
   };
   dispatch(roomDetails(reduxValue));
+
+  let Rooms: any = localStorage.getItem("Rooms&Guests");
+
   // };
   return (
     <Dialog onClose={props.handleClose} open={props.open} maxWidth="lg">
@@ -185,16 +188,23 @@ function RoomDialog(props: any) {
             {" "}
             <Button
               sx={{
-                backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",
-                color: "white",
                 fontWeight: "bold",
                 mt: "2%",
               }}
+              color="error"
+              variant="contained"
               onClick={() => {
                 navigate("/billing");
               }}
+              disabled={
+                props?.details?.isAvailable === "false" ||
+                props?.details?.roomQuantity === "0" ||
+                (JSON.parse(Rooms)?.Rooms > props?.details?.roomQuantity)
+              }
             >
-              Book Now
+              { props?.details?.isAvailable === "false" ||
+                props?.details?.roomQuantity === "0" ||
+                JSON.parse(Rooms)?.Rooms > props?.details?.roomQuantity ? ('Currently Unavailable'):('Book Now ')}
             </Button>
           </Stack>
         </Stack>

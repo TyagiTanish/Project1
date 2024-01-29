@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { experimentalStyled as styled } from "@mui/material/styles";
 import Switch from "@mui/material/Switch";
 import { Link, useParams } from "react-router-dom";
@@ -45,7 +45,6 @@ const RoomDetail = ({
     setDetailedRoom(index);
   };
   const id = useParams();
-
   const Availablity = async (e: any) => {
     if (Object.keys(id).length === 0) {
       await request.put("/availability", {
@@ -60,7 +59,6 @@ const RoomDetail = ({
     }
     setRender((prev:any)=>prev+1)
   };
-
   const handleOpenEditBox = () => {
     setEditBox(true);
   };
@@ -68,6 +66,15 @@ const RoomDetail = ({
   const handleDeleteRoom = () => {
     setdeleteOpen(true);
   };
+
+useMemo(()=>{
+  setRoomId(room?._id)
+  console.log(roomId)
+},[room,roomId])
+
+
+console.log(room)
+
 
   return (
     <>
@@ -116,12 +123,7 @@ const RoomDetail = ({
                 direction={"row"}
                 justifyContent={"space-between"}
               >
-                {room?.isAvailable === 'true' ? (
-                  <Switch defaultChecked onChange={(e) => Availablity(e)} />
-                ) : (
-                  <Switch onChange={(e) => Availablity(e)} />
-                )}
-
+                  <Switch checked={room?.isAvailable==='true'} onChange={(e) => Availablity(e)} />
                 <Stack
                   direction={"row"}
                   alignItems={"center"}

@@ -11,6 +11,12 @@ import Booking from "../Bookings/PaymentGateway/PaymentPage";
 import { Box, Stack } from "@mui/material";
 import BillingDetailsCard from "./BillingDetailsCard";
 
+
+/**
+* Dialog Box opens when user wants to pay . Markdown is *payment*.
+*/
+
+
 export default function PaymentDialogBox({
   display,
   setDisplay,

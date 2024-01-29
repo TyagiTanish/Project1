@@ -157,7 +157,6 @@ function SearchBar() {
               value={`${rooms.length} Room , ${guests} guest`}
               onClick={(event: any) => handleClick(event)}
             />
-
             <Button
               variant="contained"
               sx={{

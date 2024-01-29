@@ -8,9 +8,13 @@ import io from "socket.io-client";
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
+
+
 /**
 * to show payment card . Markdown is *PaymentForm*.
 */
+
+
 const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result }: any) => {
   const stripe = useStripe();
   const elements = useElements();
