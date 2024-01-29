@@ -75,7 +75,7 @@ function HotelInfo({ setRender }: any) {
   };
   return (
     <>
-      <Stack alignItems={"center"} marginLeft={-6}>
+      <Stack  marginLeft={-6}>
 
         <Stack direction={'row'} justifyContent={'space-around'}>
          <Stack margin={6} spacing={5} direction={"row"} width={"90%"}>
@@ -124,7 +124,7 @@ function HotelInfo({ setRender }: any) {
           </Stack>
         </Stack>
       </Stack>
-      <Stack direction={"column"} spacing={2} marginBottom={5} sx={{width:{xl:1000,md:500,sm:310}}}>
+      <Stack direction={"column"} spacing={2} marginBottom={5} sx={{width:{xl:1000,md:500,sm:310}}} marginLeft={6}>
         <Typography sx={{ fontSize:{xl:22,md:16}, fontWeight: "bold" }}>
           Description
         </Typography>
@@ -133,7 +133,7 @@ function HotelInfo({ setRender }: any) {
           sx={{ flex: 1, fontSize: {xl:15,md:12} ,letterSpacing: 1 }}
         />
       </Stack>
-      <Stack direction={"column"} spacing={2}>
+      <Stack direction={"column"} spacing={2} marginLeft={6}>
         <Typography sx={{ fontSize:{xl:22,md:16}, fontWeight: "bold" }}>
           Owner Details
         </Typography>

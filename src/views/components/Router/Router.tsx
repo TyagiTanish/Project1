@@ -44,9 +44,9 @@ const router = [
     path: "/AddHotel",
 
     element: (
-      <CustomerRoutes>
+    
         <AddHotelAftrLgn />
-      </CustomerRoutes>
+     
     ),
   },
   {

@@ -26,7 +26,7 @@ function DialogBox(props: any) {
     setDisplay(result[0]);
   }, []);
 
-
+console.log(display)
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <DialogTitle textAlign={"center"}>{hotel?.hotelName}</DialogTitle>
