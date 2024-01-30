@@ -32,7 +32,15 @@ function BookingDetails() {
   return (
     <>
       <Stack sx={{ m: 5 }}>
-        <Typography sx={{ color: "green", fontSize: 30, fontWeight: 700 }}>
+        <Typography
+          sx={{
+            color: "green",
+            fontSize: 30,
+            fontWeight: 700,
+            mb: 2,
+            ml: "10%",
+          }}
+        >
           Thanks for staying with us!
         </Typography>
         {/* <Button>Print</Button> */}
