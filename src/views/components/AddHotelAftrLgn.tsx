@@ -160,7 +160,7 @@ export default function AddHotelAftrLgn() {
     formData.set("lng", data.longitude);
     formData.set("lat", data.latitude);
     formData.set("email", user.email);
-    formData.set("amenities", data.amenities);
+    formData.set("amenities", JSON.stringify(data.amenities));
     formData.set("discription", data.discription);
     console.log(data);
     if (step === 4) {
