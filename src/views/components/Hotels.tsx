@@ -118,7 +118,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     component="img"
                     sx={{
                       width: { sm: "150px ", lg: "200px", md: "140px" },
-                      height: { lg: "200px", sm: "15vh", md: "20vh" },
+                      height: { lg: "200px", sm: "15vh", md: "15vh" },
                       borderTopLeftRadius: "20px",
                       borderBottomLeftRadius: "20px",
                     }}
@@ -127,7 +127,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     src={`http://localhost:8000/${item?.photo}`}
                   />
 
-                  <Stack m={2} width={300}>
+                  <Stack m={2} width={400}>
                     <Typography
                       sx={{
                         fontWeight: "bold",
@@ -194,7 +194,7 @@ function Hotels({ filteredData, screenSize }: any) {
                       marginTop: { sm: "8px" },
                     }}
                   >
-                    <Stack spacing={1}>
+                    <Stack spacing={2}>
                       <Stack
                         direction={"row"}
                         sx={{
@@ -213,7 +213,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         />
                         <Typography
                           sx={{
-                            fontSize: { sm: "10px", lg: "12px", md: "12px" },
+                            fontSize: { sm: "10px", lg: "12px", md: "10px" },
                             fontWeight: "bold",
                           }}
                         >
@@ -236,7 +236,10 @@ function Hotels({ filteredData, screenSize }: any) {
                         label="Our Lowest Price"
                         variant="outlined"
                         color="error"
-                        sx={{ width: 150, float: "right" }}
+                        sx={{
+                          width: { sm: 150, lg: 150, md: 120 },
+                          float: "right",
+                        }}
                       />
                       <Button
                         variant="contained"
@@ -253,6 +256,10 @@ function Hotels({ filteredData, screenSize }: any) {
                             backgroundColor: "#D4164B",
                           },
                           backgroundColor: "#D4164B",
+                          width: { sm: 150, lg: 150, md: 120 },
+                          fontSize: { md: 12, lg: 14 },
+                          height: { md: 30 },
+                          textTransform: "none",
                         }}
                       >
                         View Deal

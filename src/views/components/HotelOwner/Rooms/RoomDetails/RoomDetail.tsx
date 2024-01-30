@@ -19,6 +19,8 @@ import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined
 import EditRoomDetails from "../EditRoomDetails/EditRoomDetailsDialogBox";
 import OnDeleteDialogBox from "../EditRoomDetails/DeleteRoomDialogBox";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -57,7 +59,7 @@ const RoomDetail = ({
         roomId: roomId,
       });
     }
-    setRender((prev:any)=>prev+1)
+    setRender((prev: any) => prev + 1);
   };
   const handleOpenEditBox = () => {
     setEditBox(true);
@@ -67,14 +69,40 @@ const RoomDetail = ({
     setdeleteOpen(true);
   };
 
+  const handleDecrease = async () => {
+    if (Object.keys(id).length === 0) {
+      await request.put("/setRoomQuantity", {
+        decrease: true,
+        roomId: roomId,
+      });
+    } else {
+      await request.put(`/setRoomQuantity/${id.id}`, {
+        decrease: true,
+        roomId: roomId,
+      });
+    }
+    setRender((prev: any) => prev + 1);
+  };
+  const handleIncrease = async () => {
+    if (Object.keys(id).length === 0) {
+      await request.put("/setRoomQuantity", {
+        // isAvailable: e.target.checked,
+        increase: true,
+        roomId: roomId,
+      });
+    } else {
+      await request.put(`/setRoomQuantity/${id.id}`, {
+        // isAvailable: e.target.checked,
+        increase: true,
+        roomId: roomId,
+      });
+    }
+    setRender((prev: any) => prev + 1);
+  };
 useMemo(()=>{
   setRoomId(room?._id)
   console.log(roomId)
 },[room,roomId])
-
-
-console.log(room)
-
 
   return (
     <>
@@ -115,14 +143,34 @@ console.log(room)
               </Stack>
             </Box>
             <Stack fontSize={20}>
-              <Box>
-                <b>{room?.roomType}</b>
-              </Box>
+              <Stack direction={"row"} justifyContent={"space-between"}>
+                <Box>
+                  <b>{room?.roomType}</b>
+                </Box>
+                <Stack direction={"row"} mb={2}>
+                  <Button
+                    onClick={() => {
+                      handleDecrease();
+                    }}
+                  >
+                    <RemoveCircleOutlineIcon fontSize="small" />
+                  </Button>
+                  <Box>{room?.roomQuantity}</Box>
+                  <Button
+                    onClick={() => {
+                      handleIncrease();
+                    }}
+                  >
+                    <AddCircleOutlineIcon fontSize="small" />
+                  </Button>
+                </Stack>
+              </Stack>
               <Stack
                 alignItems={"center"}
                 direction={"row"}
                 justifyContent={"space-between"}
               >
+
                   <Switch checked={room?.isAvailable==='true'} onChange={(e) => Availablity(e)} />
                 <Stack
                   direction={"row"}

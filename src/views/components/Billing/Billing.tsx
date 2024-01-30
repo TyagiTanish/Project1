@@ -36,25 +36,22 @@ import Loader from "./loader/Loader";
  * for entering details of a user and checking the payment , Markdown is *Billing*.
 */
 
-
-
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 const Billing = () => {
- 
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
-  const user = useSelector((state:any)=>state.userReducer.user)
+  const user = useSelector((state: any) => state.userReducer.user);
   const roomDetails = useSelector(
     (state: any) => state.userReducer.roomDetails
   );
   // console.log("Hotel Id", hotelId, "roomDetails", roomDetails);
   const { request } = useAuth();
 
-
-  const fetchHotel: any = async () => {                           //function to get all hotel details 
-    const result = await request.get(`/getHotel/${hotelId}`);     
+  const fetchHotel: any = async () => {
+    //function to get all hotel details
+    const result = await request.get(`/getHotel/${hotelId}`);
     sethotelDetail(result.data);
   };
   useEffect(() => {
@@ -83,8 +80,8 @@ const Billing = () => {
       calculateDifference();
     }
   }, []);
-const [bookingId,setBookingId] = useState();
-const [result,setResult]=useState<any>({});
+  const [bookingId, setBookingId] = useState();
+  const [result, setResult] = useState<any>({});
   const [displayLoader, setDisplayLoader] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const [display, setDisplay] = useState(false);
@@ -97,7 +94,7 @@ const [result,setResult]=useState<any>({});
       setSubmitButton(true);
     }
   };
-  
+
   const handleCheckbox = () => {
     if (guest === true) {
       setGuest(false);
@@ -149,20 +146,21 @@ const [result,setResult]=useState<any>({});
     data.totalPrice = totalPrice;
     data.totalRooms = totalRooms;
     data.roomId = roomDetails?.roomId;
+    data.price = totalPrice;
     const value = await request.post("/bookRoom", { data, hotelId });
-    setBookingId(value.data.bookingId)
+    setBookingId(value.data.bookingId);
     const result = {
       fullName: data.fullName,
       email: data.email,
       phone: data.phone,
       hotelId: hotelId,
-      days:difference?.days,
-      roomId:roomDetails?.roomId,
-      startDate:startdate,
-      endDate:enddate,
-      guests:totalGuests
+      days: difference?.days,
+      roomId: roomDetails?.roomId,
+      startDate: startdate,
+      endDate: enddate,
+      guests: totalGuests,
     };
-    setResult(result)
+    setResult(result);
     setDisplay(true);
     // socket.emit("send_Message", result);
   };
@@ -175,57 +173,63 @@ const [result,setResult]=useState<any>({});
   // }
   return (
     <>
-      {displayLoader ? (<Loader />):(
+      {displayLoader ? (
+        <Loader />
+      ) : (
         <>
-      <Box>
-        <IconButton href="/" sx={{ ml: 2 }}>
-          <Logo />
-        </IconButton>
-        <Stack
-          direction={"row"}
-          spacing={10}
-          justifyItems={"center"}
-          ml={{ sm: 10, md: 15, lg: 20, xl: 30 }}
-        >
-          <Stack width={"40%"}>
-            <form onSubmit={handleSubmit(Submit)}>
-              <Stack border={"2px solid lightgray"} borderRadius={"10px"} p={2}>
-                <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                  Full Name *
-                </Typography>
-                <TextField
-                  variant="outlined"
-                  placeholder="Enter your name"
-                  defaultValue={user?.name}
-                  {...register("fullName")}
-                  fullWidth
-                />
-                <FormHelperText sx={{ color: "red" }}>
-                  {/* {errors.fullName?.message} */}
-                  {errors.fullName &&
-                    typeof errors.fullName === "string" &&
-                    errors.fullName}
-                </FormHelperText>
-                <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                  Email *
-                </Typography>
-                <TextField
-                  variant="outlined"
-                  placeholder="Email"
-                  defaultValue={user?.email}
-                  {...register("email")}
-                  fullWidth
-                />
-                <FormHelperText sx={{ color: "red" }}>
-                  {/* {errors.fullName?.message} */}
-                  {errors.email &&
-                    typeof errors.email === "string" &&
-                    errors.email}
-                </FormHelperText>
-                <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                  Phone No. *
-                </Typography>
-                {/* <Stack direction={"row"} borderRadius={1}>
+          <Box>
+            <IconButton href="/" sx={{ ml: 2 }}>
+              <Logo />
+            </IconButton>
+            <Stack
+              direction={"row"}
+              spacing={10}
+              justifyItems={"center"}
+              ml={{ sm: 10, md: 15, lg: 20, xl: 30 }}
+            >
+              <Stack width={"40%"}>
+                <form onSubmit={handleSubmit(Submit)}>
+                  <Stack
+                    border={"2px solid lightgray"}
+                    borderRadius={"10px"}
+                    p={2}
+                  >
+                    <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
+                      Full Name *
+                    </Typography>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Enter your name"
+                      defaultValue={user?.name}
+                      {...register("fullName")}
+                      fullWidth
+                    />
+                    <FormHelperText sx={{ color: "red" }}>
+                      {/* {errors.fullName?.message} */}
+                      {errors.fullName &&
+                        typeof errors.fullName === "string" &&
+                        errors.fullName}
+                    </FormHelperText>
+                    <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
+                      Email *
+                    </Typography>
+                    <TextField
+                      variant="outlined"
+                      placeholder="Email"
+                      defaultValue={user?.email}
+                      {...register("email")}
+                      fullWidth
+                    />
+                    <FormHelperText sx={{ color: "red" }}>
+                      {/* {errors.fullName?.message} */}
+                      {errors.email &&
+                        typeof errors.email === "string" &&
+                        errors.email}
+                    </FormHelperText>
+                    <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
+                      Phone No. *
+                    </Typography>
+                    {/* <Stack direction={"row"} borderRadius={1}>
                 <TextField
                   id="standard-select-currency"
                   select
@@ -240,114 +244,117 @@ const [result,setResult]=useState<any>({});
                   ))}
                 </TextField>
               </Stack> */}
-                <TextField
-                  // id="standard-password-input"
-                  placeholder="Phone Number"
-                  {...register("phone")}
-                  defaultValue={user?.phone}
-                  // autoComplete="current-password"
-                />
-                <FormHelperText sx={{ color: "red" }}>
-                  {/* {errors.fullName?.message} */}
-                  {errors.phone &&
-                    typeof errors.phone === "string" &&
-                    errors.phone}
-                </FormHelperText>
-                <Stack direction={"row"} ml={-1}>
-                  <Checkbox onChange={handleCheckbox} />
-                  <Typography sx={{ mt: 1 }}>
-                    Make this booking for someone else
-                  </Typography>
-                </Stack>
-                {guest === true ? (
-                  <Box
-                    sx={{
-                      opacity: isVisible ? 1 : 0,
-                      transition: "opacity 0.3s ease-in-out",
-                    }}
+                    <TextField
+                      // id="standard-password-input"
+                      placeholder="Phone Number"
+                      {...register("phone")}
+                      defaultValue={user?.phone}
+                      // autoComplete="current-password"
+                    />
+                    <FormHelperText sx={{ color: "red" }}>
+                      {/* {errors.fullName?.message} */}
+                      {errors.phone &&
+                        typeof errors.phone === "string" &&
+                        errors.phone}
+                    </FormHelperText>
+                    <Stack direction={"row"} ml={-1}>
+                      <Checkbox onChange={handleCheckbox} />
+                      <Typography sx={{ mt: 1 }}>
+                        Make this booking for someone else
+                      </Typography>
+                    </Stack>
+                    {guest === true ? (
+                      <Box
+                        sx={{
+                          opacity: isVisible ? 1 : 0,
+                          transition: "opacity 0.3s ease-in-out",
+                        }}
+                      >
+                        <Typography sx={{ fontWeight: "Bolder", mt: 3, mb: 2 }}>
+                          Guest Information
+                        </Typography>
+                        <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
+                          Guest name
+                        </Typography>
+                        <TextField
+                          {...register("guestName")}
+                          placeholder="Guest Name"
+                          variant="outlined"
+                          fullWidth
+                        />
+                        <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
+                          Guest email
+                        </Typography>
+                        <TextField
+                          variant="outlined"
+                          placeholder="Guest Email"
+                          {...register("guestEmail")}
+                          fullWidth
+                        />
+                      </Box>
+                    ) : null}
+                  </Stack>
+                  <Stack
+                    border={"1px solid lightgrey"}
+                    borderRadius={"10px"}
+                    mt={2}
                   >
-                    <Typography sx={{ fontWeight: "Bolder", mt: 3, mb: 2 }}>
-                      Guest Information
-                    </Typography>
-                    <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                      Guest name
-                    </Typography>
-                    <TextField
-                      {...register("guestName")}
-                      placeholder="Guest Name"
-                      variant="outlined"
-                      fullWidth
-                    />
-                    <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                      Guest email
-                    </Typography>
-                    <TextField
-                      variant="outlined"
-                      placeholder="Guest Email"
-                      {...register("guestEmail")}
-                      fullWidth
-                    />
-                  </Box>
-                ) : null}
-              </Stack>
-              <Stack
-                border={"1px solid lightgrey"}
-                borderRadius={"10px"}
-                mt={2}
-              >
-                <Stack direction={"row"}>
-                  <Checkbox onChange={handleCheckboxSubmit} sx={{ mt: -2 }} />
-                  <Typography mt={1}>
-                    By proceeding with this booking, I agree to OYO's Terms of
-                    Use and Privacy Policy.
-                  </Typography>
-                </Stack>
-                <Button
-                  type="submit"
-                  sx={{
-                    width: "30%",
-                    m: 2,
-                    textTransform:'none'
-                  }}
-                  color="error"
-                  variant="contained"
-                  disabled={!submitButton}
-                  // onClick={handleClick}
-                >
-                 Pay Now
-                </Button>
-              </Stack>
-            </form>
-            {/* {display && (
+                    <Stack direction={"row"}>
+                      <Checkbox
+                        onChange={handleCheckboxSubmit}
+                        sx={{ mt: -2 }}
+                      />
+                      <Typography mt={1}>
+                        By proceeding with this booking, I agree to OYO's Terms
+                        of Use and Privacy Policy.
+                      </Typography>
+                    </Stack>
+                    <Button
+                      type="submit"
+                      sx={{
+                        width: "30%",
+                        m: 2,
+                        textTransform: "none",
+                      }}
+                      color="error"
+                      variant="contained"
+                      disabled={!submitButton}
+                      // onClick={handleClick}
+                    >
+                      Pay Now
+                    </Button>
+                  </Stack>
+                </form>
+                {/* {display && (
             <Stack color={"red"} marginTop={3}>
               {text}
             </Stack>
           )} */}
-          </Stack>
-          <Stack>
-            <BillingDetailsCard
-              hotelDetail={hotelDetail}
-              roomDetails={roomDetails}
-              totalGuests={totalGuests}
-              totalRooms={totalRooms}
-              totalPrice={totalPrice}
-            />
-          </Stack>
-        </Stack>
-      </Box>
-      <PaymentDialogBox
-      display={display}
-        setDisplay={setDisplay}
-        hotelDetail={hotelDetail}
-        roomDetails={roomDetails}
-        totalGuests={totalGuests}
-        totalRooms={totalRooms}
-        totalPrice={totalPrice}
-        setDisplayLoader={setDisplayLoader}
-        bookingId={bookingId}
-        result={result}
-      />
-      </>
+              </Stack>
+              <Stack>
+                <BillingDetailsCard
+                  hotelDetail={hotelDetail}
+                  roomDetails={roomDetails}
+                  totalGuests={totalGuests}
+                  totalRooms={totalRooms}
+                  totalPrice={totalPrice}
+                />
+              </Stack>
+            </Stack>
+          </Box>
+          <PaymentDialogBox
+            display={display}
+            setDisplay={setDisplay}
+            hotelDetail={hotelDetail}
+            roomDetails={roomDetails}
+            totalGuests={totalGuests}
+            totalRooms={totalRooms}
+            totalPrice={totalPrice}
+            setDisplayLoader={setDisplayLoader}
+            bookingId={bookingId}
+            result={result}
+          />
+        </>
       )}
     </>
   );

@@ -224,7 +224,7 @@ function BookingDetails() {
             <Typography>Total Amount</Typography>
             <Stack direction={"row"}>
               <CurrencyRupeeIcon fontSize="small" />
-              <Typography>8000</Typography>
+              <Typography>{data?.price}</Typography>
             </Stack>
           </Stack>
         </Stack>
