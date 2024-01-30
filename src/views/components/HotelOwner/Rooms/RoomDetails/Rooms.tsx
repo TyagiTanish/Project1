@@ -23,7 +23,7 @@ export default function AllRooms() {
       setRooms(result?.data[0]?.rooms);
       const rooms = result?.data[0]?.rooms;
 
-// filtering categories for showing while adding a room 
+      // filtering categories for showing while adding a room
 
       if (rooms?.length > 0) {
         const data = result?.data[0]?.categories?.filter(
@@ -39,7 +39,7 @@ export default function AllRooms() {
       setRooms(result?.data[0]?.rooms);
       const rooms = result?.data[0]?.rooms;
 
-// filtering categories for showing while adding a room 
+      // filtering categories for showing while adding a room
 
       if (rooms?.length > 0) {
         const data = result?.data[0]?.categories?.filter(
@@ -73,6 +73,7 @@ export default function AllRooms() {
               setOpen={setOpen}
               setDetailedRoom={setDetailedRoom}
               setRender={setRender}
+              showCategories={showCategories}
             />
           ))}
         </Grid>

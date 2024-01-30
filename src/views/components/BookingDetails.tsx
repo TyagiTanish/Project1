@@ -224,7 +224,19 @@ function BookingDetails() {
             <Typography>Total Amount</Typography>
             <Stack direction={"row"}>
               <CurrencyRupeeIcon fontSize="small" />
-              <Typography>{data?.price}</Typography>
+              <Stack>
+                {" "}
+                <Typography>{data?.price}</Typography>
+                {data?.paymentStatus === "unpaid" ? (
+                  <Typography color={"red"} fontSize={"small"}>
+                    {data?.paymentStatus}
+                  </Typography>
+                ) : (
+                  <Typography fontSize={"small"}>
+                    {data?.paymentStatus}
+                  </Typography>
+                )}
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
