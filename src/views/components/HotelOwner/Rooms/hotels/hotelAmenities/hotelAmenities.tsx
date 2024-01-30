@@ -84,7 +84,7 @@ export default function HotelAmenities({ amenities }: any) {
               <SwiperSlide>
                 <Card variant="outlined">
                   <CardContent>
-                    <Stack alignItems={"center"}>
+                    <Stack alignItems={"center"} fontSize={'small'} >
                       {item?.icon}
                       {item?.label}
                     </Stack>
