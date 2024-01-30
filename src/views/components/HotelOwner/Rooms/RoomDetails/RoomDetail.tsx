@@ -35,6 +35,7 @@ const RoomDetail = ({
   setOpen,
   setDetailedRoom,
   setRender,
+  showCategories,
 }: any) => {
   const [roomImage, setRoomImage] = useState(0);
   const [editBox, setEditBox] = useState(false);
@@ -99,10 +100,10 @@ const RoomDetail = ({
     }
     setRender((prev: any) => prev + 1);
   };
-useMemo(()=>{
-  setRoomId(room?._id)
-  console.log(roomId)
-},[room,roomId])
+  useMemo(() => {
+    setRoomId(room?._id);
+    console.log(roomId);
+  }, [room, roomId]);
 
   return (
     <>
@@ -170,8 +171,10 @@ useMemo(()=>{
                 direction={"row"}
                 justifyContent={"space-between"}
               >
-
-                  <Switch checked={room?.isAvailable==='true'} onChange={(e) => Availablity(e)} />
+                <Switch
+                  checked={room?.isAvailable === "true"}
+                  onChange={(e) => Availablity(e)}
+                />
                 <Stack
                   direction={"row"}
                   alignItems={"center"}
@@ -255,6 +258,7 @@ useMemo(()=>{
         editBox={editBox}
         setEditBox={setEditBox}
         room={room}
+        showCategories={showCategories}
         setRender={setRender}
       />
       <OnDeleteDialogBox

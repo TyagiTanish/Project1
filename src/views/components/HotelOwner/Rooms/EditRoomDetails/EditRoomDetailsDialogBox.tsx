@@ -21,9 +21,13 @@ import {
   Box,
   Chip,
   Divider,
+  FormControl,
   FormHelperText,
   Grid,
   IconButton,
+  MenuItem,
+  Select,
+  SelectChangeEvent,
   Stack,
   TextField,
   Tooltip,
@@ -44,6 +48,7 @@ export default function EditRoomDetails({
   setEditBox,
   room,
   setRender,
+  showCategories,
 }: any) {
   const theme = useTheme();
   const [imagePreView, setImagePreView] = React.useState(false);
@@ -58,7 +63,7 @@ export default function EditRoomDetails({
   const [Amenities, setAmenities] = React.useState<any>(editRoom.amenities);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { request } = useAuth();
-
+  const [type, setType] = React.useState("");
   React.useEffect(() => {
     setPhotos(room?.photos);
     setEditRoom(room);
@@ -84,14 +89,16 @@ export default function EditRoomDetails({
   ];
 
   const FormSchema = Yup.object().shape({
-    type: Yup.string().required("type is required"),
+    // type: Yup.string().required("type is required"),
+    roomQuantity: Yup.string().required("type is required"),
     // description: Yup.string().required("description is required"),
     amenities: Yup.array().min(1, "minimum one amenity required"),
     price: Yup.string().required("price is required"),
   });
 
   interface User {
-    type: string;
+    // type: string;
+    roomQuantity: string;
     price: string;
   }
 
@@ -106,7 +113,9 @@ export default function EditRoomDetails({
   const handleClose = () => {
     setEditBox(false);
   };
-
+  const handleChange = (event: SelectChangeEvent) => {
+    setType(event.target.value as string);
+  };
   const handlePreviewImage = (index: any) => {
     setImagePreView(true);
     setPreviewIndex(index);
@@ -137,10 +146,11 @@ export default function EditRoomDetails({
 
   const id = useParams();
 
-  const submitDetails = async(value: any) => {
+  const submitDetails = async (value: any) => {
     const formData = new FormData();
-    formData.set("type", value?.type);
+    formData.set("type", type);
     formData.set("price", value?.price);
+    formData.set("roomQuantity", value?.roomQuantity);
     formData.set("description", description);
     formData.set("amenities", JSON.stringify(Amenities));
     updatedPhoto.map((image: any) => formData.append("files", image));
@@ -151,8 +161,8 @@ export default function EditRoomDetails({
       await request.post("/editRoom", formData);
     } else {
       console.log("hello");
-      
-     await request.post(`/editRoom/${id.id}`, formData);
+
+      await request.post(`/editRoom/${id.id}`, formData);
     }
     enqueueSnackbar("Details updated Successfully", { variant: "success" });
     setRender((prev: any) => prev + 1);
@@ -190,15 +200,42 @@ export default function EditRoomDetails({
         <form onSubmit={handleSubmit(submitDetails)}>
           <Stack direction={"row"} spacing={5} justifyContent={"space-between"}>
             <Stack spacing={5} maxWidth={500}>
-              <Stack spacing={2}>
+              {/* <Stack spacing={2}>
                 <TextField
                   variant="outlined"
                   label={"Room Type"}
                   defaultValue={editRoom?.roomType}
                   {...register("type")}
                 />
-              </Stack>
+              </Stack> */}
+              <Box>
+                <FormControl sx={{ width: 235 }}>
+                  <Typography sx={{ fontWeight: "bold" }}>
+                    Type of Room
+                  </Typography>
+                  <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={type}
+                    // label="type"
 
+                    sx={{ width: 400, mb: 2 }}
+                    onChange={handleChange}
+                  >
+                    {showCategories?.map((category: any) => (
+                      <MenuItem value={category}>{category}</MenuItem>
+                    ))}
+                  </Select>
+                </FormControl>
+              </Box>
+              <Stack spacing={2}>
+                <TextField
+                  variant="outlined"
+                  label={"Room Quantity"}
+                  defaultValue={editRoom?.roomQuantity}
+                  {...register("roomQuantity")}
+                />
+              </Stack>
               <Stack spacing={2}>
                 <Stack spacing={1}>
                   <label style={{ fontSize: "22px " }}>Room Description:</label>
@@ -229,7 +266,7 @@ export default function EditRoomDetails({
                       >
                         <Chip
                           label={`${image?.path}`}
-                          style={{ cursor: "pointer",width:200}}
+                          style={{ cursor: "pointer", width: 200 }}
                           onDelete={() => handleDelete(index)}
                         />
                       </Box>
@@ -246,7 +283,7 @@ export default function EditRoomDetails({
                       >
                         <Chip
                           label={`${photo?.path}`}
-                          style={{ cursor: "pointer",width:200}}
+                          style={{ cursor: "pointer", width: 200 }}
                           onDelete={() => handleDeleteChangedPhoto(index)}
                         />
                       </Box>
