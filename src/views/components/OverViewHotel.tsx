@@ -58,7 +58,8 @@ function OverViewHotel({ item }: any) {
   ];
 
   const ShowAmenities = amenitie.filter((v, i) =>
-    item.amenities[0].includes(+i)
+    // item.amenities[0].includes(+i)
+    item.amenities.includes(String(i))
   );
   return (
     <Box

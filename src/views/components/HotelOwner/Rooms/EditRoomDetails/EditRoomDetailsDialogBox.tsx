@@ -63,7 +63,7 @@ export default function EditRoomDetails({
   const [Amenities, setAmenities] = React.useState<any>(editRoom.amenities);
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { request } = useAuth();
-  const [type, setType] = React.useState("");
+  const [type, setType] = React.useState(editRoom?.roomType);
   React.useEffect(() => {
     setPhotos(room?.photos);
     setEditRoom(room);
@@ -173,6 +173,7 @@ export default function EditRoomDetails({
   React.useEffect(() => {
     setPreviewIndex(previewIndex);
   }, [previewIndex, editRoom]);
+  console.log(editRoom?.roomType, "Type");
   return (
     <Dialog
       fullScreen={fullScreen}
@@ -200,14 +201,6 @@ export default function EditRoomDetails({
         <form onSubmit={handleSubmit(submitDetails)}>
           <Stack direction={"row"} spacing={5} justifyContent={"space-between"}>
             <Stack spacing={5} maxWidth={500}>
-              {/* <Stack spacing={2}>
-                <TextField
-                  variant="outlined"
-                  label={"Room Type"}
-                  defaultValue={editRoom?.roomType}
-                  {...register("type")}
-                />
-              </Stack> */}
               <Box>
                 <FormControl sx={{ width: 235 }}>
                   <Typography sx={{ fontWeight: "bold" }}>
@@ -217,9 +210,8 @@ export default function EditRoomDetails({
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={type}
-                    // label="type"
-
                     sx={{ width: 370, mb: 2 }}
+
                     onChange={handleChange}
                   >
                     {showCategories?.map((category: any) => (
