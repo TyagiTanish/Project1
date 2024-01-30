@@ -21,7 +21,7 @@ import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import ShowCustomerBooking from "../ShowCustomerBooking";
 import BookingDetails from "../BookingDetails";
-import AcceptedBookings from "../AcceptedBookings";
+import AcceptedBookings from "../HotelOwner/Rooms/Booking/AcceptedBookings";
 
 const router = [
   {

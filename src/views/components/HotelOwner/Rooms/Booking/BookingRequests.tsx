@@ -6,16 +6,25 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import SearchIcon from "@mui/icons-material/Search";
+import FilterListIcon from '@mui/icons-material/FilterList';
 
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
-import { Button, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  InputAdornment,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import DialogBox from "./DialogBox";
 import { ChildProcess } from "child_process";
 import io from "socket.io-client";
 
-
-const socket = io("http://localhost:8000", {transports: ['websocket', 'polling', 'flashsocket']});
+const socket = io("http://localhost:8000", {
+  transports: ["websocket", "polling", "flashsocket"],
+});
 function createData(
   BookingDate: string,
   RoomType: string,
@@ -29,110 +38,186 @@ const rows: any = [
   //   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
 ];
 
-
 export default function Bookings() {
   const [open, setOpen] = React.useState(false);
- const [handle,sethandle]=React.useState("");
-  const { request } = useAuth();                   
-  const [data,setData]=React.useState<any>([]);
-  const [display,setDisplay]=React.useState({})
+  const [handle, sethandle] = React.useState("");
+  const { request } = useAuth();
+  const [data, setData] = React.useState<any>([]);
+  const [display, setDisplay] = React.useState({});
 
-const handleClickOpen = (data:any) => {
-  setOpen(true);
-  console.log(data)
-  setDisplay(data);
-};
+  const handleClickOpen = (data: any) => {
+    setOpen(true);
 
-const handleClose = (value: string) => {
-  setOpen(false);
+    setDisplay(data);
+  };
 
-};
-const handleClickAccept=async(id:any)=>{
-    const data=await request.put(`/bookingAccept/${id}`);
-    setData(data.data)
-}
-const handleClick=async(id:any)=>{
-  const data=await request.delete(`/bookingDelete/${id}`);
-  setData(data.data)
- 
-}
-React.useMemo(async()=>{
-   const data= await request.get('/bookingDetails');
-   
-   setData(data.data)
-},[]);
-React.useMemo(()=>{
-  socket.on("recieved",(data)=>{
-    console.log('data is ------------>',data)
-    if(data)
-    {
-          const get=async()=>{
-          const data=await  request.get('/bookingDetails');
-         
+  const handleClose = (value: string) => {
+    setOpen(false);
+  };
+  const handleClickAccept = async (id: any) => {
+    const data = await request.put(`/bookingAccept/${id}`);
+    setData(data.data);
+  };
+  const handleClick = async (id: any) => {
+    const data = await request.delete(`/bookingDelete/${id}`);
+    setData(data.data);
+  };
+  React.useMemo(async () => {
+    const data = await request.get("/bookingDetails");
+
+    setData(data.data);
+  }, []);
+  React.useMemo(() => {
+    socket.on("recieved", (data) => {
+      if (data) {
+        const get = async () => {
+          const data = await request.get("/bookingDetails");
+
           setData(data.data);
-          
-          }
-         get();
-    }
-    
-  })
-},[socket])
+        };
+        get();
+      }
+    });
+  }, [socket]);
   return (
     <>
-    <Stack direction={'column'} spacing={4}>
-    <Typography sx={{fontWeight:"bold",fontSize:30}}>Requests-</Typography>
-    {data.length===0 ? <Typography sx={{width:400,color:'red'}}>No Bookings till now*</Typography> 
-    :
-    <TableContainer component={Paper} sx={{overflowY:"scroll",height:750,width:'auto'}}>
-      <Table  size="small" aria-label="a dense table">
-        <TableHead>
-          <TableRow>
-            <TableCell style={{ fontWeight: "bolder" }}>Customer Name-</TableCell>
-            <TableCell align="left" style={{ fontWeight: "bolder" }}>
-          Customer  Email-
-            </TableCell>
-            <TableCell align="left" style={{ fontWeight: "bolder" }}>
-           Customer Phone-
-            </TableCell>
-           
-            <TableCell align="left" style={{ fontWeight: "bolder" }}>
-              Actions
-            </TableCell>
-           
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data?.map((item: any) => (
-            item.status == 'pending' && (
-              <TableRow
-              key={item.name}
-              sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-            >
-             
-              <TableCell align="left">{item.fullName}</TableCell>
-              <TableCell align="left">{item.email}</TableCell>
-              <TableCell align="left">{item.phone}</TableCell>
-            
-              {/* <TableCell align="left"></TableCell> */}
-              <TableCell align="left">
-                <Button  variant="contained" sx={{textTransform:'capitalize', backgroundImage: "linear-gradient(270deg,green,green)",marginRight:5}} onClick={()=>{handleClickAccept(item._id)}}>Accept</Button>
-                <Button  variant="contained" sx={{textTransform:'capitalize',    backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",}} onClick={()=>{handleClick(item._id)}}>Reject</Button>
-                <Button  variant="contained" sx={{textTransform:'capitalize',ml:5}} onClick={()=>{handleClickOpen(item)}}>View</Button>
-                </TableCell>
-           
-            </TableRow>)
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>}
-    
-         </Stack>
-       {open && <DialogBox
-        data={display}
-        open={open}
-        onClose={handleClose}
-      />}
+      <Stack direction={"column"} spacing={4}>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+            fontSize: 35,
+            color: "rgb(215, 0, 64)",
+            fontFamily: "system-ui",
+          }}
+        >
+          Requests
+        </Typography>
+        <Stack
+     
+          sx={{ ml: "70%", mb: 2 }}
+          direction={"row"}
+          alignItems={"center"}
+          spacing={2}
+        >
+          {" "}
+        
+          <TextField
+            variant="outlined"
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Search Here...."
+            sx={{ width: 200 }}
+          />
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "green",
+              pl: 3,
+              pr: 3,
+              "&:hover": {
+                backgroundColor: "green",
+              },
+            }}
+          >
+            Search
+          </Button>
+        </Stack>
+        {data.length === 0 ? (
+          <Typography sx={{ width: 400, color: "red" }}>
+            No Bookings till now*
+          </Typography>
+        ) : (
+          <TableContainer
+            component={Paper}
+            sx={{ overflowY: "scroll", height: 750, width: "auto" }}
+          >
+            <Table size="small" aria-label="a dense table">
+              <TableHead>
+                <TableRow>
+                  <TableCell style={{ fontWeight: "bolder" }}>
+                    Customer Name-
+                  </TableCell>
+                  <TableCell align="left" style={{ fontWeight: "bolder" }}>
+                    Customer Email-
+                  </TableCell>
+                  <TableCell align="left" style={{ fontWeight: "bolder" }}>
+                    Customer Phone-
+                  </TableCell>
+
+                  <TableCell align="left" style={{ fontWeight: "bolder" }}>
+                    Actions
+                  </TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {data?.map(
+                  (item: any) =>
+                    item.status == "pending" && (
+                      <TableRow
+                        key={item.name}
+                        sx={{
+                          "&:last-child td, &:last-child th": { border: 0 },
+                        }}
+                      >
+                        <TableCell align="left">{item.fullName}</TableCell>
+                        <TableCell align="left">{item.email}</TableCell>
+                        <TableCell align="left">{item.phone}</TableCell>
+
+                        {/* <TableCell align="left"></TableCell> */}
+                        <TableCell align="left">
+                          <Button
+                            variant="contained"
+                            sx={{
+                              textTransform: "capitalize",
+                              backgroundImage:
+                                "linear-gradient(270deg,green,green)", 
+                                
+                              marginRight: 5,
+                            }}
+                            onClick={() => {
+                              handleClickAccept(item._id);
+                            }}
+                          >
+                            Accept
+                          </Button>
+                          <Button
+                            variant="contained"
+                            sx={{
+                              textTransform: "capitalize",
+                              backgroundImage:
+                                "linear-gradient(270deg,#d11450,#ee2a24)",
+                            }}
+                            onClick={() => {
+                              handleClick(item._id);
+                            }}
+                          >
+                            Reject
+                          </Button>
+                          <Button
+                            variant="contained"
+                            sx={{ textTransform: "capitalize", ml: 5 }}
+                            onClick={() => {
+                              handleClickOpen(item);
+                            }}
+                          >
+                            View
+                          </Button>
+                        </TableCell>
+                      </TableRow>
+                    )
+                )}
+              </TableBody>
+            </Table>
+          </TableContainer>
+        )}
+      </Stack>
+      {open && <DialogBox data={display} open={open} onClose={handleClose} />}
     </>
-   
   );
 }
