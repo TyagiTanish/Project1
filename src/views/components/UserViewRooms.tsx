@@ -3,6 +3,10 @@ import React, { useState } from "react";
 
 import RoomDialog from "./RoomDialog";
 
+/**
+ * To Show all the rooms of the Hotel. Markdown is *View Deal*.
+ */
+
 function UserViewRooms({ hotels }: any) {
   const [open, setOpen] = useState(false);
   const [open2, setOpen2] = useState(false);
@@ -18,6 +22,7 @@ function UserViewRooms({ hotels }: any) {
   const handleClose = () => {
     setOpen2(false);
   };
+
 
   return (
     <>
@@ -96,14 +101,17 @@ function UserViewRooms({ hotels }: any) {
             <Button
               sx={{
                 textTransform: "capitalize",
-                backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",
-                color: "white",
+                // backgroundImage: "linear-gradient(270deg,#D11450,#EE2A24)",
+                // color: "white",
                 fontWeight: "bold",
               }}
+              variant="contained"
+              color="error"
               onClick={() => {
                 handleOpen();
                 handleDialog(item);
               }}
+            
             >
               Select & Book
             </Button>

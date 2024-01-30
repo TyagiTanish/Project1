@@ -63,7 +63,7 @@ const highlights = [
   { Highlight: "Daily newspaper upon request" },
   { Highlight: "Extra bed upon request" },
 ];
-function AddRooms({ setRender }: any) {
+function AddRooms({ setRender,showCategories }: any) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -214,11 +214,10 @@ function AddRooms({ setRender }: any) {
                       sx={{ width: 400, mb: 2 }}
                       onChange={handleChange}
                     >
-                      <MenuItem selected value={"Delux"}>
-                        Delux
-                      </MenuItem>
-                      <MenuItem value={"Super Delux"}>Super Delux</MenuItem>
-                      <MenuItem value={"Sweet"}>Sweet</MenuItem>
+                      {showCategories?.map((category:any)=> 
+                      <MenuItem value={category}>
+                        {category}
+                      </MenuItem>)}
                     </Select>
                   </FormControl>
                 </Box>
