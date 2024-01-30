@@ -210,7 +210,8 @@ export default function EditRoomDetails({
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={type}
-                    sx={{ width: 400, mb: 2 }}
+                    sx={{ width: 370, mb: 2 }}
+
                     onChange={handleChange}
                   >
                     {showCategories?.map((category: any) => (
