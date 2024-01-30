@@ -110,7 +110,7 @@ function AcceptedBookings() {
 
       width: 100,
       cellClassName: "actions",
-      getActions: (value) => {
+      getActions: (value:any) => {
         return [
           <GridActionsCellItem
             icon={<VisibilityIcon />}
@@ -216,7 +216,7 @@ console.log(search)
         <DataGrid
           rows={data}
           columns={columns}
-          getRowId={(row) => row._id}
+          getRowId={(row:any) => row._id}
           disableColumnMenu
           // {...other props}
           rowCount={length}
