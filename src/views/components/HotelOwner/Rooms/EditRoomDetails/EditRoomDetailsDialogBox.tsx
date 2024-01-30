@@ -219,7 +219,7 @@ export default function EditRoomDetails({
                     value={type}
                     // label="type"
 
-                    sx={{ width: 400, mb: 2 }}
+                    sx={{ width: 370, mb: 2 }}
                     onChange={handleChange}
                   >
                     {showCategories?.map((category: any) => (
