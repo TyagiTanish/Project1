@@ -5,6 +5,11 @@ import Dialog from "@mui/material/Dialog";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 
+
+
+/**
+* To display the detailed view of Booking Requests. Markdown is *DialogBox*.
+*/
 function DialogBox(props: any) {
   const { onClose, data, selectedValue, open } = props;
   const [display, setDisplay] = React.useState<any>({});
@@ -83,7 +88,7 @@ function DialogBox(props: any) {
               <Stack direction={"row"} spacing={6}>
                 <Stack direction={"column"}>
                   <Stack sx={{ fontSize: 15, width: 100 }}>Booking Date</Stack>
-                  <Stack sx={{ fontSize: 15 }}>Status</Stack>
+                  <Stack sx={{ fontSize: 15 }}>Payment Status</Stack>
                 </Stack>
                 <Stack direction={"column"}>
                   <Stack sx={{ fontSize: 15, width: 100 }}>23-05-23</Stack>
