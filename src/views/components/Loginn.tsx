@@ -174,6 +174,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
+            sx={{width:368}}
             {...register("password")}
             type={showPassword ? 'text' : 'password'}
             endAdornment={
