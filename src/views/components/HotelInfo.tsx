@@ -9,7 +9,7 @@ import EditHotel from "./EditHotel";
 import { useSelector } from "react-redux";
 import DeleteModal from "./DeleteModal";
 import { enqueueSnackbar } from "notistack";
-import HotelAmenities from "./HotelOwner/Rooms/hotels/hotelAmenities/hotelAmenities";
+import HotelAmenities from "./HotelOwner/hotels/hotelAmenities/hotelAmenities";
 function HotelInfo({ setRender }: any) {
   const [data, setData] = useState<any>([]);
   const [ownerData, setOwnerData] = useState<any>([]);
@@ -102,7 +102,7 @@ function HotelInfo({ setRender }: any) {
               >
                 <DeleteOutlineOutlinedIcon
                   fontSize="medium"
-                  sx={{ color: "lightgray", "&:hover": { color: "black" } }}
+                  sx={{ color: "gray", "&:hover": { color: "black" } }}
                 />
               </Tooltip>
               <Tooltip
@@ -112,7 +112,7 @@ function HotelInfo({ setRender }: any) {
               >
                 <ModeEditOutlineOutlinedIcon
                   fontSize="medium"
-                  sx={{ color: "lightgray", "&:hover": { color: "black" } }}
+                  sx={{ color: "gray", "&:hover": { color: "black" } }}
                 />
               </Tooltip>
             </Stack>
@@ -130,12 +130,12 @@ function HotelInfo({ setRender }: any) {
           </Typography>
           <Box
             dangerouslySetInnerHTML={{ __html: data?.discription }}
-            sx={{ flex: 1, fontSize: { xl: 15, md: 12 }, letterSpacing: 1 }}
+            sx={{ flex: 1, fontSize: { xl: 15, md: 12 }, letterSpacing: 1,wordBreak:'break-word' }}
           />
         </Stack>
         <Stack>
           <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold",ml:6 }}  >Hotel Amenities</Typography>
-          <HotelAmenities amenities={data.amenities}  />
+          <Box ml={-50} ><HotelAmenities amenities={data.amenities}  /></Box>
         </Stack>
         <Stack direction={"column"} spacing={2} marginLeft={6}>
           <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}>

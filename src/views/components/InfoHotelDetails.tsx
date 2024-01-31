@@ -82,7 +82,7 @@ function InfoHotelDetails({ item }: any) {
       sx={{
         border: "1px solid lightgrey",
         mb: 2,
-        width: { sm: "98%", lg: 890, md: 635 },
+        width: { sm: "98%", lg: 990, md: 635 },
         borderRadius: 5,
       }}
     >
@@ -117,7 +117,7 @@ function InfoHotelDetails({ item }: any) {
         {/* {item.discription} */}
         <Box
           dangerouslySetInnerHTML={{ __html: item.discription }}
-          sx={{ flex: 1 }}
+          sx={{ flex: 1,wordBreak:'break-word' }}
         />
       </Box>
       <Box

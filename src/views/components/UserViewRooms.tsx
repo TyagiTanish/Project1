@@ -65,9 +65,9 @@ function UserViewRooms({ hotels }: any) {
 
               <Box
                 dangerouslySetInnerHTML={{
-                  __html: hotels[0]?.discription.slice(0, 90),
+                  __html: item?.discription.slice(0, 90),
                 }}
-                sx={{ flex: 1 }}
+                sx={{ flex: 1,wordBreak:'break-word'}}
               />
             </Typography>
             <Stack direction={"row"} justifyContent={"space-between"}>

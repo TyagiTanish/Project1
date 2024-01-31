@@ -107,7 +107,7 @@ const RoomDetail = ({
 
   return (
     <>
-      <Grid item xs={2} sm={6} md={4} xl={4} key={index}>
+      <Grid item xs={2} sm={6} md={4} xl={5.8} key={index}>
         <Item>
           <Stack
             direction={"column"}
@@ -148,7 +148,7 @@ const RoomDetail = ({
                 <Box>
                   <b>{room?.roomType}</b>
                 </Box>
-                <Stack direction={"row"} mb={2}>
+                {/* <Stack direction={"row"} mb={2}>
                   <Button
                     onClick={() => {
                       handleDecrease();
@@ -164,7 +164,7 @@ const RoomDetail = ({
                   >
                     <AddCircleOutlineIcon fontSize="small" />
                   </Button>
-                </Stack>
+                </Stack> */}
               </Stack>
               <Stack
                 alignItems={"center"}
@@ -188,7 +188,7 @@ const RoomDetail = ({
                       <DeleteOutlineOutlinedIcon
                         fontSize="medium"
                         sx={{
-                          color: "lightgray",
+                          color: "gray",
                           "&:hover": { color: "black" },
                         }}
                       />
@@ -202,7 +202,7 @@ const RoomDetail = ({
                       <ModeEditOutlineOutlinedIcon
                         fontSize="medium"
                         sx={{
-                          color: "lightgray",
+                          color: "gray",
                           "&:hover": { color: "black" },
                         }}
                       />
@@ -221,7 +221,7 @@ const RoomDetail = ({
                     >
                       <VisibilityIcon
                         sx={{
-                          color: "lightgray",
+                          color: "gray",
                           "&:hover": { color: "black" },
                         }}
                       />

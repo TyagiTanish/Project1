@@ -181,9 +181,10 @@ const SignUp = ({ setLogReg}: any) => {
                 >
                    <FormattedMessage defaultMessage="    Password"/>
                 </Typography>
-                <FormControl sx={{  width: '44ch' }} variant="outlined">
+                <FormControl sx={{  width: '47ch' }} variant="outlined">
            
           <OutlinedInput
+
             id="outlined-adornment-password"
             {...register("password")}
             type={showPassword ? 'text' : 'password'}
@@ -196,7 +197,7 @@ const SignUp = ({ setLogReg}: any) => {
                   edge="end"
                   
                 >
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                  {showPassword ?<VisibilityOff /> : <Visibility /> }
                 </IconButton>
               </InputAdornment>
              

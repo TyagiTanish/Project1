@@ -4,7 +4,9 @@
   font-family: "Roboto","Helvetica","Arial",sans-serif;
 }
 
-
+.body{
+  background-color: white;
+}
 
 .oyo-cell {
     box-sizing: border-box;

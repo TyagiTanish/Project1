@@ -90,7 +90,7 @@ export default function EditRoomDetails({
 
   const FormSchema = Yup.object().shape({
     // type: Yup.string().required("type is required"),
-    roomQuantity: Yup.string().required("type is required"),
+    roomQuantity: Yup.string().required("type is required").length(3),
     // description: Yup.string().required("description is required"),
     amenities: Yup.array().min(1, "minimum one amenity required"),
     price: Yup.string().required("price is required"),
@@ -210,7 +210,7 @@ export default function EditRoomDetails({
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={type}
-                    sx={{ width: 370, mb: 2 }}
+                    sx={{ width:500,mb: 2 }}
 
                     onChange={handleChange}
                   >
@@ -226,7 +226,9 @@ export default function EditRoomDetails({
                   label={"Room Quantity"}
                   defaultValue={editRoom?.roomQuantity}
                   {...register("roomQuantity")}
+                 
                 />
+
               </Stack>
               <Stack spacing={2}>
                 <Stack spacing={1}>

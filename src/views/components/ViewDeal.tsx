@@ -55,12 +55,12 @@ function ViewDeal() {
 
   return (
     <>
-      <Stack width={"99.9%"} boxShadow={3}>
+      <Stack width={"100%"} boxShadow={3} >
         <Logo />
       </Stack>
-
-      <Stack alignItems={"center"}>
-        <Stack margin={6} spacing={8} direction={"row"} width={"90%"}>
+      <Stack overflow={'auto'} zIndex={-1}  height={'90vh'}   >
+        
+        <Stack spacing={8} direction={"row"} ml={10} mt={4}>
           <Box
             component="img"
             sx={{
@@ -109,7 +109,7 @@ function ViewDeal() {
             </Stack>
           </Stack>
         </Stack>
-      </Stack>
+   
       {open && <ViewDetails hotels={hotels} />}
       <Stack
         direction={"row"}
@@ -127,9 +127,10 @@ function ViewDeal() {
           <KeyboardArrowDownIcon fontSize="small" />
         )}
       </Stack>
-
       <Divider sx={{ borderBottomWidth: 20 }} />
-      <UserViewRooms hotels={hotels} />
+      <Box padding={1}><UserViewRooms hotels={hotels} /></Box></Stack>
+    
+   
     </>
   );
 }

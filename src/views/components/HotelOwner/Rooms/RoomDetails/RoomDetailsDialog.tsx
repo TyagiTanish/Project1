@@ -2,10 +2,11 @@ import * as React from "react";
 import Dialog from "@mui/material/Dialog";
 import DialogContent from "@mui/material/DialogContent";
 import DialogTitle from "@mui/material/DialogTitle";
-import FiberManualRecordIcon from '@mui/icons-material/FiberManualRecord';
+import FiberManualRecordIcon from "@mui/icons-material/FiberManualRecord";
 import {
   Box,
   Checkbox,
+  Divider,
   Grid,
   IconButton,
   Popper,
@@ -15,7 +16,7 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import CheckIcon from '@mui/icons-material/Check';
+import CheckIcon from "@mui/icons-material/Check";
 export default function RoomDetailBox({
   open,
   setOpen,
@@ -36,7 +37,6 @@ export default function RoomDetailBox({
   const roomIndex = React.useMemo(() => {
     setDetailedRoom(Detailedroom);
   }, [Detailedroom, roomImage]);
-
 
   const ScreenSize = React.useEffect(() => {
     setScreenSize(window.innerWidth);
@@ -113,12 +113,14 @@ export default function RoomDetailBox({
                 Room Description
               </Typography>
               <hr color="lightgray" />
-              <Box
-                dangerouslySetInnerHTML={{
-                  __html: Rooms[Detailedroom]?.discription,
-                }}
-                sx={{ flex: 1 }}
-              />
+         
+                <Box 
+                sx={{ wordWrap:'break-word'}}
+                  dangerouslySetInnerHTML={{
+                    __html: Rooms[Detailedroom]?.discription,
+                  }}
+                />
+             
             </Stack>
           </Stack>
           <Stack padding={2} spacing={2}>
@@ -128,25 +130,25 @@ export default function RoomDetailBox({
             <hr color="lightgray" />
             <br />
             <Stack
-            gap={4}
+              gap={4}
               alignItems={"center"}
-              direction={'row'}
+              direction={"row"}
               width={500}
               flexWrap={"wrap"}
             >
               {Rooms[Detailedroom]?.amenities?.map((item: any, index: any) => (
                 <>
-                <Typography alignItems={'center'} width={220} >
-                  {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
-                  <Checkbox disabled checked />
-                {item}
-                </Typography>
+                  <Typography alignItems={"center"} width={220}>
+                    {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
+                    <Checkbox disabled checked />
+                    {item}
+                  </Typography>
                 </>
               ))}
             </Stack>
-            <Stack paddingTop={20.2}>
+            <Stack pt={30}  >
+              {/* <Divider/>*/}
               <hr></hr>
-
               <Stack direction={"row"} spacing={2}>
                 <Stack>
                   <Typography

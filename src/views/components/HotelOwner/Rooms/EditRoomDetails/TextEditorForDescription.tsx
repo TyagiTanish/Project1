@@ -13,7 +13,7 @@ const Editor = ({room,setDescription}:any) => {
   const [value, setValue] = useState(room?.discription);
 
   return (
-    <Box>
+    <Box width={500} >
       <QuillEditor
         theme="snow"
         value={value}

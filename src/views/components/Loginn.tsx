@@ -163,7 +163,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                   <b>
                     <FormattedMessage defaultMessage="Password " />
                   </b>
-                  <br />
+                  {/* <br /> */}
                   {/* <TextField
                     id="password"
                     type="password"
@@ -171,7 +171,6 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                     {...register("password")}
                   ></TextField> */}
                <FormControl sx={{ width: '41ch' }} variant="outlined">
-               <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
           <OutlinedInput
             id="outlined-adornment-password"
             sx={{width:368}}
@@ -186,12 +185,11 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                   edge="end"
                   
                 >
-                  {showPassword ? <Visibility /> : <VisibilityOff />}
+                  {showPassword ? <VisibilityOff /> : <Visibility />}
                 </IconButton>
               </InputAdornment>
              
             }
-            label="Password"
           />
         </FormControl>
                 </>
