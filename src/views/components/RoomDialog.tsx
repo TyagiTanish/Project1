@@ -52,8 +52,8 @@ function RoomDialog(props: any) {
         </Tooltip>
       </Stack>
       <Divider />
-      <Stack direction={"row"} padding={2} overflow={"hidden"}>
-        <Stack width={"50%"}>
+      <Stack direction={"row"} padding={2} spacing={3} >
+        <Stack width={"45%"}>
           {/* <Stack direction={"column"} spacing={4}>
             <Box
               component="img"
@@ -70,7 +70,7 @@ function RoomDialog(props: any) {
             <Stack direction={"row"} spacing={0.2}>
               <Box
                 component={"img"}
-                width={{ xl: "60%", md: "60%", sm: "65%", xs: "50%" }}
+                width={{ xl: "70%", md: "60%", sm: "65%", xs: "50%" }}
                 // height={181.8}
                 src={`http://localhost:8000/${props?.details?.photos[roomImage]?.path}`}
               />
@@ -98,8 +98,8 @@ function RoomDialog(props: any) {
           <Stack
             direction={"column"}
             spacing={2}
-            overflow={"scroll"}
-            height={"55.5%"}
+            overflow={'auto'}
+            height={"56%"}
             marginTop={"2%"}
             // width={"%"}
             p={1}
@@ -113,12 +113,12 @@ function RoomDialog(props: any) {
               dangerouslySetInnerHTML={{
                 __html: props?.details?.discription,
               }}
-              sx={{ flex: 1 }}
+              sx={{ flex: 1,wordBreak:'break-word' }}
             />
             <Typography fontWeight={"bold"} fontSize={18}>
               Hotel Amenities
             </Typography>
-            <Stack spacing={1}>
+            <Stack gap={2} direction={"row"} sx={{flexWrap:'wrap'}}>
               {/* <li>Ac</li>
               <li>42” LED Smart TV</li>
               <li>Coffee and tea maker</li>
@@ -128,7 +128,7 @@ function RoomDialog(props: any) {
               <li>Minibar upon request</li> */}
               {props?.details?.amenities.map((item: any, i: any) => (
                 // console.log(item)
-                <li>{item}</li>
+                <li style={{minWidth:200}} >{item}</li>
               ))}
             </Stack>
             {/* <Stack spacing={1}>
@@ -142,7 +142,7 @@ function RoomDialog(props: any) {
             </Stack> */}
           </Stack>
         </Stack>
-
+        <div style={{border:'1px solid lightgray'}}></div>
         <Stack width={"50%"}>
           <Stack height={"75%"}></Stack>
           <Divider />

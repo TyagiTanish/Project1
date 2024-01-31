@@ -4,6 +4,7 @@ import {
   InputAdornment,
   Stack,
   TextField,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
@@ -11,6 +12,10 @@ import SearchIcon from "@mui/icons-material/Search";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useNavigate, useParams } from "react-router-dom";
 import { object } from "yup";
+import DomainAddOutlinedIcon from '@mui/icons-material/DomainAddOutlined';
+import AddHotelDialogBox from "./HotelOwner/hotels/AddHotel/AddHotelDialogBox";
+
+
 
 function SearchHotels({
   filteredData,
@@ -22,6 +27,7 @@ function SearchHotels({
   const { id } = useParams();
 
   const [selected, setSelected] = useState<any>(data);
+  const [open, setOpen] = React.useState(false);
   const selectedID = useMemo(() => {
     if (id) {
       return id;
@@ -31,17 +37,22 @@ function SearchHotels({
     }
   }, [filteredData, id]);
 
+
+
+
   return (
+    <>
     <Box
       sx={{
         border: "1px solid lightgray",
         borderRadius: 1,
         width: { xl: "30%", md: "30%", sm: "30%" },
         overflowX: "hidden",
-        overflowY: "scroll",
+        overflowY: "auto",
+        height:'90vh'
       }}
     >
-      <Stack alignItems={"left"} padding={2} paddingLeft={4}>
+      <Stack alignItems={"center"} padding={2} paddingLeft={4} direction={"row"} spacing={3} >
         <TextField
           variant="outlined"
           placeholder="Search Hotels"
@@ -64,6 +75,10 @@ function SearchHotels({
           value={searchTerm}
           onChange={handleInputChange}
         ></TextField>
+        <Stack component={'div'} onClick={()=>setOpen(true)}  ><Tooltip title="Add hotel" sx={{cursor:'pointer'}}>
+          <DomainAddOutlinedIcon  fontSize="large"  />  
+        </Tooltip>
+        </Stack>
       </Stack>
       <Stack
         direction={"column"}
@@ -97,6 +112,8 @@ function SearchHotels({
         ))}
       </Stack>
     </Box>
+    <AddHotelDialogBox open={open} setOpen={setOpen}  />
+    </>
   );
 }
 export default SearchHotels;

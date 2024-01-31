@@ -7,6 +7,7 @@ import RoomDetailBox from "./RoomDetailsDialog";
 import { useParams } from "react-router-dom";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import AddRooms from "../../../Rooms";
+import { Stack } from "@mui/material";
 
 export default function AllRooms() {
   const [render, setRender] = React.useState(0);
@@ -22,7 +23,7 @@ export default function AllRooms() {
       const result = await request.get("/hotels");
       setRooms(result?.data[0]?.rooms);
       const rooms = result?.data[0]?.rooms;
-
+      setCategories(result?.data[0]?.categories)
       // filtering categories for showing while adding a room
 
       if (rooms?.length > 0) {
@@ -38,7 +39,7 @@ export default function AllRooms() {
       const result = await request.get(`/getInfo/${id.id}`);
       setRooms(result?.data[0]?.rooms);
       const rooms = result?.data[0]?.rooms;
-
+      setCategories(result?.data[0]?.categories)
       // filtering categories for showing while adding a room
 
       if (rooms?.length > 0) {
@@ -51,6 +52,7 @@ export default function AllRooms() {
         setShowCategories(result?.data[0]?.categories);
       }
     }
+    
   };
 
   React.useEffect(() => {
@@ -59,12 +61,13 @@ export default function AllRooms() {
 
   return (
     <>
-      <AddRooms setRender={setRender} showCategories={showCategories} />
-      <Box sx={{ flexGrow: 1 }} padding={10}>
+        <AddRooms setRender={setRender} showCategories={showCategories} />
+      <Box sx={{ flexGrow: 1 }} padding={9}>
         <Grid
           container
-          spacing={{ xs: 2, md: 3 }}
-          columns={{ xs: 1, sm: 10, md: 8, xl: 8 }}
+          // spacing={{ xs: 2, md: 2 }}
+          gap={2}
+          columns={{ xs: 1, sm: 10, md: 8, xl: 12 }}
         >
           {Rooms?.map((room, index) => (
             <RoomDetail
@@ -73,7 +76,7 @@ export default function AllRooms() {
               setOpen={setOpen}
               setDetailedRoom={setDetailedRoom}
               setRender={setRender}
-              showCategories={showCategories}
+              showCategories={categories}
             />
           ))}
         </Grid>

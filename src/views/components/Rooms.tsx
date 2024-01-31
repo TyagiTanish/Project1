@@ -175,7 +175,7 @@ function AddRooms({ setRender,showCategories }: any) {
         onClick={handleOpen}
         variant="contained"
         color="error"
-        sx={{ float: "right" }}
+        sx={{ float: "right",width:150 }}
       >
         Add Room +
       </Button>

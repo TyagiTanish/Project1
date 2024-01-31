@@ -75,7 +75,7 @@ function ViewDetails({ hotels }: any) {
         >
           <Box
             dangerouslySetInnerHTML={{ __html: hotels[0]?.discription }}
-            sx={{ flex: 1 }}
+            sx={{ flex: 1,wordBreak:'break-word' }}
           />
         </Typography>
         <Stack
@@ -114,9 +114,9 @@ function ViewDetails({ hotels }: any) {
       >
         Amenities
       </Typography>
-      <Grid container spacing={2} sx={{ mb: 4, ml: { lg: 5, md: 0 } }}>
+      <Grid container spacing={2} sx={{ mb: 4, ml: { lg: -2, md: 0 } }}>
         {ShowAmenities.map((item) => (
-          <Grid item xs={2}>
+          <Grid item xs={2} >
             <Stack sx={{ fontSize:{xl:'16px',md:'12px',sm:'12px'}}} direction={'column'} alignItems={'center'}>
               <Box fontSize='small'>{item.icon}
               </Box>

@@ -16,7 +16,7 @@ import ViewDeal from "../ViewDeal";
 import HotelOwnerView from "../../layout/HotelOwnerView";
 import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
-import Allhotels from "../HotelOwner/Rooms/hotels/All-hotels";
+import Allhotels from "../HotelOwner/hotels/All-hotels";
 import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import ShowCustomerBooking from "../ShowCustomerBooking";

@@ -69,7 +69,6 @@ export default function HotelAmenities({ amenities }: any) {
 
   return (
     <>
-     
           <Swiper
             slidesPerView={3}
             spaceBetween={0}
@@ -81,15 +80,11 @@ export default function HotelAmenities({ amenities }: any) {
             className="mySwiper"
           >
             {ShowAmenities.map((item) => (
-              <SwiperSlide>
-                <Card variant="outlined">
-                  <CardContent>
+              <SwiperSlide  >
                     <Stack alignItems={"center"} fontSize={'small'} >
                       {item?.icon}
                       {item?.label}
                     </Stack>
-                  </CardContent>
-                </Card>
               </SwiperSlide>
             ))}
           </Swiper>

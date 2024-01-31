@@ -11,11 +11,12 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import SettingsIcon from "@mui/icons-material/Settings";
+import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, userLogout } from "../components/redux/user/userSlice";
 import Account from "../components/Account";
+import { Stack } from "@mui/material";
 
 export default function AccountMenu() {
   const user = useSelector((state: any) => state.userReducer.user);
@@ -36,22 +37,26 @@ export default function AccountMenu() {
     navigate("/");
   };
   return (
-    <React.Fragment>
-      <Box sx={{ display: "flex", alignItems: "center", textAlign: "center" }}>
+<>
         <Tooltip title="Account settings">
-          <IconButton
+          <Stack
             onClick={handleClick}
-            size="small"
-            sx={{ ml: 2, background: "lightgrey", width: "2" }}
+           direction={"row"}
+            sx={{ border:'1px solid lightgray',"&:hover": {
+              backgroundColor: "lightgray",
+              // border:'1px solid'
+            }, }}
+            alignItems={"center"}
+            padding={.5}
+            borderRadius={10}
           >
             <Avatar
-              src="https://media.istockphoto.com/id/1401980646/photo/3d-rendered-classic-sculpture-metaverse-avatar-with-network-of-low-poly-glowing-purple-lines.jpg?s=1024x1024&w=is&k=20&c=mf0nOLaHdiCZdkCRwTr2gKjypql-r6UBxpMqr0_Zqr0="
+              src={require(`./user.png`)}
               sx={{ width: 32, height: 32, mr: 1 }}
             ></Avatar>
-            <SettingsIcon />
-          </IconButton>
+            <SettingsOutlinedIcon sx={{color:'gray'}}  />
+          </Stack>
         </Tooltip>
-      </Box>
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -88,13 +93,13 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         <MenuItem>
-          <Avatar>{user.name[0]}</Avatar>
+          <Avatar>{user?.name?.[0]}</Avatar>
           <Link
             to="/member/profile"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
             {/* My account */}
-            Hello,{user.name}
+            Hello,{user?.name}
           </Link>
         </MenuItem>
         {/* <MenuItem onClick={handleClose}>
@@ -119,7 +124,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Logout
         </MenuItem>
-      </Menu>
-    </React.Fragment>
+        </Menu>
+        </>
   );
 }

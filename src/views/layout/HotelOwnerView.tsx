@@ -30,7 +30,9 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Menu from "./Menu";
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
+// import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
+
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -270,15 +272,17 @@ export default function HotelOwnerView() {
   console.log(toGet);
   return (
     <>
-      <Box sx={{ display: "flex" }}> 
+      <Stack direction={'row'}> 
         <CssBaseline />
-        <AppBar position="fixed" open={open} sx={{ bgcolor: "white" }}>
+        <AppBar open={open} sx={{ bgcolor: "white"}}  >
           <Toolbar>
+            <Stack direction={"row"} justifyContent={"space-between"} width={'100%'}   >
             <Stack
               direction={"row"}
               spacing={3}
               alignItems={"center"}
               height={"2vh"}
+              
             >
               {" "}
               {!open && <Logo />}
@@ -295,12 +299,15 @@ export default function HotelOwnerView() {
                 <MenuIcon sx={{ color: "black" }} />
               </IconButton>
             </Stack>
-            <Box ml={{ lg: "93%", md: "87%", sm: "80%" }}>
-              {/* <Menu /> */}
+            <Box 
+            // ml={{ lg: "85%", md: "87%", sm: "80%" }}
+            >
+              <Menu />
             </Box>
+            </Stack>
+           
           </Toolbar>
         </AppBar>
-
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
             <Stack
@@ -453,7 +460,38 @@ export default function HotelOwnerView() {
               </ListItemButton>
             </ListItem>
           </List>
-
+          {/* <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+                onClick={() => navigate("/addhotel")}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <ApartmentOutlinedIcon fontSize="small" />
+                  ) : (
+                    <ApartmentOutlinedIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Add Hotels"}
+                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
+                />
+              </ListItemButton>
+            </ListItem> */}
           {/* <List>
             {open && (
               <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
@@ -524,11 +562,11 @@ export default function HotelOwnerView() {
             </ListItem>
           </List> */}
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 3 }}>
+        <Box sx={{ flexGrow: 1, p: 2,overflow:'hidden',height:'100vh' }}  >
           <DrawerHeader />
           <Outlet />
         </Box>
-      </Box>
+      </Stack>
     </>
   );
 }

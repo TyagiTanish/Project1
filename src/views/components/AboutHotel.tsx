@@ -13,22 +13,21 @@ function AboutHotel({setRender,data}:any) {
     <>
     <TabContext value={activeButton} >
       <Stack
-              direction={"column"}
-        spacing={8}
-        sx={{ border: "1px solid lightgray", p: 1 ,width:{xl:'70%',md:'70%',sm:'65%'}}}
+        direction={"column"}
+        spacing={2}
+        sx={{ border: "1px solid lightgray", p: 1 ,width:{xl:'70%',md:'70%',sm:'65%'},height:'90vh'}}
       >
-        <Stack>
+        {/* <Stack>
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
           </Typography>
-        </Stack>
-        <TabList  onChange={(event: React.SyntheticEvent, newValue: string)=>setActiveButton(newValue)} >
+        </Stack> */}
+        <TabList  onChange={(event: React.SyntheticEvent, newValue: string)=>setActiveButton(newValue)}>
           <Tab label={'info'}  value={'info'}   />
           <Tab label="DashBoard" value={"dashboard"} />
           <Tab label="All Rooms" value={"rooms"} />
-          <Tab label="Amenities"  value={"amenities"}  />
         </TabList>
-        <TabPanel value="info" ><HotelInfo setRender={setRender} data={data}/></TabPanel>
-        <TabPanel value="rooms" ><AllRooms/></TabPanel>
+        <TabPanel value="info" sx={{overflow:'auto'}}  ><HotelInfo setRender={setRender} data={data}/></TabPanel>
+        <TabPanel value="rooms" sx={{overflow:"auto"}} ><AllRooms/></TabPanel>
       </Stack>
       </TabContext>
     </>

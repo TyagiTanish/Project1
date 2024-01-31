@@ -3,10 +3,10 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { Stack } from '@mui/material'
 
 import { useNavigate } from 'react-router-dom'
-import useAuth from '../../../../../Hooks/useAuth/useAuth';
-import SearchHotels from '../../../SearchHotels';
-import AboutHotel from '../../../AboutHotel';
-import Message from '../../../Message';
+import useAuth from   '../../../../Hooks/useAuth/useAuth';
+import SearchHotels from '../../SearchHotels';
+import AboutHotel from '../../AboutHotel';
+import Message from '../../Message';
 
 const Allhotels = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -50,7 +50,7 @@ const handleClick = useCallback((data:any)=>{
 //   navigate(`/member/hotels/${data}`)
 // }
   return (
-    <Stack direction={'row'} spacing={1}  >
+    <Stack direction={'row'} spacing={1}>
         {/* <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
         <AboutHotel setRender={setRender}/> */}
         {open===false ? 
