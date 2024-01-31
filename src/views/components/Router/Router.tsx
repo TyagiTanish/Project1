@@ -9,7 +9,7 @@ import HomePage from "../Home";
 import HotelsPage from "../HotelsPage";
 import Account from "../Account";
 import Billing from "../Billing/Billing";
-
+import SuperAdminRoute from "./Authentication/SuperAdmin";
 import MemberRegistrationPage from "../MemberRegistrationPage";
 import AddHotelAftrLgn from "../AddHotelAftrLgn";
 import ViewDeal from "../ViewDeal";
@@ -22,8 +22,37 @@ import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
 import ShowCustomerBooking from "../ShowCustomerBooking";
 import BookingDetails from "../BookingDetails";
 import AcceptedBookings from "../HotelOwner/Rooms/Booking/AcceptedBookings";
+import SuperAdminView from "../SuperAdmin/SuperAdminView/SuperAdminView";
+import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
+import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
 
 const router = [
+  {
+    path: "/superAdmin",
+    element: (
+      <SuperAdminRoute>
+        <SuperAdminView />
+      </SuperAdminRoute>
+    ),
+    children: [
+      {
+        path: "/superAdmin/users",
+        element: (
+          <SuperAdminRoute>
+            <ShowAllUsers />
+          </SuperAdminRoute>
+        ),
+      },
+      {
+        path: "/superAdmin/members",
+        element: (
+          <SuperAdminRoute>
+            <ShowAllMembers />
+          </SuperAdminRoute>
+        ),
+      },
+    ],
+  },
   {
     path: "/",
     element: (
@@ -43,11 +72,7 @@ const router = [
   {
     path: "/AddHotel",
 
-    element: (
-    
-        <AddHotelAftrLgn />
-     
-    ),
+    element: <AddHotelAftrLgn />,
   },
   {
     path: "/hotels",
@@ -104,7 +129,11 @@ const router = [
   },
   {
     path: "/billing",
-    element: <CustomerRoutes><Billing /></CustomerRoutes>,
+    element: (
+      <CustomerRoutes>
+        <Billing />
+      </CustomerRoutes>
+    ),
   },
   {
     path: "/member",
@@ -141,13 +170,21 @@ const router = [
         ),
       },
       {
-        path:'/member/bookings',
-        element:(<MemberRoute><Bookings/></MemberRoute>)
+        path: "/member/bookings",
+        element: (
+          <MemberRoute>
+            <Bookings />
+          </MemberRoute>
+        ),
       },
       {
-        path:'/member/acceptedBookings',
-        element:(<MemberRoute><AcceptedBookings/></MemberRoute>)
-      }
+        path: "/member/acceptedBookings",
+        element: (
+          <MemberRoute>
+            <AcceptedBookings />
+          </MemberRoute>
+        ),
+      },
     ],
   },
 ];
