@@ -1,16 +1,10 @@
 import * as React from "react";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
+
 import SearchIcon from "@mui/icons-material/Search";
-import FilterListIcon from '@mui/icons-material/FilterList';
+
 
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
-import { useSelector } from "react-redux";
+
 import {
   Box,
   Button,
@@ -244,8 +238,7 @@ export default function Bookings() {
   }, [socket]);
   return (
     <>
-   
-        <Typography
+   {data.length!==0 && <Typography
           sx={{
             fontWeight: "bold",
             fontSize: 35,
@@ -254,7 +247,8 @@ export default function Bookings() {
           }}
         >
           Requests
-        </Typography>
+        </Typography>}
+        
         <Stack
      
           sx={{ ml: "77%", mb: 2 }}
@@ -263,8 +257,7 @@ export default function Bookings() {
           spacing={2}
         >
           {" "}
-        
-          <TextField
+        {data.length!==0 && <TextField
             variant="outlined"
             size="small"
             InputProps={{
@@ -280,10 +273,11 @@ export default function Bookings() {
               setSearch(e.target.value)
             }}
           />
-         
+         }
+          
         </Stack>
         {data.length === 0 ? (
-          <Typography sx={{ width: 400, color: "red" }}>
+          <Typography sx={{ width: 400, color: "red" ,ml:'35%', mt:'20%',fontSize:25}}>
             No Bookings till now*
           </Typography>
         ) : (

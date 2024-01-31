@@ -1,31 +1,18 @@
-import { InputAdornment, Stack, TextField } from "@mui/material";
+import { Button, InputAdornment, Stack, TextField } from "@mui/material";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 
 import Box from "@mui/material/Box";
-import Card from "@mui/material/Card";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Button from "@mui/material/Button";
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
 import Typography from "@mui/material/Typography";
-import LocationOnIcon from "@mui/icons-material/LocationOn";
+
 import SearchIcon from "@mui/icons-material/Search";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
+
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
-import TableRow from "@mui/material/TableRow";
-import Paper from "@mui/material/Paper";
-import FilterListIcon from "@mui/icons-material/FilterList";
-import { useSelector } from "react-redux";
 import VisibilityIcon from "@mui/icons-material/Visibility";
-import { ChildProcess } from "child_process";
-import io from "socket.io-client";
+
 import DialogBox from "./DialogBox";
 
 import {
@@ -35,8 +22,8 @@ import {
   GridColumnHeaderParams,
   GridSortModel,
 } from "@mui/x-data-grid";
-import { date } from "yup";
-import { format } from "path";
+
+
 /**
  * To show all the accepted Bookings by the Hotel Owner. Markdown is *AcceptedBooking*.
  */
@@ -68,7 +55,7 @@ function AcceptedBookings() {
     {
       field: "hotelId",
       headerName: "Hotel name",
-      width: 300,
+      width: 200,
       renderCell: (params: any) => (
         // Access the 'age' property from the row data
         <div>{params?.row?.hotelId?.hotelName}</div>
@@ -77,11 +64,11 @@ function AcceptedBookings() {
         <strong style={{ fontSize: 18 }}>Hotel Name</strong>
       ),
     },
-
+  
     {
       field: "email",
 
-      width: 300,
+      width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Customer Email</strong>
@@ -90,49 +77,108 @@ function AcceptedBookings() {
     {
       field: `bookFrom`,
       headerName: "Book From",
-      width: 300,
+      width: 250,
      
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Book From</strong>
+        <strong style={{ fontSize: 18 }}>Check in</strong>
       ),
     },
     {
       field: "bookTo",
       headerName: "Book To",
-      width: 300,
+      width: 180,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Book To</strong>
+        <strong style={{ fontSize: 18 }}>Check Out</strong>
       ),
     },
     {
       field: "paymentStatus",
       headerName: "Payment Status",
-      width: 200,
+      width: 180,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Payment Status</strong>
       ),
     },
     {
+      field: "status",
+      headerName: "Status",
+      width: 200,
+      editable: true,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Booking Status</strong>
+      ),
+    },
+    {
+      field: "customField",
+      headerName: " Arrival Status",
+      width: 180,
+      renderCell: (params: any) => (
+        // Access the 'age' property from the row data
+        <FormControl fullWidth size="small">
+      
+        <Select
+        
+          value={age}
+       
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Ten</MenuItem>
+          <MenuItem value={10}>Twenty</MenuItem>
+          <MenuItem value={10}>Thirty</MenuItem>
+        </Select>
+      </FormControl>
+      ),
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Arrival Status</strong>
+      ),
+    },
+    {
       field: "actions",
       type: "actions",
 
-      width: 90,
+      width: 110,
       cellClassName: "actions",
       getActions: (value:any) => {
         return [
-          <GridActionsCellItem
-            icon={<VisibilityIcon />}
-            label="view"
-            sx={{
-              color: "lightgray",
-            }}
-            onClick={() => {
-              handleClickOpen(value.row);
-            }}
-          />,
+        //   <GridActionsCellItem
+        //     icon={<VisibilityIcon />}
+        //     label="view"
+        //     sx={{
+        //       color: "lightgray",
+        //     }}
+        //     onClick={() => {
+        //       handleClickOpen(value.row);
+        //     }}
+        //   />,
+
+
+        <GridActionsCellItem
+        icon={
+          <Button
+          variant="contained"
+          sx={{
+            textTransform: "capitalize",
+           
+
+         
+          }}
+         
+        >
+          View
+        </Button>
+        }
+
+          label="view"
+          sx={{
+            color: "lightgray",
+          }}
+          onClick={() => {
+            handleClickOpen(value.row);
+          }}
+        />,
         ];
       },
       renderHeader: (params: GridColumnHeaderParams) => (
@@ -205,22 +251,23 @@ console.log(search)
       >
         {" "}
         
-        <TextField
-          variant="outlined"
-          size="small"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-          placeholder="Search Here...."
-          sx={{ width: 300 }}
-          onChange={(e)=>{
-            setSearch(e.target.value)
-          }}
-        />
+         <TextField
+            variant="outlined"
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Search Here...."
+            sx={{ width: 250 }}
+            onChange={(e)=>{
+              setSearch(e.target.value)
+            }}
+          />
+      
     
       </Stack>
       <Box sx={{ height: "auto", width: '100%' }}>
