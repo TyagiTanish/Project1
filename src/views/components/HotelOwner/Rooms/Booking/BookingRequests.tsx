@@ -12,7 +12,9 @@ import FilterListIcon from '@mui/icons-material/FilterList';
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import {
+  Box,
   Button,
+  IconButton,
   InputAdornment,
   Stack,
   TextField,
@@ -21,52 +23,212 @@ import {
 import DialogBox from "./DialogBox";
 import { ChildProcess } from "child_process";
 import io from "socket.io-client";
+import { DataGrid, GridActionsCellItem, GridColDef, GridColumnHeaderParams, GridSortModel } from "@mui/x-data-grid";
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
-function createData(
-  BookingDate: string,
-  RoomType: string,
-  CustomerName: string,
-  NoOfRooms: string
-) {
-  return { BookingDate, RoomType, CustomerName, NoOfRooms };
-}
 
-const rows: any = [
-  //   createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-];
 
+/**
+* showing all the pending booking Requests to the admin. Markdown is *Bookings*.
+*/
 export default function Bookings() {
   const [open, setOpen] = React.useState(false);
   const [handle, sethandle] = React.useState("");
   const { request } = useAuth();
   const [data, setData] = React.useState<any>([]);
   const [display, setDisplay] = React.useState({});
-
+  const [length, setLength] = React.useState();
+  const [paginationModel, setPaginationModel] = React.useState<any>({
+    page: 0,
+    pageSize: 5,
+  });
+  const [search,setSearch]=React.useState("");
+  const [queryOptions, setQueryOptions] = React.useState<any>();
   const handleClickOpen = (data: any) => {
     setOpen(true);
 
     setDisplay(data);
   };
+  const handleSortModelChange = React.useCallback((sortModel: GridSortModel) => {
+ 
+    setQueryOptions({ sortModel: [...sortModel] });
+  }, []);
+  console.log(data)
+  const columns: GridColDef[] = [
+    {
+      field: "fullName",
+    
+      width: 300,
+     
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Customer Name</strong>
+      ),
+    },
 
+    {
+      field: "email",
+
+      width: 300,
+      editable: true,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Customer Email</strong>
+      ),
+    },
+    {
+      field: "phone",
+      headerName: "Phone No.",
+      width: 300,
+      editable: true,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}> Phone No.</strong>
+      ),
+    },
+    {
+      field: "paymentStatus",
+      headerName: "Payment Status",
+      width: 300,
+      editable: true,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Payment Status</strong>
+      ),
+    },
+
+    {
+      field: "actions",
+      type: "actions",
+
+      width: 300,
+      cellClassName: "actions",
+      getActions: (value:any) => {
+        return [
+
+
+          //for accept
+          <GridActionsCellItem
+          icon={
+            <Button
+            variant="contained"
+            sx={{
+              textTransform: "capitalize",
+              backgroundImage:
+                "linear-gradient(270deg,green,green)", 
+
+           
+            }}
+           
+          >
+            Accept
+          </Button>
+          }
+
+            label="view"
+            sx={{
+              color: "lightgray",
+            }}
+            onClick={() => {
+             handleClickAccept(value.row._id);
+            }}
+          />,
+
+          // for Reject
+          <GridActionsCellItem
+          icon={
+            <Button
+            variant="contained"
+            sx={{
+              textTransform: "capitalize",
+              backgroundImage:
+                "linear-gradient(270deg,#d11450,#ee2a24)", 
+
+          
+            }}
+         
+          >
+            Reject
+          </Button>
+          }
+
+
+            label="view"
+            sx={{
+              color: "lightgray",
+            }}
+            onClick={() => {
+              handleClick(value.row._id);
+            }}
+          />,
+
+
+          // for view
+          <GridActionsCellItem
+          icon={
+            <Button
+            variant="contained"
+            sx={{
+              textTransform: "capitalize",
+             
+          
+            }}
+          
+          >
+
+            View
+          </Button>
+          }
+            label="view"
+            sx={{
+              color: "lightgray",
+            }}
+            onClick={() => {
+              handleClickOpen(value.row);
+            }}
+          />
+
+        ];
+        
+      },
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Actions</strong>
+      ),
+    },
+  ];
   const handleClose = (value: string) => {
     setOpen(false);
   };
   const handleClickAccept = async (id: any) => {
     const data = await request.put(`/bookingAccept/${id}`);
     setData(data.data);
+   
   };
   const handleClick = async (id: any) => {
     const data = await request.delete(`/bookingDelete/${id}`);
     setData(data.data);
+ 
   };
   React.useMemo(async () => {
-    const data = await request.get("/bookingDetails");
+    const data = await request.get("/bookingDetails",);
 
     setData(data.data);
+    setLength(data?.data?.length)
   }, []);
+  React.useMemo(async () => {
+    const data = await request.get("/bookingDetails",
+    {
+      params: {
+        limit: paginationModel.pageSize || null,
+        page: paginationModel.page,
+        orderby: queryOptions?.sortModel[0]?.field || "_id",
+        sortby: queryOptions?.sortModel[0]?.sort || "asc",
+        search:search
+      },
+    }
+    );
+  
+    setData(data.data);
+  
+  }, [paginationModel,queryOptions,search]);
   React.useMemo(() => {
     socket.on("recieved", (data) => {
       if (data) {
@@ -74,6 +236,7 @@ export default function Bookings() {
           const data = await request.get("/bookingDetails");
 
           setData(data.data);
+          
         };
         get();
       }
@@ -81,7 +244,7 @@ export default function Bookings() {
   }, [socket]);
   return (
     <>
-      <Stack direction={"column"} spacing={4}>
+   
         <Typography
           sx={{
             fontWeight: "bold",
@@ -94,7 +257,7 @@ export default function Bookings() {
         </Typography>
         <Stack
      
-          sx={{ ml: "70%", mb: 2 }}
+          sx={{ ml: "77%", mb: 2 }}
           direction={"row"}
           alignItems={"center"}
           spacing={2}
@@ -112,111 +275,41 @@ export default function Bookings() {
               ),
             }}
             placeholder="Search Here...."
-            sx={{ width: 200 }}
-          />
-          <Button
-            variant="contained"
-            sx={{
-              bgcolor: "green",
-              pl: 3,
-              pr: 3,
-              "&:hover": {
-                backgroundColor: "green",
-              },
+            sx={{ width: 300 }}
+            onChange={(e)=>{
+              setSearch(e.target.value)
             }}
-          >
-            Search
-          </Button>
+          />
+         
         </Stack>
         {data.length === 0 ? (
           <Typography sx={{ width: 400, color: "red" }}>
             No Bookings till now*
           </Typography>
         ) : (
-          <TableContainer
-            component={Paper}
-            sx={{ overflowY: "scroll", height: 750, width: "auto" }}
-          >
-            <Table size="small" aria-label="a dense table">
-              <TableHead>
-                <TableRow>
-                  <TableCell style={{ fontWeight: "bolder" }}>
-                    Customer Name-
-                  </TableCell>
-                  <TableCell align="left" style={{ fontWeight: "bolder" }}>
-                    Customer Email-
-                  </TableCell>
-                  <TableCell align="left" style={{ fontWeight: "bolder" }}>
-                    Customer Phone-
-                  </TableCell>
-
-                  <TableCell align="left" style={{ fontWeight: "bolder" }}>
-                    Actions
-                  </TableCell>
-                </TableRow>
-              </TableHead>
-              <TableBody>
-                {data?.map(
-                  (item: any) =>
-                    item.status == "pending" && (
-                      <TableRow
-                        key={item.name}
-                        sx={{
-                          "&:last-child td, &:last-child th": { border: 0 },
-                        }}
-                      >
-                        <TableCell align="left">{item.fullName}</TableCell>
-                        <TableCell align="left">{item.email}</TableCell>
-                        <TableCell align="left">{item.phone}</TableCell>
-
-                        {/* <TableCell align="left"></TableCell> */}
-                        <TableCell align="left">
-                          <Button
-                            variant="contained"
-                            sx={{
-                              textTransform: "capitalize",
-                              backgroundImage:
-                                "linear-gradient(270deg,green,green)", 
-                                
-                              marginRight: 5,
-                            }}
-                            onClick={() => {
-                              handleClickAccept(item._id);
-                            }}
-                          >
-                            Accept
-                          </Button>
-                          <Button
-                            variant="contained"
-                            sx={{
-                              textTransform: "capitalize",
-                              backgroundImage:
-                                "linear-gradient(270deg,#d11450,#ee2a24)",
-                            }}
-                            onClick={() => {
-                              handleClick(item._id);
-                            }}
-                          >
-                            Reject
-                          </Button>
-                          <Button
-                            variant="contained"
-                            sx={{ textTransform: "capitalize", ml: 5 }}
-                            onClick={() => {
-                              handleClickOpen(item);
-                            }}
-                          >
-                            View
-                          </Button>
-                        </TableCell>
-                      </TableRow>
-                    )
-                )}
-              </TableBody>
-            </Table>
-          </TableContainer>
+         
+          <Box sx={{ height: "auto", width: '100%' }}>
+          <DataGrid
+            rows={data}
+            columns={columns}
+            getRowId={(row) => row._id}
+            disableColumnMenu
+            sx={{fontSize:15}}
+            // {...other props}
+            rowCount={length}
+            pageSizeOptions={[5, 10, 20]}
+            paginationModel={paginationModel}
+            paginationMode="server"
+            onPaginationModelChange={setPaginationModel}
+            sortingMode="server"
+            onSortModelChange={handleSortModelChange}
+            // onSortModelChange={handleSortModelChange}
+            // onSortModelChange={handleSortModelChange}
+          />
+        </Box>
+          
         )}
-      </Stack>
+      
       {open && <DialogBox data={display} open={open} onClose={handleClose} />}
     </>
   );

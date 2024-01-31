@@ -35,6 +35,8 @@ import {
   GridColumnHeaderParams,
   GridSortModel,
 } from "@mui/x-data-grid";
+import { date } from "yup";
+import { format } from "path";
 /**
  * To show all the accepted Bookings by the Hotel Owner. Markdown is *AcceptedBooking*.
  */
@@ -86,9 +88,10 @@ function AcceptedBookings() {
       ),
     },
     {
-      field: "bookFrom",
+      field: `bookFrom`,
       headerName: "Book From",
       width: 300,
+     
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Book From</strong>
@@ -103,12 +106,20 @@ function AcceptedBookings() {
         <strong style={{ fontSize: 18 }}>Book To</strong>
       ),
     },
-
+    {
+      field: "paymentStatus",
+      headerName: "Payment Status",
+      width: 200,
+      editable: true,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>Payment Status</strong>
+      ),
+    },
     {
       field: "actions",
       type: "actions",
 
-      width: 100,
+      width: 90,
       cellClassName: "actions",
       getActions: (value) => {
         return [
@@ -212,7 +223,7 @@ console.log(search)
         />
     
       </Stack>
-      <Box sx={{ height: "auto", width: 1500 }}>
+      <Box sx={{ height: "auto", width: '100%' }}>
         <DataGrid
           rows={data}
           columns={columns}
