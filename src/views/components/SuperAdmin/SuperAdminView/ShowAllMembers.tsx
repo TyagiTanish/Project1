@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import { DataGrid, GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
 import ShowHotelsModal from "./ShowHotelsModal";
-function ShowAllMembers() {
+
+export default function ShowAllMembers() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
 
   const handleChange =
