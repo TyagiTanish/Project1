@@ -52,7 +52,7 @@ function ShowCustomerBooking() {
                 <Stack direction={'row'} spacing={4} >
                 <img
                   style={{ width: "180px" }}
-                  src={`https://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                  src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
                 />
                 <Stack textAlign={'left'} >
                   <Typography sx={{ fontWeight: "bolder", fontSize: "large" }}>

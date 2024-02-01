@@ -81,7 +81,7 @@ function HotelInfo({ setRender }: any) {
                 height: "auto",
               }}
               alt="The house from the offer."
-              src={`https://localhost:8000/${data?.photo}`}
+              src={`http://localhost:8000/${data?.photo}`}
             />
             <Stack direction={"column"} spacing={1}>
               <Typography sx={{ fontSize: { xl: 22, md: 16 } }}>

@@ -130,7 +130,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     }}
                     alt="The house from the offer."
                     // src={require(`./${item.photo}`)}
-                    src={`https://localhost:8000/${item?.photo}`}
+                    src={`http://localhost:8000/${item?.photo}`}
                   />
 
                   <Stack m={2} width={400}>
