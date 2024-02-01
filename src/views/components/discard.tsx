@@ -49,7 +49,7 @@ function HotelInfo() {
             borderBottomLeftRadius: "20px",
           }}
           alt="The house from the offer."
-          src={`http://localhost:8000/${data[0]?.photo}`}
+          src={`https://localhost:8000/${data[0]?.photo}`}
         />
         <Stack direction={'column'} padding={2} spacing={2} width={'80%'}>
            <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>

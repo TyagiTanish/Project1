@@ -1,5 +1,5 @@
 import React from "react";
-import { Stack, Typography, Button } from "@mui/material";
+import { Stack, Typography, Button, Chip } from "@mui/material";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { Card, CardContent, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
@@ -49,11 +49,12 @@ function ShowCustomerBooking() {
                 direction={"row"}
                 spacing={{ sm: 3, md: 5, lg: 10, xl: 25 }}
               >
+                <Stack direction={'row'} spacing={4} >
                 <img
-                  style={{ width: "130px" }}
-                  src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                  style={{ width: "180px" }}
+                  src={`https://localhost:8000/${bookings[index]?.hotelId?.photo}`}
                 />
-                <Stack>
+                <Stack textAlign={'left'} >
                   <Typography sx={{ fontWeight: "bolder", fontSize: "large" }}>
                     {item?.hotelId?.hotelName}
                   </Typography>
@@ -67,12 +68,21 @@ function ShowCustomerBooking() {
                     {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
                   </Typography>
                 </Stack>
+                </Stack>
                 <Typography sx={{ fontWeight: "bold" }}>
                   {item?._id.slice(-8)}
                 </Typography>
-                <Stack>
-                  <Typography>Payment</Typography>
-                  <Typography>{item?.paymentStatus}</Typography>
+                <Stack direction={"row"} alignItems={'center'}  >
+                  {/* <Typography fontWeight={"bolder"}>Payment Status</Typography> */}
+                  <Chip
+                    color={
+                      item?.paymentStatus === "unpaid" ? "error" : "success"
+                    }
+                    // fontSize={"small"}
+                    sx={{width:56}}
+                    size="small"
+                    label={item?.paymentStatus}
+                  />
                   <Button
                     sx={{ textTransform: "none", color: "red" }}
                     onClick={() => {

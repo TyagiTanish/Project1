@@ -120,7 +120,7 @@ const RoomDetail = ({
                   component={"img"}
                   width={{ xl: "75%", md: "60%", sm: "65%", xs: "50%" }}
                   height={181.8}
-                  src={`http://localhost:8000/${room?.photos[roomImage]?.path}`}
+                  src={`https://localhost:8000/${room?.photos[roomImage]?.path}`}
                 />
                 <>
                   <Stack direction={"column"} spacing={0.2}>
@@ -132,7 +132,7 @@ const RoomDetail = ({
                               component={"img"}
                               width={100}
                               height={60}
-                              src={`http://localhost:8000/${image?.path}`}
+                              src={`https://localhost:8000/${image?.path}`}
                               onClick={() => setRoomImage(index)}
                             />
                           )}

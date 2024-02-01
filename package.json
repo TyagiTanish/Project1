@@ -75,7 +75,7 @@
     "yup": "^1.3.2"
   },
   "scripts": {
-    "start": "craco start",
+    "start": "HTTPS=true SSL_CRT_FILE=localhost.pem SSL_KEY_FILE=localhost-key.pem craco start",
     "build": "craco build",
     "test": "craco test",
     "eject": "craco eject",
