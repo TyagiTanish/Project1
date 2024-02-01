@@ -29,9 +29,10 @@ function App() {
       //   {
       //  return  navigate('/login');
       //   }
-      const userData = (await request.get(`/getUserData`)).data;
-
-      dispatch(userLogin(userData));
+      if (authToken) {
+        const userData = (await request.get(`/getUserData`)).data;
+        dispatch(userLogin(userData));
+      }
     } catch (error) {
       localStorage.removeItem("authToken");
     }

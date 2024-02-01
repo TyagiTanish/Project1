@@ -44,7 +44,7 @@ export default function ImagePreview({
         <Box
           component={"img"}
           width={450}
-          src={`http://localhost:8000/${room.photos[previewIndex]?.path}`}
+          src={`https://localhost:8000/${room.photos[previewIndex]?.path}`}
         />
       </DialogContent>
     </Dialog>

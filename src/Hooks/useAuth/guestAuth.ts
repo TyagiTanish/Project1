@@ -2,7 +2,7 @@ import axios from "axios";
 
 function guestAuth() {
   const request = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "https://localhost:8000",
     headers: {
       Authorization: localStorage.getItem("authToken") ? `Bearer ${localStorage.getItem("authToken")}`: null,
     },

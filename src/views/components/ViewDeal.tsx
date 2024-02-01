@@ -69,7 +69,7 @@ function ViewDeal() {
             }}
             alt="The house from the offer."
             // src={require(`./pic2.jpg`)}
-            src={`http://localhost:8000/${filterData[0]?.photo}`}
+            src={`https://localhost:8000/${filterData[0]?.photo}`}
           />
           <Stack direction={"column"} spacing={1}>
             <Typography sx={{ fontSize: 22 }}>

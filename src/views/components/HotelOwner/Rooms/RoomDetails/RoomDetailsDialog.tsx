@@ -81,7 +81,7 @@ export default function RoomDetailBox({
                   xs: "50%",
                   lg: "75%",
                 }}
-                src={`http://localhost:8000/${Rooms[Detailedroom]?.photos[roomImage]?.path}`}
+                src={`https://localhost:8000/${Rooms[Detailedroom]?.photos[roomImage]?.path}`}
               />
               <>
                 <Stack direction={"column"} spacing={0.2}>
@@ -94,7 +94,7 @@ export default function RoomDetailBox({
                               component={"img"}
                               width={{ xl: "85%", sm: 80, md: "80%" }}
                               height={{ xl: "50%", sm: 50, md: "60%" }}
-                              src={`http://localhost:8000/${image?.path}`}
+                              src={`https://localhost:8000/${image?.path}`}
                               onClick={() => setRoomImage(index)}
                             />
                           )}

@@ -49,6 +49,11 @@ function Hotels({ filteredData, screenSize }: any) {
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
+
+
+
+
+
   return (
     <>
       <Box
@@ -124,7 +129,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     }}
                     alt="The house from the offer."
                     // src={require(`./${item.photo}`)}
-                    src={`http://localhost:8000/${item?.photo}`}
+                    src={`https://localhost:8000/${item?.photo}`}
                   />
 
                   <Stack m={2} width={400}>
@@ -138,7 +143,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     >
                       {item.hotelName}
                     </Typography>
-                    <Stack direction={"row"} sx={{ alignItems: "center" }}>
+                    <Stack direction={"row"} sx={{ alignItems: "center" }} gap={2} >
                       <Typography
                         sx={{
                           fontWeight: "bold",
@@ -228,7 +233,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           opacity: 0.7,
                         }}
                       >
-                        ₹{item.price}
+                        ₹{item?.rooms[0]?.price}
                       </Typography>
                     </Stack>
                     <Stack spacing={1}>

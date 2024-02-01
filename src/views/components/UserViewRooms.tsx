@@ -49,7 +49,7 @@ function UserViewRooms({ hotels }: any) {
               }}
               alt="The house from the offer."
               // src={item?.photos[0]}
-              src={`http://localhost:8000/${item?.photos[i].path}`}
+              src={`https://localhost:8000/${item?.photos[i].path}`}
             />
             <Typography
               sx={{
