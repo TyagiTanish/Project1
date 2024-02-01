@@ -110,7 +110,7 @@ const columns: GridColDef[] = [
   },
 ];
 
-const getTreeDataPath: DataGridProProps['getTreeDataPath'] = (row) => row.hierarchy;
+const getTreeDataPath: DataGridProProps['getTreeDataPath'] = (row:any) => row.hierarchy;
 
 export default function ShowAllMembers() {
   const [data, setData] = React.useState<any>([]);
