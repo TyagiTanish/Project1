@@ -8,59 +8,28 @@ import Logo from "./Logo";
 import Hotels from "./Hotels";
 import useAuth from "../../Hooks/useAuth/useAuth";
 const HotelsPage = () => {
-  // const [hotels] = useState([
-  //   {
-  //     name: "Hotel mountain face by snow",
-  //     price: "8000/-",
-  //     rating: "excellent",
-  //     src: "pic1.jpg",
-  //   },
-  //   {
-  //     name: "Bentewood Resort",
-  //     price: "2000/-",
-  //     rating: "excellent",
-  //     src: "pic2.jpg",
-  //   },
-  //   {
-  //     name: "JW Marriot Mumbai Sahar",
-  //     price: "3000/-",
-  //     rating: "excellent",
-  //     src: "pic3.jpg",
-  //   },
-  //   {
-  //     name: "Niranta Transit",
-  //     price: "5000/-",
-  //     rating: "excellent",
-  //     src: "pic4.jpg",
-  //   },
-  //   {
-  //     name: "Hotel Kohinoor Continental",
-  //     price: "9000/-",
-  //     rating: "excellent",
-  //     src: "pic5.jpg",
-  //   },
-  // ]);
-  const [hotels, sethotels] = useState<any>();
+
   const { request } = useAuth();
   const [searchTerm, setSearchTerm] = useState("");
-  const [filteredData, setFilteredData] = useState(hotels);
+  const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
-  const getHotels = async () => {
+  
+  // useEffect(() => {
+  //   getHotels();
+  // }, []);
+  useMemo(async() => {
     const result = await request.get("/getHotels");
-    sethotels(result.data);
-  };
-  useEffect(() => {
-    getHotels();
+    setFilteredData(result.data);
   }, []);
-  useMemo(() => {
-    setFilteredData(hotels);
-  }, [hotels]);
 
-  const filterData = (searchTerm: any) => {
-    const filteredData = hotels.filter((item: any) =>
-      item.name.toLowerCase().includes(searchTerm.toLowerCase())
-    );
-    setFilteredData(filteredData);
+  const filterData = async(searchTerm: any) => {
+    const result = await request.get("/getHotels",{
+      params:{
+        search:searchTerm    
+        }
+    });
+   
+    setFilteredData(result.data);
   };
 
   useEffect(() => {
@@ -85,10 +54,20 @@ const HotelsPage = () => {
         />
       </Stack>
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
-        {filteredData !== undefined ? (
+        {filteredData.length!==0 ? <>  {filteredData !== undefined ? (
           <Hotels filteredData={filteredData} screenSize={screenSize} />
         ) : null}
-        {screenSize <= 768 ? <></> : <SimpleMap filteredData={filteredData} />}
+        {screenSize <= 768 ? <></> : <SimpleMap filteredData={filteredData} />}</> : 
+         <Box
+          component="img"
+          sx={{
+            ml:{xl:'25%',md:'12%',sm:'12%'},
+         
+          }}
+          alt="The house from the offer."
+          src={require("../components/no_result.gif")}
+        /> }
+      
       </Stack>
       <Footer />
     </>

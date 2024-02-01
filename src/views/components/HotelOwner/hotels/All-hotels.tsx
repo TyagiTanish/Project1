@@ -1,8 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useState } from 'react'
 
-import { Stack } from '@mui/material'
+import { Box, Button, Stack } from '@mui/material'
 
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useAuth from   '../../../../Hooks/useAuth/useAuth';
 import SearchHotels from '../../SearchHotels';
 import AboutHotel from '../../AboutHotel';
@@ -21,15 +21,12 @@ const Allhotels = () => {
   //   setFilteredData(filteredData);
   // };
   const navigate=useNavigate();
-const handleInputChange = useCallback((event: any)=>{
-  const { value } = event.target;
+const handleInputChange = useCallback((value: any)=>{
+  
   setSearchTerm(value);
+console.log(searchTerm)
 },[])
-  // const handleInputChange = (event: any) => {
-  //   const { value } = event.target;
-  //   setSearchTerm(value);
-  //   // filterData(value);
-  // };
+
 useEffect(()=>{
   const get=(async()=>{
     const result= await request.get('/searchHotels');
@@ -42,7 +39,14 @@ useEffect(()=>{
   
 
 },[render])
-
+useMemo(async()=>{
+    const result=await request.get('/searchHotels',{
+      params:{
+        search:searchTerm
+      }
+    });
+    setFilteredData(result.data)
+},[searchTerm])
 const handleClick = useCallback((data:any)=>{
   navigate(`/member/hotels/${data}`)
 },[navigate])
@@ -50,14 +54,38 @@ const handleClick = useCallback((data:any)=>{
 //   navigate(`/member/hotels/${data}`)
 // }
   return (
-    <Stack direction={'row'} spacing={1}>
-        {/* <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm}/>
-        <AboutHotel setRender={setRender}/> */}
+    <Box>
+        {filteredData.length!==0 ?  <Stack direction={'row'} spacing={1}>
+      {filteredData.length!==0 }
         {open===false ? 
         <> <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm} data={{id:filteredData[0]?._id}}/>
         <AboutHotel setRender={setRender} data={filteredData[0]} /></>
         : <Message/>}
+    </Stack> :  
+    
+    <>
+    <Stack direction={'column'} sx={{width:{xl:'70%'}}} alignItems={'center'} >
+
+
+    <Box
+    component="img"
+    sx={{
+      ml:{xl:'25%',md:'3%',sm:'3%'},
+      mt:{xl:'5%'},
+    
+    }}
+  
+    alt="The house from the offer."
+    src={require("../../no_result.gif")}
+  /> 
+    <Button onClick={()=>{setRender((prev)=>prev+1)}} sx={{ml:{xl:'26%',md:'5%'}}} variant='contained'>Back</Button>
     </Stack>
+  
+  </>
+     }
+   
+    </Box>
+    
   )
 }
 export default Allhotels

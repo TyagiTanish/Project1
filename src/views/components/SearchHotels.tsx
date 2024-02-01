@@ -73,7 +73,7 @@ function SearchHotels({
           }}
           sx={{ width: "80%", borderRadius: 30 }}
           value={searchTerm}
-          onChange={handleInputChange}
+          onChange={(e)=>{handleInputChange(e.target.value)}}
         ></TextField>
         <Stack component={'div'} onClick={()=>setOpen(true)}  ><Tooltip title="Add hotel" sx={{cursor:'pointer'}}>
           <DomainAddOutlinedIcon  fontSize="large"  />  

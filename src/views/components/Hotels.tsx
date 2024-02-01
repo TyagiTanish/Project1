@@ -53,7 +53,7 @@ function Hotels({ filteredData, screenSize }: any) {
     <>
       <Box
         sx={{
-          height: "100vh",
+          height: "90vh",
           overflowY: "auto",
         }}
       >
@@ -99,6 +99,7 @@ function Hotels({ filteredData, screenSize }: any) {
         ) : (
           <></>
         )}
+        
         {displayMap ? (
           <>
             {filteredData?.map((item: any, i: any) => (
