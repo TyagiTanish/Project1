@@ -87,7 +87,7 @@ function AcceptedBookings() {
     {
       field: "bookTo",
       headerName: "Book To",
-      width: 180,
+      width: 250,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Check Out</strong>
