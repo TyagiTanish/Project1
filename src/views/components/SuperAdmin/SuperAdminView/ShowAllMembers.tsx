@@ -1,138 +1,215 @@
-import * as React from 'react';
+import React, { useEffect, useMemo } from "react";
+import useAuth from "../../../../Hooks/useAuth/useAuth";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
-  DataGridPro,
-  GridColDef,
-  GridRowsProp,
-  DataGridProProps,
-} from '@mui/x-data-grid-pro';
-import useAuth from '../../../../Hooks/useAuth/useAuth';
-
-const rows: GridRowsProp = [
-  {
-    hierarchy: [``],
-    jobTitle: 'Head of Human Resources',
-    recruitmentDate: new Date(2020, 8, 12),
-    id: 0,
-  },
-  {
-    hierarchy: ['Thomas'],
-    jobTitle: 'Head of Sales',
-    recruitmentDate: new Date(2017, 3, 4),
-    id: 1,
-  },
-  {
-    hierarchy: ['Thomas', 'Robert'],
-    jobTitle: 'Sales Person',
-    recruitmentDate: new Date(2020, 11, 20),
-    id: 2,
-  },
-  {
-    hierarchy: ['Thomas', 'Karen'],
-    jobTitle: 'Sales Person',
-    recruitmentDate: new Date(2020, 10, 14),
-    id: 3,
-  },
-  {
-    hierarchy: ['Thomas', 'Nancy'],
-    jobTitle: 'Sales Person',
-    recruitmentDate: new Date(2017, 10, 29),
-    id: 4,
-  },
-  {
-    hierarchy: ['Thomas', 'Daniel'],
-    jobTitle: 'Sales Person',
-    recruitmentDate: new Date(2020, 7, 21),
-    id: 5,
-  },
-  {
-    hierarchy: ['Thomas', 'Christopher'],
-    jobTitle: 'Sales Person',
-    recruitmentDate: new Date(2020, 7, 20),
-    id: 6,
-  },
-  {
-    hierarchy: ['Thomas', 'Donald'],
-    jobTitle: 'Sales Person',
-    recruitmentDate: new Date(2019, 6, 28),
-    id: 7,
-  },
-  {
-    hierarchy: ['Mary'],
-    jobTitle: 'Head of Engineering',
-    recruitmentDate: new Date(2016, 3, 14),
-    id: 8,
-  },
-  {
-    hierarchy: ['Mary', 'Jennifer'],
-    jobTitle: 'Tech lead front',
-    recruitmentDate: new Date(2016, 5, 17),
-    id: 9,
-  },
-  {
-    hierarchy: ['Mary', 'Jennifer', 'Anna'],
-    jobTitle: 'Front-end developer',
-    recruitmentDate: new Date(2019, 11, 7),
-    id: 10,
-  },
-  {
-    hierarchy: ['Mary', 'Michael'],
-    jobTitle: 'Tech lead devops',
-    recruitmentDate: new Date(2021, 7, 1),
-    id: 11,
-  },
-  {
-    hierarchy: ['Mary', 'Linda'],
-    jobTitle: 'Tech lead back',
-    recruitmentDate: new Date(2017, 0, 12),
-    id: 12,
-  },
-  {
-    hierarchy: ['Mary', 'Linda', 'Elizabeth'],
-    jobTitle: 'Back-end developer',
-    recruitmentDate: new Date(2019, 2, 22),
-    id: 13,
-  },
-  {
-    hierarchy: ['Mary', 'Linda', 'William'],
-    jobTitle: 'Back-end developer',
-    recruitmentDate: new Date(2018, 4, 19),
-    id: 14,
-  },
-];
-
-const columns: GridColDef[] = [
-  { field: 'jobTitle', headerName: 'Job Title', width: 200 },
-  {
-    field: 'recruitmentDate',
-    headerName: 'Recruitment Date',
-    type: 'date',
-    width: 150,
-  },
-];
-
-const getTreeDataPath: DataGridProProps['getTreeDataPath'] = (row:any) => row.hierarchy;
+  Accordion,
+  AccordionDetails,
+  AccordionSummary,
+  Button,
+  Stack,
+  Typography,
+} from "@mui/material";
+import { DataGrid, GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
+import ShowHotelsModal from "./ShowHotelsModal";
 
 export default function ShowAllMembers() {
-  const [data, setData] = React.useState<any>([]);
-  const { request } = useAuth();
-  React.useMemo(() => {
-    const get = async () => {
-      const data = await request.get("/getAllUsers");
-      setData(data.data);
+  const [expanded, setExpanded] = React.useState<string | false>(false);
 
-      // setLength(data.data.length);
+  const handleChange =
+    (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
+      setExpanded(isExpanded ? panel : false);
     };
-    get();
+  const [open, setOpen] = React.useState(false);
+  const [hotels, setHotels] = React.useState<any>([]);
+  const [modalHotel, setModalHotel] = React.useState<any>([]);
+  const { request } = useAuth();
+  const [members, setMembers] = React.useState<any>([]);
+  const getMembers = async () => {
+    const data: any = await request.get("/getAllMembers");
+    setMembers(data?.data);
+    // console.log(members);
+  };
+  const getHotels = async (id: any) => {
+    const data = await request.get(`/getHotelForParticularMember/${id}`);
+    // console.log(data.data);
+    const hotelsdata: any = data?.data.map((item: any, i: any) => {
+      item.id = i + 1;
+      return item;
+    });
+    setHotels(hotelsdata);
+  };
+  useMemo(() => {}, [hotels]);
+  useEffect(() => {
+    getMembers();
   }, []);
+
+  const handleClick = async (data: any) => {
+    // const data = await request.delete(`/bookingDelete/${id}`);
+    setModalHotel(data);
+    setOpen(true);
+  };
+  const handleClose = (value: string) => {
+    setOpen(false);
+  };
+
+  const columns: GridColDef[] = [
+    // { field: "id", headerName: "ID", width: 90 },
+    {
+      field: "hotelName",
+      width: 270,
+      // editable: true,
+      renderHeader: () => (
+        <div style={{ fontSize: "large " }}>
+          <strong>Hotel name</strong>
+        </div>
+      ),
+    },
+    {
+      field: "city",
+      width: 270,
+      // editable: true,
+      renderHeader: () => (
+        <div style={{ fontSize: "large " }}>
+          <strong>City</strong>
+        </div>
+      ),
+    },
+    {
+      field: "state",
+      width: 270,
+      // editable: true,
+      renderHeader: () => (
+        <div style={{ fontSize: "large " }}>
+          <strong>State</strong>
+        </div>
+      ),
+    },
+    {
+      field: "ownerId",
+      width: 270,
+      // editable: true,
+      renderHeader: () => (
+        <div style={{ fontSize: "large " }}>
+          <strong>Owner Id</strong>
+        </div>
+      ),
+    },
+
+    {
+      field: "actions",
+      type: "actions",
+
+      width: 270,
+      cellClassName: "actions",
+      getActions: (value: any) => {
+        return [
+          //for accept
+          <GridActionsCellItem
+            icon={
+              <Button
+                variant="contained"
+                sx={{
+                  textTransform: "capitalize",
+                }}
+              >
+                View Details
+              </Button>
+            }
+            label="view"
+            sx={{
+              color: "lightgray",
+            }}
+            onClick={() => {
+              handleClick(value?.row);
+            }}
+          />,
+        ];
+      },
+      renderHeader: () => <strong style={{ fontSize: "large" }}>Action</strong>,
+    },
+  ];
+
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGridPro
-        treeData
-        rows={rows}
-        columns={columns}
-        getTreeDataPath={getTreeDataPath}
-      />
-    </div>
+    <>
+      <Typography
+        fontSize={"large"}
+        fontWeight={700}
+        textAlign={"center"}
+        mb={2}
+      >
+        Member List
+      </Typography>
+      <Stack direction={"row"} justifyContent={"space-between"} width={"91%"}>
+        <Typography fontSize={"large"}>
+          <strong>Name</strong>
+        </Typography>
+        <Typography fontSize={"large"}>
+          <strong>Email</strong>
+        </Typography>
+        <Typography fontSize={"large"}>
+          <strong>Phone Number</strong>
+        </Typography>
+      </Stack>
+      {members?.map((item: any, i: any) => (
+        <Accordion
+          style={{
+            boxShadow: "none",
+            textAlign: "left",
+            margin: 0,
+            padding: 0,
+            // border: "none",
+            border: "1px solid lightgray",
+            // marginBottom: 20,
+            width: "95%",
+          }}
+          expanded={expanded === `panel${i}`}
+          onChange={handleChange(`panel${i}`)}
+        >
+          <AccordionSummary
+            style={{ fontWeight: "bold", fontSize: 17 }}
+            expandIcon={<ExpandMoreIcon />}
+            onClick={() => {
+              getHotels(item?._id);
+            }}
+          >
+            <>
+              <Stack
+                direction={"row"}
+                justifyContent={"space-between"}
+                width={"100%"}
+                ml={-1}
+              >
+                <Typography>{item?.name}</Typography>
+                <Typography>{item?.email}</Typography>
+                <Typography>{item?.phone}</Typography>
+              </Stack>
+            </>
+          </AccordionSummary>
+          <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
+          <Typography
+            fontSize={"large"}
+            fontWeight={700}
+            textAlign={"center"}
+            mb={2}
+          >
+            Hotel lists
+          </Typography>
+          <DataGrid
+            rows={hotels}
+            columns={columns}
+            sx={{ ml: 5, mr: 5, mb: 5 }}
+          />
+        </Accordion>
+      ))}
+
+      {open && (
+        <ShowHotelsModal
+          open={open}
+          onClose={handleClose}
+          modalHotel={modalHotel}
+        />
+      )}
+    </>
   );
 }
 

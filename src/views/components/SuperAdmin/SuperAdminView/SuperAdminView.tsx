@@ -110,7 +110,9 @@ export default function SuperAdminView() {
   const [open2, setOpen2] = React.useState(false);
 
   const handleClick = () => {
-    setOpen2(!open2);
+    if (open) {
+      setOpen2(!open2);
+    }
   };
 
   const navigate = useNavigate();
@@ -118,9 +120,9 @@ export default function SuperAdminView() {
   const handleDrawerOpen = () => {
     setOpen(true);
   };
-
   const handleDrawerClose = () => {
     setOpen(false);
+    setOpen2(false);
   };
   return (
     <>
