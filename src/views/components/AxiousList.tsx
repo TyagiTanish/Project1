@@ -3,7 +3,7 @@ import axios from "axios";
 function axiousList() {
   // var config = {
   //   method: "get",
-  //   url: "https://api.countrystatecity.in/v1/countries/IN/states/MH/cities",
+  //   url: "http://api.countrystatecity.in/v1/countries/IN/states/MH/cities",
   //   headers: {
   //     "X-CSCAPI-KEY": "API_KEY",
   //   },

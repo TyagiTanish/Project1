@@ -253,7 +253,7 @@ export default function AddHotelAftrLgn() {
           rgba(0, 0, 0, 1),
           rgba(0, 0, 0, 0.1)
         ),
-        url("https://assets.oyoroomscdn.com/cmsMedia/b3c9905c-31d1-4349-8594-c07deae6b36d.jpg") no-repeat`,
+        url("http://assets.oyoroomscdn.com/cmsMedia/b3c9905c-31d1-4349-8594-c07deae6b36d.jpg") no-repeat`,
         width: "100%",
         height: "100vh",
         // backgroundRepeat: "no-repeat",

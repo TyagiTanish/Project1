@@ -63,7 +63,7 @@ function RoomDialog(props: any) {
                 backgroundSize: "cover",
               }}
               alt="The house from the offer."
-              src={`https://localhost:8000/${props?.details?.photos[1].path}`}
+              src={`http://localhost:8000/${props?.details?.photos[1].path}`}
             />
           </Stack> */}
           <Box>
@@ -72,7 +72,7 @@ function RoomDialog(props: any) {
                 component={"img"}
                 width={{ xl: "70%", md: "60%", sm: "65%", xs: "50%" }}
                 // height={181.8}
-                src={`https://localhost:8000/${props?.details?.photos[roomImage]?.path}`}
+                src={`http://localhost:8000/${props?.details?.photos[roomImage]?.path}`}
               />
               <>
                 <Stack direction={"column"} spacing={0.2}>
@@ -84,7 +84,7 @@ function RoomDialog(props: any) {
                             component={"img"}
                             width={100}
                             height={{ lg: 90 }}
-                            src={`https://localhost:8000/${image?.path}`}
+                            src={`http://localhost:8000/${image?.path}`}
                             onClick={() => setRoomImage(index)}
                           />
                         )}

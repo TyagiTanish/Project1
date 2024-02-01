@@ -19,7 +19,7 @@ import { ChildProcess } from "child_process";
 import io from "socket.io-client";
 import { DataGrid, GridActionsCellItem, GridColDef, GridColumnHeaderParams, GridSortModel } from "@mui/x-data-grid";
 
-const socket = io("https://localhost:8000", {
+const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 

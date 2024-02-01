@@ -59,7 +59,7 @@ const BillingDetailsCard = ({hotelDetail,roomDetails,totalRooms,totalGuests,tota
         </Stack>
         <Stack width={90}>
           <img
-            src={`https://localhost:8000/${hotelDetail?.[0]?.photo}`}
+            src={`http://localhost:8000/${hotelDetail?.[0]?.photo}`}
             alt="Hotel Image"
             style={{ borderRadius: "5px", marginTop: "-1rem" }}
           />

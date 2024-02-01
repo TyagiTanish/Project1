@@ -5,7 +5,7 @@ import useAuth from "../../../../Hooks/useAuth/useAuth";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import io from "socket.io-client";
-const socket = io("https://localhost:8000", {
+const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 

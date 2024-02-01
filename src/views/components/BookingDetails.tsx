@@ -84,7 +84,7 @@ function BookingDetails() {
               </Box>
               <img
                 style={{ width: 200 }}
-                src={`https://localhost:8000/${data?.hotelId?.photo}`}
+                src={`http://localhost:8000/${data?.hotelId?.photo}`}
               />
             </Stack>
           ) : (
@@ -102,7 +102,7 @@ function BookingDetails() {
               </Box>
               <img
                 style={{ width: 200 }}
-                src={`https://localhost:8000/${data?.hotelId?.photo}`}
+                src={`http://localhost:8000/${data?.hotelId?.photo}`}
               />
             </Stack>
           )}
