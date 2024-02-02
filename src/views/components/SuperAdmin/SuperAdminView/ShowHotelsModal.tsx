@@ -61,7 +61,7 @@ export default function BasicModal(props: any) {
               </Stack>
             </Box>
           </Stack>
-          <Divider sx={{ borderBottomWidth: 4, mb: 3 }} />
+          <Divider sx={{ borderBottomWidth: 2, mb: 3 }} />
           <Typography sx={{ fontWeight: 800, fontSize: "large" }}>
             Hotel's Discription
           </Typography>

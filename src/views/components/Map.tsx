@@ -63,9 +63,7 @@ import { useSelector } from "react-redux";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box } from "@mui/material";
 
-const SimpleMap = ({filteredData}:any) => {
-
-  
+const SimpleMap = ({ filteredData }: any) => {
   const location = useSelector((state: any) => state.userReducer.location);
   useEffect(() => {
     mapboxgl.accessToken =
@@ -82,16 +80,17 @@ const SimpleMap = ({filteredData}:any) => {
     });
     map.addControl(new mapboxgl.NavigationControl());
     // Array of marker coordinates
-   
-    const locations = filteredData?.map((item:any)=>
-    {
-      const coordinates = [JSON.parse(item?.location?.longitude),JSON.parse(item?.location?.latitude)];
+
+    const locations = filteredData?.map((item: any) => {
+      const coordinates = [
+        JSON.parse(item?.location?.longitude),
+        JSON.parse(item?.location?.latitude),
+      ];
       const title = item?.hotelName;
-      const description=`${item?.city}, ${item?.state}, ${item?.country}`;
-      const image = item.photo
-      return {title,description,coordinates,image};
-    }
-); 
+      const description = `${item?.city}, ${item?.state}, ${item?.country}`;
+      const image = item.photo;
+      return { title, description, coordinates, image };
+    });
     // Add markers to the map
     locations?.forEach((location: any) => {
       const popup = new mapboxgl.Popup()
@@ -105,16 +104,22 @@ const SimpleMap = ({filteredData}:any) => {
     });
 
     return () => map.remove();
-  }, [location,filteredData]);
+  }, [location, filteredData]);
 
+  useEffect(() => {
+    console.log(filteredData);
+  }, [filteredData]);
 
-useEffect(()=>{
-  console.log(filteredData);
-  
-},[filteredData])
-
-
-  return <Box id="map" sx={{ width:{xl:700,sm:700}, height: {sm:600,xl:800,md:1000} }} />;
+  return (
+    <Box
+      id="map"
+      sx={{
+        width: { xl: 700, sm: 700, md: 650 },
+        // height: { sm: 600, xl: 800, md: 1000 },
+        height: "90vh",
+      }}
+    />
+  );
 };
 
 export default SimpleMap;

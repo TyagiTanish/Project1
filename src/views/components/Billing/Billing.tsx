@@ -31,10 +31,9 @@ import PaymentDialogBox from "./paymentDialogBox";
 import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
 
-
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
-*/
+ */
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
