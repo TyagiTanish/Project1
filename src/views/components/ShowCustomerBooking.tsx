@@ -1,11 +1,22 @@
-import React from "react";
-import { Stack, Typography, Button, Chip } from "@mui/material";
+import React, { useEffect, useState } from "react";
+import { Stack, Typography, Button, Chip, Box } from "@mui/material";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { Card, CardContent, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 
 function ShowCustomerBooking() {
   const navigate = useNavigate();
+  const [screenSize,setScreenSize] = useState<any>(window.outerWidth);
+
+  useEffect(() => {
+    setScreenSize(window.innerWidth);
+    const handleWindowSize = () => {
+      setScreenSize(window.outerWidth);
+    };
+    console.log("screenSize", screenSize);
+
+    window.addEventListener("resize", handleWindowSize);
+  });
 
   const { request } = useAuth();
   const [bookings, setBookings] = React.useState<any>([]);
@@ -54,30 +65,29 @@ function ShowCustomerBooking() {
           >
             <CardContent>
               <Stack
-                direction={"row"}
+                direction={screenSize <=768? 'column' :"row"}
                 spacing={{ sm: 3, md: 5, lg: 10, xl: 25 }}
               >
-                <Stack direction={"row"} spacing={4}>
-                  <img
-                    style={{ width: "180px" }}
-                    src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
-                  />
-                  <Stack textAlign={"left"}>
-                    <Typography
-                      sx={{ fontWeight: "bolder", fontSize: "large" }}
-                    >
-                      {item?.hotelId?.hotelName}
-                    </Typography>
-                    <Typography sx={{ color: "gray" }}>
-                      {`${item?.bookFrom?.split("T")[0]} - ${
-                        item?.bookTo?.split("T")[0]
-                      }`}
-                    </Typography>
-                    <Typography sx={{ color: "gray" }}>
-                      {" "}
-                      {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
-                    </Typography>
-                  </Stack>
+                <Stack direction={'row'} spacing={4} >
+                <Box
+                  component={'img'}
+                  sx={{ width:"180px" }}
+                  src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                />
+                <Stack textAlign={'left'} >
+                  <Typography sx={{ fontWeight: "bolder", fontSize: "large" }}>
+                    {item?.hotelId?.hotelName}
+                  </Typography>
+                  <Typography sx={{ color: "gray" }}>
+                    {`${item?.bookFrom?.split("T")[0]} - ${
+                      item?.bookTo?.split("T")[0]
+                    }`}
+                  </Typography>
+                  <Typography sx={{ color: "gray" }}>
+                    {" "}
+                    {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
+                  </Typography>
+                </Stack>
                 </Stack>
                 <Typography sx={{ fontWeight: "bold" }}>
                   {item?._id.slice(-8)}

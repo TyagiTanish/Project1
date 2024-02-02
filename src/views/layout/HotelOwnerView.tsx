@@ -19,7 +19,7 @@ import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
 import Logo from "../components/Logo";
-import { Stack } from "@mui/material";
+import { Stack, Tooltip } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BedIcon from "@mui/icons-material/Bed";
 import SearchHotels from "../components/SearchHotels";
@@ -107,6 +107,22 @@ export default function HotelOwnerView() {
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(false);
   const navigate = useNavigate();
+
+  const [screenSize,setScreenSize] = React.useState<any>(window.outerWidth);
+
+  React.useEffect(() => {
+    setScreenSize(window.innerWidth);
+    const handleWindowSize = () => {
+      setScreenSize(window.outerWidth);
+      screenSize <= 768 && setOpen(false)
+      screenSize >1022  && setOpen(true)
+    };  
+    window.addEventListener("resize", handleWindowSize);
+  });
+
+
+
+
   const [hotels] = React.useState([
     {
       name: "Hotel mountain face by snow",
@@ -269,7 +285,6 @@ export default function HotelOwnerView() {
       setOpen2(false);
     }
   };
-  console.log(toGet);
   return (
     <>
       <Stack direction={'row'}> 
@@ -354,7 +369,7 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <DashboardIcon fontSize="small" />
                   ) : (
-                    <DashboardIcon sx={{ fontSize: "25px" }} />
+                    <Tooltip title='Dashboard'><DashboardIcon sx={{ fontSize: "25px" }} /></Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -386,7 +401,7 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <BedIcon fontSize="small" />
                   ) : (
-                    <BedIcon sx={{ fontSize: "25px" }} />
+                    <Tooltip title={'All Hotels'} ><BedIcon sx={{ fontSize: "25px" }} /></Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -418,7 +433,7 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <CalendarMonthIcon fontSize="small" />
                   ) : (
-                    <CalendarMonthIcon sx={{ fontSize: "25px" }} />
+                    <Tooltip title='Booking Requests' ><CalendarMonthIcon sx={{ fontSize: "25px" }} /></Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -450,11 +465,11 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <InsertInvitationIcon fontSize="small" />
                   ) : (
-                    <InsertInvitationIcon sx={{ fontSize: "25px" }} />
+                    <Tooltip title='All Bookings' ><InsertInvitationIcon sx={{ fontSize: "25px" }} /></Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
-                  primary={"My Bookings"}
+                  primary={"All Bookings"}
                   sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
                 />
               </ListItemButton>

@@ -38,7 +38,7 @@ export default function RoomDetailBox({
     setDetailedRoom(Detailedroom);
   }, [Detailedroom, roomImage]);
 
-  const ScreenSize = React.useEffect(() => {
+  React.useEffect(() => {
     setScreenSize(window.innerWidth);
     window.addEventListener("resize", () => setScreenSize(window.innerWidth));
   });
@@ -63,21 +63,21 @@ export default function RoomDetailBox({
             </IconButton>
           </Tooltip>
         </Stack>
-        <Stack direction={"row"} spacing={4}>
+        <Stack direction={screenSize <=1024?'column' :"row"} spacing={4}>
           <Stack
             spacing={1}
             padding={1}
             margin={2}
-            width={"50%"}
-            borderRight={"1px solid lightgray"}
+            width={{sm:'100%',xl:"50%"}}
+            borderRight={screenSize <= 1024 ? 'none':"1px solid lightgray"}
           >
             <Stack direction={"row"} spacing={0.2}>
               <Box
                 component={"img"}
                 width={{
                   xl: "75%",
-                  md: "65%",
-                  sm: "55%",
+                  md: "75%",
+                  sm: "65%",
                   xs: "50%",
                   lg: "75%",
                 }}
@@ -92,8 +92,8 @@ export default function RoomDetailBox({
                           {index != roomImage && (
                             <Box
                               component={"img"}
-                              width={{ xl: "85%", sm: 80, md: "80%" }}
-                              height={{ xl: "50%", sm: 50, md: "60%" }}
+                              width={{ xl: "85%", sm: '80%', md: "80%" }}
+                              height={{ xl: "50%", sm: '50', md: "60%" }}
                               src={`http://localhost:8000/${image?.path}`}
                               onClick={() => setRoomImage(index)}
                             />
@@ -108,7 +108,7 @@ export default function RoomDetailBox({
             <Stack spacing={2}>
               <Box sx={{ fontWeight: "bolder", fontSize: "25px" }}></Box>
               <Typography
-                style={{ width: "40%", color: "gray", fontWeight: "bolder" }}
+                style={{ width: "40%", color: "black", fontWeight: "bolder" }}
               >
                 Room Description
               </Typography>
@@ -123,30 +123,30 @@ export default function RoomDetailBox({
              
             </Stack>
           </Stack>
-          <Stack padding={2} spacing={2}>
-            <Typography sx={{ fontWeight: "bolder", color: "gray" }}>
+          <Stack padding={2} spacing={2} justifyContent={'space-between'}  >
+            <Box> <Typography sx={{ fontWeight: "bolder", color: "black" }}>
               Room Highlights
             </Typography>
             <hr color="lightgray" />
             <br />
             <Stack
-              gap={4}
+              gap={2}
               alignItems={"center"}
               direction={"row"}
-              width={500}
+              width={600}
               flexWrap={"wrap"}
             >
               {Rooms[Detailedroom]?.amenities?.map((item: any, index: any) => (
                 <>
-                  <Typography alignItems={"center"} width={220}>
+                  <Stack  direction={"row"} alignItems={"center"} width={200}>
                     {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
                     <Checkbox disabled checked />
                     {item}
-                  </Typography>
+                  </Stack>
                 </>
               ))}
-            </Stack>
-            <Stack pt={30}  >
+            </Stack></Box>
+            <Stack>
               {/* <Divider/>*/}
               <hr></hr>
               <Stack direction={"row"} spacing={2}>
@@ -154,7 +154,7 @@ export default function RoomDetailBox({
                   <Typography
                     fontSize={"15px"}
                     margin={0.5}
-                    color={"gray"}
+                    color={"black"}
                     fontWeight={"bolder"}
                   >
                     Price
