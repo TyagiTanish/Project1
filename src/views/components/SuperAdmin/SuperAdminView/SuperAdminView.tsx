@@ -23,7 +23,7 @@ import { Stack } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BedIcon from "@mui/icons-material/Bed";
 import Collapse from "@mui/material/Collapse";
-
+import Menu from "../../../layout/Menu";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import StarBorder from "@mui/icons-material/StarBorder";
@@ -132,26 +132,35 @@ export default function SuperAdminView() {
           <Toolbar>
             <Stack
               direction={"row"}
-              spacing={3}
-              alignItems={"center"}
-              height={"2vh"}
+              justifyContent={"space-between"}
+              width={"100%"}
             >
-              {" "}
-              {!open && <Logo />}
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{
-                  marginRight: 5,
-                  ...(open && { display: "none" }),
-                }}
+              <Stack
+                direction={"row"}
+                spacing={3}
+                alignItems={"center"}
+                height={"2vh"}
               >
-                <MenuIcon sx={{ color: "black" }} />
-              </IconButton>
+                {" "}
+                {!open && <Logo />}
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon sx={{ color: "black" }} />
+                </IconButton>
+              </Stack>
+              {/* <Box ml={{ lg: "93%", md: "87%", sm: "80%" }}><Menu /></Box> */}
+              <Box>
+                <Menu />
+              </Box>
             </Stack>
-            <Box ml={{ lg: "93%", md: "87%", sm: "80%" }}>{/* <Menu /> */}</Box>
           </Toolbar>
         </AppBar>
 

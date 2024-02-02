@@ -132,12 +132,15 @@ export default function ShowAllMembers() {
   return (
     <>
       <Typography
-        fontSize={"large"}
-        fontWeight={700}
-        textAlign={"center"}
-        mb={2}
+        sx={{
+          fontWeight: "bold",
+          fontSize: 35,
+          color: "rgb(215, 0, 64)",
+          fontFamily: "system-ui",
+          mb: 3,
+        }}
       >
-        Member List
+        Member Details-
       </Typography>
       <Stack direction={"row"} justifyContent={"space-between"} width={"91%"}>
         <Typography fontSize={"large"}>
@@ -212,4 +215,3 @@ export default function ShowAllMembers() {
     </>
   );
 }
-

@@ -32,7 +32,7 @@ function ShowCustomerBooking() {
   return (
     <>
       <Stack
-        border={"1px solid lightgray"}
+        // border={"1px solid lightgray"}
         sx={{
           p: 3,
           ml: { sm: 9, md: 12, lg: 15, xl: 18 },
@@ -43,8 +43,16 @@ function ShowCustomerBooking() {
         spacing={2}
         width={"70%"}
       >
-        <Typography sx={{ fontWeight: 900, fontSize: "22px" }}>
-          Booking History
+        <Typography
+          sx={{
+            fontWeight: "bold",
+            fontSize: 35,
+            color: "rgb(215, 0, 64)",
+            fontFamily: "system-ui",
+            mb: 3,
+          }}
+        >
+          Booking History-
         </Typography>
         <Divider />
 
@@ -84,14 +92,14 @@ function ShowCustomerBooking() {
                 <Typography sx={{ fontWeight: "bold" }}>
                   {item?._id.slice(-8)}
                 </Typography>
-                <Stack direction={"row"} alignItems={'center'}  >
+                <Stack direction={"row"} alignItems={"center"}>
                   {/* <Typography fontWeight={"bolder"}>Payment Status</Typography> */}
                   <Chip
                     color={
                       item?.paymentStatus === "unpaid" ? "error" : "success"
                     }
                     // fontSize={"small"}
-                    sx={{width:56}}
+                    sx={{ width: 56 }}
                     size="small"
                     label={item?.paymentStatus}
                   />
