@@ -7,6 +7,7 @@ import useAuth from   '../../../../Hooks/useAuth/useAuth';
 import SearchHotels from '../../SearchHotels';
 import AboutHotel from '../../AboutHotel';
 import Message from '../../Message';
+import HotelListDrawer from './DrawerWithHotelName/HotelLIstDrawer';
 
 const Allhotels = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -14,6 +15,17 @@ const Allhotels = () => {
   const [render,setRender] = useState(1)
   const [open,setOpen]=useState(false);
   const { request } = useAuth();
+  const [screenSize,setScreenSize] = useState<any>(window.outerWidth);
+
+  useEffect(() => {
+    setScreenSize(window.innerWidth);
+    const handleWindowSize = () => {
+      setScreenSize(window.outerWidth);
+    };
+    console.log("screenSize", screenSize);
+
+    window.addEventListener("resize", handleWindowSize);
+  });
   // const filterData = (searchTerm: any) => {
   //   const filteredData = hotels.filter((item: any) =>
   //     item.name.toLowerCase().includes(searchTerm.toLowerCase())
@@ -55,10 +67,11 @@ const handleClick = useCallback((data:any)=>{
 // }
   return (
     <Box>
-        {filteredData.length!==0 ?  <Stack direction={'row'} spacing={1}>
+        {filteredData.length!==0 ?  <Stack direction={screenSize > 768 ?'row':'column'} spacing={1}>
       {filteredData.length!==0 }
         {open===false ? 
-        <> <SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm} data={{id:filteredData[0]?._id}}/>
+        <> 
+        {screenSize <= 768 ?<HotelListDrawer  filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm} data={{id:filteredData[0]?._id}}/> :<SearchHotels filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={searchTerm} data={{id:filteredData[0]?._id}}/> }
         <AboutHotel setRender={setRender} data={filteredData[0]} /></>
         : <Message/>}
     </Stack> :  

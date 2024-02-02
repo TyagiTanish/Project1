@@ -15,7 +15,7 @@ function AboutHotel({setRender,data}:any) {
       <Stack
         direction={"column"}
         spacing={2}
-        sx={{ border: "1px solid lightgray", p: 1 ,width:{xl:'70%',md:'70%',sm:'65%'},height:'90vh'}}
+        sx={{ border: "1px solid lightgray", p: 1 ,width:{xl:'70%',md:'70%',sm:'100%'},height:'90vh'}}
       >
         {/* <Stack>
           <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>

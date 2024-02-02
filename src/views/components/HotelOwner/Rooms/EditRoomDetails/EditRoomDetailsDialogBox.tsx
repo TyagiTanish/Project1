@@ -43,6 +43,14 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { enqueueSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
+
+/**
+ *   To Edit the Details of a particular Room 
+ */
+
+
+
+
 export default function EditRoomDetails({
   editBox,
   setEditBox,
@@ -64,6 +72,19 @@ export default function EditRoomDetails({
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { request } = useAuth();
   const [type, setType] = React.useState(editRoom?.roomType);
+  const [screenSize,setScreenSize] = React.useState<any>(window.outerWidth);
+
+  React.useEffect(() => {
+    setScreenSize(window.innerWidth);
+    const handleWindowSize = () => {
+      setScreenSize(window.outerWidth);
+    };
+    console.log("screenSize", screenSize);
+
+    window.addEventListener("resize", handleWindowSize);
+  });
+
+
   React.useEffect(() => {
     setPhotos(room?.photos);
     setEditRoom(room);
@@ -180,7 +201,7 @@ export default function EditRoomDetails({
       open={editBox}
       onClose={handleClose}
       aria-labelledby="responsive-dialog-title"
-      maxWidth={"xl"}
+      maxWidth={screenSize<=768? 'sm' :"xl"}
     >
       <DialogTitle>
         <Stack
@@ -199,7 +220,7 @@ export default function EditRoomDetails({
       <Divider />
       <DialogContent>
         <form onSubmit={handleSubmit(submitDetails)}>
-          <Stack direction={"row"} spacing={5} justifyContent={"space-between"}>
+          <Stack direction={screenSize <1024 ? 'column':"row"} spacing={5} justifyContent={"space-between"}>
             <Stack spacing={5} maxWidth={500}>
               <Box>
                 <FormControl sx={{ width: 235 }}>

@@ -102,12 +102,12 @@ const RoomDetail = ({
   };
   useMemo(() => {
     setRoomId(room?._id);
-    console.log(roomId);
+   
   }, [room, roomId]);
 
   return (
     <>
-      <Grid item xs={2} sm={6} md={4} xl={5.8} key={index}>
+      <Grid item xs={2} sm={8} md={4} xl={5.8} key={index}>
         <Item>
           <Stack
             direction={"column"}

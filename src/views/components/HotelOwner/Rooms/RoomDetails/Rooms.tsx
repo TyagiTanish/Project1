@@ -67,7 +67,7 @@ export default function AllRooms() {
           container
           // spacing={{ xs: 2, md: 2 }}
           gap={2}
-          columns={{ xs: 1, sm: 10, md: 8, xl: 12 }}
+          columns={{ xs: 1, sm: 5,md: 4, xl: 12 }}
         >
           {Rooms?.map((room, index) => (
             <RoomDetail

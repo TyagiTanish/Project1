@@ -46,7 +46,7 @@ function SearchHotels({
       sx={{
         border: "1px solid lightgray",
         borderRadius: 1,
-        width: { xl: "30%", md: "30%", sm: "30%" },
+        width: { xl: "30%", md: "30%", sm: "100%" },
         overflowX: "hidden",
         overflowY: "auto",
         height:'90vh'

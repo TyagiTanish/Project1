@@ -24,7 +24,7 @@ import Chip from "@mui/material/Chip";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
 import { useDropzone } from "react-dropzone";
 import { useForm } from "react-hook-form";
-
+import CloseIcon from '@mui/icons-material/Close';
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import Autocomplete from "@mui/material/Autocomplete";
@@ -184,21 +184,23 @@ function AddRooms({ setRender,showCategories }: any) {
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
-      >
+        sx={{maxHeight:{md:'100vh',xl:'90vh',sm:'95vh'},mt:{md:1,xl:6,sm:5},overflow:'auto'}}>
         <>
-          <Box>
+          <Box >
             <Box sx={style}>
+              <Stack direction={'row'} alignItems={'center'} justifyContent={'space-between'}  mb={4} >
               <Box
                 sx={{
                   color: "#EE2A24",
                   fontWeight: "bold",
                   fontSize: 30,
-                  mb: 4,
+                  // mb: 4,
                 }}
               >
                 Add Rooms
               </Box>
-              <center></center>
+              <IconButton sx={{mr:-10,mt:{xl:-6,md:-4}}} onClick={handleClose} ><CloseIcon/></IconButton>
+              </Stack>
               <form onSubmit={handleSubmit(onSubmit)}>
                 <Box>
                   <FormControl sx={{ width: 235 }}>
