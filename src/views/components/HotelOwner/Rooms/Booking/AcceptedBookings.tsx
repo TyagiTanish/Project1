@@ -1,7 +1,7 @@
 import { Button, InputAdornment, Stack, TextField } from "@mui/material";
 import React, { useCallback, useEffect, useMemo, useState } from "react";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
-
+import { format } from "date-fns";
 import Box from "@mui/material/Box";
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -22,6 +22,7 @@ import {
   GridColumnHeaderParams,
   GridSortModel,
 } from "@mui/x-data-grid";
+
 
 
 /**
@@ -51,6 +52,11 @@ function AcceptedBookings() {
   const [search,setSearch]=React.useState("");
   const [length, setLength] = useState();
   const [queryOptions, setQueryOptions] = useState<any>();
+  const handleChange = async(event: any,id:any) => {
+        await request.put(`/updateArrival/${id}`,{
+          value:event.target.value
+        })
+  };
   const columns: GridColDef[] = [
     {
       field: "hotelId",
@@ -58,7 +64,7 @@ function AcceptedBookings() {
       width: 200,
       renderCell: (params: any) => (
         // Access the 'age' property from the row data
-        <div>{params?.row?.hotelId?.hotelName}</div>
+        <div style={{textTransform:"capitalize"}}>{params?.row?.hotelId?.hotelName}</div>
       ),
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Hotel Name</strong>
@@ -77,29 +83,44 @@ function AcceptedBookings() {
     {
       field: `bookFrom`,
       headerName: "Book From",
-      width: 250,
+      width: 200,
      
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Check in</strong>
       ),
+      renderCell: (params: any) => (
+     
+        <div >     {format(new Date(params?.row?.bookFrom), "MMMM do,yyyy")}</div>
+     
+      ),
     },
     {
       field: "bookTo",
       headerName: "Book To",
-      width: 250,
+      width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Check Out</strong>
+      ),
+      renderCell: (params: any) => (
+       
+        <div>{format(new Date(params?.row?.bookTo), "MMMM do,yyyy")}</div>
+     
       ),
     },
     {
       field: "paymentStatus",
       headerName: "Payment Status",
-      width: 180,
+      width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Payment Status</strong>
+      ),
+      renderCell: (params: any) => (
+       
+        <div style={{textTransform:"capitalize"}}> {params?.row?.paymentStatus}</div>
+     
       ),
     },
     {
@@ -110,24 +131,30 @@ function AcceptedBookings() {
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>Booking Status</strong>
       ),
+      renderCell: (params: any) => (
+       
+        <div style={{textTransform:"capitalize"}}> {params?.row?.status}</div>
+     
+      ),
     },
     {
       field: "customField",
       headerName: " Arrival Status",
-      width: 180,
+      width: 200,
+     
       renderCell: (params: any) => (
-        // Access the 'age' property from the row data
+     
         <FormControl fullWidth size="small">
       
         <Select
         
-          value={age}
-       
-          onChange={handleChange}
+      //  to  save the arrival status of customer
+
+          onChange={(e)=>{handleChange(e,params.row._id)}}
         >
-          <MenuItem value={10}>Ten</MenuItem>
-          <MenuItem value={10}>Twenty</MenuItem>
-          <MenuItem value={10}>Thirty</MenuItem>
+          <MenuItem value={'Checked in'}>Checked In</MenuItem>
+          <MenuItem value={'Checked Out'}>Checked Out</MenuItem>
+          <MenuItem value={'Booked'}>Booked</MenuItem>
         </Select>
       </FormControl>
       ),
@@ -139,7 +166,7 @@ function AcceptedBookings() {
       field: "actions",
       type: "actions",
 
-      width: 110,
+      width: 130,
       cellClassName: "actions",
       getActions: (value:any) => {
         return [
@@ -213,9 +240,7 @@ function AcceptedBookings() {
   }, [paginationModel, queryOptions,search]);
   const [age, setAge] = React.useState("");
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
-  };
+
   const handleClickOpen = (data: any) => {
     setOpen(true);
     setDisplay(data);
@@ -232,7 +257,12 @@ function AcceptedBookings() {
 console.log(search)
   return (
     <>
-      <Typography
+
+    {data.length==0 ?    <Typography sx={{mt:'20%', textAlign:'center',color: "red" ,fontSize:22}}>
+          No Bookings found*
+        </Typography> :   
+        <>
+        <Typography
         sx={{
           fontWeight: "bold",
           fontSize: 35,
@@ -244,7 +274,7 @@ console.log(search)
         Bookings
       </Typography>
       <Stack
-        sx={{ ml: "77%", mb: 2 }}
+        sx={{ ml: "77%", mb: 4, }}
         direction={"row"}
         alignItems={"center"}
         spacing={2}
@@ -262,7 +292,7 @@ console.log(search)
               ),
             }}
             placeholder="Search Here...."
-            sx={{ width: 250 }}
+            sx={{ width: 370 }}
             onChange={(e)=>{
               setSearch(e.target.value)
             }}
@@ -270,13 +300,13 @@ console.log(search)
       
     
       </Stack>
-      <Box sx={{ height: "auto", width: '100%' }}>
+      <Box sx={{ height: "auto", width: '100%',fontSize:20 }}>
         <DataGrid
           rows={data}
           columns={columns}
           getRowId={(row:any) => row._id}
           disableColumnMenu
-          // {...other props}
+        
           rowCount={length}
           pageSizeOptions={[5, 10, 20]}
           paginationModel={paginationModel}
@@ -284,9 +314,12 @@ console.log(search)
           onPaginationModelChange={setPaginationModel}
           sortingMode="server"
           onSortModelChange={handleSortModelChange}
-          // onSortModelChange={handleSortModelChange}
+         
         />
       </Box>
+      </>
+      }
+    
       {open && <DialogBox data={display} open={open} onClose={handleClose} />}
     </>
   );
