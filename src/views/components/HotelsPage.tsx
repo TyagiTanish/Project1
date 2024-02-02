@@ -13,10 +13,7 @@ const HotelsPage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
-  
-  // useEffect(() => {
-  //   getHotels();
-  // }, []);
+
   useMemo(async() => {
     const result = await request.get("/getHotels");
     setFilteredData(result.data);
@@ -65,7 +62,7 @@ const HotelsPage = () => {
          
           }}
           alt="The house from the offer."
-          src={require("../components/no_result.gif")}
+          src={require("../components/image_processing20210903-11554-1p0lr4f.gif")}
         /> }
       
       </Stack>

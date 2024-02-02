@@ -21,7 +21,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import AddHotelLocation from "./AddHotelLocation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-// import HotelProfilePic from "./HotelProfilePic";
+
 import { useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
@@ -190,7 +190,7 @@ export default function AddHotelAftrLgn() {
           /(?=.*[a-z])(?=.*[A-Z])\w+/,
           "should be a string or should atleat have one upper case letter"
         ),
-      //   email: Yup.string().email("invalid email !").required("Email is Required"),
+     
     });
   }
   if (step === 1) {
@@ -224,7 +224,7 @@ export default function AddHotelAftrLgn() {
   }
   if (step === 2) {
     FormSchema = Yup.object().shape({
-      // discription: Yup.string().min(1, "This field is required"),
+     
       discription: Yup.string(),
     });
   }
@@ -318,12 +318,10 @@ export default function AddHotelAftrLgn() {
               sx={{
                 backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
                 margin: "0",
-                // paddingLeft: { xl: "93px", md: "30px", sm: 5 },
-                // paddingTop: "5px",
-                // paddingBottom: "5px",
+              
                 color: "white",
                 fontWeight: "bold",
-                // width: "100%",
+                
                 fontSize: { xl: 17, md: 16, sm: 13 },
                 textAlign: "center",
                 p: "1%",
@@ -427,8 +425,7 @@ export default function AddHotelAftrLgn() {
                             {errors.hotelName?.message}
                           </FormHelperText>
                         </Stack>
-                        {/* <HotelProfilePic setPic={setPic} formData={formData} /> */}
-                        {/* <Stack spacing={5} direction={"column"} sx={{m:2}}> */}
+                      
                         <Typography {...getRootProps()}>
                           <input {...getInputProps()} />
                           {
@@ -805,9 +802,9 @@ export default function AddHotelAftrLgn() {
                           content={content}
                         />
 
-                        {/* <FormHelperText sx={{ color: "red" }}>
+                      <FormHelperText sx={{ color: "red" }}>
                             {errors.discription?.message}
-                          </FormHelperText> */}
+                          </FormHelperText> 
 
                         {/* <Box sx={{ display: "flex" }}> */}
                         <Stack direction={"row"} spacing={1} mt={3}>

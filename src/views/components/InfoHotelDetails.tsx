@@ -100,21 +100,7 @@ function InfoHotelDetails({ item }: any) {
           lineHeight: { sm: 1.3, lg: 2, md: 1.5 },
         }}
       >
-        {/* <FormattedMessage
-          defaultMessage="Commanding a sweeping view of the Arabian Sea in India's commercial
-        capital, The InterContinental Marine Drive is setting standards for
-        personalised service for business and leisure travellers. The experience
-        begins as Mumbai's glittering skyline, aptly called the Queen's Necklace
-        welcomes you. Step into the InterContinental Marine Drive and the warm,
-        personalised attention helps you relax. The InterContinental Marine
-        Drive is strategically located in the heart of Mumbai's business &
-        financial district, 1.5 kms from Nariman Point and 3 kms from the Main
-        Shopping Area of Colaba. Offering you the all-important luxury of saving
-        time while on work. State-of-the-art business communication and meeting
-        facilities further optimize time management."
-        /> */}
-        {/*  */}
-        {/* {item.discription} */}
+       
         <Box
           dangerouslySetInnerHTML={{ __html: item.discription }}
           sx={{ flex: 1,wordBreak:'break-word' }}
