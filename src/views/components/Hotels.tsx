@@ -50,10 +50,6 @@ function Hotels({ filteredData, screenSize }: any) {
     dispatch(hotelId(id));
   };
 
-
-
-
-
   return (
     <>
       <Box
@@ -104,7 +100,7 @@ function Hotels({ filteredData, screenSize }: any) {
         ) : (
           <></>
         )}
-        
+
         {displayMap ? (
           <>
             {filteredData?.map((item: any, i: any) => (
@@ -144,7 +140,11 @@ function Hotels({ filteredData, screenSize }: any) {
                     >
                       {item.hotelName}
                     </Typography>
-                    <Stack direction={"row"} sx={{ alignItems: "center" }} gap={2} >
+                    <Stack
+                      direction={"row"}
+                      sx={{ alignItems: "center" }}
+                      gap={2}
+                    >
                       <Typography
                         sx={{
                           fontWeight: "bold",
@@ -187,16 +187,10 @@ function Hotels({ filteredData, screenSize }: any) {
                     direction={"row"}
                     spacing={2}
                     sx={{
-                      // margin: "20px",
-                      // marginLeft: { sm: "120px", lg: "110px", md: "35px" },
                       border: "1px solid lightgray",
-                      // width: { sm: "100%", lg: "310px", md: "410px" },
                       height: "85px",
                       borderRadius: "20px",
-                      // backgroundColor: "rgba(241,248,234)",
                       padding: { sm: 1, lg: 2, md: 1 },
-                      // display: "flex",
-                      // flexDirection: "column",
                       marginTop: { sm: "8px" },
                     }}
                   >
@@ -206,9 +200,6 @@ function Hotels({ filteredData, screenSize }: any) {
                         sx={{
                           color: "#D4164B",
                           fontWeight: "bold",
-                          // fontSize: "8px",
-                          // display: "flex",
-                          // flexDirection: "row",
                         }}
                       >
                         <DoneIcon
