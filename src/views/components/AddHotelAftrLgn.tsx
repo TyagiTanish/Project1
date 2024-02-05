@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { Form, useNavigate } from "react-router-dom";
@@ -93,7 +93,7 @@ export default function AddHotelAftrLgn() {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    console.log("screenSize", screenSize);
+    // console.log("screenSize", screenSize);
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -105,10 +105,11 @@ export default function AddHotelAftrLgn() {
       // arr.delete(value);
       setArr(arr.filter((i: any) => i !== value));
     } else {
-      arr.push(value);
+      // arr.push(value);
+      // setArr(arr);
+      setArr([...arr, value]);
     }
   };
-
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
   React.useEffect(() => {
@@ -139,10 +140,10 @@ export default function AddHotelAftrLgn() {
   const formData = new FormData();
   const onSubmit = async (data: any) => {
     console.log(data);
-    if (step === 3) {
-      setArr(arr);
-      data.amenities = arr;
-    }
+    // if (step === 3) {
+    //   setArr(arr);
+    //   data.amenities = arr;
+    // }
     data.amenities = arr;
     if (step === 2) {
       data.discription = content;
@@ -190,7 +191,6 @@ export default function AddHotelAftrLgn() {
           /(?=.*[a-z])(?=.*[A-Z])\w+/,
           "should be a string or should atleat have one upper case letter"
         ),
-     
     });
   }
   if (step === 1) {
@@ -224,7 +224,6 @@ export default function AddHotelAftrLgn() {
   }
   if (step === 2) {
     FormSchema = Yup.object().shape({
-     
       discription: Yup.string(),
     });
   }
@@ -318,10 +317,10 @@ export default function AddHotelAftrLgn() {
               sx={{
                 backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
                 margin: "0",
-              
+
                 color: "white",
                 fontWeight: "bold",
-                
+
                 fontSize: { xl: 17, md: 16, sm: 13 },
                 textAlign: "center",
                 p: "1%",
@@ -425,7 +424,7 @@ export default function AddHotelAftrLgn() {
                             {errors.hotelName?.message}
                           </FormHelperText>
                         </Stack>
-                      
+
                         <Typography {...getRootProps()}>
                           <input {...getInputProps()} />
                           {
@@ -775,16 +774,30 @@ export default function AddHotelAftrLgn() {
                         />
                       </Button>
 
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        onClick={handleSubmit(onSubmit)}
-                        sx={{
-                          fontSize: { xl: 15, md: 13, sm: 11 },
-                        }}
-                      >
-                        Next
-                      </Button>
+                      {arr.length === 0 ? (
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          disabled
+                          onClick={handleSubmit(onSubmit)}
+                          sx={{
+                            fontSize: { xl: 15, md: 13, sm: 11 },
+                          }}
+                        >
+                          Next
+                        </Button>
+                      ) : (
+                        <Button
+                          type="submit"
+                          variant="contained"
+                          onClick={handleSubmit(onSubmit)}
+                          sx={{
+                            fontSize: { xl: 15, md: 13, sm: 11 },
+                          }}
+                        >
+                          Next
+                        </Button>
+                      )}
                     </Stack>
                   </form>
                 ) : step === 2 ? (
@@ -802,9 +815,9 @@ export default function AddHotelAftrLgn() {
                           content={content}
                         />
 
-                      <FormHelperText sx={{ color: "red" }}>
-                            {errors.discription?.message}
-                          </FormHelperText> 
+                        <FormHelperText sx={{ color: "red" }}>
+                          {errors.discription?.message}
+                        </FormHelperText>
 
                         {/* <Box sx={{ display: "flex" }}> */}
                         <Stack direction={"row"} spacing={1} mt={3}>

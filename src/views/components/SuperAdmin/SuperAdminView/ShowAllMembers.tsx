@@ -5,6 +5,7 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   Button,
   Stack,
   Typography,
@@ -27,11 +28,9 @@ export default function ShowAllMembers() {
   const getMembers = async () => {
     const data: any = await request.get("/getAllMembers");
     setMembers(data?.data);
-    // console.log(members);
   };
   const getHotels = async (id: any) => {
     const data = await request.get(`/getHotelForParticularMember/${id}`);
-    // console.log(data.data);
     const hotelsdata: any = data?.data.map((item: any, i: any) => {
       item.id = i + 1;
       return item;
@@ -131,87 +130,89 @@ export default function ShowAllMembers() {
 
   return (
     <>
-      <Typography
-        sx={{
-          fontWeight: "bold",
-          fontSize: 35,
-          color: "rgb(215, 0, 64)",
-          fontFamily: "system-ui",
-          mb: 3,
-        }}
-      >
-        Member Details-
-      </Typography>
-      <Stack direction={"row"} justifyContent={"space-between"} width={"91%"}>
-        <Typography fontSize={"large"}>
-          <strong>Name</strong>
-        </Typography>
-        <Typography fontSize={"large"}>
-          <strong>Email</strong>
-        </Typography>
-        <Typography fontSize={"large"}>
-          <strong>Phone Number</strong>
-        </Typography>
-      </Stack>
-      {members?.map((item: any, i: any) => (
-        <Accordion
-          style={{
-            boxShadow: "none",
-            textAlign: "left",
-            margin: 0,
-            padding: 0,
-            // border: "none",
-            border: "1px solid lightgray",
-            // marginBottom: 20,
-            width: "95%",
+      <Box sx={{ width: { sm: 700, lg: 1200, xl: 1600 } }}>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+            fontSize: 35,
+            color: "rgb(215, 0, 64)",
+            fontFamily: "system-ui",
+            mb: 3,
           }}
-          expanded={expanded === `panel${i}`}
-          onChange={handleChange(`panel${i}`)}
         >
-          <AccordionSummary
-            style={{ fontWeight: "bold", fontSize: 17 }}
-            expandIcon={<ExpandMoreIcon />}
-            onClick={() => {
-              getHotels(item?._id);
-            }}
-          >
-            <>
-              <Stack
-                direction={"row"}
-                justifyContent={"space-between"}
-                width={"100%"}
-                ml={-1}
-              >
-                <Typography>{item?.name}</Typography>
-                <Typography>{item?.email}</Typography>
-                <Typography>{item?.phone}</Typography>
-              </Stack>
-            </>
-          </AccordionSummary>
-          <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
-          <Typography
-            fontSize={"large"}
-            fontWeight={700}
-            textAlign={"center"}
-            mb={2}
-          >
-            Hotel lists
+          Member Details-
+        </Typography>
+        <Stack direction={"row"} justifyContent={"space-between"} width={"94%"}>
+          <Typography fontSize={"large"} sx={{ ml: 2 }}>
+            <strong>Name</strong>
           </Typography>
-          <DataGrid
-            rows={hotels}
-            columns={columns}
-            sx={{ ml: 5, mr: 5, mb: 5 }}
-          />
-        </Accordion>
-      ))}
+          <Typography fontSize={"large"}>
+            <strong>Email</strong>
+          </Typography>
+          <Typography fontSize={"large"}>
+            <strong>Phone Number</strong>
+          </Typography>
+        </Stack>
+        {members?.map((item: any, i: any) => (
+          <Accordion
+            style={{
+              boxShadow: "none",
+              textAlign: "left",
+              margin: 0,
+              padding: 0,
+              // border: "none",
+              border: "1px solid lightgray",
+              // marginBottom: 20,
+              width: "95%",
+            }}
+            expanded={expanded === `panel${i}`}
+            onChange={handleChange(`panel${i}`)}
+          >
+            <AccordionSummary
+              style={{ fontWeight: "bold", fontSize: 17 }}
+              expandIcon={<ExpandMoreIcon />}
+              onClick={() => {
+                getHotels(item?._id);
+              }}
+            >
+              <>
+                <Stack
+                  direction={"row"}
+                  justifyContent={"space-between"}
+                  width={"100%"}
+                  ml={-1}
+                >
+                  <Typography>{item?.name}</Typography>
+                  <Typography>{item?.email}</Typography>
+                  <Typography mr={-1}>{item?.phone}</Typography>
+                </Stack>
+              </>
+            </AccordionSummary>
+            <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
+            <Typography
+              fontSize={"large"}
+              fontWeight={700}
+              textAlign={"center"}
+              mb={2}
+            >
+              Hotel lists
+            </Typography>
+            <DataGrid
+              rows={hotels}
+              columns={columns}
+              sx={{ ml: 5, mr: 5, mb: 5 }}
+            />
+          </Accordion>
+        ))}
 
-      {open && (
-        <ShowHotelsModal
-          open={open}
-          onClose={handleClose}
-          modalHotel={modalHotel}
-        />
-      )}
+        {open && (
+          <ShowHotelsModal
+            open={open}
+            onClose={handleClose}
+            modalHotel={modalHotel}
+          />
+        )}
+      </Box>
     </>
   );
 }

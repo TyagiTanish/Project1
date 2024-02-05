@@ -18,6 +18,11 @@ import Language from "./Language";
 
 import BusinessIcon from "@mui/icons-material/Business";
 import TabletNavbar from "./TabletNavbar";
+
+/**
+ * Landing page of the project. Markdown is *localhost:3000*.
+ */
+
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
 
@@ -103,7 +108,8 @@ export default function BasicCard() {
         <>
           <Box
             sx={{
-              width: { xl: "100%", md: 1026 },
+              // width: { xl: "100%", md: 1026, lg: "100%" },
+              width: "100%",
               height: "42px",
               alignItems: "center",
               backgroundColor: "#f3f5f7",
