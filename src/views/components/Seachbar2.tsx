@@ -14,7 +14,16 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 import "../../App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { searchDetails, userLocation } from "./redux/user/userSlice";
+import { Navigate, useNavigate } from "react-router-dom";
 
+
+
+
+
+
+  /**
+*  Search Bar at the top of every page except HomePage which helps in searching Hotels. Markdown is *SearchBar2*.
+*/
 function Seachbar2() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -27,15 +36,18 @@ function Seachbar2() {
   const [render, setRender] = React.useState(0);
   const dispatch = useDispatch();
 
+  const search = useSelector((state:any)=>state.userReducer.searchDetails)
+  
+  const [searchTerm,setSearchTerm] = useState<any>(search||'');
   const handleInputChange = (event: any) => {
     const { value } = event.target;
     dispatch(searchDetails(value))
   };
 
-  const search = useSelector((state:any)=>state.userReducer.searchDetails);
-  console.log(search)
+  
   const data: any = localStorage.getItem("Rooms&Guests");
   const parsedData = JSON.parse(data);
+  const navigate = useNavigate();
   useEffect(() => {
     var result = 0;
     rooms.forEach((element: any) => {
@@ -65,7 +77,7 @@ function Seachbar2() {
 
   
   return (
-    <Stack
+    <Stack  
       direction={"row"}
       sx={{
                 mb: "20px",
@@ -98,7 +110,7 @@ function Seachbar2() {
           ),
         }}
         placeholder="Search by city,hote, or neighborhood"
-        onChange={handleInputChange}
+        onChange={(e)=>setSearchTerm(e.target.value)}
         defaultValue={search}
       />
       <DateRangePickers />
@@ -114,6 +126,24 @@ function Seachbar2() {
         value={`${parsedData.Rooms} Room , ${parsedData.Guests} guest`}
         onClick={(event: any) => handleClick(event)}
       />
+      <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#1ab64f",
+                "&:hover": { bgcolor: "green" },
+                color: "white",
+                fontWeight: "bolder",
+                height:55 ,
+                mt:0.75,
+               borderRadius: 1,
+              }}
+              onClick={() => {
+                dispatch(searchDetails(searchTerm))
+                navigate("./hotels");
+              }}
+            >
+              Search
+              </Button>
     </Stack>
   );
 }

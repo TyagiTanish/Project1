@@ -7,13 +7,13 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Typography from "@mui/material/Typography";
-
+import { saveAs } from 'file-saver';
 import SearchIcon from "@mui/icons-material/Search";
 
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 
-import DialogBox from "./DialogBox";
+import DialogBox from "./RecieptDialogBox";
 
 import {
   DataGrid,
@@ -22,12 +22,17 @@ import {
   GridColumnHeaderParams,
   GridSortModel,
 } from "@mui/x-data-grid";
+import PdfViewer from "./DisplayPdf";
+import PdfViewerFromBuffer from "./DisplayPdf";
+import LoaderBeforeReciept from "./LoaderBeforeReciept";
 
 
 
 /**
  * To show all the accepted Bookings by the Hotel Owner. Markdown is *AcceptedBooking*.
  */
+
+
 const bull = (
   <Box
     component="span"
@@ -44,11 +49,12 @@ function AcceptedBookings() {
   const [data, setData] = useState<any>([]);
   const { request } = useAuth();
   const [open, setOpen] = React.useState(false);
-  const [display, setDisplay] = useState<any>({});
+  const [display, setDisplay] = useState<any>(null);
   const [paginationModel, setPaginationModel] = useState<any>({
     page: 0,
     pageSize: 5,
   });
+  const [loader,setLoader] = React.useState(false);
   const [search,setSearch]=React.useState("");
   const [length, setLength] = useState();
   const [queryOptions, setQueryOptions] = useState<any>();
@@ -57,7 +63,7 @@ function AcceptedBookings() {
           value:event.target.value
         })
   };
-  const columns: GridColDef[] = [
+  const   columns: GridColDef[] = [
     {
       field: "hotelId",
       headerName: "Hotel name",
@@ -132,9 +138,7 @@ function AcceptedBookings() {
         <strong style={{ fontSize: 18 }}>Booking Status</strong>
       ),
       renderCell: (params: any) => (
-       
-        <div style={{textTransform:"capitalize"}}> {params?.row?.status}</div>
-     
+        <Box style={{textTransform:"capitalize"}} color={params?.row?.status === 'accepted' ?'green':params?.row?.status === 'rejected' ? 'red' : 'orange' } > {params?.row?.status}</Box>
       ),
     },
     {
@@ -181,7 +185,7 @@ function AcceptedBookings() {
         //     }}
         //   />,
 
-
+        value?.row?.paymentStatus !== 'unpaid' ?
         <GridActionsCellItem
         icon={
           <Button
@@ -194,7 +198,7 @@ function AcceptedBookings() {
           }}
          
         >
-          View
+          View Reciept
         </Button>
         }
 
@@ -205,7 +209,7 @@ function AcceptedBookings() {
           onClick={() => {
             handleClickOpen(value.row);
           }}
-        />,
+        />:<>-</>
         ];
       },
       renderHeader: (params: GridColumnHeaderParams) => (
@@ -241,10 +245,21 @@ function AcceptedBookings() {
   const [age, setAge] = React.useState("");
 
 
-  const handleClickOpen = (data: any) => {
-    setOpen(true);
-    setDisplay(data);
+  const handleClickOpen = async (data: any) => {
+    setDisplay(data)
+    setLoader(true)
+    const buffer = (await request.get('/viewReciept',{
+      responseType:'blob',
+      params:{bookingId:data?._id}
+    })).data;
+    setDisplay(buffer);
+    setTimeout(()=>{
+      setLoader(false)
+      setOpen(true);
+    },2000)
+  
   };
+
   const handleClose = (value: string) => {
     setOpen(false);
   };
@@ -257,7 +272,7 @@ function AcceptedBookings() {
 console.log(search)
   return (
     <>
-
+  
     {data.length==0 ?    <Typography sx={{mt:'20%', textAlign:'center',color: "red" ,fontSize:22}}>
           No Bookings found*
         </Typography> :   
@@ -301,6 +316,7 @@ console.log(search)
     
       </Stack>
       <Box sx={{ height: "auto", width: '100%',fontSize:20 }}>
+      {loader && <LoaderBeforeReciept/>}
         <DataGrid
           rows={data}
           columns={columns}
@@ -319,8 +335,9 @@ console.log(search)
       </Box>
       </>
       }
-    
-      {open && <DialogBox data={display} open={open} onClose={handleClose} />}
+  
+      {open &&
+      <DialogBox pdfBuffer={display}  open={open} setOpen={setOpen}   />}
     </>
   );
 }

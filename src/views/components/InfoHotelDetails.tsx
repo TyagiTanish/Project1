@@ -33,6 +33,15 @@ import "react-quill/dist/quill.snow.css";
 
 import { useIntl, FormattedMessage } from "react-intl";
 
+
+
+
+  /**
+*  To display Information of a particular Hotels. Markdown is *InfoHotelDetails*.
+*/
+   
+   
+
 function InfoHotelDetails({ item }: any) {
   const amenitie = [
     { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: "0" },
@@ -125,13 +134,9 @@ function InfoHotelDetails({ item }: any) {
         >
           <FormattedMessage defaultMessage="Top amenities" />
         </Box>
-        {/* <DisplayAmenities ShowAmenities={ShowAmenities} /> */}
-        {/* {ShowAmenities.map((item, i) => ( */}
+   
         <>
-          {/* <Stack >
-              {item.icon}
-              {item.label}
-            </Stack> */}
+   
           <Grid container spacing={2}>
             {ShowAmenities.map((item) => (
               <Grid item xs={3}>
@@ -143,120 +148,7 @@ function InfoHotelDetails({ item }: any) {
             ))}
           </Grid>
         </>
-        {/* ))} */}
-        {/* <Box
-          sx={{
-            display: "flex",
-            mt: 2,
-            fontSize: { sm: "small", lg: "large", md: "14px" },
-          }}
-        >
-          <Box>
-            <WifiIcon
-              sx={{
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-                ml: { sm: 5, lg: 18, md: 14 },
-                mr: { sm: 0.5, lg: 1, md: 1 },
-              }}
-            />
-            <FormattedMessage defaultMessage="Wifi in lobby" />
-          </Box>
-          <Box>
-            <NetworkWifiIcon
-              sx={{
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-                ml: { sm: 4, lg: 20, md: 6 },
-                mr: { sm: 0.5, lg: 1, md: 1 },
-              }}
-            />
-            <FormattedMessage defaultMessage="Free WiFi" />
-          </Box>
-          <Box>
-            <PoolIcon
-              sx={{
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-                ml: { sm: 4, lg: 20, md: 9 },
-                mr: { sm: 0.5, lg: 1, md: 1 },
-              }}
-            />
-            <FormattedMessage defaultMessage="Pool" />
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            mt: { sm: 1, lg: 2 },
-            fontSize: { sm: "small", lg: "large", md: "14px" },
-          }}
-        >
-          <Box sx={{ ml: { sm: 5, lg: 18, md: 14 } }}>
-            <AirlineSeatReclineExtraIcon
-              sx={{
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-                mr: { sm: 0.5, lg: 1, md: 1 },
-              }}
-            />
-            <FormattedMessage defaultMessage="Spa" />
-          </Box>
-          <Box
-            sx={{
-              ml: { sm: 10, lg: 28.3, md: 12.5 },
-              fontSize: { sm: "small", lg: "large", md: "14px" },
-            }}
-          >
-            <LocalParkingIcon
-              sx={{
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-                mr: { sm: 0.5, lg: 1, md: 1 },
-              }}
-            />
-            <FormattedMessage defaultMessage=" Parking" />
-          </Box>
-          <Box sx={{ ml: { sm: 5.3, lg: 22, md: 10.2 } }}>
-            <PetsIcon
-              sx={{
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-                mr: { sm: 0.5, lg: 1, md: 1 },
-              }}
-            />
-            <FormattedMessage defaultMessage="Pets" />
-          </Box>
-        </Box>
-        <Box
-          sx={{
-            display: "flex",
-            mt: { sm: 1, lg: 2 },
-            fontSize: { sm: "small", lg: "large", md: "14px" },
-          }}
-        >
-          <Box sx={{ ml: { sm: 5, lg: 18, md: 14 } }}>
-            <AcUnitIcon
-              sx={{
-                mr: { sm: 0.5, lg: 1, md: 1 },
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-              }}
-            />
-            <FormattedMessage defaultMessage="A/C" />
-          </Box>
-          <Box sx={{ ml: { sm: 10, lg: 28.5, md: 12.5 } }}>
-            <RestaurantMenuIcon
-              sx={{
-                mr: { sm: 0.5, lg: 1, md: 1 },
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-              }}
-            />
-            <FormattedMessage defaultMessage=" Restaurant" />
-          </Box>
-          <Box sx={{ ml: { sm: 3, lg: 18.5, md: 7.5 } }}>
-            <WineBarIcon
-              sx={{
-                mr: { sm: 0.5, lg: 1, md: 1 },
-                fontSize: { sm: "small", lg: "large", md: "14px" },
-              }}
-            />
-            <FormattedMessage defaultMessage="Hotel bar" />
-          </Box>
-        </Box> */}
+        
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
         <Box

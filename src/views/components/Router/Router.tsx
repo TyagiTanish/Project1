@@ -67,7 +67,7 @@ const router = [
     element: <CustomerView />,
     children: [
       {
-        path: "/",
+        index:true,
         element: (
           <CustomerRoutes>
             <HomePage />
@@ -108,15 +108,6 @@ const router = [
           </CustomerRoutes>
         ),
       },
-
-      {
-        path: "/profile",
-        element: (
-          <CustomerRoutes>
-            <Account />
-          </CustomerRoutes>
-        ),
-      },
       {
         path: "/viewDeal/:id",
         element: (
@@ -130,14 +121,6 @@ const router = [
         element: (
           <CustomerRoutes>
             <BookingDetails />
-          </CustomerRoutes>
-        ),
-      },
-      {
-        path: "/billing",
-        element: (
-          <CustomerRoutes>
-            <Billing />
           </CustomerRoutes>
         ),
       },

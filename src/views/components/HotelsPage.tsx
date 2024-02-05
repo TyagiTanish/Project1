@@ -3,11 +3,18 @@ import React, { useEffect, useMemo, useState } from "react";
 import SimpleMap from "./Map";
 import Footer from "./Footer";
 import Seachbar2 from "./Seachbar2";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Logo from "./Logo";
 import Hotels from "./Hotels";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
+
+
+
+
+  /**
+*  To show all the hotels to user. Markdown is *HotelsPage*.
+*/
 const HotelsPage = () => {
 
   const { request } = useAuth();
@@ -16,10 +23,7 @@ const HotelsPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
 
-  // useMemo(async() => {
-  //   const result = await request.get("/getHotels");
-  //   setFilteredData(result.data);
-  // }, []);
+  
 
   const filterData = async() => {
     const result = await request.get("/getHotels",{
@@ -29,6 +33,7 @@ const HotelsPage = () => {
     });
     setFilteredData(result.data);
   };
+
   useEffect(() => {
     const handleWindowSize = () => {
       setScreenSize(window.innerWidth);
@@ -36,12 +41,12 @@ const HotelsPage = () => {
     window.addEventListener("resize", handleWindowSize);
   });
 
+
+
 useMemo(()=>{
   setSearchTerm(search)
-  filterData()
-},[searchTerm])
-
-
+  filterData();
+},[search,searchTerm])
   return (
     <>
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>

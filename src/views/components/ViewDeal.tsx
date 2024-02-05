@@ -41,6 +41,7 @@ function ViewDeal() {
   }, [hotels]);
 
   const [open, setOpen] = useState(false);
+
   const handleOpen = () => {
     if (open === true) {
       setOpen(false);
@@ -51,10 +52,8 @@ function ViewDeal() {
 
   return (
     <>
-      <Stack width={"100%"} boxShadow={3}>
-        <Logo />
-      </Stack>
-      <Stack overflow={"auto"} height={"90vh"}>
+
+      <Stack overflow={'auto'}   height={'90vh'}   >
         <Stack spacing={8} direction={"row"} ml={10} mt={4}>
           <Box
             component="img"
@@ -63,7 +62,7 @@ function ViewDeal() {
               height: "auto",
             }}
             alt="The house from the offer."
-            // src={require(`./pic2.jpg`)}
+      
             src={`http://localhost:8000/${filterData[0]?.photo}`}
           />
           <Stack direction={"column"} spacing={1}>

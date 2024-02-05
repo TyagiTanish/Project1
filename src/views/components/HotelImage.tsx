@@ -1,6 +1,13 @@
 import { Box, Dialog, DialogContent, DialogTitle, Divider, IconButton, Stack, Typography } from '@mui/material'
 import React from 'react'
 import CloseIcon from "@mui/icons-material/Close";
+
+
+
+
+  /**
+*  To display Image Preview. Markdown is *HotelImage*.
+*/
 function HotelImage(props:any) {
     const handleClose = () => {
         props.setImagePreView(false);
