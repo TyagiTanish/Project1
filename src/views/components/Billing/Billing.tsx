@@ -79,6 +79,9 @@ const Billing = () => {
       calculateDifference();
     }
   }, []);
+  useEffect(() => {
+    console.log("HII");
+  }, [data]);
   const [bookingId, setBookingId] = useState();
   const [result, setResult] = useState<any>({});
   const [displayLoader, setDisplayLoader] = useState(false);

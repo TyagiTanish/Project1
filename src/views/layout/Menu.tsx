@@ -11,15 +11,20 @@ import Tooltip from "@mui/material/Tooltip";
 import PersonAdd from "@mui/icons-material/PersonAdd";
 import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import SettingsOutlinedIcon from '@mui/icons-material/SettingsOutlined';
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, userLogout } from "../components/redux/user/userSlice";
 import Account from "../components/Account";
 import { Stack } from "@mui/material";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
 
+/**
+ * A component to show on the navbar for giving more features . Markdown is Menu*.
+ */
 export default function AccountMenu() {
   const user = useSelector((state: any) => state.userReducer.user);
+  console.log(user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -36,27 +41,37 @@ export default function AccountMenu() {
     dispatch(userLogout());
     navigate("/");
   };
+  const openProfile = () => {
+    if (user?.role === "member") {
+      navigate("/member/profile");
+    } else {
+      navigate("/superAdmin/profile");
+    }
+  };
   return (
-<>
-        <Tooltip title="Account settings">
-          <Stack
-            onClick={handleClick}
-           direction={"row"}
-            sx={{ border:'1px solid lightgray',"&:hover": {
+    <>
+      <Tooltip title="Account settings">
+        <Stack
+          onClick={handleClick}
+          direction={"row"}
+          sx={{
+            border: "1px solid lightgray",
+            "&:hover": {
               backgroundColor: "lightgray",
               // border:'1px solid'
-            }, }}
-            alignItems={"center"}
-            padding={.5}
-            borderRadius={10}
-          >
-            <Avatar
-              src={require(`./user.png`)}
-              sx={{ width: 32, height: 32, mr: 1 }}
-            ></Avatar>
-            <SettingsOutlinedIcon sx={{color:'gray'}}  />
-          </Stack>
-        </Tooltip>
+            },
+          }}
+          alignItems={"center"}
+          padding={0.5}
+          borderRadius={10}
+        >
+          <Avatar
+            src={require(`./user.png`)}
+            sx={{ width: 32, height: 32, mr: 1 }}
+          ></Avatar>
+          <SettingsOutlinedIcon sx={{ color: "gray" }} />
+        </Stack>
+      </Tooltip>
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -94,19 +109,20 @@ export default function AccountMenu() {
       >
         <MenuItem>
           <Avatar>{user?.name?.[0]}</Avatar>
-          <Link
+          {/* <Link
             to="/member/profile"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
             Hello,{user?.name}
-          </Link>
+          </Link> */}
+          Hello,{user?.name}
         </MenuItem>
         <Divider />
-        <MenuItem onClick={handleClose}>
+        <MenuItem onClick={openProfile}>
           <ListItemIcon>
-            <Settings fontSize="small" />
+            <AccountBoxIcon fontSize="small" />
           </ListItemIcon>
-          Settings
+          My Account
         </MenuItem>
         <MenuItem onClick={handleLogout}>
           <ListItemIcon>
@@ -114,7 +130,7 @@ export default function AccountMenu() {
           </ListItemIcon>
           Logout
         </MenuItem>
-        </Menu>
-        </>
+      </Menu>
+    </>
   );
 }

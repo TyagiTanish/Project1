@@ -52,6 +52,14 @@ const router = [
           </SuperAdminRoute>
         ),
       },
+      {
+        path: "/superAdmin/profile",
+        element: (
+          <SuperAdminRoute>
+            <MemberAccount />
+          </SuperAdminRoute>
+        ),
+      },
     ],
   },
   {
