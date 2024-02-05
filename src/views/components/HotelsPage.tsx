@@ -7,28 +7,28 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import Hotels from "./Hotels";
 import useAuth from "../../Hooks/useAuth/useAuth";
+import { useSelector } from "react-redux";
 const HotelsPage = () => {
 
   const { request } = useAuth();
-  const [searchTerm, setSearchTerm] = useState("");
+  const search = useSelector((state:any)=>state.userReducer.searchDetails);
+  const [searchTerm, setSearchTerm] = useState(search);
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
 
-  useMemo(async() => {
-    const result = await request.get("/getHotels");
-    setFilteredData(result.data);
-  }, []);
+  // useMemo(async() => {
+  //   const result = await request.get("/getHotels");
+  //   setFilteredData(result.data);
+  // }, []);
 
-  const filterData = async(searchTerm: any) => {
+  const filterData = async() => {
     const result = await request.get("/getHotels",{
       params:{
         search:searchTerm    
         }
     });
-   
     setFilteredData(result.data);
   };
-
   useEffect(() => {
     const handleWindowSize = () => {
       setScreenSize(window.innerWidth);
@@ -36,20 +36,14 @@ const HotelsPage = () => {
     window.addEventListener("resize", handleWindowSize);
   });
 
+useMemo(()=>{
+  setSearchTerm(search)
+  filterData()
+},[searchTerm])
+
+
   return (
     <>
-      <Stack direction={screenSize < 1024 ? "column" : "row"} mt={2}>
-        <IconButton>
-          <Link to="/">
-            <Logo />
-          </Link>
-        </IconButton>
-        <Seachbar2
-          searchTerm={searchTerm}
-          setSearchTerm={setSearchTerm}
-          filterData={filterData}
-        />
-      </Stack>
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
         {filteredData.length!==0 ? <>  {filteredData !== undefined ? (
           <Hotels filteredData={filteredData} screenSize={screenSize} />

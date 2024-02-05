@@ -26,6 +26,9 @@ export const userSlice = createSlice({
     roomDetails: (state: any, action: any) => {
       state.roomDetails = action.payload;
     },
+    searchDetails:(state:any,action:any) =>{
+      state.searchDetails = action.payload;
+    }
   },
 });
 // Action creators
@@ -36,5 +39,6 @@ export const {
   locale,
   hotelId,
   roomDetails,
+  searchDetails
 } = userSlice.actions;
 export default userSlice.reducer;

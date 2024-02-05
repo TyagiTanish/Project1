@@ -98,20 +98,10 @@ export default function AccountMenu() {
             to="/member/profile"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
-            {/* My account */}
             Hello,{user?.name}
           </Link>
         </MenuItem>
-        {/* <MenuItem onClick={handleClose}>
-          <Avatar /> My account
-        </MenuItem> */}
         <Divider />
-        {/* <MenuItem onClick={handleClose}>
-          <ListItemIcon>
-            <PersonAdd fontSize="small" />
-          </ListItemIcon>
-          Add another account
-        </MenuItem> */}
         <MenuItem onClick={handleClose}>
           <ListItemIcon>
             <Settings fontSize="small" />

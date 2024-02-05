@@ -25,6 +25,7 @@ import AcceptedBookings from "../HotelOwner/Rooms/Booking/AcceptedBookings";
 import SuperAdminView from "../SuperAdmin/SuperAdminView/SuperAdminView";
 import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
 import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
+import CustomerView from "../../layout/CustomerView/CustomerView";
 
 const router = [
   {
@@ -55,85 +56,97 @@ const router = [
   },
   {
     path: "/",
-    element: (
-      <CustomerRoutes>
-        <HomePage />
-      </CustomerRoutes>
-    ),
+    element: <CustomerView />,
+    children: [
+      {
+        path:'/',
+        element: (
+          <CustomerRoutes>
+            <HomePage />
+          </CustomerRoutes>
+        ),
+      },
+      {
+        path: "/myBookings",
+        element: <ShowCustomerBooking />,
+      },
+      {
+        path: "/AddHotel",
+
+        element: <AddHotelAftrLgn />,
+      },
+      {
+        path: "/hotels",
+        element: (
+          // <CustomerRoutes>
+          <HotelsPage />
+          // </CustomerRoutes>
+        ),
+      },
+      {
+        path: "/profile",
+        element: (
+          <CustomerRoutes>
+            <Account />
+          </CustomerRoutes>
+        ),
+      },
+
+      {
+        path: "/billing",
+        element: (
+          <CustomerRoutes>
+            <Billing />
+          </CustomerRoutes>
+        ),
+      },
+    
+      {
+        path: "/profile",
+        element: (
+          <CustomerRoutes>
+            <Account />
+          </CustomerRoutes>
+        ),
+      },
+      {
+        path: "/viewDeal/:id",
+        element: (
+          <CustomerRoutes>
+            <ViewDeal />
+          </CustomerRoutes>
+        ),
+      },
+      {
+        path: "/myBookings/:id",
+        element: (
+          <CustomerRoutes>
+            <BookingDetails />
+          </CustomerRoutes>
+        ),
+      },
+      {
+        path: "/billing",
+        element: (
+          <CustomerRoutes>
+            <Billing />
+          </CustomerRoutes>
+        ),
+      },
+    ],
   },
   {
     path: "/login",
     element: <MainPage />,
   },
   {
-    path: "/myBookings",
-    element: <ShowCustomerBooking />,
-  },
-  {
-    path: "/AddHotel",
-
-    element: <AddHotelAftrLgn />,
-  },
-  {
-    path: "/hotels",
-    element: (
-      // <CustomerRoutes>
-      <HotelsPage />
-      // </CustomerRoutes>
-    ),
-  },
-  {
-    path: "/profile",
-    element: (
-      <CustomerRoutes>
-        <Account />
-      </CustomerRoutes>
-    ),
-  },
-  {
-    path: "/billing",
-    element: (
-      <CustomerRoutes>
-        <Billing />
-      </CustomerRoutes>
-    ),
+    path: "/customer",
+    element: <CustomerView />,
   },
   {
     path: "/memberRegister",
 
     element: <MemberRegistrationPage />,
-  },
-  {
-    path: "/profile",
-    element: (
-      <CustomerRoutes>
-        <Account />
-      </CustomerRoutes>
-    ),
-  },
-  {
-    path: "/viewDeal/:id",
-    element: (
-      <CustomerRoutes>
-        <ViewDeal />
-      </CustomerRoutes>
-    ),
-  },
-  {
-    path: "/myBookings/:id",
-    element: (
-      <CustomerRoutes>
-        <BookingDetails />
-      </CustomerRoutes>
-    ),
-  },
-  {
-    path: "/billing",
-    element: (
-      <CustomerRoutes>
-        <Billing />
-      </CustomerRoutes>
-    ),
   },
   {
     path: "/member",

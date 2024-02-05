@@ -37,7 +37,7 @@ export default function BasicCard() {
   return (
     <>
       <Stack direction={"row"} justifyContent={"space-between"} width={"98.8%"}>
-        <Logo />
+        {/* <Logo />
         {data <= 768 ? (
           <TabletNavbar />
         ) : user ? (
@@ -100,8 +100,8 @@ export default function BasicCard() {
               </Link>
             </Stack>
           </Stack>
-        )}{" "}
-      </Stack>
+        )}{" "}*/}
+      </Stack> 
       {data <= 768 ? (
         false
       ) : (
