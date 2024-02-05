@@ -10,11 +10,11 @@ import { Link } from "react-router-dom";
 import PlayStoreLogo from "../../assets/PlayStoreLogo";
 import AppStoreLogo from "../../assets/AppStoreLogo";
 import OyoLogo from "../../assets/OyoLogo";
-import FooterRytLogo from "../../assets/FooterRytLogo";
-import { grey } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 import { useIntl, FormattedMessage } from "react-intl";
 
 function Footer() {
+  const navigate = useNavigate();
   return (
     <Box
       sx={{
@@ -42,7 +42,7 @@ function Footer() {
             sx={{
               fontFamily: "sans-serif",
               fontWeight: "900",
-              ml: -1,
+              // ml: -1/,
               fontSize: { xl: "22px", md: 16, sm: "15px" },
               width: { sm: 350, xl: 500, lg: "100%" },
               mt: { md: -1, xl: 0, sm: 0 },
@@ -77,6 +77,9 @@ function Footer() {
                 ml: 2,
                 fontWeight: 700,
                 fontSize: { xl: 15, md: 12, sm: 8 },
+              }}
+              onClick={() => {
+                navigate("/memberRegister");
               }}
             >
               List Your Property

@@ -101,6 +101,7 @@ const Drawer = styled(MuiDrawer, {
     "& .MuiDrawer-paper": closedMixin(theme),
   }),
 }));
+
 /**
  * To show the superAdmin landing page. Markdown is *superAdmin*.
  */
@@ -124,6 +125,18 @@ export default function SuperAdminView() {
     setOpen(false);
     setOpen2(false);
   };
+
+  const [screenSize, setScreenSize] = React.useState(window.outerWidth);
+  React.useEffect(() => {
+    setScreenSize(window.innerWidth);
+    const handleWindowSize = () => {
+      setScreenSize(window.outerWidth);
+    };
+    // console.log("screenSize", screenSize);
+
+    window.addEventListener("resize", handleWindowSize);
+  });
+
   return (
     <>
       <Box sx={{ display: "flex" }}>
@@ -156,7 +169,6 @@ export default function SuperAdminView() {
                   <MenuIcon sx={{ color: "black" }} />
                 </IconButton>
               </Stack>
-              {/* <Box ml={{ lg: "93%", md: "87%", sm: "80%" }}><Menu /></Box> */}
               <Box>
                 <Menu />
               </Box>
