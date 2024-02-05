@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {
@@ -10,16 +10,31 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { DataGrid, GridActionsCellItem, GridColDef } from "@mui/x-data-grid";
+import { DataGrid, GridActionsCellItem, GridColDef, GridSortModel } from "@mui/x-data-grid";
 import ShowHotelsModal from "./ShowHotelsModal";
+
+
+
+/**
+ * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
+ */
+
 
 export default function ShowAllMembers() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
-
+  const [id,setId]=useState(0);
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
+    const [paginationModel, setPaginationModel] = React.useState<any>({
+      page: 0,
+      pageSize: 5,
+    });
+
+
+    const [length, setLength] = React.useState();
+    const [queryOptions, setQueryOptions] = React.useState<any>();
   const [open, setOpen] = React.useState(false);
   const [hotels, setHotels] = React.useState<any>([]);
   const [modalHotel, setModalHotel] = React.useState<any>([]);
@@ -30,20 +45,45 @@ export default function ShowAllMembers() {
     setMembers(data?.data);
   };
   const getHotels = async (id: any) => {
-    const data = await request.get(`/getHotelForParticularMember/${id}`);
-    const hotelsdata: any = data?.data.map((item: any, i: any) => {
-      item.id = i + 1;
-      return item;
-    });
-    setHotels(hotelsdata);
+    const data = (await request.get(`/getHotelForParticularMember/${id}`)).data;
+    // const hotelsdata: any = data?.map((item: any, i: any) => {
+    //   item.id = i + 1;
+    //   return item;
+    // });
+    setId(id)
+    setLength(data.length);
+    setHotels(data);
   };
-  useMemo(() => {}, [hotels]);
-  useEffect(() => {
-    getMembers();
-  }, []);
+  const handleSortModelChange = React.useCallback(
+    (sortModel: GridSortModel) => {
+      setQueryOptions({ sortModel: [...sortModel] });
+    },
+    []
+  );
+  useMemo(async() => {
+    const data = (await request.get(`/getHotelForParticularMember/${id}`,{
+      params:{
+        limit: paginationModel.pageSize || null,
+        page: paginationModel.page,
+        orderby: queryOptions?.sortModel[0]?.field || "_id",
+        sortby: queryOptions?.sortModel[0]?.sort || "asc",
+      }
+      
 
+    })).data;
+    // const hotelsdata: any = data?.map((item: any, i: any) => {
+    //   item.id = i + 1;
+    //   return item;
+    // });
+    setHotels(data);
+
+  }, [paginationModel,id,queryOptions]);
+useMemo(()=>{
+    getMembers()
+},[])
+console.log(length)
   const handleClick = async (data: any) => {
-    // const data = await request.delete(`/bookingDelete/${id}`);
+ 
     setModalHotel(data);
     setOpen(true);
   };
@@ -52,7 +92,7 @@ export default function ShowAllMembers() {
   };
 
   const columns: GridColDef[] = [
-    // { field: "id", headerName: "ID", width: 90 },
+   
     {
       field: "hotelName",
       width: 270,
@@ -130,6 +170,9 @@ export default function ShowAllMembers() {
 
   return (
     <>
+
+
+    {/* using accordion to display hotels of members  */}
       <Box sx={{ width: { sm: 700, lg: 1200, xl: 1600 } }}>
         <Typography
           sx={{
@@ -160,9 +203,9 @@ export default function ShowAllMembers() {
               textAlign: "left",
               margin: 0,
               padding: 0,
-              // border: "none",
+            
               border: "1px solid lightgray",
-              // marginBottom: 20,
+           
               width: "95%",
             }}
             expanded={expanded === `panel${i}`}
@@ -197,15 +240,32 @@ export default function ShowAllMembers() {
             >
               Hotel lists
             </Typography>
+
+
+            {/* server side sorting , pagination using data grid */}
             <DataGrid
               rows={hotels}
               columns={columns}
+              getRowId={(row) => row._id}
+              disableColumnMenu
+              pageSizeOptions={[5, 10, 20]}
+              rowCount={length}
               sx={{ ml: 5, mr: 5, mb: 5 }}
+              paginationModel={paginationModel}
+              paginationMode="server"
+              onPaginationModelChange={setPaginationModel}
+              sortingMode="server"
+              onSortModelChange={handleSortModelChange}
+        
             />
           </Accordion>
         ))}
 
         {open && (
+
+
+
+// view details button
           <ShowHotelsModal
             open={open}
             onClose={handleClose}
