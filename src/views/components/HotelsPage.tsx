@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import SimpleMap from "./Map";
 import Footer from "./Footer";
 import Seachbar2 from "./Seachbar2";
-import { Link } from "react-router-dom";
+import { Link, Outlet } from "react-router-dom";
 import Logo from "./Logo";
 import Hotels from "./Hotels";
 import useAuth from "../../Hooks/useAuth/useAuth";

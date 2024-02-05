@@ -2,7 +2,7 @@ import React from 'react'
 import TabletNavbar from '../../components/TabletNavbar'
 import { Box, IconButton, Stack } from '@mui/material'
 import { Link } from 'react-router-dom'
-import AccountMenu from '../Menu'
+import AccountMenu from '../../components/ProfileBtn'
 import Language from '../../components/Language'
 import { FormattedMessage } from 'react-intl'
 import CallIcon from "@mui/icons-material/Call";
