@@ -28,16 +28,16 @@ import { hotelId } from "./redux/user/userSlice";
 
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
-
   const navigate = useNavigate();
   const [detailIndex, setDetailIndex] = useState<any>("");
   const [openModule, setOpenModule] = useState<any>("info");
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
   const [open, setOpen] = useState(false);
+
+  
   const handleClick = (index: any) => {
     setDetailIndex(index);
-
     if (index === detailIndex) {
       setDetailIndex("");
     }

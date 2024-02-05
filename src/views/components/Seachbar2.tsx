@@ -12,10 +12,10 @@ import DateRangePickers from "./DatePicker";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 
 import "../../App.css";
-import { useDispatch } from "react-redux";
-import { userLocation } from "./redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { searchDetails, userLocation } from "./redux/user/userSlice";
 
-function Seachbar2(props: any) {
+function Seachbar2() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
@@ -26,11 +26,14 @@ function Seachbar2(props: any) {
   const [guests, setGuests] = useState(0);
   const [render, setRender] = React.useState(0);
   const dispatch = useDispatch();
+
   const handleInputChange = (event: any) => {
     const { value } = event.target;
-    props.setSearchTerm(value);
-    props.filterData(value);
+    dispatch(searchDetails(value))
   };
+
+  const search = useSelector((state:any)=>state.userReducer.searchDetails);
+  console.log(search)
   const data: any = localStorage.getItem("Rooms&Guests");
   const parsedData = JSON.parse(data);
   useEffect(() => {
@@ -56,17 +59,16 @@ function Seachbar2(props: any) {
     };
     dispatch(userLocation(data));
   }
-
   function error() {
     console.log("Unable to retrieve your location");
   }
 
+  
   return (
     <Stack
       direction={"row"}
       sx={{
-        width: { md: "100vw", xl: "100vw", sm: "95vw" },
-        mb: "20px",
+                mb: "20px",
         alignItems: "center",
         justifyContent: "center",
         alignSelf: "center",
@@ -96,8 +98,8 @@ function Seachbar2(props: any) {
           ),
         }}
         placeholder="Search by city,hote, or neighborhood"
-        value={props.searchTerm}
         onChange={handleInputChange}
+        defaultValue={search}
       />
       <DateRangePickers />
       <TextField

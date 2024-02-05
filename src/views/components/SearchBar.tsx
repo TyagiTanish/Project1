@@ -13,8 +13,8 @@ import "react-datepicker/dist/react-datepicker.css";
 import DateRangePickers from "./DatePicker";
 import RoomSelection from "./RoomSelection";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
-import { useDispatch } from "react-redux";
-import { userLocation } from "./redux/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
@@ -24,9 +24,11 @@ function SearchBar() {
     setAnchorEl(event.currentTarget);
   };
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
+  const search = useSelector((state:any)=>state.userReducer.searchDetails)
   const [guests, setGuests] = useState(0);
   const [totalRooms, setTotalRooms] = useState(0);
   const [render, setRender] = React.useState(0);
+  const [searchTerm,setSearchTerm] = useState<any>(search||'');
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -41,7 +43,6 @@ function SearchBar() {
 
     setRooms(rooms);
   }, [render, rooms]);
-  console.log(totalRooms, guests);
   // useMemo(() => {
   localStorage.setItem(
     "Rooms&Guests",
@@ -57,7 +58,6 @@ function SearchBar() {
     }
   }
   function success(position: any) {
-    console.log("position", position);
     const data: any = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
@@ -125,6 +125,8 @@ function SearchBar() {
             <TextField
               sx={{ bgcolor: "white" }}
               placeholder="Search by city,hotel, or neighborhood"
+              onChange={(e)=>setSearchTerm(e.target.value)}
+              defaultValue={search}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
@@ -168,6 +170,7 @@ function SearchBar() {
                 borderRadius: 0,
               }}
               onClick={() => {
+                dispatch(searchDetails(searchTerm))
                 navigate("./hotels");
               }}
             >
