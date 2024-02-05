@@ -17,7 +17,7 @@ import LocationOnIcon from "@mui/icons-material/LocationOn";
 import Footer from "./Footer";
 import HomeBody from "./HomeBody";
 import Logo from "./Logo";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Outlet, useNavigate } from "react-router-dom";
 import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";

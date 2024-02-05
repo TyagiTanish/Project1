@@ -4,13 +4,10 @@ import DialogTitle from "@mui/material/DialogTitle";
 import Dialog from "@mui/material/Dialog";
 import { Box, Divider, Stack, Typography } from "@mui/material";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
-
-
-
 /**
 * To display the detailed view of Booking Requests. Markdown is *DialogBox*.
 */
-function DialogBox(props: any) {
+function BookingRequestDialogBox(props: any) {
   const { onClose, data, selectedValue, open } = props;
   const [display, setDisplay] = React.useState<any>({});
   const [hotel, setHotel] = React.useState<any>({});
@@ -18,11 +15,9 @@ function DialogBox(props: any) {
   const handleClose = () => {
     onClose(selectedValue);
   };
-
   const handleListItemClick = (value: string) => {
     onClose(value);
   };
-
   React.useMemo(async () => {
     const display = await request.get(`/getDetails/${data.hotelId?._id}`);
     const result = display.data.rooms.filter((item: any) => {
@@ -32,19 +27,16 @@ function DialogBox(props: any) {
     setDisplay(result[0]);
   }, []);
   console.log(data);
-
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <Stack justifyContent={"space-between"} direction={"row"}>
         {" "}
         <DialogTitle>{hotel?.hotelName}</DialogTitle>
         <CloseIcon
-      
           style={{ marginTop: 18, marginRight: 10 ,cursor:"pointer"}}
           onClick={onClose}
         />
       </Stack>
-
       <hr />
       <Stack spacing={8} padding={4}>
         <Stack direction={"row"} spacing={10}>
@@ -69,7 +61,6 @@ function DialogBox(props: any) {
                   {/* <Stack sx={{ fontSize: 16 }}>Check-out</Stack> */}
                 </Stack>
               </Stack>
-
               <Stack sx={{ fontSize: 25 }}>Booking</Stack>
             </Stack>
           </Stack>
@@ -141,4 +132,4 @@ function DialogBox(props: any) {
     </Dialog>
   );
 }
-export default DialogBox;
+export default BookingRequestDialogBox;

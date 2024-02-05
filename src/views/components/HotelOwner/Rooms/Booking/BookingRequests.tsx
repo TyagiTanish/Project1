@@ -14,7 +14,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import DialogBox from "./DialogBox";
+import DialogBox from "./RecieptDialogBox";
 import { ChildProcess } from "child_process";
 import io from "socket.io-client";
 import {
@@ -24,6 +24,8 @@ import {
   GridColumnHeaderParams,
   GridSortModel,
 } from "@mui/x-data-grid";
+import BookingRequestDialogBox from "./BookingRequestDialogBox";
+import LoaderBeforeReciept from "./LoaderBeforeReciept";
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
@@ -283,8 +285,8 @@ export default function Bookings() {
           />
         </Box>
       )}
-
-      {open && <DialogBox data={display} open={open} onClose={handleClose} />}
+      
+      {open && <BookingRequestDialogBox data={display} open={open} onClose={handleClose} />}
     </>
   );
 }
