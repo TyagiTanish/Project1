@@ -219,7 +219,8 @@ export default function Bookings() {
   }, [socket]);
   return (
     <>
-      <Typography
+       {data.length!==0 ?
+       <> <Typography
         sx={{
           fontWeight: "bold",
           fontSize: 35,
@@ -229,14 +230,14 @@ export default function Bookings() {
       >
         Requests
       </Typography>
-      <Stack
+     <Stack
         sx={{ ml: "77%", mb: 2 }}
         direction={"row"}
         alignItems={"center"}
         spacing={2}
       >
         {" "}
-        <TextField
+     <TextField
           variant="outlined"
           size="small"
           InputProps={{
@@ -253,8 +254,9 @@ export default function Bookings() {
           }}
         />
       </Stack>
+      </>: <></>}  
       {data.length === 0 ? (
-        <Typography sx={{ width: 400, color: "red" }}>
+        <Typography sx={{mt:'20%', textAlign:'center',color: "red" ,fontSize:22}}>
           No Bookings till now*
         </Typography>
       ) : (

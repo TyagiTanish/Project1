@@ -87,11 +87,13 @@ function EditAmenities({ open, onClose, amenities ,id,setRender}: any) {
     const value = e.target.value;
 
     if (arr.find((item: any) => item === value)) {
-      // arr.delete(value);
+    
       setArr(arr.filter((i: any) => i !== value));
     } else {
-      arr.push(value);
+      // arr.push(value);
+      setArr([...arr,value])
     }
+    console.log(arr)  
   };
   const onSubmit=async(data:any)=>{
    
@@ -175,9 +177,10 @@ function EditAmenities({ open, onClose, amenities ,id,setRender}: any) {
           mr={2}
           mb={2}
         >
-          {arr.length!==0 ?  <Button
+          {arr.length==0 ?  <Button
             type="submit"
             variant="contained"
+            disabled
            
             sx={{
               fontSize: { xl: 15, md: 13, sm: 11 },
@@ -188,7 +191,7 @@ function EditAmenities({ open, onClose, amenities ,id,setRender}: any) {
           <Button
             type="submit"
             variant="contained"
-            disabled
+        
             sx={{
               fontSize: { xl: 15, md: 13, sm: 11 },
             }}
