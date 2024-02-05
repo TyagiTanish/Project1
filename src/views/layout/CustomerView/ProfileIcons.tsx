@@ -12,6 +12,13 @@ import BusinessIcon from "@mui/icons-material/Business";
 import { useSelector } from 'react-redux'
 
 
+
+
+
+
+  /**
+*  to show a small icon at the top right corner of Home Page. Markdown is *ProfileIcons*.
+*/
 const ProfileIcons = () => {
     const user = useSelector((state: any) => state.userReducer.user);
     const [data, updateData] = React.useState<any>(window.innerWidth);

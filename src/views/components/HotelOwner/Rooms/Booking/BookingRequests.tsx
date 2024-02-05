@@ -263,13 +263,17 @@ export default function Bookings() {
         </Typography>
       ) : (
         <Box sx={{ height: "auto", width: "100%" }}>
+
+
+
+          {/* data grid to implement server side sorting , pagination and searching */}
           <DataGrid
             rows={data}
             columns={columns}
             getRowId={(row) => row._id}
             disableColumnMenu
             sx={{ fontSize: 15 }}
-            // {...other props}
+          
             rowCount={length}
             pageSizeOptions={[5, 10, 20]}
             paginationModel={paginationModel}
@@ -277,8 +281,7 @@ export default function Bookings() {
             onPaginationModelChange={setPaginationModel}
             sortingMode="server"
             onSortModelChange={handleSortModelChange}
-            // onSortModelChange={handleSortModelChange}
-            // onSortModelChange={handleSortModelChange}
+        
           />
         </Box>
       )}
