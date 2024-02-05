@@ -52,6 +52,14 @@ const router = [
           </SuperAdminRoute>
         ),
       },
+      {
+        path: "/superAdmin/profile",
+        element: (
+          <SuperAdminRoute>
+            <MemberAccount />
+          </SuperAdminRoute>
+        ),
+      },
     ],
   },
   {
@@ -59,7 +67,7 @@ const router = [
     element: <CustomerView />,
     children: [
       {
-        path:'/',
+        path: "/",
         element: (
           <CustomerRoutes>
             <HomePage />
@@ -100,7 +108,7 @@ const router = [
           </CustomerRoutes>
         ),
       },
-    
+
       {
         path: "/profile",
         element: (

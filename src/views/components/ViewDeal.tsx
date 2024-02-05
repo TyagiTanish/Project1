@@ -12,13 +12,9 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 
-
 /**
-* To show Details of a specific hotel. Markdown is *Hotels*.
-*/
-
-
-
+ * To show Details of a specific hotel. Markdown is *Hotels*.
+ */
 
 function ViewDeal() {
   const { id } = useParams();
@@ -55,11 +51,10 @@ function ViewDeal() {
 
   return (
     <>
-      <Stack width={"100%"} boxShadow={3} >
+      <Stack width={"100%"} boxShadow={3}>
         <Logo />
       </Stack>
-      <Stack overflow={'auto'} zIndex={-1}  height={'90vh'}   >
-        
+      <Stack overflow={"auto"} height={"90vh"}>
         <Stack spacing={8} direction={"row"} ml={10} mt={4}>
           <Box
             component="img"
@@ -109,28 +104,29 @@ function ViewDeal() {
             </Stack>
           </Stack>
         </Stack>
-   
-      {open && <ViewDetails hotels={hotels} />}
-      <Stack
-        direction={"row"}
-        sx={{ fontSize: 10, color: "#0096FF", cursor: "pointer" }}
-        spacing={0.5}
-        onClick={handleOpen}
-        justifyContent={"center"}
-      >
-        <Typography textAlign={"center"} fontSize={15}>
-          View Details
-        </Typography>
-        {open ? (
-          <KeyboardArrowUpIcon fontSize="small" />
-        ) : (
-          <KeyboardArrowDownIcon fontSize="small" />
-        )}
+
+        {open && <ViewDetails hotels={hotels} />}
+        <Stack
+          direction={"row"}
+          sx={{ fontSize: 10, color: "#0096FF", cursor: "pointer" }}
+          spacing={0.5}
+          onClick={handleOpen}
+          justifyContent={"center"}
+        >
+          <Typography textAlign={"center"} fontSize={15}>
+            View Details
+          </Typography>
+          {open ? (
+            <KeyboardArrowUpIcon fontSize="small" />
+          ) : (
+            <KeyboardArrowDownIcon fontSize="small" />
+          )}
+        </Stack>
+        <Divider sx={{ borderBottomWidth: 20 }} />
+        <Box padding={1}>
+          <UserViewRooms hotels={hotels} />
+        </Box>
       </Stack>
-      <Divider sx={{ borderBottomWidth: 20 }} />
-      <Box padding={1}><UserViewRooms hotels={hotels} /></Box></Stack>
-    
-   
     </>
   );
 }
