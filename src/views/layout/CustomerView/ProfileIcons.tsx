@@ -2,7 +2,7 @@ import React from 'react'
 import TabletNavbar from '../../components/TabletNavbar'
 import { Box, IconButton, Stack } from '@mui/material'
 import { Link } from 'react-router-dom'
-import AccountMenu from '../Menu'
+import AccountMenu from '../../components/ProfileBtn'
 import Language from '../../components/Language'
 import { FormattedMessage } from 'react-intl'
 import CallIcon from "@mui/icons-material/Call";
@@ -12,6 +12,13 @@ import BusinessIcon from "@mui/icons-material/Business";
 import { useSelector } from 'react-redux'
 
 
+
+
+
+
+  /**
+*  to show a small icon at the top right corner of Home Page. Markdown is *ProfileIcons*.
+*/
 const ProfileIcons = () => {
     const user = useSelector((state: any) => state.userReducer.user);
     const [data, updateData] = React.useState<any>(window.innerWidth);
