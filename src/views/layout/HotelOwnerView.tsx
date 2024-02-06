@@ -30,6 +30,8 @@ import LogoutIcon from "@mui/icons-material/Logout";
 import Menu from "./Menu";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
+import { useSelector } from "react-redux";
+import Language from "../components/Language";
 // import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
 
@@ -102,6 +104,7 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function HotelOwnerView() {
+  const user = useSelector((state: any) => state?.userReducer?.user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(false);
@@ -175,11 +178,16 @@ export default function HotelOwnerView() {
                   <MenuIcon sx={{ color: "black" }} />
                 </IconButton>
               </Stack>
-              <Box
-              // ml={{ lg: "85%", md: "87%", sm: "80%" }}
+              <Stack
+                direction={"row"}
+                alignItems={'center'}
+                spacing={2}
+                // ml={{ lg: "85%", md: "87%", sm: "80%" }}
               >
+                <Language/>
+                <Stack><Typography  color={'black'} fontWeight={'bolder'}  >Hello,{user?.name}</Typography><Typography color={'gray'} fontSize={'0.9rem'} >{user?.role?.toUpperCase()}</Typography></Stack>
                 <Menu />
-              </Box>
+              </Stack>
             </Stack>
           </Toolbar>
         </AppBar>

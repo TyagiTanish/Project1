@@ -107,16 +107,7 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <MenuItem>
-          <Avatar>{user?.name?.[0]}</Avatar>
-          {/* <Link
-            to="/member/profile"
-            style={{ textDecoration: "none", color: "black", marginTop: 3 }}
-          >
-            Hello,{user?.name}
-          </Link> */}
-          Hello,{user?.name}
-        </MenuItem>
+
         <Divider />
         <MenuItem onClick={openProfile}>
           <ListItemIcon>
