@@ -13,6 +13,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { userLogout } from "./redux/user/userSlice";
 import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { Stack } from "@mui/system";
+
+
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const user = useSelector((state: any) => state.userReducer.user);
@@ -33,21 +37,28 @@ export default function AccountMenu() {
 
   return (
     <React.Fragment>
-      <Box>
-        <Tooltip title="Account settings">
-          <IconButton
-            onClick={handleClick}
-            size="small"
-            aria-controls={open ? "account-menu" : undefined}
-            aria-haspopup="true"
-            aria-expanded={open ? "true" : undefined}
-          >
-            <Avatar sx={{ width: 32, height: 32, fontWeight: "bolder", mt: 2 }}>
-              {user?.name[0].toUpperCase()}
-            </Avatar>
-          </IconButton>
-        </Tooltip>
-      </Box>
+    <Tooltip title="Account settings">
+        <Stack
+          onClick={handleClick}
+          direction={"row"}
+          sx={{
+            border: "1px solid lightgray",
+            "&:hover": {
+              backgroundColor: "lightgray",
+              // border:'1px solid'
+            },
+          }}
+          alignItems={"center"}
+          padding={0.5}
+          borderRadius={10}
+        >
+          <Avatar
+            src={require(`../layout/user.png`)}
+            sx={{ width: 32, height: 32, mr: 1 }}
+          ></Avatar>
+          <SettingsOutlinedIcon sx={{ color: "gray" }} />
+        </Stack>
+      </Tooltip>
       <Menu
         anchorEl={anchorEl}
         id="account-menu"
@@ -84,11 +95,6 @@ export default function AccountMenu() {
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
         {" "}
-        <Typography
-          sx={{ fontWeight: "bold", m: 2, fontFamily: "Courier, monospace" }}
-        >
-          Hello,{user.name}
-        </Typography>
         <MenuItem
           onClick={handleClose}
           sx={{ display: "flex", flexDirection: "row" }}

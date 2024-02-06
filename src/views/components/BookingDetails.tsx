@@ -1,12 +1,20 @@
-import React from "react";
+import React, { useState } from "react";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useParams } from "react-router-dom";
-import { Stack, Typography, Button, Box, Divider, Chip } from "@mui/material";
+import { Stack, Typography, Button, Box, Divider, Chip, Tooltip, Icon, IconButton } from "@mui/material";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import BookingProgress from "./ProgressBar";
+import RecieptDialogBox from "./HotelOwner/Rooms/Booking/RecieptDialogBox";
+import VisibilityIcon from '@mui/icons-material/Visibility';
+import LinearIndeterminate from "./HotelOwner/Rooms/Booking/LoaderBeforeReciept";
+
+
 
 function BookingDetails() {
   const [data, setData] = React.useState<any>([]);
+  const [open, setOpen] = React.useState(false);
+  const [display, setDisplay] = useState<any>(null);
+  const [loader,setLoader] = React.useState(false);
   const id = useParams();
   const { request } = useAuth();
   const fetchBookings = async () => {
@@ -40,9 +48,28 @@ function BookingDetails() {
     window.addEventListener("resize", handleWindowSize);
   });
 
+
+  const handleClickOpen = async (data: any) => {
+    setLoader(true)
+    const buffer = (await request.get('/viewReciept',{
+      responseType:'blob',
+      params:{bookingId:id?.id}
+    })).data;
+    setDisplay(buffer);
+    setTimeout(()=>{
+      setLoader(false)
+      setOpen(true);
+    },2000)
+  
+  };
+
+
+
   return (
-    <>
     
+    <>
+      <Stack sx={{ m: 5 }}>
+      {loader && <Box sx={{width:'73%',ml:29.5}} ><LinearIndeterminate/></Box>}
         <Stack
           border={"1px solid lightgray"}
           p={3}
@@ -52,6 +79,8 @@ function BookingDetails() {
         overflow={'auto'}
         height={620}
         >
+          <Stack  justifyContent={'flex-end'} direction={'row'}  >   <Tooltip  title='View reciept' sx={{cursor:'pointer'}}><IconButton sx={{borderRadius:1}} onClick={handleClickOpen}  ><VisibilityIcon/></IconButton></Tooltip></Stack>
+      
          {data?.paymentStatus === 'unpaid' ?<BookingProgress step={1}  />:<BookingProgress step={2} />}
         
           <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'} >
@@ -247,7 +276,10 @@ function BookingDetails() {
             </Stack>
           </Stack>
         </Stack>
- 
+      </Stack>
+      {open &&
+      <RecieptDialogBox pdfBuffer={display}  open={open} setOpen={setOpen}   />}
+
     </>
   );
 }

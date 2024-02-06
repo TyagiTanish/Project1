@@ -35,6 +35,7 @@ import Loader from "./loader/Loader";
  * for entering details of a user and checking the payment , Markdown is *Billing*.
  */
 
+
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
@@ -79,6 +80,9 @@ const Billing = () => {
       calculateDifference();
     }
   }, []);
+  useEffect(() => {
+    console.log("HII");
+  }, [data]);
   const [bookingId, setBookingId] = useState();
   const [result, setResult] = useState<any>({});
   const [displayLoader, setDisplayLoader] = useState(false);
@@ -161,6 +165,7 @@ const Billing = () => {
     };
     setResult(result);
     setDisplay(true);
+    setSubmitButton(false)
     // socket.emit("send_Message", result);
   };
 
