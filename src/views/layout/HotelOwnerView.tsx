@@ -28,11 +28,10 @@ import { Navigate, Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Menu from "./Menu";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 // import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
-
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -108,15 +107,16 @@ export default function HotelOwnerView() {
   const [open2, setOpen2] = React.useState(false);
   const navigate = useNavigate();
 
-  const [screenSize,setScreenSize] = React.useState<any>(window.outerWidth);
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [screenSize, setScreenSize] = React.useState<any>(window.outerWidth);
 
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
-      screenSize <= 768 && setOpen(false)
-      screenSize >1022  && setOpen(true)
-    };  
+      screenSize <= 768 && setOpen(false);
+      screenSize > 1022 && setOpen(true);
+    };
     window.addEventListener("resize", handleWindowSize);
   });
 
@@ -135,42 +135,52 @@ export default function HotelOwnerView() {
       setOpen2(false);
     }
   };
+
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <>
-      <Stack direction={'row'}> 
+      <Stack direction={"row"}>
         <CssBaseline />
-        <AppBar open={open} sx={{ bgcolor: "white"}}  >
+        <AppBar open={open} sx={{ bgcolor: "white" }}>
           <Toolbar>
-            <Stack direction={"row"} justifyContent={"space-between"} width={'100%'}   >
             <Stack
               direction={"row"}
-              spacing={3}
-              alignItems={"center"}
-              height={"2vh"}
-              
+              justifyContent={"space-between"}
+              width={"100%"}
             >
-              {" "}
-              {!open && <Logo />}
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{
-                  marginRight: 5,
-                  ...(open && { display: "none" }),
-                }}
+              <Stack
+                direction={"row"}
+                spacing={3}
+                alignItems={"center"}
+                height={"2vh"}
               >
-                <MenuIcon sx={{ color: "black" }} />
-              </IconButton>
+                {" "}
+                {!open && <Logo />}
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon sx={{ color: "black" }} />
+                </IconButton>
+              </Stack>
+              <Box
+              // ml={{ lg: "85%", md: "87%", sm: "80%" }}
+              >
+                <Menu />
+              </Box>
             </Stack>
-            <Box 
-            // ml={{ lg: "85%", md: "87%", sm: "80%" }}
-            >
-              <Menu />
-            </Box>
-            </Stack>
-           
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -192,22 +202,27 @@ export default function HotelOwnerView() {
           </DrawerHeader>
 
           <List>
-            {open && (
+            {/* {open && (
               <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
                 DashBoard
               </Typography>
-            )}
+            )} */}
             <ListItem disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
+
                   "&:hover": {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 0 ? 100 : null,
+                  backgroundColor: selectedIndex === 0 ? "lightgray" : null,
                 }}
+                // selected={selectedIndex === 0}
+                onClick={(event) => handleListItemClick(event, 0)}
               >
                 <ListItemIcon
                   sx={{
@@ -219,7 +234,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <DashboardIcon fontSize="small" />
                   ) : (
-                    <Tooltip title='Dashboard'><DashboardIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title="Dashboard">
+                      <DashboardIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -238,8 +255,15 @@ export default function HotelOwnerView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 1 ? 100 : null,
+                  backgroundColor: selectedIndex === 1 ? "lightgray" : null,
                 }}
-                onClick={() => navigate("/member/hotels")}
+                // selected={selectedIndex === 1}
+                onClick={(event) => {
+                  handleListItemClick(event, 1);
+                  navigate("/member/hotels");
+                }}
+                // onClick={() => navigate("/member/hotels")}
               >
                 <ListItemIcon
                   sx={{
@@ -251,7 +275,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <BedIcon fontSize="small" />
                   ) : (
-                    <Tooltip title={'All Hotels'} ><BedIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title={"All Hotels"}>
+                      <BedIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -270,8 +296,15 @@ export default function HotelOwnerView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 2 ? 100 : null,
+                  backgroundColor: selectedIndex === 2 ? "lightgray" : null,
                 }}
-                onClick={() => navigate("/member/bookings")}
+                // selected={selectedIndex === 2}
+                onClick={(event) => {
+                  handleListItemClick(event, 2);
+                  navigate("/member/bookings");
+                }}
+                // onClick={() => navigate("/member/bookings")}
               >
                 <ListItemIcon
                   sx={{
@@ -283,7 +316,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <CalendarMonthIcon fontSize="small" />
                   ) : (
-                    <Tooltip title='Booking Requests' ><CalendarMonthIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title="Booking Requests">
+                      <CalendarMonthIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -302,8 +337,15 @@ export default function HotelOwnerView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 3 ? 100 : null,
+                  backgroundColor: selectedIndex === 3 ? "lightgray" : null,
                 }}
-                onClick={() => navigate("/member/acceptedBookings")}
+                // selected={selectedIndex === 3}
+                onClick={(event) => {
+                  handleListItemClick(event, 3);
+                  navigate("/member/acceptedBookings");
+                }}
+                // onClick={() => navigate("/member/acceptedBookings")}
               >
                 <ListItemIcon
                   sx={{
@@ -315,7 +357,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <InsertInvitationIcon fontSize="small" />
                   ) : (
-                    <Tooltip title='All Bookings' ><InsertInvitationIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title="All Bookings">
+                      <InsertInvitationIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -427,7 +471,7 @@ export default function HotelOwnerView() {
             </ListItem>
           </List> */}
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 2,overflow:'hidden',height:'100vh' }}  >
+        <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>
