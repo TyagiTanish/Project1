@@ -28,11 +28,12 @@ import { Navigate, Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
 import Menu from "./Menu";
-import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-import InsertInvitationIcon from '@mui/icons-material/InsertInvitation';
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
+import { useSelector } from "react-redux";
+import Language from "../components/Language";
 // import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
-
 
 const openedMixin = (theme: Theme): CSSObject => ({
   width: drawerWidth,
@@ -103,20 +104,21 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function HotelOwnerView() {
+  const user = useSelector((state: any) => state?.userReducer?.user);
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(false);
   const navigate = useNavigate();
 
-  const [screenSize,setScreenSize] = React.useState<any>(window.outerWidth);
+  const [screenSize, setScreenSize] = React.useState<any>(window.outerWidth);
 
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
-      screenSize <= 768 && setOpen(false)
-      screenSize >1022  && setOpen(true)
-    };  
+      screenSize <= 768 && setOpen(false);
+      screenSize > 1022 && setOpen(true);
+    };
     window.addEventListener("resize", handleWindowSize);
   });
 
@@ -137,40 +139,47 @@ export default function HotelOwnerView() {
   };
   return (
     <>
-      <Stack direction={'row'}> 
+      <Stack direction={"row"}>
         <CssBaseline />
-        <AppBar open={open} sx={{ bgcolor: "white"}}  >
+        <AppBar open={open} sx={{ bgcolor: "white" }}>
           <Toolbar>
-            <Stack direction={"row"} justifyContent={"space-between"} width={'100%'}   >
             <Stack
               direction={"row"}
-              spacing={3}
-              alignItems={"center"}
-              height={"2vh"}
-              
+              justifyContent={"space-between"}
+              width={"100%"}
             >
-              {" "}
-              {!open && <Logo />}
-              <IconButton
-                color="inherit"
-                aria-label="open drawer"
-                onClick={handleDrawerOpen}
-                edge="start"
-                sx={{
-                  marginRight: 5,
-                  ...(open && { display: "none" }),
-                }}
+              <Stack
+                direction={"row"}
+                spacing={3}
+                alignItems={"center"}
+                height={"2vh"}
               >
-                <MenuIcon sx={{ color: "black" }} />
-              </IconButton>
+                {" "}
+                {!open && <Logo />}
+                <IconButton
+                  color="inherit"
+                  aria-label="open drawer"
+                  onClick={handleDrawerOpen}
+                  edge="start"
+                  sx={{
+                    marginRight: 5,
+                    ...(open && { display: "none" }),
+                  }}
+                >
+                  <MenuIcon sx={{ color: "black" }} />
+                </IconButton>
+              </Stack>
+              <Stack
+                direction={"row"}
+                alignItems={'center'}
+                spacing={2}
+                // ml={{ lg: "85%", md: "87%", sm: "80%" }}
+              >
+                <Language/>
+                <Stack><Typography  color={'black'} fontWeight={'bolder'}  >Hello,{user?.name}</Typography><Typography color={'gray'} fontSize={'0.9rem'} >{user?.role?.toUpperCase()}</Typography></Stack>
+                <Menu />
+              </Stack>
             </Stack>
-            <Box 
-            // ml={{ lg: "85%", md: "87%", sm: "80%" }}
-            >
-              <Menu />
-            </Box>
-            </Stack>
-           
           </Toolbar>
         </AppBar>
         <Drawer variant="permanent" open={open}>
@@ -219,7 +228,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <DashboardIcon fontSize="small" />
                   ) : (
-                    <Tooltip title='Dashboard'><DashboardIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title="Dashboard">
+                      <DashboardIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -251,7 +262,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <BedIcon fontSize="small" />
                   ) : (
-                    <Tooltip title={'All Hotels'} ><BedIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title={"All Hotels"}>
+                      <BedIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -283,7 +296,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <CalendarMonthIcon fontSize="small" />
                   ) : (
-                    <Tooltip title='Booking Requests' ><CalendarMonthIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title="Booking Requests">
+                      <CalendarMonthIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -315,7 +330,9 @@ export default function HotelOwnerView() {
                   {open === true ? (
                     <InsertInvitationIcon fontSize="small" />
                   ) : (
-                    <Tooltip title='All Bookings' ><InsertInvitationIcon sx={{ fontSize: "25px" }} /></Tooltip>
+                    <Tooltip title="All Bookings">
+                      <InsertInvitationIcon sx={{ fontSize: "25px" }} />
+                    </Tooltip>
                   )}
                 </ListItemIcon>
                 <ListItemText
@@ -427,7 +444,7 @@ export default function HotelOwnerView() {
             </ListItem>
           </List> */}
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 2,overflow:'hidden',height:'100vh' }}  >
+        <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>

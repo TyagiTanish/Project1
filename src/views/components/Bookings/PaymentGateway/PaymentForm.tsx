@@ -5,6 +5,8 @@ import useAuth from "../../../../Hooks/useAuth/useAuth";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/system";
 import io from "socket.io-client";
+import { Typography } from "@mui/material";
+import { useNavigate } from "react-router";
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
@@ -17,8 +19,11 @@ const socket = io("http://localhost:8000", {
 
 const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result }: any) => {
   const stripe = useStripe();
+  const navigate = useNavigate()
   const elements = useElements();
+  const [message,setMessage] = useState(false)
   const [error, setError] = useState(null);
+  const [disableButton,setDisableButton] = useState(false);
   const { request } = useAuth();
   const cardElementOptions = {
     style: {
@@ -36,11 +41,13 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
   };
 
   const handleSubmit = async (event: any) => {
+    setDisableButton(true)
     event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
+    setMessage(true)
     const cardElement = elements.getElement(CardElement);
 
     const { token, error } = await stripe.createToken(cardElement as any);
@@ -68,6 +75,7 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         });
         setTimeout(() => {
           setDisplayLoader(false);
+          navigate('/myBookings')
         });
         socket.emit("response", true);
       } else {
@@ -75,6 +83,8 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         console.error("Payment failed:", result.error);
       }
     }
+    setDisableButton(false)
+    setMessage(false)
   };
 
   return (
@@ -84,9 +94,10 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         <CardElement options={cardElementOptions} />
       </Box>
       {error && <div style={{ color: "red" }}>{error}</div>}
-      <Button variant="contained" type="submit" disabled={!stripe}>
+      <Button variant="contained" type="submit" disabled={!stripe || disableButton}>
         Pay
       </Button>
+      {message && <Typography width={'100%'} mt={2} color={'error'} >Your Payment is processing please do not refresh...</Typography>}
     </form>
   );
 };
