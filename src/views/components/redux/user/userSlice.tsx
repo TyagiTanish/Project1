@@ -4,7 +4,7 @@ export const userSlice = createSlice({
   initialState: {
     user: null,
     location: null,
-    locale: "en",
+    locale: localStorage.getItem('locale')||"en",
     hotelId: null,
   },
   reducers: {

@@ -27,6 +27,7 @@ import Loaders from "./Loaders";
 import { FormattedMessage } from "react-intl";
 
 import { Navigate, useNavigate } from "react-router-dom";
+import Language from "./Language";
 
 function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
   const { request } = useAuth();
@@ -116,6 +117,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
         >
           <FormattedMessage defaultMessage="Sign up & Get ₹500 OYO Money" />
         </Typography>
+        
         <Box
           sx={{
             // paddingLeft: 3,
@@ -124,6 +126,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             background: "white",
           }}
         >
+          <Box sx={{float:'right',mt:-1}} ><Language/></Box>
           <Typography
             sx={{
               fontSize: { xl: "32px", md: "25px", sm: "25px" },

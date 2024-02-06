@@ -27,6 +27,12 @@ import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
 import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
 import CustomerView from "../../layout/CustomerView/CustomerView";
 
+
+/**
+ * Contains all the routers used within the webApp , Markdown is *Router*.
+ */
+
+
 const router = [
   {
     path: "/superAdmin",
