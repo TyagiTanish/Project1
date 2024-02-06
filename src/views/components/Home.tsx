@@ -19,6 +19,20 @@ import Language from "./Language";
 import BusinessIcon from "@mui/icons-material/Business";
 import TabletNavbar from "./TabletNavbar";
 
+import { Country, State, City } from "country-state-city";
+
+// console.log(Country.getAllCountries());
+// const country = Country.getAllCountries();
+// console.log(country[100]);
+// console.log(State.getStatesOfCountry("IN"));
+const HR: any = City.getCitiesOfState("IN", "HR");
+const PB: any = City.getCitiesOfState("IN", "PB");
+const HP: any = City.getCitiesOfState("IN", "HP");
+const DL: any = City.getCitiesOfState("IN", "DL");
+const MH: any = City.getCitiesOfState("IN", "MH");
+const MP: any = City.getCitiesOfState("IN", "MP");
+const UP: any = City.getCitiesOfState("IN", "UP");
+const UT: any = City.getCitiesOfState("IN", "UT");
 /**
  * Landing page of the project. Markdown is *localhost:3000*.
  */
@@ -101,7 +115,7 @@ export default function BasicCard() {
             </Stack>
           </Stack>
         )}{" "}*/}
-      </Stack> 
+      </Stack>
       {data <= 768 ? (
         false
       ) : (
@@ -138,228 +152,7 @@ export default function BasicCard() {
                     fontSize: { md: 15, xl: 16 },
                   }}
                 >
-                  Banglore
-                </Box>
-                <KeyboardArrowDownIcon
-                  className="xyz"
-                  sx={{
-                    marginTop: { xl: "9px", md: 1.1 },
-                    color: "lightgray",
-                    fontSize: { md: 20 },
-                  }}
-                />
-                <Box className="drop" sx={{ fontSize: { md: 15, xl: 16 } }}>
-                  <Link style={{ fontWeight: "bold" }} to="/">
-                    <FormattedMessage defaultMessage="Popular Locations" />
-                  </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
-                </Box>
-              </Box>
-
-              <Box
-                className="abc"
-                sx={{
-                  display: "flex",
-                  direction: "row",
-                  height: "100%",
-                  alignSelf: "center",
-                  paddingLeft: 1,
-                  paddingBottom: 0,
-                }}
-              >
-                <Box
-                  sx={{
-                    color: "gray",
-                    marginTop: "10px",
-                    fontSize: { md: 15, xl: 16 },
-                  }}
-                >
-                  <FormattedMessage defaultMessage="Chennai" />
-                </Box>
-                <KeyboardArrowDownIcon
-                  className="xyz"
-                  sx={{
-                    marginTop: { xl: "9px", md: 1.1 },
-                    color: "lightgray",
-                    fontSize: { md: 20 },
-                  }}
-                />
-                <Box className="drop" sx={{ fontSize: { md: 15, xl: 16 } }}>
-                  <Link style={{ fontWeight: "bold" }} to="/">
-                    <FormattedMessage defaultMessage="Popular Locations" />
-                  </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
-                </Box>
-              </Box>
-
-              <Box
-                className="abc"
-                sx={{
-                  display: "flex",
-                  direction: "row",
-                  height: "100%",
-                  alignSelf: "center",
-                  paddingLeft: 1,
-                  paddingBottom: 0,
-                }}
-              >
-                <Box
-                  sx={{
-                    color: "gray",
-                    marginTop: "10px",
-                    fontSize: { md: 15, xl: 16 },
-                  }}
-                >
-                  Gurgaon
-                </Box>
-                <KeyboardArrowDownIcon
-                  className="xyz"
-                  sx={{
-                    marginTop: { xl: "9px", md: 1.1 },
-                    color: "lightgray",
-                    fontSize: { md: 20 },
-                  }}
-                />
-                <Box className="drop" sx={{ fontSize: { md: 15, xl: 16 } }}>
-                  <Link style={{ fontWeight: "bold" }} to="/">
-                    <FormattedMessage defaultMessage="Popular Locations" />
-                  </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
-                </Box>
-              </Box>
-
-              <Box
-                className="abc"
-                sx={{
-                  display: "flex",
-                  direction: "row",
-                  height: "100%",
-                  alignSelf: "center",
-                  paddingLeft: 1,
-                  paddingBottom: 0,
-                }}
-              >
-                <Box
-                  sx={{
-                    color: "gray",
-                    marginTop: "10px",
-                    fontSize: { md: 15, xl: 16 },
-                  }}
-                >
-                  Hyderabad
-                </Box>
-                <KeyboardArrowDownIcon
-                  className="xyz"
-                  sx={{
-                    marginTop: { xl: "9px", md: 1.1 },
-                    color: "lightgray",
-                    fontSize: { md: 20 },
-                  }}
-                />
-                <Box className="drop" sx={{ fontSize: { md: 15, xl: 16 } }}>
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
-                    <FormattedMessage defaultMessage="Popular Locations" />
-                  </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
-                </Box>
-              </Box>
-
-              <Box
-                className="abc"
-                sx={{
-                  display: "flex",
-                  direction: "row",
-                  height: "100%",
-                  alignSelf: "center",
-                  paddingLeft: 1,
-                  paddingBottom: 0,
-                }}
-              >
-                <Box
-                  sx={{
-                    color: "gray",
-                    marginTop: "10px",
-                    fontSize: { md: 15, xl: 16 },
-                  }}
-                >
-                  <FormattedMessage defaultMessage=" Kolkata" />
-                </Box>
-                <KeyboardArrowDownIcon
-                  className="xyz"
-                  sx={{
-                    marginTop: { xl: "9px", md: 1.1 },
-                    color: "lightgray",
-                    fontSize: { md: 20 },
-                  }}
-                />
-                <Box className="drop" sx={{ fontSize: { md: 15, xl: 16 } }}>
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
-                    <FormattedMessage defaultMessage="Popular Locations" />
-                  </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
-                </Box>
-              </Box>
-              <Box
-                className="abc"
-                sx={{
-                  display: "flex",
-                  direction: "row",
-                  height: "100%",
-                  alignSelf: "center",
-                  paddingLeft: 1,
-                  paddingBottom: 0,
-                }}
-              >
-                <Box
-                  sx={{
-                    color: "gray",
-                    marginTop: "10px",
-                    fontSize: { md: 15, xl: 16 },
-                  }}
-                >
-                  Mumbai
-                </Box>
-                <KeyboardArrowDownIcon
-                  className="xyz"
-                  sx={{
-                    marginTop: { xl: "9px", md: 1.1 },
-                    color: "lightgray",
-                    fontSize: { md: 20 },
-                  }}
-                />
-                <Box className="drop" sx={{ fontSize: { md: 15, xl: 16 } }}>
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
-                    <FormattedMessage defaultMessage="Popular Locations" />
-                  </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
-                </Box>
-              </Box>
-
-              <Box
-                className="abc"
-                sx={{
-                  display: "flex",
-                  direction: "row",
-                  height: "100%",
-                  alignSelf: "center",
-                  paddingLeft: 1,
-                  paddingBottom: 0,
-                }}
-              >
-                <Box
-                  sx={{
-                    color: "gray",
-                    marginTop: "10px",
-                    fontSize: { md: 15, xl: 16 },
-                  }}
-                >
-                  Noida
+                  Haryana
                 </Box>
                 <KeyboardArrowDownIcon
                   className="xyz"
@@ -373,14 +166,290 @@ export default function BasicCard() {
                   className="drop"
                   sx={{
                     fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
+                  }}
+                >
+                  <Link style={{ fontWeight: "bold" }} to="/">
+                    <FormattedMessage defaultMessage="Popular Locations" />
+                  </Link>
+                  {/* <Link to="/hotels">Mg Road</Link>
+                  <Link to="/hotels">Rajaji nagar</Link> */}
+                  {HR?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
+                </Box>
+              </Box>
+
+              <Box
+                className="abc"
+                sx={{
+                  display: "flex",
+                  direction: "row",
+                  height: "100%",
+                  alignSelf: "center",
+                  paddingLeft: 1,
+                  paddingBottom: 0,
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "gray",
+                    marginTop: "10px",
+                    fontSize: { md: 15, xl: 16 },
+                  }}
+                >
+                  {/* <FormattedMessage defaultMessage="Chennai" /> */}
+                  Himachal
+                </Box>
+                <KeyboardArrowDownIcon
+                  className="xyz"
+                  sx={{
+                    marginTop: { xl: "9px", md: 1.1 },
+                    color: "lightgray",
+                    fontSize: { md: 20 },
+                  }}
+                />
+                <Box
+                  className="drop"
+                  sx={{
+                    fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
+                  }}
+                >
+                  <Link style={{ fontWeight: "bold" }} to="/">
+                    <FormattedMessage defaultMessage="Popular Locations" />
+                  </Link>
+                  {HP?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
+                </Box>
+              </Box>
+
+              <Box
+                className="abc"
+                sx={{
+                  display: "flex",
+                  direction: "row",
+                  height: "100%",
+                  alignSelf: "center",
+                  paddingLeft: 1,
+                  paddingBottom: 0,
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "gray",
+                    marginTop: "10px",
+                    fontSize: { md: 15, xl: 16 },
+                  }}
+                >
+                  Punjab
+                </Box>
+                <KeyboardArrowDownIcon
+                  className="xyz"
+                  sx={{
+                    marginTop: { xl: "9px", md: 1.1 },
+                    color: "lightgray",
+                    fontSize: { md: 20 },
+                  }}
+                />
+                <Box
+                  className="drop"
+                  sx={{
+                    fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
+                  }}
+                >
+                  <Link style={{ fontWeight: "bold" }} to="/">
+                    <FormattedMessage defaultMessage="Popular Locations" />
+                  </Link>
+                  {PB?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
+                </Box>
+              </Box>
+
+              <Box
+                className="abc"
+                sx={{
+                  display: "flex",
+                  direction: "row",
+                  height: "100%",
+                  alignSelf: "center",
+                  paddingLeft: 1,
+                  paddingBottom: 0,
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "gray",
+                    marginTop: "10px",
+                    fontSize: { md: 15, xl: 16 },
+                  }}
+                >
+                  Uttar Pradesh
+                </Box>
+                <KeyboardArrowDownIcon
+                  className="xyz"
+                  sx={{
+                    marginTop: { xl: "9px", md: 1.1 },
+                    color: "lightgray",
+                    fontSize: { md: 20 },
+                  }}
+                />
+                <Box
+                  className="drop"
+                  sx={{
+                    fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
+                  }}
+                >
+                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                    <FormattedMessage defaultMessage="Popular Locations" />
+                  </Link>
+                  {UP?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
+                </Box>
+              </Box>
+
+              <Box
+                className="abc"
+                sx={{
+                  display: "flex",
+                  direction: "row",
+                  height: "100%",
+                  alignSelf: "center",
+                  paddingLeft: 1,
+                  paddingBottom: 0,
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "gray",
+                    marginTop: "10px",
+                    fontSize: { md: 15, xl: 16 },
+                  }}
+                >
+                  {/* <FormattedMessage defaultMessage=" Kolkata" /> */}
+                  Maharastra
+                </Box>
+                <KeyboardArrowDownIcon
+                  className="xyz"
+                  sx={{
+                    marginTop: { xl: "9px", md: 1.1 },
+                    color: "lightgray",
+                    fontSize: { md: 20 },
+                  }}
+                />
+                <Box
+                  className="drop"
+                  sx={{
+                    fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
+                  }}
+                >
+                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                    <FormattedMessage defaultMessage="Popular Locations" />
+                  </Link>
+                  {MH?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
+                </Box>
+              </Box>
+              <Box
+                className="abc"
+                sx={{
+                  display: "flex",
+                  direction: "row",
+                  height: "100%",
+                  alignSelf: "center",
+                  paddingLeft: 1,
+                  paddingBottom: 0,
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "gray",
+                    marginTop: "10px",
+                    fontSize: { md: 15, xl: 16 },
+                  }}
+                >
+                  Delhi
+                </Box>
+                <KeyboardArrowDownIcon
+                  className="xyz"
+                  sx={{
+                    marginTop: { xl: "9px", md: 1.1 },
+                    color: "lightgray",
+                    fontSize: { md: 20 },
+                  }}
+                />
+                <Box
+                  className="drop"
+                  sx={{
+                    fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
+                  }}
+                >
+                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                    <FormattedMessage defaultMessage="Popular Locations" />
+                  </Link>
+                  {DL?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
+                </Box>
+              </Box>
+
+              <Box
+                className="abc"
+                sx={{
+                  display: "flex",
+                  direction: "row",
+                  height: "100%",
+                  alignSelf: "center",
+                  paddingLeft: 1,
+                  paddingBottom: 0,
+                }}
+              >
+                <Box
+                  sx={{
+                    color: "gray",
+                    marginTop: "10px",
+                    fontSize: { md: 15, xl: 16 },
+                  }}
+                >
+                  Madhya Pradesh
+                </Box>
+                <KeyboardArrowDownIcon
+                  className="xyz"
+                  sx={{
+                    marginTop: { xl: "9px", md: 1.1 },
+                    color: "lightgray",
+                    fontSize: { md: 20 },
+                  }}
+                />
+                <Box
+                  className="drop"
+                  sx={{
+                    fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
                     ml: { sm: "-2%", lg: 0 },
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/hotels">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
+                  {MP?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
                 </Box>
               </Box>
 
@@ -402,7 +471,7 @@ export default function BasicCard() {
                     fontSize: { md: 15, xl: 16 },
                   }}
                 >
-                  Pune
+                  Uttarakhand
                 </Box>
                 <KeyboardArrowDownIcon
                   className="xyz"
@@ -416,14 +485,17 @@ export default function BasicCard() {
                   className="drop"
                   sx={{
                     fontSize: { md: 15, xl: 16 },
+                    maxHeight: 200,
+                    overflow: "scroll",
                     ml: { sm: "-12%", lg: 0 },
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/hotels">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
-                  <Link to="/hotels">Mg Road</Link>
-                  <Link to="/hotels">Rajaji nagar</Link>
+                  {UT?.map((item: any) => (
+                    <Link to="/hotels">{item.name}</Link>
+                  ))}
                 </Box>
               </Box>
               <Box>All Cities</Box>

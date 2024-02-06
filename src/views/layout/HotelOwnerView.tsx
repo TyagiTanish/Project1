@@ -110,6 +110,7 @@ export default function HotelOwnerView() {
   const [open2, setOpen2] = React.useState(false);
   const navigate = useNavigate();
 
+  const [selectedIndex, setSelectedIndex] = React.useState(0);
   const [screenSize, setScreenSize] = React.useState<any>(window.outerWidth);
 
   React.useEffect(() => {
@@ -137,6 +138,14 @@ export default function HotelOwnerView() {
       setOpen2(false);
     }
   };
+
+  const handleListItemClick = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    index: number
+  ) => {
+    setSelectedIndex(index);
+  };
+
   return (
     <>
       <Stack direction={"row"}>
@@ -201,22 +210,27 @@ export default function HotelOwnerView() {
           </DrawerHeader>
 
           <List>
-            {open && (
+            {/* {open && (
               <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
                 DashBoard
               </Typography>
-            )}
+            )} */}
             <ListItem disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? "initial" : "center",
                   px: 2.5,
+
                   "&:hover": {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 0 ? 100 : null,
+                  backgroundColor: selectedIndex === 0 ? "lightgray" : null,
                 }}
+                // selected={selectedIndex === 0}
+                onClick={(event) => handleListItemClick(event, 0)}
               >
                 <ListItemIcon
                   sx={{
@@ -249,8 +263,15 @@ export default function HotelOwnerView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 1 ? 100 : null,
+                  backgroundColor: selectedIndex === 1 ? "lightgray" : null,
                 }}
-                onClick={() => navigate("/member/hotels")}
+                // selected={selectedIndex === 1}
+                onClick={(event) => {
+                  handleListItemClick(event, 1);
+                  navigate("/member/hotels");
+                }}
+                // onClick={() => navigate("/member/hotels")}
               >
                 <ListItemIcon
                   sx={{
@@ -283,8 +304,15 @@ export default function HotelOwnerView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 2 ? 100 : null,
+                  backgroundColor: selectedIndex === 2 ? "lightgray" : null,
                 }}
-                onClick={() => navigate("/member/bookings")}
+                // selected={selectedIndex === 2}
+                onClick={(event) => {
+                  handleListItemClick(event, 2);
+                  navigate("/member/bookings");
+                }}
+                // onClick={() => navigate("/member/bookings")}
               >
                 <ListItemIcon
                   sx={{
@@ -317,8 +345,15 @@ export default function HotelOwnerView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                  borderRadius: selectedIndex === 3 ? 100 : null,
+                  backgroundColor: selectedIndex === 3 ? "lightgray" : null,
                 }}
-                onClick={() => navigate("/member/acceptedBookings")}
+                // selected={selectedIndex === 3}
+                onClick={(event) => {
+                  handleListItemClick(event, 3);
+                  navigate("/member/acceptedBookings");
+                }}
+                // onClick={() => navigate("/member/acceptedBookings")}
               >
                 <ListItemIcon
                   sx={{
