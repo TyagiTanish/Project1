@@ -10,14 +10,24 @@ function BookingDetails() {
   const id = useParams();
   const { request } = useAuth();
   const fetchBookings = async () => {
-    const result = await request.get(`/getBookingDetails/${id.id}`);
-    console.log(result.data[0]);
-    setData(result.data[0]);
+    if(Object.keys(id).length === 0){
+      const result = await request.get(`/getData`);
+      setData(result.data);
+    }
+    else{
+     
+     
+      const result = await request.get(`/getBookingDetails/${id.id}`);
+      console.log(result.data[0]);
+      setData(result.data[0]);
+   
+    }
+  
   };
 
-  React.useEffect(() => {
+  React.useMemo(() => {
     fetchBookings();
-  }, []);
+  }, [id.id]);
 
   const [screenSize, setScreenSize] = React.useState(window.outerWidth);
   React.useEffect(() => {
@@ -32,38 +42,29 @@ function BookingDetails() {
 
   return (
     <>
-      <Stack sx={{ m: 5 }}>
-        {/* <Typography
-          sx={{
-            color: "green",
-            fontSize: 30,
-            fontWeight: 700,
-            mb: 2,
-            ml: "10%",
-          }}
-        >
-          Thanks for staying with us!
-        </Typography> */}
-        {/* <Button>Print</Button> */}
+    
         <Stack
           border={"1px solid lightgray"}
           p={3}
-          width={"70%"}
+          width={"48%"}
           alignSelf={"center"}
+          marginTop={8}
+        overflow={'auto'}
+        height={620}
         >
          {data?.paymentStatus === 'unpaid' ?<BookingProgress step={1}  />:<BookingProgress step={2} />}
         
           <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'} >
-            <Typography sx={{ fontSize: 25, fontWeight: 600 }} mt={5} >
+            <Typography sx={{ fontSize: 20, fontWeight: 600 }} mt={5} >
               Booking Id
             </Typography>
-            <span style={{ marginTop: 20,fontWeight:'bold' }}>
+            <span style={{ marginTop: 14,fontWeight:'bold' }}>
               {` Booked by ${data?.userId?.name} on ${
                 data?.bookFrom?.split("T")[0]
               }`}
             </span>
           </Stack>
-          <Typography sx={{ fontSize: 18 }}>{data?._id}</Typography>
+          <Typography sx={{ fontSize: 16 }}>{data?._id}</Typography>
           <Divider sx={{ borderBottomWidth: 2.5, mt: 3 }} />
           {/* <Divider sx={{ width: "100%", alignSelf: "center" }} />
           <Divider sx={{ width: "100%", alignSelf: "center" }} /> */}
@@ -109,7 +110,7 @@ function BookingDetails() {
           <Divider sx={{ borderBottomWidth: 2.5, mt: 3 }} />
           {screenSize <= 768 ? (
             <>
-              <Stack mt={3}>
+              <Stack mt={3}  >
                 <Stack direction={"row"}>
                   <Stack>
                     <Typography>Primary Guest</Typography>
@@ -160,43 +161,43 @@ function BookingDetails() {
               </Stack>
             </>
           ) : (
-            <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
+            <Stack direction={"row"} justifyContent={"space-between"} mt={3} >
               <Stack>
-                <Stack direction={"row"} spacing={{ xl: 30, lg: 15, md: 3 }}>
-                  <Stack>
-                    <Typography>Primary Guest</Typography>
-                    <Typography>{data?.userId?.name}</Typography>
+                <Stack direction={"row"} spacing={{ xl: 15, lg: 15, md: 3 }}>
+                  <Stack > 
+                    <Typography sx={{fontSize:15}}>Primary Guest</Typography>
+                    <Typography sx={{fontSize:15}}>{data?.userId?.name}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check In</Typography>
-                    <Typography>{data?.bookFrom?.split("T")[0]}</Typography>
+                    <Typography sx={{fontSize:15}}>Check In</Typography>
+                    <Typography sx={{fontSize:15}}>{data?.bookFrom?.split("T")[0]}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check In Time</Typography>
-                    <Typography>12:00 PM</Typography>
+                    <Typography sx={{fontSize:15}}>Check In Time</Typography>
+                    <Typography sx={{fontSize:15}}>12:00 PM</Typography>
                   </Stack>
                 </Stack>
                 <Stack
                   direction={"row"}
                   mt={3}
-                  spacing={{ xl: 30, lg: 15, md: 3 }}
+                  spacing={{ xl: 15, lg: 15, md: 3 }}
                 >
                   <Stack>
-                    <Typography>Mobile Number</Typography>
-                    <Typography>{data?.userId?.phone}</Typography>
+                    <Typography sx={{fontSize:15}}>Mobile Number</Typography>
+                    <Typography sx={{fontSize:15}}>{data?.userId?.phone}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check Out</Typography>
-                    <Typography>{data?.bookTo?.split("T")[0]}</Typography>
+                    <Typography sx={{fontSize:15}}>Check Out</Typography>
+                    <Typography sx={{fontSize:15}}>{data?.bookTo?.split("T")[0]}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check Out Time</Typography>
-                    <Typography>11:00 AM</Typography>
+                    <Typography sx={{fontSize:15}}>Check Out Time</Typography>
+                    <Typography sx={{fontSize:15}}>11:00 AM</Typography>
                   </Stack>
                 </Stack>
               </Stack>
               <Stack>
-                <Typography sx={{ fontSize: 24, fontWeight: 700 }}>
+                <Typography sx={{ fontSize: 20, fontWeight: 700 }}>
                   {data?.totalDays} Night
                 </Typography>
                 <Stack
@@ -205,12 +206,12 @@ function BookingDetails() {
                   mt={5}
                   spacing={5}
                 >
-                  <Typography sx={{ fontSize: 12 }}>
+                  <Typography sx={{ fontSize: 13 }}>
                     {" "}
                     {data?.totalGuests} Guests
                   </Typography>
                   <Stack>
-                    <Typography> {data?.totalRooms} Room</Typography>
+                    <Typography sx={{fontSize:14}}> {data?.totalRooms} Room</Typography>
                     {/* <Typography>Classic</Typography> */}
                   </Stack>
                 </Stack>
@@ -246,7 +247,7 @@ function BookingDetails() {
             </Stack>
           </Stack>
         </Stack>
-      </Stack>
+ 
     </>
   );
 }
