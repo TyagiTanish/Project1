@@ -6,16 +6,46 @@ import {
   Divider,
   IconButton,
   Stack,
+  TextField,
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { hotelId, roomDetails } from "./redux/user/userSlice";
+import DatePicker from "./DatePicker";
 
 function RoomDialog(props: any) {
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
+  const [guests, setGuests] = useState(0);
+  const [totalRooms, setTotalRooms] = useState(0);
+
+  useEffect(() => {
+    var result = 0;
+    var totalRooms = 0;
+    rooms.forEach((element: any) => {
+      result = result + +element.guest;
+      totalRooms = totalRooms + 1;
+    });
+    setTotalRooms(totalRooms);
+    setGuests(result);
+
+    setRooms(rooms);
+  }, [rooms]);
+  // useMemo(() => {
+  localStorage.setItem(
+    "Rooms&Guests",
+    JSON.stringify({ Rooms: totalRooms, Guests: guests })
+  );
+
   // console.log(props?.details);
   const [roomImage, setRoomImage] = useState(0);
   const navigate = useNavigate();
@@ -52,7 +82,7 @@ function RoomDialog(props: any) {
         </Tooltip>
       </Stack>
       <Divider />
-      <Stack direction={"row"} padding={2} spacing={3} >
+      <Stack direction={"row"} padding={2} spacing={3}>
         <Stack width={"45%"}>
           {/* <Stack direction={"column"} spacing={4}>
             <Box
@@ -98,7 +128,7 @@ function RoomDialog(props: any) {
           <Stack
             direction={"column"}
             spacing={2}
-            overflow={'auto'}
+            overflow={"auto"}
             height={"56%"}
             marginTop={"2%"}
             // width={"%"}
@@ -113,12 +143,12 @@ function RoomDialog(props: any) {
               dangerouslySetInnerHTML={{
                 __html: props?.details?.discription,
               }}
-              sx={{ flex: 1,wordBreak:'break-word' }}
+              sx={{ flex: 1, wordBreak: "break-word" }}
             />
             <Typography fontWeight={"bold"} fontSize={18}>
               Hotel Amenities
             </Typography>
-            <Stack gap={2} direction={"row"} sx={{flexWrap:'wrap'}}>
+            <Stack gap={2} direction={"row"} sx={{ flexWrap: "wrap" }}>
               {/* <li>Ac</li>
               <li>42” LED Smart TV</li>
               <li>Coffee and tea maker</li>
@@ -128,7 +158,7 @@ function RoomDialog(props: any) {
               <li>Minibar upon request</li> */}
               {props?.details?.amenities.map((item: any, i: any) => (
                 // console.log(item)
-                <li style={{minWidth:200}} >{item}</li>
+                <li style={{ minWidth: 200 }}>{item}</li>
               ))}
             </Stack>
             {/* <Stack spacing={1}>
@@ -142,9 +172,29 @@ function RoomDialog(props: any) {
             </Stack> */}
           </Stack>
         </Stack>
-        <div style={{border:'1px solid lightgray'}}></div>
+        <div style={{ border: "1px solid lightgray" }}></div>
         <Stack width={"50%"}>
-          <Stack height={"75%"}></Stack>
+          <Stack height={"75%"}>
+            <Typography>Date:</Typography>
+            <Stack width={"60%"} mb={3}>
+              <DatePicker />
+            </Stack>
+            <Typography>Days:</Typography>
+            <Stack width={"60%"} mt={1}>
+              {" "}
+              <TextField
+                id="outlined-basic"
+                variant="outlined"
+                sx={{
+                  ml: 0,
+                  fontWeight: "bolder",
+                  bgcolor: "white",
+                }}
+                value={`${rooms.length} Room , ${guests} guest`}
+                onClick={(event: any) => handleClick(event)}
+              />
+            </Stack>
+          </Stack>
           <Divider />
           <Stack direction={"row"} spacing={2}>
             {" "}
@@ -199,12 +249,14 @@ function RoomDialog(props: any) {
               disabled={
                 props?.details?.isAvailable === "false" ||
                 props?.details?.roomQuantity === "0" ||
-                (JSON.parse(Rooms)?.Rooms > props?.details?.roomQuantity)
+                JSON.parse(Rooms)?.Rooms > props?.details?.roomQuantity
               }
             >
-              { props?.details?.isAvailable === "false" ||
-                props?.details?.roomQuantity === "0" ||
-                JSON.parse(Rooms)?.Rooms > props?.details?.roomQuantity ? ('Currently Unavailable'):('Book Now ')}
+              {props?.details?.isAvailable === "false" ||
+              props?.details?.roomQuantity === "0" ||
+              JSON.parse(Rooms)?.Rooms > props?.details?.roomQuantity
+                ? "Currently Unavailable"
+                : "Book Now "}
             </Button>
           </Stack>
         </Stack>
