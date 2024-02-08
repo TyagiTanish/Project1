@@ -182,14 +182,13 @@ const Billing = () => {
       ) : (
         <>
           <Box>
-            <IconButton href="/" sx={{ ml: 2 }}>
-              <Logo />
-            </IconButton>
+
             <Stack
               direction={"row"}
               spacing={10}
               justifyItems={"center"}
               ml={{ sm: 10, md: 15, lg: 20, xl: 30 }}
+              mt={10}
             >
               <Stack width={"40%"}>
                 <form onSubmit={handleSubmit(Submit)}>
