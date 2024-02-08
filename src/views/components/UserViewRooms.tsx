@@ -14,7 +14,8 @@ function UserViewRooms({ hotels }: any) {
   const handleOpen = () => {
     setOpen(true);
   };
-  // console.log(hotels);
+  // console.log(hotels[0]?._id);
+  const hotelId: any = hotels[0]?._id;
   const handleDialog = (item: any) => {
     setOpen2(true);
     setDetails(item);
@@ -22,7 +23,6 @@ function UserViewRooms({ hotels }: any) {
   const handleClose = () => {
     setOpen2(false);
   };
-
 
   return (
     <>
@@ -67,7 +67,7 @@ function UserViewRooms({ hotels }: any) {
                 dangerouslySetInnerHTML={{
                   __html: item?.discription.slice(0, 90),
                 }}
-                sx={{ flex: 1,wordBreak:'break-word'}}
+                sx={{ flex: 1, wordBreak: "break-word" }}
               />
             </Typography>
             <Stack direction={"row"} justifyContent={"space-between"}>
@@ -111,7 +111,6 @@ function UserViewRooms({ hotels }: any) {
                 handleOpen();
                 handleDialog(item);
               }}
-            
             >
               Select & Book
             </Button>
@@ -119,7 +118,12 @@ function UserViewRooms({ hotels }: any) {
         ))}
       </Stack>
       {open && (
-        <RoomDialog open={open2} handleClose={handleClose} details={details} />
+        <RoomDialog
+          open={open2}
+          handleClose={handleClose}
+          details={details}
+          hotelId={hotelId}
+        />
       )}
     </>
   );
