@@ -200,11 +200,11 @@ export default function SuperAdminView() {
           </DrawerHeader>
 
           <List>
-            {open && (
+            {/* {open && (
               <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
                 DashBoard
               </Typography>
-            )}
+            )} */}
             <ListItem disablePadding sx={{ display: "block" }}>
               <ListItemButton
                 sx={{
@@ -236,33 +236,35 @@ export default function SuperAdminView() {
                 />
               </ListItemButton>
             </ListItem>
-            <ListItemButton onClick={handleClick}>
-              <ListItemIcon>
-                <PeopleIcon />
-              </ListItemIcon>
-              <ListItemText primary="All Users" />
-              {open2 ? <ExpandLess /> : <ExpandMore />}
-            </ListItemButton>
-            <Collapse in={open2} timeout="auto" unmountOnExit>
-              <List component="div" disablePadding>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText
-                    primary="Customers"
-                    onClick={() => {
-                      navigate("/superAdmin/users");
-                    }}
-                  />
-                </ListItemButton>
-                <ListItemButton sx={{ pl: 4 }}>
-                  <ListItemText
-                    primary="Members"
-                    onClick={() => {
-                      navigate("/superAdmin/members");
-                    }}
-                  />
-                </ListItemButton>
-              </List>
-            </Collapse>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton onClick={handleClick}>
+                <ListItemIcon>
+                  <PeopleIcon />
+                </ListItemIcon>
+                <ListItemText primary="All Users" />
+                {open2 ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={open2} timeout="auto" unmountOnExit>
+                <List component="div" disablePadding>
+                  <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemText
+                      primary="Customers"
+                      onClick={() => {
+                        navigate("/superAdmin/users");
+                      }}
+                    />
+                  </ListItemButton>
+                  <ListItemButton sx={{ pl: 4 }}>
+                    <ListItemText
+                      primary="Members"
+                      onClick={() => {
+                        navigate("/superAdmin/members");
+                      }}
+                    />
+                  </ListItemButton>
+                </List>
+              </Collapse>
+            </ListItem>
           </List>
           {/* <ListItem disablePadding sx={{ display: "block" }}>
               <ListItemButton

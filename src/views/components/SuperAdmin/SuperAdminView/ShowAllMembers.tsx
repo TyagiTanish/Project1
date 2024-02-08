@@ -12,31 +12,35 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import { DataGrid, GridActionsCellItem, GridColDef, GridSortModel } from "@mui/x-data-grid";
+import {
+  DataGrid,
+  GridActionsCellItem,
+  GridColDef,
+  GridSortModel,
+} from "@mui/x-data-grid";
 import ShowHotelsModal from "./ShowHotelsModal";
-
-
+import Switch from "@mui/material/Switch";
+import Tooltip from "@mui/material/Tooltip";
+import { enqueueSnackbar } from "notistack";
 
 /**
  * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
  */
 
-
 export default function ShowAllMembers() {
   const [expanded, setExpanded] = React.useState<string | false>(false);
-  const [id,setId]=useState(0);
+  const [id, setId] = useState(0);
   const handleChange =
     (panel: string) => (event: React.SyntheticEvent, isExpanded: boolean) => {
       setExpanded(isExpanded ? panel : false);
     };
-    const [paginationModel, setPaginationModel] = React.useState<any>({
-      page: 0,
-      pageSize: 5,
-    });
+  const [paginationModel, setPaginationModel] = React.useState<any>({
+    page: 0,
+    pageSize: 5,
+  });
 
-
-    const [length, setLength] = React.useState();
-    const [queryOptions, setQueryOptions] = React.useState<any>();
+  const [length, setLength] = React.useState();
+  const [queryOptions, setQueryOptions] = React.useState<any>();
   const [open, setOpen] = React.useState(false);
   const [hotels, setHotels] = React.useState<any>([]);
   const [modalHotel, setModalHotel] = React.useState<any>([]);
@@ -52,7 +56,7 @@ export default function ShowAllMembers() {
     //   item.id = i + 1;
     //   return item;
     // });
-    setId(id)
+    setId(id);
     setLength(data.length);
     setHotels(data);
   };
@@ -62,39 +66,53 @@ export default function ShowAllMembers() {
     },
     []
   );
-  useMemo(async() => {
-    const data = (await request.get(`/getHotelForParticularMember/${id}`,{
-      params:{
-        limit: paginationModel.pageSize || null,
-        page: paginationModel.page,
-        orderby: queryOptions?.sortModel[0]?.field || "_id",
-        sortby: queryOptions?.sortModel[0]?.sort || "asc",
-      }
-      
-
-    })).data;
+  useMemo(async () => {
+    const data = (
+      await request.get(`/getHotelForParticularMember/${id}`, {
+        params: {
+          limit: paginationModel.pageSize || null,
+          page: paginationModel.page,
+          orderby: queryOptions?.sortModel[0]?.field || "_id",
+          sortby: queryOptions?.sortModel[0]?.sort || "asc",
+        },
+      })
+    ).data;
     // const hotelsdata: any = data?.map((item: any, i: any) => {
     //   item.id = i + 1;
     //   return item;
     // });
     setHotels(data);
-
-  }, [paginationModel,id,queryOptions]);
-useMemo(()=>{
-    getMembers()
-},[])
-console.log(length)
+  }, [paginationModel, id, queryOptions]);
+  useMemo(() => {
+    getMembers();
+  }, []);
+  console.log(length);
   const handleClick = async (data: any) => {
- 
     setModalHotel(data);
     setOpen(true);
   };
   const handleClose = (value: string) => {
     setOpen(false);
   };
+  const handleSwitch = async (e: any, value: any) => {
+    // console.log(value._id);
+    const id = value?._id;
+    const checked = e.target.checked;
+    const result = await request.put("/setHotelAvailability", { checked, id });
+    if (result?.data) {
+      enqueueSnackbar("Add to user view", {
+        variant: "success",
+        autoHideDuration: 1000,
+      });
+    } else {
+      enqueueSnackbar("Removed from user view", {
+        variant: "error",
+        autoHideDuration: 1000,
+      });
+    }
+  };
 
   const columns: GridColDef[] = [
-   
     {
       field: "hotelName",
       width: 270,
@@ -164,6 +182,23 @@ console.log(length)
               handleClick(value?.row);
             }}
           />,
+          //Switch
+          <GridActionsCellItem
+            icon={
+              <Tooltip title="Show on Site">
+                {value?.row?.availability === "true" ? (
+                  <Switch defaultChecked />
+                ) : (
+                  <Switch />
+                )}
+              </Tooltip>
+            }
+            label="view"
+            sx={{
+              color: "lightgray",
+            }}
+            onChange={(e: any) => handleSwitch(e, value?.row)}
+          />,
         ];
       },
       renderHeader: () => <strong style={{ fontSize: "large" }}>Action</strong>,
@@ -172,8 +207,6 @@ console.log(length)
 
   return (
     <>
-
-
     {/* using accordion to display hotels of members  */}
       <Box >
         <Typography
@@ -205,10 +238,8 @@ console.log(length)
               textAlign: "left",
               margin: 0,
               padding: 0,
-            
+
               border: "1px solid lightgray",
-           
-         
             }}
             expanded={expanded === `panel${i}`}
             onChange={handleChange(`panel${i}`)}
@@ -246,7 +277,6 @@ console.log(length)
               Hotel lists
             </Typography>
 
-
             {/* server side sorting , pagination using data grid */}
             <DataGrid
               rows={hotels}
@@ -261,16 +291,12 @@ console.log(length)
               onPaginationModelChange={setPaginationModel}
               sortingMode="server"
               onSortModelChange={handleSortModelChange}
-        
             />
           </Accordion>
         ))}
 
         {open && (
-
-
-
-// view details button
+          // view details button
           <ShowHotelsModal
             open={open}
             onClose={handleClose}
