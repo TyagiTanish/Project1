@@ -15,7 +15,7 @@ import {
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import moment from "moment";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import React, { useEffect, useReducer, useState } from "react";
+import React, { useEffect, useMemo, useReducer, useState } from "react";
 
 import { useForm } from "react-hook-form";
 import Logo from "../Logo";
@@ -30,11 +30,11 @@ import { format } from "date-fns";
 import PaymentDialogBox from "./paymentDialogBox";
 import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
+import { useParams } from "react-router-dom";
 
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
  */
-
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
@@ -43,22 +43,33 @@ const Billing = () => {
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const user = useSelector((state: any) => state.userReducer.user);
-  const roomDetails = useSelector(
-    (state: any) => state.userReducer.roomDetails
-  );
-  // console.log("Hotel Id", hotelId, "roomDetails", roomDetails);
+  const [roomDetails, setroomDetails] = useState<any>();
+  // const roomDetails = useSelector(
+  //   (state: any) => state.userReducer.roomDetails
+  // );
   const { request } = useAuth();
-
+  const id = useParams();
+  // console.log(id);
   const fetchHotel: any = async () => {
-    //function to get all hotel details
-    const result = await request.get(`/getHotel/${hotelId}`);
+    const result = await request.get(`/getHotel/${id.id}`);
     sethotelDetail(result.data);
+    console.log(result.data);
   };
   useEffect(() => {
     fetchHotel();
   }, []);
   const [difference, setDifference] = useState<any>(null);
+  // const roomDetails =
+  useMemo(() => {
+    hotelDetail[0]?.rooms?.map((item: any, i: any) => {
+      if (item?._id === id.hid) {
+        setroomDetails(item);
+      }
+    });
 
+    // setroomDetails(roomDetails);
+  }, [hotelDetail]);
+  // console.log(roomDetails);
   const data: any = localStorage.getItem("Date");
   var startdate: any = "";
   var enddate: any = "";
@@ -110,7 +121,6 @@ const Billing = () => {
   const roomsGuests: any = localStorage.getItem("Rooms&Guests");
   const totalRooms: any = JSON.parse(roomsGuests)?.Rooms;
   const totalGuests: any = JSON.parse(roomsGuests)?.Guests;
-  // console.log(roomsGuests, totalRooms);
 
   interface User {
     fullName: any;
@@ -165,7 +175,7 @@ const Billing = () => {
     };
     setResult(result);
     setDisplay(true);
-    setSubmitButton(false)
+    setSubmitButton(false);
     // socket.emit("send_Message", result);
   };
 

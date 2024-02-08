@@ -27,7 +27,9 @@ function RoomDialog(props: any) {
   const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const [guests, setGuests] = useState(0);
   const [totalRooms, setTotalRooms] = useState(0);
-
+  console.log(props?.details?._id);
+  const roomId = props?.details?._id;
+  console.log(roomId);
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -40,17 +42,13 @@ function RoomDialog(props: any) {
 
     setRooms(rooms);
   }, [rooms]);
-  // useMemo(() => {
   localStorage.setItem(
     "Rooms&Guests",
     JSON.stringify({ Rooms: totalRooms, Guests: guests })
   );
-
-  // console.log(props?.details);
   const [roomImage, setRoomImage] = useState(0);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  // const setRedux = (id: any) => {
   const reduxValue: any = {
     price: props?.details?.price,
     type: props?.details?.roomType,
@@ -84,18 +82,6 @@ function RoomDialog(props: any) {
       <Divider />
       <Stack direction={"row"} padding={2} spacing={3}>
         <Stack width={"45%"}>
-          {/* <Stack direction={"column"} spacing={4}>
-            <Box
-              component="img"
-              sx={{
-                width: "97%",
-                //  height:"100%",
-                backgroundSize: "cover",
-              }}
-              alt="The house from the offer."
-              src={`http://localhost:8000/${props?.details?.photos[1].path}`}
-            />
-          </Stack> */}
           <Box>
             <Stack direction={"row"} spacing={0.2}>
               <Box
@@ -131,14 +117,12 @@ function RoomDialog(props: any) {
             overflow={"auto"}
             height={"56%"}
             marginTop={"2%"}
-            // width={"%"}
             p={1}
             textAlign={"justify"}
           >
             <Typography fontWeight={"bold"} fontSize={18}>
               Room Description
             </Typography>
-            {/* <Typography fontSize={14}>{props.details.description}</Typography> */}
             <Box
               dangerouslySetInnerHTML={{
                 __html: props?.details?.discription,
@@ -149,27 +133,10 @@ function RoomDialog(props: any) {
               Hotel Amenities
             </Typography>
             <Stack gap={2} direction={"row"} sx={{ flexWrap: "wrap" }}>
-              {/* <li>Ac</li>
-              <li>42” LED Smart TV</li>
-              <li>Coffee and tea maker</li>
-              <li>Hair dryer</li>
-              <li>Bath amenities</li>
-              <li>Bath robes and slippers</li>
-              <li>Minibar upon request</li> */}
               {props?.details?.amenities.map((item: any, i: any) => (
-                // console.log(item)
                 <li style={{ minWidth: 200 }}>{item}</li>
               ))}
             </Stack>
-            {/* <Stack spacing={1}>
-              <li>24-hour room service</li>
-              <li>Complimentary water bottles</li>
-              <li>In-room safe</li>
-              <li>Iron and ironing board</li>
-              <li>Complimentary high-speed Wi-Fi</li>
-              <li>Daily newspaper upon request</li>
-              <li>Extra bed upon request</li>
-            </Stack> */}
           </Stack>
         </Stack>
         <div style={{ border: "1px solid lightgray" }}></div>
@@ -244,7 +211,7 @@ function RoomDialog(props: any) {
               color="error"
               variant="contained"
               onClick={() => {
-                navigate("/billing");
+                navigate(`/billing/${props?.hotelId}/${roomId}`);
               }}
               disabled={
                 props?.details?.isAvailable === "false" ||
