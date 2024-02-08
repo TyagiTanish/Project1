@@ -15,6 +15,7 @@ import "../../App.css";
 import { useDispatch, useSelector } from "react-redux";
 import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 import RoomSelection from "./RoomSelection";
 
 
@@ -119,7 +120,7 @@ function Seachbar2() {
                 }}
               >
                 <MyLocationIcon />
-                Near me
+                <FormattedMessage defaultMessage="Near me"/>  
               </IconButton>
             </InputAdornment>
           ),
@@ -157,7 +158,7 @@ function Seachbar2() {
                 navigate("./hotels");
               }}
             >
-              Search
+                <FormattedMessage defaultMessage="Search"/>  
               </Button>
     </Stack>
      <RoomSelection

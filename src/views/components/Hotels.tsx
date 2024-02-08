@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-
+// import "mapbox-gl/dist/mapbox-gl.css";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -24,6 +24,7 @@ import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { triggerAsyncId } from "async_hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { hotelId } from "./redux/user/userSlice";
+import { boolean } from "yup";
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -32,18 +33,19 @@ function Hotels({ filteredData, screenSize }: any) {
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
   const [open, setOpen] = useState(false);
+  const [toggle,setToggle]=useState<any>(false);
   const handleClick = useCallback((index:any) => {
     console.log("jjjjjjjjjjjjjjjjj");
-
-  const handleClick = (index: any) => {
     setDetailIndex(index);
     if (index === detailIndex) {
       setDetailIndex("");
     }
-  },[detailIndex,]);
+  },[detailIndex]);
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
+
+
   return (
     <>
       <Box
@@ -112,16 +114,11 @@ function Hotels({ filteredData, screenSize }: any) {
                 >
                   <Box
                     component="img"
-                {item?.availability === "true" ? (
-                  <Stack
-                    direction={"row"}
                     sx={{
-                      p: 2,
-                      m: 2,
-                      justifyContent: "space-between",
-                      direction: "row",
-                      border: "1px solid lightgrey",
-                      borderRadius: "10px",
+                      width: { sm: "150px ", lg: "200px", md: "140px" },
+                      height: { lg: "200px", sm: "15vh", md: "15vh" },
+                      borderTopLeftRadius: "20px",
+                      borderBottomLeftRadius: "20px",
                     }}
                     alt="The house from the offer."
                     // src={require(`./${item.photo}`)}
@@ -129,30 +126,29 @@ function Hotels({ filteredData, screenSize }: any) {
                   />
                   <Stack m={2} width={400}>
                     <Typography
-                  >
-                    <Box
-                      component="img"
                       sx={{
-                        width: { sm: "150px ", lg: "200px", md: "140px" },
-                        height: { lg: "200px", sm: "15vh", md: "15vh" },
-                        borderTopLeftRadius: "20px",
-                        borderBottomLeftRadius: "20px",
+                        fontWeight: "bold",
+                        // fontSize: { sm: "15px", lg: "20px", md: "18px" },
+                        opacity: 0.8,
+                        // width: { sm: "150px", lg: "200px", md: "180px" },
                       }}
-                      alt="The house from the offer."
-                      // src={require(`./${item.photo}`)}
-                      src={`http://localhost:8000/${item?.photo}`}
-                    />
-
-                    <Stack m={2} width={400}>
+                    >
+                      {item.hotelName}
+                    </Typography>
+                    <Stack
+                      direction={"row"}
+                      sx={{ alignItems: "center" }}
+                      gap={2}
+                    >
                       <Typography
                         sx={{
                           fontWeight: "bold",
-                          // fontSize: { sm: "15px", lg: "20px", md: "18px" },
-                          opacity: 0.8,
-                          // width: { sm: "150px", lg: "200px", md: "180px" },
+                          fontSize: { sm: "12px", lg: "18px", md: "14px" },
+                          opacity: 0.5,
+                          // marginTop: "10px",
                         }}
                       >
-                        {item.hotelName}
+                        Hotel
                       </Typography>
                       <Button
                         sx={{
@@ -185,90 +181,24 @@ function Hotels({ filteredData, screenSize }: any) {
                     <Stack spacing={2}>
                       <Stack
                         direction={"row"}
-                        sx={{ alignItems: "center" }}
-                        gap={2}
+                        sx={{
+                          color: "#D4164B",
+                          fontWeight: "bold",
+                        }}
                       >
+                        <DoneIcon
+                          sx={{
+                            fontSize: { sm: "12px", lg: "15px", md: "14px" },
+                            fontWeight: "bold",
+                          }}
+                        />
                         <Typography
                           sx={{
-                            fontWeight: "bold",
-                            fontSize: { sm: "12px", lg: "18px", md: "14px" },
-                            opacity: 0.5,
-                            // marginTop: "10px",
-                          }}
-                        >
-                          Hotel
-                        </Typography>
-                        <Button
-                          sx={{
-                            color: "grey",
-                            // ml: { sm: 0, lg: 12 },
-                            // mt: { sm: "6px" },
-                            fontSize: { sm: 8, lg: 10, md: 10 },
-                            // width: { sm: "85px", lg: 100, md: 100 },
-                          }}
-                          onClick={() => {
-                            handleClick(i);
-                          }}
-                        >
-                          View More
-                          <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
-                        </Button>
-                      </Stack>
-                      {/* <Typography
-                  sx={{
-                    fontWeight: "bold",
-                    fontSize: "15px",
-                    opacity: 0.5,
-                    marginTop: "5px",
-                  }}
-                 >
-                  {item.rating}
-                 </Typography> */}
-                    </Stack>
-
-                    <Stack
-                      direction={"row"}
-                      spacing={2}
-                      sx={{
-                        border: "1px solid lightgray",
-                        height: "85px",
-                        borderRadius: "20px",
-                        padding: { sm: 1, lg: 2, md: 1 },
-                        marginTop: { sm: "8px" },
-                      }}
-                    >
-                      <Stack spacing={2}>
-                        <Stack
-                          direction={"row"}
-                          sx={{
-                            color: "#D4164B",
+                            fontSize: { sm: "10px", lg: "12px", md: "10px" },
                             fontWeight: "bold",
                           }}
                         >
-                          <DoneIcon
-                            sx={{
-                              fontSize: { sm: "12px", lg: "15px", md: "14px" },
-                              fontWeight: "bold",
-                            }}
-                          />
-                          <Typography
-                            sx={{
-                              fontSize: { sm: "10px", lg: "12px", md: "10px" },
-                              fontWeight: "bold",
-                            }}
-                          >
-                            Free Cancelation
-                          </Typography>
-                        </Stack>
-
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { sm: "15px", lg: "18px", md: "15px" },
-                            opacity: 0.7,
-                          }}
-                        >
-                          ₹{item?.rooms[0]?.price}
+                          Free Cancelation
                         </Typography>
                       </Stack>
                       <Typography
@@ -303,45 +233,20 @@ function Hotels({ filteredData, screenSize }: any) {
                         endIcon={<KeyboardArrowRightIcon />}
                         sx={{
                           "&:hover": {
-                      <Stack spacing={1}>
-                        <Chip
-                          label="Our Lowest Price"
-                          variant="outlined"
-                          color="error"
-                          sx={{
-                            width: { sm: 150, lg: 150, md: 120 },
-                            float: "right",
-                          }}
-                        />
-                        <Button
-                          variant="contained"
-                          // href="/billing"
-                          // href="/viewDeal"
-                          onClick={() => {
-                            setRedux(item._id);
-                            navigate(`/viewDeal/${item._id}`);
-                            // <ViewDeal />;
-                          }}
-                          endIcon={<KeyboardArrowRightIcon />}
-                          sx={{
-                            "&:hover": {
-                              backgroundColor: "#D4164B",
-                            },
                             backgroundColor: "#D4164B",
-                            width: { sm: 150, lg: 150, md: 120 },
-                            fontSize: { md: 12, lg: 14 },
-                            height: { md: 30 },
-                            textTransform: "none",
-                          }}
-                        >
-                          View Deal
-                        </Button>
-                      </Stack>
+                          },
+                          backgroundColor: "#D4164B",
+                          width: { sm: 150, lg: 150, md: 120 },
+                          fontSize: { md: 12, lg: 14 },
+                          height: { md: 30 },
+                          textTransform: "none",
+                        }}
+                      >
+                        View Deal
+                      </Button>
                     </Stack>
                   </Stack>
                 </Stack>
-                ) : null}
-
                 {/* </Box> */}
                 {detailIndex === i ? (
                   <HotelDetails
@@ -367,7 +272,7 @@ function Hotels({ filteredData, screenSize }: any) {
             >
               <HighlightOffIcon />
             </IconButton>
-            <SimpleMap filteredData={filteredData}  handleClick={handleClick} />
+            <SimpleMap setToggle={setToggle}  filteredData={filteredData} />
           </>
         )}
       </Box>

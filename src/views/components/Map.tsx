@@ -5,7 +5,7 @@ import { useSelector } from "react-redux";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box, Stack } from "@mui/material";
 
-const SimpleMap = ({  filteredData,  handleClick}:any) => {
+const SimpleMap = ({  filteredData,setToggle}:any) => {
   const location = useSelector((state: any) => state.userReducer.location);
   //  console.log(filteredData)
   //  console.log('5555555555555555',detailIndex)
@@ -15,6 +15,7 @@ const SimpleMap = ({  filteredData,  handleClick}:any) => {
   //     setDetailIndex("");
   //   }
   // };
+
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoidGFuaXNoLXR5YWdpIiwiYSI6ImNscmV0YWJmcTFocmoybHFpZDQ3dHFkdzMifQ.szsjsVkaiJpDsGUe7LR_4A";
@@ -57,7 +58,7 @@ const SimpleMap = ({  filteredData,  handleClick}:any) => {
         window.location.href = `#${location?.id}`;
         console.log(location?.id)
         const lct =location?.id as any
-        handleClick(lct );
+        // handleClick(lct );
       });
     });
     return () => map.remove();
@@ -82,6 +83,21 @@ const SimpleMap = ({  filteredData,  handleClick}:any) => {
   );
 };
 export default SimpleMap;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
