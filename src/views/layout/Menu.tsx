@@ -24,7 +24,7 @@ import AccountBoxIcon from "@mui/icons-material/AccountBox";
  */
 export default function AccountMenu() {
   const user = useSelector((state: any) => state.userReducer.user);
-  console.log(user);
+  // console.log(user);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -107,7 +107,6 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-
         <Divider />
         <MenuItem onClick={openProfile}>
           <ListItemIcon>
