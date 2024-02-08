@@ -4,11 +4,8 @@ import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box, Stack } from "@mui/material";
-interface m{
-  filteredData?:any,
-  handleClick:(index: any) => void;
-}
-const SimpleMap = ({  filteredData,  handleClick}:m) => {
+
+const SimpleMap = ({  filteredData,  handleClick}:any) => {
   const location = useSelector((state: any) => state.userReducer.location);
   //  console.log(filteredData)
   //  console.log('5555555555555555',detailIndex)
