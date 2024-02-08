@@ -8,6 +8,8 @@ import {
   Box,
   Button,
   Stack,
+  TableCell,
+  TableRow,
   Typography,
 } from "@mui/material";
 import { DataGrid, GridActionsCellItem, GridColDef, GridSortModel } from "@mui/x-data-grid";
@@ -173,7 +175,7 @@ console.log(length)
 
 
     {/* using accordion to display hotels of members  */}
-      <Box sx={{ width: { sm: 700, lg: 1200, xl: 1600 } }}>
+      <Box >
         <Typography
           sx={{
             fontWeight: "bold",
@@ -185,14 +187,14 @@ console.log(length)
         >
           Member Details-
         </Typography>
-        <Stack direction={"row"} justifyContent={"space-between"} width={"94%"}>
-          <Typography fontSize={"large"} sx={{ ml: 2 }}>
+        <Stack direction={"row"} justifyContent={"space-between"} width={"100%"}>
+          <Typography fontSize={"large"} sx={{ ml: 4 }}>
             <strong>Name</strong>
           </Typography>
           <Typography fontSize={"large"}>
             <strong>Email</strong>
           </Typography>
-          <Typography fontSize={"large"}>
+          <Typography fontSize={"large"} sx={{mr:2}} >
             <strong>Phone Number</strong>
           </Typography>
         </Stack>
@@ -206,7 +208,7 @@ console.log(length)
             
               border: "1px solid lightgray",
            
-              width: "95%",
+         
             }}
             expanded={expanded === `panel${i}`}
             onChange={handleChange(`panel${i}`)}
@@ -219,16 +221,19 @@ console.log(length)
               }}
             >
               <>
-                <Stack
+                {/* <Stack
                   direction={"row"}
                   justifyContent={"space-between"}
                   width={"100%"}
                   ml={-1}
                 >
-                  <Typography>{item?.name}</Typography>
-                  <Typography>{item?.email}</Typography>
-                  <Typography mr={-1}>{item?.phone}</Typography>
-                </Stack>
+                  <Box m={1}>{item?.name}</Box>
+                  <Box overflow={'auto'} m={1} >{item?.email}</Box>
+                  <Box m={1}>{item?.phone}</Box>
+                </Stack> */}
+                  <TableCell sx={{border:'none',width:'100%'}} >{item?.name}</TableCell>
+                  <TableCell sx={{border:'none',width:'100%'}}  >{item?.email}</TableCell>
+                  <TableCell sx={{border:'none',float:'right'}} >{item?.phone}</TableCell>
               </>
             </AccordionSummary>
             <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>

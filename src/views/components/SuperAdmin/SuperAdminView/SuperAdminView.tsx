@@ -18,20 +18,22 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import Logo from "../../../components/Logo";
-import { Stack } from "@mui/material";
+import Logo from '../../Logo';
+import { Collapse, Stack, Tooltip } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BedIcon from "@mui/icons-material/Bed";
-import Collapse from "@mui/material/Collapse";
+import { Navigate, Outlet } from "react-router";
+import { useNavigate } from "react-router-dom";
+import LogoutIcon from "@mui/icons-material/Logout";
+import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
+import { useSelector } from "react-redux";
+import Language from "../../Language";
 import Menu from "../../../layout/Menu";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
-import StarBorder from "@mui/icons-material/StarBorder";
-// import SearchHotels from "../components/SearchHotels";
-// import AboutHotel from "../components/AboutHotel";
-import { Navigate, Outlet } from "react-router";
-import { useNavigate } from "react-router-dom";
 import PeopleIcon from "@mui/icons-material/People";
+// import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
 
 const openedMixin = (theme: Theme): CSSObject => ({
@@ -102,11 +104,9 @@ const Drawer = styled(MuiDrawer, {
   }),
 }));
 
-/**
- * To show the superAdmin landing page. Markdown is *superAdmin*.
- */
 export default function SuperAdminView() {
-  const theme = useTheme();
+    const user = useSelector((state: any) => state?.userReducer?.user);
+    const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(false);
 
@@ -136,12 +136,11 @@ export default function SuperAdminView() {
 
     window.addEventListener("resize", handleWindowSize);
   });
-
   return (
     <>
-      <Box sx={{ display: "flex" }}>
+      <Stack direction={"row"}>
         <CssBaseline />
-        <AppBar position="fixed" open={open} sx={{ bgcolor: "white" }}>
+        <AppBar open={open} sx={{ bgcolor: "white" }}>
           <Toolbar>
             <Stack
               direction={"row"}
@@ -169,13 +168,19 @@ export default function SuperAdminView() {
                   <MenuIcon sx={{ color: "black" }} />
                 </IconButton>
               </Stack>
-              <Box>
+              <Stack
+                direction={"row"}
+                alignItems={'center'}
+                spacing={2}
+                // ml={{ lg: "85%", md: "87%", sm: "80%" }}
+              >
+                <Language/>
+                <Stack><Typography  color={'black'} fontWeight={'bolder'}  >Hello,{user?.name}</Typography><Typography color={'gray'} fontSize={'0.9rem'} >{user?.role?.toUpperCase()}</Typography></Stack>
                 <Menu />
-              </Box>
+              </Stack>
             </Stack>
           </Toolbar>
         </AppBar>
-
         <Drawer variant="permanent" open={open}>
           <DrawerHeader>
             <Stack
@@ -259,12 +264,113 @@ export default function SuperAdminView() {
               </List>
             </Collapse>
           </List>
+          {/* <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+                onClick={() => navigate("/addhotel")}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <ApartmentOutlinedIcon fontSize="small" />
+                  ) : (
+                    <ApartmentOutlinedIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"Add Hotels"}
+                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
+                />
+              </ListItemButton>
+            </ListItem> */}
+          {/* <List>
+            {open && (
+              <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
+                DashBoard
+              </Typography>
+            )}
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <DashboardIcon fontSize="small" />
+                  ) : (
+                    <DashboardIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"DashBoard"}
+                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
+                />
+              </ListItemButton>
+            </ListItem>
+            <ListItem disablePadding sx={{ display: "block" }}>
+              <ListItemButton
+                sx={{
+                  minHeight: 48,
+                  justifyContent: open ? "initial" : "center",
+                  px: 2.5,
+                  "&:hover": {
+                    borderRadius: 100,
+                    backgroundColor: "lightGray",
+                  },
+                }}
+              >
+                <ListItemIcon
+                  sx={{
+                    minWidth: 0,
+                    mr: open ? 3 : "auto",
+                    justifyContent: "center",
+                  }}
+                >
+                  {open === true ? (
+                    <BedIcon fontSize="small" />
+                  ) : (
+                    <BedIcon sx={{ fontSize: "25px" }} />
+                  )}
+                </ListItemIcon>
+                <ListItemText
+                  primary={"All Hotels"}
+                  sx={{ opacity: open ? 1 : 0 }}
+                />
+              </ListItemButton>
+            </ListItem>
+          </List> */}
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 3 }}>
+        <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>
-      </Box>
+      </Stack>
     </>
   );
 }

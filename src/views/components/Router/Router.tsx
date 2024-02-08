@@ -85,11 +85,7 @@ const router = [
         path: "/myBookings",
         element: <CustomerBooking />,
       },
-      {
-        path: "/AddHotel",
-
-        element: <AddHotelAftrLgn />,
-      },
+     
       {
         path: "/hotels",
         element: (
@@ -132,6 +128,11 @@ const router = [
         ),
       },
     ],
+  },
+  {
+    path: "/AddHotel",
+
+    element: <AddHotelAftrLgn />,
   },
   {
     path: "/login",
