@@ -6,8 +6,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-// import "mapbox-gl/dist/mapbox-gl.css";
-import React, { useEffect, useState } from "react";
+
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Seachbar2 from "./Seachbar2";
@@ -22,10 +22,8 @@ import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { triggerAsyncId } from "async_hooks";
-
 import { useDispatch, useSelector } from "react-redux";
 import { hotelId } from "./redux/user/userSlice";
-
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,21 +32,18 @@ function Hotels({ filteredData, screenSize }: any) {
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
   const [open, setOpen] = useState(false);
+  const handleClick = useCallback((index:any) => {
+    console.log("jjjjjjjjjjjjjjjjj");
 
   const handleClick = (index: any) => {
     setDetailIndex(index);
     if (index === detailIndex) {
       setDetailIndex("");
     }
-  };
-
-  // const handleViewDeal = (item: any) => {
-  //   navigate("/billing");
-  // };
+  },[detailIndex,]);
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
-
   return (
     <>
       <Box
@@ -99,11 +94,24 @@ function Hotels({ filteredData, screenSize }: any) {
         ) : (
           <></>
         )}
-
         {displayMap ? (
           <>
             {filteredData?.map((item: any, i: any) => (
               <>
+                <Stack
+                  id={item?._id}
+                  direction={"row"}
+                  sx={{
+                    p: 2,
+                    m: 2,
+                    justifyContent: "space-between",
+                    direction: "row",
+                    border: "1px solid lightgrey",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Box
+                    component="img"
                 {item?.availability === "true" ? (
                   <Stack
                     direction={"row"}
@@ -115,6 +123,12 @@ function Hotels({ filteredData, screenSize }: any) {
                       border: "1px solid lightgrey",
                       borderRadius: "10px",
                     }}
+                    alt="The house from the offer."
+                    // src={require(`./${item.photo}`)}
+                    src={`http://localhost:8000/${item?.photo}`}
+                  />
+                  <Stack m={2} width={400}>
+                    <Typography
                   >
                     <Box
                       component="img"
@@ -140,6 +154,35 @@ function Hotels({ filteredData, screenSize }: any) {
                       >
                         {item.hotelName}
                       </Typography>
+                      <Button
+                        sx={{
+                          color: "grey",
+                          // ml: { sm: 0, lg: 12 },
+                          // mt: { sm: "6px" },
+                          fontSize: { sm: 8, lg: 10, md: 10 },
+                          // width: { sm: "85px", lg: 100, md: 100 },
+                        }}
+                        onClick={() => {
+                          handleClick(i);
+                        }}
+                      >
+                        View More
+                        <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
+                      </Button>
+                    </Stack>
+                  </Stack>
+                  <Stack
+                    direction={"row"}
+                    spacing={2}
+                    sx={{
+                      border: "1px solid lightgray",
+                      height: "85px",
+                      borderRadius: "20px",
+                      padding: { sm: 1, lg: 2, md: 1 },
+                      marginTop: { sm: "8px" },
+                    }}
+                  >
+                    <Stack spacing={2}>
                       <Stack
                         direction={"row"}
                         sx={{ alignItems: "center" }}
@@ -228,6 +271,38 @@ function Hotels({ filteredData, screenSize }: any) {
                           ₹{item?.rooms[0]?.price}
                         </Typography>
                       </Stack>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: { sm: "15px", lg: "18px", md: "15px" },
+                          opacity: 0.7,
+                        }}
+                      >
+                        ₹{item?.rooms[0]?.price}
+                      </Typography>
+                    </Stack>
+                    <Stack spacing={1}>
+                      <Chip
+                        label="Our Lowest Price"
+                        variant="outlined"
+                        color="error"
+                        sx={{
+                          width: { sm: 150, lg: 150, md: 120 },
+                          float: "right",
+                        }}
+                      />
+                      <Button
+                        variant="contained"
+                        // href="/billing"
+                        // href="/viewDeal"
+                        onClick={() => {
+                          setRedux(item._id);
+                          navigate(`/viewDeal/${item._id}`);
+                          // <ViewDeal />;
+                        }}
+                        endIcon={<KeyboardArrowRightIcon />}
+                        sx={{
+                          "&:hover": {
                       <Stack spacing={1}>
                         <Chip
                           label="Our Lowest Price"
@@ -264,6 +339,7 @@ function Hotels({ filteredData, screenSize }: any) {
                       </Stack>
                     </Stack>
                   </Stack>
+                </Stack>
                 ) : null}
 
                 {/* </Box> */}
@@ -291,12 +367,11 @@ function Hotels({ filteredData, screenSize }: any) {
             >
               <HighlightOffIcon />
             </IconButton>
-            <SimpleMap filteredData={filteredData} />
+            <SimpleMap filteredData={filteredData}  handleClick={handleClick} />
           </>
         )}
       </Box>
     </>
   );
 }
-
 export default Hotels;
