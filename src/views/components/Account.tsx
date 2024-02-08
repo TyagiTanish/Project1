@@ -21,9 +21,6 @@ function Account() {
   };
   return (
     <>
-      <IconButton href="/" sx={{ ml: { md: 0.5 }, width: "200px" }}>
-        <Logo /> 
-      </IconButton>
       <Box
         sx={{
           ml: { sm: 15, md: 25, xl: 72 },

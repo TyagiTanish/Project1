@@ -16,6 +16,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import RoomSelection from "./RoomSelection";
 
 
 
@@ -32,12 +33,15 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
-  const [guests, setGuests] = useState(0);
+  const data: any = localStorage.getItem("Rooms&Guests");
+  const parsedData = JSON.parse(data);
+  const [rooms, setRooms] = React.useState<any>([{Room:+parsedData?.Rooms,guest:+parsedData?.Guests}||{ Room: 1, guest: 1 }]);
+  const [guests, setGuests] = useState(parsedData?.Guests != null? parsedData?.Guests : 1  );
   const [render, setRender] = React.useState(0);
+  const [totalRooms, setTotalRooms] = useState(parsedData?.Rooms!=null ? parsedData?.Rooms : 0);
   const dispatch = useDispatch();
 
-  const search = useSelector((state:any)=>state.userReducer.searchDetails)
+  const search = useSelector((state:any)=>state?.userReducer?.searchDetails)
   
   const [searchTerm,setSearchTerm] = useState<any>(search||'');
   const handleInputChange = (event: any) => {
@@ -45,18 +49,28 @@ function Seachbar2() {
     dispatch(searchDetails(value))
   };
 
-  
-  const data: any = localStorage.getItem("Rooms&Guests");
-  const parsedData = JSON.parse(data);
   const navigate = useNavigate();
+  
   useEffect(() => {
     var result = 0;
+    var totalRooms = 0;
     rooms.forEach((element: any) => {
       result = result + +element.guest;
+      totalRooms = totalRooms + 1;
     });
+    setTotalRooms(totalRooms);
     setGuests(result);
     setRooms(rooms);
   }, [render, rooms]);
+
+
+
+  localStorage.setItem(
+    "Rooms&Guests",
+    JSON.stringify({ Rooms: totalRooms, Guests: guests })
+  );
+
+
 
   function handleLocationClick() {
     if (navigator.geolocation) {
@@ -78,6 +92,7 @@ function Seachbar2() {
 
   
   return (
+    <>
     <Stack  
       direction={"row"}
       sx={{
@@ -124,7 +139,7 @@ function Seachbar2() {
           mt: 1,
         }}
         // value={`${rooms.length} Room , ${guests} guest`}
-        value={`${parsedData.Rooms} Room , ${parsedData.Guests} guest`}
+        value={`${rooms.length} Room , ${guests} guest`}
         onClick={(event: any) => handleClick(event)}
       />
       <Button
@@ -146,6 +161,15 @@ function Seachbar2() {
                 <FormattedMessage defaultMessage="Search"/>  
               </Button>
     </Stack>
+     <RoomSelection
+     anchorEl={anchorEl}
+     setAnchorEl={setAnchorEl}
+     rooms={rooms}
+     setRooms={setRooms}
+     render={render}
+     setRender={setRender}
+   />
+   </>
   );
 }
 
