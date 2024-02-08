@@ -1,7 +1,4 @@
 {
-  "+QNm85": {
-    "defaultMessage": "Parking"
-  },
   "+R6HRl": {
     "defaultMessage": "List Your Property"
   },
@@ -17,6 +14,9 @@
   "39AHJm": {
     "defaultMessage": "Sign Up"
   },
+  "3KiaqX": {
+    "defaultMessage": "Check in: 15:00"
+  },
   "3rvTzG": {
     "defaultMessage": "SignUp"
   },
@@ -26,32 +26,26 @@
   "5sg7KC": {
     "defaultMessage": "Password"
   },
-  "7444aR": {
-    "defaultMessage": "Kolkata"
-  },
-  "11oARw": {
-    "defaultMessage": "Pool"
-  },
-  "3KiaqX": {
-    "defaultMessage": "Check in: 15:00"
-  },
-  "5V00Mx": {
-    "defaultMessage": "Commanding a sweeping view of the Arabian Sea in India's commercial capital, The InterContinental Marine Drive is setting standards for personalised service for business and leisure travellers. The experience begins as Mumbai's glittering skyline, aptly called the Queen's Necklace welcomes you. Step into the InterContinental Marine Drive and the warm, personalised attention helps you relax. The InterContinental Marine Drive is strategically located in the heart of Mumbai's business & financial district, 1.5 kms from Nariman Point and 3 kms from the Main Shopping Area of Colaba. Offering you the all-important luxury of saving time while on work. State-of-the-art business communication and meeting facilities further optimize time management."
-  },
-  "8oWVZA": {
-    "defaultMessage": "Restaurant"
-  },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
+  },
+  "9uOFF3": {
+    "defaultMessage": "Overview"
   },
   "AyGauy": {
     "defaultMessage": "Login"
   },
-  "FrO6L4": {
-    "defaultMessage": "First Name:"
+  "BSij1a": {
+    "defaultMessage": "close"
+  },
+  "GB83+B": {
+    "defaultMessage": "Near me"
   },
   "GPLny2": {
     "defaultMessage": "Register here"
+  },
+  "GodOg+": {
+    "defaultMessage": "Arrival / Departure"
   },
   "H0JBH6": {
     "defaultMessage": "Log Out"
@@ -62,26 +56,14 @@
   "HBbJIL": {
     "defaultMessage": "There's a smarter way to OYO around"
   },
-  "Hl6eet": {
-    "defaultMessage": "Chennai"
-  },
-  "9khnVR": {
-    "defaultMessage": "Photos"
-  },
-  "9rwIcL": {
-    "defaultMessage": "A/C"
-  },
-  "9uOFF3": {
-    "defaultMessage": "Overview"
-  },
-  "GodOg+": {
-    "defaultMessage": "Arrival / Departure"
-  },
   "Hm2NzP": {
     "defaultMessage": "World's leading chain of hotels and homes"
   },
   "KkDJ/P": {
     "defaultMessage": "Sign up & Get ₹500 OYO Money"
+  },
+  "LaM7n1": {
+    "defaultMessage": "download"
   },
   "NQgbYA": {
     "defaultMessage": "Account Settings"
@@ -95,11 +77,20 @@
   "UFXy0j": {
     "defaultMessage": "Verify email"
   },
+  "W2tpY0": {
+    "defaultMessage": "Phone No:"
+  },
+  "WF8jKB": {
+    "defaultMessage": "Name:"
+  },
   "Y2s5iu": {
     "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
   },
   "cyR7Kh": {
     "defaultMessage": "Back"
+  },
+  "dmGKS5": {
+    "defaultMessage": "Check out: 12:00"
   },
   "gCsYTJ": {
     "defaultMessage": "New password:"
@@ -107,37 +98,17 @@
   "jvaZOr": {
     "defaultMessage": "Change Your Password"
   },
-  "qwx3Nk": {
-    "defaultMessage": "Update Personal Information"},
-  "JH2EfS": {
-    "defaultMessage": "Pets"
-  },
-  "RiZXe1": {
-    "defaultMessage": "Hotel bar"
-  },
-  "dmGKS5": {
-    "defaultMessage": "Check out: 12:00"
-  },
-  "h9FUr8": {
-    "defaultMessage": "Free WiFi"
-  },
-  "kUDcH0": {
-    "defaultMessage": "Spa"
-  },
-  "l4GiZS": {
-    "defaultMessage": "Telephone: +91 2239879999 | Fax: +91 2239879600"
-  },
   "lhgV6Z": {
     "defaultMessage": "Top amenities"
   },
-  "rvirM2": {
-    "defaultMessage": "Location"
-  },
-  "uXYcYf": {
-    "defaultMessage": "Wifi in lobby"
+  "qwx3Nk": {
+    "defaultMessage": "Update Personal Information"
   },
   "r2Jjms": {
     "defaultMessage": "Log In"
+  },
+  "rvirM2": {
+    "defaultMessage": "Location"
   },
   "sy+pv5": {
     "defaultMessage": "Email"
@@ -145,11 +116,17 @@
   "uCk8r+": {
     "defaultMessage": "Already have an account?"
   },
+  "vNbJei": {
+    "defaultMessage": "Email-"
+  },
   "wNLUau": {
     "defaultMessage": "Login / SignUp"
   },
-  "we4Lby": {
-    "defaultMessage": "Info"
+  "xmcVZ0": {
+    "defaultMessage": "Search"
+  },
+  "xzKMCh": {
+    "defaultMessage": "All Cities"
   },
   "zFegDD": {
     "defaultMessage": "Contact"

@@ -167,7 +167,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/">
@@ -215,7 +215,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/">
@@ -260,7 +260,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/">
@@ -305,7 +305,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/hotels">
@@ -351,7 +351,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/hotels">
@@ -395,7 +395,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                   }}
                 >
                   <Link style={{ fontWeight: "bold" }} to="/hotels">
@@ -440,7 +440,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                     ml: { sm: "-2%", lg: 0 },
                   }}
                 >
@@ -486,7 +486,7 @@ export default function BasicCard() {
                   sx={{
                     fontSize: { md: 15, xl: 16 },
                     maxHeight: 200,
-                    overflow: "scroll",
+                    overflow: "auto",
                     ml: { sm: "-12%", lg: 0 },
                   }}
                 >
@@ -498,7 +498,7 @@ export default function BasicCard() {
                   ))}
                 </Box>
               </Box>
-              <Box>All Cities</Box>
+              <Box>  <FormattedMessage defaultMessage="All Cities" /></Box>
             </Box>
           </Box>
         </>
