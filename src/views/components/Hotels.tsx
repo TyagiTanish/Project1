@@ -6,7 +6,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-// import "mapbox-gl/dist/mapbox-gl.css";
+
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";

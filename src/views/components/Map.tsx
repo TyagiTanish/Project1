@@ -60,7 +60,7 @@ const SimpleMap = ({  filteredData,  handleClick}:m) => {
         window.location.href = `#${location?.id}`;
         console.log(location?.id)
         const lct =location?.id as any
-       
+        handleClick(lct );
       });
     });
     return () => map.remove();
@@ -85,3 +85,9 @@ const SimpleMap = ({  filteredData,  handleClick}:m) => {
   );
 };
 export default SimpleMap;
+
+
+
+
+
+
