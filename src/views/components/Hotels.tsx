@@ -7,7 +7,7 @@ import {
   Typography,
 } from "@mui/material";
 // import "mapbox-gl/dist/mapbox-gl.css";
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import DoneIcon from "@mui/icons-material/Done";
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import Seachbar2 from "./Seachbar2";
@@ -22,10 +22,8 @@ import SimpleMap from "./Map";
 import OverViewHotel from "./OverViewHotel";
 import HighlightOffIcon from "@mui/icons-material/HighlightOff";
 import { triggerAsyncId } from "async_hooks";
-
 import { useDispatch, useSelector } from "react-redux";
 import { hotelId } from "./redux/user/userSlice";
-
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -34,22 +32,16 @@ function Hotels({ filteredData, screenSize }: any) {
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
   const [open, setOpen] = useState(false);
-
-  
-  const handleClick = (index: any) => {
+  const handleClick = useCallback((index:any) => {
+    console.log("jjjjjjjjjjjjjjjjj");
     setDetailIndex(index);
     if (index === detailIndex) {
       setDetailIndex("");
     }
-  };
-
-  // const handleViewDeal = (item: any) => {
-  //   navigate("/billing");
-  // };
+  },[detailIndex,]);
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
-
   return (
     <>
       <Box
@@ -100,12 +92,12 @@ function Hotels({ filteredData, screenSize }: any) {
         ) : (
           <></>
         )}
-
         {displayMap ? (
           <>
             {filteredData?.map((item: any, i: any) => (
               <>
                 <Stack
+                  id={item?._id}
                   direction={"row"}
                   sx={{
                     p: 2,
@@ -128,7 +120,6 @@ function Hotels({ filteredData, screenSize }: any) {
                     // src={require(`./${item.photo}`)}
                     src={`http://localhost:8000/${item?.photo}`}
                   />
-
                   <Stack m={2} width={400}>
                     <Typography
                       sx={{
@@ -171,18 +162,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
                       </Button>
                     </Stack>
-                    {/* <Typography
-                    sx={{
-                      fontWeight: "bold",
-                      fontSize: "15px",
-                      opacity: 0.5,
-                      marginTop: "5px",
-                    }}
-                   >
-                    {item.rating}
-                   </Typography> */}
                   </Stack>
-
                   <Stack
                     direction={"row"}
                     spacing={2}
@@ -217,7 +197,6 @@ function Hotels({ filteredData, screenSize }: any) {
                           Free Cancelation
                         </Typography>
                       </Stack>
-
                       <Typography
                         sx={{
                           fontWeight: "bold",
@@ -264,7 +243,6 @@ function Hotels({ filteredData, screenSize }: any) {
                     </Stack>
                   </Stack>
                 </Stack>
-
                 {/* </Box> */}
                 {detailIndex === i ? (
                   <HotelDetails
@@ -290,12 +268,11 @@ function Hotels({ filteredData, screenSize }: any) {
             >
               <HighlightOffIcon />
             </IconButton>
-            <SimpleMap filteredData={filteredData} />
+            <SimpleMap filteredData={filteredData}  handleClick={handleClick} />
           </>
         )}
       </Box>
     </>
   );
 }
-
 export default Hotels;
