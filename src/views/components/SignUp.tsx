@@ -16,6 +16,7 @@ import Loaders from "./Loaders";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
+import Language from "./Language";
 
 const SignUp = ({ setLogReg}: any) => {
   const { request } = useAuth();
@@ -120,6 +121,7 @@ const SignUp = ({ setLogReg}: any) => {
           >
            <FormattedMessage defaultMessage="  Sign up & Get ₹500 OYO Money"/>   
           </Typography>
+          <Box sx={{float:'right'}} ><Language/></Box>
           <Typography
             sx={{
               fontWeight: "bold",
