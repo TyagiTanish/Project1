@@ -117,9 +117,24 @@ function SearchHotels({
                   >
                     {/* {item?.hotelName[0]?.toUpperCase()} */}
                   </Avatar>
-                  <Typography sx={{ fontSize: 16 }}>
-                    {item?.hotelName}
-                  </Typography>
+                  <Stack
+                    direction={"row"}
+                    justifyContent={"space-between"}
+                    width={"90%"}
+                  >
+                    <Typography sx={{ fontSize: 16 }}>
+                      {item?.hotelName}
+                    </Typography>
+                    {item?.availability === "false" && (
+                      <Typography
+                        sx={{ float: "right" }}
+                        fontSize="10px"
+                        color={"red"}
+                      >
+                        Removed
+                      </Typography>
+                    )}
+                  </Stack>
                 </Stack>
               </Box>
             ))

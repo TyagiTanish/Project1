@@ -27,6 +27,7 @@ import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
 import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
 import CustomerView from "../../layout/CustomerView/CustomerView";
 import CustomerBooking from "../CustomerBooking";
+import AdminDashboard from "../HotelOwner/Dashboard/AdminDashboard";
 
 
 /**
@@ -85,7 +86,7 @@ const router = [
         path: "/myBookings",
         element: <CustomerBooking />,
       },
-     
+
       {
         path: "/hotels",
         element: (
@@ -156,6 +157,14 @@ const router = [
     ),
     children: [
       {
+        index:true,
+        element:(
+          <MemberRoute>
+            <AdminDashboard/>
+          </MemberRoute>
+        )
+      },
+      {
         path: "/member/hotels",
         element: (
           <MemberRoute>
@@ -163,7 +172,7 @@ const router = [
           </MemberRoute>
         ),
       },
-
+     
       {
         path: "/member/profile",
         element: (
@@ -200,7 +209,9 @@ const router = [
     ],
   },
 ];
-
+// This is ,y foile
+// kdjrgkfssdelk
+// console.log(dflvkd;flop)
 function Routes() {
   return useRoutes(router);
 }

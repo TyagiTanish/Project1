@@ -230,7 +230,7 @@ export default function HotelOwnerView() {
                   backgroundColor: selectedIndex === 0 ? "lightgray" : null,
                 }}
                 // selected={selectedIndex === 0}
-                onClick={(event) => handleListItemClick(event, 0)}
+                onClick={(event) => {handleListItemClick(event, 0); navigate("/member");}}
               >
                 <ListItemIcon
                   sx={{
@@ -377,107 +377,6 @@ export default function HotelOwnerView() {
               </ListItemButton>
             </ListItem>
           </List>
-          {/* <ListItem disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                  "&:hover": {
-                    borderRadius: 100,
-                    backgroundColor: "lightGray",
-                  },
-                }}
-                onClick={() => navigate("/addhotel")}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {open === true ? (
-                    <ApartmentOutlinedIcon fontSize="small" />
-                  ) : (
-                    <ApartmentOutlinedIcon sx={{ fontSize: "25px" }} />
-                  )}
-                </ListItemIcon>
-                <ListItemText
-                  primary={"Add Hotels"}
-                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
-                />
-              </ListItemButton>
-            </ListItem> */}
-          {/* <List>
-            {open && (
-              <Typography sx={{ ml: 2, fontSize: 14, fontWeight: "bold" }}>
-                DashBoard
-              </Typography>
-            )}
-            <ListItem disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                  "&:hover": {
-                    borderRadius: 100,
-                    backgroundColor: "lightGray",
-                  },
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {open === true ? (
-                    <DashboardIcon fontSize="small" />
-                  ) : (
-                    <DashboardIcon sx={{ fontSize: "25px" }} />
-                  )}
-                </ListItemIcon>
-                <ListItemText
-                  primary={"DashBoard"}
-                  sx={{ opacity: open ? 1 : 0, fontSize: 10 }}
-                />
-              </ListItemButton>
-            </ListItem>
-            <ListItem disablePadding sx={{ display: "block" }}>
-              <ListItemButton
-                sx={{
-                  minHeight: 48,
-                  justifyContent: open ? "initial" : "center",
-                  px: 2.5,
-                  "&:hover": {
-                    borderRadius: 100,
-                    backgroundColor: "lightGray",
-                  },
-                }}
-              >
-                <ListItemIcon
-                  sx={{
-                    minWidth: 0,
-                    mr: open ? 3 : "auto",
-                    justifyContent: "center",
-                  }}
-                >
-                  {open === true ? (
-                    <BedIcon fontSize="small" />
-                  ) : (
-                    <BedIcon sx={{ fontSize: "25px" }} />
-                  )}
-                </ListItemIcon>
-                <ListItemText
-                  primary={"All Hotels"}
-                  sx={{ opacity: open ? 1 : 0 }}
-                />
-              </ListItemButton>
-            </ListItem>
-          </List> */}
         </Drawer>
         <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
           <DrawerHeader />

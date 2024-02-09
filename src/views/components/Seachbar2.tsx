@@ -17,14 +17,9 @@ import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 
-
-
-
-
-
-  /**
-*  Search Bar at the top of every page except HomePage which helps in searching Hotels. Markdown is *SearchBar2*.
-*/
+/**
+ *  Search Bar at the top of every page except HomePage which helps in searching Hotels. Markdown is *SearchBar2*.
+ */
 function Seachbar2() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -32,17 +27,29 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
-  const [guests, setGuests] = useState(0);
+  const data: any = localStorage.getItem("Rooms&Guests");
+  const parsedData = JSON.parse(data);
+  const [rooms, setRooms] = React.useState<any>([
+    { Room: +parsedData?.Rooms, guest: +parsedData?.Guests } || {
+      Room: 1,
+      guest: 1,
+    },
+  ]);
+  const [guests, setGuests] = useState(
+    parsedData?.Guests != null ? parsedData?.Guests : 1
+  );
   const [render, setRender] = React.useState(0);
+  const [totalRooms, setTotalRooms] = useState(
+    parsedData?.Rooms != null ? parsedData?.Rooms : 0
+  );
   const dispatch = useDispatch();
 
-  const search = useSelector((state:any)=>state.userReducer.searchDetails)
-  
-  const [searchTerm,setSearchTerm] = useState<any>(search||'');
+  const search = useSelector((state: any) => state?.userReducer?.searchDetails);
+
+  const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const handleInputChange = (event: any) => {
     const { value } = event.target;
-    dispatch(searchDetails(value))
+    dispatch(searchDetails(value));
   };
 
   
@@ -57,6 +64,11 @@ function Seachbar2() {
     setGuests(result);
     setRooms(rooms);
   }, [render, rooms]);
+
+  localStorage.setItem(
+    "Rooms&Guests",
+    JSON.stringify({ Rooms: totalRooms, Guests: guests })
+  );
 
   function handleLocationClick() {
     if (navigator.geolocation) {
@@ -76,7 +88,6 @@ function Seachbar2() {
     console.log("Unable to retrieve your location");
   }
 
-  
   return (
     <Stack  
       direction={"row"}
@@ -118,11 +129,16 @@ function Seachbar2() {
       <TextField
         id="outlined-basic"
         variant="outlined"
+    <>
+      <Stack
+        direction={"row"}
         sx={{
-          bgcolor: "white",
-          fontWeight: "bolder",
-          mt: 1,
+          mb: "20px",
+          alignItems: "center",
+          justifyContent: "center",
+          alignSelf: "center",
         }}
+
         // value={`${rooms.length} Room , ${guests} guest`}
         value={`${parsedData.Rooms} Room , ${parsedData.Guests} guest`}
         onClick={(event: any) => handleClick(event)}
@@ -146,6 +162,75 @@ function Seachbar2() {
                 <FormattedMessage defaultMessage="Search"/>  
               </Button>
     </Stack>
+      >
+        <TextField
+          sx={{
+            backgroundColor: "white",
+            borderRadius: 3,
+            mt: 1,
+          }}
+          InputProps={{
+            endAdornment: (
+              <InputAdornment position="start">
+                <IconButton
+                  onClick={handleLocationClick}
+                  sx={{
+                    fontSize: { sm: "10px", lg: "15px" },
+                    fontWeight: "bolder",
+                    color: "black",
+                  }}
+                >
+                  <MyLocationIcon />
+                  <FormattedMessage defaultMessage="Near me" />
+                </IconButton>
+              </InputAdornment>
+            ),
+          }}
+          placeholder="Search by city,hote, or neighborhood"
+          onChange={(e) => setSearchTerm(e.target.value)}
+          defaultValue={search}
+        />
+        <DateRangePickers />
+        <TextField
+          id="outlined-basic"
+          variant="outlined"
+          sx={{
+            bgcolor: "white",
+            fontWeight: "bolder",
+            mt: 1,
+          }}
+          // value={`${rooms.length} Room , ${guests} guest`}
+          value={`${rooms.length} Room , ${guests} guest`}
+          onClick={(event: any) => handleClick(event)}
+        />
+        <Button
+          variant="contained"
+          sx={{
+            bgcolor: "#1ab64f",
+            "&:hover": { bgcolor: "green" },
+            color: "white",
+            fontWeight: "bolder",
+            height: 55,
+            mt: 0.75,
+            borderRadius: 1,
+          }}
+          onClick={() => {
+            dispatch(searchDetails(searchTerm));
+            navigate("./hotels");
+          }}
+        >
+          <FormattedMessage defaultMessage="Search" />
+        </Button>
+      </Stack>
+      <RoomSelection
+        anchorEl={anchorEl}
+        setAnchorEl={setAnchorEl}
+        rooms={rooms}
+        setRooms={setRooms}
+        render={render}
+        setRender={setRender}
+      />
+    </>
   );
 }
 
