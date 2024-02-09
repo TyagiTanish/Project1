@@ -23,10 +23,9 @@ function BookingRequestDialogBox(props: any) {
     const result = display.data.rooms.filter((item: any) => {
       return (item._id = data.roomId);
     });
-    setHotel(display.data);
-    setDisplay(result[0]);
+    setHotel(display?.data);
+    setDisplay(result);
   }, []);
-  console.log(data);
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <Stack justifyContent={"space-between"} direction={"row"}>
@@ -83,7 +82,7 @@ function BookingRequestDialogBox(props: any) {
                 </Stack>
                 <Stack direction={"column"}>
                   <Stack sx={{ fontSize: 15, width: 100 }}>23-05-23</Stack>
-                  <Stack sx={{ fontSize: 15 }}>{data.paymentStatus}</Stack>
+                  <Stack sx={{ fontSize: 15 }}>{data?.paymentStatus}</Stack>
                 </Stack>
               </Stack>
             </Stack>
@@ -121,11 +120,11 @@ function BookingRequestDialogBox(props: any) {
           <Stack sx={{ fontWeight: "bold" }}>Additional Information</Stack>
           <Stack direction={"row"} spacing={2}>
             <Typography>Type of room</Typography>
-            <Typography sx={{ fontSize: 15 }}>{display.roomType}</Typography>
+            <Typography sx={{ fontSize: 15 }}>{display?.roomType}</Typography>
           </Stack>
           <Stack direction={"row"} spacing={2}>
             <Typography>Total No. of Days-</Typography>
-            <Typography sx={{ fontSize: 15 }}>{data.totalDays}</Typography>
+            <Typography sx={{ fontSize: 15 }}>{data?.totalDays}</Typography>
           </Stack>
         </Stack>
       </Stack>
