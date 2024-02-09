@@ -5,6 +5,12 @@
       "value": "List Your Property"
     }
   ],
+  "/28JSA": [
+    {
+      "type": 0,
+      "value": "Click here..."
+    }
+  ],
   "/2PAGq": [
     {
       "type": 0,
@@ -23,10 +29,22 @@
       "value": "Don't have an account?"
     }
   ],
+  "2apuGa": [
+    {
+      "type": 0,
+      "value": "Mohali"
+    }
+  ],
   "39AHJm": [
     {
       "type": 0,
       "value": "Sign Up"
+    }
+  ],
+  "3EnruA": [
+    {
+      "type": 0,
+      "value": "Postal code"
     }
   ],
   "3KiaqX": [
@@ -47,16 +65,52 @@
       "value": "Please enter your email to continue"
     }
   ],
+  "4jYQG+": [
+    {
+      "type": 0,
+      "value": "Hotels & Homes"
+    }
+  ],
+  "5GxMk2": [
+    {
+      "type": 0,
+      "value": "Add hotel & Get ₹500 OYO Money"
+    }
+  ],
   "5sg7KC": [
     {
       "type": 0,
       "value": "Password"
     }
   ],
+  "7TFbhV": [
+    {
+      "type": 0,
+      "value": "Add Hotel Location"
+    }
+  ],
+  "7lsiX8": [
+    {
+      "type": 0,
+      "value": "Over 157,000 hotels and homes across 35 countries"
+    }
+  ],
   "8uXS99": [
     {
       "type": 0,
       "value": "Popular Locations"
+    }
+  ],
+  "9+Ddtu": [
+    {
+      "type": 0,
+      "value": "Next"
+    }
+  ],
+  "9khnVR": [
+    {
+      "type": 0,
+      "value": "Photos"
     }
   ],
   "9uOFF3": [
@@ -77,6 +131,24 @@
       "value": "close"
     }
   ],
+  "BUu6Wn": [
+    {
+      "type": 0,
+      "value": "Add Hotel"
+    }
+  ],
+  "CDnwtH": [
+    {
+      "type": 0,
+      "value": "Jagadhri"
+    }
+  ],
+  "EZEH2+": [
+    {
+      "type": 0,
+      "value": "Add Hotel Details.."
+    }
+  ],
   "GB83+B": [
     {
       "type": 0,
@@ -93,6 +165,12 @@
     {
       "type": 0,
       "value": "Arrival / Departure"
+    }
+  ],
+  "GrQf+i": [
+    {
+      "type": 0,
+      "value": "Enter Hotel Discription...."
     }
   ],
   "H0JBH6": [
@@ -113,10 +191,22 @@
       "value": "There's a smarter way to OYO around"
     }
   ],
+  "HfAXbq": [
+    {
+      "type": 0,
+      "value": "Drop a Photo Here"
+    }
+  ],
   "Hm2NzP": [
     {
       "type": 0,
       "value": "World's leading chain of hotels and homes"
+    }
+  ],
+  "IFkDw5": [
+    {
+      "type": 0,
+      "value": "Cities"
     }
   ],
   "KkDJ/P": [
@@ -137,10 +227,40 @@
       "value": "Account Settings"
     }
   ],
+  "NxNgkz": [
+    {
+      "type": 0,
+      "value": "There's an OYO around. Always."
+    }
+  ],
+  "OgF6Am": [
+    {
+      "type": 0,
+      "value": "Mumbai"
+    }
+  ],
+  "QQSdHP": [
+    {
+      "type": 0,
+      "value": "View More"
+    }
+  ],
   "QiKKFz": [
     {
       "type": 0,
       "value": "Change Password"
+    }
+  ],
+  "Rtrei/": [
+    {
+      "type": 0,
+      "value": "View Deal"
+    }
+  ],
+  "TE4fIS": [
+    {
+      "type": 0,
+      "value": "City"
     }
   ],
   "U41zpQ": [
@@ -153,6 +273,18 @@
     {
       "type": 0,
       "value": "Verify email"
+    }
+  ],
+  "UjxXg4": [
+    {
+      "type": 0,
+      "value": "To use Another Email for adding hotel"
+    }
+  ],
+  "V+XwpG": [
+    {
+      "type": 0,
+      "value": "Hotel"
     }
   ],
   "W2tpY0": [
@@ -179,10 +311,22 @@
       "value": "Back"
     }
   ],
+  "d/gBvP": [
+    {
+      "type": 0,
+      "value": "More Destinations.More Ease. More Affordable."
+    }
+  ],
   "dmGKS5": [
     {
       "type": 0,
       "value": "Check out: 12:00"
+    }
+  ],
+  "eyOT/X": [
+    {
+      "type": 0,
+      "value": "Point location"
     }
   ],
   "gCsYTJ": [
@@ -191,16 +335,52 @@
       "value": "New password:"
     }
   ],
+  "hN9DjA": [
+    {
+      "type": 0,
+      "value": "Our Lowest Price"
+    }
+  ],
   "jvaZOr": [
     {
       "type": 0,
       "value": "Change Your Password"
     }
   ],
+  "ku+mDU": [
+    {
+      "type": 0,
+      "value": "State"
+    }
+  ],
+  "kuVWTT": [
+    {
+      "type": 0,
+      "value": "Enter Hotel Amenities...."
+    }
+  ],
   "lhgV6Z": [
     {
       "type": 0,
       "value": "Top amenities"
+    }
+  ],
+  "lqSLwV": [
+    {
+      "type": 0,
+      "value": "There's a smarter way to OYO aroundties"
+    }
+  ],
+  "nsZqim": [
+    {
+      "type": 0,
+      "value": "Yamuna Nagar"
+    }
+  ],
+  "p2cPVQ": [
+    {
+      "type": 0,
+      "value": "Bilaspur"
     }
   ],
   "qwx3Nk": [
@@ -233,16 +413,34 @@
       "value": "Already have an account?"
     }
   ],
+  "uta34T": [
+    {
+      "type": 0,
+      "value": "Hotel name"
+    }
+  ],
   "vNbJei": [
     {
       "type": 0,
       "value": "Email-"
     }
   ],
+  "vONi+O": [
+    {
+      "type": 0,
+      "value": "Country"
+    }
+  ],
   "wNLUau": [
     {
       "type": 0,
       "value": "Login / SignUp"
+    }
+  ],
+  "we4Lby": [
+    {
+      "type": 0,
+      "value": "Info"
     }
   ],
   "xmcVZ0": [

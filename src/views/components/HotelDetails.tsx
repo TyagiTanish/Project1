@@ -66,7 +66,7 @@ function HotelDetails({
               setActiveButton("info");
             }}
           >
-            Info
+              <FormattedMessage defaultMessage="Info" />       
           </Button>
         ) : (
           <Button
@@ -92,7 +92,7 @@ function HotelDetails({
               setActiveButton("Photos");
             }}
           >
-            Photos
+             <FormattedMessage defaultMessage="Photos" />        
           </Button>
         ) : (
           <Button
@@ -102,7 +102,7 @@ function HotelDetails({
               setActiveButton("Photos");
             }}
           >
-            Photos
+         <FormattedMessage defaultMessage="Photos" />            
           </Button>
         )}
 

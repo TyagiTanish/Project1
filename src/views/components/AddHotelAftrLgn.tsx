@@ -21,7 +21,7 @@ import Card from "@mui/material/Card";
 import Grid from "@mui/material/Grid";
 import AddHotelLocation from "./AddHotelLocation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-
+import Language from "./Language";
 import { useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
@@ -36,6 +36,7 @@ import WineBarIcon from "@mui/icons-material/WineBar";
 import GroupsIcon from "@mui/icons-material/Groups";
 
 import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
+import { FormattedMessage } from "react-intl";
 export default function AddHotelAftrLgn() {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -287,7 +288,7 @@ export default function AddHotelAftrLgn() {
               fontSize: { xl: 45, md: 28, sm: 25 },
             }}
           >
-            There's a smarter way to OYO around
+          <FormattedMessage defaultMessage="There's a smarter way to OYO aroundties"/>    
           </Typography>
           <Typography
             sx={{
@@ -296,8 +297,8 @@ export default function AddHotelAftrLgn() {
               letterSpacing: 1,
             }}
           >
-            Sign up with phone number and get exclusive access to discounts and
-            savings on OYO stays and with our many travel partners.
+        <FormattedMessage defaultMessage="Sign up with phone number and get exclusive access to discounts and
+            savings on OYO stays and with our many travel partners."/>           
           </Typography>
         </Typography>
         <Box sx={{ position: "relative" }}>
@@ -328,7 +329,9 @@ export default function AddHotelAftrLgn() {
               color="text.secondary"
               gutterBottom
             >
-              Add hotel & Get ₹500 OYO Money
+              
+        <FormattedMessage defaultMessage="Add hotel & Get ₹500 OYO Money"/>
+      
             </Typography>
             {step === 0 && (
               <Typography
@@ -340,9 +343,11 @@ export default function AddHotelAftrLgn() {
                   textAlign: "center",
                 }}
               >
-                Add Hotel Details...
+         <FormattedMessage defaultMessage="Add Hotel Details.."/>          
               </Typography>
             )}
+
+    
             {step === 1 && (
               <Typography
                 sx={{
@@ -353,7 +358,7 @@ export default function AddHotelAftrLgn() {
                   textAlign: "center",
                 }}
               >
-                Add Hotel Location
+        <FormattedMessage defaultMessage="Add Hotel Location"/>              
               </Typography>
             )}
             {step == 4 && (
@@ -366,7 +371,7 @@ export default function AddHotelAftrLgn() {
                   textAlign: "center",
                 }}
               >
-                Point location
+          <FormattedMessage defaultMessage="Point location"/>        
               </Typography>
             )}
             {step === 3 && (
@@ -378,7 +383,7 @@ export default function AddHotelAftrLgn() {
                   opacity: 0.7,
                 }}
               >
-                Enter Hotel Amenities....
+              <FormattedMessage defaultMessage="Enter Hotel Amenities...."/>      
               </Typography>
             )}
             {step === 2 && (
@@ -390,7 +395,7 @@ export default function AddHotelAftrLgn() {
                   opacity: 0.7,
                 }}
               >
-                Enter Hotel Discription....
+           <FormattedMessage defaultMessage="Enter Hotel Discription...."/>      
               </Typography>
             )}
 
@@ -412,7 +417,7 @@ export default function AddHotelAftrLgn() {
                               fontSize: { xl: 16, md: 15, sm: 12 },
                             }}
                           >
-                            Hotel name
+                          <FormattedMessage defaultMessage="Hotel name"/>        
                           </Typography>
                           <TextField
                             // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
@@ -442,7 +447,7 @@ export default function AddHotelAftrLgn() {
                               <Typography sx={{ mt: 1 }}>
                                 <AddPhotoAlternateSharpIcon fontSize="large" />
                                 <Typography sx={{ fontSize: "10px" }}>
-                                  Drop a Photo Here
+                                <FormattedMessage defaultMessage="Drop a Photo Here"/>     
                                 </Typography>
                               </Typography>
                             </IconButton>
@@ -475,7 +480,7 @@ export default function AddHotelAftrLgn() {
                               }}
                               onClick={handleSubmit(onSubmit)}
                             >
-                              Next
+                             <FormattedMessage defaultMessage="Next"/>     
                             </Button>
                           ) : (
                             <Button
@@ -486,7 +491,7 @@ export default function AddHotelAftrLgn() {
                               disabled
                               onClick={handleSubmit(onSubmit)}
                             >
-                              Next
+                            <FormattedMessage defaultMessage="Next"/>    
                             </Button>
                           )}
                         </Stack>
@@ -510,7 +515,7 @@ export default function AddHotelAftrLgn() {
                                 fontSize: { xl: 16, md: 15, sm: 13 },
                               }}
                             >
-                              City
+                          <FormattedMessage defaultMessage="City"/>       
                             </Typography>
                             <TextField
                               sx={{ width: "80%" }}
@@ -528,7 +533,7 @@ export default function AddHotelAftrLgn() {
                                 fontSize: { xl: 16, md: 15, sm: 13 },
                               }}
                             >
-                              State
+                             <FormattedMessage defaultMessage="State"/>    
                             </Typography>
                             <TextField
                               sx={{ width: "80%" }}
@@ -554,7 +559,7 @@ export default function AddHotelAftrLgn() {
                                 fontSize: { xl: 16, md: 15, sm: 13 },
                               }}
                             >
-                              Postal code
+                            <FormattedMessage defaultMessage="Postal code"/>      
                             </Typography>
                             <TextField
                               sx={{ width: "80%" }}
@@ -573,7 +578,7 @@ export default function AddHotelAftrLgn() {
                                 fontSize: { xl: 16, md: 15, sm: 13 },
                               }}
                             >
-                              Country
+                            <FormattedMessage defaultMessage="Country"/>  
                             </Typography>
                             <TextField
                               sx={{ width: "80%" }}
@@ -612,7 +617,7 @@ export default function AddHotelAftrLgn() {
                               fontSize: { xl: 15, md: 13, sm: 11 },
                             }}
                           >
-                            Next
+                          <FormattedMessage defaultMessage="Next"/>  
                           </Button>
                         </Stack>
                       </form>
@@ -653,7 +658,7 @@ export default function AddHotelAftrLgn() {
                           // onClick={() => setStep(0)}
                           onClick={handleSubmit(onSubmit)}
                         >
-                          Add Hotel
+                            <FormattedMessage defaultMessage="Add Hotel"/>   
                         </Button>
                       </Stack>
                     </form>
@@ -784,7 +789,7 @@ export default function AddHotelAftrLgn() {
                             fontSize: { xl: 15, md: 13, sm: 11 },
                           }}
                         >
-                          Next
+                            <FormattedMessage defaultMessage="Next"/>  
                         </Button>
                       ) : (
                         <Button
@@ -795,7 +800,7 @@ export default function AddHotelAftrLgn() {
                             fontSize: { xl: 15, md: 13, sm: 11 },
                           }}
                         >
-                          Next
+                            <FormattedMessage defaultMessage="Next"/>  
                         </Button>
                       )}
                     </Stack>
@@ -845,7 +850,7 @@ export default function AddHotelAftrLgn() {
                               fontSize: { xl: 15, md: 13, sm: 11 },
                             }}
                           >
-                            Next
+                              <FormattedMessage defaultMessage="Next"/>  
                           </Button>
                         </Stack>
                       </form>
@@ -855,7 +860,7 @@ export default function AddHotelAftrLgn() {
               </Stack>
 
               <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
-                To use Another Email for adding hotel{" "}
+              <FormattedMessage defaultMessage="To use Another Email for adding hotel"/>  
                 <Button
                   sx={{
                     textTransform: "none",
@@ -863,7 +868,7 @@ export default function AddHotelAftrLgn() {
                   }}
                   onClick={() => navigate("/memberRegister")}
                 >
-                  Click here...
+          <FormattedMessage defaultMessage="Click here..."/>        
                 </Button>
               </Box>
             </CardContent>
