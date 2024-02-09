@@ -2,6 +2,9 @@
   "+R6HRl": {
     "defaultMessage": "List Your Property"
   },
+  "/28JSA": {
+    "defaultMessage": "Click here..."
+  },
   "/2PAGq": {
     "defaultMessage": "Phone No"
   },
@@ -11,8 +14,14 @@
   "25WwxF": {
     "defaultMessage": "Don't have an account?"
   },
+  "2apuGa": {
+    "defaultMessage": "Mohali"
+  },
   "39AHJm": {
     "defaultMessage": "Sign Up"
+  },
+  "3EnruA": {
+    "defaultMessage": "Postal code"
   },
   "3KiaqX": {
     "defaultMessage": "Check in: 15:00"
@@ -23,11 +32,29 @@
   "4OjOXO": {
     "defaultMessage": "Please enter your email to continue"
   },
+  "4jYQG+": {
+    "defaultMessage": "Hotels & Homes"
+  },
+  "5GxMk2": {
+    "defaultMessage": "Add hotel & Get ₹500 OYO Money"
+  },
   "5sg7KC": {
     "defaultMessage": "Password"
   },
+  "7TFbhV": {
+    "defaultMessage": "Add Hotel Location"
+  },
+  "7lsiX8": {
+    "defaultMessage": "Over 157,000 hotels and homes across 35 countries"
+  },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
+  },
+  "9+Ddtu": {
+    "defaultMessage": "Next"
+  },
+  "9khnVR": {
+    "defaultMessage": "Photos"
   },
   "9uOFF3": {
     "defaultMessage": "Overview"
@@ -38,6 +65,15 @@
   "BSij1a": {
     "defaultMessage": "close"
   },
+  "BUu6Wn": {
+    "defaultMessage": "Add Hotel"
+  },
+  "CDnwtH": {
+    "defaultMessage": "Jagadhri"
+  },
+  "EZEH2+": {
+    "defaultMessage": "Add Hotel Details.."
+  },
   "GB83+B": {
     "defaultMessage": "Near me"
   },
@@ -46,6 +82,9 @@
   },
   "GodOg+": {
     "defaultMessage": "Arrival / Departure"
+  },
+  "GrQf+i": {
+    "defaultMessage": "Enter Hotel Discription...."
   },
   "H0JBH6": {
     "defaultMessage": "Log Out"
@@ -56,8 +95,14 @@
   "HBbJIL": {
     "defaultMessage": "There's a smarter way to OYO around"
   },
+  "HfAXbq": {
+    "defaultMessage": "Drop a Photo Here"
+  },
   "Hm2NzP": {
     "defaultMessage": "World's leading chain of hotels and homes"
+  },
+  "IFkDw5": {
+    "defaultMessage": "Cities"
   },
   "KkDJ/P": {
     "defaultMessage": "Sign up & Get ₹500 OYO Money"
@@ -68,14 +113,35 @@
   "NQgbYA": {
     "defaultMessage": "Account Settings"
   },
+  "NxNgkz": {
+    "defaultMessage": "There's an OYO around. Always."
+  },
+  "OgF6Am": {
+    "defaultMessage": "Mumbai"
+  },
+  "QQSdHP": {
+    "defaultMessage": "View More"
+  },
   "QiKKFz": {
     "defaultMessage": "Change Password"
+  },
+  "Rtrei/": {
+    "defaultMessage": "View Deal"
+  },
+  "TE4fIS": {
+    "defaultMessage": "City"
   },
   "U41zpQ": {
     "defaultMessage": "Old password:"
   },
   "UFXy0j": {
     "defaultMessage": "Verify email"
+  },
+  "UjxXg4": {
+    "defaultMessage": "To use Another Email for adding hotel"
+  },
+  "V+XwpG": {
+    "defaultMessage": "Hotel"
   },
   "W2tpY0": {
     "defaultMessage": "Phone No:"
@@ -89,17 +155,41 @@
   "cyR7Kh": {
     "defaultMessage": "Back"
   },
+  "d/gBvP": {
+    "defaultMessage": "More Destinations.More Ease. More Affordable."
+  },
   "dmGKS5": {
     "defaultMessage": "Check out: 12:00"
+  },
+  "eyOT/X": {
+    "defaultMessage": "Point location"
   },
   "gCsYTJ": {
     "defaultMessage": "New password:"
   },
+  "hN9DjA": {
+    "defaultMessage": "Our Lowest Price"
+  },
   "jvaZOr": {
     "defaultMessage": "Change Your Password"
   },
+  "ku+mDU": {
+    "defaultMessage": "State"
+  },
+  "kuVWTT": {
+    "defaultMessage": "Enter Hotel Amenities...."
+  },
   "lhgV6Z": {
     "defaultMessage": "Top amenities"
+  },
+  "lqSLwV": {
+    "defaultMessage": "There's a smarter way to OYO aroundties"
+  },
+  "nsZqim": {
+    "defaultMessage": "Yamuna Nagar"
+  },
+  "p2cPVQ": {
+    "defaultMessage": "Bilaspur"
   },
   "qwx3Nk": {
     "defaultMessage": "Update Personal Information"
@@ -116,11 +206,20 @@
   "uCk8r+": {
     "defaultMessage": "Already have an account?"
   },
+  "uta34T": {
+    "defaultMessage": "Hotel name"
+  },
   "vNbJei": {
     "defaultMessage": "Email-"
   },
+  "vONi+O": {
+    "defaultMessage": "Country"
+  },
   "wNLUau": {
     "defaultMessage": "Login / SignUp"
+  },
+  "we4Lby": {
+    "defaultMessage": "Info"
   },
   "xmcVZ0": {
     "defaultMessage": "Search"

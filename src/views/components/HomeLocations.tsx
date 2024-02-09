@@ -3,6 +3,7 @@ import React from "react";
 import Grid from "@mui/material/Grid";
 import MapJpg from "../../assets/map.jpg";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 /**
  * A Component to add on the landing page . Markdown is HomeLocations*.
  */
@@ -24,23 +25,23 @@ function HomeLocations() {
           <Typography
             sx={{ fontSize: "26px", fontWeight: 700, color: "#333", mb: 2 }}
           >
-            There's an OYO around. Always.
+          <FormattedMessage defaultMessage="There's an OYO around. Always."/>      
           </Typography>
           <Typography sx={{ fontSize: "16px", color: "grey" }}>
-            More Destinations. More Ease. More Affordable.
+          <FormattedMessage defaultMessage="More Destinations.More Ease. More Affordable."/>         
           </Typography>
           <Stack direction={"row"} m={2}>
             <Box borderRight={"1px solid gray"} pr={2}>
               <Typography sx={{ fontSize: "32px" }}>35+</Typography>
               <Typography sx={{ fontSize: "14px", color: "grey" }}>
-                Cities
+              <FormattedMessage defaultMessage="Cities"/>      
               </Typography>
             </Box>
             {/* <Typography sx={{ fontSize: "48px", color: "grey" }}>/</Typography> */}
             <Box pl={2}>
               <Typography sx={{ fontSize: "32px" }}>174,000+</Typography>
               <Typography sx={{ fontSize: "14px", color: "grey" }}>
-                Hotels & Homes
+              <FormattedMessage defaultMessage="    Hotels & Homes"/>     
               </Typography>
             </Box>
           </Stack>
@@ -62,7 +63,7 @@ function HomeLocations() {
                   sx={{ textTransform: "none", color: "black" }}
                   onClick={handleOpen}
                 >
-                  Mumbai
+                  <FormattedMessage defaultMessage="Mumbai"/>      
                 </Button>
               </Grid>
               <Grid item xs={4}>
@@ -81,7 +82,7 @@ function HomeLocations() {
                   sx={{ textTransform: "none", color: "black" }}
                   onClick={handleOpen}
                 >
-                  Delhi
+                   Delhi  
                 </Button>
               </Grid>
               <Grid item xs={4}>
@@ -100,7 +101,7 @@ function HomeLocations() {
                   sx={{ textTransform: "none", color: "black" }}
                   onClick={handleOpen}
                 >
-                  Yamuna Nagar
+                <FormattedMessage defaultMessage="Yamuna Nagar"/>          
                 </Button>
               </Grid>
               <Grid item xs={4}>
@@ -119,7 +120,7 @@ function HomeLocations() {
                   sx={{ textTransform: "none", color: "black" }}
                   onClick={handleOpen}
                 >
-                  Bilaspur
+                <FormattedMessage defaultMessage="Bilaspur"/>           
                 </Button>
               </Grid>
               <Grid item xs={4}>
@@ -138,7 +139,7 @@ function HomeLocations() {
                   sx={{ textTransform: "none", color: "black" }}
                   onClick={handleOpen}
                 >
-                  Jagadhri
+               <FormattedMessage defaultMessage="Jagadhri"/>      
                 </Button>
               </Grid>
               <Grid item xs={4}>
@@ -157,7 +158,7 @@ function HomeLocations() {
                   sx={{ textTransform: "none", color: "black" }}
                   onClick={handleOpen}
                 >
-                  Mohali
+               <FormattedMessage defaultMessage=" Mohali"/>    
                 </Button>
               </Grid>
             </Grid>

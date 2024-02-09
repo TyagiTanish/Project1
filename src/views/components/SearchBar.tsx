@@ -16,6 +16,7 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { useDispatch, useSelector } from "react-redux";
 import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -23,12 +24,10 @@ function SearchBar() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const data: any = localStorage.getItem("Rooms&Guests");
-  const parsedData = JSON.parse(data);
-  const [rooms, setRooms] = React.useState<any>([{Room:+parsedData?.Rooms,guest:+parsedData?.Guests}||{ Room: 1, guest: 1 }]);
+  const [rooms, setRooms] = React.useState<any>([{ Room: 1, guest: 1 }]);
   const search = useSelector((state:any)=>state.userReducer.searchDetails)
-  const [guests, setGuests] = useState(parsedData?.Guests != null? parsedData?.Guests : 1  );
-  const [totalRooms, setTotalRooms] = useState(parsedData?.Rooms!=null ? parsedData?.Rooms : 0);
+  const [guests, setGuests] = useState(0);
+  const [totalRooms, setTotalRooms] = useState(0);
   const [render, setRender] = React.useState(0);
   const [searchTerm,setSearchTerm] = useState<any>(search||'');
   const dispatch = useDispatch();
@@ -44,15 +43,12 @@ function SearchBar() {
     setGuests(result);
 
     setRooms(rooms);
-
-    
   }, [render, rooms]);
   // useMemo(() => {
   localStorage.setItem(
     "Rooms&Guests",
     JSON.stringify({ Rooms: totalRooms, Guests: guests })
   );
-  console.log(guests)
   //   );
   // }, [guests]);
   function handleLocationClick() {
@@ -116,7 +112,7 @@ function SearchBar() {
               zIndex: "0",
             }}
           >
-            Over 157,000 hotels and homes across 35 countries
+        <FormattedMessage defaultMessage=" Over 157,000 hotels and homes across 35 countries"/>        
           </Box>
           <Stack
             sx={{
@@ -144,7 +140,7 @@ function SearchBar() {
                       }}
                     >
                       <MyLocationIcon />
-                      Near me
+                      <FormattedMessage defaultMessage="Near me"/>  
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -179,7 +175,7 @@ function SearchBar() {
                 navigate("./hotels");
               }}
             >
-              Search
+              <FormattedMessage defaultMessage="Search"/>    
             </Button>
           </Stack>
         </Stack>

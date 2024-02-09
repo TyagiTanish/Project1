@@ -16,7 +16,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import RoomSelection from "./RoomSelection";
 
 /**
  *  Search Bar at the top of every page except HomePage which helps in searching Hotels. Markdown is *SearchBar2*.
@@ -53,16 +52,15 @@ function Seachbar2() {
     dispatch(searchDetails(value));
   };
 
+  
+  const data: any = localStorage.getItem("Rooms&Guests");
+  const parsedData = JSON.parse(data);
   const navigate = useNavigate();
-
   useEffect(() => {
     var result = 0;
-    var totalRooms = 0;
     rooms.forEach((element: any) => {
       result = result + +element.guest;
-      totalRooms = totalRooms + 1;
     });
-    setTotalRooms(totalRooms);
     setGuests(result);
     setRooms(rooms);
   }, [render, rooms]);
@@ -91,6 +89,46 @@ function Seachbar2() {
   }
 
   return (
+    <Stack  
+      direction={"row"}
+      sx={{
+                mb: "20px",
+        alignItems: "center",
+        justifyContent: "center",
+        alignSelf: "center",
+      }}
+    >
+      <TextField
+        sx={{
+          backgroundColor: "white",
+          borderRadius: 3,
+          mt: 1,
+        }}
+        InputProps={{
+          endAdornment: (
+            <InputAdornment position="start">
+              <IconButton
+                onClick={handleLocationClick}
+                sx={{
+                  fontSize: { sm: "10px", lg: "15px" },
+                  fontWeight: "bolder",
+                  color: "black",
+                }}
+              >
+                <MyLocationIcon />
+                <FormattedMessage defaultMessage="Near me"/>  
+              </IconButton>
+            </InputAdornment>
+          ),
+        }}
+        placeholder="Search by city,hote, or neighborhood"
+        onChange={(e)=>setSearchTerm(e.target.value)}
+        defaultValue={search}
+      />
+      <DateRangePickers />
+      <TextField
+        id="outlined-basic"
+        variant="outlined"
     <>
       <Stack
         direction={"row"}
@@ -100,6 +138,30 @@ function Seachbar2() {
           justifyContent: "center",
           alignSelf: "center",
         }}
+
+        // value={`${rooms.length} Room , ${guests} guest`}
+        value={`${parsedData.Rooms} Room , ${parsedData.Guests} guest`}
+        onClick={(event: any) => handleClick(event)}
+      />
+      <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#1ab64f",
+                "&:hover": { bgcolor: "green" },
+                color: "white",
+                fontWeight: "bolder",
+                height:55 ,
+                mt:0.75,
+               borderRadius: 1,
+              }}
+              onClick={() => {
+                dispatch(searchDetails(searchTerm))
+                navigate("./hotels");
+              }}
+            >
+                <FormattedMessage defaultMessage="Search"/>  
+              </Button>
+    </Stack>
       >
         <TextField
           sx={{

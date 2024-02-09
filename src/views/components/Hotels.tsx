@@ -25,6 +25,7 @@ import { triggerAsyncId } from "async_hooks";
 import { useDispatch, useSelector } from "react-redux";
 import { hotelId } from "./redux/user/userSlice";
 import { boolean } from "yup";
+import { FormattedMessage } from "react-intl";
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -148,7 +149,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           // marginTop: "10px",
                         }}
                       >
-                        Hotel
+                   <FormattedMessage defaultMessage="Hotel" />     
                       </Typography>
                       <Button
                         sx={{
@@ -162,7 +163,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           handleClick(i);
                         }}
                       >
-                        View More
+                     <FormattedMessage defaultMessage=" View More" />      
                         <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
                       </Button>
                     </Stack>
@@ -198,7 +199,7 @@ function Hotels({ filteredData, screenSize }: any) {
                             fontWeight: "bold",
                           }}
                         >
-                          Free Cancelation
+                     <FormattedMessage defaultMessage=" View More" />         
                         </Typography>
                       </Stack>
                       <Typography
@@ -213,7 +214,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     </Stack>
                     <Stack spacing={1}>
                       <Chip
-                        label="Our Lowest Price"
+                        label=    {<FormattedMessage defaultMessage="Our Lowest Price" /> }     
                         variant="outlined"
                         color="error"
                         sx={{
@@ -242,7 +243,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           textTransform: "none",
                         }}
                       >
-                        View Deal
+                         <FormattedMessage defaultMessage=" View Deal" />      
                       </Button>
                     </Stack>
                   </Stack>

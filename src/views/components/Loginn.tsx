@@ -244,14 +244,14 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                   }}
                   direction={"row"}
                 >
-                  <FormattedMessage defaultMessage="   Don't have an account?" />
+                  <FormattedMessage defaultMessage="Don't have an account?" />
                   <Button
                     onClick={() => {
                       setLogReg(true);
                     }}
                     sx={{ fontSize: { sm: "14px" } }}
                   >
-                    <FormattedMessage defaultMessage="    Register here" />
+                    <FormattedMessage defaultMessage="Register here" />
                   </Button>
                 </Stack>
               </>
