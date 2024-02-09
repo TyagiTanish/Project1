@@ -105,7 +105,7 @@ const router = [
       },
 
       {
-        path: "/billing",
+        path: "/billing/:id/:hid",
         element: (
           <CustomerRoutes>
             <Billing />
