@@ -1,10 +1,10 @@
 import React from 'react'
-import Remainders from './dashBoardComponents/Remainders'
+import Reminder from './dashBoardComponents/reminder'
 import { Box } from '@mui/material'
 
 const AdminDashboard = () => {
   return (
-        <Remainders/>
+        <Reminder/>
   )
 }
 

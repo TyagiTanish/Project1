@@ -5,17 +5,8 @@ import { useSelector } from "react-redux";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box, Stack } from "@mui/material";
 
-const SimpleMap = ({  filteredData,setToggle}:any) => {
+const SimpleMap = ({ filteredData, setToggle }: any) => {
   const location = useSelector((state: any) => state.userReducer.location);
-  //  console.log(filteredData)
-  //  console.log('5555555555555555',detailIndex)
-  // const handleClick = (index: any) => {
-  //   setDetailIndex(index);
-  //   if (index === detailIndex) {
-  //     setDetailIndex("");
-  //   }
-  // };
-
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoidGFuaXNoLXR5YWdpIiwiYSI6ImNscmV0YWJmcTFocmoybHFpZDQ3dHFkdzMifQ.szsjsVkaiJpDsGUe7LR_4A";
@@ -46,7 +37,7 @@ const SimpleMap = ({  filteredData,setToggle}:any) => {
       const popup = new mapboxgl.Popup()
         .setLngLat(location.coordinates)
         .setHTML(
-          `<p><h3>${location.title}</h3><p>${location.description}</p></p>`
+          `<div  style='width:100%;' ><span><img src='http://localhost:8000/${location?.image}'  style="width: 95%;"  /></span><span style='width:100%;' ><p   style='width:100%;font-size:15px;font-weight:bolder' >${location.title}</p><p>${location.description}</p></span></div><p></p>`
         );
       const marker = new mapboxgl.Marker()
         .setLngLat(location.coordinates)
@@ -56,8 +47,8 @@ const SimpleMap = ({  filteredData,setToggle}:any) => {
       // Attach click event listener to the marker
       marker.getElement().addEventListener("click", () => {
         window.location.href = `#${location?.id}`;
-        console.log(location?.id)
-        const lct =location?.id as any
+        console.log(location?.id);
+        const lct = location?.id as any;
         // handleClick(lct );
       });
     });
@@ -83,24 +74,3 @@ const SimpleMap = ({  filteredData,setToggle}:any) => {
   );
 };
 export default SimpleMap;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
