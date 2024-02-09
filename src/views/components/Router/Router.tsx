@@ -83,7 +83,7 @@ const router = [
         path: "/myBookings",
         element: <CustomerBooking />,
       },
-     
+
       {
         path: "/hotels",
         element: (
@@ -198,7 +198,8 @@ const router = [
     ],
   },
 ];
-
+// dmjkncvkjdbvkjsdbvkjd m,x
+// dfkgjbneriughidrugheidrughfiseuh
 function Routes() {
   return useRoutes(router);
 }
