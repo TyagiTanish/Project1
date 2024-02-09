@@ -17,6 +17,12 @@
       "value": "Phone No"
     }
   ],
+  "0xWUYr": [
+    {
+      "type": 0,
+      "value": "Customer Phone"
+    }
+  ],
   "1umnAX": [
     {
       "type": 0,
@@ -27,6 +33,12 @@
     {
       "type": 0,
       "value": "Don't have an account?"
+    }
+  ],
+  "2HUE26": [
+    {
+      "type": 0,
+      "value": "Owner Id"
     }
   ],
   "2apuGa": [
@@ -89,12 +101,6 @@
       "value": "Add Hotel Location"
     }
   ],
-  "7lsiX8": [
-    {
-      "type": 0,
-      "value": "Over 157,000 hotels and homes across 35 countries"
-    }
-  ],
   "8uXS99": [
     {
       "type": 0,
@@ -105,6 +111,12 @@
     {
       "type": 0,
       "value": "Next"
+    }
+  ],
+  "97l2MO": [
+    {
+      "type": 0,
+      "value": "Customer Email"
     }
   ],
   "9khnVR": [
@@ -137,6 +149,12 @@
       "value": "Add Hotel"
     }
   ],
+  "BmfoZ2": [
+    {
+      "type": 0,
+      "value": "User Details-"
+    }
+  ],
   "CDnwtH": [
     {
       "type": 0,
@@ -147,6 +165,12 @@
     {
       "type": 0,
       "value": "Add Hotel Details.."
+    }
+  ],
+  "Eta9Rl": [
+    {
+      "type": 0,
+      "value": "Hotel's Discription"
     }
   ],
   "GB83+B": [
@@ -165,6 +189,12 @@
     {
       "type": 0,
       "value": "Arrival / Departure"
+    }
+  ],
+  "Gr1SAu": [
+    {
+      "type": 0,
+      "value": "Customer Name"
     }
   ],
   "GrQf+i": [
@@ -305,6 +335,12 @@
       "value": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
     }
   ],
+  "ZmsB1S": [
+    {
+      "type": 0,
+      "value": "Hotel lists"
+    }
+  ],
   "cyR7Kh": [
     {
       "type": 0,
@@ -341,6 +377,12 @@
       "value": "Our Lowest Price"
     }
   ],
+  "jUTmkf": [
+    {
+      "type": 0,
+      "value": "Member Details-"
+    }
+  ],
   "jvaZOr": [
     {
       "type": 0,
@@ -369,6 +411,12 @@
     {
       "type": 0,
       "value": "There's a smarter way to OYO aroundties"
+    }
+  ],
+  "mXiD5u": [
+    {
+      "type": 0,
+      "value": "Phone Number"
     }
   ],
   "nsZqim": [

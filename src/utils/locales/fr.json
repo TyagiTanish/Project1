@@ -11,10 +11,22 @@
       "value": "Inscrivez votre propriété"
     }
   ],
+  "/28JSA": [
+    {
+      "type": 0,
+      "value": "Cliquez ici..."
+    }
+  ],
   "/2PAGq": [
     {
       "type": 0,
       "value": "Pas de téléphone"
+    }
+  ],
+  "0xWUYr": [
+    {
+      "type": 0,
+      "value": "Téléphone du client"
     }
   ],
   "11oARw": [
@@ -35,10 +47,28 @@
       "value": "Vous n'avez pas de compte ?"
     }
   ],
+  "2HUE26": [
+    {
+      "type": 0,
+      "value": "Identifiant du propriétaire"
+    }
+  ],
+  "2apuGa": [
+    {
+      "type": 0,
+      "value": "locale"
+    }
+  ],
   "39AHJm": [
     {
       "type": 0,
       "value": "S'inscrire"
+    }
+  ],
+  "3EnruA": [
+    {
+      "type": 0,
+      "value": "Code Postal"
     }
   ],
   "3KiaqX": [
@@ -59,6 +89,18 @@
       "value": "Veuillez entrer votre email pour continuer"
     }
   ],
+  "4jYQG+": [
+    {
+      "type": 0,
+      "value": "Hôtels et maisons"
+    }
+  ],
+  "5GxMk2": [
+    {
+      "type": 0,
+      "value": "Ajoutez un hôtel et obtenez 500 ₹ d'argent OYO"
+    }
+  ],
   "5V00Mx": [
     {
       "type": 0,
@@ -77,6 +119,12 @@
       "value": "Kolkata"
     }
   ],
+  "7TFbhV": [
+    {
+      "type": 0,
+      "value": "Ajouter l'emplacement de l'hôtel"
+    }
+  ],
   "8oWVZA": [
     {
       "type": 0,
@@ -87,6 +135,18 @@
     {
       "type": 0,
       "value": "Lieux populaires"
+    }
+  ],
+  "9+Ddtu": [
+    {
+      "type": 0,
+      "value": "Suivant"
+    }
+  ],
+  "97l2MO": [
+    {
+      "type": 0,
+      "value": "Email client"
     }
   ],
   "9khnVR": [
@@ -113,10 +173,52 @@
       "value": "Se connecter"
     }
   ],
+  "BSij1a": [
+    {
+      "type": 0,
+      "value": "fermer"
+    }
+  ],
+  "BUu6Wn": [
+    {
+      "type": 0,
+      "value": "Ajouter un hôtel"
+    }
+  ],
+  "BmfoZ2": [
+    {
+      "type": 0,
+      "value": "Détails de l'utilisateur-"
+    }
+  ],
+  "CDnwtH": [
+    {
+      "type": 0,
+      "value": "Jagadhri"
+    }
+  ],
+  "EZEH2+": [
+    {
+      "type": 0,
+      "value": "Ajouter les détails de l'hôtel.."
+    }
+  ],
+  "Eta9Rl": [
+    {
+      "type": 0,
+      "value": "Description de l'hôtel"
+    }
+  ],
   "FrO6L4": [
     {
       "type": 0,
       "value": "Prénom:"
+    }
+  ],
+  "GB83+B": [
+    {
+      "type": 0,
+      "value": "Proche de moi"
     }
   ],
   "GPLny2": [
@@ -129,6 +231,18 @@
     {
       "type": 0,
       "value": "Arrivée Départ"
+    }
+  ],
+  "Gr1SAu": [
+    {
+      "type": 0,
+      "value": "Nom du client"
+    }
+  ],
+  "GrQf+i": [
+    {
+      "type": 0,
+      "value": "Entrez la description de l'hôtel...."
     }
   ],
   "H0JBH6": [
@@ -149,6 +263,12 @@
       "value": "Il existe un moyen plus intelligent de OYO"
     }
   ],
+  "HfAXbq": [
+    {
+      "type": 0,
+      "value": "Déposez une photo ici"
+    }
+  ],
   "Hl6eet": [
     {
       "type": 0,
@@ -159,6 +279,12 @@
     {
       "type": 0,
       "value": "Première chaîne mondiale d'hôtels et de résidences"
+    }
+  ],
+  "IFkDw5": [
+    {
+      "type": 0,
+      "value": "Villes"
     }
   ],
   "JH2EfS": [
@@ -173,10 +299,34 @@
       "value": "Inscrivez-vous et obtenez 500 ₹ d'argent OYO"
     }
   ],
+  "LaM7n1": [
+    {
+      "type": 0,
+      "value": "télécharger"
+    }
+  ],
   "NQgbYA": [
     {
       "type": 0,
       "value": "Paramètres du compte"
+    }
+  ],
+  "NxNgkz": [
+    {
+      "type": 0,
+      "value": "Il y a un OYO dans le coin. Toujours."
+    }
+  ],
+  "OgF6Am": [
+    {
+      "type": 0,
+      "value": "Bombay"
+    }
+  ],
+  "QQSdHP": [
+    {
+      "type": 0,
+      "value": "Voir plus"
     }
   ],
   "QiKKFz": [
@@ -191,6 +341,18 @@
       "value": "Bar de l'hôtel"
     }
   ],
+  "Rtrei/": [
+    {
+      "type": 0,
+      "value": "Voir l'offre"
+    }
+  ],
+  "TE4fIS": [
+    {
+      "type": 0,
+      "value": "Ville"
+    }
+  ],
   "U41zpQ": [
     {
       "type": 0,
@@ -203,10 +365,40 @@
       "value": "Vérifier les courriels"
     }
   ],
+  "UjxXg4": [
+    {
+      "type": 0,
+      "value": "Pour utiliser un autre e-mail pour ajouter un hôtel"
+    }
+  ],
+  "V+XwpG": [
+    {
+      "type": 0,
+      "value": "Hôtel"
+    }
+  ],
+  "W2tpY0": [
+    {
+      "type": 0,
+      "value": "Pas de téléphone:"
+    }
+  ],
+  "WF8jKB": [
+    {
+      "type": 0,
+      "value": "Nom:"
+    }
+  ],
   "Y2s5iu": [
     {
       "type": 0,
       "value": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
+    }
+  ],
+  "ZmsB1S": [
+    {
+      "type": 0,
+      "value": "Listes d'hôtels"
     }
   ],
   "cyR7Kh": [
@@ -215,10 +407,22 @@
       "value": "Dos"
     }
   ],
+  "d/gBvP": [
+    {
+      "type": 0,
+      "value": "Plus de destinations. Plus de facilité. Plus abordable."
+    }
+  ],
   "dmGKS5": [
     {
       "type": 0,
       "value": "Départ: 12h00"
+    }
+  ],
+  "eyOT/X": [
+    {
+      "type": 0,
+      "value": "Emplacement des points"
     }
   ],
   "gCsYTJ": [
@@ -233,6 +437,18 @@
       "value": "Wifi gratuit"
     }
   ],
+  "hN9DjA": [
+    {
+      "type": 0,
+      "value": "Notre prix le plus bas"
+    }
+  ],
+  "jUTmkf": [
+    {
+      "type": 0,
+      "value": "Détails du membre-"
+    }
+  ],
   "jvaZOr": [
     {
       "type": 0,
@@ -245,6 +461,18 @@
       "value": "Spa"
     }
   ],
+  "ku+mDU": [
+    {
+      "type": 0,
+      "value": "État"
+    }
+  ],
+  "kuVWTT": [
+    {
+      "type": 0,
+      "value": "Entrez les commodités de l’hôtel...."
+    }
+  ],
   "l4GiZS": [
     {
       "type": 0,
@@ -255,6 +483,30 @@
     {
       "type": 0,
       "value": "Équipements haut de gamme"
+    }
+  ],
+  "lqSLwV": [
+    {
+      "type": 0,
+      "value": "Il existe un moyen plus intelligent de gérer les relations avec OYO"
+    }
+  ],
+  "mXiD5u": [
+    {
+      "type": 0,
+      "value": "Numéro de téléphone"
+    }
+  ],
+  "nsZqim": [
+    {
+      "type": 0,
+      "value": "Yamuna Nagar"
+    }
+  ],
+  "p2cPVQ": [
+    {
+      "type": 0,
+      "value": "Bilaspur"
     }
   ],
   "qwx3Nk": [
@@ -293,6 +545,24 @@
       "value": "Wi-Fi dans le hall"
     }
   ],
+  "uta34T": [
+    {
+      "type": 0,
+      "value": "Nom de l'Hotel"
+    }
+  ],
+  "vNbJei": [
+    {
+      "type": 0,
+      "value": "E-mail-"
+    }
+  ],
+  "vONi+O": [
+    {
+      "type": 0,
+      "value": "Pays"
+    }
+  ],
   "wNLUau": [
     {
       "type": 0,
@@ -303,6 +573,18 @@
     {
       "type": 0,
       "value": "Info"
+    }
+  ],
+  "xmcVZ0": [
+    {
+      "type": 0,
+      "value": "Recherche"
+    }
+  ],
+  "xzKMCh": [
+    {
+      "type": 0,
+      "value": "Toutes les villes"
     }
   ],
   "yGgJD/": [
@@ -316,85 +598,5 @@
       "type": 0,
       "value": "Contact"
     }
-  ],
-  "2apuGa":[
-    {"type":0,"value":"Mohali"}
-  ],
-  "4jYQG+":[
-    {"type":0,"value":"Hôtels et maisons"}
-  ],
-  "7lsiX8":[
-    {"type":0,"value":"Plus de 157 000 hôtels et résidences dans 35 pays"}
-  ],
-  "BSij1a":[
-    {"type":0,"value":"fermer"}
-  ],
-  "CDnwtH":[
-    {"type":0,"value":"Jagadhri"}
-  ],
- "IFkDw5":[
-  {"type":0,"value":"Villes"}
-],
-  "LaM7n1":[
-    {"type":0,"value":"télécharger"}
-  ],
-  "NxNgkz":[
-    {"type":0,"value":"Il y a un OYO dans le coin. Toujours."}
   ]
-  ,"OgF6Am":[
-    {"type":0,"value":"Mumbai"}
-    ],
-  "W2tpY0":[
-
-    {"type":0,"value":"Pas de téléphone:"}
-  ],
-  "WF8jKB":[
-    {"type":0,"value":"Nom:"}
-  ],
-  "d/gBvP":[
-    {"type":0,"value":"Plus de destinations. Plus de facilité. Plus abordable."}
-  ],
-  "nsZqim":[
-    {"type":0,"value":"Yamuna Nagar"}
-  ],
-
-  "xzKMCh":[
-    {"type":0,"value":"Toutes les villes"}
-  ],
- 
-  "/28JSA":[{"type":0,"value":"Cliquez ici..."}],
-  
-  "3EnruA":[{"type":0,"value":"Code Postal"}],
-
-  "5GxMk2":[{"type":0,"value":"Ajoutez un hôtel et obtenez 500 ₹ d'argent OYO"}],
-  "7TFbhV":[{"type":0,"value":"Ajouter l'emplacement de l'hôtel"}],
- 
-  "9+Ddtu":[{"type":0,"value":"Suivant"}],
- 
-  "BUu6Wn":[{"type":0,"value":"Ajouter un hôtel"}],
- 
-  "EZEH2+":[{"type":0,"value":"Ajouter les détails de l'hôtel.."}],
-
-  "GrQf+i":[{"type":0,"value":"Entrez la description de l'hôtel...."}],
-  "HfAXbq":[{"type":0,"value":"Déposez une photo ici"}],
-
- 
-  "UjxXg4":[{"type":0,"value":"Pour utiliser un autre e-mail pour ajouter un hôtel"}],
-
-  "eyOT/X":[{"type":0,"value":"Emplacement des points"}],
-  "ku+mDU":[{"type":0,"value":"État"}],
-  "kuVWTT":[{"type":0,"value":"Entrez les commodités de l’hôtel...."}],
-  "lqSLwV":[{"type":0,"value":"Il existe un moyen plus intelligent de gérer les relations avec OYO"}],
-
-
-  "uta34T":[{"type":0,"value":"Nom de l'Hotel"}],
-  "xmcVZ0":[{"type":0,"value":"Recherche"}],
-  "GB83+B":[{"type":0,"value":"Proche de moi"}],
-  "vONi+O":[{"type":0,"value":"Pays"}],
-  "TE4fIS":[{"type":0,"value":"Ville"}],
-  "1fOH0L":[{"type":0,"value":"Annulation gratuite"}],
-  "QQSdHP":[{"type":0,"value":"Voir plus"}],
-  "Rtrei/":[{"type":0,"value":"Voir l'offre"}],
-  "V+XwpG":[{"type":0,"value":"Hôtel"}],
-  "hN9DjA":[{"type":0,"value":"Notre prix le plus bas"}]
 }

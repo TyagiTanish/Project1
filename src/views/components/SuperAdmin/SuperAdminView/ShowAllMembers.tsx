@@ -22,6 +22,7 @@ import ShowHotelsModal from "./ShowHotelsModal";
 import Switch from "@mui/material/Switch";
 import Tooltip from "@mui/material/Tooltip";
 import { enqueueSnackbar } from "notistack";
+import { useIntl, FormattedMessage } from "react-intl";
 
 /**
  * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
@@ -119,7 +120,10 @@ export default function ShowAllMembers() {
       // editable: true,
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
-          <strong>Hotel name</strong>
+          <strong>
+            <FormattedMessage defaultMessage="Hotel name" />
+            Hotel name
+          </strong>
         </div>
       ),
     },
@@ -129,7 +133,10 @@ export default function ShowAllMembers() {
       // editable: true,
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
-          <strong>City</strong>
+          <strong>
+            <FormattedMessage defaultMessage="City" />
+            City
+          </strong>
         </div>
       ),
     },
@@ -139,7 +146,10 @@ export default function ShowAllMembers() {
       // editable: true,
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
-          <strong>State</strong>
+          <strong>
+            <FormattedMessage defaultMessage="State" />
+            State
+          </strong>
         </div>
       ),
     },
@@ -149,7 +159,10 @@ export default function ShowAllMembers() {
       // editable: true,
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
-          <strong>Owner Id</strong>
+          <strong>
+            <FormattedMessage defaultMessage="Owner Id" />
+            Owner Id
+          </strong>
         </div>
       ),
     },
@@ -207,8 +220,8 @@ export default function ShowAllMembers() {
 
   return (
     <>
-    {/* using accordion to display hotels of members  */}
-      <Box >
+      {/* using accordion to display hotels of members  */}
+      <Box>
         <Typography
           sx={{
             fontWeight: "bold",
@@ -218,17 +231,28 @@ export default function ShowAllMembers() {
             mb: 3,
           }}
         >
-          Member Details-
+          <FormattedMessage defaultMessage="Member Details-" />
+          {/* Member Details- */}
         </Typography>
-        <Stack direction={"row"} justifyContent={"space-between"} width={"100%"}>
+        <Stack
+          direction={"row"}
+          justifyContent={"space-between"}
+          width={"100%"}
+        >
           <Typography fontSize={"large"} sx={{ ml: 4 }}>
-            <strong>Name</strong>
+            <strong>
+              <FormattedMessage defaultMessage="Name" />
+            </strong>
           </Typography>
           <Typography fontSize={"large"}>
-            <strong>Email</strong>
+            <strong>
+              <FormattedMessage defaultMessage="Email" />
+            </strong>
           </Typography>
-          <Typography fontSize={"large"} sx={{mr:2}} >
-            <strong>Phone Number</strong>
+          <Typography fontSize={"large"} sx={{ mr: 2 }}>
+            <strong>
+              <FormattedMessage defaultMessage="Phone Number" />
+            </strong>
           </Typography>
         </Stack>
         {members?.map((item: any, i: any) => (
@@ -262,9 +286,15 @@ export default function ShowAllMembers() {
                   <Box overflow={'auto'} m={1} >{item?.email}</Box>
                   <Box m={1}>{item?.phone}</Box>
                 </Stack> */}
-                  <TableCell sx={{border:'none',width:'100%'}} >{item?.name}</TableCell>
-                  <TableCell sx={{border:'none',width:'100%'}}  >{item?.email}</TableCell>
-                  <TableCell sx={{border:'none',float:'right'}} >{item?.phone}</TableCell>
+                <TableCell sx={{ border: "none", width: "100%" }}>
+                  {item?.name}
+                </TableCell>
+                <TableCell sx={{ border: "none", width: "100%" }}>
+                  {item?.email}
+                </TableCell>
+                <TableCell sx={{ border: "none", float: "right" }}>
+                  {item?.phone}
+                </TableCell>
               </>
             </AccordionSummary>
             <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
@@ -274,7 +304,7 @@ export default function ShowAllMembers() {
               textAlign={"center"}
               mb={2}
             >
-              Hotel lists
+              <FormattedMessage defaultMessage="Hotel lists" />
             </Typography>
 
             {/* server side sorting , pagination using data grid */}
