@@ -18,8 +18,8 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import Logo from '../../Logo';
-import { Collapse, Stack, Tooltip } from "@mui/material";
+import Logo from "../../Logo";
+import { Button, Collapse, Stack, Tooltip } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BedIcon from "@mui/icons-material/Bed";
 import { Navigate, Outlet } from "react-router";
@@ -33,6 +33,9 @@ import Menu from "../../../layout/Menu";
 import ExpandLess from "@mui/icons-material/ExpandLess";
 import ExpandMore from "@mui/icons-material/ExpandMore";
 import PeopleIcon from "@mui/icons-material/People";
+import Popover from "@mui/material/Popover";
+import { useIntl, FormattedMessage } from "react-intl";
+
 // import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
 
@@ -105,8 +108,8 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 export default function SuperAdminView() {
-    const user = useSelector((state: any) => state?.userReducer?.user);
-    const theme = useTheme();
+  const user = useSelector((state: any) => state?.userReducer?.user);
+  const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(false);
 
@@ -136,6 +139,22 @@ export default function SuperAdminView() {
 
     window.addEventListener("resize", handleWindowSize);
   });
+
+  const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
+    null
+  );
+
+  const handleClickPOP = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const openn = Boolean(anchorEl);
+  const id = openn ? "simple-popover" : undefined;
+
   return (
     <>
       <Stack direction={"row"}>
@@ -170,12 +189,19 @@ export default function SuperAdminView() {
               </Stack>
               <Stack
                 direction={"row"}
-                alignItems={'center'}
+                alignItems={"center"}
                 spacing={2}
                 // ml={{ lg: "85%", md: "87%", sm: "80%" }}
               >
-                <Language/>
-                <Stack><Typography  color={'black'} fontWeight={'bolder'}  >Hello,{user?.name}</Typography><Typography color={'gray'} fontSize={'0.9rem'} >{user?.role?.toUpperCase()}</Typography></Stack>
+                <Language />
+                <Stack>
+                  <Typography color={"black"} fontWeight={"bolder"}>
+                    Hello,{user?.name}
+                  </Typography>
+                  <Typography color={"gray"} fontSize={"0.9rem"}>
+                    {user?.role?.toUpperCase()}
+                  </Typography>
+                </Stack>
                 <Menu />
               </Stack>
             </Stack>
@@ -239,9 +265,48 @@ export default function SuperAdminView() {
             <ListItem disablePadding sx={{ display: "block" }}>
               <ListItemButton onClick={handleClick}>
                 <ListItemIcon>
-                  <PeopleIcon />
+                  {open ? (
+                    <PeopleIcon />
+                  ) : (
+                    <IconButton onClick={handleClickPOP}>
+                      <PeopleIcon />
+                    </IconButton>
+                  )}
                 </ListItemIcon>
+
                 <ListItemText primary="All Users" />
+                <Popover
+                  id={id}
+                  open={openn}
+                  anchorEl={anchorEl}
+                  onClose={handleClose}
+                  anchorOrigin={{
+                    vertical: "bottom",
+                    horizontal: "right",
+                  }}
+                >
+                  {/* <Typography sx={{ p: 2 }}>
+                    The content of the Popover.
+                  </Typography> */}
+                  <ListItemButton>
+                    <ListItemText
+                      primary="Customers"
+                      onClick={() => {
+                        handleClose();
+                        navigate("/superAdmin/users");
+                      }}
+                    />
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemText
+                      primary="Members"
+                      onClick={() => {
+                        handleClose();
+                        navigate("/superAdmin/members");
+                      }}
+                    />
+                  </ListItemButton>
+                </Popover>
                 {open2 ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={open2} timeout="auto" unmountOnExit>
@@ -368,7 +433,7 @@ export default function SuperAdminView() {
             </ListItem>
           </List> */}
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
+        <Box sx={{ flexGrow: 1, p: 2, overflow: "auto", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>

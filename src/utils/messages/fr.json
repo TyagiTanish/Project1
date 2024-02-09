@@ -21,7 +21,7 @@
   "Y2s5iu": {
     "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
   },
- 
+
   "9khnVR": { "defaultMessage": "Photos" },
   "9uOFF3": { "defaultMessage": "Aperçu" },
   "we4Lby": { "defaultMessage": "Info" },
@@ -62,5 +62,60 @@
   "3rvTzG": { "defaultMessage": "S'inscrire" },
   "HAlOn1": { "defaultMessage": "Nom" },
   "sy+pv5": { "defaultMessage": "E-mail" },
-  "uCk8r+": { "defaultMessage": "Vous avez déjà un compte?" }
+  "uCk8r+": { "defaultMessage": "Vous avez déjà un compte?" },
+  "/28JSA": { "defaultMessage": "Cliquez ici..." },
+  "2apuGa": { "defaultMessage": "locale" },
+  "3EnruA": { "defaultMessage": "Code Postal" },
+  "4jYQG+": { "defaultMessage": "Hôtels et maisons" },
+  "5GxMk2": {
+    "defaultMessage": "Ajoutez un hôtel et obtenez 500 ₹ d'argent OYO"
+  },
+  "7TFbhV": { "defaultMessage": "Ajouter l'emplacement de l'hôtel" },
+  "9+Ddtu": { "defaultMessage": "Suivant" },
+  "BSij1a": { "defaultMessage": "fermer" },
+  "BUu6Wn": { "defaultMessage": "Ajouter un hôtel" },
+  "CDnwtH": { "defaultMessage": "Jagadhri" },
+  "EZEH2+": { "defaultMessage": "Ajouter les détails de l'hôtel.." },
+  "GB83+B": { "defaultMessage": "Proche de moi" },
+  "GrQf+i": { "defaultMessage": "Entrez la description de l'hôtel...." },
+  "HfAXbq": { "defaultMessage": "Déposez une photo ici" },
+  "IFkDw5": { "defaultMessage": "Villes" },
+  "LaM7n1": { "defaultMessage": "télécharger" },
+  "NxNgkz": { "defaultMessage": "Il y a un OYO dans le coin. Toujours." },
+  "OgF6Am": { "defaultMessage": "Bombay" },
+  "QQSdHP": { "defaultMessage": "Voir plus" },
+  "Rtrei/": { "defaultMessage": "Voir l'offre" },
+  "TE4fIS": { "defaultMessage": "Ville" },
+  "UjxXg4": {
+    "defaultMessage": "Pour utiliser un autre e-mail pour ajouter un hôtel"
+  },
+  "V+XwpG": { "defaultMessage": "Hôtel" },
+  "W2tpY0": { "defaultMessage": "Pas de téléphone:" },
+  "WF8jKB": { "defaultMessage": "Nom:" },
+  "ZmsB1S": { "defaultMessage": "Listes d'hôtels" },
+  "d/gBvP": {
+    "defaultMessage": "Plus de destinations. Plus de facilité. Plus abordable."
+  },
+  "eyOT/X": { "defaultMessage": "Emplacement des points" },
+  "hN9DjA": { "defaultMessage": "Notre prix le plus bas" },
+  "jUTmkf": { "defaultMessage": "Détails du membre-" },
+  "ku+mDU": { "defaultMessage": "État" },
+  "kuVWTT": { "defaultMessage": "Entrez les commodités de l’hôtel...." },
+  "lqSLwV": {
+    "defaultMessage": "Il existe un moyen plus intelligent de gérer les relations avec OYO"
+  },
+  "mXiD5u": { "defaultMessage": "Numéro de téléphone" },
+  "nsZqim": { "defaultMessage": "Yamuna Nagar" },
+  "p2cPVQ": { "defaultMessage": "Bilaspur" },
+  "uta34T": { "defaultMessage": "Nom de l'Hotel" },
+  "vNbJei": { "defaultMessage": "E-mail-" },
+  "vONi+O": { "defaultMessage": "Pays" },
+  "xmcVZ0": { "defaultMessage": "Recherche" },
+  "xzKMCh": { "defaultMessage": "Toutes les villes" },
+  "0xWUYr": { "defaultMessage": "Téléphone du client" },
+  "2HUE26": { "defaultMessage": "Identifiant du propriétaire" },
+  "97l2MO": { "defaultMessage": "Email client" },
+  "BmfoZ2": { "defaultMessage": "Détails de l'utilisateur-" },
+  "Eta9Rl": { "defaultMessage": "Description de l'hôtel" },
+  "Gr1SAu": { "defaultMessage": "Nom du client" }
 }

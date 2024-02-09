@@ -230,7 +230,6 @@ const Billing = () => {
                       defaultValue={user?.email}
                       {...register("email")}
                       fullWidth
-                    
                     />
                     <FormHelperText sx={{ color: "red" }}>
                       {/* {errors.fullName?.message} */}

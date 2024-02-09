@@ -26,6 +26,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { hotelId } from "./redux/user/userSlice";
 import { boolean } from "yup";
 import { FormattedMessage } from "react-intl";
+import TuneIcon from "@mui/icons-material/TuneRounded";
+import ToggleDrawerFilter from "./ToggleDrawerFilter";
+
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -33,19 +36,21 @@ function Hotels({ filteredData, screenSize }: any) {
   const [openModule, setOpenModule] = useState<any>("info");
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
-  const [open, setOpen] = useState(false);
-  const [toggle,setToggle]=useState<any>(false);
-  const handleClick = useCallback((index:any) => {
-    console.log("jjjjjjjjjjjjjjjjj");
-    setDetailIndex(index);
-    if (index === detailIndex) {
-      setDetailIndex("");
-    }
-  },[detailIndex]);
+  const [open, setOpen] = React.useState(false);
+  const [toggle, setToggle] = useState<any>(false);
+  const handleClick = useCallback(
+    (index: any) => {
+      // console.log("jjjjjjjjjjjjjjjjj");
+      setDetailIndex(index);
+      if (index === detailIndex) {
+        setDetailIndex("");
+      }
+    },
+    [detailIndex]
+  );
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
-
 
   return (
     <>
@@ -59,36 +64,56 @@ function Hotels({ filteredData, screenSize }: any) {
           <Box>
             {display ? (
               <>
-                <img
-                  src={require("./Map.jpg")}
-                  width={"30%"}
-                  height={"50px"}
-                  style={{
-                    borderRadius: "10px",
-                    marginLeft: "68%",
-                    border: "1px solid lightgray",
-                  }}
-                ></img>
-                <IconButton
-                  onClick={() => {
-                    SetDisplayMap(false);
-                    setDisplay(false);
-                  }}
-                  sx={{
-                    position: "sticky  ",
-                    m: "-6% 0 0 -20%",
-                    border: "1px solid",
-                    borderRadius: "10px",
-                    width: "9%",
-                    fontSize: "10px",
-                    bgcolor: "white",
-                    fontWeight: "bolder",
-                    color: "black",
-                  }}
+                <Stack
+                  direction={"row"}
+                  spacing={45}
+                  // justifyContent={"space-between"}
+                  mt={3}
+                  ml={3}
                 >
-                  {" "}
-                  <LocationOnIcon fontSize="small" /> ViewMap
-                </IconButton>
+                  <Button
+                    variant="outlined"
+                    onClick={() => setOpen(true)}
+                    sx={{ height: "30px" }}
+                  >
+                    <TuneIcon sx={{ mr: 1 }} />
+                    Filters
+                  </Button>
+                  <Box>
+                    <img
+                      src={require("./Map.jpg")}
+                      width={"200px"}
+                      height={"70px"}
+                      style={{
+                        marginTop: -20,
+                        borderRadius: "10px",
+                        // marginLeft: "68%",
+                        border: "1px solid lightgray",
+                      }}
+                    ></img>
+                    <IconButton
+                      onClick={() => {
+                        SetDisplayMap(false);
+                        setDisplay(false);
+                      }}
+                      sx={{
+                        position: "sticky  ",
+                        m: "-60px 0 0 -50%",
+                        border: "1px solid",
+                        borderRadius: "10px",
+                        // width: "9%",
+                        width: 80,
+                        fontSize: "10px",
+                        bgcolor: "white",
+                        fontWeight: "bolder",
+                        color: "black",
+                      }}
+                    >
+                      {" "}
+                      <LocationOnIcon fontSize="small" /> ViewMap
+                    </IconButton>
+                  </Box>
+                </Stack>
               </>
             ) : (
               <></>
@@ -149,7 +174,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           // marginTop: "10px",
                         }}
                       >
-                   <FormattedMessage defaultMessage="Hotel" />     
+                        <FormattedMessage defaultMessage="Hotel" />
                       </Typography>
                       <Button
                         sx={{
@@ -163,7 +188,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           handleClick(i);
                         }}
                       >
-                     <FormattedMessage defaultMessage=" View More" />      
+                        <FormattedMessage defaultMessage=" View More" />
                         <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
                       </Button>
                     </Stack>
@@ -199,7 +224,7 @@ function Hotels({ filteredData, screenSize }: any) {
                             fontWeight: "bold",
                           }}
                         >
-                     <FormattedMessage defaultMessage=" View More" />         
+                          <FormattedMessage defaultMessage=" View More" />
                         </Typography>
                       </Stack>
                       <Typography
@@ -214,7 +239,9 @@ function Hotels({ filteredData, screenSize }: any) {
                     </Stack>
                     <Stack spacing={1}>
                       <Chip
-                        label=    {<FormattedMessage defaultMessage="Our Lowest Price" /> }     
+                        label={
+                          <FormattedMessage defaultMessage="Our Lowest Price" />
+                        }
                         variant="outlined"
                         color="error"
                         sx={{
@@ -243,7 +270,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           textTransform: "none",
                         }}
                       >
-                         <FormattedMessage defaultMessage=" View Deal" />      
+                        <FormattedMessage defaultMessage=" View Deal" />
                       </Button>
                     </Stack>
                   </Stack>
@@ -273,10 +300,11 @@ function Hotels({ filteredData, screenSize }: any) {
             >
               <HighlightOffIcon />
             </IconButton>
-            <SimpleMap setToggle={setToggle}  filteredData={filteredData} />
+            <SimpleMap setToggle={setToggle} filteredData={filteredData} />
           </>
         )}
       </Box>
+      <ToggleDrawerFilter open={open} setOpen={setOpen} />
     </>
   );
 }

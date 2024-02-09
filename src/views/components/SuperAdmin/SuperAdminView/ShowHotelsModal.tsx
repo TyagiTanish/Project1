@@ -7,6 +7,8 @@ import { Stack } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Divider from "@mui/material/Divider";
 import PlaceIcon from "@mui/icons-material/Place";
+import { useIntl, FormattedMessage } from "react-intl";
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -63,7 +65,7 @@ export default function BasicModal(props: any) {
           </Stack>
           <Divider sx={{ borderBottomWidth: 2, mb: 3 }} />
           <Typography sx={{ fontWeight: 800, fontSize: "large" }}>
-            Hotel's Discription
+            <FormattedMessage defaultMessage="Hotel's Discription" />
           </Typography>
           <Box
             sx={{
