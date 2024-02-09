@@ -86,7 +86,7 @@ const router = [
         path: "/myBookings",
         element: <CustomerBooking />,
       },
-     
+
       {
         path: "/hotels",
         element: (
@@ -209,7 +209,9 @@ const router = [
     ],
   },
 ];
-
+// This is ,y foile
+// kdjrgkfssdelk
+// console.log(dflvkd;flop)
 function Routes() {
   return useRoutes(router);
 }
