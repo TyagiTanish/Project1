@@ -27,10 +27,13 @@ import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
 import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
 import CustomerView from "../../layout/CustomerView/CustomerView";
 import CustomerBooking from "../CustomerBooking";
+import AdminDashboard from "../HotelOwner/Dashboard/AdminDashboard";
+
 
 /**
  * Contains all the routers used within the webApp , Markdown is *Router*.
  */
+
 
 const router = [
   {
@@ -72,7 +75,7 @@ const router = [
     element: <CustomerView />,
     children: [
       {
-        index: true,
+        index:true,
         element: (
           <CustomerRoutes>
             <HomePage />
@@ -102,7 +105,7 @@ const router = [
       },
 
       {
-        path: "/billing/:id/:hid",
+        path: "/billing",
         element: (
           <CustomerRoutes>
             <Billing />
@@ -154,6 +157,14 @@ const router = [
     ),
     children: [
       {
+        index:true,
+        element:(
+          <MemberRoute>
+            <AdminDashboard/>
+          </MemberRoute>
+        )
+      },
+      {
         path: "/member/hotels",
         element: (
           <MemberRoute>
@@ -161,7 +172,7 @@ const router = [
           </MemberRoute>
         ),
       },
-
+     
       {
         path: "/member/profile",
         element: (
