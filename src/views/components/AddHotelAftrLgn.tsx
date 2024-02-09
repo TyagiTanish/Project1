@@ -227,10 +227,13 @@ export default function AddHotelAftrLgn() {
       discription: Yup.string(),
     });
   }
+  // if (step === 3) {
+  //   FormSchema = Yup.object().shape({
+  //     amenities: Yup.array().min(1, "Select at least one amenity"),
+  //   });
+  // }
   if (step === 3) {
-    FormSchema = Yup.object().shape({
-      amenities: Yup.array().min(1, "Select at least one amenity"),
-    });
+    FormSchema = Yup.object().shape({});
   }
   if (step === 4) {
     FormSchema = Yup.object().shape({});
@@ -752,9 +755,9 @@ export default function AddHotelAftrLgn() {
                           ))}
                         </Box>
                       )}
-                      <FormHelperText sx={{ color: "red" }}>
+                      {/* <FormHelperText sx={{ color: "red" }}>
                         {errors.amenities?.message}
-                      </FormHelperText>
+                      </FormHelperText> */}
                     </Stack>
 
                     <Stack direction={"row"} spacing={1} mt={2}>
