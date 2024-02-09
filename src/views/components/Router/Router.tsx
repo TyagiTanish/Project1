@@ -198,8 +198,7 @@ const router = [
     ],
   },
 ];
-// dmjkncvkjdbvkjsdbvkjd m,x
-// dfkgjbneriughidrugheidrughfiseuh
+
 function Routes() {
   return useRoutes(router);
 }
