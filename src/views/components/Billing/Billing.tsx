@@ -53,7 +53,6 @@ const Billing = () => {
   const fetchHotel: any = async () => {
     const result = await request.get(`/getHotel/${id.id}`);
     sethotelDetail(result.data);
-    console.log(result.data);
   };
   useEffect(() => {
     fetchHotel();
@@ -192,7 +191,6 @@ const Billing = () => {
       ) : (
         <>
           <Box>
-
             <Stack
               direction={"row"}
               spacing={10}
@@ -232,6 +230,7 @@ const Billing = () => {
                       defaultValue={user?.email}
                       {...register("email")}
                       fullWidth
+                      disabled
                     />
                     <FormHelperText sx={{ color: "red" }}>
                       {/* {errors.fullName?.message} */}

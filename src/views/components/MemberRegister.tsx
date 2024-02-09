@@ -126,7 +126,8 @@ export default function MemberRegister() {
       // arr.delete(value);
       setArr(arr.filter((i: any) => i !== value));
     } else {
-      arr.push(value);
+      // arr.push(value);
+      setArr([...arr, value]);
     }
   };
 
@@ -190,10 +191,8 @@ export default function MemberRegister() {
       discription: Yup.string(),
     });
   }
-  page === 5 &&
-    (FormSchema = Yup.object().shape({
-      amenities: Yup.array().min(1, "Check at list one amenity"),
-    }));
+  page === 5 && (FormSchema = Yup.object().shape({}));
+  // amenities: Yup.array().min(1, "Check at list one amenity"),
   interface User {
     name: string;
     email: string;
@@ -261,11 +260,10 @@ export default function MemberRegister() {
       formdata.set("amenities", detail.amenities);
       formdata.set("discription", detail.discription);
       const result = await request.post("/registerMember", formdata);
-     
-      console.log(result.data);
-      
-      navigate('/login');
 
+      console.log(result.data);
+
+      navigate("/login");
     } else {
       handleNextClick();
     }
@@ -767,7 +765,7 @@ export default function MemberRegister() {
                     sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
                   />
                 </IconButton>
-                <Button
+                {/* <Button
                   size="small"
                   variant="contained"
                   type="submit"
@@ -780,7 +778,35 @@ export default function MemberRegister() {
                   onClick={handleSubmit(Submit)}
                 >
                   Next
-                </Button>
+                </Button> */}
+                {arr.length === 0 ? (
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    disabled
+                    onClick={handleSubmit(Submit)}
+                    sx={{
+                      // width: { xl: 150, md: 100, sm: 50 },
+                      fontSize: { xl: 15, md: 13, sm: 12 },
+                      mt: 0,
+                    }}
+                  >
+                    Next
+                  </Button>
+                ) : (
+                  <Button
+                    type="submit"
+                    variant="contained"
+                    onClick={handleSubmit(Submit)}
+                    sx={{
+                      // width: { xl: 150, md: 100, sm: 50 },
+                      fontSize: { xl: 15, md: 13, sm: 12 },
+                      mt: 0,
+                    }}
+                  >
+                    Next
+                  </Button>
+                )}
               </form>
             </>
           )}
