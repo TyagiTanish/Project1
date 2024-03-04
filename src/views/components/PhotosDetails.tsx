@@ -8,13 +8,13 @@ export default function PhotosDetails({ item }: any) {
   return (
     <Box
       sx={{
-        width: { sm: 725, md: 560, lg: 870, xl: 1012 },
+        width: { sm: 725, md: 560, lg: 960, xl: 970 },
         mb: 3,
         // border: "1px solid lightgray",
       }}
     >
       <Grid container>
-        <Grid item xs={2.85} sx={{ m: 0.5 }}>
+        {/* <Grid item xs={2.85} sx={{ m: 0.5 }}>
           <Box
             component="img"
             sx={{
@@ -25,14 +25,14 @@ export default function PhotosDetails({ item }: any) {
             alt="The house from the offer."
             src={`http://localhost:8000/${item?.photo}`}
           />
-        </Grid>
+        </Grid> */}
         {item?.rooms?.map((room: any) =>
           room?.photos?.map((photo: any) => (
             <Grid item xs={2.8} sx={{ m: 0.5 }}>
               <Box
                 component="img"
                 sx={{
-                  width: { sm: 170, lg: 205, md: 135, xl: 240 },
+                  width: { sm: 170, lg: 225, md: 135, xl: 220 },
 
                   borderRadius: "5px",
                 }}

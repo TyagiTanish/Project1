@@ -68,7 +68,7 @@ function OverViewHotel({ item }: any) {
         border: "1px solid lightgray",
         mb: 2,
         borderRadius: 5,
-        width: { sm: 642, lg: 910, md: 475 },
+        width: { sm: 642, lg: 870, md: 475 },
       }}
     >
       <Box

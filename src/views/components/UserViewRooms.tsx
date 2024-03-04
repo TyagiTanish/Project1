@@ -16,7 +16,7 @@ import { roomDetails } from "./redux/user/userSlice";
 
 function UserViewRooms({ hotels }: any) {
   const navigate = useNavigate();
-  const [roomImage, setRoomImage] = useState(0);
+  const [roomImage, setRoomImage] = useState({ roomID: null, index: 0 });
   const dispatch = useDispatch();
   var reduxValue: any = {};
   const updateRedux = (item: any) => {
@@ -57,20 +57,29 @@ function UserViewRooms({ hotels }: any) {
                       component={"img"}
                       width={{ xl: "64%", md: "60%", sm: "65%", xs: "50%" }}
                       // height={181.8}
-                      src={`http://localhost:8000/${item?.photos[roomImage]?.path}`}
+                      src={
+                        roomImage.roomID === item?._id
+                          ? `http://localhost:8000/${item?.photos[roomImage.index]?.path}`
+                          : `http://localhost:8000/${item?.photos[0]?.path}`
+                      }
                     />
                     <>
                       <Stack direction={"column"} spacing={0.2}>
                         {item?.photos?.map((image: any, index: number) => {
                           return (
                             <>
-                              {index !== roomImage && (
+                              {index !== roomImage.index &&(
                                 <Box
                                   component={"img"}
                                   width={100}
                                   height={{ lg: 90 }}
                                   src={`http://localhost:8000/${image?.path}`}
-                                  onClick={() => setRoomImage(index)}
+                                  onClick={() =>
+                                    setRoomImage({
+                                      roomID: item._id,
+                                      index: index,
+                                    })
+                                  }
                                 />
                               )}
                             </>
@@ -165,8 +174,7 @@ function UserViewRooms({ hotels }: any) {
                     color="error"
                     variant="contained"
                     onClick={() => {
-                      updateRedux(item)
-                      
+                      updateRedux(item);
                     }}
                     disabled={
                       item?.isAvailable === "false" ||
