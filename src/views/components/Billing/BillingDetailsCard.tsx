@@ -7,19 +7,23 @@ import moment from "moment";
 const BillingDetailsCard = ({
   hotelDetail,
   roomDetails,
-  totalRooms,
-  totalGuests,
   totalPrice,
+  setTotalRoomsAndGuests,
+  totalRoomsAndGuests,
+  setTotalPrice,
 }: any) => {
   const data: any = localStorage.getItem("Date");
   const [difference, setDifference] = useState<any>(null);
+  const parsedData: any = JSON.parse(
+    localStorage.getItem("Rooms&Guests") || ""
+  );
+
   var startdate: any = "";
   var enddate: any = "";
   if (data) {
     startdate = dayjs(JSON.parse(data).startDate);
     enddate = dayjs(JSON.parse(data).endDate);
   }
-
   const calculateDifference = () => {
     const diff = enddate.diff(startdate);
     const duration = moment.duration(diff);
@@ -27,6 +31,18 @@ const BillingDetailsCard = ({
       days: duration.days() + 1,
     });
   };
+
+  useMemo(() => {
+    var result = 0;
+    var totalRooms = 0;
+    parsedData.forEach((element: any) => {
+      result = result + +element.guest;
+      totalRooms = totalRooms + 1;
+    });
+    setTotalRoomsAndGuests({ rooms: totalRooms, guests: result });
+    setTotalPrice(Number(totalRooms) * Number(roomDetails?.price));
+  }, []);
+
   useEffect(() => {
     if (data) {
       calculateDifference();
@@ -62,7 +78,6 @@ const BillingDetailsCard = ({
           <Stack width={90}>
             <img
               src={`http://localhost:8000/${hotelDetail?.[0]?.photo}`}
-              alt="Hotel Image"
               style={{ borderRadius: "5px", marginTop: "-1rem" }}
             />
           </Stack>
@@ -83,7 +98,8 @@ const BillingDetailsCard = ({
             {`${startdate?.$d?.toDateString().slice(0, 10)}`} --{" "}
             {`${enddate?.$d?.toDateString().slice(0, 10)}`}
             <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
-              {totalRooms} Room {totalGuests} Guest
+              {totalRoomsAndGuests?.rooms} Room {totalRoomsAndGuests?.guests}
+              {" " + "Guest"}
             </Stack>
           </Stack>
         </Stack>
@@ -93,9 +109,11 @@ const BillingDetailsCard = ({
         </Stack>
         <Stack>
           <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
-            <Stack
-              fontSize={{ sm: "small", md: "medium" }}
-            >{`Room price for ${difference?.days} Night X ${totalGuests} Guest `}</Stack>
+            <Stack fontSize={{ sm: "small", md: "medium" }}>{`Room price for ${
+              difference?.days
+            } Night X ${totalRoomsAndGuests?.guests} ${
+              " " + "Guest"
+            }  `}</Stack>
             <Stack
               fontSize={{ sm: "small", md: "medium" }}
               // fontWeight={"bolder"}
