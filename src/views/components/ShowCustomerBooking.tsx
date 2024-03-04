@@ -13,7 +13,6 @@ function ShowCustomerBooking() {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    console.log("screenSize", screenSize);
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -32,16 +31,13 @@ function ShowCustomerBooking() {
   return (
     <>
       <Stack
-        // border={"1px solid lightgray"}
         sx={{
           p: 3,
           pt: 0,
-          // ml: { sm: 9, md: 12, lg: 15, xl: 18 },
           mt: 2,
           "& .MuiInputBase-root::-webkit-scrollbar": {
             width: "5px", // Adjust the width as needed
           },
-          // textAlign: "center",
         }}
         // alignItems={"center"}
         spacing={5}
