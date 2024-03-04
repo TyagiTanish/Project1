@@ -52,8 +52,7 @@ function ViewDeal() {
 
   return (
     <>
-
-      <Stack overflow={'auto'}   height={'90vh'}   >
+      <Stack overflow={"auto"} height={"90vh"}>
         <Stack spacing={8} direction={"row"} ml={10} mt={4}>
           <Box
             component="img"
@@ -62,7 +61,6 @@ function ViewDeal() {
               height: "auto",
             }}
             alt="The house from the offer."
-      
             src={`http://localhost:8000/${filterData[0]?.photo}`}
           />
           <Stack direction={"column"} spacing={1}>

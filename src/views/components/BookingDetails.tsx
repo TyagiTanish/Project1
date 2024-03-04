@@ -72,7 +72,7 @@ function BookingDetails() {
         <Box sx={{ mb: -3 }}>
           {" "}
           {loader && (
-            <Box sx={{ width: "100%", mb: -3 }}>
+            <Box sx={{ width: "100%", mt: -3 }}>
               <LinearIndeterminate />
             </Box>
           )}
@@ -80,11 +80,12 @@ function BookingDetails() {
         <Stack
           border={"1px solid lightgray"}
           p={3}
+          pt={0}
           width={"93.5%"}
           alignSelf={"center"}
-          marginTop={3}
+          marginTop={0}
           overflow={"auto"}
-          height={620}
+          height={680}
         >
           <Stack justifyContent={"flex-end"} direction={"row"}>
             <Tooltip title="View reciept" sx={{ cursor: "pointer" }}>

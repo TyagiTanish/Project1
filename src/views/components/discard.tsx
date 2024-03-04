@@ -13,15 +13,12 @@ function HotelInfo() {
       const get = async () => {
         const result = await request.get("/hotels");
         setData(result?.data[1]?.hotelInfo);
-       
-        
       };
       get();
     } else {
       const get = async () => {
         const result = await request.get(`/getInfo/${id.id}`);
         setData(result?.data[1]?.hotelInfo);
-   
       };
       get();
     }
@@ -39,7 +36,6 @@ function HotelInfo() {
         borderRadius={"20px"}
         // alignItems={"center"}
       >
-     
         <Box
           component="img"
           sx={{
@@ -51,16 +47,18 @@ function HotelInfo() {
           alt="The house from the offer."
           src={`http://localhost:8000/${data[0]?.photo}`}
         />
-        <Stack direction={'column'} padding={2} spacing={2} width={'80%'}>
-           <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>
-          {data[0]?.hotelName}
-        </Typography>
-        {/* <Typography width={'100%'} sx={{fontSize:15}}>
+        <Stack direction={"column"} padding={2} spacing={2} width={"80%"}>
+          <Typography sx={{ fontWeight: "bold", fontSize: 25 }}>
+            {data[0]?.hotelName}
+          </Typography>
+          {/* <Typography width={'100%'} sx={{fontSize:15}}>
           {data[0]?.discription}
         </Typography> */}
-        <Box dangerouslySetInnerHTML={{ __html:data[0]?.discription }} sx={{ flex: 1 }} />
+          <Box
+            dangerouslySetInnerHTML={{ __html: data[0]?.discription }}
+            sx={{ flex: 1 }}
+          />
         </Stack>
-     
       </Stack>
       <Stack spacing={4}>
         {" "}

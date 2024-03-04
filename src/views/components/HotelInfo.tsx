@@ -18,10 +18,10 @@ function HotelInfo({ setRender }: any) {
   const [open, setOpen] = useState(false);
   const [handle, setHandle] = useState(0);
   const { request } = useAuth();
-  const [open3,setOpen3]=useState(false)
+  const [open3, setOpen3] = useState(false);
   const [open2, setOpen2] = React.useState(false);
   const user = useSelector((state: any) => state.userReducer.user);
-  const [render2,setRender2]=useState(0);
+  const [render2, setRender2] = useState(0);
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -33,7 +33,6 @@ function HotelInfo({ setRender }: any) {
   };
   const handleClose2 = () => {
     setOpen3(false);
-    
   };
   const handleDelete = async () => {
     const result = await request.delete(`/deleteHotel/${data?._id}`);
@@ -50,7 +49,7 @@ function HotelInfo({ setRender }: any) {
   };
   const id = useParams();
   const navigate = useNavigate();
- 
+
   useEffect(() => {
     if (Object.keys(id).length === 0) {
       const get = async () => {
@@ -69,7 +68,7 @@ function HotelInfo({ setRender }: any) {
       };
       get();
     }
-  }, [id, handle,render2]);
+  }, [id, handle, render2]);
   const handleOpenEditBox = () => {
     setOpen(true);
   };
@@ -146,27 +145,26 @@ function HotelInfo({ setRender }: any) {
             }}
           />
         </Stack>
-     <Stack>
+        <Stack>
           <Stack
             justifyContent={"space-between"}
             direction={"row"}
             alignItems={"center"}
           >
-        
             <Typography
               sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold", ml: 6 }}
             >
               Hotel Amenities
             </Typography>
-            <Button onClick={()=>setOpen3(true)} sx={{color:'gray'}}>
+            <Button onClick={() => setOpen3(true)} sx={{ color: "gray" }}>
               <EditIcon fontSize="small" sx={{ cursor: "pointer" }} />
             </Button>
           </Stack>
           <Box ml={-50}>
             <HotelAmenities amenities={data.amenities} />
           </Box>
-        </Stack> 
-       
+        </Stack>
+
         <Stack direction={"column"} spacing={2} marginLeft={6}>
           <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}>
             Owner Details
@@ -212,7 +210,15 @@ function HotelInfo({ setRender }: any) {
         )}
       </Stack>
       {/* EditAmeneties modal to edit ameneties by user */}
-      {open3 && <EditAmenities open={open3}  onClose={handleClose2} amenities={data.amenities} id={data._id}   setRender={setRender2}/>}
+      {open3 && (
+        <EditAmenities
+          open={open3}
+          onClose={handleClose2}
+          amenities={data.amenities}
+          id={data._id}
+          setRender={setRender2}
+        />
+      )}
     </>
   );
 }

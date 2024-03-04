@@ -1,6 +1,6 @@
 import React from "react";
 import TabletNavbar from "../../components/TabletNavbar";
-import { Box, IconButton, Stack, Typography } from "@mui/material";
+import { Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import AccountMenu from "../../components/ProfileBtn";
 import Language from "../../components/Language";
@@ -30,8 +30,8 @@ const ProfileIcons = () => {
         <TabletNavbar />
       ) : user ? (
         <>
-          <Stack direction={"row"} spacing={3} alignItems={"center"} >
-            <Language/>
+          <Stack direction={"row"} spacing={3} alignItems={"center"}>
+            <Language />
             <Stack direction={"row"} alignItems={"center"} spacing={1}>
               <BusinessIcon sx={{ fontSize: "30px" }} />
               <Link
@@ -62,14 +62,24 @@ const ProfileIcons = () => {
           <Language />
           <IconButton
             href="/memberRegister"
-            sx={{ fontSize: 15, color: "black", fontWeight: "bold",borderRadius:1 }}
+            sx={{
+              fontSize: 15,
+              color: "black",
+              fontWeight: "bold",
+              borderRadius: 1,
+            }}
           >
-            <BusinessIcon sx={{ mr: 1 }} />
+            <Tooltip title="List Your Property">
+              <BusinessIcon sx={{ mr: 1 }} />
+            </Tooltip>
+
             <FormattedMessage defaultMessage="List Your Property" />
           </IconButton>
-         
+
           <Stack direction={"row"} alignItems={"center"} spacing={2}>
-            <PersonIcon />
+            <Tooltip title="Login / SignUp">
+              <PersonIcon />
+            </Tooltip>
             <Link
               to="/login"
               style={{
@@ -78,7 +88,6 @@ const ProfileIcons = () => {
                 fontWeight: "bolder",
               }}
             >
-              {" "}
               <FormattedMessage defaultMessage="Login / SignUp" />
             </Link>
           </Stack>

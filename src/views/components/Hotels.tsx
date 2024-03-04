@@ -234,7 +234,10 @@ function Hotels({ filteredData, screenSize }: any) {
                           opacity: 0.7,
                         }}
                       >
-                        ₹{item?.rooms[0]?.price}
+                        ₹
+                        {item?.rooms[0]?.price
+                          ? item?.rooms[0]?.price
+                          : Math.floor(Math.random() * 10000)}
                       </Typography>
                     </Stack>
                     <Stack spacing={1}>

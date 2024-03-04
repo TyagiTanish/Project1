@@ -45,11 +45,8 @@ import { enqueueSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
 
 /**
- *   To Edit the Details of a particular Room 
+ *   To Edit the Details of a particular Room
  */
-
-
-
 
 export default function EditRoomDetails({
   editBox,
@@ -72,7 +69,7 @@ export default function EditRoomDetails({
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const { request } = useAuth();
   const [type, setType] = React.useState(editRoom?.roomType);
-  const [screenSize,setScreenSize] = React.useState<any>(window.outerWidth);
+  const [screenSize, setScreenSize] = React.useState<any>(window.outerWidth);
 
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
@@ -83,7 +80,6 @@ export default function EditRoomDetails({
 
     window.addEventListener("resize", handleWindowSize);
   });
-
 
   React.useEffect(() => {
     setPhotos(room?.photos);
@@ -111,7 +107,7 @@ export default function EditRoomDetails({
 
   const FormSchema = Yup.object().shape({
     // type: Yup.string().required("type is required"),
-    roomQuantity: Yup.string().required("type is required").length(3),
+    roomQuantity: Yup.string().required("type is required").max(3).min(1),
     // description: Yup.string().required("description is required"),
     amenities: Yup.array().min(1, "minimum one amenity required"),
     price: Yup.string().required("price is required"),
@@ -201,7 +197,7 @@ export default function EditRoomDetails({
       open={editBox}
       onClose={handleClose}
       aria-labelledby="responsive-dialog-title"
-      maxWidth={screenSize<=768? 'sm' :"xl"}
+      maxWidth={screenSize <= 768 ? "sm" : "xl"}
     >
       <DialogTitle>
         <Stack
@@ -220,7 +216,11 @@ export default function EditRoomDetails({
       <Divider />
       <DialogContent>
         <form onSubmit={handleSubmit(submitDetails)}>
-          <Stack direction={screenSize <1024 ? 'column':"row"} spacing={5} justifyContent={"space-between"}>
+          <Stack
+            direction={screenSize < 1024 ? "column" : "row"}
+            spacing={5}
+            justifyContent={"space-between"}
+          >
             <Stack spacing={5} maxWidth={500}>
               <Box>
                 <FormControl sx={{ width: 235 }}>
@@ -231,8 +231,7 @@ export default function EditRoomDetails({
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
                     value={type}
-                    sx={{ width:500,mb: 2 }}
-
+                    sx={{ width: 500, mb: 2 }}
                     onChange={handleChange}
                   >
                     {showCategories?.map((category: any) => (
@@ -247,9 +246,7 @@ export default function EditRoomDetails({
                   label={"Room Quantity"}
                   defaultValue={editRoom?.roomQuantity}
                   {...register("roomQuantity")}
-                 
                 />
-
               </Stack>
               <Stack spacing={2}>
                 <Stack spacing={1}>

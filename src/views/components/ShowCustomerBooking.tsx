@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 function ShowCustomerBooking() {
   const navigate = useNavigate();
-  const [screenSize,setScreenSize] = useState<any>(window.outerWidth);
+  const [screenSize, setScreenSize] = useState<any>(window.outerWidth);
 
   useEffect(() => {
     setScreenSize(window.innerWidth);
@@ -35,16 +35,20 @@ function ShowCustomerBooking() {
         // border={"1px solid lightgray"}
         sx={{
           p: 3,
+          pt: 0,
           // ml: { sm: 9, md: 12, lg: 15, xl: 18 },
           mt: 2,
-      
+          "& .MuiInputBase-root::-webkit-scrollbar": {
+            width: "5px", // Adjust the width as needed
+          },
           // textAlign: "center",
         }}
         // alignItems={"center"}
         spacing={5}
         width={"45%"}
+        maxHeight={710}
+        overflow={"auto"}
       >
-      
         {/* <Divider /> */}
 
         {bookings?.map((item: any, index: any) => (
@@ -53,44 +57,48 @@ function ShowCustomerBooking() {
             // sx={{
             //   backgroundColor: "#f5f5f5",
             // }}
-          sx={{borderRadius:2}}
+            sx={{ borderRadius: 2, minHeight: 180 }}
           >
             <CardContent>
               <Stack
-                direction={screenSize <=768? 'column' :"row"}
-                spacing={{ sm:   3, md: 5, lg: 10, xl: 8}}
+                direction={screenSize <= 768 ? "column" : "row"}
+                spacing={{ sm: 3, md: 5, lg: 10, xl: 8 }}
               >
-                <Stack direction={'row'} spacing={3} >
-                <Box
-                  component={'img'}
-                  sx={{ width:"200px" ,
-                  borderRadius:2
-                
-                }}
-                  src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
-                />
-                <Stack textAlign={'left'} width={200}>
-                  <Typography sx={{ fontSize: 20,fontFamily:"system-ui" }}>
-                    {item?.hotelId?.hotelName}
-                  </Typography>
-                  <Typography sx={{ color: "gray", fontSize:14 }}>
-                  {item?.hotelId?.state}
-                  </Typography>
-                  <Typography sx={{ color: "gray", fontSize:14 }}>
-                    {`${item?.bookFrom?.split("T")[0]} - ${
-                      item?.bookTo?.split("T")[0]
-                    }`}
-                  </Typography>
-                  <Typography sx={{ color: "gray", fontSize:14  }}>
-                    {" "}
-                    {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
-                  </Typography>
+                <Stack direction={"row"} spacing={3}>
+                  <Box
+                    component={"img"}
+                    sx={{ width: "200px", borderRadius: 2 }}
+                    src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                  />
+                  <Stack textAlign={"left"} width={200}>
+                    <Typography sx={{ fontSize: 20, fontFamily: "system-ui" }}>
+                      {item?.hotelId?.hotelName}
+                    </Typography>
+                    <Typography sx={{ color: "gray", fontSize: 14 }}>
+                      {item?.hotelId?.state}
+                    </Typography>
+                    <Typography sx={{ color: "gray", fontSize: 14 }}>
+                      {`${item?.bookFrom?.split("T")[0]} - ${
+                        item?.bookTo?.split("T")[0]
+                      }`}
+                    </Typography>
+                    <Typography sx={{ color: "gray", fontSize: 14 }}>
+                      {" "}
+                      {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
+                    </Typography>
+                  </Stack>
                 </Stack>
-                </Stack >
-               
-                  <Stack textAlign={'center'} padding={2}>   </Stack>
-             
-                <Stack direction={"column"} alignItems={"center"}  textAlign={"center"} spacing={0.5}>
+
+                <Stack textAlign={"center"} padding={2}>
+                  {" "}
+                </Stack>
+
+                <Stack
+                  direction={"column"}
+                  alignItems={"center"}
+                  textAlign={"center"}
+                  spacing={0.5}
+                >
                   {/* <Typography fontWeight={"bolder"}>Payment Status</Typography> */}
                   {/* <Chip
                     color={
@@ -102,12 +110,26 @@ function ShowCustomerBooking() {
                     label={item?.paymentStatus}
                   /> */}
 
-<Typography fontWeight={'bold'} fontFamily={'system-ui'}>Booking Id</Typography>
-                  <Typography fontFamily={'system-ui'}>{item?._id}</Typography>
-                  <Stack direction={'row'}>  <Typography alignSelf={'left'}>Payment Status- </Typography><Typography color={item?.paymentStatus ==='paid' ? 'green' :' red'}>{item?.paymentStatus}</Typography></Stack>
-                
+                  <Typography fontWeight={"bold"} fontFamily={"system-ui"}>
+                    Booking Id
+                  </Typography>
+                  <Typography fontFamily={"system-ui"}>{item?._id}</Typography>
+                  <Stack direction={"row"}>
+                    {" "}
+                    <Typography alignSelf={"left"}>Payment Status- </Typography>
+                    <Typography
+                      color={item?.paymentStatus === "paid" ? "green" : " red"}
+                    >
+                      {item?.paymentStatus}
+                    </Typography>
+                  </Stack>
+
                   <Button
-                    sx={{ textTransform: "none", color: "red",fontWeight:"bolder" }}
+                    sx={{
+                      textTransform: "none",
+                      color: "red",
+                      fontWeight: "bolder",
+                    }}
                     onClick={() => {
                       navigate(`/myBookings/${item._id}`);
                     }}

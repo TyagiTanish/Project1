@@ -73,6 +73,7 @@ export default function ResponsiveDateRangePickers() {
             // handleChange();
           }}
           minDate={dayjs(new Date())}
+          format="ddd,DD-MMMM"
         />
       </DemoContainer>
     </LocalizationProvider>

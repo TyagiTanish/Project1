@@ -45,12 +45,12 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
         .addTo(map);
       // Attach onclick event to marker
       // Attach click event listener to the marker
-      marker.getElement().addEventListener("click", () => {
-        window.location.href = `#${location?.id}`;
-        console.log(location?.id);
-        const lct = location?.id as any;
-        // handleClick(lct );
-      });
+      // marker.getElement().addEventListener("click", () => {
+      //   window.location.href = `#${location?.id}`;
+      //   console.log(location?.id);
+      //   const lct = location?.id as any;
+      //   // handleClick(lct );
+      // });
     });
     return () => map.remove();
   }, [location, filteredData]);
@@ -64,7 +64,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
         <Box
           id="map"
           sx={{
-            width: { xl: 700, sm: 700, md: 650 },
+            width: { xl: 700, sm: 700, md: 400 },
             // height: { sm: 600, xl: 800, md: 1000 },
             height: "90vh",
           }}
