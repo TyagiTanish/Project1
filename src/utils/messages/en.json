@@ -8,11 +8,17 @@
   "/2PAGq": {
     "defaultMessage": "Phone No"
   },
+  "0xWUYr": {
+    "defaultMessage": "Customer Phone"
+  },
   "1umnAX": {
     "defaultMessage": "Personal Information"
   },
   "25WwxF": {
     "defaultMessage": "Don't have an account?"
+  },
+  "2HUE26": {
+    "defaultMessage": "Owner Id"
   },
   "2apuGa": {
     "defaultMessage": "Mohali"
@@ -44,14 +50,14 @@
   "7TFbhV": {
     "defaultMessage": "Add Hotel Location"
   },
-  "7lsiX8": {
-    "defaultMessage": "Over 157,000 hotels and homes across 35 countries"
-  },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
   },
   "9+Ddtu": {
     "defaultMessage": "Next"
+  },
+  "97l2MO": {
+    "defaultMessage": "Customer Email"
   },
   "9khnVR": {
     "defaultMessage": "Photos"
@@ -68,11 +74,17 @@
   "BUu6Wn": {
     "defaultMessage": "Add Hotel"
   },
+  "BmfoZ2": {
+    "defaultMessage": "User Details-"
+  },
   "CDnwtH": {
     "defaultMessage": "Jagadhri"
   },
   "EZEH2+": {
     "defaultMessage": "Add Hotel Details.."
+  },
+  "Eta9Rl": {
+    "defaultMessage": "Hotel's Discription"
   },
   "GB83+B": {
     "defaultMessage": "Near me"
@@ -82,6 +94,9 @@
   },
   "GodOg+": {
     "defaultMessage": "Arrival / Departure"
+  },
+  "Gr1SAu": {
+    "defaultMessage": "Customer Name"
   },
   "GrQf+i": {
     "defaultMessage": "Enter Hotel Discription...."
@@ -152,6 +167,9 @@
   "Y2s5iu": {
     "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
   },
+  "ZmsB1S": {
+    "defaultMessage": "Hotel lists"
+  },
   "cyR7Kh": {
     "defaultMessage": "Back"
   },
@@ -170,6 +188,9 @@
   "hN9DjA": {
     "defaultMessage": "Our Lowest Price"
   },
+  "jUTmkf": {
+    "defaultMessage": "Member Details-"
+  },
   "jvaZOr": {
     "defaultMessage": "Change Your Password"
   },
@@ -184,6 +205,9 @@
   },
   "lqSLwV": {
     "defaultMessage": "There's a smarter way to OYO aroundties"
+  },
+  "mXiD5u": {
+    "defaultMessage": "Phone Number"
   },
   "nsZqim": {
     "defaultMessage": "Yamuna Nagar"

@@ -21,6 +21,8 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
+import { useIntl, FormattedMessage } from "react-intl";
+
 function ShowAllUsers() {
   const [data, setData] = useState<any>([]);
   const { request } = useAuth();
@@ -42,7 +44,9 @@ function ShowAllUsers() {
       width: 500,
 
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Customer Name</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Customer Name" />
+        </strong>
       ),
     },
 
@@ -52,7 +56,9 @@ function ShowAllUsers() {
       width: 500,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Customer Email</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Customer Email" />
+        </strong>
       ),
     },
     {
@@ -62,7 +68,9 @@ function ShowAllUsers() {
       headerClassName: "heading",
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Customer Phone</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Customer Phone" />
+        </strong>
       ),
     },
   ];
@@ -102,7 +110,7 @@ function ShowAllUsers() {
           mb: 3,
         }}
       >
-        User Details-
+        <FormattedMessage defaultMessage="User Details-" />
       </Typography>
 
       <Stack
