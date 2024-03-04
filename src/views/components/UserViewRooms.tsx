@@ -184,17 +184,8 @@ function UserViewRooms({ hotels }: any) {
               </Stack>
             </Stack>
           </Stack>
-          // </Dialog>
         ))}
       </Stack>
-      {/* {open2 && (
-        <RoomDialog
-          open={open2}
-          handleClose={handleClose}
-          details={details}
-          hotelId={hotelId}
-        />
-      )} */}
     </>
   );
 }
