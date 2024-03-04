@@ -12,8 +12,8 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
@@ -39,7 +39,9 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
 
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
   };
   const Onsubmit = async (value: any) => {
@@ -59,7 +61,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
         const result = await request.post("/auth", value);
         console.log("data is ..............", result.data?.data?.role);
         // console.log();
-  
+
         if (result.data) {
           setDisplay(true);
           setTimeout(() => {
@@ -67,7 +69,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             localStorage.setItem("authToken", result.data.token);
             setDisplay(false);
             if (result.data.role === "customer") {
-              navigate("/");
+              navigate(-1);
             } else {
               navigate("/member");
             }
@@ -78,9 +80,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
       }
     } catch (error) {
       console.log(error);
-      
     }
-  
   };
   const FormSchema = Yup.object().shape({
     email: Yup.string().email("invalid email !").required("email is Required"),
@@ -117,7 +117,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
         >
           <FormattedMessage defaultMessage="Sign up & Get ₹500 OYO Money" />
         </Typography>
-        
+
         <Box
           sx={{
             // paddingLeft: 3,
@@ -126,7 +126,9 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             background: "white",
           }}
         >
-          <Box sx={{float:'right',mt:-1}} ><Language/></Box>
+          <Box sx={{ float: "right", mt: -1 }}>
+            <Language />
+          </Box>
           <Typography
             sx={{
               fontSize: { xl: "32px", md: "25px", sm: "25px" },
@@ -173,28 +175,26 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                     sx={{ fontWeight: "500", mt: -2 }}
                     {...register("password")}
                   ></TextField> */}
-               <FormControl sx={{ width: '41ch' }} variant="outlined">
-          <OutlinedInput
-            id="outlined-adornment-password"
-            sx={{width:368}}
-            {...register("password")}
-            type={showPassword ? 'text' : 'password'}
-            endAdornment={
-              <InputAdornment position="end">
-                <IconButton
-                  aria-label="toggle password visibility"
-                  onClick={handleClickShowPassword}
-                  onMouseDown={handleMouseDownPassword}
-                  edge="end"
-                  
-                >
-                  {showPassword ? <VisibilityOff /> : <Visibility />}
-                </IconButton>
-              </InputAdornment>
-             
-            }
-          />
-        </FormControl>
+                  <FormControl sx={{ width: "41ch" }} variant="outlined">
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      sx={{ width: 368 }}
+                      {...register("password")}
+                      type={showPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                  </FormControl>
                 </>
               )}
             </Stack>

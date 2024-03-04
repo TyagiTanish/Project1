@@ -22,7 +22,6 @@ export default function ImagePreview({
     setImagePreView(false);
   };
 
-
   return (
     <Dialog
       fullScreen={fullScreen}
@@ -32,14 +31,20 @@ export default function ImagePreview({
       maxWidth={"md"}
     >
       <DialogTitle>
-        <Stack direction={"row"} justifyContent={"space-between"} alignItems={'center'}  >
-          <Typography variant="h6" width={400} overflow={"hidden"} >{room?.photos[previewIndex]?.filename}</Typography>
+        <Stack
+          direction={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          <Typography variant="h6" width={400} overflow={"hidden"}>
+            {room?.photos[previewIndex]?.filename}
+          </Typography>
           <IconButton onClick={handleClose}>
             <CloseIcon />
           </IconButton>
         </Stack>
       </DialogTitle>
-      <Divider/>
+      <Divider />
       <DialogContent>
         <Box
           component={"img"}

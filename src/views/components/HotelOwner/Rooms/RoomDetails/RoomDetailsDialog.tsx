@@ -63,13 +63,13 @@ export default function RoomDetailBox({
             </IconButton>
           </Tooltip>
         </Stack>
-        <Stack direction={screenSize <=1024?'column' :"row"} spacing={4}>
+        <Stack direction={screenSize <= 1024 ? "column" : "row"} spacing={4}>
           <Stack
             spacing={1}
             padding={1}
             margin={2}
-            width={{sm:'100%',xl:"50%"}}
-            borderRight={screenSize <= 1024 ? 'none':"1px solid lightgray"}
+            width={{ sm: "100%", xl: "50%" }}
+            borderRight={screenSize <= 1024 ? "none" : "1px solid lightgray"}
           >
             <Stack direction={"row"} spacing={0.2}>
               <Box
@@ -92,8 +92,8 @@ export default function RoomDetailBox({
                           {index != roomImage && (
                             <Box
                               component={"img"}
-                              width={{ xl: "85%", sm: '80%', md: "80%" }}
-                              height={{ xl: "50%", sm: '50', md: "60%" }}
+                              width={{ xl: "85%", sm: "80%", md: "80%" }}
+                              height={{ xl: "50%", sm: "50", md: "60%" }}
                               src={`http://localhost:8000/${image?.path}`}
                               onClick={() => setRoomImage(index)}
                             />
@@ -113,39 +113,47 @@ export default function RoomDetailBox({
                 Room Description
               </Typography>
               <hr color="lightgray" />
-         
-                <Box 
-                sx={{ wordWrap:'break-word'}}
-                  dangerouslySetInnerHTML={{
-                    __html: Rooms[Detailedroom]?.discription,
-                  }}
-                />
-             
+
+              <Box
+                sx={{ wordWrap: "break-word" }}
+                dangerouslySetInnerHTML={{
+                  __html: Rooms[Detailedroom]?.discription,
+                }}
+              />
             </Stack>
           </Stack>
-          <Stack padding={2} spacing={2} justifyContent={'space-between'}  >
-            <Box> <Typography sx={{ fontWeight: "bolder", color: "black" }}>
-              Room Highlights
-            </Typography>
-            <hr color="lightgray" />
-            <br />
-            <Stack
-              gap={2}
-              alignItems={"center"}
-              direction={"row"}
-              width={600}
-              flexWrap={"wrap"}
-            >
-              {Rooms[Detailedroom]?.amenities?.map((item: any, index: any) => (
-                <>
-                  <Stack  direction={"row"} alignItems={"center"} width={200}>
-                    {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
-                    <Checkbox disabled checked />
-                    {item}
-                  </Stack>
-                </>
-              ))}
-            </Stack></Box>
+          <Stack padding={2} spacing={2} justifyContent={"space-between"}>
+            <Box>
+              {" "}
+              <Typography sx={{ fontWeight: "bolder", color: "black" }}>
+                Room Highlights
+              </Typography>
+              <hr color="lightgray" />
+              <br />
+              <Stack
+                gap={2}
+                alignItems={"center"}
+                direction={"row"}
+                width={600}
+                flexWrap={"wrap"}
+              >
+                {Rooms[Detailedroom]?.amenities?.map(
+                  (item: any, index: any) => (
+                    <>
+                      <Stack
+                        direction={"row"}
+                        alignItems={"center"}
+                        width={200}
+                      >
+                        {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
+                        <Checkbox disabled checked />
+                        {item}
+                      </Stack>
+                    </>
+                  )
+                )}
+              </Stack>
+            </Box>
             <Stack>
               {/* <Divider/>*/}
               <hr></hr>

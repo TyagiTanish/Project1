@@ -34,18 +34,20 @@ function Hotels({ filteredData, screenSize }: any) {
   const [displayMap, SetDisplayMap] = useState(true);
   const [display, setDisplay] = useState(true);
   const [open, setOpen] = useState(false);
-  const [toggle,setToggle]=useState<any>(false);
-  const handleClick = useCallback((index:any) => {
-    console.log("jjjjjjjjjjjjjjjjj");
-    setDetailIndex(index);
-    if (index === detailIndex) {
-      setDetailIndex("");
-    }
-  },[detailIndex]);
+  const [toggle, setToggle] = useState<any>(false);
+  const handleClick = useCallback(
+    (index: any) => {
+      console.log("jjjjjjjjjjjjjjjjj");
+      setDetailIndex(index);
+      if (index === detailIndex) {
+        setDetailIndex("");
+      }
+    },
+    [detailIndex]
+  );
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
-
 
   return (
     <>
@@ -149,7 +151,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           // marginTop: "10px",
                         }}
                       >
-                   <FormattedMessage defaultMessage="Hotel" />     
+                        <FormattedMessage defaultMessage="Hotel" />
                       </Typography>
                       <Button
                         sx={{
@@ -163,7 +165,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           handleClick(i);
                         }}
                       >
-                     <FormattedMessage defaultMessage=" View More" />      
+                        <FormattedMessage defaultMessage=" View More" />
                         <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
                       </Button>
                     </Stack>
@@ -199,7 +201,7 @@ function Hotels({ filteredData, screenSize }: any) {
                             fontWeight: "bold",
                           }}
                         >
-                     <FormattedMessage defaultMessage=" View More" />         
+                          <FormattedMessage defaultMessage=" View More" />
                         </Typography>
                       </Stack>
                       <Typography
@@ -209,12 +211,17 @@ function Hotels({ filteredData, screenSize }: any) {
                           opacity: 0.7,
                         }}
                       >
-                        ₹{item?.rooms[0]?.price}
+                        ₹
+                        {item?.rooms[0]?.price
+                          ? item?.rooms[0]?.price
+                          : Math.floor(Math.random() * 10000)}
                       </Typography>
                     </Stack>
                     <Stack spacing={1}>
                       <Chip
-                        label=    {<FormattedMessage defaultMessage="Our Lowest Price" /> }     
+                        label={
+                          <FormattedMessage defaultMessage="Our Lowest Price" />
+                        }
                         variant="outlined"
                         color="error"
                         sx={{
@@ -243,7 +250,7 @@ function Hotels({ filteredData, screenSize }: any) {
                           textTransform: "none",
                         }}
                       >
-                         <FormattedMessage defaultMessage=" View Deal" />      
+                        <FormattedMessage defaultMessage=" View Deal" />
                       </Button>
                     </Stack>
                   </Stack>
@@ -273,7 +280,7 @@ function Hotels({ filteredData, screenSize }: any) {
             >
               <HighlightOffIcon />
             </IconButton>
-            <SimpleMap setToggle={setToggle}  filteredData={filteredData} />
+            <SimpleMap setToggle={setToggle} filteredData={filteredData} />
           </>
         )}
       </Box>

@@ -158,7 +158,7 @@ function RoomDialog(props: any) {
           </Stack>
           <div style={{ border: "1px solid lightgray" }}></div>
           <Stack width={"50%"}>
-            <Stack height={"75%"}>
+            {/* <Stack height={"75%"}>
               <Typography>Date:</Typography>
               <Stack width={"60%"} mb={3}>
                 <DatePicker />
@@ -178,8 +178,8 @@ function RoomDialog(props: any) {
                   onClick={(event: any) => handleClick(event)}
                 />
               </Stack>
-            </Stack>
-            <Divider />
+            </Stack> */}
+            <Divider sx={{ mt: "60%" }} />
             <Stack direction={"row"} spacing={2}>
               {" "}
               <Stack direction={"column"} padding={1}>

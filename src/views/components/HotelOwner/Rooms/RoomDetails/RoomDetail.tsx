@@ -102,7 +102,6 @@ const RoomDetail = ({
   };
   useMemo(() => {
     setRoomId(room?._id);
-   
   }, [room, roomId]);
 
   return (

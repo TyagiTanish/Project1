@@ -24,13 +24,14 @@ import * as Yup from "yup";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
-
+import { NavLink, useLocation } from "react-router-dom";
 import dayjs from "dayjs";
 import { format } from "date-fns";
 import PaymentDialogBox from "./paymentDialogBox";
 import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
@@ -100,6 +101,8 @@ const Billing = () => {
   const [display, setDisplay] = useState(false);
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -159,28 +162,34 @@ const Billing = () => {
     data.totalRooms = totalRooms;
     data.roomId = roomDetails?.roomId;
     data.price = totalPrice;
-    const value = await request.post("/bookRoom", { data, hotelId });
-    setBookingId(value.data.bookingId);
-    const result = {
-      fullName: data.fullName,
-      email: data.email,
-      phone: data.phone,
-      hotelId: hotelId,
-      days: difference?.days,
-      roomId: roomDetails?.roomId,
-      startDate: startdate,
-      endDate: enddate,
-      guests: totalGuests,
-    };
-    setResult(result);
-    setDisplay(true);
-    setSubmitButton(false);
+    if (user) {
+      const value = await request.post("/bookRoom", { data, hotelId });
+      setBookingId(value.data.bookingId);
+      const result = {
+        fullName: data.fullName,
+        email: data.email,
+        phone: data.phone,
+        hotelId: hotelId,
+        days: difference?.days,
+        roomId: roomDetails?.roomId,
+        startDate: startdate,
+        endDate: enddate,
+        guests: totalGuests,
+      };
+      setResult(result);
+      setDisplay(true);
+      setSubmitButton(false);
+    } else {
+      enqueueSnackbar("User not Login", { variant: "error" });
+      navigate("/login");
+    }
+
     // socket.emit("send_Message", result);
   };
 
   useEffect(() => {
     socket.on("recieved", (data: any) => {});
-  }, [socket]);
+  }, []);
   // const handleClick=()=>{
   //   socket.emit("response", true);
   // }
@@ -230,7 +239,6 @@ const Billing = () => {
                       defaultValue={user?.email}
                       {...register("email")}
                       fullWidth
-                    
                     />
                     <FormHelperText sx={{ color: "red" }}>
                       {/* {errors.fullName?.message} */}

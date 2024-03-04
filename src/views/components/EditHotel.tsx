@@ -26,7 +26,7 @@ import { render } from "react-dom";
 import { useSelector } from "react-redux";
 function EditHotel(props: any) {
   const [value, setValue] = useState(props.data?.discription);
-  const [category,setcategory] = useState<any>(props?.data?.categories)
+  const [category, setcategory] = useState<any>(props?.data?.categories);
   const [imagePreView, setImagePreView] = React.useState(false);
   const [previewIndex, setPreviewIndex] = React.useState<any>("");
   const [photoValue, setPhotoValue] = useState(props.data?.photo.slice(7));
@@ -88,7 +88,7 @@ function EditHotel(props: any) {
       formData.set("country", data?.country);
       formData.set("discription", value);
       formData.set("name", user.name);
-      formData.set("categories",JSON.stringify(category))
+      formData.set("categories", JSON.stringify(category));
       const result = await request.put("/updateHotel", formData);
       props.setData(result?.data[0]);
       // localStorage.setItem("name",data.ownerName);
@@ -99,10 +99,9 @@ function EditHotel(props: any) {
     props.setRender((prev: any) => prev + 1);
   };
 
-
-const handleCategoryChange = (value:any) =>{
-  setcategory(value)
-}
+  const handleCategoryChange = (value: any) => {
+    setcategory(value);
+  };
 
   return (
     <Dialog
@@ -212,7 +211,7 @@ const handleCategoryChange = (value:any) =>{
                       >
                         <Chip
                           label={photoValue}
-                          style={{ cursor: "pointer",width:300}}
+                          style={{ cursor: "pointer", width: 300 }}
                           onDelete={() => handleDelete()}
                         />
                       </Box>
@@ -248,10 +247,10 @@ const handleCategoryChange = (value:any) =>{
             </Box>
             <Stack spacing={2}>
               <Stack>
-                <Autocomplete             //Adding or deleting Category 
+                <Autocomplete //Adding or deleting Category
                   multiple
                   id="tags-filled"
-                  options={category?.map((option:any) => option)}
+                  options={category?.map((option: any) => option)}
                   defaultValue={props?.data?.categories}
                   freeSolo
                   renderTags={(value: readonly string[], getTagProps: any) =>
@@ -263,8 +262,7 @@ const handleCategoryChange = (value:any) =>{
                       />
                     ))
                   }
-
-                  onChange={(event,value)=>handleCategoryChange(value)}
+                  onChange={(event, value) => handleCategoryChange(value)}
                   renderInput={(params: any) => (
                     <TextField
                       {...params}
