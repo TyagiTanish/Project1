@@ -27,27 +27,42 @@ import ApartmentRoundedIcon from "@mui/icons-material/ApartmentRounded";
 import MeetingRoomRoundedIcon from "@mui/icons-material/MeetingRoomRounded";
 import HotelRoundedIcon from "@mui/icons-material/HotelRounded";
 import Done from "@mui/icons-material/Done";
+import PriceRangeSlider from "./PriceRangeSlider";
+import useAuth from "../../../Hooks/useAuth/useAuth";
+import { useSelector } from "react-redux";
 
-export default function DrawerFilters({ open, setOpen }: any) {
+export default function DrawerFilters({
+  open,
+  setOpen,
+  setFilteredData,
+  searchTerm,
+}: any) {
   //   const [open, setOpen] = React.useState(false);
+  const [price, setPrice] = React.useState<number[]>([10000, 37000]);
   const [type, setType] = React.useState("Guesthouse");
   const [amenities, setAmenities] = React.useState([0, 6]);
+  const { request } = useAuth();
+  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const filterData = async () => {
+    const result = await request.get("/getHotels", {
+      params: {
+        search: searchTerm !== '' ?searchTerm:'',
+        price: price,
+      },
+    });
+    console.log(result.data)
+    // setFilteredData(result.data);
+  };
 
   return (
     <React.Fragment>
-      {/* <Button
-        variant="outlined"
-        color="neutral"
-        startDecorator={<TuneIcon />}
-        onClick={() => setOpen(true)}
-      >
-        Change filters
-      </Button> */}
       <Drawer
         size="md"
         variant="plain"
         open={open}
-        onClose={() => setOpen(false)}
+        onClose={() => {
+          setOpen(false);
+        }}
         slotProps={{
           content: {
             sx: {
@@ -66,13 +81,19 @@ export default function DrawerFilters({ open, setOpen }: any) {
             flexDirection: "column",
             gap: 2,
             height: "100%",
-            overflow: "auto",
+            // overflow: "auto",
           }}
         >
           <DialogTitle>Filters</DialogTitle>
           <ModalClose />
           <Divider sx={{ mt: "auto" }} />
           <DialogContent sx={{ gap: 2 }}>
+            <FormLabel sx={{ typography: "title-md", fontWeight: "bold" }}>
+              Select price range
+            </FormLabel>
+            <Box ml={3}>
+              <PriceRangeSlider price={price} setPrice={setPrice} />
+            </Box>
             <FormControl>
               <FormLabel sx={{ typography: "title-md", fontWeight: "bold" }}>
                 Property type
@@ -206,33 +227,6 @@ export default function DrawerFilters({ open, setOpen }: any) {
                 })}
               </List>
             </div>
-
-            <Typography level="title-md" fontWeight="bold" sx={{ mt: 2 }}>
-              Booking options
-            </Typography>
-            <FormControl orientation="horizontal">
-              <Box sx={{ flex: 1, pr: 1 }}>
-                <FormLabel sx={{ typography: "title-sm" }}>
-                  Instant booking
-                </FormLabel>
-                <FormHelperText sx={{ typography: "body-sm" }}>
-                  Listings that you can book without waiting for host approval.
-                </FormHelperText>
-              </Box>
-              <Switch />
-            </FormControl>
-
-            <FormControl orientation="horizontal">
-              <Box sx={{ flex: 1, mt: 1, mr: 1 }}>
-                <FormLabel sx={{ typography: "title-sm" }}>
-                  Self check-in
-                </FormLabel>
-                <FormHelperText sx={{ typography: "body-sm" }}>
-                  Easy access to the property when you arrive.
-                </FormHelperText>
-              </Box>
-              <Switch />
-            </FormControl>
           </DialogContent>
 
           <Divider sx={{ mt: "auto" }} />
@@ -252,7 +246,14 @@ export default function DrawerFilters({ open, setOpen }: any) {
             >
               Clear
             </Button>
-            <Button onClick={() => setOpen(false)}>Show 165 properties</Button>
+            <Button
+              onClick={() => {
+                setOpen(false);
+                filterData();
+              }}
+            >
+              Show Hotels
+            </Button>
           </Stack>
         </Sheet>
       </Drawer>

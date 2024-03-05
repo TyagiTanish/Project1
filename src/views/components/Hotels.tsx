@@ -27,7 +27,7 @@ import { hotelId } from "./redux/user/userSlice";
 import { boolean } from "yup";
 import { FormattedMessage } from "react-intl";
 import TuneIcon from "@mui/icons-material/TuneRounded";
-import ToggleDrawerFilter from "./ToggleDrawerFilter";
+import ToggleDrawerFilter from "./Filters/ToggleDrawerFilter";
 
 function Hotels({ filteredData, screenSize }: any) {
   const dispatch = useDispatch();
@@ -51,7 +51,6 @@ function Hotels({ filteredData, screenSize }: any) {
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
-
   return (
     <>
       <Box
