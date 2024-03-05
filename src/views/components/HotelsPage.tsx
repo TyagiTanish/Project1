@@ -21,13 +21,34 @@ const HotelsPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
+
+
+  const location = useSelector((state: any) => state.userReducer.location);
+
   const filterData = async () => {
-    const result = await request.get("/getHotels", {
-      params: {
-        search: searchTerm,
-      },
-    });
-    setFilteredData(result.data);
+
+    if(searchTerm==='around me') {
+
+      const result = await request.get("/getHotels", {
+        params: {
+          search: location,
+        },
+      });
+      setFilteredData(result.data);
+
+    }
+
+
+    else{
+
+      const result = await request.get("/getHotels", {
+        params: {
+          search: searchTerm,
+        },
+      });
+      setFilteredData(result.data);
+    }
+   
   };
 
   useEffect(() => {
@@ -43,7 +64,7 @@ const HotelsPage = () => {
   }, [search, searchTerm]);
   return (
     <>
-      {screenSize > 768 ? (
+      {screenSize > 768 && filteredData.length!==0 ? (
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -73,14 +94,7 @@ const HotelsPage = () => {
             )}
           </>
         ) : (
-          <Box
-            component="img"
-            sx={{
-              ml: { xl: "25%", md: "12%", sm: "12%" },
-            }}
-            alt="The house from the offer."
-            src={require("../components/image_processing20210903-11554-1p0lr4f.gif")}
-          />
+          <Box margin={15} marginLeft={'45%'} sx={{fontSize:20, color:'red'}}>No Results Match your search</Box>
         )}
       </Stack>
       <Footer />

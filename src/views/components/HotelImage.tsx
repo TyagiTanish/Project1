@@ -12,7 +12,7 @@ function HotelImage(props:any) {
     const handleClose = () => {
         props.setImagePreView(false);
       };
-    console.log(props.previewIndex);
+
     
   return (
     <Dialog

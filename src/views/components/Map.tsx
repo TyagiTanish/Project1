@@ -55,7 +55,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
     return () => map.remove();
   }, [location, filteredData]);
   useEffect(() => {
-    console.log(filteredData);
+   
   }, [filteredData]);
   return (
     <>

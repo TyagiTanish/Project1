@@ -38,6 +38,7 @@ function Seachbar2() {
       },
     ]
   );
+
   const [guests, setGuests] = useState(
     parsedData?.Guests != null ? parsedData?.Guests : 1
   );
@@ -122,7 +123,7 @@ function Seachbar2() {
               </InputAdornment>
             ),
           }}
-          placeholder="Search by city,hote, or neighborhood"
+          placeholder="Search by city,hotel or state"
           onChange={(e) => setSearchTerm(e.target.value)}
           defaultValue={search}
         />

@@ -18,7 +18,7 @@ export default function SimpleMap({ setLocation }: any) {
     zoom: 15,
   };
   const handleChange = (value: any) => {
-    console.log(value.center);
+    // console.log(value.center);
 
     const data: any = {
       latitude: value.center.lat,
