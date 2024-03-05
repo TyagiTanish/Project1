@@ -27,13 +27,21 @@ const CustomerView = () => {
         <Box>
           <Logo />
         </Box>
-        <Box>
+        <Stack
+          direction={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+          padding={2}
+        >
           {window.location.href === "http://localhost:3000/" ? (
             <></>
           ) : (
-            <Seachbar2 />
+            <>
+              {" "}
+              <Seachbar2 />
+            </>
           )}
-        </Box>
+        </Stack>
         <Box>
           <ProfileIcons />
         </Box>

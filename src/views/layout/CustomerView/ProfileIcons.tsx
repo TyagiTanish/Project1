@@ -26,8 +26,10 @@ const ProfileIcons = () => {
 
   return (
     <>
-      {data <= 768 ? (
-        <TabletNavbar />
+      {data <= 1024 ? (
+        <Box mt={-4}>
+          <TabletNavbar />
+        </Box>
       ) : user ? (
         <>
           <Stack direction={"row"} spacing={3} alignItems={"center"}>

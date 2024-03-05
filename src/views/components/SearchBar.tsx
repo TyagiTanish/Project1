@@ -25,12 +25,18 @@ function SearchBar() {
   };
   const data: any = localStorage.getItem("Rooms&Guests");
   const parsedData = JSON.parse(data);
-  const [rooms, setRooms] = React.useState<any>([{Room:+parsedData?.Rooms,guest:+parsedData?.Guests}||{ Room: 1, guest: 1 }]);
-  const search = useSelector((state:any)=>state.userReducer.searchDetails)
-  const [guests, setGuests] = useState(parsedData?.Guests != null? parsedData?.Guests : 1  );
-  const [totalRooms, setTotalRooms] = useState(parsedData?.Rooms!=null ? parsedData?.Rooms : 0);
+  const [rooms, setRooms] = React.useState<any>(
+    parsedData || [{ Room: 1, guest: 1 }]
+  );
+  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const [guests, setGuests] = useState(
+    parsedData?.Guests != null ? parsedData?.Guests : 1
+  );
+  const [totalRooms, setTotalRooms] = useState(
+    parsedData?.Rooms != null ? parsedData?.Rooms : 0
+  );
   const [render, setRender] = React.useState(0);
-  const [searchTerm,setSearchTerm] = useState<any>(search||'');
+  const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   useEffect(() => {
@@ -42,17 +48,11 @@ function SearchBar() {
     });
     setTotalRooms(totalRooms);
     setGuests(result);
-
     setRooms(rooms);
-
-    
+    localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
   }, [render, rooms]);
   // useMemo(() => {
-  localStorage.setItem(
-    "Rooms&Guests",
-    JSON.stringify({ Rooms: totalRooms, Guests: guests })
-  );
-  console.log(guests)
+
   //   );
   // }, [guests]);
   function handleLocationClick() {
@@ -130,7 +130,7 @@ function SearchBar() {
             <TextField
               sx={{ bgcolor: "white" }}
               placeholder="Search by city,hotel, or neighborhood"
-              onChange={(e)=>setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
               defaultValue={search}
               InputProps={{
                 endAdornment: (
@@ -175,7 +175,7 @@ function SearchBar() {
                 borderRadius: 0,
               }}
               onClick={() => {
-                dispatch(searchDetails(searchTerm))
+                dispatch(searchDetails(searchTerm));
                 navigate("./hotels");
               }}
             >

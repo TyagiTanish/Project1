@@ -36,10 +36,8 @@ const Billing = () => {
   const user = useSelector((state: any) => state.userReducer.user);
   const [roomDetails, setroomDetails] = useState<any>();
   const [totalRoomsAndGuests, setTotalRoomsAndGuests] = useState<any>();
-  const parsedData: any = JSON.parse(
-    localStorage.getItem("Rooms&Guests") || ""
-  );
-  const [totalPrice, setTotalPrice] = useState();
+  const [totalPrice, setTotalPrice] = useState<any>(0);
+  const [RoomPrice, setRoomPrice] = useState(0);
   // const roomDetails = useSelector(
   //   (state: any) => state.userReducer.roomDetails
   // );
@@ -64,7 +62,6 @@ const Billing = () => {
 
     // setroomDetails(roomDetails);
   }, [hotelDetail, id?.hid]);
-  // console.log(roomDetails);
   const data: any = localStorage.getItem("Date");
   var startdate: any = "";
   var enddate: any = "";
@@ -90,16 +87,16 @@ const Billing = () => {
   let totalRooms;
   let totalGuests: any;
 
-  useEffect(() => {
-    var result = 0;
-    var Rooms = 0;
-    parsedData.forEach((element: any) => {
-      result = result + +element.guest;
-      Rooms = Rooms + 1;
-    });
-    totalRooms = Rooms;
-    totalGuests = result;
-  }, [totalRooms, totalGuests]);
+  // useEffect(() => {
+  //   var result = 0;
+  //   var Rooms = 0;
+  //   parsedData.forEach((element: any) => {
+  //     result = result + +element.guest;
+  //     Rooms = Rooms + 1;
+  //   });
+  //   totalRooms = Rooms;
+  //   totalGuests = result;
+  // }, [totalRooms, totalGuests]);
 
   const [bookingId, setBookingId] = useState();
   const [result, setResult] = useState<any>({});
@@ -155,15 +152,17 @@ const Billing = () => {
   } = useForm<any, User>({
     resolver: yupResolver(FormSchema),
   });
+
   const Submit = async (data: any) => {
     data.startdate = startdate;
     data.enddate = enddate;
-    data.totalGuests = totalGuests;
+    data.totalGuests = totalRoomsAndGuests?.guests;
     data.totalDays = difference?.days;
     data.totalPrice = totalPrice;
     data.totalRooms = totalRoomsAndGuests?.rooms;
-    data.roomId = roomDetails?.roomId;
-    data.price = totalPrice;
+    data.roomId = roomDetails?._id;
+    data.price = RoomPrice;
+    console.log(data);
     if (user) {
       const value = await request.post("/bookRoom", { data, hotelId });
       setBookingId(value.data.bookingId);
@@ -173,7 +172,7 @@ const Billing = () => {
         phone: data.phone,
         hotelId: hotelId,
         days: difference?.days,
-        roomId: roomDetails?.roomId,
+        roomId: roomDetails?._id,
         startDate: startdate,
         endDate: enddate,
         guests: totalGuests,
@@ -361,6 +360,7 @@ const Billing = () => {
                   totalRoomsAndGuests={totalRoomsAndGuests}
                   setTotalPrice={setTotalPrice}
                   totalPrice={totalPrice}
+                  setRoomPrice={setRoomPrice}
                 />
               </Stack>
             </Stack>
