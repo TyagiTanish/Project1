@@ -7,6 +7,7 @@ import {
   IconButton,
   ListItemIcon,
   Stack,
+  Tooltip,
   Typography,
 } from "@mui/material";
 import "../../App";
@@ -71,79 +72,82 @@ function TabletNavbar() {
       // onClick={toggleDrawer(anchor, false)}
       onKeyDown={toggleDrawer(anchor, false)}
     >
-      <Typography sx={{m:2, fontSize:20,color: "#D4164B"}}>Menu Items....</Typography>
+      <Typography sx={{ m: 2, fontSize: 20, color: "#D4164B" }}>
+        Menu Items....
+      </Typography>
       {user ? (
         <>
-        <Stack
-          direction={"column"}
-          spacing={3}
-          marginTop={4}
-          marginLeft={2}
-          marginBottom={2}
-        >
-          <Stack direction={"row"} alignItems={"center"} spacing={1}>
-            <BusinessIcon sx={{ fontSize: "20px" }} />
-            <Link
-              to="/AddHotel"
-              style={{
-                textDecoration: "none",
-                color: "black",
-              }}
-            >
-              {" "}
-              Add Hotel
-            </Link>
-          </Stack>
           <Stack
-            sx={{
-              alignItems: "center",
-              cursor: "pointer",
-            }}
-            direction={"row"}
+            direction={"column"}
+            spacing={3}
+            marginTop={4}
+            marginLeft={2}
+            marginBottom={2}
           >
-            <CallIcon sx={{ mt: -0.5 }} /> 0124-6201611
+            <Stack direction={"row"} alignItems={"center"} spacing={1}>
+              <BusinessIcon sx={{ fontSize: "20px" }} />
+              <Link
+                to="/AddHotel"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                {" "}
+                Add Hotel
+              </Link>
+            </Stack>
+            <Stack
+              sx={{
+                alignItems: "center",
+                cursor: "pointer",
+              }}
+              direction={"row"}
+            >
+              <CallIcon sx={{ mt: -0.5 }} /> 0124-6201611
+            </Stack>
           </Stack>
-
-      
-        </Stack>
-            <LaptopAccount/>
-            </>
+          <LaptopAccount />
+        </>
       ) : (
         <>
-        <Stack direction={"column"} spacing={3} alignItems={"left"} marginLeft={2} marginBottom={2}>
-        
-        <IconButton
-          href="/memberRegister"
-          sx={{ fontSize: 15, color: "black"}}
-        >
-          <BusinessIcon sx={{ mr: 1,ml:-10 }} />
-          <FormattedMessage defaultMessage="List Your Property" />
-        </IconButton>
-         
-     
-          <Stack direction={"row"} alignItems={"center"} spacing={1}>  <CallIcon  /> <Typography>0124-6201611</Typography></Stack>
-         
-          
-         
-          <Stack direction={"row"} alignItems={"center"} spacing={1}>
-            {" "}
-            <PersonIcon />
-            <Link
-              to="/login"
-              style={{
-                textDecoration: "none",
-                color: "black",
-              
-              }}
+          <Stack
+            direction={"column"}
+            spacing={3}
+            alignItems={"left"}
+            marginLeft={2}
+            marginBottom={2}
+          >
+            <IconButton
+              href="/memberRegister"
+              sx={{ fontSize: 15, color: "black" }}
             >
+              <BusinessIcon sx={{ mr: 1, ml: -10 }} />
+              <FormattedMessage defaultMessage="List Your Property" />
+            </IconButton>
+
+            <Stack direction={"row"} alignItems={"center"} spacing={1}>
               {" "}
-              <FormattedMessage defaultMessage="Login / SignUp" />
-            </Link>
+              <CallIcon /> <Typography>0124-6201611</Typography>
+            </Stack>
+
+            <Stack direction={"row"} alignItems={"center"} spacing={1}>
+              {" "}
+              <PersonIcon />
+              <Link
+                to="/login"
+                style={{
+                  textDecoration: "none",
+                  color: "black",
+                }}
+              >
+                {" "}
+                <FormattedMessage defaultMessage="Login / SignUp" />
+              </Link>
+            </Stack>
           </Stack>
-        
-        </Stack>
           <SelectLang />
-          </>  
+        </>
       )}
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
@@ -151,7 +155,7 @@ function TabletNavbar() {
             Popular Cities
           </Typography>
         </AccordionSummary>
-        <AccordionDetails style={{marginTop:-30}}>
+        <AccordionDetails style={{ marginTop: -30 }}>
           <Typography>
             <List>
               {cities.map((text) => (
@@ -173,37 +177,47 @@ function TabletNavbar() {
                           <Typography>{text}</Typography>
                         </AccordionSummary>
                         <AccordionDetails>
-                          <Typography sx={{  fontSize: 14, textAlign:"left" }} >
+                          <Typography sx={{ fontSize: 14, textAlign: "left" }}>
                             <Typography
                               sx={{ fontWeight: "bold", fontSize: 15 }}
                             >
                               Popular Locations
                             </Typography>
-                            <Stack direction={"row"} alignItems={"center"} spacing={1}>
-                                <CircleIcon sx={{fontSize:8}}/>
+                            <Stack
+                              direction={"row"}
+                              alignItems={"center"}
+                              spacing={1}
+                            >
+                              <CircleIcon sx={{ fontSize: 8 }} />
                               <Link
-                              to="/hotels"
-                              style={{
-                                display: "block",
-                                color: "black",
-                                textDecorationLine: "none",
-                              }}
+                                to="/hotels"
+                                style={{
+                                  display: "block",
+                                  color: "black",
+                                  textDecorationLine: "none",
+                                }}
+                              >
+                                Mg Road
+                              </Link>
+                            </Stack>
+
+                            <Stack
+                              direction={"row"}
+                              alignItems={"center"}
+                              spacing={1}
                             >
-                              Mg Road
-                            </Link></Stack>
-                          
-                            <Stack direction={"row"} alignItems={"center"} spacing={1}>
-            <CircleIcon sx={{fontSize:8}}/>
-                            <Link
-                              to="/hotels"
-                              style={{
-                                display: "block",
-                                color: "black",
-                                textDecorationLine: "none",
-                              }}
-                            >
-                              Rajaji nagar
-                            </Link></Stack>
+                              <CircleIcon sx={{ fontSize: 8 }} />
+                              <Link
+                                to="/hotels"
+                                style={{
+                                  display: "block",
+                                  color: "black",
+                                  textDecorationLine: "none",
+                                }}
+                              >
+                                Rajaji nagar
+                              </Link>
+                            </Stack>
                           </Typography>
                           <Divider />
                         </AccordionDetails>
@@ -223,21 +237,21 @@ function TabletNavbar() {
 
   return (
     <>
-   
       <div>
         {(["right"] as const).map((anchor) => (
           <React.Fragment key={anchor}>
             <Button onClick={toggleDrawer(anchor, true)}>
               {" "}
-              <Stack
-                direction={"row"}
-                spacing={1}
-                sx={{ mt: 3, color: "#D4164B" }}
-                alignItems={"center"}
-              >
-                <MenuIcon sx={{ fontSize: "20px" }} />
-                <Typography sx={{ fontSize: "20px" , textTransform:"capitalize"}}>Menu</Typography>
-              </Stack>
+              <Tooltip title="Menu">
+                <Stack
+                  direction={"row"}
+                  spacing={1}
+                  sx={{ mt: 3, color: "gray" }}
+                  alignItems={"center"}
+                >
+                  <MenuIcon sx={{ fontSize: "30px" }} />
+                </Stack>
+              </Tooltip>
             </Button>
             <SwipeableDrawer
               anchor={anchor}

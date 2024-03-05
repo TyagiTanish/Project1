@@ -1,32 +1,22 @@
 import {
   Box,
   Button,
-  Card,
-  CardContent,
   Checkbox,
-  IconButton,
   Stack,
   TextField,
   Typography,
   FormHelperText,
-  CardHeader,
-  Divider,
 } from "@mui/material";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import moment from "moment";
-import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
-import React, { useEffect, useMemo, useReducer, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 
 import { useForm } from "react-hook-form";
-import Logo from "../Logo";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
-import { NavLink, useLocation } from "react-router-dom";
 import dayjs from "dayjs";
-import { format } from "date-fns";
 import PaymentDialogBox from "./paymentDialogBox";
 import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
@@ -45,6 +35,9 @@ const Billing = () => {
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const user = useSelector((state: any) => state.userReducer.user);
   const [roomDetails, setroomDetails] = useState<any>();
+  const [totalRoomsAndGuests, setTotalRoomsAndGuests] = useState<any>();
+  const [totalPrice, setTotalPrice] = useState<any>(0);
+  const [RoomPrice, setRoomPrice] = useState(0);
   // const roomDetails = useSelector(
   //   (state: any) => state.userReducer.roomDetails
   // );
@@ -68,8 +61,7 @@ const Billing = () => {
     });
 
     // setroomDetails(roomDetails);
-  }, [hotelDetail]);
-  // console.log(roomDetails);
+  }, [hotelDetail, id?.hid]);
   const data: any = localStorage.getItem("Date");
   var startdate: any = "";
   var enddate: any = "";
@@ -91,9 +83,21 @@ const Billing = () => {
       calculateDifference();
     }
   }, []);
-  useEffect(() => {
-    console.log("HII");
-  }, [data]);
+
+  let totalRooms;
+  let totalGuests: any;
+
+  // useEffect(() => {
+  //   var result = 0;
+  //   var Rooms = 0;
+  //   parsedData.forEach((element: any) => {
+  //     result = result + +element.guest;
+  //     Rooms = Rooms + 1;
+  //   });
+  //   totalRooms = Rooms;
+  //   totalGuests = result;
+  // }, [totalRooms, totalGuests]);
+
   const [bookingId, setBookingId] = useState();
   const [result, setResult] = useState<any>({});
   const [displayLoader, setDisplayLoader] = useState(false);
@@ -102,7 +106,6 @@ const Billing = () => {
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
   const navigate = useNavigate();
-  const location = useLocation();
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -120,9 +123,6 @@ const Billing = () => {
       setIsVisible(!isVisible);
     }
   };
-  const roomsGuests: any = localStorage.getItem("Rooms&Guests");
-  const totalRooms: any = JSON.parse(roomsGuests)?.Rooms;
-  const totalGuests: any = JSON.parse(roomsGuests)?.Guests;
 
   interface User {
     fullName: any;
@@ -152,16 +152,17 @@ const Billing = () => {
   } = useForm<any, User>({
     resolver: yupResolver(FormSchema),
   });
-  const totalPrice = roomDetails?.price * totalRooms * difference?.days;
+
   const Submit = async (data: any) => {
     data.startdate = startdate;
     data.enddate = enddate;
-    data.totalGuests = totalGuests;
+    data.totalGuests = totalRoomsAndGuests?.guests;
     data.totalDays = difference?.days;
     data.totalPrice = totalPrice;
-    data.totalRooms = totalRooms;
-    data.roomId = roomDetails?.roomId;
-    data.price = totalPrice;
+    data.totalRooms = totalRoomsAndGuests?.rooms;
+    data.roomId = roomDetails?._id;
+    data.price = RoomPrice;
+    console.log(data);
     if (user) {
       const value = await request.post("/bookRoom", { data, hotelId });
       setBookingId(value.data.bookingId);
@@ -171,7 +172,7 @@ const Billing = () => {
         phone: data.phone,
         hotelId: hotelId,
         days: difference?.days,
-        roomId: roomDetails?.roomId,
+        roomId: roomDetails?._id,
         startDate: startdate,
         endDate: enddate,
         guests: totalGuests,
@@ -181,7 +182,7 @@ const Billing = () => {
       setSubmitButton(false);
     } else {
       enqueueSnackbar("User not Login", { variant: "error" });
-      navigate("/login");
+      navigate("/login", { state: { from: `/billing/${id?.id}/${id?.hid}` } });
     }
 
     // socket.emit("send_Message", result);
@@ -350,9 +351,11 @@ const Billing = () => {
                 <BillingDetailsCard
                   hotelDetail={hotelDetail}
                   roomDetails={roomDetails}
-                  totalGuests={totalGuests}
-                  totalRooms={totalRooms}
+                  setTotalRoomsAndGuests={setTotalRoomsAndGuests}
+                  totalRoomsAndGuests={totalRoomsAndGuests}
+                  setTotalPrice={setTotalPrice}
                   totalPrice={totalPrice}
+                  setRoomPrice={setRoomPrice}
                 />
               </Stack>
             </Stack>
@@ -363,7 +366,6 @@ const Billing = () => {
             hotelDetail={hotelDetail}
             roomDetails={roomDetails}
             totalGuests={totalGuests}
-            setSubmitButton={setSubmitButton}
             totalRooms={totalRooms}
             totalPrice={totalPrice}
             setDisplayLoader={setDisplayLoader}

@@ -5,14 +5,19 @@ import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
 
-export default function RoomSelection({ anchorEl, setAnchorEl,rooms,setRooms,render,setRender }: any) {
-
+export default function RoomSelection({
+  anchorEl,
+  setAnchorEl,
+  rooms,
+  setRooms,
+  render,
+  setRender,
+}: any) {
   const { register, handleSubmit } = useForm();
-
-
 
   const handleClose = () => {
     setAnchorEl(null);
+    window?.location?.reload();
   };
 
   const open = Boolean(anchorEl);
@@ -27,16 +32,14 @@ export default function RoomSelection({ anchorEl, setAnchorEl,rooms,setRooms,ren
   };
 
   const handleAddNumberOfGuests = (index: any) => {
-    rooms[index].guest = +rooms[index].guest + 1
-    setRender((prev:any)=>prev+1);
+    rooms[index].guest = +rooms[index].guest + 1;
+    setRender((prev: any) => prev + 1);
   };
 
-  const handleSubtractNumberOfGuests = (index:any) =>{
-    rooms[index].guest = +rooms[index].guest - 1
-    setRender((prev:any)=>prev+1);
-  }
-
-
+  const handleSubtractNumberOfGuests = (index: any) => {
+    rooms[index].guest = +rooms[index].guest - 1;
+    setRender((prev: any) => prev + 1);
+  };
 
   return (
     <div>
@@ -79,9 +82,9 @@ export default function RoomSelection({ anchorEl, setAnchorEl,rooms,setRooms,ren
                       borderRadius: 0,
                       color: "black",
                       fontSize: 30,
-                      maxHeight: 30
+                      maxHeight: 30,
                     }}
-                    onClick={()=>handleSubtractNumberOfGuests(index)}
+                    onClick={() => handleSubtractNumberOfGuests(index)}
                   >
                     -
                   </Button>
@@ -104,36 +107,39 @@ export default function RoomSelection({ anchorEl, setAnchorEl,rooms,setRooms,ren
                   </Button>
                 )}
                 {Element.guest}
-                {Element.guest !==3 ? (<Button
-                  sx={{
-                    border: "1px solid gray",
-                    color: "black",
-                    padding: 0,
-                    minWidth: 30,
-                    fontSize: 35,
-                    maxHeight: 30,
-                    ml: 1,
-                    borderRadius: 0,
-                  }}
-                  onClick={() => handleAddNumberOfGuests(index)}
-                >
-                  +
-                </Button>):(<Button
-                  sx={{
-                    border: "1px solid gray",
-                    color: "black",
-                    padding: 0,
-                    minWidth: 30,
-                    fontSize: 35,
-                    maxHeight: 30,
-                    ml: 1,
-                    borderRadius: 0,
-                  }}
-                  disabled
-                >
-                  +
-                </Button>)}
-                
+                {Element.guest !== 3 ? (
+                  <Button
+                    sx={{
+                      border: "1px solid gray",
+                      color: "black",
+                      padding: 0,
+                      minWidth: 30,
+                      fontSize: 35,
+                      maxHeight: 30,
+                      ml: 1,
+                      borderRadius: 0,
+                    }}
+                    onClick={() => handleAddNumberOfGuests(index)}
+                  >
+                    +
+                  </Button>
+                ) : (
+                  <Button
+                    sx={{
+                      border: "1px solid gray",
+                      color: "black",
+                      padding: 0,
+                      minWidth: 30,
+                      fontSize: 35,
+                      maxHeight: 30,
+                      ml: 1,
+                      borderRadius: 0,
+                    }}
+                    disabled
+                  >
+                    +
+                  </Button>
+                )}
               </Typography>
             ))}
             <Typography sx={{ ml: 1, mt: 2 }}>

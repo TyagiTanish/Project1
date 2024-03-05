@@ -26,7 +26,7 @@ import { userLogin } from "./redux/user/userSlice";
 import Loaders from "./Loaders";
 import { FormattedMessage } from "react-intl";
 
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Language from "./Language";
 
 function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
@@ -36,7 +36,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
   const [authentication, setAuthentication] = useState("");
   const dispatch = useDispatch();
   const [showPassword, setShowPassword] = React.useState(false);
-
+  const location = useLocation();
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
   const handleMouseDownPassword = (
@@ -68,8 +68,9 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             dispatch(userLogin(result.data.data));
             localStorage.setItem("authToken", result.data.token);
             setDisplay(false);
-            if (result.data.role === "customer") {
-              navigate(-1);
+            if (result?.data?.data?.role === "customer") {
+              const from = location?.state?.from;
+              navigate(from);
             } else {
               navigate("/member");
             }

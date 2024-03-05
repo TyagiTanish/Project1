@@ -30,12 +30,14 @@ function Seachbar2() {
   };
   const data: any = localStorage.getItem("Rooms&Guests");
   const parsedData = JSON.parse(data);
-  const [rooms, setRooms] = React.useState<any>([
-    { Room: +parsedData?.Rooms, guest: +parsedData?.Guests } || {
-      Room: 1,
-      guest: 1,
-    },
-  ]);
+  const [rooms, setRooms] = React.useState<any>(
+    parsedData || [
+      {
+        Room: 1,
+        guest: 1,
+      },
+    ]
+  );
   const [guests, setGuests] = useState(
     parsedData?.Guests != null ? parsedData?.Guests : 1
   );
@@ -65,12 +67,8 @@ function Seachbar2() {
     setTotalRooms(totalRooms);
     setGuests(result);
     setRooms(rooms);
+    localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
   }, [render, rooms]);
-
-  localStorage.setItem(
-    "Rooms&Guests",
-    JSON.stringify({ Rooms: totalRooms, Guests: guests })
-  );
 
   function handleLocationClick() {
     if (navigator.geolocation) {

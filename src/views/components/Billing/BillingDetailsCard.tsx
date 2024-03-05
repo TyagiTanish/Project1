@@ -1,4 +1,4 @@
-import { Card, CardContent, Divider, Stack } from "@mui/material";
+import { Box, Card, CardContent, Divider, Stack } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
@@ -7,19 +7,24 @@ import moment from "moment";
 const BillingDetailsCard = ({
   hotelDetail,
   roomDetails,
-  totalRooms,
-  totalGuests,
   totalPrice,
+  setTotalRoomsAndGuests,
+  totalRoomsAndGuests,
+  setTotalPrice,
+  setRoomPrice,
 }: any) => {
   const data: any = localStorage.getItem("Date");
   const [difference, setDifference] = useState<any>(null);
+  const parsedData: any = JSON.parse(
+    localStorage.getItem("Rooms&Guests") || ""
+  );
+
   var startdate: any = "";
   var enddate: any = "";
   if (data) {
     startdate = dayjs(JSON.parse(data).startDate);
     enddate = dayjs(JSON.parse(data).endDate);
   }
-
   const calculateDifference = () => {
     const diff = enddate.diff(startdate);
     const duration = moment.duration(diff);
@@ -27,6 +32,21 @@ const BillingDetailsCard = ({
       days: duration.days() + 1,
     });
   };
+
+  useEffect(() => {
+    var result = 0;
+    var totalRooms = 0;
+    parsedData.forEach((element: any) => {
+      result = result + +element.guest;
+      totalRooms = totalRooms + 1;
+    });
+    setTotalRoomsAndGuests({ rooms: totalRooms, guests: result });
+    setTotalPrice(
+      Number(totalRooms) * Number(roomDetails?.price) * Number(difference?.days)
+    );
+    setRoomPrice(roomDetails?.price);
+  }, [totalPrice, roomDetails]);
+
   useEffect(() => {
     if (data) {
       calculateDifference();
@@ -62,7 +82,6 @@ const BillingDetailsCard = ({
           <Stack width={90}>
             <img
               src={`http://localhost:8000/${hotelDetail?.[0]?.photo}`}
-              alt="Hotel Image"
               style={{ borderRadius: "5px", marginTop: "-1rem" }}
             />
           </Stack>
@@ -83,7 +102,8 @@ const BillingDetailsCard = ({
             {`${startdate?.$d?.toDateString().slice(0, 10)}`} --{" "}
             {`${enddate?.$d?.toDateString().slice(0, 10)}`}
             <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
-              {totalRooms} Room {totalGuests} Guest
+              {totalRoomsAndGuests?.rooms} Room {totalRoomsAndGuests?.guests}
+              {" " + "Guest"}
             </Stack>
           </Stack>
         </Stack>
@@ -92,15 +112,48 @@ const BillingDetailsCard = ({
           {roomDetails?.type}
         </Stack>
         <Stack>
-          <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
+          <Stack direction={"column"} mt={3} gap={3}>
             <Stack
+              direction={"row"}
+              justifyContent={"space-between"}
               fontSize={{ sm: "small", md: "medium" }}
-            >{`Room price for ${difference?.days} Night X ${totalGuests} Guest `}</Stack>
-            <Stack
-              fontSize={{ sm: "small", md: "medium" }}
-              // fontWeight={"bolder"}
             >
-              {roomDetails?.price}
+              <Box>{`Room price for 1 Night X 1 Room`}</Box>{" "}
+              <Box>
+                <Stack direction={"row"} alignItems={"center"}>
+                  <CurrencyRupeeIcon
+                    sx={{
+                      fontSize: { sm: "small", md: "medium", lg: "large" },
+                    }}
+                  />
+                  {roomDetails?.price}
+                </Stack>
+              </Box>
+            </Stack>
+
+            <Stack
+              fontSize={{ sm: "small", md: "medium" }}
+              direction={"row"}
+              justifyContent={"space-between"}
+            >
+              <Box>{`Room price for ${difference?.days} Night X ${
+                totalRoomsAndGuests?.rooms
+              } ${" " + "Room"}  `}</Box>
+              <Stack
+                fontSize={{ sm: "small", md: "medium" }}
+                // fontWeight={"bolder"}
+                alignItems={"center"}
+                direction={"row"}
+              >
+                <CurrencyRupeeIcon
+                  sx={{
+                    fontSize: { sm: "small", md: "medium", lg: "large" },
+                  }}
+                />
+                {Number(roomDetails?.price) *
+                  Number(difference?.days) *
+                  Number(totalRoomsAndGuests?.rooms)}
+              </Stack>
             </Stack>
           </Stack>
           <Divider sx={{ marginTop: 3 }} />
@@ -121,6 +174,9 @@ const BillingDetailsCard = ({
                   fontSize: { sm: "small", md: "medium", lg: "large" },
                 }}
               />
+              {/* {Number(roomDetails?.price) *
+                Number(difference?.days) *
+                Number(totalRoomsAndGuests?.rooms)} */}
               {totalPrice}
             </Stack>
           </Stack>
