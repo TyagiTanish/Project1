@@ -20,7 +20,7 @@ export default function RangeSlider({price,setPrice}:any) {
         onChange={handleChange}
         valueLabelDisplay="auto"
         getAriaValueText={valuetext}
-        min={5000}
+        min={0}
         max={50000}
         step={5000}
       />
