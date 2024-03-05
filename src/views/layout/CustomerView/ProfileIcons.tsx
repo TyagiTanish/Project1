@@ -30,7 +30,7 @@ const ProfileIcons = () => {
         <TabletNavbar />
       ) : user ? (
         <>
-          <Stack direction={"row"} spacing={3} alignItems={"center"}>
+          <Stack direction={"row"} spacing={3} alignItems={"center"} marginRight={2}>
             <Language />
             <Stack direction={"row"} alignItems={"center"} spacing={1}>
               <BusinessIcon sx={{ fontSize: "30px" }} />
@@ -54,11 +54,11 @@ const ProfileIcons = () => {
                 {user?.role?.toUpperCase()}
               </Typography>
             </Stack>
-            <AccountMenu />
+          <Box sx={{cursor:'pointer'}}> <AccountMenu /></Box> 
           </Stack>
         </>
       ) : (
-        <Stack direction={"row"} spacing={2} alignItems={"center"}>
+        <Stack direction={"row"} spacing={2} alignItems={"center"} marginRight={2}>
           <Language />
           <IconButton
             href="/memberRegister"
@@ -76,7 +76,7 @@ const ProfileIcons = () => {
             <FormattedMessage defaultMessage="List Your Property" />
           </IconButton>
 
-          <Stack direction={"row"} alignItems={"center"} spacing={2}>
+          <Stack direction={"row"} alignItems={"center"} spacing={1}>
             <Tooltip title="Login / SignUp">
               <PersonIcon />
             </Tooltip>
