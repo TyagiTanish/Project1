@@ -106,7 +106,7 @@ function InfoHotelDetails({ item }: any) {
           pb: { sm: 3, lg: 4 },
           textAlign: "justify",
           fontSize: { sm: 10, lg: 17, md: 14 },
-          lineHeight: { sm: 1.3, lg: 2, md: 1.5 },
+         
         }}
       >
        

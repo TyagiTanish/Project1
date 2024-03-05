@@ -128,7 +128,7 @@ export default function MemberRegister() {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    console.log("screenSize", screenSize);
+   
 
     window.addEventListener("resize", handleWindowSize);
   });

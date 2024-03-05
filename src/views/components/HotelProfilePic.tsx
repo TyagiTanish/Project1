@@ -12,7 +12,7 @@ const ProfilePic = ({ setPic, formData }: any) => {
       //   console.log(data);
     }
 
-    console.log(file[0]);
+
     setPic(file);
   };
   const onDrop = (acceptedFiles: any) => {

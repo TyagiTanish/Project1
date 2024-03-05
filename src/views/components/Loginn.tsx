@@ -48,7 +48,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
     try {
       if (!value.password) {
         const result = await request.post("/auth", value);
-        console.log(result.data);
+       
         if (result.data) {
           setState(true);
           setAuthentication("");
@@ -59,7 +59,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
         }
       } else {
         const result = await request.post("/auth", value);
-        console.log("data is ..............", result.data?.data?.role);
+      
         // console.log();
 
         if (result.data) {

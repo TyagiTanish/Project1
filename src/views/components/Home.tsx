@@ -44,7 +44,7 @@ export default function BasicCard() {
   React.useEffect(() => {
     const setData = () => {
       updateData(window.innerWidth);
-      console.log(data);
+    
     };
     window.addEventListener("resize", setData);
   });

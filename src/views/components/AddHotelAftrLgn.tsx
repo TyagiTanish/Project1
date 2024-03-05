@@ -140,7 +140,7 @@ export default function AddHotelAftrLgn() {
 
   const formData = new FormData();
   const onSubmit = async (data: any) => {
-    console.log(data);
+    // console.log(data);
     // if (step === 3) {
     //   setArr(arr);
     //   data.amenities = arr;
@@ -164,7 +164,7 @@ export default function AddHotelAftrLgn() {
     formData.set("email", user.email);
     formData.set("amenities", JSON.stringify(data.amenities));
     formData.set("discription", data.discription);
-    console.log(data);
+    // console.log(data);
     if (step === 4) {
       // console.log(formData);
       request.post("/addHotel", formData);
