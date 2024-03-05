@@ -30,6 +30,7 @@ function SearchBar() {
     parsedData || [{ Room: 1, guest: 1 }]
   );
   const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const [value, setValue] =useState<any>();
   const [guests, setGuests] = useState(
     parsedData?.Guests != null ? parsedData?.Guests : 1
   );
@@ -70,7 +71,8 @@ function SearchBar() {
       longitude: position.coords.longitude,
     };
     dispatch(userLocation(data));
-
+  setSearchTerm('around me')
+    setValue('Around me')
     // Make API call to OpenWeatherMap
   }
 
@@ -131,9 +133,10 @@ function SearchBar() {
           >
             <TextField
               sx={{ bgcolor: "white" }}
-              placeholder="Search by city,hotel, or neighborhood"
+              placeholder="Search by city,hotel or state"
               onChange={(e) => setSearchTerm(e.target.value)}
               defaultValue={search}
+              value={value}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">

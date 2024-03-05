@@ -23,8 +23,6 @@ function HotelInfo() {
       get();
     }
   }, [id]);
-
-  console.log("data is ............", data);
   // console.log(data[0].photo);
 
   return (

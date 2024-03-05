@@ -24,9 +24,7 @@ const HotelsPage = () => {
   const [open, setOpen] = React.useState(false);
   const [price, setPrice] = React.useState<number[]>([10000, 37000]);
   const location = useSelector((state: any) => state.userReducer.location);
-  
   const filterData = async () => {
-    
 
     if(searchTerm==='around me') {
 
@@ -60,6 +58,7 @@ const HotelsPage = () => {
     //   },
     // });
     // setFilteredData(result.data);
+
   };
 
   useEffect(() => {
@@ -75,7 +74,7 @@ const HotelsPage = () => {
   }, [search, searchTerm,price]);
   return (
     <>
-      {screenSize > 768 ? (
+      {screenSize > 768 && filteredData.length!==0 ? (
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -105,18 +104,7 @@ const HotelsPage = () => {
             )}
           </>
         ) : (
-          <Box
-            component="img"
-            sx={{
-              ml: { xl: "25%", md: "12%", sm: "12%" },
-            }}
-            alt="The house from the offer."
-            src={require("../components/image_processing20210903-11554-1p0lr4f.gif")}
-          />
-          // <Box sx={{ml:"45%",mt:"300px",height:"400px"}}>
-
-          //   <Loader />
-          // </Box>
+          <Box margin={15} marginLeft={'45%'} sx={{fontSize:20, color:'red'}}>No Results Match your search</Box>
         )}
       </Stack>
       <Footer />

@@ -93,7 +93,7 @@ function EditAmenities({ open, onClose, amenities ,id,setRender}: any) {
       // arr.push(value);
       setArr([...arr,value])
     }
-    console.log(arr)  
+   
   };
   const onSubmit=async(data:any)=>{
    

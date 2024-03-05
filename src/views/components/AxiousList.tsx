@@ -19,7 +19,7 @@ function axiousList() {
   const getData = async () => {
     try {
       axios.interceptors.response.use((data: any) => {
-        console.log(data.data.data[99].states);
+        // console.log(data.data.data[99].states);
         return data;
       });
 
@@ -44,7 +44,7 @@ function axiousList() {
       // setLoder(false);
       // setError(true);
       // enqueueSnackbar(err, { autoHideDuration: 1000 });
-      console.log("error...", err);
+      // console.log("error...", err);
     }
   };
 
