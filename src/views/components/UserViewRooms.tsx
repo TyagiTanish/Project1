@@ -8,10 +8,12 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import UseRoomAndGuestQuantity from "../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
-
+import { useDispatch } from "react-redux";
+import { roomDetails } from "./redux/user/userSlice";
 function RoomImageSlider({ images }:any) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
@@ -77,15 +79,18 @@ function RoomImageSlider({ images }:any) {
 
 function UserViewRooms({ hotels }: any) {
   const { TotalRooms, TotalGuests } = UseRoomAndGuestQuantity();
-
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  var reduxValue: any = {};
   const updateRedux = (item: any) => {
-    const reduxValue = {
+    reduxValue = {
       price: item?.price,
       type: item?.roomType,
       roomId: item?._id,
     };
-    // Dispatch or use reduxValue as needed
+    navigate(`/billing/${hotels[0]?._id}/${item?._id}`);
   };
+  dispatch(roomDetails(reduxValue));
 
   return (
     <>

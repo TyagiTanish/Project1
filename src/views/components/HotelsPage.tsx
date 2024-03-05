@@ -9,7 +9,7 @@ import Hotels from "./Hotels";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import TuneIcon from "@mui/icons-material/TuneRounded";
-import ToggleDrawerFilter from "./ToggleDrawerFilter";
+import ToggleDrawerFilter from "./Filters/ToggleDrawerFilter";
 
 /**
  *  To show all the hotels to user. Markdown is *HotelsPage*.
@@ -84,7 +84,7 @@ const HotelsPage = () => {
         )}
       </Stack>
       <Footer />
-      <ToggleDrawerFilter open={open} setOpen={setOpen} />
+      <ToggleDrawerFilter open={open} setOpen={setOpen} setFilteredData={setFilteredData} searchTerm={searchTerm}/>
     </>
   );
 };

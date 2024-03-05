@@ -22,6 +22,7 @@ import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
 import { useNavigate, useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
+import UseRoomAndGuestQuantity from "../../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
 
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
@@ -38,6 +39,7 @@ const Billing = () => {
   const [totalRoomsAndGuests, setTotalRoomsAndGuests] = useState<any>();
   const [totalPrice, setTotalPrice] = useState<any>(0);
   const [RoomPrice, setRoomPrice] = useState(0);
+  const { TotalRooms, TotalGuests } = UseRoomAndGuestQuantity();
   // const roomDetails = useSelector(
   //   (state: any) => state.userReducer.roomDetails
   // );
@@ -187,7 +189,6 @@ const Billing = () => {
 
     // socket.emit("send_Message", result);
   };
-
   useEffect(() => {
     socket.on("recieved", (data: any) => {});
   }, []);
@@ -330,7 +331,20 @@ const Billing = () => {
                         of Use and Privacy Policy.
                       </Typography>
                     </Stack>
-                    <Button
+                    {TotalRooms.current > roomDetails?.roomQuantity ? <Button
+                      type="submit"
+                      sx={{
+                        width: "40%",
+                        m: 2,
+                        textTransform: "none",
+                      }}
+                      color="error"
+                      variant="contained"
+                      disabled={!submitButton || TotalRooms.current > roomDetails?.roomQuantity }
+                      // onClick={handleClick}
+                    >
+                      Currently Unavailable
+                    </Button>:<Button
                       type="submit"
                       sx={{
                         width: "30%",
@@ -339,11 +353,12 @@ const Billing = () => {
                       }}
                       color="error"
                       variant="contained"
-                      disabled={!submitButton}
+                      disabled={!submitButton }
                       // onClick={handleClick}
                     >
                       Pay Now
-                    </Button>
+                    </Button>}
+
                   </Stack>
                 </form>
                 {/* {display && (
