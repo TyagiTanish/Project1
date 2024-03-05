@@ -10,6 +10,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { roomDetails } from "./redux/user/userSlice";
+import UseRoomAndGuestQuantity from "../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
 /**
  * To Show all the rooms of the Hotel. Markdown is *View Deal*.
  */
@@ -17,6 +18,7 @@ import { roomDetails } from "./redux/user/userSlice";
 function UserViewRooms({ hotels }: any) {
   const navigate = useNavigate();
   const [roomImage, setRoomImage] = useState({ roomID: null, index: 0 });
+  const { TotalRooms, TotalGuests } = UseRoomAndGuestQuantity();
   const dispatch = useDispatch();
   var reduxValue: any = {};
   const updateRedux = (item: any) => {
@@ -29,7 +31,6 @@ function UserViewRooms({ hotels }: any) {
   };
   dispatch(roomDetails(reduxValue));
 
-  let Rooms: any = localStorage.getItem("Rooms&Guests");
   return (
     <>
       <Stack
@@ -59,7 +60,9 @@ function UserViewRooms({ hotels }: any) {
                       // height={181.8}
                       src={
                         roomImage.roomID === item?._id
-                          ? `http://localhost:8000/${item?.photos[roomImage.index]?.path}`
+                          ? `http://localhost:8000/${
+                              item?.photos[roomImage.index]?.path
+                            }`
                           : `http://localhost:8000/${item?.photos[0]?.path}`
                       }
                     />
@@ -68,7 +71,7 @@ function UserViewRooms({ hotels }: any) {
                         {item?.photos?.map((image: any, index: number) => {
                           return (
                             <>
-                              {index !== roomImage.index &&(
+                              {index !== roomImage.index && (
                                 <Box
                                   component={"img"}
                                   width={100}
@@ -179,12 +182,12 @@ function UserViewRooms({ hotels }: any) {
                     disabled={
                       item?.isAvailable === "false" ||
                       item?.roomQuantity === "0" ||
-                      JSON.parse(Rooms)?.Rooms > item?.roomQuantity
+                      TotalRooms > item?.roomQuantity
                     }
                   >
                     {item?.isAvailable === "false" ||
                     item?.roomQuantity === "0" ||
-                    JSON.parse(Rooms)?.Rooms > item?.roomQuantity
+                    TotalRooms > item?.roomQuantity
                       ? "Currently Unavailable"
                       : "Book Now "}
                   </Button>
