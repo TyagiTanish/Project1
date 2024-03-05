@@ -36,23 +36,23 @@ export default function DrawerFilters({
   setOpen,
   setFilteredData,
   searchTerm,
+  price,
+  setPrice,
 }: any) {
   //   const [open, setOpen] = React.useState(false);
-  const [price, setPrice] = React.useState<number[]>([10000, 37000]);
+  // const [price, setPrice] = React.useState<number[]>([10000, 37000]);
   const [type, setType] = React.useState("Guesthouse");
   const [amenities, setAmenities] = React.useState([0, 6]);
   const { request } = useAuth();
-  const search = useSelector((state: any) => state.userReducer.searchDetails);
-  const filterData = async () => {
-    const result = await request.get("/getHotels", {
-      params: {
-        search: searchTerm !== '' ?searchTerm:'',
-        price: price,
-      },
-    });
-    console.log(result.data)
-    // setFilteredData(result.data);
-  };
+  // const filterData = async () => {
+  //   const result = await request.get("/getHotels", {
+  //     params: {
+  //       search: searchTerm,
+  //       price: price,
+  //     },
+  //   });
+  //   setFilteredData(result.data);
+  // };
 
   return (
     <React.Fragment>
@@ -94,7 +94,7 @@ export default function DrawerFilters({
             <Box ml={3}>
               <PriceRangeSlider price={price} setPrice={setPrice} />
             </Box>
-            <FormControl>
+            {/* <FormControl>
               <FormLabel sx={{ typography: "title-md", fontWeight: "bold" }}>
                 Property type
               </FormLabel>
@@ -192,7 +192,7 @@ export default function DrawerFilters({
                         ratio={1}
                         sx={{ width: 20, borderRadius: 20, ml: -0.5, mr: 0.75 }}
                       >
-                        {/* <div>{selected && <Done fontSize="md" />}</div> */}
+             
                       </AspectRatio>
                       <Checkbox
                         size="sm"
@@ -226,7 +226,7 @@ export default function DrawerFilters({
                   );
                 })}
               </List>
-            </div>
+            </div> */}
           </DialogContent>
 
           <Divider sx={{ mt: "auto" }} />
@@ -249,7 +249,7 @@ export default function DrawerFilters({
             <Button
               onClick={() => {
                 setOpen(false);
-                filterData();
+                // filterData();
               }}
             >
               Show Hotels

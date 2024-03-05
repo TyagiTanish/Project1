@@ -10,6 +10,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import TuneIcon from "@mui/icons-material/TuneRounded";
 import ToggleDrawerFilter from "./Filters/ToggleDrawerFilter";
+import Loader from "./loader/Loader";
 
 /**
  *  To show all the hotels to user. Markdown is *HotelsPage*.
@@ -21,10 +22,8 @@ const HotelsPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
-
-
+  const [price, setPrice] = React.useState<number[]>([10000, 37000]);
   const location = useSelector((state: any) => state.userReducer.location);
-
   const filterData = async () => {
 
     if(searchTerm==='around me') {
@@ -32,6 +31,7 @@ const HotelsPage = () => {
       const result = await request.get("/getHotels", {
         params: {
           search: location,
+          price:price,
         },
       });
       setFilteredData(result.data);
@@ -44,11 +44,21 @@ const HotelsPage = () => {
       const result = await request.get("/getHotels", {
         params: {
           search: searchTerm,
+          price:price,
         },
       });
       setFilteredData(result.data);
     }
-   
+
+
+    // const result = await request.get("/getHotels", {
+    //   params: {
+    //     search: searchTerm,
+    //     price:price,
+    //   },
+    // });
+    // setFilteredData(result.data);
+
   };
 
   useEffect(() => {
@@ -61,7 +71,7 @@ const HotelsPage = () => {
   useMemo(() => {
     setSearchTerm(search);
     filterData();
-  }, [search, searchTerm]);
+  }, [search, searchTerm,price]);
   return (
     <>
       {screenSize > 768 && filteredData.length!==0 ? (
@@ -98,8 +108,8 @@ const HotelsPage = () => {
         )}
       </Stack>
       <Footer />
-      <ToggleDrawerFilter open={open} setOpen={setOpen} setFilteredData={setFilteredData} searchTerm={searchTerm}/>
-    </>
+      <ToggleDrawerFilter open={open} setOpen={setOpen} setFilteredData={setFilteredData} searchTerm={searchTerm} price={price} setPrice={setPrice}/>
+    </> 
   );
 };
 
