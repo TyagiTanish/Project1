@@ -137,14 +137,14 @@ const Billing = () => {
     fullName: Yup.string()
       .required("First Name is required")
       .min(3)
-      .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
-    email: Yup.string().email("invalid email !").required("Email is Required"),
+      .matches(/^[A-Z][a-zA-Z]*$/, "First Letter of name should be capital and name should be string"),
+    email: Yup.string().email("Invalid email !").required("Email is Required"),
     phone: Yup.string()
-      .required("This field is required")
+      .required("Phone no. is required")
       .max(10, "Max length should be 10")
       .matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
-    guestName: Yup.string().notRequired(),
-    guestEmail: Yup.string().notRequired(),
+    guestName: Yup.string().matches(/^[A-Z][a-zA-Z]*$/, "First Letter of name should be capital and name should be string").notRequired(),
+    guestEmail: Yup.string().email('Invalid Email').notRequired(),
   });
 
   const {
@@ -226,12 +226,11 @@ const Billing = () => {
                       {...register("fullName")}
                       fullWidth
                     />
-                    <FormHelperText sx={{ color: "red" }}>
-                      {/* {errors.fullName?.message} */}
-                      {errors.fullName &&
-                        typeof errors.fullName === "string" &&
-                        errors.fullName}
-                    </FormHelperText>
+                  {errors.fullName?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.fullName?.message.toString()}
+                      </FormHelperText>
+                    )}
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                       Email *
                     </Typography>
@@ -242,30 +241,15 @@ const Billing = () => {
                       {...register("email")}
                       fullWidth
                     />
-                    <FormHelperText sx={{ color: "red" }}>
-                      {/* {errors.fullName?.message} */}
-                      {errors.email &&
-                        typeof errors.email === "string" &&
-                        errors.email}
-                    </FormHelperText>
+                    {errors.email?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.email?.message.toString()}
+                      </FormHelperText>
+                    )}
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                       Phone No. *
                     </Typography>
-                    {/* <Stack direction={"row"} borderRadius={1}>
-                <TextField
-                  id="standard-select-currency"
-                  select
-                  defaultValue="IND"
-                  variant="outlined"
-                  sx={{ borderRight: "1px solid lightgray" }}
-                >
-                  {currencies.map((option) => (
-                    <MenuItem key={option.value} value={option.value}>
-                      {option.label}
-                    </MenuItem>
-                  ))}
-                </TextField>
-              </Stack> */}
+                 
                     <TextField
                       // id="standard-password-input"
                       placeholder="Phone Number"
@@ -273,12 +257,11 @@ const Billing = () => {
                       defaultValue={user?.phone}
                       // autoComplete="current-password"
                     />
-                    <FormHelperText sx={{ color: "red" }}>
-                      {/* {errors.fullName?.message} */}
-                      {errors.phone &&
-                        typeof errors.phone === "string" &&
-                        errors.phone}
-                    </FormHelperText>
+                    {errors.phone?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.phone?.message.toString()}
+                      </FormHelperText>
+                    )}
                     <Stack direction={"row"} ml={-1}>
                       <Checkbox onChange={handleCheckbox} />
                       <Typography sx={{ mt: 1 }}>
@@ -304,6 +287,11 @@ const Billing = () => {
                           variant="outlined"
                           fullWidth
                         />
+                          {errors.guestName?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.guestName?.message.toString()}
+                      </FormHelperText>
+                    )}
                         <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                           Guest email
                         </Typography>
@@ -313,6 +301,11 @@ const Billing = () => {
                           {...register("guestEmail")}
                           fullWidth
                         />
+                                                  {errors.guestEmail?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.guestEmail?.message.toString()}
+                      </FormHelperText>
+                    )}
                       </Box>
                     ) : null}
                   </Stack>
@@ -322,8 +315,10 @@ const Billing = () => {
                     mt={2}
                   >
                     <Stack direction={"row"}>
+                      {}
                       <Checkbox
                         onChange={handleCheckboxSubmit}
+                        checked={submitButton}
                         sx={{ mt: -2 }}
                       />
                       <Typography mt={1}>
@@ -355,6 +350,7 @@ const Billing = () => {
                       variant="contained"
                       disabled={!submitButton }
                       // onClick={handleClick}
+
                     >
                       Pay Now
                     </Button>}
@@ -385,7 +381,9 @@ const Billing = () => {
             setDisplay={setDisplay}
             hotelDetail={hotelDetail}
             roomDetails={roomDetails}
-            totalRoomsAndGuests={totalRoomsAndGuests}
+            totalGuests={totalGuests}
+            totalRooms={totalRooms}
+            totalPrice={totalPrice}
             setDisplayLoader={setDisplayLoader}
             bookingId={bookingId}
             result={result}

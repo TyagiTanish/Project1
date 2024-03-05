@@ -77,6 +77,9 @@ function Footer() {
                 ml: 2,
                 fontWeight: 700,
                 fontSize: { xl: 15, md: 12, sm: 8 },
+                "&:hover": {
+                  backgroundColor: "white",
+                }
               }}
               onClick={() => {
                 navigate("/memberRegister");

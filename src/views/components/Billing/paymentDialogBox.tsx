@@ -8,9 +8,9 @@ import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import Booking from "../Bookings/PaymentGateway/PaymentPage";
-import { Box, Stack } from "@mui/material";
+import { Box, IconButton, Stack } from "@mui/material";
 import BillingDetailsCard from "./BillingDetailsCard";
-
+import CloseIcon from '@mui/icons-material/Close';
 
 /**
 * Dialog Box opens when user wants to pay . Markdown is *payment*.
@@ -27,13 +27,15 @@ export default function PaymentDialogBox({
   totalPrice,
   setDisplayLoader,
   bookingId,
-  result
+  result,
+  setSubmitButton
 }: any) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = () => {
     setDisplay(false);
+    setSubmitButton(false)
   };
 
   return (
@@ -45,9 +47,10 @@ export default function PaymentDialogBox({
         aria-labelledby="responsive-dialog-title"
         maxWidth={'xl'}
       >
-        <DialogTitle id="responsive-dialog-title">
+        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}> <DialogTitle id="responsive-dialog-title">
         Payment
-        </DialogTitle>
+        </DialogTitle> <IconButton onClick={handleClose}><CloseIcon/></IconButton></Stack>
+       
         <DialogContent>
           <DialogContentText>
             <Stack direction={"row"} spacing={3} >

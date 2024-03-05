@@ -18,10 +18,10 @@ import * as Yup from "yup";
 import { FormattedMessage } from "react-intl";
 import Language from "./Language";
 
-const SignUp = ({ setLogReg}: any) => {
+const SignUp = ({ setLogReg, setDisplay}: any) => {
   const { request } = useAuth();
   const [showPassword, setShowPassword] = React.useState(false);
-  const [display, setDisplay] = React.useState(false);
+
   const onSubmit = async (data: any) => {
     // console.log(data);
     const result = await request.post("/Register", {
@@ -67,12 +67,18 @@ const SignUp = ({ setLogReg}: any) => {
     name: Yup.string()
       .required("First Name is required")
       .min(3)
-      .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
-    email: Yup.string().email("invalid email !").required("Email is Required"),
+      .matches(
+        /^[A-Z][a-zA-Z]*$/,
+        "First Letter of name should be capital and name should be string"
+      ),
+    email: Yup.string().email("Invalid email !").required("Email is Required"),
     phone: Yup.string()
-      .required("This field is required")
-      .max(10, "Max length should be 10")
-      .matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
+        .required("Phone no. is required")
+        .max(10, "Max length should be 10")
+        .matches(
+          /^[789]\d{9}$/,
+          "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+        ),
     password: Yup.string()
       .required("This field is required")
       .min(8, "Pasword must be 8 or more characters")
@@ -103,8 +109,8 @@ const SignUp = ({ setLogReg}: any) => {
 
   return (
     <>
-      <Box>
-        {display && <Loaders />}
+     
+       
         <Card
           sx={{minWidth:400}}
         >
@@ -147,7 +153,7 @@ const SignUp = ({ setLogReg}: any) => {
                   id="demo-helper-text-aligned"
                   {...register("name")}
                 />
-                <FormHelperText>{errors.name?.message}</FormHelperText>
+                <FormHelperText sx={{ color: "red" }}>{errors.name?.message}</FormHelperText>
                 <Typography
                   sx={{
                     fontWeight: "bold",
@@ -161,7 +167,7 @@ const SignUp = ({ setLogReg}: any) => {
                   id="demo-helper-text-aligned"
                   {...register("email")}
                 />
-                <FormHelperText>{errors.email?.message}</FormHelperText>
+                <FormHelperText sx={{ color: "red" }}>{errors.email?.message}</FormHelperText>
                 <Typography
                   sx={{
                     fontWeight: "bold",
@@ -174,7 +180,7 @@ const SignUp = ({ setLogReg}: any) => {
                   id="demo-helper-text-aligned"
                   {...register("phone")}
                 />
-                <FormHelperText>{errors.phone?.message}</FormHelperText>
+                <FormHelperText sx={{ color: "red" }}>{errors.phone?.message}</FormHelperText>
                 <Typography
                   sx={{
                     fontWeight: "bold",
@@ -207,7 +213,7 @@ const SignUp = ({ setLogReg}: any) => {
          
           />
         </FormControl>
-                <FormHelperText>{errors.password?.message}</FormHelperText>
+                <FormHelperText sx={{ color: "red" }}>{errors.password?.message}</FormHelperText>
               </Stack>
               <Button size="small" variant="contained" type="submit" sx={{mt:2,textTransform:'none'}} >
               <FormattedMessage defaultMessage="   SignUp"/>  
@@ -225,7 +231,7 @@ const SignUp = ({ setLogReg}: any) => {
             </Button>
           </Stack>
         </Card>
-      </Box>
+    
     </>
   );
 };
