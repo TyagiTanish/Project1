@@ -12,9 +12,9 @@ const UseRoomAndGuestQuantity = () => {
       result = result + +element.guest;
       totalRooms = totalRooms + 1;
     });
-    TotalRooms.current = TotalRooms.current + totalRooms;
-    TotalGuests.current = TotalGuests.current + result;
-  }, [TotalRooms, TotalGuests]);
+    TotalRooms.current = totalRooms;
+    TotalGuests.current = result;
+  });
 
   return { TotalRooms, TotalGuests };
 };

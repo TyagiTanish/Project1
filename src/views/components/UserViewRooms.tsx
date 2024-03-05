@@ -19,6 +19,7 @@ function UserViewRooms({ hotels }: any) {
   const navigate = useNavigate();
   const [roomImage, setRoomImage] = useState({ roomID: null, index: 0 });
   const { TotalRooms, TotalGuests } = UseRoomAndGuestQuantity();
+
   const dispatch = useDispatch();
   var reduxValue: any = {};
   const updateRedux = (item: any) => {
@@ -182,12 +183,12 @@ function UserViewRooms({ hotels }: any) {
                     disabled={
                       item?.isAvailable === "false" ||
                       item?.roomQuantity === "0" ||
-                      TotalRooms > item?.roomQuantity
+                      TotalRooms.current > item?.roomQuantity
                     }
                   >
                     {item?.isAvailable === "false" ||
                     item?.roomQuantity === "0" ||
-                    TotalRooms > item?.roomQuantity
+                    TotalRooms.current > item?.roomQuantity
                       ? "Currently Unavailable"
                       : "Book Now "}
                   </Button>
