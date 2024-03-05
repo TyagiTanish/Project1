@@ -17,7 +17,8 @@ import Loader from "./loader/Loader";
  */
 const HotelsPage = () => {
   const { request } = useAuth();
-  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  // const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const search = localStorage.getItem("searchTerm");
   const [searchTerm, setSearchTerm] = useState(search);
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
@@ -25,9 +26,7 @@ const HotelsPage = () => {
   const [price, setPrice] = React.useState<number[]>([10000, 37000]);
   const location = useSelector((state: any) => state.userReducer.location);
   const filterData = async () => {
-
-    if(searchTerm==='around me') {
-
+    if (searchTerm === "around me") {
       const result = await request.get("/getHotels", {
         params: {
           search: location,
@@ -35,12 +34,7 @@ const HotelsPage = () => {
         },
       });
       setFilteredData(result.data);
-
-    }
-
-
-    else{
-
+    } else {
       const result = await request.get("/getHotels", {
         params: {
           search: searchTerm,
@@ -49,6 +43,7 @@ const HotelsPage = () => {
       });
       setFilteredData(result.data);
     }
+
 
 
     // const result = await request.get("/getHotels", {
@@ -74,7 +69,7 @@ const HotelsPage = () => {
   }, [search, searchTerm,price]);
   return (
     <>
-      {screenSize > 768 && filteredData.length!==0 ? (
+      {screenSize > 768 && filteredData.length !== 0 ? (
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -104,7 +99,13 @@ const HotelsPage = () => {
             )}
           </>
         ) : (
-          <Box margin={15} marginLeft={'45%'} sx={{fontSize:20, color:'red'}}>No Results Match your search</Box>
+          <Box
+            margin={15}
+            marginLeft={"45%"}
+            sx={{ fontSize: 20, color: "red" }}
+          >
+            No Results Match your search
+          </Box>
         )}
       </Stack>
       <Footer />

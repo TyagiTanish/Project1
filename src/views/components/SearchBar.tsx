@@ -29,8 +29,9 @@ function SearchBar() {
   const [rooms, setRooms] = React.useState<any>(
     parsedData || [{ Room: 1, guest: 1 }]
   );
-  const search = useSelector((state: any) => state.userReducer.searchDetails);
-  const [value, setValue] =useState<any>();
+  // const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const search = localStorage.getItem("searchTerm");
+  const [value, setValue] = useState<any>();
   const [guests, setGuests] = useState(
     parsedData?.Guests != null ? parsedData?.Guests : 1
   );
@@ -60,9 +61,7 @@ function SearchBar() {
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
-    
     } else {
-     
     }
   }
   function success(position: any) {
@@ -71,8 +70,9 @@ function SearchBar() {
       longitude: position.coords.longitude,
     };
     dispatch(userLocation(data));
-  setSearchTerm('around me')
-    setValue('Around me')
+    localStorage.setItem("searchTerm", "around me");
+    setSearchTerm("around me");
+    setValue("Around me");
     // Make API call to OpenWeatherMap
   }
 
@@ -181,6 +181,7 @@ function SearchBar() {
               }}
               onClick={() => {
                 dispatch(searchDetails(searchTerm));
+                localStorage.setItem("searchTerm", searchTerm);
                 navigate("./hotels");
               }}
             >
