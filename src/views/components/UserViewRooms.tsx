@@ -1,98 +1,109 @@
+import React, { useState, useEffect } from "react";
 import {
   Box,
   Button,
   DialogTitle,
   Divider,
+  IconButton,
   Stack,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { roomDetails } from "./redux/user/userSlice";
 import UseRoomAndGuestQuantity from "../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
-/**
- * To Show all the rooms of the Hotel. Markdown is *View Deal*.
- */
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+
+function RoomImageSlider({ images }:any) {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  const nextImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === images.length - 1 ? 0 : prevIndex + 1
+    );
+  };
+
+  const prevImage = () => {
+    setCurrentImageIndex((prevIndex) =>
+      prevIndex === 0 ? images.length - 1 : prevIndex - 1
+    );
+  };
+
+  // useEffect(() => {
+  //   const intervalId = setInterval(nextImage, 3000);
+
+  //   // Cleanup interval on component unmount
+  //   return () => clearInterval(intervalId);
+  // }, [images.length]);
+
+  return (
+    <Box position="relative">
+    <img
+      src={`http://localhost:8000/${images[currentImageIndex]?.path}`}
+      alt={'RoomImage'}
+      style={{
+        width: "90%",
+        // height: "100%",
+      }}
+    
+    />
+    <IconButton
+      sx={{
+        position: "absolute",
+        top: "50%",
+        left: "0%",
+        transform: "translateY(-50%)",
+        color: "white",
+        "&:hover":{backgroundColor: "rgba(0, 0, 0, 0.5)",}
+      }}
+      onClick={prevImage}
+    >
+      <ArrowBackIosNewIcon />
+    </IconButton>
+    <IconButton
+      sx={{
+        position: "absolute",
+        top: "50%",
+        right: "10%",
+        transform: "translateY(-50%)",
+        color: "white",
+        "&:hover":{backgroundColor: "rgba(0, 0, 0, 0.5)",}
+      }}
+      onClick={nextImage}
+    >
+      <ArrowForwardIosIcon />
+    </IconButton>
+  </Box>
+  );
+}
 
 function UserViewRooms({ hotels }: any) {
-  const navigate = useNavigate();
-  const [roomImage, setRoomImage] = useState({ roomID: null, index: 0 });
   const { TotalRooms, TotalGuests } = UseRoomAndGuestQuantity();
 
-  const dispatch = useDispatch();
-  var reduxValue: any = {};
   const updateRedux = (item: any) => {
-    reduxValue = {
+    const reduxValue = {
       price: item?.price,
       type: item?.roomType,
       roomId: item?._id,
     };
-    navigate(`/billing/${hotels[0]?._id}/${item?._id}`);
+    // Dispatch or use reduxValue as needed
   };
-  dispatch(roomDetails(reduxValue));
 
   return (
     <>
-      <Stack
-        justifyContent={"space-evenly"}
-        marginTop={"4%"}
-        marginBottom={"4%"}
-      >
+      <Stack justifyContent={"space-evenly"} marginTop={"4%"} marginBottom={"4%"}>
         {hotels[0]?.rooms?.map((item: any, i: any) => (
           <Stack
+            key={item._id}
             maxWidth={"80%"}
             alignSelf={"center"}
             m={3}
-            bgcolor={"	#F5F5F5"}
+            bgcolor={"#F5F5F5"}
             boxShadow={10}
           >
-            <DialogTitle sx={{ fontWeight: "bold" }}>
-              {item?.roomType}
-            </DialogTitle>
+            <DialogTitle sx={{ fontWeight: "bold" }}>{item?.roomType}</DialogTitle>
             <Divider />
             <Stack direction={"row"} padding={2} spacing={3}>
               <Stack width={"45%"}>
-                <Box>
-                  <Stack direction={"row"} spacing={0.2}>
-                    <Box
-                      component={"img"}
-                      width={{ xl: "64%", md: "60%", sm: "65%", xs: "50%" }}
-                      // height={181.8}
-                      src={
-                        roomImage.roomID === item?._id
-                          ? `http://localhost:8000/${
-                              item?.photos[roomImage.index]?.path
-                            }`
-                          : `http://localhost:8000/${item?.photos[0]?.path}`
-                      }
-                    />
-                    <>
-                      <Stack direction={"column"} spacing={0.2}>
-                        {item?.photos?.map((image: any, index: number) => {
-                          return (
-                            <>
-                              {index !== roomImage.index && (
-                                <Box
-                                  component={"img"}
-                                  width={100}
-                                  height={{ lg: 90 }}
-                                  src={`http://localhost:8000/${image?.path}`}
-                                  onClick={() =>
-                                    setRoomImage({
-                                      roomID: item._id,
-                                      index: index,
-                                    })
-                                  }
-                                />
-                              )}
-                            </>
-                          );
-                        })}
-                      </Stack>
-                    </>
-                  </Stack>
-                </Box>
+                <RoomImageSlider images={item?.photos} />
                 <Stack
                   direction={"column"}
                   spacing={2}
@@ -127,7 +138,7 @@ function UserViewRooms({ hotels }: any) {
                   overflow={"auto"}
                 >
                   {item?.amenities.map((item: any, i: any) => (
-                    <li style={{ minWidth: 200 }}>{item}</li>
+                    <li key={i} style={{ minWidth: 200 }}>{item}</li>
                   ))}
                 </Stack>
                 <Divider sx={{ mt: "10%" }} />
@@ -169,7 +180,6 @@ function UserViewRooms({ hotels }: any) {
                   </Stack>
                 </Stack>
                 <Stack sx={{ ml: 2 }}>
-                  {" "}
                   <Button
                     sx={{
                       fontWeight: "bold",
