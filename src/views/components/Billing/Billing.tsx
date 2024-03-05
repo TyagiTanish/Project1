@@ -137,14 +137,25 @@ const Billing = () => {
     fullName: Yup.string()
       .required("First Name is required")
       .min(3)
-      .matches(/^[A-Z][a-zA-Z]*$/, "First Letter of name should be capital and name should be string"),
+      .matches(
+        /^[A-Z][a-zA-Z]*$/,
+        "First Letter of name should be capital and name should be string"
+      ),
     email: Yup.string().email("Invalid email !").required("Email is Required"),
     phone: Yup.string()
       .required("Phone no. is required")
       .max(10, "Max length should be 10")
-      .matches(/(?=.*[0-9])\w+/, "Phone No. must be a number"),
-    guestName: Yup.string().matches(/^[A-Z][a-zA-Z]*$/, "First Letter of name should be capital and name should be string").notRequired(),
-    guestEmail: Yup.string().email('Invalid Email').notRequired(),
+      .matches(
+        /^[789]\d{9}$/,
+        "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+      ),
+    guestName: Yup.string()
+      .matches(
+        /^[A-Z][a-zA-Z]*$/,
+        "First Letter of name should be capital and name should be string"
+      )
+      .notRequired(),
+    guestEmail: Yup.string().email("Invalid Email").notRequired(),
   });
 
   const {
@@ -226,7 +237,7 @@ const Billing = () => {
                       {...register("fullName")}
                       fullWidth
                     />
-                  {errors.fullName?.message && (
+                    {errors.fullName?.message && (
                       <FormHelperText sx={{ color: "red" }}>
                         {errors.fullName?.message.toString()}
                       </FormHelperText>
@@ -249,7 +260,7 @@ const Billing = () => {
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                       Phone No. *
                     </Typography>
-                 
+
                     <TextField
                       // id="standard-password-input"
                       placeholder="Phone Number"
@@ -287,11 +298,11 @@ const Billing = () => {
                           variant="outlined"
                           fullWidth
                         />
-                          {errors.guestName?.message && (
-                      <FormHelperText sx={{ color: "red" }}>
-                        {errors.guestName?.message.toString()}
-                      </FormHelperText>
-                    )}
+                        {errors.guestName?.message && (
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.guestName?.message.toString()}
+                          </FormHelperText>
+                        )}
                         <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                           Guest email
                         </Typography>
@@ -301,11 +312,11 @@ const Billing = () => {
                           {...register("guestEmail")}
                           fullWidth
                         />
-                                                  {errors.guestEmail?.message && (
-                      <FormHelperText sx={{ color: "red" }}>
-                        {errors.guestEmail?.message.toString()}
-                      </FormHelperText>
-                    )}
+                        {errors.guestEmail?.message && (
+                          <FormHelperText sx={{ color: "red" }}>
+                            {errors.guestEmail?.message.toString()}
+                          </FormHelperText>
+                        )}
                       </Box>
                     ) : null}
                   </Stack>
@@ -326,35 +337,40 @@ const Billing = () => {
                         of Use and Privacy Policy.
                       </Typography>
                     </Stack>
-                    {TotalRooms.current > roomDetails?.roomQuantity ? <Button
-                      type="submit"
-                      sx={{
-                        width: "40%",
-                        m: 2,
-                        textTransform: "none",
-                      }}
-                      color="error"
-                      variant="contained"
-                      disabled={!submitButton || TotalRooms.current > roomDetails?.roomQuantity }
-                      // onClick={handleClick}
-                    >
-                      Currently Unavailable
-                    </Button>:<Button
-                      type="submit"
-                      sx={{
-                        width: "30%",
-                        m: 2,
-                        textTransform: "none",
-                      }}
-                      color="error"
-                      variant="contained"
-                      disabled={!submitButton }
-                      // onClick={handleClick}
-
-                    >
-                      Pay Now
-                    </Button>}
-
+                    {TotalRooms.current > roomDetails?.roomQuantity ? (
+                      <Button
+                        type="submit"
+                        sx={{
+                          width: "40%",
+                          m: 2,
+                          textTransform: "none",
+                        }}
+                        color="error"
+                        variant="contained"
+                        disabled={
+                          !submitButton ||
+                          TotalRooms.current > roomDetails?.roomQuantity
+                        }
+                        // onClick={handleClick}
+                      >
+                        Currently Unavailable
+                      </Button>
+                    ) : (
+                      <Button
+                        type="submit"
+                        sx={{
+                          width: "30%",
+                          m: 2,
+                          textTransform: "none",
+                        }}
+                        color="error"
+                        variant="contained"
+                        disabled={!submitButton}
+                        // onClick={handleClick}
+                      >
+                        Pay Now
+                      </Button>
+                    )}
                   </Stack>
                 </form>
                 {/* {display && (

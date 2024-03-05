@@ -17,9 +17,9 @@ import Loader from "./loader/Loader";
  */
 const HotelsPage = () => {
   const { request } = useAuth();
-  // const search = useSelector((state: any) => state.userReducer.searchDetails);
-  const search = localStorage.getItem("searchTerm");
-  const [searchTerm, setSearchTerm] = useState(search);
+  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  // const search = localStorage.getItem("searchTerm");
+  const [searchTerm, setSearchTerm] = useState(search || "");
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
@@ -30,7 +30,7 @@ const HotelsPage = () => {
       const result = await request.get("/getHotels", {
         params: {
           search: location,
-          price:price,
+          price: price,
         },
       });
       setFilteredData(result.data);
@@ -38,13 +38,11 @@ const HotelsPage = () => {
       const result = await request.get("/getHotels", {
         params: {
           search: searchTerm,
-          price:price,
+          price: price,
         },
       });
       setFilteredData(result.data);
     }
-
-
 
     // const result = await request.get("/getHotels", {
     //   params: {
@@ -53,7 +51,6 @@ const HotelsPage = () => {
     //   },
     // });
     // setFilteredData(result.data);
-
   };
 
   useEffect(() => {
@@ -66,10 +63,10 @@ const HotelsPage = () => {
   useMemo(() => {
     setSearchTerm(search);
     filterData();
-  }, [search, searchTerm,price]);
+  }, [search, searchTerm, price]);
   return (
     <>
-      {screenSize > 768 && filteredData.length !== 0 ? (
+      {/* {screenSize > 768 && filteredData.length !== 0 ? (
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -84,7 +81,7 @@ const HotelsPage = () => {
           <TuneIcon sx={{ mr: 1 }} />
           Filters
         </Button>
-      ) : null}
+      ) : null} */}
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
         {filteredData.length !== 0 ? (
           <>
@@ -109,8 +106,15 @@ const HotelsPage = () => {
         )}
       </Stack>
       <Footer />
-      <ToggleDrawerFilter open={open} setOpen={setOpen} setFilteredData={setFilteredData} searchTerm={searchTerm} price={price} setPrice={setPrice}/>
-    </> 
+      <ToggleDrawerFilter
+        open={open}
+        setOpen={setOpen}
+        setFilteredData={setFilteredData}
+        searchTerm={searchTerm}
+        price={price}
+        setPrice={setPrice}
+      />
+    </>
   );
 };
 

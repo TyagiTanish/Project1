@@ -56,7 +56,7 @@ function Hotels({ filteredData, screenSize }: any) {
       <Box
         sx={{
           height: "90vh",
-          overflowY: "auto",
+          overflowY: "scroll",
         }}
       >
         {screenSize <= 768 ? (
@@ -70,14 +70,14 @@ function Hotels({ filteredData, screenSize }: any) {
                   mt={3}
                   ml={3}
                 >
-                  <Button
+                  {/* <Button
                     variant="outlined"
                     onClick={() => setOpen(true)}
                     sx={{ height: "30px" }}
                   >
                     <TuneIcon sx={{ mr: 1 }} />
                     Filters
-                  </Button>
+                  </Button> */}
                   <Box>
                     <img
                       src={require("./Map.jpg")}

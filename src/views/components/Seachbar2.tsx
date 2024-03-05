@@ -48,8 +48,10 @@ function Seachbar2() {
   );
   const dispatch = useDispatch();
 
-  // const search = useSelector((state: any) => state?.userReducer?.searchDetails);
   const search = localStorage.getItem("searchTerm");
+  const [value, setValue] = useState<any>(search);
+  // const search = useSelector((state: any) => state?.userReducer?.searchDetails);
+
   const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const handleInputChange = (event: any) => {
     const { value } = event.target;
@@ -84,10 +86,11 @@ function Seachbar2() {
       longitude: position.coords.longitude,
     };
     dispatch(userLocation(data));
+    localStorage.setItem("searchTerm", "around me");
+    setSearchTerm("around me");
+    setValue("Around me");
   }
-  function error() {
-    console.log("Unable to retrieve your location");
-  }
+  function error() {}
 
   return (
     <>
@@ -125,7 +128,8 @@ function Seachbar2() {
           }}
           placeholder="Search by city,hotel or state"
           onChange={(e) => setSearchTerm(e.target.value)}
-          defaultValue={search}
+          defaultValue={searchTerm}
+          value={searchTerm}
         />
         <DateRangePickers />
         <TextField
@@ -153,6 +157,7 @@ function Seachbar2() {
           }}
           onClick={() => {
             dispatch(searchDetails(searchTerm));
+            localStorage.setItem("searchTerm", searchTerm);
             navigate("./hotels");
           }}
         >

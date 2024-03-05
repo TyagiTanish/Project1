@@ -29,9 +29,9 @@ function SearchBar() {
   const [rooms, setRooms] = React.useState<any>(
     parsedData || [{ Room: 1, guest: 1 }]
   );
-  // const search = useSelector((state: any) => state.userReducer.searchDetails);
-  const search = localStorage.getItem("searchTerm");
-  const [value, setValue] = useState<any>();
+  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  // const search = localStorage.getItem("searchTerm");
+  const [value, setValue] = useState<any>(search);
   const [guests, setGuests] = useState(
     parsedData?.Guests != null ? parsedData?.Guests : 1
   );
@@ -76,9 +76,7 @@ function SearchBar() {
     // Make API call to OpenWeatherMap
   }
 
-  function error() {
-    console.log("Unable to retrieve your location");
-  }
+  function error() {}
 
   return (
     <>
@@ -135,8 +133,8 @@ function SearchBar() {
               sx={{ bgcolor: "white" }}
               placeholder="Search by city,hotel or state"
               onChange={(e) => setSearchTerm(e.target.value)}
-              defaultValue={search}
-              value={value}
+              defaultValue={searchTerm}
+              value={searchTerm}
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
