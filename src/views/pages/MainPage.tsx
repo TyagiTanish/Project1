@@ -68,6 +68,7 @@ function MainPage() {
               </Stack>
               <Box>
                 {LogReg ? (
+                  
                   <SignUp setLogReg={setLogReg} setDisplay={setDisplay} />
                 ) : (
                   <>

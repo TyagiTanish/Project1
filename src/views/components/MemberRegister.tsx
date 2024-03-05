@@ -26,6 +26,8 @@ import {
   FormHelperText,
   FormLabel,
   IconButton,
+  InputAdornment,
+  OutlinedInput,
   Stack,
 } from "@mui/material";
 
@@ -40,7 +42,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDropzone } from "react-dropzone";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
 import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
-
+import Visibility from '@mui/icons-material/Visibility';
+import VisibilityOff from '@mui/icons-material/VisibilityOff';
 function Copyright(props: any) {
   return (
     <Typography
@@ -68,7 +71,8 @@ export default function MemberRegister() {
   const [error, setError] = React.useState("");
   const [maxPhoto, setMaxPhoto] = React.useState(false);
   const [amenities, setAmenities] = React.useState([]);
-
+  const [showPassword, setShowPassword] = React.useState(false);
+  const [showPassword2, setShowPassword2] = React.useState(false);
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
   React.useEffect(() => {
@@ -107,7 +111,17 @@ export default function MemberRegister() {
     { id: "bar", label: "Bar", icon: <WineBarIcon /> },
     { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
   ];
+  const handleClickShowPassword = () => setShowPassword((show) => !show);
 
+  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
+
+  const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
+
+  const handleMouseDownPassword2 = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+  };
   const [screenSize, setScreenSize] = React.useState(window.outerWidth);
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
@@ -138,37 +152,58 @@ export default function MemberRegister() {
   page === 2 &&
     (FormSchema = Yup.object().shape({
       pinCode: Yup.string()
-        .required("zipCode is required")
+        .required("Zip Code is required")
         .max(6, "Max length should be 6")
-        .matches(/(?=.*[0-9])\w+/, "Zip Code must be a number"),
+        .matches(/^[1-9][0-9]{5}$/, "Zip Code must be a number"),
       country: Yup.string()
         .required("Country is required ")
         .min(3, "Minimum length should be 3")
         .matches(
-          /(?=.*[a-z])(?=.*[A-Z])\w+/,
-          "Country name should be a string"
+          /^[A-Z][a-zA-Z]*$/,
+          "First Letter of Country name should be capital and name should be string"
         ),
       state: Yup.string()
         .required("State is required")
         .min(3, "Minimum length should be 3")
-        .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "State name should be a string"),
+        .matches(
+          /^[A-Z][a-zA-Z]*$/,
+          "First Letter of State name should be capital and name should be string"
+        ),
       city: Yup.string()
         .required("City is required")
         .min(3, "minimum length should be 3 ")
-        .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "City name should be a string"),
+        .matches(
+          /^[A-Z][a-zA-Z]*$/,
+          "First Letter of City name should be capital and name should be string"
+        ),
     }));
 
   page === 1 &&
     (FormSchema = Yup.object().shape({
       name: Yup.string()
         .required("First Name is required")
-        .min(3)
-        .matches(/(?=.*[a-z])(?=.*[A-Z])\w+/, "should be a string"),
+        .min(3, "Name should contain at least 5 letters")
+        .matches(
+          /^[A-Z][a-zA-Z]*$/,
+          "First Letter of name should be capital and name should be string"
+        ),
       email: Yup.string()
-        .email("invalid email !")
+        .email("Invalid email !")
         .required("Email is Required"),
-      phone: Yup.string().required("Phone number is required"),
-      hotelName: Yup.string().required("Hotel Name is Required"),
+      phone: Yup.string()
+        .required("Phone no. is required")
+        .max(10, "Max length should be 10")
+        .matches(
+          /^[789]\d{9}$/,
+          "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+        ),
+      hotelName: Yup.string()
+        .min(5, "Hotel name should contain at least 5 letters")
+        .matches(
+          /^[A-Z][a-zA-Z]*$/,
+          "First Letter of name should be capital and name should be string"
+        )
+        .required("Hotel Name is Required"),
     }));
 
   page === 7 &&
@@ -205,18 +240,22 @@ export default function MemberRegister() {
     hotelName: string;
     amenities: [];
     discription: string;
+    confirmPassword: string;
   }
 
   const {
     register,
     handleSubmit,
+    watch,
     formState: { errors, isValid },
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
   const { request } = useAuth();
   const [email, setEmail] = React.useState();
-
+const password=watch("password");
+const confirmPassword=watch("confirmPassword");
+console.log(password)
   const [location, setLocation] = React.useState({
     latitude: "",
     longitude: "",
@@ -429,7 +468,9 @@ export default function MemberRegister() {
                       autoFocus
                       {...register("name")}
                     />
-                    <FormHelperText>{errors?.name?.message}</FormHelperText>
+                    <FormHelperText sx={{ color: "red" }}>
+                      {errors?.name?.message}
+                    </FormHelperText>
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
@@ -439,6 +480,9 @@ export default function MemberRegister() {
                       variant="outlined"
                       {...register("phone")}
                     ></TextField>
+                    <FormHelperText sx={{ color: "red" }}>
+                      {errors?.phone?.message}
+                    </FormHelperText>
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
@@ -452,7 +496,9 @@ export default function MemberRegister() {
                       {...register("email")}
                       onChange={(e: any) => setEmail(e.target.value)}
                     />
-                    <FormHelperText>{errors?.email?.message}</FormHelperText>
+                    <FormHelperText sx={{ color: "red" }}>
+                      {errors?.email?.message}
+                    </FormHelperText>
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
@@ -464,7 +510,7 @@ export default function MemberRegister() {
                       {...register("hotelName")}
                       // onChange={(e: any) => setEmail(e.target.value)}
                     />
-                    <FormHelperText>
+                    <FormHelperText sx={{ color: "red" }}>
                       {errors?.hotelName?.message}
                     </FormHelperText>
                   </Stack>
@@ -517,7 +563,9 @@ export default function MemberRegister() {
                     autoFocus
                     {...register("city")}
                   />
-                  <FormHelperText>{errors?.city?.message}</FormHelperText>
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors?.city?.message}
+                  </FormHelperText>
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
@@ -527,21 +575,27 @@ export default function MemberRegister() {
                     variant="outlined"
                     {...register("state")}
                   ></TextField>
-                  <FormHelperText>{errors?.state?.message}</FormHelperText>
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors?.state?.message}
+                  </FormHelperText>
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                     Pin Code{" "}
                   </Typography>
                   <TextField required fullWidth {...register("pinCode")} />
-                  <FormHelperText>{errors?.pinCode?.message}</FormHelperText>
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors?.pinCode?.message}
+                  </FormHelperText>
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                     Country
                   </Typography>
                   <TextField required fullWidth {...register("country")} />
-                  <FormHelperText>{errors?.country?.message}</FormHelperText>
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors?.country?.message}
+                  </FormHelperText>
                 </Stack>
               </Stack>
               <IconButton
@@ -619,15 +673,48 @@ export default function MemberRegister() {
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
                       Password
                     </Typography>
-                    <TextField required fullWidth {...register("password")} />
-                    <FormHelperText>{errors?.password?.message}</FormHelperText>
+                 
+                    <OutlinedInput
+                      id="outlined-adornment-password"
+                      {...register("password")}
+                      name="password"
+                      type={showPassword ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword}
+                            onMouseDown={handleMouseDownPassword}
+                            edge="end"
+                          >
+                            {showPassword ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                    />
+                    <FormHelperText sx={{ color: "red" }}>
+                      {errors?.password?.message}
+                    </FormHelperText>
                   </Stack>
-                  <Stack>
-                    <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
-                      Confirm Password
-                    </Typography>
-                    <TextField required fullWidth />
-                  </Stack>
+                  {/* <Stack>
+                  <OutlinedInput
+                      id="outlined-adornment-password"
+                     name="confirmPassword"
+                      type={showPassword2 ? "text" : "password"}
+                      endAdornment={
+                        <InputAdornment position="end">
+                          <IconButton
+                            aria-label="toggle password visibility"
+                            onClick={handleClickShowPassword2}
+                            onMouseDown={handleMouseDownPassword2}
+                            edge="end"
+                          >
+                            {showPassword2 ? <VisibilityOff /> : <Visibility />}
+                          </IconButton>
+                        </InputAdornment>
+                      }
+                 />
+                  </Stack> */}
                 </Stack>
                 <IconButton
                   sx={{

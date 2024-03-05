@@ -16,6 +16,7 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { useDispatch, useSelector } from "react-redux";
 import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import { cleanFilterItem } from "@mui/x-data-grid/hooks/features/filter/gridFilterUtils";
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -58,8 +59,9 @@ function SearchBar() {
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
+    
     } else {
-      console.log("Geolocation not supported");
+     
     }
   }
   function success(position: any) {
