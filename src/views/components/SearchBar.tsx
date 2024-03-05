@@ -29,8 +29,8 @@ function SearchBar() {
   const [rooms, setRooms] = React.useState<any>(
     parsedData || [{ Room: 1, guest: 1 }]
   );
-  const search = useSelector((state: any) => state.userReducer.searchDetails);
-  // const search = localStorage.getItem("searchTerm");
+  // const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const search = localStorage.getItem("searchTerm");
   const [value, setValue] = useState<any>(search);
   const [guests, setGuests] = useState(
     parsedData?.Guests != null ? parsedData?.Guests : 1
