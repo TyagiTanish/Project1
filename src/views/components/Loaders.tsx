@@ -11,7 +11,7 @@ function Loaders() {
         width: "100%",
         // { xl: "1850px", md: "1024px", sm: "768px" }
         // xl:'60vh',md:'60vh',sm:'70vw'
-        height: "100%",
+        height: "60%",
         paddingTop: 50,
       }}
       className="blur"
