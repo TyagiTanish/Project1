@@ -48,8 +48,8 @@ function Seachbar2() {
   );
   const dispatch = useDispatch();
 
-  const search = useSelector((state: any) => state?.userReducer?.searchDetails);
-
+  // const search = useSelector((state: any) => state?.userReducer?.searchDetails);
+  const search = localStorage.getItem("searchTerm");
   const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const handleInputChange = (event: any) => {
     const { value } = event.target;

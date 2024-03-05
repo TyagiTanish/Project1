@@ -16,31 +16,24 @@ import ToggleDrawerFilter from "./Filters/ToggleDrawerFilter";
  */
 const HotelsPage = () => {
   const { request } = useAuth();
-  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  // const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const search = localStorage.getItem("searchTerm");
   const [searchTerm, setSearchTerm] = useState(search);
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
 
-
   const location = useSelector((state: any) => state.userReducer.location);
 
   const filterData = async () => {
-
-    if(searchTerm==='around me') {
-
+    if (searchTerm === "around me") {
       const result = await request.get("/getHotels", {
         params: {
           search: location,
         },
       });
       setFilteredData(result.data);
-
-    }
-
-
-    else{
-
+    } else {
       const result = await request.get("/getHotels", {
         params: {
           search: searchTerm,
@@ -48,7 +41,6 @@ const HotelsPage = () => {
       });
       setFilteredData(result.data);
     }
-   
   };
 
   useEffect(() => {
@@ -64,7 +56,7 @@ const HotelsPage = () => {
   }, [search, searchTerm]);
   return (
     <>
-      {screenSize > 768 && filteredData.length!==0 ? (
+      {screenSize > 768 && filteredData.length !== 0 ? (
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -94,11 +86,22 @@ const HotelsPage = () => {
             )}
           </>
         ) : (
-          <Box margin={15} marginLeft={'45%'} sx={{fontSize:20, color:'red'}}>No Results Match your search</Box>
+          <Box
+            margin={15}
+            marginLeft={"45%"}
+            sx={{ fontSize: 20, color: "red" }}
+          >
+            No Results Match your search
+          </Box>
         )}
       </Stack>
       <Footer />
-      <ToggleDrawerFilter open={open} setOpen={setOpen} setFilteredData={setFilteredData} searchTerm={searchTerm}/>
+      <ToggleDrawerFilter
+        open={open}
+        setOpen={setOpen}
+        setFilteredData={setFilteredData}
+        searchTerm={searchTerm}
+      />
     </>
   );
 };
