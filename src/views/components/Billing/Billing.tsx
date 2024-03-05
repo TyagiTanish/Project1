@@ -47,8 +47,12 @@ const Billing = () => {
   const id = useParams();
   // console.log(id);
   const fetchHotel: any = async () => {
-    const result = await request.get(`/getHotel/${id.id}`);
-    sethotelDetail(result.data);
+    try {
+      const result = await request.get(`/getHotel/${id.id}`);
+      sethotelDetail(result.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   useEffect(() => {
     fetchHotel();

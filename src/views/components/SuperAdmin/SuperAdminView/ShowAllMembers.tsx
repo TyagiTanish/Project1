@@ -52,14 +52,19 @@ export default function ShowAllMembers() {
     setMembers(data?.data);
   };
   const getHotels = async (id: any) => {
-    const data = (await request.get(`/getHotelForParticularMember/${id}`)).data;
-    // const hotelsdata: any = data?.map((item: any, i: any) => {
-    //   item.id = i + 1;
-    //   return item;
-    // });
-    setId(id);
-    setLength(data.length);
-    setHotels(data);
+    try {
+      const data = (await request.get(`/getHotelForParticularMember/${id}`))
+        .data;
+      // const hotelsdata: any = data?.map((item: any, i: any) => {
+      //   item.id = i + 1;
+      //   return item;
+      // });
+      setId(id);
+      setLength(data.length);
+      setHotels(data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleSortModelChange = React.useCallback(
     (sortModel: GridSortModel) => {
@@ -68,21 +73,26 @@ export default function ShowAllMembers() {
     []
   );
   useMemo(async () => {
-    const data = (
-      await request.get(`/getHotelForParticularMember/${id}`, {
-        params: {
-          limit: paginationModel.pageSize || null,
-          page: paginationModel.page,
-          orderby: queryOptions?.sortModel[0]?.field || "_id",
-          sortby: queryOptions?.sortModel[0]?.sort || "asc",
-        },
-      })
-    ).data;
+    try {
+      const data = (
+        await request.get(`/getHotelForParticularMember/${id}`, {
+          params: {
+            limit: paginationModel.pageSize || null,
+            page: paginationModel.page,
+            orderby: queryOptions?.sortModel[0]?.field || "_id",
+            sortby: queryOptions?.sortModel[0]?.sort || "asc",
+          },
+        })
+      ).data;
+      setHotels(data);
+    } catch (error) {
+      console.log(error);
+    }
+
     // const hotelsdata: any = data?.map((item: any, i: any) => {
     //   item.id = i + 1;
     //   return item;
     // });
-    setHotels(data);
   }, [paginationModel, id, queryOptions]);
   useMemo(() => {
     getMembers();

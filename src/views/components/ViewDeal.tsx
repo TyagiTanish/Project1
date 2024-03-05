@@ -11,6 +11,7 @@ import UserViewRooms from "./UserViewRooms";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { enqueueSnackbar } from "notistack";
 
 /**
  * To show Details of a specific hotel. Markdown is *Hotels*.
@@ -26,8 +27,13 @@ function ViewDeal() {
   const { request } = useAuth();
 
   const getHotels = async () => {
-    const result = await request.get(`/getHotel/${id}`);
-    sethotels(result.data);
+    try {
+      const result = await request.get(`/getHotel/${id}`);
+      sethotels(result.data);
+    } catch (error) {
+      console.log(error);
+    }
+
     // console.log(hotels);
   };
 

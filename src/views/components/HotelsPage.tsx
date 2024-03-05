@@ -23,25 +23,29 @@ const HotelsPage = () => {
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
-  const [price, setPrice] = React.useState<number[]>([10000, 37000]);
+  const [price, setPrice] = React.useState<number[]>([0, 37000]);
   const location = useSelector((state: any) => state.userReducer.location);
   const filterData = async () => {
-    if (searchTerm === "around me") {
-      const result = await request.get("/getHotels", {
-        params: {
-          search: location,
-          price: price,
-        },
-      });
-      setFilteredData(result.data);
-    } else {
-      const result = await request.get("/getHotels", {
-        params: {
-          search: searchTerm,
-          price: price,
-        },
-      });
-      setFilteredData(result.data);
+    try {
+      if (searchTerm === "around me") {
+        const result = await request.get("/getHotels", {
+          params: {
+            search: location,
+            price: price,
+          },
+        });
+        setFilteredData(result.data);
+      } else {
+        const result = await request.get("/getHotels", {
+          params: {
+            search: searchTerm,
+            price: price,
+          },
+        });
+        setFilteredData(result.data);
+      }
+    } catch (error) {
+      console.log(error);
     }
 
     // const result = await request.get("/getHotels", {
@@ -66,7 +70,7 @@ const HotelsPage = () => {
   }, [search, searchTerm, price]);
   return (
     <>
-      {/* {screenSize > 768 && filteredData.length !== 0 ? (
+      {screenSize > 768 && filteredData.length !== 0 ? (
         <Button
           variant="outlined"
           onClick={() => setOpen(true)}
@@ -81,7 +85,7 @@ const HotelsPage = () => {
           <TuneIcon sx={{ mr: 1 }} />
           Filters
         </Button>
-      ) : null} */}
+      ) : null}
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
         {filteredData.length !== 0 ? (
           <>
@@ -96,13 +100,29 @@ const HotelsPage = () => {
             )}
           </>
         ) : (
-          <Box
-            margin={15}
-            marginLeft={"45%"}
-            sx={{ fontSize: 20, color: "red" }}
-          >
-            No Results Match your search
-          </Box>
+          <>
+            <Button
+              variant="outlined"
+              onClick={() => setOpen(true)}
+              sx={{
+                height: "30px",
+                width: "130px",
+                ml: { xl: 8, lg: 5, md: 5 },
+                mt: 3,
+                mb: { xl: -3 },
+              }}
+            >
+              <TuneIcon sx={{ mr: 1 }} />
+              Filters
+            </Button>
+            <Box
+              margin={15}
+              marginLeft={"30%"}
+              sx={{ fontSize: 20, color: "red" }}
+            >
+              No Results Match your search
+            </Box>
+          </>
         )}
       </Stack>
       <Footer />
