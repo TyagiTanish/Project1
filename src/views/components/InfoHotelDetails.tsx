@@ -33,14 +33,9 @@ import "react-quill/dist/quill.snow.css";
 
 import { useIntl, FormattedMessage } from "react-intl";
 
-
-
-
-  /**
-*  To display Information of a particular Hotels. Markdown is *InfoHotelDetails*.
-*/
-   
-   
+/**
+ *  To display Information of a particular Hotels. Markdown is *InfoHotelDetails*.
+ */
 
 function InfoHotelDetails({ item }: any) {
   const amenitie = [
@@ -85,6 +80,7 @@ function InfoHotelDetails({ item }: any) {
   const ShowAmenities = amenitie.filter((v, i) =>
     item.amenities.includes(String(i))
   );
+
   // console.log(ShowAmenities);
   return (
     <Box
@@ -109,7 +105,6 @@ function InfoHotelDetails({ item }: any) {
           lineHeight: { sm: 1.3, lg: 2, md: 1.5 },
         }}
       >
-       
         <Box
           dangerouslySetInnerHTML={{ __html: item.discription }}
           sx={{ flex: 1, wordBreak: "break-word" }}
@@ -121,7 +116,7 @@ function InfoHotelDetails({ item }: any) {
         <FormattedMessage defaultMessage="Location" />
       </Box>
       <Box sx={{ m: 2 }}>
-        <Map2 />
+        <Map2 location={item?.location} hotel={item} />
       </Box>
       <Box>
         <Box
@@ -134,9 +129,8 @@ function InfoHotelDetails({ item }: any) {
         >
           <FormattedMessage defaultMessage="Top amenities" />
         </Box>
-   
+
         <>
-   
           <Grid container spacing={2}>
             {ShowAmenities.map((item) => (
               <Grid item xs={3}>
@@ -148,7 +142,6 @@ function InfoHotelDetails({ item }: any) {
             ))}
           </Grid>
         </>
-        
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
         <Box

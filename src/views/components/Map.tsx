@@ -5,6 +5,19 @@ import { useSelector } from "react-redux";
 import AllRooms from "./HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box, Stack } from "@mui/material";
 
+const styles = {
+  closeButton: {
+    color: "red",
+    fontSize: "24px",
+    fontWeight: "bold",
+    backgroundColor: "#ffffff",
+    border: "2px solid #ff0000",
+    borderRadius: "50%",
+    padding: "8px",
+    cursor: "pointer",
+  },
+};
+
 const SimpleMap = ({ filteredData, setToggle }: any) => {
   const location = useSelector((state: any) => state.userReducer.location);
   useEffect(() => {
@@ -34,15 +47,24 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
     });
     // Add markers to the map
     locations?.forEach((location: any) => {
-      const popup = new mapboxgl.Popup()
+      const closeButton = document.createElement("div");
+      closeButton.innerHTML = "✕"; // You can use an SVG or any other content
+      closeButton.className = "custom-popup-close-button";
+
+      const popup = new mapboxgl.Popup({ offset: 25 })
         .setLngLat(location.coordinates)
+        .setDOMContent(closeButton)
         .setHTML(
           `<div  style='width:100%;' ><span><img src='http://localhost:8000/${location?.image}'  style="width: 95%;"  /></span><span style='width:100%;' ><p   style='width:100%;font-size:15px;font-weight:bolder' >${location.title}</p><p>${location.description}</p></span></div><p></p>`
         );
+
       const marker = new mapboxgl.Marker()
         .setLngLat(location.coordinates)
         .setPopup(popup)
         .addTo(map);
+
+      closeButton.addEventListener("click", () => popup.remove());
+
       // Attach onclick event to marker
       // Attach click event listener to the marker
       // marker.getElement().addEventListener("click", () => {
@@ -54,9 +76,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
     });
     return () => map.remove();
   }, [location, filteredData]);
-  useEffect(() => {
-    console.log(filteredData);
-  }, [filteredData]);
+
   return (
     <>
       <Stack>

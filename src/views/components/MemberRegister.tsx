@@ -64,7 +64,7 @@ function Copyright(props: any) {
 
 const theme = createTheme();
 
-export default function MemberRegister() {
+export default function MemberRegister({ setLoader }: any) {
   const [page, setPage] = React.useState(1);
   const [files, setfile] = React.useState<any>([]);
   const navigate = useNavigate();
@@ -281,6 +281,7 @@ console.log(password)
     // }
     // console.log(detail);
     if (page === 7) {
+      setLoader(true);
       detail.latitude = location.latitude;
       detail.longitude = location.longitude;
       const formdata = new FormData();
@@ -299,10 +300,12 @@ console.log(password)
       formdata.set("amenities", detail.amenities);
       formdata.set("discription", detail.discription);
       const result = await request.post("/registerMember", formdata);
-
-      console.log(result.data);
-
-      navigate("/login");
+      if (result) {
+        setTimeout(() => {
+          setLoader(false);
+          navigate("/login");
+        }, 2000);
+      }
     } else {
       handleNextClick();
     }
