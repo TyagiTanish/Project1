@@ -17,7 +17,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
         location?.longitude || 76.779419,
         location?.latitude || 30.733315,
       ],
-      zoom: 15,
+      zoom: 10,
     });
     map.addControl(new mapboxgl.NavigationControl());
     // Array of marker coordinates
@@ -54,9 +54,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
     });
     return () => map.remove();
   }, [location, filteredData]);
-  useEffect(() => {
-   
-  }, [filteredData]);
+  useEffect(() => {}, [filteredData]);
   return (
     <>
       <Stack>

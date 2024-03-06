@@ -21,7 +21,7 @@ export default function SimpleMap() {
         location?.longitude || 76.779419,
         location?.latitude || 30.733315,
       ],
-      zoom: 12,
+      zoom: 10,
     });
     map.addControl(new mapboxgl.NavigationControl());
     // Array of marker coordinates

@@ -10,11 +10,13 @@ import {
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import UseRoomAndGuestQuantity from "../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useDispatch } from "react-redux";
 import { roomDetails } from "./redux/user/userSlice";
-function RoomImageSlider({ images }:any) {
+import { Theme, useTheme } from "@emotion/react";
+function RoomImageSlider({ images }: any) {
+  const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -38,42 +40,42 @@ function RoomImageSlider({ images }:any) {
 
   return (
     <Box position="relative">
-    <img
-      src={`http://localhost:8000/${images[currentImageIndex]?.path}`}
-      alt={'RoomImage'}
-      style={{
-        width: "90%",
-        // height: "100%",
-      }}
-    
-    />
-    <IconButton
-      sx={{
-        position: "absolute",
-        top: "50%",
-        left: "0%",
-        transform: "translateY(-50%)",
-        color: "white",
-        "&:hover":{backgroundColor: "rgba(0, 0, 0, 0.5)",}
-      }}
-      onClick={prevImage}
-    >
-      <ArrowBackIosNewIcon />
-    </IconButton>
-    <IconButton
-      sx={{
-        position: "absolute",
-        top: "50%",
-        right: "10%",
-        transform: "translateY(-50%)",
-        color: "white",
-        "&:hover":{backgroundColor: "rgba(0, 0, 0, 0.5)",}
-      }}
-      onClick={nextImage}
-    >
-      <ArrowForwardIosIcon />
-    </IconButton>
-  </Box>
+      <img
+        src={`http://localhost:8000/${images[currentImageIndex]?.path}`}
+        alt={"RoomImage"}
+        style={{
+          width: "90%",
+          transition: `transform 300ms ease-in-out`,
+          // height: "100%",
+        }}
+      />
+      <IconButton
+        sx={{
+          position: "absolute",
+          top: "50%",
+          left: "0%",
+          transform: "translateY(-50%)",
+          color: "white",
+          "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+        }}
+        onClick={prevImage}
+      >
+        <ArrowBackIosNewIcon />
+      </IconButton>
+      <IconButton
+        sx={{
+          position: "absolute",
+          top: "50%",
+          right: "10%",
+          transform: "translateY(-50%)",
+          color: "white",
+          "&:hover": { backgroundColor: "rgba(0, 0, 0, 0.5)" },
+        }}
+        onClick={nextImage}
+      >
+        <ArrowForwardIosIcon />
+      </IconButton>
+    </Box>
   );
 }
 
@@ -94,7 +96,11 @@ function UserViewRooms({ hotels }: any) {
 
   return (
     <>
-      <Stack justifyContent={"space-evenly"} marginTop={"4%"} marginBottom={"4%"}>
+      <Stack
+        justifyContent={"space-evenly"}
+        marginTop={"4%"}
+        marginBottom={"4%"}
+      >
         {hotels[0]?.rooms?.map((item: any, i: any) => (
           <Stack
             key={item._id}
@@ -104,7 +110,9 @@ function UserViewRooms({ hotels }: any) {
             bgcolor={"#F5F5F5"}
             boxShadow={10}
           >
-            <DialogTitle sx={{ fontWeight: "bold" }}>{item?.roomType}</DialogTitle>
+            <DialogTitle sx={{ fontWeight: "bold" }}>
+              {item?.roomType}
+            </DialogTitle>
             <Divider />
             <Stack direction={"row"} padding={2} spacing={3}>
               <Stack width={"45%"}>
@@ -143,7 +151,9 @@ function UserViewRooms({ hotels }: any) {
                   overflow={"auto"}
                 >
                   {item?.amenities.map((item: any, i: any) => (
-                    <li key={i} style={{ minWidth: 200 }}>{item}</li>
+                    <li key={i} style={{ minWidth: 200 }}>
+                      {item}
+                    </li>
                   ))}
                 </Stack>
                 <Divider sx={{ mt: "10%" }} />

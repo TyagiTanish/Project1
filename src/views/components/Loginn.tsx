@@ -48,7 +48,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
     try {
       if (!value.password) {
         const result = await request.post("/auth", value);
-       
+
         if (result.data) {
           setState(true);
           setAuthentication("");
@@ -59,7 +59,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
         }
       } else {
         const result = await request.post("/auth", value);
-      
+
         // console.log();
 
         if (result.data) {
@@ -70,7 +70,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             setDisplay(false);
             if (result?.data?.data?.role === "customer") {
               const from = location?.state?.from;
-              navigate(from);
+              navigate(from || "/");
             } else {
               navigate("/member");
             }

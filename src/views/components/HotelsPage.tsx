@@ -71,27 +71,45 @@ const HotelsPage = () => {
   return (
     <>
       {screenSize > 768 && filteredData.length !== 0 ? (
-        <Button
-          variant="outlined"
-          onClick={() => setOpen(true)}
-          sx={{
-            height: "30px",
-            width: "130px",
-            ml: { xl: 8, lg: 5, md: 5 },
-            mt: 3,
-            mb: { xl: -3 },
-          }}
-        >
-          <TuneIcon sx={{ mr: 1 }} />
-          Filters
-        </Button>
+        <>
+          <Stack direction={"row"}>
+            {" "}
+            <Button
+              variant="outlined"
+              onClick={() => setOpen(true)}
+              sx={{
+                height: "30px",
+                width: "130px",
+                ml: { xl: 8, lg: 5, md: 5 },
+                mt: 3,
+                mb: { xl: -3 },
+              }}
+            >
+              <TuneIcon sx={{ mr: 1 }} />
+              Filters
+            </Button>
+            <Box
+              sx={{
+                fontWeight: "bolder",
+                color: "gray",
+                fontSize: "20px",
+                mt: 3.5,
+                ml: 5,
+              }}
+            >
+              {filteredData?.length} results found....
+            </Box>
+          </Stack>
+        </>
       ) : null}
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
         {filteredData.length !== 0 ? (
           <>
             {" "}
             {filteredData !== undefined ? (
-              <Hotels filteredData={filteredData} screenSize={screenSize} />
+              <>
+                <Hotels filteredData={filteredData} screenSize={screenSize} />
+              </>
             ) : null}
             {screenSize <= 768 ? (
               <></>
