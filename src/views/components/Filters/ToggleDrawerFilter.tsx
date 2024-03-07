@@ -94,6 +94,7 @@ export default function DrawerFilters({
             <Box ml={3}>
               <PriceRangeSlider price={price} setPrice={setPrice} />
             </Box>
+            <Divider />
             {/* <FormControl>
               <FormLabel sx={{ typography: "title-md", fontWeight: "bold" }}>
                 Property type
@@ -229,7 +230,7 @@ export default function DrawerFilters({
             </div> */}
           </DialogContent>
 
-          <Divider sx={{ mt: "auto" }} />
+          {/* <Divider sx={{ mt: "auto" }} />
           <Stack
             direction="row"
             justifyContent="space-between"
@@ -254,7 +255,7 @@ export default function DrawerFilters({
             >
               Show Hotels
             </Button>
-          </Stack>
+          </Stack> */}
         </Sheet>
       </Drawer>
     </React.Fragment>

@@ -17,7 +17,6 @@ export default function RoomSelection({
 
   const handleClose = () => {
     setAnchorEl(null);
-    window?.location?.reload();
   };
 
   const open = Boolean(anchorEl);

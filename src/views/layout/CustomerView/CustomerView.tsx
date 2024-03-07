@@ -36,9 +36,9 @@ const CustomerView = () => {
           {window.location.href === "http://localhost:3000/" ? (
             <></>
           ) : (
-            <Box sx={{ml:10     
-              ,mt:1}}> <Seachbar2 /></Box>
-           
+            <Box sx={{ ml: 10, mt: 1 }}>
+              <Seachbar2 />
+            </Box>
           )}
         </Stack>
         <Box>

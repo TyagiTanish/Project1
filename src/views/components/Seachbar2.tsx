@@ -17,6 +17,7 @@ import { searchDetails, userLocation } from "./redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import RoomSelection from "./RoomSelection";
+import { enqueueSnackbar } from "notistack";
 
 /**
  *  Search Bar at the top of every page except HomePage which helps in searching Hotels. Markdown is *SearchBar2*.
@@ -29,7 +30,14 @@ function Seachbar2() {
     setAnchorEl(event.currentTarget);
   };
   const data: any = localStorage.getItem("Rooms&Guests");
-  const parsedData = JSON.parse(data);
+  let parsedData = JSON.parse(data);
+
+  if (parsedData !== null) {
+    if (typeof parsedData === "object" && !Array.isArray(parsedData)) {
+      parsedData = [parsedData];
+    }
+  }
+
   const [rooms, setRooms] = React.useState<any>(
     parsedData || [
       {
@@ -73,11 +81,13 @@ function Seachbar2() {
     localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
   }, [render, rooms]);
 
+  // localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
+
   function handleLocationClick() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(success, error);
     } else {
-      console.log("Geolocation not supported");
+      enqueueSnackbar("Geolocation not supported", { variant: "error" });
     }
   }
   function success(position: any) {

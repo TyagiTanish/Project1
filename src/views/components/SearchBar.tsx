@@ -25,9 +25,18 @@ function SearchBar() {
     setAnchorEl(event.currentTarget);
   };
   const data: any = localStorage.getItem("Rooms&Guests");
-  const parsedData = JSON.parse(data);
+  let parsedData = JSON.parse(data);
+
+  if (parsedData !== null) {
+    if (typeof parsedData === "object" && !Array.isArray(parsedData)) {
+      parsedData = [parsedData];
+    }
+  }
+
   const [rooms, setRooms] = React.useState<any>(
-    parsedData || [{ Room: 1, guest: 1 }]
+    parsedData !== null
+      ? parsedData
+      : [{ Room: 1, guest: 1 }] || [{ Room: 1, guest: 1 }]
   );
   // const search = useSelector((state: any) => state.userReducer.searchDetails);
   const search = localStorage.getItem("searchTerm");
@@ -55,6 +64,8 @@ function SearchBar() {
     localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
   }, [render, rooms]);
   // useMemo(() => {
+
+  // localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
 
   //   );
   // }, [guests]);

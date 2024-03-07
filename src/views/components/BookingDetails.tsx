@@ -31,7 +31,7 @@ function BookingDetails() {
       setData(result.data);
     } else {
       const result = await request.get(`/getBookingDetails/${id.id}`);
- 
+
       setData(result.data[0]);
     }
   };

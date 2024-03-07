@@ -24,6 +24,7 @@ import { useForm } from "react-hook-form";
 import useAuth from "../../Hooks/useAuth/useAuth";
 import { render } from "react-dom";
 import { useSelector } from "react-redux";
+import { enqueueSnackbar } from "notistack";
 function EditHotel(props: any) {
   const [value, setValue] = useState(props.data?.discription);
   const [category, setcategory] = useState<any>(props?.data?.categories);
@@ -92,6 +93,12 @@ function EditHotel(props: any) {
       const result = await request.put("/updateHotel", formData);
       props.setData(result?.data[0]);
       // localStorage.setItem("name",data.ownerName);
+      if (result) {
+        enqueueSnackbar("Hotel details updated successfully", {
+          variant: "success",
+        });
+        props.handleClose();
+      }
     };
     get();
   };

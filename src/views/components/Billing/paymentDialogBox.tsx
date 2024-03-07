@@ -10,12 +10,11 @@ import { useTheme } from "@mui/material/styles";
 import Booking from "../Bookings/PaymentGateway/PaymentPage";
 import { Box, IconButton, Stack } from "@mui/material";
 import BillingDetailsCard from "./BillingDetailsCard";
-import CloseIcon from '@mui/icons-material/Close';
+import CloseIcon from "@mui/icons-material/Close";
 
 /**
-* Dialog Box opens when user wants to pay . Markdown is *payment*.
-*/
-
+ * Dialog Box opens when user wants to pay . Markdown is *payment*.
+ */
 
 export default function PaymentDialogBox({
   display,
@@ -28,14 +27,18 @@ export default function PaymentDialogBox({
   setDisplayLoader,
   bookingId,
   result,
-  setSubmitButton
+  setSubmitButton,
+  setTotalRoomsAndGuests,
+  setTotalPrice,
+  setRoomPrice,
+  totalRoomsAndGuests,
 }: any) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   const handleClose = () => {
     setDisplay(false);
-    setSubmitButton(false)
+    setSubmitButton(false);
   };
 
   return (
@@ -45,27 +48,45 @@ export default function PaymentDialogBox({
         open={display}
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
-        maxWidth={'xl'}
+        maxWidth={"xl"}
       >
-        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}> <DialogTitle id="responsive-dialog-title">
-        Payment
-        </DialogTitle> <IconButton onClick={handleClose}><CloseIcon/></IconButton></Stack>
-       
+        <Stack
+          direction={"row"}
+          justifyContent={"space-between"}
+          alignItems={"center"}
+        >
+          {" "}
+          <DialogTitle id="responsive-dialog-title">Payment</DialogTitle>{" "}
+          <IconButton onClick={handleClose}>
+            <CloseIcon />
+          </IconButton>
+        </Stack>
+
         <DialogContent>
           <DialogContentText>
-            <Stack direction={"row"} spacing={3} >
+            <Stack direction={"row"} spacing={3}>
               <Box>
-                <Booking  setDisplayLoader={setDisplayLoader} setDisplay={setDisplay} bookingId={bookingId} totalPrice={totalPrice} result={result} />
+                <Booking
+                  setDisplayLoader={setDisplayLoader}
+                  setDisplay={setDisplay}
+                  bookingId={bookingId}
+                  totalPrice={totalPrice}
+                  result={result}
+                />
               </Box>
-           <Box>   
-            <BillingDetailsCard
-            
-                hotelDetail={hotelDetail}
-                roomDetails={roomDetails}
-                totalGuests={totalGuests}
-                totalRooms={totalRooms}
-                totalPrice={totalPrice}
-              /></Box>
+              <Box>
+                <BillingDetailsCard
+                  setTotalRoomsAndGuests={setTotalRoomsAndGuests}
+                  hotelDetail={hotelDetail}
+                  roomDetails={roomDetails}
+                  totalGuests={totalGuests}
+                  totalRooms={totalRooms}
+                  totalPrice={totalPrice}
+                  setTotalPrice={setTotalPrice}
+                  setRoomPrice={setRoomPrice}
+                  totalRoomsAndGuests={totalRoomsAndGuests}
+                />
+              </Box>
             </Stack>
           </DialogContentText>
         </DialogContent>

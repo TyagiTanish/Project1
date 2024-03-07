@@ -13,9 +13,17 @@ const date = `${current.getDate()}-${
 }-${current.getFullYear()}`;
 
 export default function ResponsiveDateRangePickers() {
-  const [startdate, setStartDate] = React.useState<any>();
-  const [enddate, setEndDate] = React.useState<any>();
   const data = localStorage.getItem("Date");
+
+  const [startdate, setStartDate] = React.useState<any>(
+    data !== null ? dayjs(JSON.parse(data).startDate) : dayjs(Date.now())
+  );
+  const [enddate, setEndDate] = React.useState<any>(
+    data !== null
+      ? dayjs(JSON.parse(data).endDate)
+      : dayjs(Date.now() + 3600 * 1000 * 24)
+  );
+
   React.useMemo(() => {
     if (data) {
       setStartDate(dayjs(JSON.parse(data).startDate));
@@ -37,18 +45,18 @@ export default function ResponsiveDateRangePickers() {
   //     localStorage.setItem("Date", JSON.stringify(data));
   //   }
   // };
-  React.useEffect(() => {
-    if (enddate) {
-      const data: any = { startDate: startdate, endDate: enddate };
-      localStorage.setItem("Date", JSON.stringify(data));
-    } else {
-      const data: any = {
-        startDate: dayjs(Date.now()),
-        endDate: dayjs(Date.now() + 3600 * 1000 * 24),
-      };
-      localStorage.setItem("Date", JSON.stringify(data));
-    }
-  }, [startdate, enddate]);
+  // React.useEffect(() => {
+  //   if (enddate) {
+  //     const data: any = { startDate: startdate, endDate: enddate };
+  //     localStorage.setItem("Date", JSON.stringify(data));
+  //   } else {
+  //     const data: any = {
+  //       startDate: dayjs(Date.now()),
+  //       endDate: dayjs(Date.now() + 3600 * 1000 * 24),
+  //     };
+  //     localStorage.setItem("Date", JSON.stringify(data));
+  //   }
+  // }, [startdate, enddate]);
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={["SingleInputDateRangeField"]}>
@@ -74,6 +82,18 @@ export default function ResponsiveDateRangePickers() {
           }}
           minDate={dayjs(new Date())}
           format="ddd,DD-MMMM"
+          onClose={() => {
+            if (enddate) {
+              const data: any = { startDate: startdate, endDate: enddate };
+              localStorage.setItem("Date", JSON.stringify(data));
+            } else {
+              const data: any = {
+                startDate: dayjs(Date.now()),
+                endDate: dayjs(Date.now() + 3600 * 1000 * 24),
+              };
+              localStorage.setItem("Date", JSON.stringify(data));
+            }
+          }}
         />
       </DemoContainer>
     </LocalizationProvider>

@@ -70,6 +70,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             setDisplay(false);
             if (result?.data?.data?.role === "customer") {
               const from = location?.state?.from;
+
               navigate(from || "/");
             } else {
               navigate("/member");

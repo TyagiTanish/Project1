@@ -142,12 +142,13 @@ const Billing = () => {
       .required("First Name is required")
       .min(3)
       .matches(
-        /^[A-Z][a-zA-Z]*$/,
+        /^[a-zA-Z]+ [a-zA-Z]+$/,
         "First Letter of name should be capital and name should be string"
       ),
     email: Yup.string().email("Invalid email !").required("Email is Required"),
     phone: Yup.string()
       .required("Phone no. is required")
+      .min(10, "Min length should be 10")
       .max(10, "Max length should be 10")
       .matches(
         /^[789]\d{9}$/,
@@ -155,7 +156,7 @@ const Billing = () => {
       ),
     guestName: Yup.string()
       .matches(
-        /^[A-Z][a-zA-Z]*$/,
+        /^[a-zA-Z]+ [a-zA-Z]+$/,
         "First Letter of name should be capital and name should be string"
       )
       .notRequired(),
@@ -232,7 +233,7 @@ const Billing = () => {
                     p={2}
                   >
                     <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                      Full Name *
+                      First Name *
                     </Typography>
                     <TextField
                       variant="outlined"
@@ -407,6 +408,11 @@ const Billing = () => {
             setDisplayLoader={setDisplayLoader}
             bookingId={bookingId}
             result={result}
+            setTotalRoomsAndGuests={setTotalRoomsAndGuests}
+            setTotalPrice={setTotalPrice}
+            setRoomPrice={setRoomPrice}
+            totalRoomsAndGuests={totalRoomsAndGuests}
+            setSubmitButton={setSubmitButton}
           />
         </>
       )}

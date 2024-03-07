@@ -189,7 +189,7 @@ export default function AddHotelAftrLgn() {
         .required("This field is required")
         .min(3)
         .matches(
-          /(?=.*[a-z])(?=.*[A-Z])\w+/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "should be a string or should atleat have one upper case letter"
         ),
     });
@@ -200,14 +200,14 @@ export default function AddHotelAftrLgn() {
         .required("This field is required")
         .min(3)
         .matches(
-          /(?=.*[a-z])(?=.*[A-Z])\w+/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "should be a string or should atleat have one upper case letter"
         ),
       state: Yup.string()
         .required("This field is required")
         .min(3)
         .matches(
-          /(?=.*[a-z])(?=.*[A-Z])\w+/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "should be a string or should atleat have one upper case letter"
         ),
       postalCode: Yup.string()

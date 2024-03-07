@@ -42,8 +42,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDropzone } from "react-dropzone";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
 import AddDiscription from "./HotelOwner/Rooms/RoomDetails/AddDiscription";
-import Visibility from '@mui/icons-material/Visibility';
-import VisibilityOff from '@mui/icons-material/VisibilityOff';
+import Visibility from "@mui/icons-material/Visibility";
+import VisibilityOff from "@mui/icons-material/VisibilityOff";
 function Copyright(props: any) {
   return (
     <Typography
@@ -113,13 +113,17 @@ export default function MemberRegister() {
   ];
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
-  const handleMouseDownPassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
   };
 
   const handleClickShowPassword2 = () => setShowPassword2((show) => !show);
 
-  const handleMouseDownPassword2 = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleMouseDownPassword2 = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
     event.preventDefault();
   };
   const [screenSize, setScreenSize] = React.useState(window.outerWidth);
@@ -128,7 +132,6 @@ export default function MemberRegister() {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-   
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -166,14 +169,14 @@ export default function MemberRegister() {
         .required("State is required")
         .min(3, "Minimum length should be 3")
         .matches(
-          /^[A-Z][a-zA-Z]*$/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "First Letter of State name should be capital and name should be string"
         ),
       city: Yup.string()
         .required("City is required")
         .min(3, "minimum length should be 3 ")
         .matches(
-          /^[A-Z][a-zA-Z]*$/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "First Letter of City name should be capital and name should be string"
         ),
     }));
@@ -184,7 +187,7 @@ export default function MemberRegister() {
         .required("First Name is required")
         .min(3, "Name should contain at least 5 letters")
         .matches(
-          /^[A-Z][a-zA-Z]*$/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "First Letter of name should be capital and name should be string"
         ),
       email: Yup.string()
@@ -200,7 +203,7 @@ export default function MemberRegister() {
       hotelName: Yup.string()
         .min(5, "Hotel name should contain at least 5 letters")
         .matches(
-          /^[A-Z][a-zA-Z]*$/,
+          /^[a-zA-Z]+ [a-zA-Z]+$/,
           "First Letter of name should be capital and name should be string"
         )
         .required("Hotel Name is Required"),
@@ -253,9 +256,9 @@ export default function MemberRegister() {
   });
   const { request } = useAuth();
   const [email, setEmail] = React.useState();
-const password=watch("password");
-const confirmPassword=watch("confirmPassword");
-console.log(password)
+  const password = watch("password");
+  const confirmPassword = watch("confirmPassword");
+  console.log(password);
   const [location, setLocation] = React.useState({
     latitude: "",
     longitude: "",
@@ -673,7 +676,7 @@ console.log(password)
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
                       Password
                     </Typography>
-                 
+
                     <OutlinedInput
                       id="outlined-adornment-password"
                       {...register("password")}

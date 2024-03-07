@@ -42,6 +42,10 @@ function App() {
     getUser();
   });
 
+  // useEffect(() => {
+  //   localStorage.clear();
+  // }, []);
+
   // interface IntlConfig {
   //   locale: string
   //   formats: CustomFormats
