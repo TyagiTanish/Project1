@@ -38,9 +38,9 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    getUser();
-  });
+  // useEffect(() => {
+  //   getUser();
+  // });
 
   // useEffect(() => {
   //   localStorage.clear();

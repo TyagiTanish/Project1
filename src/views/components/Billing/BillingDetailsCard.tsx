@@ -4,6 +4,7 @@ import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import dayjs from "dayjs";
 import moment from "moment";
+import { useSelector } from "react-redux";
 const BillingDetailsCard = ({
   hotelDetail,
   roomDetails,
@@ -15,8 +16,12 @@ const BillingDetailsCard = ({
 }: any) => {
   const data: any = localStorage.getItem("Date");
   const [difference, setDifference] = useState<any>(null);
-  const parsedData: any = JSON.parse(
-    localStorage.getItem("Rooms&Guests") || ""
+  // const RoomsAndGuests: any = JSON.parse(
+  //   localStorage.getItem("Rooms&Guests") || ""
+  // );
+
+  const RoomsAndGuests = useSelector(
+    (state: any) => state?.userReducer?.RoomsAndGuests
   );
 
   var startdate: any = "";
@@ -36,16 +41,18 @@ const BillingDetailsCard = ({
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
-    parsedData.forEach((element: any) => {
-      result = result + +element.guest;
-      totalRooms = totalRooms + 1;
-    });
+
+    RoomsAndGuests?.map(
+      (element: any) => (
+        (result = result + +element.guest), (totalRooms = totalRooms + 1)
+      )
+    );
     setTotalRoomsAndGuests({ rooms: totalRooms, guests: result });
     setTotalPrice(
       Number(totalRooms) * Number(roomDetails?.price) * Number(difference?.days)
     );
     setRoomPrice(roomDetails?.price);
-  }, [totalPrice, roomDetails]);
+  }, [totalPrice, roomDetails, RoomsAndGuests]);
 
   useEffect(() => {
     if (data) {

@@ -13,7 +13,11 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 
 import "../../App.css";
 import { useDispatch, useSelector } from "react-redux";
-import { searchDetails, userLocation } from "./redux/user/userSlice";
+import {
+  RoomsAndGuests,
+  searchDetails,
+  userLocation,
+} from "./redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import RoomSelection from "./RoomSelection";
@@ -29,17 +33,19 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const data: any = localStorage.getItem("Rooms&Guests");
-  let parsedData = JSON.parse(data);
+  // const data: any = localStorage.getItem("Rooms&Guests");
+  // let data = JSON.parse(data);
 
-  if (parsedData !== null) {
-    if (typeof parsedData === "object" && !Array.isArray(parsedData)) {
-      parsedData = [parsedData];
-    }
-  }
+  // if (data !== null) {
+  //   if (typeof data === "object" && !Array.isArray(data)) {
+  //     data = [data];
+  //   }
+  // }
+
+  const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
 
   const [rooms, setRooms] = React.useState<any>(
-    parsedData || [
+    data || [
       {
         Room: 1,
         guest: 1,
@@ -47,16 +53,17 @@ function Seachbar2() {
     ]
   );
 
-  const [guests, setGuests] = useState(
-    parsedData?.Guests != null ? parsedData?.Guests : 1
-  );
+  const [guests, setGuests] = useState(data?.Guests != null ? data?.Guests : 1);
   const [render, setRender] = React.useState(0);
   const [totalRooms, setTotalRooms] = useState(
-    parsedData?.Rooms != null ? parsedData?.Rooms : 0
+    data?.Rooms != null ? data?.Rooms : 0
   );
   const dispatch = useDispatch();
 
-  const search = localStorage.getItem("searchTerm");
+  // const search = localStorage.getItem("searchTerm");
+
+  const search = useSelector((state: any) => state?.userReducer?.searchDetails);
+
   const [value, setValue] = useState<any>(search);
   // const search = useSelector((state: any) => state?.userReducer?.searchDetails);
 
@@ -78,7 +85,8 @@ function Seachbar2() {
     setTotalRooms(totalRooms);
     setGuests(result);
     setRooms(rooms);
-    localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
+    // localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
+    dispatch(RoomsAndGuests(rooms));
   }, [render, rooms]);
 
   // localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
@@ -96,8 +104,10 @@ function Seachbar2() {
       longitude: position.coords.longitude,
     };
     dispatch(userLocation(data));
-    localStorage.setItem("searchTerm", "around me");
+    // localStorage.setItem("searchTerm", "around me");
+
     setSearchTerm("around me");
+    dispatch(searchDetails(searchTerm));
     setValue("Around me");
   }
   function error() {}
@@ -167,7 +177,7 @@ function Seachbar2() {
           }}
           onClick={() => {
             dispatch(searchDetails(searchTerm));
-            localStorage.setItem("searchTerm", searchTerm);
+            // localStorage.setItem("searchTerm", searchTerm);
             navigate("./hotels");
           }}
         >
