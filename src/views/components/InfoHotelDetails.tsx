@@ -33,14 +33,9 @@ import "react-quill/dist/quill.snow.css";
 
 import { useIntl, FormattedMessage } from "react-intl";
 
-
-
-
-  /**
-*  To display Information of a particular Hotels. Markdown is *InfoHotelDetails*.
-*/
-   
-   
+/**
+ *  To display Information of a particular Hotels. Markdown is *InfoHotelDetails*.
+ */
 
 function InfoHotelDetails({ item }: any) {
   const amenitie = [
@@ -106,10 +101,8 @@ function InfoHotelDetails({ item }: any) {
           pb: { sm: 3, lg: 4 },
           textAlign: "justify",
           fontSize: { sm: 10, lg: 17, md: 14 },
-         
         }}
       >
-       
         <Box
           dangerouslySetInnerHTML={{ __html: item.discription }}
           sx={{ flex: 1, wordBreak: "break-word" }}
@@ -134,9 +127,8 @@ function InfoHotelDetails({ item }: any) {
         >
           <FormattedMessage defaultMessage="Top amenities" />
         </Box>
-   
+
         <>
-   
           <Grid container spacing={2}>
             {ShowAmenities.map((item) => (
               <Grid item xs={3}>
@@ -148,7 +140,6 @@ function InfoHotelDetails({ item }: any) {
             ))}
           </Grid>
         </>
-        
       </Box>
       <Box sx={{ display: "flex", flexDirection: "column", ml: 2 }}>
         <Box

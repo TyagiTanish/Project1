@@ -24,7 +24,9 @@ const HotelsPage = () => {
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
   const [price, setPrice] = React.useState<number[]>([0, 37000]);
+  const [category, setCategory] = React.useState<string[]>([]);
   const location = useSelector((state: any) => state.userReducer.location);
+  const [applyFilter, setApplyFilter] = React.useState<any>(0);
   const filterData = async () => {
     try {
       if (searchTerm === "around me") {
@@ -32,6 +34,7 @@ const HotelsPage = () => {
           params: {
             search: location,
             price: price,
+            category: category,
           },
         });
         setFilteredData(result.data);
@@ -40,6 +43,7 @@ const HotelsPage = () => {
           params: {
             search: searchTerm,
             price: price,
+            category: category,
           },
         });
         setFilteredData(result.data);
@@ -63,11 +67,10 @@ const HotelsPage = () => {
     };
     window.addEventListener("resize", handleWindowSize);
   });
-
   useMemo(() => {
     setSearchTerm(search);
     filterData();
-  }, [search, searchTerm, price]);
+  }, [search, searchTerm, applyFilter]);
   return (
     <>
       {screenSize > 768 && filteredData.length !== 0 ? (
@@ -151,6 +154,10 @@ const HotelsPage = () => {
         searchTerm={searchTerm}
         price={price}
         setPrice={setPrice}
+        category={category}
+        setCategory={setCategory}
+        applyFilter={applyFilter}
+        setApplyFilter={setApplyFilter}
       />
     </>
   );
