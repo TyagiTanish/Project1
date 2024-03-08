@@ -3,6 +3,7 @@ import {
   Button,
   IconButton,
   InputAdornment,
+  Popper,
   Stack,
   TextField,
   Typography,
@@ -14,43 +15,51 @@ import DateRangePickers from "./DatePicker";
 import RoomSelection from "./RoomSelection";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { useDispatch, useSelector } from "react-redux";
-import { searchDetails, userLocation } from "./redux/user/userSlice";
+import {
+  RoomsAndGuests,
+  searchDetails,
+  userLocation,
+} from "./redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import { cleanFilterItem } from "@mui/x-data-grid/hooks/features/filter/gridFilterUtils";
+import SearchBarValidationPopper from "./searchBarValidationPopper";
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
+  const [searchBarAnchorEl, setSearchBarAnchorEl] =
+    React.useState<null | HTMLElement>(null);
+
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
-  const data: any = localStorage.getItem("Rooms&Guests");
-  let parsedData = JSON.parse(data);
 
-  if (parsedData !== null) {
-    if (typeof parsedData === "object" && !Array.isArray(parsedData)) {
-      parsedData = [parsedData];
-    }
-  }
+  // const data: any = localStorage.getItem("Rooms&Guests");
+  // let data = JSON.parse(data);
+
+  // if (data !== null) {
+  //   if (typeof data === "object" && !Array.isArray(data)) {
+  //     data = [data];
+  //   }
+  // }
+  const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
+  const [open, setOpen] = React.useState(false);
 
   const [rooms, setRooms] = React.useState<any>(
-    parsedData !== null
-      ? parsedData
-      : [{ Room: 1, guest: 1 }] || [{ Room: 1, guest: 1 }]
+    data !== null ? data : [{ Room: 1, guest: 1 }] || [{ Room: 1, guest: 1 }]
   );
-  // const search = useSelector((state: any) => state.userReducer.searchDetails);
-  const search = localStorage.getItem("searchTerm");
-  const [value, setValue] = useState<any>(search);
-  const [guests, setGuests] = useState(
-    parsedData?.Guests != null ? parsedData?.Guests : 1
-  );
+  const search = useSelector((state: any) => state.userReducer.searchDetails);
+  // const search = localStorage.getItem("searchTerm");
+  const [value, setValue] = useState<any>(search || "");
+  const [guests, setGuests] = useState(data?.Guests != null ? data?.Guests : 1);
   const [totalRooms, setTotalRooms] = useState(
-    parsedData?.Rooms != null ? parsedData?.Rooms : 0
+    data?.Rooms != null ? data?.Rooms : 0
   );
   const [render, setRender] = React.useState(0);
   const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -61,8 +70,9 @@ function SearchBar() {
     setTotalRooms(totalRooms);
     setGuests(result);
     setRooms(rooms);
-    localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
-  }, [render, rooms]);
+    // localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
+    dispatch(RoomsAndGuests(rooms));
+  }, [render, rooms, dispatch]);
   // useMemo(() => {
 
   // localStorage.setItem("Rooms&Guests", JSON.stringify(rooms));
@@ -81,11 +91,17 @@ function SearchBar() {
       longitude: position.coords.longitude,
     };
     dispatch(userLocation(data));
-    localStorage.setItem("searchTerm", "around me");
+    // localStorage.setItem("searchTerm", "around me");
     setSearchTerm("around me");
+    dispatch(searchDetails(searchTerm));
     setValue("Around me");
     // Make API call to OpenWeatherMap
   }
+
+  const handleCloseValidationPopper = (event: any) => {
+    console.log(event);
+    setSearchBarAnchorEl(searchBarAnchorEl ? null : event);
+  };
 
   function error() {}
 
@@ -142,8 +158,14 @@ function SearchBar() {
           >
             <TextField
               sx={{ bgcolor: "white" }}
+              id="searchField"
               placeholder="Search by city,hotel or state"
-              onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+              }}
+              onLoad={(e) => {
+                console.log(e);
+              }}
               defaultValue={searchTerm}
               value={searchTerm}
               InputProps={{
@@ -163,6 +185,11 @@ function SearchBar() {
                   </InputAdornment>
                 ),
               }}
+            />
+            <SearchBarValidationPopper
+              searchBarAnchorEl={searchBarAnchorEl}
+              handleCloseValidationPopper={handleCloseValidationPopper}
+              setSearchBarAnchorEl={setSearchBarAnchorEl}
             />
             <Box mt={-1}>
               <DateRangePickers />
@@ -188,10 +215,15 @@ function SearchBar() {
                 height: "100%",
                 borderRadius: 0,
               }}
-              onClick={() => {
+              onClick={(e) => {
                 dispatch(searchDetails(searchTerm));
-                localStorage.setItem("searchTerm", searchTerm);
-                navigate("./hotels");
+                // localStorage.setItem("searchTerm", searchTerm);
+                if (searchTerm !== "") {
+                  navigate("./hotels");
+                } else {
+                  const field = document.querySelector("#searchField");
+                  handleCloseValidationPopper(field);
+                }
               }}
             >
               Search

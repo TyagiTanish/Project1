@@ -4,6 +4,8 @@ import Typography from "@mui/material/Typography";
 import Button from "@mui/material/Button";
 import { Box } from "@mui/material";
 import { useForm } from "react-hook-form";
+import { useDispatch } from "react-redux";
+import { RoomsAndGuests } from "./redux/user/userSlice";
 
 export default function RoomSelection({
   anchorEl,
@@ -21,7 +23,7 @@ export default function RoomSelection({
 
   const open = Boolean(anchorEl);
   const id = open ? "simple-popover" : undefined;
-
+  const dispatch = useDispatch();
   const handleAddRoom = () => {
     setRooms([...rooms, { Room: 1, guest: 1 }]);
   };
@@ -31,12 +33,27 @@ export default function RoomSelection({
   };
 
   const handleAddNumberOfGuests = (index: any) => {
-    rooms[index].guest = +rooms[index].guest + 1;
+    // console.log(rooms[index]?.guest);
+    const Rooms = rooms?.map((room: any, i: any) => {
+      if (i === index) {
+        return { Room: room?.Room, guest: Number(room?.guest) + 1 };
+      } else {
+        return room;
+      }
+    });
+    setRooms(Rooms);
     setRender((prev: any) => prev + 1);
   };
 
   const handleSubtractNumberOfGuests = (index: any) => {
-    rooms[index].guest = +rooms[index].guest - 1;
+    const Rooms = rooms?.map((room: any, i: any) => {
+      if (i === index) {
+        return { Room: room?.Room, guest: Number(room?.guest) - 1 };
+      } else {
+        return room;
+      }
+    });
+    setRooms(Rooms);
     setRender((prev: any) => prev + 1);
   };
 

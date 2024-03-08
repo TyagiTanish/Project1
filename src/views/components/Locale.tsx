@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 // third-party
-import { IntlProvider, MessageFormatElement } from 'react-intl';
-import { useSelector } from 'react-redux';
+import { IntlProvider, MessageFormatElement } from "react-intl";
+import { useSelector } from "react-redux";
 
 // load locales files
 const loadLocaleData = (locale: string) => {
   switch (locale) {
-    case 'fr':
-      return import('../../utils/locales/fr.json');
+    case "fr":
+      return import("../../utils/locales/fr.json");
     default:
-      return import('../../utils/locales/en.json');
+      return import("../../utils/locales/en.json");
   }
 };
 // ==============================|| LOCALIZATION ||============================== //
@@ -18,9 +18,10 @@ export interface LocalsProps {
 }
 const Locales = ({ children }: LocalsProps) => {
   const [messages, setMessages] = useState<any>();
-  const customization = useSelector((state:any)=>state.userReducer.locale)
+  const customization = useSelector((state: any) => {
+    return state?.userReducer?.locale;
+  });
 
-  
   useEffect(() => {
     loadLocaleData(customization).then((d) => {
       setMessages(d.default);
@@ -29,7 +30,11 @@ const Locales = ({ children }: LocalsProps) => {
   return (
     <>
       {messages && (
-        <IntlProvider locale={customization} defaultLocale="en" messages={messages} >
+        <IntlProvider
+          locale={customization}
+          defaultLocale="en"
+          messages={messages}
+        >
           {children}
         </IntlProvider>
       )}
@@ -37,12 +42,3 @@ const Locales = ({ children }: LocalsProps) => {
   );
 };
 export default Locales;
-
-
-
-
-
-
-
-
-

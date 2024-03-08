@@ -23,6 +23,7 @@ import Switch from "@mui/material/Switch";
 import Tooltip from "@mui/material/Tooltip";
 import { enqueueSnackbar } from "notistack";
 import { useIntl, FormattedMessage } from "react-intl";
+import LoginModal from "./LoginModal";
 
 /**
  * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
@@ -47,6 +48,9 @@ export default function ShowAllMembers() {
   const [modalHotel, setModalHotel] = React.useState<any>([]);
   const { request } = useAuth();
   const [members, setMembers] = React.useState<any>([]);
+  const [showHotels, setShowHotels] = useState(false);
+  const [loginModal, setLogInModal] = useState(false);
+  const [hotelOwner, setHotelOwner] = useState();
   const getMembers = async () => {
     const data: any = await request.get("/getAllMembers");
     setMembers(data?.data);
@@ -97,7 +101,6 @@ export default function ShowAllMembers() {
   useMemo(() => {
     getMembers();
   }, []);
-  console.log(length);
   const handleClick = async (data: any) => {
     setModalHotel(data);
     setOpen(true);
@@ -122,6 +125,17 @@ export default function ShowAllMembers() {
       });
     }
   };
+
+  const handleSupport = () => {
+    setLogInModal(true);
+    setShowHotels(false);
+  };
+
+  useMemo(() => {
+    if (expanded) {
+      setShowHotels(false);
+    }
+  }, [expanded]);
 
   const columns: GridColDef[] = [
     {
@@ -307,31 +321,67 @@ export default function ShowAllMembers() {
                 </TableCell>
               </>
             </AccordionSummary>
-            <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
-            <Typography
-              fontSize={"large"}
-              fontWeight={700}
-              textAlign={"center"}
-              mb={2}
+            <Stack
+              border={"1px solid  rgb(227, 242, 253)"}
+              borderRadius={3}
+              direction={"row"}
+              padding={2}
+              gap={2}
+              m={2}
+              bgcolor={"#F8F8F8"}
+              sx={{
+                "&:hover": {
+                  boxShadow: "rgba(149, 157, 165, 0.2) 0px 0px 15px;",
+                  // transition:
+                  //   "box-shadow 300ms cubic-bezier(.4, 0, .2, 0.5) 0ms; ",
+                },
+                transition: "  box-shadow cubic-bezier(0.4, 0, 0.2, 1) 200ms  ",
+              }}
             >
-              <FormattedMessage defaultMessage="Hotel lists" />
-            </Typography>
+              <Button variant="outlined">Edit</Button>
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  handleSupport();
+                  setHotelOwner(item);
+                }}
+              >
+                Support
+              </Button>
+              <Button variant="outlined" onClick={() => setShowHotels(true)}>
+                View Hotels
+              </Button>
+            </Stack>
+            <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
+            {showHotels && (
+              <>
+                <Typography
+                  fontSize={"large"}
+                  fontWeight={700}
+                  textAlign={"center"}
+                  mb={2}
+                >
+                  <FormattedMessage defaultMessage="Hotel lists" />
+                </Typography>
 
-            {/* server side sorting , pagination using data grid */}
-            <DataGrid
-              rows={hotels}
-              columns={columns}
-              getRowId={(row) => row._id}
-              disableColumnMenu
-              pageSizeOptions={[5, 10, 20]}
-              rowCount={length}
-              sx={{ ml: 5, mr: 5, mb: 5 }}
-              paginationModel={paginationModel}
-              paginationMode="server"
-              onPaginationModelChange={setPaginationModel}
-              sortingMode="server"
-              onSortModelChange={handleSortModelChange}
-            />
+                {/* server side sorting , pagination using data grid  */}
+
+                <DataGrid
+                  rows={hotels}
+                  columns={columns}
+                  getRowId={(row) => row._id}
+                  disableColumnMenu
+                  pageSizeOptions={[5, 10, 20]}
+                  rowCount={length}
+                  sx={{ ml: 5, mr: 5, mb: 5 }}
+                  paginationModel={paginationModel}
+                  paginationMode="server"
+                  onPaginationModelChange={setPaginationModel}
+                  sortingMode="server"
+                  onSortModelChange={handleSortModelChange}
+                />
+              </>
+            )}
           </Accordion>
         ))}
 
@@ -343,6 +393,12 @@ export default function ShowAllMembers() {
             modalHotel={modalHotel}
           />
         )}
+        <LoginModal
+          loginModal={loginModal}
+          setLogInModal={setLogInModal}
+          members={members}
+          hotelOwner={hotelOwner}
+        />
       </Box>
     </>
   );
