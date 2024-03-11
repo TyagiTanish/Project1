@@ -50,7 +50,6 @@ function Seachbar2() {
   const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
   const date = useSelector((state: any) => state.userReducer.date);
 
-
   const [rooms, setRooms] = React.useState<any>(
     data || [
       {
@@ -119,7 +118,7 @@ function Seachbar2() {
   }
   function error() {}
   const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
-  const [dates,setDates]=useState<any>('')
+  const [dates, setDates] = useState<any>("");
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
     console.log(anchorEl2);
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
@@ -179,30 +178,29 @@ function Seachbar2() {
           handleCloseValidationPopper={handleCloseValidationPopper}
           setSearchBarAnchorEl={setSearchBarAnchorEl}
         />
-        <DateRangePickers />
-        <Box sx={{mt:1}}>
-
-        <TextField
-                sx={{ bgcolor: "white" ,width:300}}
-                placeholder="Check in - Check out"
-                onClick={handleClick2}
-                value={date}
-              />
-              <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl2}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-              >
-                <DateRangePickers setDates={setDates} onClose={handleClose}/>
-                {/* <Typography sx={{ p: 2 }}></Typography> */}
-              </Popover>
+        {/* <DateRangePickers /> */}
+        <Box sx={{ mt: 1 }}>
+          <TextField
+            sx={{ bgcolor: "white", width: 300 }}
+            placeholder="Check in - Check out"
+            onClick={handleClick2}
+            value={date}
+          />
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl2}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <DateRangePickers setDates={setDates} onClose={handleClose} />
+            {/* <Typography sx={{ p: 2 }}></Typography> */}
+          </Popover>
         </Box>
-     
+
         <TextField
           id="outlined-basic"
           variant="outlined"
