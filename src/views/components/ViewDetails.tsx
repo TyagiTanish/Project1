@@ -51,9 +51,8 @@ function ViewDetails({ hotels }: any) {
     { id: "bar", label: "Bar", icon: <WineBarIcon />, index: "14" },
     { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: "15" },
   ];
-
   const ShowAmenities = amenitie.filter((v, i) =>
-    hotels[0].amenities[0].includes(+i)
+    hotels[0].amenities.includes(String(i))
   );
 
   return (
