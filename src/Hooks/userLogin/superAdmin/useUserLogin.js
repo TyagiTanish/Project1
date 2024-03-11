@@ -1,4 +1,4 @@
-import useAuth from "../useAuth/useAuth";
+import useAuth from "../../useAuth/useAuth";
 import { useMutation } from 'react-query';
 const useUserLogin = () => {
 
@@ -9,7 +9,7 @@ const useUserLogin = () => {
       loggedInUserId: loggedInUserId
     }
     const auth = await request.post("/auth", data);
-    console.log(auth);
+    return auth.data
   };
   const { mutateAsync: UserLogin, isLoading, isError, data } = useMutation('/auth', loginUser);
 

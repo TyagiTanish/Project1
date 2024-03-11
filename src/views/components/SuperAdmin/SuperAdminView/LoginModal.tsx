@@ -17,9 +17,9 @@ import {
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin } from "../../redux/user/userSlice";
+import { userLogin, userLogout } from "../../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import useUserLogin from "../../../../Hooks/userLogin/useUserLogin";
+import useUserLogin from "../../../../Hooks/userLogin/superAdmin/useUserLogin";
 
 export default function LoginModal({
   loginModal,
@@ -33,7 +33,7 @@ export default function LoginModal({
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const loggedInUser = useSelector((state: any) => state?.userReducer?.user);
-  const { UserLogin } = useUserLogin();
+  const { UserLogin, data } = useUserLogin();
   // const handleClickOpen = () => {
   //   setOpen(true);
   // };
@@ -49,15 +49,18 @@ export default function LoginModal({
   //   return member;
   // }, [hotelOwner, members]);
   const handleLogin = async () => {
-    const userData = await UserLogin({
+    await UserLogin({
       userId: hotelOwner?._id,
       loggedInUserId: loggedInUser?._id,
     });
-    // dispatch(userLogin(hotelOwner));
-    console.log(userData);
-    // setTimeout(() => {
-    //   navigate("/");
-    // }, 2000);
+    if (data?.data) {
+      dispatch(userLogin(data?.data));
+      localStorage.setItem("authToken", data?.token);
+      // console.log(userData);
+      setTimeout(() => {
+        navigate(`/${data?.data?.role}`);
+      }, 2000);
+    }
   };
 
   return (
@@ -93,8 +96,8 @@ export default function LoginModal({
               ></Box>
               <Box>
                 With great power comes great responsibility. Actions you take
-                while logged in as Patient are indistinguishable from the
-                actions of this user. Are you sure you want to login as{" "}
+                while logged in as Customer are indistinguishable from the
+                actions of this user. Are you sure you want to login as
                 {hotelOwner?.name}?
               </Box>
             </Stack>
