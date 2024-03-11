@@ -228,7 +228,7 @@ function Seachbar2() {
             dispatch(searchDetails(searchTerm));
             // localStorage.setItem("searchTerm", searchTerm);
             if (searchTerm !== "") {
-              navigate("/hotels");
+              // navigate("/hotels");
             } else {
               const field = document.querySelector("#searchField");
               handleCloseValidationPopper(field);
