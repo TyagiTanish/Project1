@@ -28,8 +28,59 @@ import { boolean } from "yup";
 import { FormattedMessage } from "react-intl";
 import TuneIcon from "@mui/icons-material/TuneRounded";
 import ToggleDrawerFilter from "./Filters/ToggleDrawerFilter";
+import BoltIcon from "@mui/icons-material/Bolt";
+import TvIcon from "@mui/icons-material/Tv";
+import CheckCircleOutlineOutlinedIcon from "@mui/icons-material/CheckCircleOutlineOutlined";
+import WifiIcon from "@mui/icons-material/Wifi";
+import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
+import PoolIcon from "@mui/icons-material/Pool";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import WineBarIcon from "@mui/icons-material/WineBar";
+import RoomServiceIcon from "@mui/icons-material/RoomService";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import GroupsIcon from "@mui/icons-material/Groups";
 
 function Hotels({ filteredData, screenSize }: any) {
+  const amenitie = [
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: "0" },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon />, index: "1" },
+    { id: "pool", label: "Pool", icon: <PoolIcon />, index: "2" },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <RoomServiceIcon />,
+      index: "3",
+    },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon />, index: "4" },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <DryCleaningIcon />,
+      index: "5",
+    },
+    { id: "bar", label: "Bar", icon: <WineBarIcon />, index: "6" },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: "7" },
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: "8" },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon />, index: "9" },
+    { id: "pool", label: "Pool", icon: <PoolIcon />, index: "10" },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <RoomServiceIcon />,
+      index: "11",
+    },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon />, index: "12" },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <DryCleaningIcon />,
+      index: "13",
+    },
+    { id: "bar", label: "Bar", icon: <WineBarIcon />, index: "14" },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: "15" },
+  ];
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [detailIndex, setDetailIndex] = useState<any>("");
@@ -40,7 +91,6 @@ function Hotels({ filteredData, screenSize }: any) {
   const [toggle, setToggle] = useState<any>(false);
   const handleClick = useCallback(
     (index: any) => {
-      // console.log("jjjjjjjjjjjjjjjjj");
       setDetailIndex(index);
       if (index === detailIndex) {
         setDetailIndex("");
@@ -89,6 +139,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         // marginLeft: "68%",
                         border: "1px solid lightgray",
                       }}
+                      alt="This is img"
                     ></img>
                     <IconButton
                       onClick={() => {
@@ -123,173 +174,220 @@ function Hotels({ filteredData, screenSize }: any) {
         )}
         {displayMap ? (
           <>
-            {filteredData?.map((item: any, i: any) => (
-              <>
-                <Stack
-                  id={item?._id}
-                  direction={"row"}
-                  sx={{
-                    p: 2,
-                    m: 2,
-                    justifyContent: "space-between",
-                    direction: "row",
-                    border: "1px solid lightgrey",
-                    borderRadius: "10px",
-                  }}
-                >
-                  <Box
-                    component="img"
+            {filteredData?.map((item: any, i: any) => {
+              const ShowAmenities = amenitie.filter((v, i) =>
+                item.amenities.includes(String(i))
+              );
+              return (
+                <>
+                  <Stack
+                    id={item?._id}
+                    direction={"row"}
                     sx={{
-                      width: { sm: "150px ", lg: "200px", md: "140px" },
-                      height: { lg: "200px", sm: "15vh", md: "15vh" },
-                      borderTopLeftRadius: "20px",
-                      borderBottomLeftRadius: "20px",
+                      p: 2,
+                      m: 2,
+                      justifyContent: "space-between",
+                      direction: "row",
+                      border: "1px solid lightgrey",
+                      borderRadius: "10px",
                     }}
-                    alt="The house from the offer."
-                    // src={require(`./${item.photo}`)}
-                    src={`http://localhost:8000/${item?.photo}`}
-                  />
-                  <Stack m={2} width={400}>
-                    <Typography
+                  >
+                    <Box
+                      component="img"
                       sx={{
-                        fontWeight: "bold",
-                        // fontSize: { sm: "15px", lg: "20px", md: "18px" },
-                        opacity: 0.8,
-                        // width: { sm: "150px", lg: "200px", md: "180px" },
+                        width: { sm: "150px ", lg: "200px", md: "140px" },
+                        height: { lg: "200px", sm: "15vh", md: "15vh" },
+                        borderTopLeftRadius: "20px",
+                        borderBottomLeftRadius: "20px",
                       }}
-                    >
-                      {item.hotelName}
-                    </Typography>
-                    <Stack
-                      direction={"row"}
-                      sx={{ alignItems: "center" }}
-                      gap={2}
-                    >
+                      alt="The house from the offer."
+                      // src={require(`./${item.photo}`)}
+                      src={`http://localhost:8000/${item?.photo}`}
+                    />
+                    <Stack m={2} width={400} spacing={2}>
                       <Typography
                         sx={{
                           fontWeight: "bold",
-                          fontSize: { sm: "12px", lg: "18px", md: "14px" },
-                          opacity: 0.5,
-                          // marginTop: "10px",
+                          opacity: 0.8,
                         }}
                       >
-                        <FormattedMessage defaultMessage="Hotel" />
+                        {item.hotelName}
                       </Typography>
-                      <Button
-                        sx={{
-                          color: "grey",
-                          // ml: { sm: 0, lg: 12 },
-                          // mt: { sm: "6px" },
-                          fontSize: { sm: 8, lg: 10, md: 10 },
-                          // width: { sm: "85px", lg: 100, md: 100 },
-                        }}
-                        onClick={() => {
-                          handleClick(i);
-                        }}
-                      >
-                        <FormattedMessage defaultMessage=" View More" />
-                        <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
-                      </Button>
-                    </Stack>
-                  </Stack>
-                  <Stack
-                    direction={"row"}
-                    spacing={2}
-                    sx={{
-                      border: "1px solid lightgray",
-                      height: "85px",
-                      borderRadius: "20px",
-                      padding: { sm: 1, lg: 2, md: 1 },
-                      marginTop: { sm: "8px" },
-                    }}
-                  >
-                    <Stack spacing={2}>
+                      {/* <Stack direction={"row"}  color={'grey'} spacing={1}>
+                    <WifiIcon fontSize="small" />
+                      <Typography fontSize={"small"}> Free Wifi</Typography>
+                      <BoltIcon fontSize="small"/>
+                      <Typography fontSize={"small"}> Power backup</Typography>
+                      <TvIcon fontSize="small"/>
+                      <Typography fontSize={"small"}> TV</Typography>
+                      <CheckCircleOutlineOutlinedIcon fontSize="small"/>
+                      <Typography fontSize={"small"}> Geyser</Typography>
+                    </Stack> */}
+
+                      <Stack sx={{ fontSize: "10px", ml: 5 }} direction={"row"}>
+                        {ShowAmenities.map((amenitie, i) => {
+                          if (i < 3) {
+                            return (
+                              // <Stack
+                              //   direction={"row"}
+                              // >
+                                <Stack direction={"row"} spacing={0.5} 
+                                color={"grey"}
+                                alignItems={"center"} ml={i===0?1:2}>
+                                  <>
+                                    <Typography fontSize={"small"}>
+                                      {amenitie.icon}
+                                    </Typography>
+                                    <Typography fontSize={"small"}>
+                                      {amenitie.label}
+                                    </Typography>
+                                  </>
+                                </Stack>
+                              // </Stack>
+                            );
+                          } else if (i === 3) {
+                            return (
+                              <Button
+                                onClick={() => {
+                                  setRedux(item._id);
+                                  navigate(`/viewDeal/${item._id}`);
+                                }}
+                                sx={{ color: "grey", mt: -1, ml: 3 }}
+                              >
+                                View more +
+                              </Button>
+                            );
+                          } else {
+                            return;
+                          }
+                        })}
+                      </Stack>
+
+                      <Typography fontSize={"medium"} color={"grey"}>
+                        {item?.city}-{item?.pinCode}, {item?.state}
+                      </Typography>
                       <Stack
                         direction={"row"}
-                        sx={{
-                          color: "#D4164B",
-                          fontWeight: "bold",
-                        }}
+                        sx={{ alignItems: "center" }}
+                        gap={2}
                       >
-                        <DoneIcon
-                          sx={{
-                            fontSize: { sm: "12px", lg: "15px", md: "14px" },
-                            fontWeight: "bold",
-                          }}
-                        />
                         <Typography
                           sx={{
-                            fontSize: { sm: "10px", lg: "12px", md: "10px" },
                             fontWeight: "bold",
+                            fontSize: { sm: "12px", lg: "18px", md: "14px" },
+                            opacity: 0.5,
+                          }}
+                        >
+                          <FormattedMessage defaultMessage="Hotel" />
+                        </Typography>
+                        <Button
+                          sx={{
+                            color: "grey",
+                            fontSize: { sm: 8, lg: 10, md: 10 },
+                          }}
+                          onClick={() => {
+                            handleClick(i);
                           }}
                         >
                           <FormattedMessage defaultMessage=" View More" />
+                          <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
+                        </Button>
+                      </Stack>
+                    </Stack>
+                    <Stack
+                      direction={"row"}
+                      spacing={2}
+                      sx={{
+                        border: "1px solid lightgray",
+                        height: "85px",
+                        borderRadius: "20px",
+                        padding: { sm: 1, lg: 2, md: 1 },
+                        marginTop: { sm: "8px" },
+                      }}
+                    >
+                      <Stack spacing={2}>
+                        <Stack
+                          direction={"row"}
+                          sx={{
+                            color: "#D4164B",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          <DoneIcon
+                            sx={{
+                              fontSize: { sm: "12px", lg: "15px", md: "14px" },
+                              fontWeight: "bold",
+                            }}
+                          />
+                          <Typography
+                            sx={{
+                              fontSize: { sm: "10px", lg: "12px", md: "10px" },
+                              fontWeight: "bold",
+                            }}
+                          >
+                            <FormattedMessage defaultMessage=" View More" />
+                          </Typography>
+                        </Stack>
+                        <Typography
+                          sx={{
+                            fontWeight: "bold",
+                            fontSize: { sm: "15px", lg: "18px", md: "15px" },
+                            opacity: 0.7,
+                          }}
+                        >
+                          ₹
+                          {item?.rooms[0]?.price
+                            ? item?.rooms[0]?.price
+                            : Math.floor(Math.random() * 10000)}
                         </Typography>
                       </Stack>
-                      <Typography
-                        sx={{
-                          fontWeight: "bold",
-                          fontSize: { sm: "15px", lg: "18px", md: "15px" },
-                          opacity: 0.7,
-                        }}
-                      >
-                        ₹
-                        {item?.rooms[0]?.price
-                          ? item?.rooms[0]?.price
-                          : Math.floor(Math.random() * 10000)}
-                      </Typography>
-                    </Stack>
-                    <Stack spacing={1}>
-                      <Chip
-                        label={
-                          <FormattedMessage defaultMessage="Our Lowest Price" />
-                        }
-                        variant="outlined"
-                        color="error"
-                        sx={{
-                          width: { sm: 150, lg: 150, md: 120 },
-                          float: "right",
-                        }}
-                      />
-                      <Button
-                        variant="contained"
-                        // href="/billing"
-                        // href="/viewDeal"
-                        onClick={() => {
-                          setRedux(item._id);
-                          navigate(`/viewDeal/${item._id}`);
-                          // <ViewDeal />;
-                        }}
-                        endIcon={<KeyboardArrowRightIcon />}
-                        sx={{
-                          "&:hover": {
+                      <Stack spacing={1}>
+                        <Chip
+                          label={
+                            <FormattedMessage defaultMessage="Our Lowest Price" />
+                          }
+                          variant="outlined"
+                          color="error"
+                          sx={{
+                            width: { sm: 150, lg: 150, md: 120 },
+                            float: "right",
+                          }}
+                        />
+                        <Button
+                          variant="contained"
+                          onClick={() => {
+                            setRedux(item._id);
+                            navigate(`/viewDeal/${item._id}`);
+                          }}
+                          endIcon={<KeyboardArrowRightIcon />}
+                          sx={{
+                            "&:hover": {
+                              backgroundColor: "#D4164B",
+                            },
                             backgroundColor: "#D4164B",
-                          },
-                          backgroundColor: "#D4164B",
-                          width: { sm: 150, lg: 150, md: 120 },
-                          fontSize: { md: 12, lg: 14 },
-                          height: { md: 30 },
-                          textTransform: "none",
-                        }}
-                      >
-                        <FormattedMessage defaultMessage=" View Deal" />
-                      </Button>
+                            width: { sm: 150, lg: 150, md: 120 },
+                            fontSize: { md: 12, lg: 14 },
+                            height: { md: 30 },
+                            textTransform: "none",
+                          }}
+                        >
+                          <FormattedMessage defaultMessage=" View Deal" />
+                        </Button>
+                      </Stack>
                     </Stack>
                   </Stack>
-                </Stack>
-                {/* </Box> */}
-                {detailIndex === i ? (
-                  <HotelDetails
-                    i={i}
-                    item={item}
-                    handleClick={handleClick}
-                    openModule={openModule}
-                    setOpenModule={setOpenModule}
-                  />
-                ) : null}
-                {/* </Box> */}
-              </>
-            ))}
+                  {detailIndex === i ? (
+                    <HotelDetails
+                      i={i}
+                      item={item}
+                      handleClick={handleClick}
+                      openModule={openModule}
+                      setOpenModule={setOpenModule}
+                    />
+                  ) : null}
+                </>
+              );
+            })}
           </>
         ) : (
           <>

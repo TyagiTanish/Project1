@@ -1,101 +1,65 @@
-import { DateRangePicker } from "@mui/x-date-pickers-pro/DateRangePicker";
-import { SingleInputDateRangeField } from "@mui/x-date-pickers-pro/SingleInputDateRangeField";
 import * as React from "react";
-import dayjs from "dayjs";
-import { DemoContainer } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { addDays, format } from "date-fns";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { pickersLayoutClasses } from "@mui/x-date-pickers/PickersLayout";
+import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
+import dayjs from "dayjs";
+import { Button, Stack } from "@mui/material";
+import { useDispatch } from "react-redux";
+import { date } from "./redux/user/userSlice";
 
-const current = new Date();
-const date = `${current.getDate()}-${
-  current.getMonth() + 1
-}-${current.getFullYear()}`;
 
-export default function ResponsiveDateRangePickers() {
-  const data = localStorage.getItem("Date");
+export default function BasicRangeShortcuts({ setDates, onClose }: any) {
 
-  const [startdate, setStartDate] = React.useState<any>(
-    data !== null ? dayjs(JSON.parse(data).startDate) : dayjs(Date.now())
-  );
-  const [enddate, setEndDate] = React.useState<any>(
-    data !== null
-      ? dayjs(JSON.parse(data).endDate)
-      : dayjs(Date.now() + 3600 * 1000 * 24)
-  );
+  const dispatch = useDispatch();
+  const [storeDate, setStoreDate] = React.useState<any>("");
+  const handleDate = (e: any) => {
+    if (e?.[0]?.$d && e?.[1]?.$d) {
+      const start = format(new Date(e?.[0]?.$d), "eee,dd MMMM");
+      const end = format(new Date(e?.[1]?.$d), "eee,dd MMMM");
+      setStoreDate(`${start}  -  ${end}`);
+    } else if (e?.[0]?.$d && !e?.[1]) {
+      const startDate = new Date(e?.[0]?.$d);
+      const start = format(new Date(e?.[0]?.$d), "eee,dd MMMM");
+     
+     const date=addDays(startDate, 1);
+     
+      var end=""
+      if (date) {
+        end = format(new Date(date?.toString()), "eee,dd MMMM");
+      }
 
-  React.useMemo(() => {
-    if (data) {
-      setStartDate(dayjs(JSON.parse(data).startDate));
-      setEndDate(dayjs(JSON.parse(data).endDate));
-    } else {
-      setStartDate(dayjs(Date.now()));
-      setEndDate(dayjs(Date.now()));
+      setStoreDate(`${start}  -  ${end}`);
     }
-  }, [data]);
-  // const handleChange = () => {
-  //   if (enddate) {
-  //     const data: any = { startDate: startdate, endDate: enddate };
-  //     localStorage.setItem("Date", JSON.stringify(data));
-  //   } else {
-  //     const data: any = {
-  //       startDate: dayjs(Date.now()),
-  //       endDate: dayjs(Date.now() + 3600 * 1000 * 24),
-  //     };
-  //     localStorage.setItem("Date", JSON.stringify(data));
-  //   }
-  // };
-  // React.useEffect(() => {
-  //   if (enddate) {
-  //     const data: any = { startDate: startdate, endDate: enddate };
-  //     localStorage.setItem("Date", JSON.stringify(data));
-  //   } else {
-  //     const data: any = {
-  //       startDate: dayjs(Date.now()),
-  //       endDate: dayjs(Date.now() + 3600 * 1000 * 24),
-  //     };
-  //     localStorage.setItem("Date", JSON.stringify(data));
-  //   }
-  // }, [startdate, enddate]);
+    console.log(e?.[0]?.$d,e?.[1]?.$d)
+  };
+  const handleClick = () => {
+    onClose();
+    setDates(storeDate);
+    dispatch(date(storeDate))
+  };
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs}>
-      <DemoContainer components={["SingleInputDateRangeField"]}>
-        <DateRangePicker
-          slots={{ field: SingleInputDateRangeField }}
-          name="allowedRange"
-          defaultValue={[startdate, enddate]}
-          sx={{
-            [`.${pickersLayoutClasses.contentWrapper}`]: {
-              alignItems: "center",
-            },
-            bgcolor: "white",
-            border: "none",
-          }}
-          onChange={(e: any) => {
-            setStartDate(e[0].$d);
-            if (e[1]) {
-              setEndDate(e[1].$d);
-            } else {
-              setEndDate(null);
-            }
-            // handleChange();
-          }}
+    <>
+      {" "}
+      <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <StaticDateRangePicker
           minDate={dayjs(new Date())}
-          format="ddd,DD-MMMM"
-          onClose={() => {
-            if (enddate) {
-              const data: any = { startDate: startdate, endDate: enddate };
-              localStorage.setItem("Date", JSON.stringify(data));
-            } else {
-              const data: any = {
-                startDate: dayjs(Date.now()),
-                endDate: dayjs(Date.now() + 3600 * 1000 * 24),
-              };
-              localStorage.setItem("Date", JSON.stringify(data));
-            }
+          slotProps={{
+            actionBar: { actions: [] },
+          }}
+          calendars={1}
+          onChange={(e: any) => {
+            handleDate(e);
           }}
         />
-      </DemoContainer>
-    </LocalizationProvider>
+      </LocalizationProvider>
+      <Stack direction={"row"} sx={{ float: "right", m: 1 }} spacing={1}>
+        {" "}
+        <Button onClick={onClose}>Cancel</Button>
+        <Button onClick={handleClick} variant="contained">
+          Ok
+        </Button>
+      </Stack>
+    </>
   );
 }

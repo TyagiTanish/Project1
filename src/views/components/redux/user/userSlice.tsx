@@ -7,6 +7,7 @@ export const userSlice = createSlice({
     locale: localStorage.getItem("locale") || "en",
     hotelId: null,
     RoomsAndGuests: [{ Room: 1, guest: 1 }],
+    date:null
   },
   reducers: {
     userLogin: (state: any, action: any) => {
@@ -33,6 +34,10 @@ export const userSlice = createSlice({
     RoomsAndGuests: (state: any, action: any) => {
       state.RoomsAndGuests = action.payload;
     },
+    date: (state: any, action: any) => {
+      state.date = action.payload;
+    }
+    
   },
 });
 // Action creators
@@ -45,5 +50,6 @@ export const {
   roomDetails,
   searchDetails,
   RoomsAndGuests,
+  date
 } = userSlice.actions;
 export default userSlice.reducer;
