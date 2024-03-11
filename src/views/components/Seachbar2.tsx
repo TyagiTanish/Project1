@@ -23,6 +23,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import RoomSelection from "./RoomSelection";
 import { enqueueSnackbar } from "notistack";
+import SearchBarValidationPopper from "./searchBarValidationPopper";
 
 /**
  *  Search Bar at the top of every page except HomePage which helps in searching Hotels. Markdown is *SearchBar2*.
@@ -34,6 +35,9 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+
+  const [searchBarAnchorEl, setSearchBarAnchorEl] =
+    React.useState<null | HTMLElement>(null);
   // const data: any = localStorage.getItem("Rooms&Guests");
   // let data = JSON.parse(data);
 
@@ -123,7 +127,10 @@ function Seachbar2() {
 
   const open = Boolean(anchorEl2);
   const id = open ? "simple-popper" : undefined;
-
+  const handleCloseValidationPopper = (event: any) => {
+    console.log(event);
+    setSearchBarAnchorEl(searchBarAnchorEl ? null : event);
+  };
   const handleClose = () => {
     setAnchorEl2(null);
   };
@@ -139,6 +146,7 @@ function Seachbar2() {
         }}
       >
         <TextField
+          id="searchField"
           sx={{
             backgroundColor: "white",
             borderRadius: 3,
@@ -166,6 +174,12 @@ function Seachbar2() {
           defaultValue={searchTerm}
           value={searchTerm}
         />
+        <SearchBarValidationPopper
+          searchBarAnchorEl={searchBarAnchorEl}
+          handleCloseValidationPopper={handleCloseValidationPopper}
+          setSearchBarAnchorEl={setSearchBarAnchorEl}
+        />
+        <DateRangePickers />
         <Box sx={{mt:1}}>
 
         <TextField
@@ -215,7 +229,12 @@ function Seachbar2() {
           onClick={() => {
             dispatch(searchDetails(searchTerm));
             // localStorage.setItem("searchTerm", searchTerm);
-            navigate("./hotels");
+            if (searchTerm !== "") {
+              navigate("/hotels");
+            } else {
+              const field = document.querySelector("#searchField");
+              handleCloseValidationPopper(field);
+            }
           }}
         >
           <FormattedMessage defaultMessage="Search" />
