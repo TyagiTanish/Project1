@@ -214,8 +214,6 @@ function Seachbar2() {
           }}
           onClick={() => {
             dispatch(searchDetails(searchTerm));
-            // localStorage.setItem("searchTerm", searchTerm);
-            navigate("./hotels");
           }}
         >
           <FormattedMessage defaultMessage="Search" />

@@ -36,12 +36,26 @@ const HotelsPage = () => {
         });
         setFilteredData(result.data);
       } else {
-        const result = await request.get("/getHotels", {
-          params: {
-            search: searchTerm,
-            price: price,
-          },
-        });
+         var index = searchTerm.indexOf(",");
+            if (index > 0) {
+
+              var result = await request.get("/getHotels", {
+                params: {
+                  search: searchTerm.slice(0, index),
+                  price: price,
+                },
+              });
+           
+            } else {
+              var result = await request.get("/getHotels", {
+                params: {
+                  search: searchTerm,
+                  price: price,
+                },
+              });
+             
+            }
+
         setFilteredData(result.data);
       }
     } catch (error) {
@@ -68,6 +82,7 @@ const HotelsPage = () => {
     setSearchTerm(search);
     filterData();
   }, [search, searchTerm, price]);
+ 
   return (
     <>
       {screenSize > 768 && filteredData.length !== 0 ? (
