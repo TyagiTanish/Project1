@@ -16,9 +16,11 @@ import Locales from "./views/components/Locale";
 import PaymentForm from "./views/components/Bookings/PaymentGateway/PaymentForm";
 import Booking from "./views/components/Bookings/PaymentGateway/PaymentPage";
 import HotelOwnerView from "./views/layout/HotelOwnerView";
+import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {
   const { request } = useAuth();
+  const queryClient = new QueryClient();
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -60,17 +62,19 @@ function App() {
   // }
   return (
     <>
-      <Locales>
-        <SnackbarProvider>
-          <LoginSystem />
-          {/* <ShowCustomerBooking /> */}
-          {/* <Billing /> */}
-          {/* <AllRooms/> */}
-          {/* <HotelOwnerView/> */}
-          {/* <Rooms/> */}
-        </SnackbarProvider>
-        {/* <Outlet /> */}
-      </Locales>
+      <QueryClientProvider client={queryClient}>
+        <Locales>
+          <SnackbarProvider>
+            <LoginSystem />
+            {/* <ShowCustomerBooking /> */}
+            {/* <Billing /> */}
+            {/* <AllRooms/> */}
+            {/* <HotelOwnerView/> */}
+            {/* <Rooms/> */}
+          </SnackbarProvider>
+          {/* <Outlet /> */}
+        </Locales>
+      </QueryClientProvider>
     </>
   );
 }
