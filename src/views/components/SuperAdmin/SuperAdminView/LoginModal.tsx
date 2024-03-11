@@ -16,9 +16,10 @@ import {
   Typography,
 } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { userLogin } from "../../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
+import useUserLogin from "../../../../Hooks/userLogin/useUserLogin";
 
 export default function LoginModal({
   loginModal,
@@ -31,6 +32,8 @@ export default function LoginModal({
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const loggedInUser = useSelector((state: any) => state?.userReducer?.user);
+  const { UserLogin } = useUserLogin();
   // const handleClickOpen = () => {
   //   setOpen(true);
   // };
@@ -45,11 +48,16 @@ export default function LoginModal({
   //   );
   //   return member;
   // }, [hotelOwner, members]);
-  const handleLogin = () => {
-    dispatch(userLogin(hotelOwner));
-    setTimeout(() => {
-      navigate("/");
-    }, 2000);
+  const handleLogin = async () => {
+    const userData = await UserLogin({
+      userId: hotelOwner?._id,
+      loggedInUserId: loggedInUser?._id,
+    });
+    // dispatch(userLogin(hotelOwner));
+    console.log(userData);
+    // setTimeout(() => {
+    //   navigate("/");
+    // }, 2000);
   };
 
   return (
