@@ -125,7 +125,7 @@ function SearchBar() {
   };
 
   function error() {}
-
+  const date = useSelector((state: any) => state.userReducer.date);
   return (
     <>
       <Box
@@ -207,12 +207,13 @@ function SearchBar() {
                 ),
               }}
             />
+            <SearchBarValidationPopper searchBarAnchorEl={searchBarAnchorEl} handleCloseValidationPopper={handleCloseValidationPopper} setSearchBarAnchorEl={setSearchBarAnchorEl} />
             <Box mt={0}>
               <TextField
                 sx={{ bgcolor: "white" ,width:300}}
                 placeholder="Check in - Check out"
                 onClick={handleClick2}
-                value={dates}
+                value={date}
               />
               <Popover
                 id={id}

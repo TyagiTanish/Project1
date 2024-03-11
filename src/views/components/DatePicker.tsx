@@ -36,7 +36,10 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
   const handleClick = () => {
     onClose();
     setDates(storeDate);
-    dispatch(date(storeDate))
+    if(storeDate) {
+      dispatch(date(storeDate))
+    }
+ 
   };
   return (
     <>
