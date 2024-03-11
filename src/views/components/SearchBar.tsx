@@ -3,6 +3,7 @@ import {
   Button,
   IconButton,
   InputAdornment,
+  Popover,
   Popper,
   Stack,
   TextField,
@@ -44,6 +45,26 @@ function SearchBar() {
   // }
   const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
   const [open, setOpen] = React.useState(false);
+  const handleClose = () => {
+    setAnchorEl2(null);
+  };
+  // const data: any = localStorage.getItem("Rooms&Guests");
+  // let parsedData = JSON.parse(data);
+
+  // if (parsedData !== null) {
+  //   if (typeof parsedData === "object" && !Array.isArray(parsedData)) {
+  //     parsedData = [parsedData];
+  //   }
+  // }
+  const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
+
+  const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
+    console.log(anchorEl2);
+    setAnchorEl2(anchorEl2 ? null : event.currentTarget);
+  };
+
+  const Open = Boolean(anchorEl2);
+  const id = Open ? "simple-popper" : undefined;
 
   const [rooms, setRooms] = React.useState<any>(
     data !== null ? data : [{ Room: 1, guest: 1 }] || [{ Room: 1, guest: 1 }]
@@ -59,7 +80,7 @@ function SearchBar() {
   const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [dates,setDates]=useState<any>('')
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -186,13 +207,26 @@ function SearchBar() {
                 ),
               }}
             />
-            <SearchBarValidationPopper
-              searchBarAnchorEl={searchBarAnchorEl}
-              handleCloseValidationPopper={handleCloseValidationPopper}
-              setSearchBarAnchorEl={setSearchBarAnchorEl}
-            />
-            <Box mt={-1}>
-              <DateRangePickers />
+            <Box mt={0}>
+              <TextField
+                sx={{ bgcolor: "white" ,width:300}}
+                placeholder="Check in - Check out"
+                onClick={handleClick2}
+                value={dates}
+              />
+              <Popover
+                id={id}
+                open={Open}
+                anchorEl={anchorEl2}
+                onClose={handleClose}
+                anchorOrigin={{
+                  vertical: "bottom",
+                  horizontal: "left",
+                }}
+              >
+                <DateRangePickers setDates={setDates} onClose={handleClose}/>
+                {/* <Typography sx={{ p: 2 }}></Typography> */}
+              </Popover>
             </Box>
             <TextField
               id="outlined-basic"
