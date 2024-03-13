@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DateRangePickers from "./DatePicker";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 
@@ -35,6 +35,7 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const navigate = useNavigate();
 
   const [searchBarAnchorEl, setSearchBarAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -79,8 +80,6 @@ function Seachbar2() {
     dispatch(searchDetails(value));
   };
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -123,16 +122,20 @@ function Seachbar2() {
     console.log(anchorEl2);
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
-
   const open = Boolean(anchorEl2);
   const id = open ? "simple-popper" : undefined;
   const handleCloseValidationPopper = (event: any) => {
-    console.log(event);
-    setSearchBarAnchorEl(searchBarAnchorEl ? null : event);
+    if (event?.value === "") {
+      console.log("hii");
+      setSearchBarAnchorEl(event);
+    } else {
+      setSearchBarAnchorEl(null);
+    }
   };
   const handleClose = () => {
     setAnchorEl2(null);
   };
+
   return (
     <>
       <Stack
@@ -169,7 +172,11 @@ function Seachbar2() {
             ),
           }}
           placeholder="Search by city,hotel or state"
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            const field = document.querySelector("#searchField");
+            handleCloseValidationPopper(field);
+          }}
           defaultValue={searchTerm}
           value={searchTerm}
         />
@@ -225,9 +232,11 @@ function Seachbar2() {
             borderRadius: 1,
           }}
           onClick={() => {
-            dispatch(searchDetails(searchTerm));
             // localStorage.setItem("searchTerm", searchTerm);
             if (searchTerm !== "") {
+              dispatch(searchDetails(searchTerm));
+              const field = document.querySelector("#searchField");
+              handleCloseValidationPopper(field);
               // navigate("/hotels");
             } else {
               const field = document.querySelector("#searchField");

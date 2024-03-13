@@ -48,8 +48,8 @@ const Billing = () => {
   // console.log(id);
   const fetchHotel: any = async () => {
     try {
-      const result = await request.get(`/getHotel/${id.id}`);
-      sethotelDetail(result.data);
+      const result = await request.get(`/getHotel/${id?.id}`);
+      sethotelDetail(result?.data);
     } catch (error) {
       console.log(error);
     }
@@ -68,27 +68,30 @@ const Billing = () => {
 
     // setroomDetails(roomDetails);
   }, [hotelDetail, id?.hid]);
-  const data: any = localStorage.getItem("Date");
-  var startdate: any = "";
-  var enddate: any = "";
-  if (data) {
-    startdate = dayjs(JSON.parse(data).startDate);
-    enddate = dayjs(JSON.parse(data).endDate);
-  }
+  // const data: any = localStorage.getItem("Date");
+  const date: any = useSelector((state: any) => state?.userReducer?.date);
+  var startdate: any = date?.slice(0, date?.indexOf("-")) || "";
+  var enddate: any = date?.slice(date?.indexOf("-") + 1, date?.length) || "";
+  // if (data) {
+  //   startdate = dayjs(JSON.parse(data).startDate);
+  //   enddate = dayjs(JSON.parse(data).endDate);
+  // }
 
   const calculateDifference = () => {
-    const diff = enddate.diff(startdate);
+    // console.log(enddate.slice(6, 9), startdate.slice(4, 6));
+    const diff = Number(enddate.slice(6, 9)) - Number(startdate.slice(4, 6));
     const duration = moment.duration(diff);
 
     setDifference({
-      days: duration.days() + 1,
+      days: duration?.days() + 1,
     });
+    return diff;
   };
   useEffect(() => {
-    if (data) {
+    if (date) {
       calculateDifference();
     }
-  }, []);
+  }, [date]);
 
   let totalRooms;
   let totalGuests: any;
@@ -142,7 +145,7 @@ const Billing = () => {
       .required("First Name is required")
       .min(3)
       .matches(
-        /^[a-zA-Z]+ [a-zA-Z]+$/,
+        /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
         "First Letter of name should be capital and name should be string"
       ),
     email: Yup.string().email("Invalid email !").required("Email is Required"),
@@ -156,7 +159,7 @@ const Billing = () => {
       ),
     guestName: Yup.string()
       .matches(
-        /^[a-zA-Z]+ [a-zA-Z]+$/,
+        /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
         "First Letter of name should be capital and name should be string"
       )
       .notRequired(),
@@ -393,6 +396,9 @@ const Billing = () => {
                   setTotalPrice={setTotalPrice}
                   totalPrice={totalPrice}
                   setRoomPrice={setRoomPrice}
+                  calculateDifference={calculateDifference}
+                  startdate={startdate}
+                  enddate={enddate}
                 />
               </Stack>
             </Stack>

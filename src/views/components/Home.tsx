@@ -9,7 +9,7 @@ import { Link } from "react-router-dom";
 import Logo from "./Logo";
 import SearchBar from "./SearchBar";
 import Footer from "./Footer";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import HomeBody from "./HomeBody";
 import AccountMenu from "./ProfileBtn";
 import AddHotelAftrLgn from "./AddHotelAftrLgn";
@@ -20,11 +20,8 @@ import BusinessIcon from "@mui/icons-material/Business";
 import TabletNavbar from "./TabletNavbar";
 
 import { Country, State, City } from "country-state-city";
+import { searchDetails } from "./redux/user/userSlice";
 
-// console.log(Country.getAllCountries());
-// const country = Country.getAllCountries();
-// console.log(country[100]);
-// console.log(State.getStatesOfCountry("IN"));
 const HR: any = City.getCitiesOfState("IN", "HR");
 const PB: any = City.getCitiesOfState("IN", "PB");
 const HP: any = City.getCitiesOfState("IN", "HP");
@@ -39,12 +36,11 @@ const UT: any = City.getCitiesOfState("IN", "UT");
 
 export default function BasicCard() {
   const user = useSelector((state: any) => state.userReducer.user);
-
+  const dispatch = useDispatch();
   const [data, updateData] = React.useState<any>(window.innerWidth);
   React.useEffect(() => {
     const setData = () => {
       updateData(window.innerWidth);
-    
     };
     window.addEventListener("resize", setData);
   });
@@ -176,7 +172,12 @@ export default function BasicCard() {
                   {/* <Link to="/hotels">Mg Road</Link>
                   <Link to="/hotels">Rajaji nagar</Link> */}
                   {HR?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -222,7 +223,12 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {HP?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -267,7 +273,12 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {PB?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -312,7 +323,12 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {UP?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -358,7 +374,12 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {MH?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -402,7 +423,12 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {DL?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -448,7 +474,12 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {MP?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
@@ -494,11 +525,19 @@ export default function BasicCard() {
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {UT?.map((item: any) => (
-                    <Link to="/hotels">{item.name}</Link>
+                    <Link
+                      to="/hotels"
+                      onClick={() => dispatch(searchDetails(item?.name))}
+                    >
+                      {item.name}
+                    </Link>
                   ))}
                 </Box>
               </Box>
-              <Box>  <FormattedMessage defaultMessage="All Cities" /></Box>
+              <Box>
+                {" "}
+                <FormattedMessage defaultMessage="All Cities" />
+              </Box>
             </Box>
           </Box>
         </>
