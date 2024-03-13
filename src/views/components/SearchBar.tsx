@@ -261,6 +261,7 @@ function SearchBar() {
                   dispatch(searchDetails(searchTerm));
                   const field = document.querySelector("#searchField");
                   handleCloseValidationPopper(field);
+                  navigate("/hotels");
                 } else {
                   const field = document.querySelector("#searchField");
                   handleCloseValidationPopper(field);

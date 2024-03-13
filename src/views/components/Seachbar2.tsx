@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DateRangePickers from "./DatePicker";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 
@@ -35,6 +35,7 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const navigate = useNavigate();
 
   const [searchBarAnchorEl, setSearchBarAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -124,7 +125,7 @@ function Seachbar2() {
   const open = Boolean(anchorEl2);
   const id = open ? "simple-popper" : undefined;
   const handleCloseValidationPopper = (event: any) => {
-    if (searchTerm === "") {
+    if (event?.value === "") {
       console.log("hii");
       setSearchBarAnchorEl(event);
     } else {
@@ -172,8 +173,8 @@ function Seachbar2() {
           }}
           placeholder="Search by city,hotel or state"
           onChange={(e) => {
-            const field = document.querySelector("#searchField");
             setSearchTerm(e.target.value);
+            const field = document.querySelector("#searchField");
             handleCloseValidationPopper(field);
           }}
           defaultValue={searchTerm}
@@ -231,9 +232,11 @@ function Seachbar2() {
             borderRadius: 1,
           }}
           onClick={() => {
-            dispatch(searchDetails(searchTerm));
             // localStorage.setItem("searchTerm", searchTerm);
             if (searchTerm !== "") {
+              dispatch(searchDetails(searchTerm));
+              const field = document.querySelector("#searchField");
+              handleCloseValidationPopper(field);
               // navigate("/hotels");
             } else {
               const field = document.querySelector("#searchField");
