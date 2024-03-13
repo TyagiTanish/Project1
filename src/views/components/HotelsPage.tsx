@@ -11,20 +11,30 @@ import { useSelector } from "react-redux";
 import TuneIcon from "@mui/icons-material/TuneRounded";
 import ToggleDrawerFilter from "./Filters/ToggleDrawerFilter";
 import Loader from "./loader/Loader";
+import { useDispatch } from "react-redux";
+import { price, category } from "./redux/user/userSlice";
 
 /**
  *  To show all the hotels to user. Markdown is *HotelsPage*.
  */
 const HotelsPage = () => {
   const { request } = useAuth();
+  const dispatch = useDispatch();
+
   const search = useSelector((state: any) => state.userReducer.searchDetails);
+  const reduxPrice = useSelector((state: any) => state.userReducer.price);
+  const reduxCategory = useSelector((state: any) => state.userReducer.category);
   // const search = localStorage.getItem("searchTerm");
   const [searchTerm, setSearchTerm] = useState(search || "");
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
   const [open, setOpen] = React.useState(false);
-  const [price, setPrice] = React.useState<number[]>([0, 37000]);
-  const [category, setCategory] = React.useState<string[]>([]);
+  const [filterPrice, setFilterPrice] = React.useState<any>(
+    reduxPrice ? reduxPrice : [0, 37000]
+  );
+  const [filterCategory, setFilterCategory] = React.useState<any>(
+    reduxCategory ? reduxCategory : []
+  );
   const location = useSelector((state: any) => state.userReducer.location);
   const [applyFilter, setApplyFilter] = React.useState<any>(0);
   const filterData = async () => {
@@ -33,31 +43,30 @@ const HotelsPage = () => {
         const result = await request.get("/getHotels", {
           params: {
             search: location,
-            price: price,
-            category: category,
+            price: filterPrice,
+            category: filterCategory,
           },
         });
         setFilteredData(result.data);
       } else {
-         var index = searchTerm.indexOf(",");
-            if (index > 0) {
-
-              var result = await request.get("/getHotels", {
-                params: {
-                  search: searchTerm.slice(0, index),
-                  price: price,
-                },
-              });
-           
-            } else {
-              var result = await request.get("/getHotels", {
-                params: {
-                  search: searchTerm,
-                  price: price,
-                },
-              });
-             
-            }
+        var index = searchTerm.indexOf(",");
+        if (index > 0) {
+          var result = await request.get("/getHotels", {
+            params: {
+              search: searchTerm.slice(0, index),
+              price: filterPrice,
+              category: filterCategory,
+            },
+          });
+        } else {
+          var result = await request.get("/getHotels", {
+            params: {
+              search: searchTerm,
+              price: filterPrice,
+              category: filterCategory,
+            },
+          });
+        }
         setFilteredData(result.data);
       }
     } catch (error) {
@@ -81,8 +90,14 @@ const HotelsPage = () => {
   });
   useMemo(() => {
     setSearchTerm(search);
+
+    dispatch(price(filterPrice));
+    dispatch(category(filterCategory));
     filterData();
   }, [search, searchTerm, applyFilter]);
+  useMemo(() => {
+    setFilterCategory(reduxCategory ? reduxCategory : []);
+  }, [open]);
   return (
     <>
       {screenSize > 768 && filteredData.length !== 0 ? (
@@ -164,10 +179,10 @@ const HotelsPage = () => {
         setOpen={setOpen}
         setFilteredData={setFilteredData}
         searchTerm={searchTerm}
-        price={price}
-        setPrice={setPrice}
-        category={category}
-        setCategory={setCategory}
+        price={filterPrice}
+        setPrice={setFilterPrice}
+        category={filterCategory}
+        setCategory={setFilterCategory}
         applyFilter={applyFilter}
         setApplyFilter={setApplyFilter}
       />
