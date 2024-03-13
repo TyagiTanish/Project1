@@ -212,8 +212,13 @@ function Hotels({ filteredData, screenSize }: any) {
                         }}
                       >
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
 <<<<<<< Updated upstream
+                        <FormattedMessage defaultMessage="Hotel" />
+=======
+>>>>>>> Stashed changes
+=======
                         <FormattedMessage defaultMessage="Hotel" />
 =======
 >>>>>>> Stashed changes
@@ -238,6 +243,7 @@ function Hotels({ filteredData, screenSize }: any) {
                               //   direction={"row"}
                               // >
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                                 <Stack direction={"row"} spacing={0.5} 
                                 color={"grey"}
                                 alignItems={"center"} ml={i===0?1:2}>
@@ -251,6 +257,8 @@ function Hotels({ filteredData, screenSize }: any) {
                                   </>
                                 </Stack>
 =======
+=======
+>>>>>>> Stashed changes
                               <Stack
                                 direction={"row"}
                                 spacing={0.5}
@@ -267,6 +275,9 @@ function Hotels({ filteredData, screenSize }: any) {
                                   </Typography>
                                 </>
                               </Stack>
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                               // </Stack>
                             );
@@ -291,6 +302,9 @@ function Hotels({ filteredData, screenSize }: any) {
                       <Typography fontSize={"medium"} color={"grey"}>
                         {item?.city}-{item?.pinCode}, {item?.state}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
 >>>>>>> Stashed changes
@@ -322,6 +336,9 @@ function Hotels({ filteredData, screenSize }: any) {
 <<<<<<< Updated upstream
 =======
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
                           <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
@@ -370,15 +387,21 @@ function Hotels({ filteredData, screenSize }: any) {
                           }}
                         >
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
                           ₹
                           {item?.rooms[0]?.price
                             ? item?.rooms[0]?.price
                             : Math.floor(Math.random() * 10000)}
 =======
+=======
+>>>>>>> Stashed changes
                           {item?.rooms[0]
                             ? item?.rooms[0]?.price
                             : Math.floor(Math.random() * 10000)}
 >>>>>>> Stashed changes
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
+=======
 >>>>>>> Stashed changes
                         </Typography>
                       </Stack>

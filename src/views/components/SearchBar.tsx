@@ -80,7 +80,15 @@ function SearchBar() {
   const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
+<<<<<<< Updated upstream
   const [dates, setDates] = useState<any>("");
+=======
+<<<<<<< Updated upstream
+
+=======
+  const [dates, setDates] = useState<any>("");
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -214,6 +222,13 @@ function SearchBar() {
               handleCloseValidationPopper={handleCloseValidationPopper}
               setSearchBarAnchorEl={setSearchBarAnchorEl}
             />
+<<<<<<< Updated upstream
+=======
+<<<<<<< Updated upstream
+            <Box mt={-1}>
+              <DateRangePickers />
+=======
+>>>>>>> Stashed changes
             <Box mt={0}>
               <TextField
                 sx={{ bgcolor: "white", width: 300 }}
@@ -234,6 +249,10 @@ function SearchBar() {
                 <DateRangePickers setDates={setDates} onClose={handleClose} />
                 {/* <Typography sx={{ p: 2 }}></Typography> */}
               </Popover>
+<<<<<<< Updated upstream
+=======
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
             </Box>
             <TextField
               id="outlined-basic"
@@ -257,10 +276,24 @@ function SearchBar() {
                 borderRadius: 0,
               }}
               onClick={(e) => {
+<<<<<<< Updated upstream
                 if (searchTerm !== "") {
                   dispatch(searchDetails(searchTerm));
                   const field = document.querySelector("#searchField");
                   handleCloseValidationPopper(field);
+=======
+                // localStorage.setItem("searchTerm", searchTerm);
+
+                if (searchTerm !== "") {
+<<<<<<< Updated upstream
+                  navigate("./hotels");
+=======
+                  navigate("/hotels");
+                  dispatch(searchDetails(searchTerm));
+                  const field = document.querySelector("#searchField");
+                  handleCloseValidationPopper(field);
+>>>>>>> Stashed changes
+>>>>>>> Stashed changes
                 } else {
                   const field = document.querySelector("#searchField");
                   handleCloseValidationPopper(field);
