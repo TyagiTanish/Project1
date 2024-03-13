@@ -79,8 +79,6 @@ function Seachbar2() {
     dispatch(searchDetails(value));
   };
 
-  const navigate = useNavigate();
-
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -122,132 +120,140 @@ function Seachbar2() {
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
     console.log(anchorEl2);
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
-  };
+    const open = Boolean(anchorEl2);
+    const id = open ? "simple-popper" : undefined;
+    const handleCloseValidationPopper = (event: any) => {
+      if (searchTerm === "") {
+        console.log("hii");
+        setSearchBarAnchorEl(event);
+      } else {
+        setSearchBarAnchorEl(null);
+      }
+    };
+    const handleClose = () => {
+      setAnchorEl2(null);
+    };
 
-  const open = Boolean(anchorEl2);
-  const id = open ? "simple-popper" : undefined;
-  const handleCloseValidationPopper = (event: any) => {
-    console.log(event);
-    setSearchBarAnchorEl(searchBarAnchorEl ? null : event);
-  };
-  const handleClose = () => {
-    setAnchorEl2(null);
-  };
-  return (
-    <>
-      <Stack
-        direction={"row"}
-        sx={{
-          mb: "20px",
-          alignItems: "center",
-          justifyContent: "center",
-          alignSelf: "center",
-        }}
-      >
-        <TextField
-          id="searchField"
+    return (
+      <>
+        <Stack
+          direction={"row"}
           sx={{
-            backgroundColor: "white",
-            borderRadius: 3,
-            mt: 1,
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton
-                  onClick={handleLocationClick}
-                  sx={{
-                    fontSize: { sm: "10px", lg: "15px" },
-                    fontWeight: "bolder",
-                    color: "black",
-                  }}
-                >
-                  <MyLocationIcon />
-                  <FormattedMessage defaultMessage="Near me" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          placeholder="Search by city,hotel or state"
-          onChange={(e) => setSearchTerm(e.target.value)}
-          defaultValue={searchTerm}
-          value={searchTerm}
-        />
-        <SearchBarValidationPopper
-          searchBarAnchorEl={searchBarAnchorEl}
-          handleCloseValidationPopper={handleCloseValidationPopper}
-          setSearchBarAnchorEl={setSearchBarAnchorEl}
-        />
-        {/* <DateRangePickers /> */}
-        <Box sx={{ mt: 1 }}>
-          <TextField
-            sx={{ bgcolor: "white", width: 300 }}
-            placeholder="Check in - Check out"
-            onClick={handleClick2}
-            value={date}
-          />
-          <Popover
-            id={id}
-            open={open}
-            anchorEl={anchorEl2}
-            onClose={handleClose}
-            anchorOrigin={{
-              vertical: "bottom",
-              horizontal: "left",
-            }}
-          >
-            <DateRangePickers setDates={setDates} onClose={handleClose} />
-            {/* <Typography sx={{ p: 2 }}></Typography> */}
-          </Popover>
-        </Box>
-
-        <TextField
-          id="outlined-basic"
-          variant="outlined"
-          sx={{
-            bgcolor: "white",
-            fontWeight: "bolder",
-            mt: 1,
-          }}
-          // value={`${rooms.length} Room , ${guests} guest`}
-          value={`${rooms.length} Room , ${guests} guest`}
-          onClick={(event: any) => handleClick(event)}
-        />
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: "#1ab64f",
-            "&:hover": { bgcolor: "green" },
-            color: "white",
-            fontWeight: "bolder",
-            height: 55,
-            mt: 0.75,
-            borderRadius: 1,
-          }}
-          onClick={() => {
-            dispatch(searchDetails(searchTerm));
-            // localStorage.setItem("searchTerm", searchTerm);
-            if (searchTerm !== "") {
-              // navigate("/hotels");
-            } else {
-              const field = document.querySelector("#searchField");
-              handleCloseValidationPopper(field);
-            }
+            mb: "20px",
+            alignItems: "center",
+            justifyContent: "center",
+            alignSelf: "center",
           }}
         >
-          <FormattedMessage defaultMessage="Search" />
-        </Button>
-      </Stack>
-      <RoomSelection
-        anchorEl={anchorEl}
-        setAnchorEl={setAnchorEl}
-        rooms={rooms}
-        setRooms={setRooms}
-        render={render}
-        setRender={setRender}
-      />
-    </>
-  );
+          <TextField
+            id="searchField"
+            sx={{
+              backgroundColor: "white",
+              borderRadius: 3,
+              mt: 1,
+            }}
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="start">
+                  <IconButton
+                    onClick={handleLocationClick}
+                    sx={{
+                      fontSize: { sm: "10px", lg: "15px" },
+                      fontWeight: "bolder",
+                      color: "black",
+                    }}
+                  >
+                    <MyLocationIcon />
+                    <FormattedMessage defaultMessage="Near me" />
+                  </IconButton>
+                </InputAdornment>
+              ),
+            }}
+            placeholder="Search by city,hotel or state"
+            onChange={(e) => {
+              const field = document.querySelector("#searchField");
+              setSearchTerm(e.target.value);
+              handleCloseValidationPopper(field);
+            }}
+            defaultValue={searchTerm}
+            value={searchTerm}
+          />
+          <SearchBarValidationPopper
+            searchBarAnchorEl={searchBarAnchorEl}
+            handleCloseValidationPopper={handleCloseValidationPopper}
+            setSearchBarAnchorEl={setSearchBarAnchorEl}
+          />
+          {/* <DateRangePickers /> */}
+          <Box sx={{ mt: 1 }}>
+            <TextField
+              sx={{ bgcolor: "white", width: 300 }}
+              placeholder="Check in - Check out"
+              onClick={handleClick2}
+              value={date}
+            />
+            <Popover
+              id={id}
+              open={open}
+              anchorEl={anchorEl2}
+              onClose={handleClose}
+              anchorOrigin={{
+                vertical: "bottom",
+                horizontal: "left",
+              }}
+            >
+              <DateRangePickers setDates={setDates} onClose={handleClose} />
+              {/* <Typography sx={{ p: 2 }}></Typography> */}
+            </Popover>
+          </Box>
+
+          <TextField
+            id="outlined-basic"
+            variant="outlined"
+            sx={{
+              bgcolor: "white",
+              fontWeight: "bolder",
+              mt: 1,
+            }}
+            // value={`${rooms.length} Room , ${guests} guest`}
+            value={`${rooms.length} Room , ${guests} guest`}
+            onClick={(event: any) => handleClick(event)}
+          />
+          <Button
+            variant="contained"
+            sx={{
+              bgcolor: "#1ab64f",
+              "&:hover": { bgcolor: "green" },
+              color: "white",
+              fontWeight: "bolder",
+              height: 55,
+              mt: 0.75,
+              borderRadius: 1,
+            }}
+            onClick={() => {
+              dispatch(searchDetails(searchTerm));
+              // localStorage.setItem("searchTerm", searchTerm);
+              if (searchTerm !== "") {
+                // navigate("/hotels");
+              } else {
+                const field = document.querySelector("#searchField");
+                handleCloseValidationPopper(field);
+              }
+            }}
+          >
+            <FormattedMessage defaultMessage="Search" />
+          </Button>
+        </Stack>
+        <RoomSelection
+          anchorEl={anchorEl}
+          setAnchorEl={setAnchorEl}
+          rooms={rooms}
+          setRooms={setRooms}
+          render={render}
+          setRender={setRender}
+        />
+      </>
+    );
+  };
 }
 
 export default Seachbar2;

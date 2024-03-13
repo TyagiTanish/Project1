@@ -162,21 +162,21 @@ export default function MemberRegister() {
         .required("Country is required ")
         .min(3, "Minimum length should be 3")
         .matches(
-          /^[A-Z][a-zA-Z]*$/,
+          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
           "First Letter of Country name should be capital and name should be string"
         ),
       state: Yup.string()
         .required("State is required")
         .min(3, "Minimum length should be 3")
         .matches(
-          /^[a-zA-Z]+ [a-zA-Z]+$/,
+          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
           "First Letter of State name should be capital and name should be string"
         ),
       city: Yup.string()
         .required("City is required")
         .min(3, "minimum length should be 3 ")
         .matches(
-          /^[a-zA-Z]+ [a-zA-Z]+$/,
+          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
           "First Letter of City name should be capital and name should be string"
         ),
     }));
@@ -187,7 +187,7 @@ export default function MemberRegister() {
         .required("First Name is required")
         .min(3, "Name should contain at least 5 letters")
         .matches(
-          /^[a-zA-Z]+ [a-zA-Z]+$/,
+          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
           "First Letter of name should be capital and name should be string"
         ),
       email: Yup.string()
@@ -203,7 +203,7 @@ export default function MemberRegister() {
       hotelName: Yup.string()
         .min(5, "Hotel name should contain at least 5 letters")
         .matches(
-          /^[a-zA-Z]+ [a-zA-Z]+$/,
+          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
           "First Letter of name should be capital and name should be string"
         )
         .required("Hotel Name is Required"),

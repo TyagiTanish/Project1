@@ -1,9 +1,7 @@
 import { Box, Card, CardContent, Divider, Stack } from "@mui/material";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
-import dayjs from "dayjs";
-import moment from "moment";
 import { useSelector } from "react-redux";
 const BillingDetailsCard = ({
   hotelDetail,
@@ -13,6 +11,9 @@ const BillingDetailsCard = ({
   totalRoomsAndGuests,
   setTotalPrice,
   setRoomPrice,
+  calculateDifference,
+  startdate,
+  enddate,
 }: any) => {
   const data: any = localStorage.getItem("Date");
   const [difference, setDifference] = useState<any>(null);
@@ -24,19 +25,24 @@ const BillingDetailsCard = ({
     (state: any) => state?.userReducer?.RoomsAndGuests
   );
 
-  var startdate: any = "";
-  var enddate: any = "";
-  if (data) {
-    startdate = dayjs(JSON.parse(data).startDate);
-    enddate = dayjs(JSON.parse(data).endDate);
-  }
-  const calculateDifference = () => {
-    const diff = enddate.diff(startdate);
-    const duration = moment.duration(diff);
-    setDifference({
-      days: duration.days() + 1,
-    });
-  };
+  // var startdate: any = "";
+  // var enddate: any = "";
+  // if (data) {
+  //   startdate = dayjs(JSON.parse(data).startDate);
+  //   enddate = dayjs(JSON.parse(data).endDate);
+  // }
+  // const calculateDifference = () => {
+  //   const diff = enddate.diff(startdate);
+  //   const duration = moment.duration(diff);
+  //   setDifference({
+  //     days: duration.days() + 1,
+  //   });
+  // };
+
+  useEffect(() => {
+    const diff = calculateDifference();
+    setDifference(diff);
+  }, [startdate, enddate]);
 
   useEffect(() => {
     var result = 0;
@@ -49,10 +55,10 @@ const BillingDetailsCard = ({
     );
     setTotalRoomsAndGuests({ rooms: totalRooms, guests: result });
     setTotalPrice(
-      Number(totalRooms) * Number(roomDetails?.price) * Number(difference?.days)
+      Number(totalRooms) * Number(roomDetails?.price) * Number(difference)
     );
     setRoomPrice(roomDetails?.price);
-  }, [totalPrice, roomDetails, RoomsAndGuests]);
+  }, [totalPrice, roomDetails, RoomsAndGuests, difference]);
 
   useEffect(() => {
     if (data) {
@@ -83,7 +89,7 @@ const BillingDetailsCard = ({
                 textAlign={"left"}
                 fontSize={"13px"}
                 fontWeight={"bolder"}
-              >{` ${difference?.days} Night`}</Stack>
+              >{` ${difference} Night`}</Stack>
             </Stack>
           </Stack>
           <Stack width={90}>
@@ -106,8 +112,7 @@ const BillingDetailsCard = ({
             spacing={2}
           >
             <CalendarMonthIcon style={{ marginRight: 4 }} />
-            {`${startdate?.$d?.toDateString().slice(0, 10)}`} --{" "}
-            {`${enddate?.$d?.toDateString().slice(0, 10)}`}
+            {startdate} -- {enddate}
             <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
               {totalRoomsAndGuests?.rooms} Room {totalRoomsAndGuests?.guests}
               {" " + "Guest"}
@@ -143,7 +148,7 @@ const BillingDetailsCard = ({
               direction={"row"}
               justifyContent={"space-between"}
             >
-              <Box>{`Room price for ${difference?.days} Night X ${
+              <Box>{`Room price for ${difference} Night X ${
                 totalRoomsAndGuests?.rooms
               } ${" " + "Room"}  `}</Box>
               <Stack
@@ -158,7 +163,7 @@ const BillingDetailsCard = ({
                   }}
                 />
                 {Number(roomDetails?.price) *
-                  Number(difference?.days) *
+                  Number(difference) *
                   Number(totalRoomsAndGuests?.rooms)}
               </Stack>
             </Stack>
