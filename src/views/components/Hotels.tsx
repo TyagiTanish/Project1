@@ -174,284 +174,173 @@ function Hotels({ filteredData, screenSize }: any) {
         )}
         {displayMap ? (
           <>
-            {filteredData?.map((item: any, i: any) => {
-              const ShowAmenities = amenitie.filter((v, i) =>
-                item.amenities.includes(String(i))
-              );
-              return (
-                <>
-                  <Stack
-                    id={item?._id}
-                    direction={"row"}
+            {filteredData?.map((item: any, i: any) => (
+              <>
+                <Stack
+                  id={item?._id}
+                  direction={"row"}
+                  sx={{
+                    p: 2,
+                    m: 2,
+                    justifyContent: "space-between",
+                    direction: "row",
+                    border: "1px solid lightgrey",
+                    borderRadius: "10px",
+                  }}
+                >
+                  <Box
+                    component="img"
                     sx={{
-                      p: 2,
-                      m: 2,
-                      justifyContent: "space-between",
-                      direction: "row",
-                      border: "1px solid lightgrey",
-                      borderRadius: "10px",
+                      width: { sm: "150px ", lg: "200px", md: "140px" },
+                      height: { lg: "200px", sm: "15vh", md: "15vh" },
+                      borderTopLeftRadius: "20px",
+                      borderBottomLeftRadius: "20px",
                     }}
-                  >
-                    <Box
-                      component="img"
+                    alt="The house from the offer."
+                    // src={require(`./${item.photo}`)}
+                    src={`http://localhost:8000/${item?.photo}`}
+                  />
+                  <Stack m={2} width={400}>
+                    <Typography
                       sx={{
-                        width: { sm: "150px ", lg: "200px", md: "140px" },
-                        height: { lg: "200px", sm: "15vh", md: "15vh" },
-                        borderTopLeftRadius: "20px",
-                        borderBottomLeftRadius: "20px",
+                        fontWeight: "bold",
+                        // fontSize: { sm: "15px", lg: "20px", md: "18px" },
+                        opacity: 0.8,
+                        // width: { sm: "150px", lg: "200px", md: "180px" },
                       }}
-                      alt="The house from the offer."
-                      // src={require(`./${item.photo}`)}
-                      src={`http://localhost:8000/${item?.photo}`}
-                    />
-                    <Stack m={2} width={400} spacing={2}>
+                    >
+                      {item.hotelName}
+                    </Typography>
+                    <Stack
+                      direction={"row"}
+                      sx={{ alignItems: "center" }}
+                      gap={2}
+                    >
                       <Typography
                         sx={{
                           fontWeight: "bold",
-                          opacity: 0.8,
+                          fontSize: { sm: "12px", lg: "18px", md: "14px" },
+                          opacity: 0.5,
+                          // marginTop: "10px",
                         }}
                       >
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
                         <FormattedMessage defaultMessage="Hotel" />
-=======
->>>>>>> Stashed changes
-=======
-                        <FormattedMessage defaultMessage="Hotel" />
-=======
->>>>>>> Stashed changes
-                        {item.hotelName}
                       </Typography>
-                      {/* <Stack direction={"row"}  color={'grey'} spacing={1}>
-                    <WifiIcon fontSize="small" />
-                      <Typography fontSize={"small"}> Free Wifi</Typography>
-                      <BoltIcon fontSize="small"/>
-                      <Typography fontSize={"small"}> Power backup</Typography>
-                      <TvIcon fontSize="small"/>
-                      <Typography fontSize={"small"}> TV</Typography>
-                      <CheckCircleOutlineOutlinedIcon fontSize="small"/>
-                      <Typography fontSize={"small"}> Geyser</Typography>
-                    </Stack> */}
-
-                      <Stack sx={{ fontSize: "10px", ml: 5 }} direction={"row"}>
-                        {ShowAmenities.map((amenitie, i) => {
-                          if (i < 3) {
-                            return (
-                              // <Stack
-                              //   direction={"row"}
-                              // >
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                                <Stack direction={"row"} spacing={0.5} 
-                                color={"grey"}
-                                alignItems={"center"} ml={i===0?1:2}>
-                                  <>
-                                    <Typography fontSize={"small"}>
-                                      {amenitie.icon}
-                                    </Typography>
-                                    <Typography fontSize={"small"}>
-                                      {amenitie.label}
-                                    </Typography>
-                                  </>
-                                </Stack>
-=======
-=======
->>>>>>> Stashed changes
-                              <Stack
-                                direction={"row"}
-                                spacing={0.5}
-                                color={"grey"}
-                                alignItems={"center"}
-                                ml={i === 0 ? 1 : 2}
-                              >
-                                <>
-                                  <Typography fontSize={"small"}>
-                                    {amenitie?.icon}
-                                  </Typography>
-                                  <Typography fontSize={"small"}>
-                                    {amenitie?.label}
-                                  </Typography>
-                                </>
-                              </Stack>
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                              // </Stack>
-                            );
-                          } else if (i === 3) {
-                            return (
-                              <Button
-                                onClick={() => {
-                                  setRedux(item._id);
-                                  navigate(`/viewDeal/${item._id}`);
-                                }}
-                                sx={{ color: "grey", mt: -1, ml: 3 }}
-                              >
-                                View more +
-                              </Button>
-                            );
-                          } else {
-                            return;
-                          }
-                        })}
-                      </Stack>
-
-                      <Typography fontSize={"medium"} color={"grey"}>
-                        {item?.city}-{item?.pinCode}, {item?.state}
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
->>>>>>> Stashed changes
-                      </Typography>
+                      <Button
+                        sx={{
+                          color: "grey",
+                          // ml: { sm: 0, lg: 12 },
+                          // mt: { sm: "6px" },
+                          fontSize: { sm: 8, lg: 10, md: 10 },
+                          // width: { sm: "85px", lg: 100, md: 100 },
+                        }}
+                        onClick={() => {
+                          handleClick(i);
+                        }}
+                      >
+                        <FormattedMessage defaultMessage=" View More" />
+                        <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
+                      </Button>
+                    </Stack>
+                  </Stack>
+                  <Stack
+                    direction={"row"}
+                    spacing={2}
+                    sx={{
+                      border: "1px solid lightgray",
+                      height: "85px",
+                      borderRadius: "20px",
+                      padding: { sm: 1, lg: 2, md: 1 },
+                      marginTop: { sm: "8px" },
+                    }}
+                  >
+                    <Stack spacing={2}>
                       <Stack
                         direction={"row"}
-                        sx={{ alignItems: "center" }}
-                        gap={2}
+                        sx={{
+                          color: "#D4164B",
+                          fontWeight: "bold",
+                        }}
                       >
+                        <DoneIcon
+                          sx={{
+                            fontSize: { sm: "12px", lg: "15px", md: "14px" },
+                            fontWeight: "bold",
+                          }}
+                        />
                         <Typography
                           sx={{
+                            fontSize: { sm: "10px", lg: "12px", md: "10px" },
                             fontWeight: "bold",
-                            fontSize: { sm: "12px", lg: "18px", md: "14px" },
-                            opacity: 0.5,
-                          }}
-                        >
-                          <FormattedMessage defaultMessage="Hotel" />
-                        </Typography>
-                        <Button
-                          sx={{
-                            color: "grey",
-                            fontSize: { sm: 8, lg: 10, md: 10 },
-                          }}
-                          onClick={() => {
-                            handleClick(i);
                           }}
                         >
                           <FormattedMessage defaultMessage=" View More" />
-<<<<<<< Updated upstream
-=======
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
-                          <ExpandMoreIcon sx={{ fontSize: { sm: "20px" } }} />
-                        </Button>
-                      </Stack>
-                    </Stack>
-                    <Stack
-                      direction={"row"}
-                      spacing={2}
-                      sx={{
-                        border: "1px solid lightgray",
-                        height: "85px",
-                        borderRadius: "20px",
-                        padding: { sm: 1, lg: 2, md: 1 },
-                        marginTop: { sm: "8px" },
-                      }}
-                    >
-                      <Stack spacing={2}>
-                        <Stack
-                          direction={"row"}
-                          sx={{
-                            color: "#D4164B",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          <DoneIcon
-                            sx={{
-                              fontSize: { sm: "12px", lg: "15px", md: "14px" },
-                              fontWeight: "bold",
-                            }}
-                          />
-                          <Typography
-                            sx={{
-                              fontSize: { sm: "10px", lg: "12px", md: "10px" },
-                              fontWeight: "bold",
-                            }}
-                          >
-                            <FormattedMessage defaultMessage=" View More" />
-                          </Typography>
-                        </Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { sm: "15px", lg: "18px", md: "15px" },
-                            opacity: 0.7,
-                          }}
-                        >
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
-                          ₹
-                          {item?.rooms[0]?.price
-                            ? item?.rooms[0]?.price
-                            : Math.floor(Math.random() * 10000)}
-=======
-=======
->>>>>>> Stashed changes
-                          {item?.rooms[0]
-                            ? item?.rooms[0]?.price
-                            : Math.floor(Math.random() * 10000)}
->>>>>>> Stashed changes
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
                         </Typography>
                       </Stack>
-                      <Stack spacing={1}>
-                        <Chip
-                          label={
-                            <FormattedMessage defaultMessage="Our Lowest Price" />
-                          }
-                          variant="outlined"
-                          color="error"
-                          sx={{
-                            width: { sm: 150, lg: 150, md: 120 },
-                            float: "right",
-                          }}
-                        />
-                        <Button
-                          variant="contained"
-                          onClick={() => {
-                            setRedux(item._id);
-                            navigate(`/viewDeal/${item._id}`);
-                          }}
-                          endIcon={<KeyboardArrowRightIcon />}
-                          sx={{
-                            "&:hover": {
-                              backgroundColor: "#D4164B",
-                            },
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: { sm: "15px", lg: "18px", md: "15px" },
+                          opacity: 0.7,
+                        }}
+                      >
+                        ₹
+                        {item?.rooms[0]?.price
+                          ? item?.rooms[0]?.price
+                          : Math.floor(Math.random() * 10000)}
+                      </Typography>
+                    </Stack>
+                    <Stack spacing={1}>
+                      <Chip
+                        label={
+                          <FormattedMessage defaultMessage="Our Lowest Price" />
+                        }
+                        variant="outlined"
+                        color="error"
+                        sx={{
+                          width: { sm: 150, lg: 150, md: 120 },
+                          float: "right",
+                        }}
+                      />
+                      <Button
+                        variant="contained"
+                        // href="/billing"
+                        // href="/viewDeal"
+                        onClick={() => {
+                          setRedux(item._id);
+                          navigate(`/viewDeal/${item._id}`);
+                          // <ViewDeal />;
+                        }}
+                        endIcon={<KeyboardArrowRightIcon />}
+                        sx={{
+                          "&:hover": {
                             backgroundColor: "#D4164B",
-                            width: { sm: 150, lg: 150, md: 120 },
-                            fontSize: { md: 12, lg: 14 },
-                            height: { md: 30 },
-                            textTransform: "none",
-                          }}
-                        >
-                          <FormattedMessage defaultMessage=" View Deal" />
-                        </Button>
-                      </Stack>
+                          },
+                          backgroundColor: "#D4164B",
+                          width: { sm: 150, lg: 150, md: 120 },
+                          fontSize: { md: 12, lg: 14 },
+                          height: { md: 30 },
+                          textTransform: "none",
+                        }}
+                      >
+                        <FormattedMessage defaultMessage=" View Deal" />
+                      </Button>
                     </Stack>
                   </Stack>
-                  {detailIndex === i ? (
-                    <HotelDetails
-                      i={i}
-                      item={item}
-                      handleClick={handleClick}
-                      openModule={openModule}
-                      setOpenModule={setOpenModule}
-                    />
-                  ) : null}
-                </>
-              );
-            })}
+                </Stack>
+                {/* </Box> */}
+                {detailIndex === i ? (
+                  <HotelDetails
+                    i={i}
+                    item={item}
+                    handleClick={handleClick}
+                    openModule={openModule}
+                    setOpenModule={setOpenModule}
+                  />
+                ) : null}
+                {/* </Box> */}
+              </>
+            ))}
           </>
         ) : (
           <>
