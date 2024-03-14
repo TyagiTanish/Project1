@@ -18,11 +18,17 @@ import {
   TextField,
 } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import useAuth from "../../Hooks/useAuth/useAuth";
+import useAuth from "../../../../Hooks/useAuth/useAuth";
 
 import { useForm } from "react-hook-form";
 
-export default function EditDialog({ open, setOpen, item, setItem ,setRender}: any) {
+export default function EditDialog({
+  open,
+  setOpen,
+  item,
+  setItem,
+  setRender,
+}: any) {
   const { request } = useAuth();
   const theme = useTheme();
 
@@ -32,8 +38,6 @@ export default function EditDialog({ open, setOpen, item, setItem ,setRender}: a
 
   const handleClose = () => {
     setOpen(false);
-    setItem(item);
-    console.log(item);
   };
   const [age, setAge] = React.useState("Admin");
 
@@ -41,9 +45,9 @@ export default function EditDialog({ open, setOpen, item, setItem ,setRender}: a
     setAge(event.target.value as string);
   };
 
-  const handleDelete =async () => {
- await  request.put(`/memberDelete/${item?._id}`);
-   
+  const handleDelete = async () => {
+    await request.put(`/memberDelete/${item?._id}`);
+    setRender((prev: any) => prev + 1);
   };
 
   const {
@@ -60,9 +64,9 @@ export default function EditDialog({ open, setOpen, item, setItem ,setRender}: a
       role: item?.role,
     },
   });
-  const onSubmit = async(data: any) => {
-   await request.put(`/memberUpdate/${item?._id}`, data);
-    setRender((prev:any)=> prev+1)
+  const onSubmit = async (data: any) => {
+    await request.put(`/memberUpdate/${item?._id}`, data);
+    setRender((prev: any) => prev + 1);
     handleClose();
   };
   React.useMemo(() => {

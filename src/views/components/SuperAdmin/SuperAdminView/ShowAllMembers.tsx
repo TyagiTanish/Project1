@@ -23,8 +23,9 @@ import Switch from "@mui/material/Switch";
 import Tooltip from "@mui/material/Tooltip";
 import { enqueueSnackbar } from "notistack";
 import { useIntl, FormattedMessage } from "react-intl";
-import LoginModal from "./LoginModal";
-import EditDialog from "../../EditDialog";
+// import LoginModal from "./LoginModal";
+// import EditDialog from "../../EditDialog";
+import Actions from "./Actions";
 
 /**
  * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
@@ -45,15 +46,11 @@ export default function ShowAllMembers() {
   const [length, setLength] = React.useState();
   const [queryOptions, setQueryOptions] = React.useState<any>();
   const [open, setOpen] = React.useState(false);
-  const [openDialog, setOpenDialog] = React.useState(false);
   const [hotels, setHotels] = React.useState<any>([]);
   const [modalHotel, setModalHotel] = React.useState<any>([]);
   const { request } = useAuth();
   const [members, setMembers] = React.useState<any>([]);
   const [showHotels, setShowHotels] = useState(false);
-  const [loginModal, setLogInModal] = useState(false);
-  const [hotelOwner, setHotelOwner] = useState();
-  const [item, setItem] = useState<any>();
   const [render, setRender] = useState(0);
   const getMembers = async () => {
     const data: any = await request.get("/getAllMembers");
@@ -104,7 +101,7 @@ export default function ShowAllMembers() {
   }, [paginationModel, id, queryOptions]);
   useMemo(() => {
     getMembers();
-    console.log(members)
+    console.log(members);
   }, [render]);
 
   const handleClick = async (data: any) => {
@@ -132,11 +129,6 @@ export default function ShowAllMembers() {
     }
   };
 
-  const handleSupport = () => {
-    setLogInModal(true);
-    setShowHotels(false);
-  };
-
   useMemo(() => {
     if (expanded) {
       setShowHotels(false);
@@ -152,7 +144,6 @@ export default function ShowAllMembers() {
         <div style={{ fontSize: "large " }}>
           <strong>
             <FormattedMessage defaultMessage="Hotel name" />
-            Hotel name
           </strong>
         </div>
       ),
@@ -165,7 +156,6 @@ export default function ShowAllMembers() {
         <div style={{ fontSize: "large " }}>
           <strong>
             <FormattedMessage defaultMessage="City" />
-            City
           </strong>
         </div>
       ),
@@ -178,7 +168,6 @@ export default function ShowAllMembers() {
         <div style={{ fontSize: "large " }}>
           <strong>
             <FormattedMessage defaultMessage="State" />
-            State
           </strong>
         </div>
       ),
@@ -191,7 +180,6 @@ export default function ShowAllMembers() {
         <div style={{ fontSize: "large " }}>
           <strong>
             <FormattedMessage defaultMessage="Owner Id" />
-            Owner Id
           </strong>
         </div>
       ),
@@ -292,7 +280,6 @@ export default function ShowAllMembers() {
               textAlign: "left",
               margin: 0,
               padding: 0,
-
               border: "1px solid lightgray",
             }}
             expanded={expanded === `panel${i}`}
@@ -327,7 +314,7 @@ export default function ShowAllMembers() {
                 </TableCell>
               </>
             </AccordionSummary>
-            <Stack
+            {/* <Stack
               border={"1px solid  rgb(227, 242, 253)"}
               borderRadius={3}
               direction={"row"}
@@ -366,9 +353,18 @@ export default function ShowAllMembers() {
               <Button variant="outlined" onClick={() => setShowHotels(true)}>
                 View Hotels
               </Button>
-            </Stack>
+            </Stack> */}
+            <Actions
+              setShowHotels={setShowHotels}
+              members={members}
+              item={item}
+              setRender={setRender}
+              modalHotel={modalHotel}
+              open={open}
+              setOpen={setOpen}
+            />
 
-            <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
+            {/* <AccordionDetails sx={{ ml: 4, mt: -1 }}> </AccordionDetails> */}
             {showHotels && (
               <>
                 <Typography
@@ -401,7 +397,7 @@ export default function ShowAllMembers() {
           </Accordion>
         ))}
 
-        {open && (
+        {/* {open && (
           // view details button
           <ShowHotelsModal
             open={open}
@@ -414,15 +410,15 @@ export default function ShowAllMembers() {
           setLogInModal={setLogInModal}
           members={members}
           hotelOwner={hotelOwner}
-        />
+        /> */}
       </Box>
-      <EditDialog
+      {/* <EditDialog
         open={openDialog}
         setOpen={setOpenDialog}
         item={item}
         setItem={setItem}
         setRender={setRender}
-      />
+      /> */}
     </>
   );
 }
