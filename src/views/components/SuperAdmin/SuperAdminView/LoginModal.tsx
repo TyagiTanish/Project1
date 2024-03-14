@@ -32,6 +32,7 @@ export default function LoginModal({
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const [disableLoginButton, setDisableLoginButton] = React.useState(false);
   const loggedInUser = useSelector((state: any) => state?.userReducer?.user);
   const { UserLogin, data } = useUserLogin();
   // const handleClickOpen = () => {
@@ -49,6 +50,7 @@ export default function LoginModal({
   //   return member;
   // }, [hotelOwner, members]);
   const handleLogin = async () => {
+    setDisableLoginButton(true);
     await UserLogin({
       userId: hotelOwner?._id,
       loggedInUserId: loggedInUser?._id,
@@ -113,7 +115,12 @@ export default function LoginModal({
             <Button autoFocus onClick={handleClose} variant="outlined">
               cancel
             </Button>
-            <Button autoFocus variant="contained" onClick={handleLogin}>
+            <Button
+              autoFocus
+              variant="contained"
+              onClick={handleLogin}
+              disabled={disableLoginButton}
+            >
               Login as {hotelOwner?.name}
             </Button>
           </Stack>

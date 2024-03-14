@@ -22,6 +22,7 @@ import SearchIcon from "@mui/icons-material/Search";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { useIntl, FormattedMessage } from "react-intl";
+import Actions from "./Actions";
 
 function ShowAllUsers() {
   const [data, setData] = useState<any>([]);
