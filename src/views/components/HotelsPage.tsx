@@ -67,7 +67,7 @@ const HotelsPage = () => {
             },
           });
         }
-        setFilteredData(result.data);
+        setFilteredData(result?.data);
       }
     } catch (error) {
       console.log(error);
@@ -100,7 +100,7 @@ const HotelsPage = () => {
   }, [open]);
   return (
     <>
-      {screenSize > 768 && filteredData.length !== 0 ? (
+      {screenSize > 768 && filteredData?.length !== 0 ? (
         <>
           <Stack direction={"row"}>
             {" "}
@@ -133,7 +133,7 @@ const HotelsPage = () => {
         </>
       ) : null}
       <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
-        {filteredData.length !== 0 ? (
+        {filteredData?.length !== 0 ? (
           <>
             {" "}
             {filteredData !== undefined ? (
