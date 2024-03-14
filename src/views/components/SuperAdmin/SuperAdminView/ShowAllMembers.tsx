@@ -54,6 +54,7 @@ export default function ShowAllMembers() {
   const [loginModal, setLogInModal] = useState(false);
   const [hotelOwner, setHotelOwner] = useState();
   const [item, setItem] = useState<any>();
+  const [render, setRender] = useState(0);
   const getMembers = async () => {
     const data: any = await request.get("/getAllMembers");
     setMembers(data?.data);
@@ -103,7 +104,8 @@ export default function ShowAllMembers() {
   }, [paginationModel, id, queryOptions]);
   useMemo(() => {
     getMembers();
-  }, []);
+    console.log(members)
+  }, [render]);
 
   const handleClick = async (data: any) => {
     setModalHotel(data);
@@ -419,6 +421,7 @@ export default function ShowAllMembers() {
         setOpen={setOpenDialog}
         item={item}
         setItem={setItem}
+        setRender={setRender}
       />
     </>
   );

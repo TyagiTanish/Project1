@@ -22,7 +22,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 
 import { useForm } from "react-hook-form";
 
-export default function EditDialog({ open, setOpen, item, setItem }: any) {
+export default function EditDialog({ open, setOpen, item, setItem ,setRender}: any) {
   const { request } = useAuth();
   const theme = useTheme();
 
@@ -41,8 +41,9 @@ export default function EditDialog({ open, setOpen, item, setItem }: any) {
     setAge(event.target.value as string);
   };
 
-  const handleDelete = () => {
-    request.put(`/memberDelete/${item?._id}`);
+  const handleDelete =async () => {
+ await  request.put(`/memberDelete/${item?._id}`);
+   
   };
 
   const {
@@ -59,9 +60,9 @@ export default function EditDialog({ open, setOpen, item, setItem }: any) {
       role: item?.role,
     },
   });
-  const onSubmit = (data: any) => {
-    // request.put(`/memberUpdate/${item?._id}`, data);
-
+  const onSubmit = async(data: any) => {
+   await request.put(`/memberUpdate/${item?._id}`, data);
+    setRender((prev:any)=> prev+1)
     handleClose();
   };
   React.useMemo(() => {
