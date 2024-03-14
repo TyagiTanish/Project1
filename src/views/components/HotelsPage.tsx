@@ -132,7 +132,7 @@ const HotelsPage = () => {
           </Stack>
         </>
       ) : null}
-      <Stack direction={"row"} sx={{ ml: { md: 4, xl: 0, sm: 3,lg:0 } }}>
+      <Stack direction={"row"} sx={{ ml: { md: 4, xl: 3, sm: 3, lg: 1 } }}>
         {filteredData?.length !== 0 ? (
           <>
             {" "}

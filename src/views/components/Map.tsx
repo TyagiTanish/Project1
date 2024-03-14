@@ -14,8 +14,8 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       container: "map",
       style: "mapbox://styles/mapbox/streets-v11",
       center: [
-        location?.longitude || 76.779419,
-        location?.latitude || 30.733315,
+        filteredData[0]?.location?.longitude || 76.779419,
+        filteredData[0]?.location?.latitude || 30.733315,
       ],
       zoom: 10,
     });
@@ -62,9 +62,9 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
         <Box
           id="map"
           sx={{
-            width: { xl: 700, sm: 700, md: '90%',lg: 550 },
+            width: { xl: 700, sm: 700, md: "90%", lg: 550 },
             // height: { sm: 600, xl: 800, md: 1000 },
-            height: {md:'80vh',lg:'90vh',xl:"90vh"},
+            height: { md: "80vh", lg: "90vh", xl: "90vh" },
           }}
         />
       </Stack>
