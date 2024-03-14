@@ -100,7 +100,7 @@ const HotelsPage = () => {
   }, [open]);
   return (
     <>
-      {screenSize > 768 && filteredData?.length !== 0 ? (
+      {screenSize > 1024 && filteredData?.length !== 0 ? (
         <>
           <Stack direction={"row"}>
             {" "}
@@ -132,7 +132,7 @@ const HotelsPage = () => {
           </Stack>
         </>
       ) : null}
-      <Stack direction={"row"} sx={{ m: { md: 2, xl: 5, sm: 3 } }}>
+      <Stack direction={"row"} sx={{ ml: { md: 4, xl: 0, sm: 3,lg:0 } }}>
         {filteredData?.length !== 0 ? (
           <>
             {" "}
@@ -141,7 +141,7 @@ const HotelsPage = () => {
                 <Hotels filteredData={filteredData} screenSize={screenSize} />
               </>
             ) : null}
-            {screenSize <= 768 ? (
+            {screenSize <= 1024 ? (
               <></>
             ) : (
               <SimpleMap filteredData={filteredData} />
