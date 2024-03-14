@@ -26,15 +26,13 @@ const CustomerView = () => {
 
   return (
     <Stack>
-      <Stack
-        boxShadow={3}
-        padding={2}
-        alignItems={"center"}
-      >
-        {screenSize === 768 && (<Box>
-              <Logo />
-        </Box>)}
-        
+      <Stack boxShadow={3} padding={2} justifyContent={"space-between"}>
+        {screenSize === 768 && (
+          <Box>
+            <Logo />
+          </Box>
+        )}
+
         <Stack
           direction={"row"}
           justifyContent={"space-between"}
@@ -50,7 +48,6 @@ const CustomerView = () => {
             direction={"row"}
             justifyContent={"space-between"}
             alignItems={"center"}
-       
           >
             {window.location.href === "http://localhost:3000/" ? (
               <></>
