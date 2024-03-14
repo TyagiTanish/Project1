@@ -22,7 +22,7 @@ import useAuth from "../../Hooks/useAuth/useAuth";
 
 import { useForm } from "react-hook-form";
 
-export default function EditDialog({ open, setOpen, item }: any) {
+export default function EditDialog({ open, setOpen, item, setItem }: any) {
   const { request } = useAuth();
   const theme = useTheme();
 
@@ -32,26 +32,44 @@ export default function EditDialog({ open, setOpen, item }: any) {
 
   const handleClose = () => {
     setOpen(false);
+    setItem(item);
+    console.log(item);
   };
   const [age, setAge] = React.useState("Admin");
 
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
   };
-  console.log(item);
+
   const handleDelete = () => {
     request.put(`/memberDelete/${item?._id}`);
-   
   };
+
   const {
     register,
     handleSubmit,
     watch,
     formState: { errors },
-  } = useForm();
+    reset,
+  } = useForm({
+    values: {
+      firstName: item?.name,
+      phone: item?.phone,
+      email: item?.email,
+      role: item?.role,
+    },
+  });
   const onSubmit = (data: any) => {
-    request.put(`/memberUpdate/${item?._id}`, data)
+    // request.put(`/memberUpdate/${item?._id}`, data);
+
+    handleClose();
   };
+  React.useMemo(() => {
+    setTimeout(() => {
+      reset();
+    }, 1000);
+  }, [open]);
+
   return (
     <React.Fragment>
       <Dialog
@@ -62,21 +80,19 @@ export default function EditDialog({ open, setOpen, item }: any) {
         <DialogTitle id="responsive-dialog-title">{item?.name}</DialogTitle>
         <Divider />
         <DialogContent>
-        <form onSubmit={handleSubmit(onSubmit)}>
+          <form onSubmit={handleSubmit(onSubmit)}>
             <Stack direction={"column"} spacing={2}>
               <Stack direction={"row"} spacing={3}>
                 {" "}
                 <TextField
-                  defaultValue={item?.name}
                   label="First Name*"
                   {...register("firstName")}
                   sx={{ width: 250, borderRadius: 90 }}
                 />
                 <TextField
-                  label="Last Name*"
+                  label="Phone*"
                   sx={{ width: 250 }}
-                  defaultValue={item?.name}
-                  {...register("LastName")}
+                  {...register("phone")}
                 />
               </Stack>
               <Stack direction={"row"} spacing={3}>
@@ -84,7 +100,6 @@ export default function EditDialog({ open, setOpen, item }: any) {
                 <TextField
                   label="Email*"
                   sx={{ width: 250 }}
-                  defaultValue={item?.email}
                   {...register("email")}
                 />
                 {/* <TextField label="Role*" sx={{ width: 250 }} /> */}
@@ -105,49 +120,46 @@ export default function EditDialog({ open, setOpen, item }: any) {
                 </FormControl>
               </Stack>
             </Stack>
-           
 
-          <Divider />
+            <Divider />
 
-          <Stack
-            direction={"row"}
-            justifyContent={"space-between"}
-            spacing={0}
-            padding={1}
-          >
-            {" "}
-            <Box>
-              <Button variant="outlined" size="small" onClick={handleClose}>
-                Cancel
-              </Button>
-            </Box>{" "}
-            <Stack direction={"row"} spacing={2}>
+            <Stack
+              direction={"row"}
+              justifyContent={"space-between"}
+              spacing={0}
+              padding={1}
+            >
               {" "}
-              <Button
-                autoFocus
-                onClick={() => {
-                  {
-                    handleClose();
-                    handleDelete()
-                  }
-                }}
-                variant="outlined"
-                size="small"
-             
-              >
-                Delete
-              </Button>
-              <Button
-                onClick={handleClose}
-                autoFocus
-                variant="contained"
-                size="small"
-                type="submit"
-              >
-                Save
-              </Button>
+              <Box>
+                <Button variant="outlined" size="small" onClick={handleClose}>
+                  Cancel
+                </Button>
+              </Box>{" "}
+              <Stack direction={"row"} spacing={2}>
+                {" "}
+                <Button
+                  autoFocus
+                  onClick={() => {
+                    {
+                      handleClose();
+                      handleDelete();
+                    }
+                  }}
+                  variant="outlined"
+                  size="small"
+                >
+                  Delete
+                </Button>
+                <Button
+                  autoFocus
+                  variant="contained"
+                  size="small"
+                  type="submit"
+                >
+                  Save
+                </Button>
+              </Stack>
             </Stack>
-          </Stack>
           </form>
         </DialogContent>
       </Dialog>

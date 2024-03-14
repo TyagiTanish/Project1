@@ -45,7 +45,7 @@ export default function ShowAllMembers() {
   const [length, setLength] = React.useState();
   const [queryOptions, setQueryOptions] = React.useState<any>();
   const [open, setOpen] = React.useState(false);
-  const [openDialog, setOpenDialog] = React.useState(false)
+  const [openDialog, setOpenDialog] = React.useState(false);
   const [hotels, setHotels] = React.useState<any>([]);
   const [modalHotel, setModalHotel] = React.useState<any>([]);
   const { request } = useAuth();
@@ -53,7 +53,7 @@ export default function ShowAllMembers() {
   const [showHotels, setShowHotels] = useState(false);
   const [loginModal, setLogInModal] = useState(false);
   const [hotelOwner, setHotelOwner] = useState();
-  const [item,setItem]=useState<any>();
+  const [item, setItem] = useState<any>();
   const getMembers = async () => {
     const data: any = await request.get("/getAllMembers");
     setMembers(data?.data);
@@ -104,6 +104,7 @@ export default function ShowAllMembers() {
   useMemo(() => {
     getMembers();
   }, []);
+
   const handleClick = async (data: any) => {
     setModalHotel(data);
     setOpen(true);
@@ -341,8 +342,16 @@ export default function ShowAllMembers() {
                 transition: "  box-shadow cubic-bezier(0.4, 0, 0.2, 1) 200ms  ",
               }}
             >
-              <Button variant="outlined" onClick={()=>{setOpenDialog(true); setItem(item)}}>Edit</Button>
-       
+              <Button
+                variant="outlined"
+                onClick={() => {
+                  setItem(item);
+                  setOpenDialog(true);
+                }}
+              >
+                Edit
+              </Button>
+
               <Button
                 variant="outlined"
                 onClick={() => {
@@ -356,7 +365,7 @@ export default function ShowAllMembers() {
                 View Hotels
               </Button>
             </Stack>
-        
+
             <AccordionDetails sx={{ ml: 4, mt: -1 }}></AccordionDetails>
             {showHotels && (
               <>
@@ -387,7 +396,6 @@ export default function ShowAllMembers() {
                 />
               </>
             )}
-         
           </Accordion>
         ))}
 
@@ -406,7 +414,12 @@ export default function ShowAllMembers() {
           hotelOwner={hotelOwner}
         />
       </Box>
-      <EditDialog open={openDialog} setOpen={setOpenDialog} item={item}/>
+      <EditDialog
+        open={openDialog}
+        setOpen={setOpenDialog}
+        item={item}
+        setItem={setItem}
+      />
     </>
   );
 }
