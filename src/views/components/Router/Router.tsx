@@ -1,6 +1,5 @@
 import {
-  createBrowserRouter,
-  RouterProvider,
+
   useRoutes,
 } from "react-router-dom";
 import MainPage from "../../pages/MainPage";
@@ -17,10 +16,9 @@ import HotelOwnerView from "../../layout/HotelOwnerView";
 import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
 import Allhotels from "../HotelOwner/hotels/All-hotels";
-import MyBookings from "../HotelOwner/Rooms/Booking/BookingRequests";
+
 import Bookings from "../HotelOwner/Rooms/Booking/BookingRequests";
-import ShowCustomerBooking from "../ShowCustomerBooking";
-import BookingDetails from "../BookingDetails";
+
 import AcceptedBookings from "../HotelOwner/Rooms/Booking/AcceptedBookings";
 import SuperAdminView from "../SuperAdmin/SuperAdminView/SuperAdminView";
 import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
