@@ -3,47 +3,67 @@ import React, { useEffect, useMemo, useState } from "react";
 import OyoLogo from "../../../assets/OyoLogo";
 import Logo from "../../components/Logo";
 import Seachbar2 from "../../components/Seachbar2";
-import ProfileIcons from "./ProfileIcons";
 import { Outlet, useParams } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
+import ProfileIcons from "./ProfileIcons";
 
 const CustomerView = () => {
   const URL = useParams();
   const [url, setUrl] = useState<any>(URL);
+  const [screenSize, setScreenSize] = useState(window?.innerWidth);
 
   // useEffect(() => {
   //   console.log(URL);
   // });
 
+  useEffect(() => {
+    const handleWindowSize = () => {
+      setScreenSize(window.innerWidth);
+    };
+    window.addEventListener("resize", handleWindowSize);
+  });
+
   return (
     <Stack>
       <Stack
-        direction={"row"}
         boxShadow={3}
-        justifyContent={"space-between"}
+        padding={2}
         alignItems={"center"}
       >
-        <Box>
-          <Logo />
-        </Box>
+        {screenSize === 768 && (<Box>
+              <Logo />
+        </Box>)}
+        
         <Stack
           direction={"row"}
           justifyContent={"space-between"}
           alignItems={"center"}
-          padding={2}
         >
-          {window.location.href === "http://localhost:3000/" ? (
-            <></>
-          ) : (
-            <Box sx={{ ml: 10, mt: 1 }}>
-              <Seachbar2 />
+          {screenSize > 768 ? (
+            <Box>
+              <Logo />
             </Box>
-          )}
+          ) : null}
+
+          <Stack
+            direction={"row"}
+            justifyContent={"space-between"}
+            alignItems={"center"}
+       
+          >
+            {window.location.href === "http://localhost:3000/" ? (
+              <></>
+            ) : (
+              <Box sx={{ ml: { sm: 0, md: 2 }, mt: 1 }}>
+                <Seachbar2 />
+              </Box>
+            )}
+          </Stack>
+          <Box>
+            <ProfileIcons />
+          </Box>
         </Stack>
-        <Box>
-          <ProfileIcons />
-        </Box>
       </Stack>
       <Outlet />
     </Stack>

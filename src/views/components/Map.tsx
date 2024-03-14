@@ -62,9 +62,9 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
         <Box
           id="map"
           sx={{
-            width: { xl: 700, sm: 700, md: 400 },
+            width: { xl: 700, sm: 700, md: '90%',lg: 550 },
             // height: { sm: 600, xl: 800, md: 1000 },
-            height: "90vh",
+            height: {md:'80vh',lg:'90vh',xl:"90vh"},
           }}
         />
       </Stack>

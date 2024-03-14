@@ -153,6 +153,7 @@ function Seachbar2() {
             backgroundColor: "white",
             borderRadius: 3,
             mt: 1,
+            
           }}
           InputProps={{
             endAdornment: (
@@ -188,7 +189,7 @@ function Seachbar2() {
         {/* <DateRangePickers /> */}
         <Box sx={{ mt: 1 }}>
           <TextField
-            sx={{ bgcolor: "white", width: 300 }}
+            sx={{ bgcolor: "white", width: {sm:240,md:300} }}
             placeholder="Check in - Check out"
             onClick={handleClick2}
             value={date}

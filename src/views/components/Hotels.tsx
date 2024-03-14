@@ -107,18 +107,20 @@ function Hotels({ filteredData, screenSize }: any) {
         sx={{
           height: "90vh",
           overflowY: "scroll",
+          width:{sm:'98%',md:'100%',lg:'60%'}
         }}
       >
-        {screenSize <= 768 ? (
+        {screenSize <= 1024 ? (
           <Box>
             {display ? (
               <>
                 <Stack
                   direction={"row"}
-                  spacing={45}
-                  // justifyContent={"space-between"}
-                  mt={3}
+                  // spacing={45}
+                  justifyContent={"space-between"}
+                  mt={5}
                   ml={3}
+                  width={'100%'}
                 >
                   <Button
                     variant="outlined"
@@ -195,8 +197,8 @@ function Hotels({ filteredData, screenSize }: any) {
                     <Box
                       component="img"
                       sx={{
-                        width: { sm: "150px ", lg: "200px", md: "140px" },
-                        height: { lg: "200px", sm: "15vh", md: "15vh" },
+                        width: { sm: "180px ", lg: "200px", md: "200px" },
+                        height: { lg: "200px", sm: "25vh", md: "200px" },
                         borderTopLeftRadius: "20px",
                         borderBottomLeftRadius: "20px",
                       }}
@@ -209,6 +211,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         sx={{
                           fontWeight: "bold",
                           opacity: 0.8,
+                          fontSize:'25px'
                         }}
                       >
                         {item.hotelName}
@@ -249,18 +252,6 @@ function Hotels({ filteredData, screenSize }: any) {
                               </Stack>
                               // </Stack>
                             );
-                          } else if (i === 3) {
-                            return (
-                              <Button
-                                onClick={() => {
-                                  setRedux(item._id);
-                                  navigate(`/viewDeal/${item._id}`);
-                                }}
-                                sx={{ color: "grey", mt: -1, ml: 3 }}
-                              >
-                                View more +
-                              </Button>
-                            );
                           } else {
                             return;
                           }
@@ -298,87 +289,87 @@ function Hotels({ filteredData, screenSize }: any) {
                         </Button>
                       </Stack>
                     </Stack>
-                    <Stack
-                      direction={"row"}
-                      spacing={2}
-                      sx={{
-                        border: "1px solid lightgray",
-                        height: "85px",
-                        borderRadius: "20px",
-                        padding: { sm: 1, lg: 2, md: 1 },
-                        marginTop: { sm: "8px" },
-                      }}
-                    >
-                      <Stack spacing={2}>
                         <Stack
-                          direction={"row"}
-                          sx={{
-                            color: "#D4164B",
-                            fontWeight: "bold",
-                          }}
-                        >
-                          <DoneIcon
+                        direction={"row"}
+                        spacing={2}
+                        sx={{
+                          border: "1px solid lightgray",
+                          height: "85px",
+                          borderRadius: "20px",
+                          padding: { sm: 1, lg: 2, md: 1 },
+                          marginTop: { sm: "8px" },
+                        }}
+                      >
+                        <Stack spacing={2}>
+                          <Stack
+                            direction={"row"}
                             sx={{
-                              fontSize: { sm: "12px", lg: "15px", md: "14px" },
-                              fontWeight: "bold",
-                            }}
-                          />
-                          <Typography
-                            sx={{
-                              fontSize: { sm: "10px", lg: "12px", md: "10px" },
+                              color: "#D4164B",
                               fontWeight: "bold",
                             }}
                           >
-                            <FormattedMessage defaultMessage=" View More" />
+                            <DoneIcon
+                              sx={{
+                                fontSize: { sm: "12px", lg: "15px", md: "14px" },
+                                fontWeight: "bold",
+                              }}
+                            />
+                            <Typography
+                              sx={{
+                                fontSize: { sm: "10px", lg: "12px", md: "10px" },
+                                fontWeight: "bold",
+                              }}
+                            >
+                              <FormattedMessage defaultMessage=" View More" />
+                            </Typography>
+                          </Stack>
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                              fontSize: { sm: "15px", lg: "18px", md: "15px" },
+                              opacity: 0.7,
+                            }}
+                          >
+                            ₹
+                            {item?.rooms[0]?.price
+                              ? item?.rooms[0]?.price
+                              : Math.floor(Math.random() * 10000)}
                           </Typography>
                         </Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { sm: "15px", lg: "18px", md: "15px" },
-                            opacity: 0.7,
-                          }}
-                        >
-                          ₹
-                          {item?.rooms[0]?.price
-                            ? item?.rooms[0]?.price
-                            : Math.floor(Math.random() * 10000)}
-                        </Typography>
-                      </Stack>
-                      <Stack spacing={1}>
-                        <Chip
-                          label={
-                            <FormattedMessage defaultMessage="Our Lowest Price" />
-                          }
-                          variant="outlined"
-                          color="error"
-                          sx={{
-                            width: { sm: 150, lg: 150, md: 120 },
-                            float: "right",
-                          }}
-                        />
-                        <Button
-                          variant="contained"
-                          onClick={() => {
-                            setRedux(item._id);
-                            navigate(`/viewDeal/${item._id}`);
-                          }}
-                          endIcon={<KeyboardArrowRightIcon />}
-                          sx={{
-                            "&:hover": {
+                        <Stack spacing={1}>
+                          <Chip
+                            label={
+                              <FormattedMessage defaultMessage="Our Lowest Price" />
+                            }
+                            variant="outlined"
+                            color="error"
+                            sx={{
+                              width: { sm: 150, lg: 150, md: 120 },
+                              float: "right",
+                            }}
+                          />
+                          <Button
+                            variant="contained"
+                            onClick={() => {
+                              setRedux(item._id);
+                              navigate(`/viewDeal/${item._id}`);
+                            }}
+                            endIcon={<KeyboardArrowRightIcon />}
+                            sx={{
+                              "&:hover": {
+                                backgroundColor: "#D4164B",
+                              },
                               backgroundColor: "#D4164B",
-                            },
-                            backgroundColor: "#D4164B",
-                            width: { sm: 150, lg: 150, md: 120 },
-                            fontSize: { md: 12, lg: 14 },
-                            height: { md: 30 },
-                            textTransform: "none",
-                          }}
-                        >
-                          <FormattedMessage defaultMessage=" View Deal" />
-                        </Button>
+                              width: { sm: 150, lg: 150, md: 120 },
+                              fontSize: { md: 12, lg: 14 },
+                              height: { md: 30 },
+                              textTransform: "none",
+                            }}
+                          >
+                            <FormattedMessage defaultMessage=" View Deal" />
+                          </Button>
+                        </Stack>
                       </Stack>
-                    </Stack>
                   </Stack>
                   {detailIndex === i ? (
                     <HotelDetails
@@ -396,7 +387,7 @@ function Hotels({ filteredData, screenSize }: any) {
         ) : (
           <>
             <IconButton
-              sx={{ marginLeft: "95%", marginTop: "-1%" }}
+              sx={{ marginLeft: "95%", marginTop: "0%" }}
               onClick={() => {
                 setDisplay(true);
                 SetDisplayMap(true);
