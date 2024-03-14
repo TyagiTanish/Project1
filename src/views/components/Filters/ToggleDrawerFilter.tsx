@@ -41,43 +41,41 @@ export default function DrawerFilters({
   category,
   setCategory,
   applyFilter,
-  setApplyFilter
+  setApplyFilter,
 }: any) {
   //   const [open, setOpen] = React.useState(false);
   // const [price, setPrice] = React.useState<number[]>([10000, 37000]);
 
-  const [amenities, setAmenities] = React.useState<any>([]);
-  const { request } = useAuth();
-  // const filterData = async () => {
-  //   const result = await request.get("/getHotels", {
-  //     params: {
-  //       search: searchTerm,
-  //       price: price,
-  //     },
-  //   });
-  //   setFilteredData(result.data);
-  // };
+  const reduxCategory = useSelector((state: any) => state.userReducer.category);
+
+  const filterCategory = reduxCategory?.map((item: any) => item?.index);
+  const [amenities, setAmenities] = React.useState<any>();
+
   const totalCategories = [
     { name: "Suite", index: 1 },
     { name: "Deluxe", index: 2 },
     { name: "Super Deluxe", index: 3 },
   ];
 
-  const setCategories = (item:any,index: any) => {
+  const setCategories = (item: any, index: any) => {
     // if(!category?.includes()){
     //   setCategory((prev:any) => [...prev, {name:item?.name,index:index}])
     // }else{
     //   setCategory(category?.filter((item:any)=> item.index !== index))
     // }
     // Check if the next value already exists in the array
-let exists = category.some((item:any) => item.index === index);
+    let exists = category.some((item: any) => item?.index === index);
 
-if (exists) {
-      setCategory( category.filter((item:any) => item.index !== index))
-} else {
-    setCategory((prev:any) => [...prev, {name:item?.name,index:index}])
-}
-};
+    if (exists) {
+      setCategory(category.filter((item: any) => item?.index !== index));
+    } else {
+      setCategory((prev: any) => [...prev, { name: item?.name, index: index }]);
+    }
+  };
+
+  React?.useEffect(() => {
+    setAmenities(filterCategory ? filterCategory : []);
+  }, [open]);
 
   return (
     <React.Fragment>
@@ -106,7 +104,7 @@ if (exists) {
             flexDirection: "column",
             gap: 2,
             height: "80%",
-            mt:"10%"
+            mt: "10%",
           }}
         >
           <DialogTitle>Filters</DialogTitle>
@@ -199,18 +197,18 @@ if (exists) {
             <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
               Amenities
             </Typography>
-            <div role="group" aria-labelledby="rank" >
+            <div role="group" aria-labelledby="rank">
               <List
                 // orientation="horizontal"
                 size="lg"
                 sx={{
                   "--List-gap": "12px",
                   "--ListItem-radius": "20px",
-                  width:'95%',
-                  ml:1
+                  width: "95%",
+                  ml: 1,
                 }}
               >
-                {totalCategories.map((item:any, index:any) => {
+                {totalCategories.map((item: any, index: any) => {
                   const selected = amenities?.includes(index);
                   return (
                     <ListItem key={item.name}>
@@ -229,8 +227,8 @@ if (exists) {
                         variant="outlined"
                         checked={selected}
                         onChange={(event) => {
-                          setCategories(item,index);
-                          setAmenities((prev:any) => {
+                          setCategories(item, index);
+                          setAmenities((prev: any) => {
                             const set = new Set([...prev, index]);
                             if (!event.target.checked) {
                               set.delete(index);
@@ -273,15 +271,14 @@ if (exists) {
             >
               Clear
             </Button> */}
-            <Button
-              onClick={() => {
-                setApplyFilter(applyFilter +1)
-                setOpen(false)
-                
-              }}
-            >
-              Show Hotels
-            </Button>
+          <Button
+            onClick={() => {
+              setApplyFilter(applyFilter + 1);
+              setOpen(false);
+            }}
+          >
+            Show Hotels
+          </Button>
           {/* </Stack> */}
         </Sheet>
       </Drawer>

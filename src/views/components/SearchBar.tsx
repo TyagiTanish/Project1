@@ -80,7 +80,7 @@ function SearchBar() {
   const [searchTerm, setSearchTerm] = useState<any>(search || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const [dates,setDates]=useState<any>('')
+  const [dates, setDates] = useState<any>("");
   useEffect(() => {
     var result = 0;
     var totalRooms = 0;
@@ -120,8 +120,11 @@ function SearchBar() {
   }
 
   const handleCloseValidationPopper = (event: any) => {
-    console.log(event);
-    setSearchBarAnchorEl(searchBarAnchorEl ? null : event);
+    if (event?.value === "") {
+      setSearchBarAnchorEl(event);
+    } else {
+      setSearchBarAnchorEl(null);
+    }
   };
 
   function error() {}
@@ -183,9 +186,8 @@ function SearchBar() {
               placeholder="Search by city,hotel or state"
               onChange={(e) => {
                 setSearchTerm(e.target.value);
-              }}
-              onLoad={(e) => {
-                console.log(e);
+                const field = document.querySelector("#searchField");
+                handleCloseValidationPopper(field);
               }}
               defaultValue={searchTerm}
               value={searchTerm}
@@ -207,10 +209,14 @@ function SearchBar() {
                 ),
               }}
             />
-            <SearchBarValidationPopper searchBarAnchorEl={searchBarAnchorEl} handleCloseValidationPopper={handleCloseValidationPopper} setSearchBarAnchorEl={setSearchBarAnchorEl} />
+            <SearchBarValidationPopper
+              searchBarAnchorEl={searchBarAnchorEl}
+              handleCloseValidationPopper={handleCloseValidationPopper}
+              setSearchBarAnchorEl={setSearchBarAnchorEl}
+            />
             <Box mt={0}>
               <TextField
-                sx={{ bgcolor: "white" ,width:300}}
+                sx={{ bgcolor: "white", width: 300 }}
                 placeholder="Check in - Check out"
                 onClick={handleClick2}
                 value={date}
@@ -225,7 +231,7 @@ function SearchBar() {
                   horizontal: "left",
                 }}
               >
-                <DateRangePickers setDates={setDates} onClose={handleClose}/>
+                <DateRangePickers setDates={setDates} onClose={handleClose} />
                 {/* <Typography sx={{ p: 2 }}></Typography> */}
               </Popover>
             </Box>
@@ -251,9 +257,10 @@ function SearchBar() {
                 borderRadius: 0,
               }}
               onClick={(e) => {
-                dispatch(searchDetails(searchTerm));
-                // localStorage.setItem("searchTerm", searchTerm);
                 if (searchTerm !== "") {
+                  dispatch(searchDetails(searchTerm));
+                  const field = document.querySelector("#searchField");
+                  handleCloseValidationPopper(field);
                   navigate("/hotels");
                 } else {
                   const field = document.querySelector("#searchField");

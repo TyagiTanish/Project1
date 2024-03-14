@@ -8,7 +8,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useMemo, useState } from "react";
 import DateRangePickers from "./DatePicker";
 import MyLocationIcon from "@mui/icons-material/MyLocation";
 
@@ -35,6 +35,7 @@ function Seachbar2() {
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
   };
+  const navigate = useNavigate();
 
   const [searchBarAnchorEl, setSearchBarAnchorEl] =
     React.useState<null | HTMLElement>(null);
@@ -49,7 +50,6 @@ function Seachbar2() {
 
   const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
   const date = useSelector((state: any) => state.userReducer.date);
-
 
   const [rooms, setRooms] = React.useState<any>(
     data || [
@@ -79,8 +79,6 @@ function Seachbar2() {
     const { value } = event.target;
     dispatch(searchDetails(value));
   };
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     var result = 0;
@@ -119,21 +117,25 @@ function Seachbar2() {
   }
   function error() {}
   const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
-  const [dates,setDates]=useState<any>('')
+  const [dates, setDates] = useState<any>("");
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
     console.log(anchorEl2);
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
-
   const open = Boolean(anchorEl2);
   const id = open ? "simple-popper" : undefined;
   const handleCloseValidationPopper = (event: any) => {
-    console.log(event);
-    setSearchBarAnchorEl(searchBarAnchorEl ? null : event);
+    if (event?.value === "") {
+      console.log("hii");
+      setSearchBarAnchorEl(event);
+    } else {
+      setSearchBarAnchorEl(null);
+    }
   };
   const handleClose = () => {
     setAnchorEl2(null);
   };
+
   return (
     <>
       <Stack
@@ -170,7 +172,11 @@ function Seachbar2() {
             ),
           }}
           placeholder="Search by city,hotel or state"
-          onChange={(e) => setSearchTerm(e.target.value)}
+          onChange={(e) => {
+            setSearchTerm(e.target.value);
+            const field = document.querySelector("#searchField");
+            handleCloseValidationPopper(field);
+          }}
           defaultValue={searchTerm}
           value={searchTerm}
         />
@@ -179,30 +185,29 @@ function Seachbar2() {
           handleCloseValidationPopper={handleCloseValidationPopper}
           setSearchBarAnchorEl={setSearchBarAnchorEl}
         />
-        <DateRangePickers />
-        <Box sx={{mt:1}}>
-
-        <TextField
-                sx={{ bgcolor: "white" ,width:300}}
-                placeholder="Check in - Check out"
-                onClick={handleClick2}
-                value={date}
-              />
-              <Popover
-                id={id}
-                open={open}
-                anchorEl={anchorEl2}
-                onClose={handleClose}
-                anchorOrigin={{
-                  vertical: "bottom",
-                  horizontal: "left",
-                }}
-              >
-                <DateRangePickers setDates={setDates} onClose={handleClose}/>
-                {/* <Typography sx={{ p: 2 }}></Typography> */}
-              </Popover>
+        {/* <DateRangePickers /> */}
+        <Box sx={{ mt: 1 }}>
+          <TextField
+            sx={{ bgcolor: "white", width: 300 }}
+            placeholder="Check in - Check out"
+            onClick={handleClick2}
+            value={date}
+          />
+          <Popover
+            id={id}
+            open={open}
+            anchorEl={anchorEl2}
+            onClose={handleClose}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+          >
+            <DateRangePickers setDates={setDates} onClose={handleClose} />
+            {/* <Typography sx={{ p: 2 }}></Typography> */}
+          </Popover>
         </Box>
-     
+
         <TextField
           id="outlined-basic"
           variant="outlined"
@@ -227,10 +232,12 @@ function Seachbar2() {
             borderRadius: 1,
           }}
           onClick={() => {
-            dispatch(searchDetails(searchTerm));
             // localStorage.setItem("searchTerm", searchTerm);
             if (searchTerm !== "") {
-              navigate("/hotels");
+              dispatch(searchDetails(searchTerm));
+              const field = document.querySelector("#searchField");
+              handleCloseValidationPopper(field);
+              // navigate("/hotels");
             } else {
               const field = document.querySelector("#searchField");
               handleCloseValidationPopper(field);

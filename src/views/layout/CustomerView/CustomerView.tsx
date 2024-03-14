@@ -12,9 +12,9 @@ const CustomerView = () => {
   const URL = useParams();
   const [url, setUrl] = useState<any>(URL);
 
-  useEffect(() => {
-    console.log(URL);
-  });
+  // useEffect(() => {
+  //   console.log(URL);
+  // });
 
   return (
     <Stack>

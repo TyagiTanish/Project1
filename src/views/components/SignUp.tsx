@@ -75,7 +75,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
       .required("First Name is required")
       .min(3)
       .matches(
-        /^[a-zA-Z]+ [a-zA-Z]+$/,
+        /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
         "First Letter of name should be capital and name should be string"
       ),
     email: Yup.string().email("Invalid email !").required("Email is Required"),

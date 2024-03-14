@@ -80,7 +80,7 @@ function RoomImageSlider({ images }: any) {
 }
 
 function UserViewRooms({ hotels }: any) {
-  const { TotalRooms, TotalGuests } = UseRoomAndGuestQuantity();
+  const { TotalRooms } = UseRoomAndGuestQuantity();
   const navigate = useNavigate();
   const dispatch = useDispatch();
   var reduxValue: any = {};
@@ -163,7 +163,7 @@ function UserViewRooms({ hotels }: any) {
                       From
                     </Typography>
                     <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
-                      ₹{item?.price}/-
+                      ₹{item?.price}
                     </Typography>
                     <Typography sx={{ fontSize: 13, color: "gray" }}>
                       Avg/Night
@@ -208,12 +208,12 @@ function UserViewRooms({ hotels }: any) {
                     disabled={
                       item?.isAvailable === "false" ||
                       item?.roomQuantity === "0" ||
-                      TotalRooms.current > item?.roomQuantity
+                      TotalRooms.current > +item?.roomQuantity
                     }
                   >
                     {item?.isAvailable === "false" ||
                     item?.roomQuantity === "0" ||
-                    TotalRooms.current > item?.roomQuantity
+                    TotalRooms.current > +item?.roomQuantity
                       ? "Currently Unavailable"
                       : "Book Now "}
                   </Button>
