@@ -6,6 +6,7 @@ import { useRef, useState } from "react";
 export default function SearchBarValidationPopper({
   searchBarAnchorEl,
   setSearchBarAnchorEl,
+  message,
 }: any) {
   const open = Boolean(searchBarAnchorEl);
   const id = open ? "simple-popper" : undefined;
@@ -56,7 +57,7 @@ export default function SearchBarValidationPopper({
         <Box
           sx={{ border: 1, p: 1, bgcolor: "background.paper", color: "red" }}
         >
-          Please select a destination from the list
+          {message}
         </Box>
       </Popper>
     </div>
