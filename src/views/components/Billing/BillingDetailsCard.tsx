@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import { useSelector } from "react-redux";
+import { FormattedMessage } from "react-intl";
 const BillingDetailsCard = ({
   hotelDetail,
   roomDetails,
@@ -89,7 +90,7 @@ const BillingDetailsCard = ({
                 textAlign={"left"}
                 fontSize={"13px"}
                 fontWeight={"bolder"}
-              >{` ${difference} Night`}</Stack>
+              >{difference} <FormattedMessage defaultMessage="Night"/></Stack>
             </Stack>
           </Stack>
           <Stack width={90}>
@@ -114,8 +115,8 @@ const BillingDetailsCard = ({
             <CalendarMonthIcon style={{ marginRight: 4 }} />
             {startdate} -- {enddate}
             <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
-              {totalRoomsAndGuests?.rooms} Room {totalRoomsAndGuests?.guests}
-              {" " + "Guest"}
+              {totalRoomsAndGuests?.rooms} <FormattedMessage defaultMessage="Room"/> {totalRoomsAndGuests?.guests}
+              {" " }<FormattedMessage defaultMessage="Guest"/>
             </Stack>
           </Stack>
         </Stack>
@@ -130,7 +131,7 @@ const BillingDetailsCard = ({
               justifyContent={"space-between"}
               fontSize={{ sm: "small", md: "medium" }}
             >
-              <Box>{`Room price for 1 Night X 1 Room`}</Box>{" "}
+              <Box><FormattedMessage defaultMessage="Room price for 1 Night X 1 Room"/></Box>{" "}
               <Box>
                 <Stack direction={"row"} alignItems={"center"}>
                   <CurrencyRupeeIcon
@@ -148,9 +149,9 @@ const BillingDetailsCard = ({
               direction={"row"}
               justifyContent={"space-between"}
             >
-              <Box>{`Room price for ${difference} Night X ${
+              <Box><FormattedMessage defaultMessage="Room price for"/>{" "}{difference} {" "}<FormattedMessage defaultMessage="Night X"/>  {" "} {
                 totalRoomsAndGuests?.rooms
-              } ${" " + "Room"}  `}</Box>
+              } {" "} <FormattedMessage defaultMessage="Room"/>  </Box>
               <Stack
                 fontSize={{ sm: "small", md: "medium" }}
                 // fontWeight={"bolder"}
@@ -175,7 +176,7 @@ const BillingDetailsCard = ({
             mt={3}
             fontSize={{ sm: "small", md: "medium", lg: "large" }}
           >
-            <Stack fontWeight={"bolder"}>Payable Amount</Stack>
+            <Stack fontWeight={"bolder"}><FormattedMessage defaultMessage="Payable Amount"/></Stack>
             <Stack
               direction={"row"}
               fontWeight={"bolder"}

@@ -362,6 +362,7 @@ export default function ShowAllMembers() {
               modalHotel={modalHotel}
               open={open}
               setOpen={setOpen}
+            
             />
 
             {/* <AccordionDetails sx={{ ml: 4, mt: -1 }}> </AccordionDetails> */}

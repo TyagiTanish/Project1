@@ -22,6 +22,7 @@ import MenuItem from "@mui/material/MenuItem";
 import useAuth from "../../Hooks/useAuth/useAuth";
 
 import { useForm } from "react-hook-form";
+import { FormattedMessage } from "react-intl";
 
 export default function EditDialog({ open, setOpen, item, setItem ,setRender}: any) {
   const { request } = useAuth();
@@ -135,7 +136,7 @@ export default function EditDialog({ open, setOpen, item, setItem ,setRender}: a
               {" "}
               <Box>
                 <Button variant="outlined" size="small" onClick={handleClose}>
-                  Cancel
+                <FormattedMessage defaultMessage="Cancel" />  
                 </Button>
               </Box>{" "}
               <Stack direction={"row"} spacing={2}>
@@ -151,7 +152,7 @@ export default function EditDialog({ open, setOpen, item, setItem ,setRender}: a
                   variant="outlined"
                   size="small"
                 >
-                  Delete
+                <FormattedMessage defaultMessage=" Delete" />  
                 </Button>
                 <Button
                   autoFocus
@@ -159,7 +160,7 @@ export default function EditDialog({ open, setOpen, item, setItem ,setRender}: a
                   size="small"
                   type="submit"
                 >
-                  Save
+                <FormattedMessage defaultMessage="Save"  />
                 </Button>
               </Stack>
             </Stack>

@@ -1,4 +1,7 @@
 {
+  "+7HeVJ": {
+    "defaultMessage": "Super Deluxe"
+  },
   "+R6HRl": {
     "defaultMessage": "List Your Property"
   },
@@ -7,6 +10,9 @@
   },
   "/2PAGq": {
     "defaultMessage": "Phone No"
+  },
+  "00/IyC": {
+    "defaultMessage": "Night"
   },
   "0xWUYr": {
     "defaultMessage": "Customer Phone"
@@ -20,6 +26,12 @@
   "2HUE26": {
     "defaultMessage": "Owner Id"
   },
+  "2Ml/7i": {
+    "defaultMessage": "Room"
+  },
+  "2RDzgc": {
+    "defaultMessage": "Check-Out"
+  },
   "2apuGa": {
     "defaultMessage": "Mohali"
   },
@@ -32,8 +44,14 @@
   "3KiaqX": {
     "defaultMessage": "Check in: 15:00"
   },
+  "3bytUc": {
+    "defaultMessage": "All Bookings"
+  },
   "3rvTzG": {
     "defaultMessage": "SignUp"
+  },
+  "47FYwb": {
+    "defaultMessage": "Cancel"
   },
   "4OjOXO": {
     "defaultMessage": "Please enter your email to continue"
@@ -47,8 +65,14 @@
   "5sg7KC": {
     "defaultMessage": "Password"
   },
+  "6I+DHW": {
+    "defaultMessage": "Select price range"
+  },
   "7TFbhV": {
     "defaultMessage": "Add Hotel Location"
+  },
+  "7tD4iU": {
+    "defaultMessage": "Payable Amount"
   },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
@@ -59,8 +83,14 @@
   "97l2MO": {
     "defaultMessage": "Customer Email"
   },
+  "9CHoi1": {
+    "defaultMessage": "Deposit Policy"
+  },
   "9khnVR": {
     "defaultMessage": "Photos"
+  },
+  "9mXFUz": {
+    "defaultMessage": "No Results Match your search"
   },
   "9uOFF3": {
     "defaultMessage": "Overview"
@@ -119,11 +149,20 @@
   "IFkDw5": {
     "defaultMessage": "Cities"
   },
+  "J+S/E8": {
+    "defaultMessage": "Invalid Email"
+  },
+  "K3r6DQ": {
+    "defaultMessage": "Delete"
+  },
   "KkDJ/P": {
     "defaultMessage": "Sign up & Get ₹500 OYO Money"
   },
   "LaM7n1": {
     "defaultMessage": "download"
+  },
+  "N4ReBT": {
+    "defaultMessage": "View Details"
   },
   "NQgbYA": {
     "defaultMessage": "Account Settings"
@@ -134,17 +173,29 @@
   "OgF6Am": {
     "defaultMessage": "Mumbai"
   },
+  "Q/7RZn": {
+    "defaultMessage": "Room price for 1 Night X 1 Room"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
+  },
   "QQSdHP": {
     "defaultMessage": "View More"
   },
   "QiKKFz": {
     "defaultMessage": "Change Password"
   },
+  "QwDSj/": {
+    "defaultMessage": "Min length should be 10"
+  },
   "Rtrei/": {
     "defaultMessage": "View Deal"
   },
   "TE4fIS": {
     "defaultMessage": "City"
+  },
+  "TWTu/9": {
+    "defaultMessage": "Credit Card Guarantee Required"
   },
   "U41zpQ": {
     "defaultMessage": "Old password:"
@@ -164,8 +215,17 @@
   "WF8jKB": {
     "defaultMessage": "Name:"
   },
+  "X7IMRK": {
+    "defaultMessage": "Check-In"
+  },
   "Y2s5iu": {
     "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
+  },
+  "Yg9wZZ": {
+    "defaultMessage": "12:00 PM"
+  },
+  "YtKv1z": {
+    "defaultMessage": "Avg/Night"
   },
   "ZmsB1S": {
     "defaultMessage": "Hotel lists"
@@ -176,17 +236,41 @@
   "d/gBvP": {
     "defaultMessage": "More Destinations.More Ease. More Affordable."
   },
+  "dM+p3/": {
+    "defaultMessage": "From"
+  },
   "dmGKS5": {
     "defaultMessage": "Check out: 12:00"
+  },
+  "dtgi/W": {
+    "defaultMessage": "Email is Required"
+  },
+  "e38GOF": {
+    "defaultMessage": "Amenities"
+  },
+  "evTYb/": {
+    "defaultMessage": "11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night Fee /Credit Card Required"
   },
   "eyOT/X": {
     "defaultMessage": "Point location"
   },
+  "g5DEE8": {
+    "defaultMessage": "Cancelation Policy"
+  },
   "gCsYTJ": {
     "defaultMessage": "New password:"
   },
+  "h73tAE": {
+    "defaultMessage": "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+  },
   "hN9DjA": {
     "defaultMessage": "Our Lowest Price"
+  },
+  "iqbd3D": {
+    "defaultMessage": "Hotel Amenities"
+  },
+  "j6WSBC": {
+    "defaultMessage": "Show Hotels"
   },
   "jUTmkf": {
     "defaultMessage": "Member Details-"
@@ -194,11 +278,23 @@
   "jvaZOr": {
     "defaultMessage": "Change Your Password"
   },
+  "jvo0vs": {
+    "defaultMessage": "Save"
+  },
+  "kTo0o2": {
+    "defaultMessage": "Suite"
+  },
+  "kg6n2g": {
+    "defaultMessage": "Max length should be 10"
+  },
   "ku+mDU": {
     "defaultMessage": "State"
   },
   "kuVWTT": {
     "defaultMessage": "Enter Hotel Amenities...."
+  },
+  "lRJWXn": {
+    "defaultMessage": "First Letter of name should be capital and name should be string"
   },
   "lhgV6Z": {
     "defaultMessage": "Top amenities"
@@ -212,14 +308,26 @@
   "nsZqim": {
     "defaultMessage": "Yamuna Nagar"
   },
+  "oMYHHk": {
+    "defaultMessage": "03:00 PM"
+  },
+  "ocaqXc": {
+    "defaultMessage": "Deluxe"
+  },
   "p2cPVQ": {
     "defaultMessage": "Bilaspur"
+  },
+  "q4I+Ga": {
+    "defaultMessage": "Room Description"
   },
   "qwx3Nk": {
     "defaultMessage": "Update Personal Information"
   },
   "r2Jjms": {
     "defaultMessage": "Log In"
+  },
+  "r6Hj+h": {
+    "defaultMessage": "Points Calendar"
   },
   "rvirM2": {
     "defaultMessage": "Location"
@@ -239,6 +347,9 @@
   "vONi+O": {
     "defaultMessage": "Country"
   },
+  "vmQF1b": {
+    "defaultMessage": "Night X"
+  },
   "wNLUau": {
     "defaultMessage": "Login / SignUp"
   },
@@ -251,7 +362,19 @@
   "xzKMCh": {
     "defaultMessage": "All Cities"
   },
+  "zF7Cth": {
+    "defaultMessage": "Guest"
+  },
+  "zFG+sR": {
+    "defaultMessage": "First Name is required"
+  },
   "zFegDD": {
     "defaultMessage": "Contact"
+  },
+  "zSOvI0": {
+    "defaultMessage": "Filters"
+  },
+  "zZn9wA": {
+    "defaultMessage": "Room price for"
   }
 }

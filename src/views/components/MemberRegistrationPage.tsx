@@ -7,6 +7,7 @@ import SignUp from "../components/SignUp";
 import { useSelector } from "react-redux";
 import BasicCard from "../components/Home";
 import MemberRegister from "./MemberRegister";
+import { FormattedMessage } from "react-intl";
 
 function MemberRegistrationPage() {
   const [verify, setVerify]: any = useState(0);
@@ -69,8 +70,9 @@ function MemberRegistrationPage() {
                   letterSpacing: 1,
                 }}
               >
-                Sign up with phone number and get exclusive access to discounts
-                and savings on OYO stays and with our many travel partners.
+                <FormattedMessage  defaultMessage=" Sign up with phone number and get exclusive access to discounts
+                and savings on OYO stays and with our many travel partners."/>
+               
               </Typography>
             </Typography>
           

@@ -2,7 +2,7 @@ import { Button, Stack } from "@mui/material";
 import React, { useState } from "react";
 import LoginModal from "./LoginModal";
 import ShowHotelsModal from "./ShowHotelsModal";
-import EditDialog from "./EditDialog";
+import EditDialog from "../../EditDialog";
 
 const Actions = ({
   setShowHotels,
