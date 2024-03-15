@@ -32,6 +32,9 @@ export default function PaymentDialogBox({
   setTotalPrice,
   setRoomPrice,
   totalRoomsAndGuests,
+  calculateDifference,
+  startdate,
+  enddate,
 }: any) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
@@ -80,11 +83,14 @@ export default function PaymentDialogBox({
                   hotelDetail={hotelDetail}
                   roomDetails={roomDetails}
                   totalGuests={totalGuests}
+                  calculateDifference={calculateDifference}
                   totalRooms={totalRooms}
                   totalPrice={totalPrice}
                   setTotalPrice={setTotalPrice}
                   setRoomPrice={setRoomPrice}
                   totalRoomsAndGuests={totalRoomsAndGuests}
+                  startdate={startdate}
+                  enddate={enddate}
                 />
               </Box>
             </Stack>

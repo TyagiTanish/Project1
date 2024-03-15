@@ -81,8 +81,9 @@ function BookingDetails() {
           border={"1px solid lightgray"}
           p={3}
           pt={0}
-          width={"93.5%"}
+          // width={{ sm: "93.5%" }}
           alignSelf={"center"}
+          ml={{ sm: -10 }}
           marginTop={0}
           overflow={"auto"}
           height={680}
@@ -121,23 +122,30 @@ function BookingDetails() {
           <Divider sx={{ width: "100%", alignSelf: "center" }} /> */}
           {screenSize <= 768 ? (
             <Stack justifyContent={"space-between"} mt={3} spacing={3}>
-              <Box>
-                <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 2 }}>
-                  Super OYO {data?.hotelId?.hotelName}
-                </Typography>
-                <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
-                  {data?.hotelId?.hotelName}
-                </Typography>
-                <Typography sx={{ fontSize: 12 }}>
-                  {/* SCF 116/1, Near Raj Mahindra agency, Sec 58, Shahi Majra,
+              <Stack
+                direction={"row"}
+                justifyContent={"space-between"}
+                alignItems={"center"}
+              >
+                <Stack>
+                  <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 2 }}>
+                    Super OYO {data?.hotelId?.hotelName}
+                  </Typography>
+                  <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
+                    {data?.hotelId?.hotelName}
+                  </Typography>
+                  <Typography sx={{ fontSize: 12 }}>
+                    {/* SCF 116/1, Near Raj Mahindra agency, Sec 58, Shahi Majra,
                   Phase 5, Mohali */}
-                  {`${data?.hotelId?.city} - ${data?.hotelId?.pinCode}, ${data?.hotelId?.state}, ${data?.hotelId?.country}`}
-                </Typography>
-              </Box>
-              <img
-                style={{ width: 200 }}
-                src={`http://localhost:8000/${data?.hotelId?.photo}`}
-              />
+                    {`${data?.hotelId?.city} - ${data?.hotelId?.pinCode}, ${data?.hotelId?.state}, ${data?.hotelId?.country}`}
+                  </Typography>
+                </Stack>
+                <img
+                  style={{ width: 150 }}
+                  src={`http://localhost:8000/${data?.hotelId?.photo}`}
+                  alt="imag"
+                />
+              </Stack>
             </Stack>
           ) : (
             <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
@@ -155,6 +163,7 @@ function BookingDetails() {
               <img
                 style={{ width: 200 }}
                 src={`http://localhost:8000/${data?.hotelId?.photo}`}
+                alt="phot"
               />
             </Stack>
           )}
@@ -164,29 +173,29 @@ function BookingDetails() {
               <Stack mt={3}>
                 <Stack direction={"row"}>
                   <Stack>
-                    <Typography>Primary Guest</Typography>
+                    <Typography fontWeight={600}>Primary Guest</Typography>
                     <Typography>{data?.userId?.name}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check In</Typography>
+                    <Typography fontWeight={600}>Check In On</Typography>
                     <Typography>{data?.bookFrom?.split("T")[0]}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check In Time</Typography>
+                    <Typography fontWeight={600}>Check In Time</Typography>
                     <Typography>10:00 PM</Typography>
                   </Stack>
                 </Stack>
                 <Stack direction={"row"} mt={3}>
                   <Stack>
-                    <Typography>Mobile Number</Typography>
+                    <Typography fontWeight={600}>Mobile Number</Typography>
                     <Typography>{data?.userId?.phone}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check Out</Typography>
+                    <Typography fontWeight={600}>Check Out</Typography>
                     <Typography>{data?.bookTo?.split("T")[0]}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography>Check Out Time</Typography>
+                    <Typography fontWeight={600}>Check Out Time</Typography>
                     <Typography>11:00 AM</Typography>
                   </Stack>
                 </Stack>
@@ -201,7 +210,7 @@ function BookingDetails() {
                   mt={3}
                   spacing={5}
                 >
-                  <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
+                  <Typography sx={{ fontSize: 16 }}>
                     {data?.totalGuests} Guests
                   </Typography>
                   <Stack>
@@ -212,23 +221,34 @@ function BookingDetails() {
               </Stack>
             </>
           ) : (
-            <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
+            <Stack
+              direction={"row"}
+              justifyContent={"space-between"}
+              mt={3}
+              // ml={10}
+            >
               <Stack>
-                <Stack direction={"row"} spacing={{ xl: 15, lg: 15, md: 3 }}>
+                <Stack direction={"row"} justifyContent={"space-between"}>
                   <Stack>
-                    <Typography sx={{ fontSize: 15 }}>Primary Guest</Typography>
+                    <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
+                      Primary Guest
+                    </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.userId?.name}
                     </Typography>
                   </Stack>
                   <Stack>
-                    <Typography sx={{ fontSize: 15 }}>Check In</Typography>
+                    <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
+                      Check In On
+                    </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.bookFrom?.split("T")[0]}
                     </Typography>
                   </Stack>
                   <Stack>
-                    <Typography sx={{ fontSize: 15 }}>Check In Time</Typography>
+                    <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
+                      Check In Time
+                    </Typography>
                     <Typography sx={{ fontSize: 15 }}>12:00 PM</Typography>
                   </Stack>
                 </Stack>
@@ -238,19 +258,23 @@ function BookingDetails() {
                   spacing={{ xl: 15, lg: 15, md: 3 }}
                 >
                   <Stack>
-                    <Typography sx={{ fontSize: 15 }}>Mobile Number</Typography>
+                    <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
+                      Mobile Number
+                    </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.userId?.phone}
                     </Typography>
                   </Stack>
                   <Stack>
-                    <Typography sx={{ fontSize: 15 }}>Check Out</Typography>
+                    <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
+                      Check Out
+                    </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.bookTo?.split("T")[0]}
                     </Typography>
                   </Stack>
                   <Stack>
-                    <Typography sx={{ fontSize: 15 }}>
+                    <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
                       Check Out Time
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>11:00 AM</Typography>
@@ -258,7 +282,7 @@ function BookingDetails() {
                 </Stack>
               </Stack>
               <Stack>
-                <Typography sx={{ fontSize: 20, fontWeight: 700 }}>
+                <Typography sx={{ fontSize: 20, fontWeight: 700, ml: 6 }}>
                   {data?.totalDays} Night
                 </Typography>
                 <Stack
@@ -266,6 +290,7 @@ function BookingDetails() {
                   justifyContent={"space-between"}
                   mt={5}
                   spacing={5}
+                  ml={3}
                 >
                   <Typography sx={{ fontSize: 13 }}>
                     {" "}

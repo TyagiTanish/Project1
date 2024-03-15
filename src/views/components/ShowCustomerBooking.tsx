@@ -32,7 +32,7 @@ function ShowCustomerBooking() {
     <>
       <Stack
         sx={{
-          p: 3,
+          // p: 3,
           pt: 0,
           mt: 2,
           "& .MuiInputBase-root::-webkit-scrollbar": {
@@ -41,7 +41,7 @@ function ShowCustomerBooking() {
         }}
         // alignItems={"center"}
         spacing={5}
-        width={"45%"}
+        // width={"45%"}
         maxHeight={710}
         overflow={"auto"}
       >
@@ -57,15 +57,17 @@ function ShowCustomerBooking() {
           >
             <CardContent>
               <Stack
-                direction={screenSize <= 768 ? "column" : "row"}
-                spacing={{ sm: 3, md: 5, lg: 10, xl: 8 }}
+                direction={"row"}
+                // spacing={{ sm: 3, md: 5, lg: 10, xl: 8 }}
               >
                 <Stack direction={"row"} spacing={3}>
-                  <Box
-                    component={"img"}
-                    sx={{ width: "200px", borderRadius: 2 }}
-                    src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
-                  />
+                  {window?.outerWidth > 768 && (
+                    <Box
+                      component={"img"}
+                      sx={{ width: "200px", borderRadius: 2 }}
+                      src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                    />
+                  )}
                   <Stack textAlign={"left"} width={200}>
                     <Typography sx={{ fontSize: 20, fontFamily: "system-ui" }}>
                       {item?.hotelId?.hotelName}
@@ -127,7 +129,7 @@ function ShowCustomerBooking() {
                       fontWeight: "bolder",
                     }}
                     onClick={() => {
-                      navigate(`/myBookings/${item._id}`);
+                      navigate(`/profile/myBookings/${item._id}`);
                     }}
                   >
                     View Details

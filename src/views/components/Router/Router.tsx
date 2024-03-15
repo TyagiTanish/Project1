@@ -1,7 +1,4 @@
-import {
-
-  useRoutes,
-} from "react-router-dom";
+import { useRoutes } from "react-router-dom";
 import MainPage from "../../pages/MainPage";
 import CustomerRoutes from "./Authentication/CustomerRoutes";
 import HomePage from "../Home";
@@ -26,12 +23,13 @@ import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
 import CustomerView from "../../layout/CustomerView/CustomerView";
 import CustomerBooking from "../CustomerBooking";
 import AdminDashboard from "../HotelOwner/Dashboard/AdminDashboard";
-
+import ProfileBox from "../ProfileBox";
+import BookingDetails from "../BookingDetails";
+import ShowCustomerBooking from "../ShowCustomerBooking";
 
 /**
  * Contains all the routers used within the webApp , Markdown is *Router*.
  */
-
 
 const router = [
   {
@@ -73,16 +71,12 @@ const router = [
     element: <CustomerView />,
     children: [
       {
-        index:true,
+        index: true,
         element: (
           <CustomerRoutes>
             <HomePage />
           </CustomerRoutes>
         ),
-      },
-      {
-        path: "/myBookings",
-        element: <CustomerBooking />,
       },
 
       {
@@ -97,9 +91,32 @@ const router = [
         path: "/profile",
         element: (
           <CustomerRoutes>
-            <Account />
+            {/* <Account /> */}
+            <ProfileBox />
           </CustomerRoutes>
         ),
+        children: [
+          {
+            path: "/profile/myBookings/:id",
+            element: (
+              <CustomerRoutes>
+                <BookingDetails />
+              </CustomerRoutes>
+            ),
+          },
+          {
+            path: "/profile/myBookings",
+            element: <ShowCustomerBooking />,
+          },
+          {
+            path: "/profile/accountSetting",
+            element: (
+              <CustomerRoutes>
+                <Account />
+              </CustomerRoutes>
+            ),
+          },
+        ],
       },
 
       {
@@ -115,14 +132,6 @@ const router = [
         element: (
           <CustomerRoutes>
             <ViewDeal />
-          </CustomerRoutes>
-        ),
-      },
-      {
-        path: "/myBookings/:id",
-        element: (
-          <CustomerRoutes>
-            <CustomerBooking />
           </CustomerRoutes>
         ),
       },
@@ -155,12 +164,12 @@ const router = [
     ),
     children: [
       {
-        index:true,
-        element:(
+        index: true,
+        element: (
           <MemberRoute>
-            <AdminDashboard/>
+            <AdminDashboard />
           </MemberRoute>
-        )
+        ),
       },
       {
         path: "/member/hotels",
@@ -170,7 +179,7 @@ const router = [
           </MemberRoute>
         ),
       },
-     
+
       {
         path: "/member/profile",
         element: (

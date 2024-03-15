@@ -16,7 +16,6 @@ import PersonIcon from "@mui/icons-material/Person";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Stack } from "@mui/system";
 
-
 export default function AccountMenu() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const user = useSelector((state: any) => state.userReducer.user);
@@ -37,7 +36,7 @@ export default function AccountMenu() {
 
   return (
     <React.Fragment>
-    <Tooltip title="Account settings">
+      <Tooltip title="Account settings">
         <Stack
           onClick={handleClick}
           direction={"row"}
@@ -101,7 +100,7 @@ export default function AccountMenu() {
         >
           <PersonIcon />
           <Link
-            to="/profile"
+            to="/profile/accountSetting"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
             Profile
@@ -113,7 +112,7 @@ export default function AccountMenu() {
         >
           <PersonIcon />
           <Link
-            to="/myBookings"
+            to="/profile/myBookings"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
             My Bookings
