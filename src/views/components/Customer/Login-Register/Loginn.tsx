@@ -81,7 +81,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
         }
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   const FormSchema = Yup.object().shape({

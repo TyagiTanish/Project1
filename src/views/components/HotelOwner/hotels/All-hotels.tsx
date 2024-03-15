@@ -22,7 +22,7 @@ const Allhotels = () => {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    console.log("screenSize", screenSize);
+    // console.log("screenSize", screenSize);
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -35,7 +35,7 @@ const Allhotels = () => {
   const navigate = useNavigate();
   const handleInputChange = useCallback((value: any) => {
     setSearchTerm(value);
-    console.log(searchTerm);
+    // console.log(searchTerm);
   }, []);
 
   useEffect(() => {

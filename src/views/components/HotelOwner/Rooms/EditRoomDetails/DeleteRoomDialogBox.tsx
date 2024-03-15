@@ -34,7 +34,7 @@ export default function OnDeleteDialogBox({
       enqueueSnackbar("Room Deleted Successfully", { variant: "success" });
       handleClose();
     } else {
-      console.log(id.id);
+      // console.log(id.id);
       await request.delete(`/deleteRoom/${id.id}`, {
         params: { roomid: roomId, photos: photos },
       });

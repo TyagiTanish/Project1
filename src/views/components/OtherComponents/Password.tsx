@@ -11,7 +11,7 @@ function Password() {
 
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.userReducer.user);
-  console.log(user);
+  // console.log(user);
 
   const { request } = useAuth();
   const onSubmit2 = async (data: any) => {

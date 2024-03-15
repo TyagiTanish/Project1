@@ -51,7 +51,7 @@ const Billing = () => {
       const result = await request.get(`/getHotel/${id?.id}`);
       sethotelDetail(result?.data);
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
   };
   useEffect(() => {
@@ -183,7 +183,7 @@ const Billing = () => {
     data.totalRooms = totalRoomsAndGuests?.rooms;
     data.roomId = roomDetails?._id;
     data.price = RoomPrice;
-    console.log(data);
+    // console.log(data);
     if (user) {
       const value = await request.post("/bookRoom", { data, hotelId });
       setBookingId(value.data.bookingId);

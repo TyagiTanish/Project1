@@ -258,7 +258,7 @@ export default function MemberRegister() {
   const [email, setEmail] = React.useState();
   const password = watch("password");
   const confirmPassword = watch("confirmPassword");
-  console.log(password);
+  // console.log(password);
   const [location, setLocation] = React.useState({
     latitude: "",
     longitude: "",
@@ -303,7 +303,7 @@ export default function MemberRegister() {
       formdata.set("discription", detail.discription);
       const result = await request.post("/registerMember", formdata);
 
-      console.log(result.data);
+      // console.log(result.data);
 
       navigate("/login");
     } else {

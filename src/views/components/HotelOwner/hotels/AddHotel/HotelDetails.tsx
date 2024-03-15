@@ -90,7 +90,7 @@ const HotelDetails = () => {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    console.log("screenSize", screenSize);
+    
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -136,7 +136,7 @@ const HotelDetails = () => {
 
   const formData = new FormData();
   const onSubmit = async (data: any) => {
-    console.log(data);
+    // console.log(data);
     if (step === 3) {
       setArr(arr);
       data.amenities = arr;

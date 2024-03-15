@@ -40,7 +40,7 @@ const bull = (
 );
 
 const handleClick = (item: any) => {
-  console.log(item?.hotelId?.photo);
+  // console.log(item?.hotelId?.photo);
 };
 function AcceptedBookings() {
   const [data, setData] = useState<any>([]);
@@ -285,12 +285,12 @@ function AcceptedBookings() {
     setOpen(false);
   };
   const dynamicHeight = Math.min(data.length * 3.5 + 10, 80) + "vh";
-  console.log(length);
+  // console.log(length);
   const handleSortModelChange = useCallback((sortModel: GridSortModel) => {
     // Here you save the data you need from the sort model
     setQueryOptions({ sortModel: [...sortModel] });
   }, []);
-  console.log(search);
+  // console.log(search);
   return (
     <>
       {/* {data.length == 0 ? (
