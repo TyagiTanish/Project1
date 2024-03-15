@@ -62,6 +62,7 @@ function Seachbar2() {
 
   const [guests, setGuests] = useState(data?.Guests != null ? data?.Guests : 1);
   const [render, setRender] = React.useState(0);
+  const [message, setMessage] = useState("");
   const [totalRooms, setTotalRooms] = useState(
     data?.Rooms != null ? data?.Rooms : 0
   );
@@ -175,6 +176,7 @@ function Seachbar2() {
           onChange={(e) => {
             setSearchTerm(e.target.value);
             const field = document.querySelector("#searchField");
+            setMessage("Please select a destination");
             handleCloseValidationPopper(field);
           }}
           defaultValue={searchTerm}
@@ -184,6 +186,7 @@ function Seachbar2() {
           searchBarAnchorEl={searchBarAnchorEl}
           handleCloseValidationPopper={handleCloseValidationPopper}
           setSearchBarAnchorEl={setSearchBarAnchorEl}
+          message={message}
         />
         {/* <DateRangePickers /> */}
         <Box sx={{ mt: 1 }}>
@@ -236,7 +239,9 @@ function Seachbar2() {
             if (searchTerm !== "") {
               dispatch(searchDetails(searchTerm));
               const field = document.querySelector("#searchField");
+              setMessage("Please select a destination");
               handleCloseValidationPopper(field);
+
               // navigate("/hotels");
             } else {
               const field = document.querySelector("#searchField");

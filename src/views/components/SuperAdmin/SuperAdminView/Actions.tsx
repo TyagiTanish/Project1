@@ -12,6 +12,7 @@ const Actions = ({
   modalHotel,
   open,
   setOpen,
+  setLoader,
 }: any) => {
   const [loginModal, setLogInModal] = useState(false);
   const [hotelOwner, setHotelOwner] = useState();
@@ -79,6 +80,7 @@ const Actions = ({
         setLogInModal={setLogInModal}
         members={members}
         hotelOwner={hotelOwner}
+        setLoader={setLoader}
       />
       <EditDialog
         open={openDialog}

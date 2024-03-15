@@ -34,7 +34,6 @@ const UT: any = City.getCitiesOfState("IN", "UT");
  */
 
 export default function BasicCard() {
-  const user = useSelector((state: any) => state.userReducer.user);
   const dispatch = useDispatch();
   const [data, updateData] = React.useState<any>(window.innerWidth);
   React.useEffect(() => {
@@ -43,6 +42,7 @@ export default function BasicCard() {
     };
     window.addEventListener("resize", setData);
   });
+
   return (
     <>
       <Stack direction={"row"} justifyContent={"space-between"} width={"98.8%"}>
@@ -172,8 +172,10 @@ export default function BasicCard() {
                   <Link to="/hotels">Rajaji nagar</Link> */}
                   {HR?.map((item: any) => (
                     <Link
-                      to="/hotels"
-                      onClick={() => dispatch(searchDetails(item?.name))}
+                      to="/"
+                      onClick={(e) => {
+                        dispatch(searchDetails(item?.name));
+                      }}
                     >
                       {item.name}
                     </Link>
@@ -223,7 +225,7 @@ export default function BasicCard() {
                   </Link>
                   {HP?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to="/"
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}
@@ -273,7 +275,7 @@ export default function BasicCard() {
                   </Link>
                   {PB?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to="/"
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}
@@ -318,12 +320,12 @@ export default function BasicCard() {
                     overflow: "auto",
                   }}
                 >
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                  <Link style={{ fontWeight: "bold" }} to="/">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {UP?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to={"/"}
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}
@@ -369,12 +371,12 @@ export default function BasicCard() {
                     overflow: "auto",
                   }}
                 >
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                  <Link style={{ fontWeight: "bold" }} to="/">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {MH?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to={"/"}
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}
@@ -418,12 +420,12 @@ export default function BasicCard() {
                     overflow: "auto",
                   }}
                 >
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                  <Link style={{ fontWeight: "bold" }} to="/">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {DL?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to={"/"}
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}
@@ -469,12 +471,12 @@ export default function BasicCard() {
                     ml: { sm: "-2%", lg: 0 },
                   }}
                 >
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                  <Link style={{ fontWeight: "bold" }} to="/">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {MP?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to="/"
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}
@@ -520,12 +522,12 @@ export default function BasicCard() {
                     ml: { sm: "-12%", lg: 0 },
                   }}
                 >
-                  <Link style={{ fontWeight: "bold" }} to="/hotels">
+                  <Link style={{ fontWeight: "bold" }} to="/">
                     <FormattedMessage defaultMessage="Popular Locations" />
                   </Link>
                   {UT?.map((item: any) => (
                     <Link
-                      to="/hotels"
+                      to="/"
                       onClick={() => dispatch(searchDetails(item?.name))}
                     >
                       {item.name}

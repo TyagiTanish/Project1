@@ -45,6 +45,8 @@ function SearchBar() {
   // }
   const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
   const [open, setOpen] = React.useState(false);
+  const [message, setMessage] = useState("");
+
   const handleClose = () => {
     setAnchorEl2(null);
   };
@@ -123,12 +125,29 @@ function SearchBar() {
     if (event?.value === "") {
       setSearchBarAnchorEl(event);
     } else {
-      setSearchBarAnchorEl(null);
+      if (date) {
+        setSearchBarAnchorEl(null);
+      } else {
+        const datePicker = document?.querySelector("#datePicker");
+        setMessage("Please select a Check-In and Check-Out date");
+        setSearchBarAnchorEl(datePicker || event);
+      }
     }
   };
+  const date = useSelector((state: any) => state.userReducer.date);
+
+  useMemo(() => {
+    if (date) {
+      setSearchBarAnchorEl(null);
+    }
+  }, [date]);
+
+  useMemo(() => {
+    setSearchTerm(search);
+  }, [search]);
 
   function error() {}
-  const date = useSelector((state: any) => state.userReducer.date);
+
   return (
     <>
       <Box
@@ -187,6 +206,7 @@ function SearchBar() {
               onChange={(e) => {
                 setSearchTerm(e.target.value);
                 const field = document.querySelector("#searchField");
+                setMessage(" Please select a destination");
                 handleCloseValidationPopper(field);
               }}
               defaultValue={searchTerm}
@@ -213,9 +233,11 @@ function SearchBar() {
               searchBarAnchorEl={searchBarAnchorEl}
               handleCloseValidationPopper={handleCloseValidationPopper}
               setSearchBarAnchorEl={setSearchBarAnchorEl}
+              message={message}
             />
             <Box mt={0}>
               <TextField
+                id="datePicker"
                 sx={{ bgcolor: "white", width: 300 }}
                 placeholder="Check in - Check out"
                 onClick={handleClick2}
@@ -256,15 +278,22 @@ function SearchBar() {
                 height: "100%",
                 borderRadius: 0,
               }}
-              onClick={(e) => {
+              onClick={() => {
                 if (searchTerm !== "") {
                   dispatch(searchDetails(searchTerm));
                   const field = document.querySelector("#searchField");
                   handleCloseValidationPopper(field);
-                  navigate("/hotels");
+                  if (date) {
+                    navigate("/hotels");
+                  } else {
+                    const datePicker = document?.querySelector("#datePicker");
+                    setMessage("Please select a Check-In and Check-Out date");
+                    handleCloseValidationPopper(datePicker);
+                  }
                 } else {
-                  const field = document.querySelector("#searchField");
-                  handleCloseValidationPopper(field);
+                  const searchField = document.querySelector("#searchField");
+                  setMessage(" Please select a destination");
+                  handleCloseValidationPopper(searchField);
                 }
               }}
             >
