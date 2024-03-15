@@ -19,7 +19,7 @@ const ProfileIcons = () => {
   React.useEffect(() => {
     const setData = () => {
       updateData(window.innerWidth);
-      console.log(data);
+      // console.log(data);
     };
     window.addEventListener("resize", setData);
   });

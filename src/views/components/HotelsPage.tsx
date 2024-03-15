@@ -70,7 +70,7 @@ const HotelsPage = () => {
         setFilteredData(result?.data);
       }
     } catch (error) {
-      console.log(error);
+      // console.log(error);
     }
 
     // const result = await request.get("/getHotels", {

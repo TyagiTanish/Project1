@@ -18,4 +18,4 @@ Object.entries(enMessageObj).forEach(([key, item]) => {
     enToFr[key] = { defaultMessage: item.defaultMessage };
   }
 });
-console.log(JSON.stringify(enToFr));
+// console.log(JSON.stringify(enToFr));

@@ -119,14 +119,14 @@ function Seachbar2() {
   const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
   const [dates, setDates] = useState<any>("");
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
-    console.log(anchorEl2);
+    // console.log(anchorEl2);
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
   const open = Boolean(anchorEl2);
   const id = open ? "simple-popper" : undefined;
   const handleCloseValidationPopper = (event: any) => {
     if (event?.value === "") {
-      console.log("hii");
+      // console.log("hii");
       setSearchBarAnchorEl(event);
     } else {
       setSearchBarAnchorEl(null);

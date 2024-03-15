@@ -76,7 +76,7 @@ export default function EditRoomDetails({
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    console.log("screenSize", screenSize);
+    // console.log("screenSize", screenSize);
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -177,7 +177,7 @@ export default function EditRoomDetails({
     if (Object.keys(id).length === 0) {
       await request.post("/editRoom", formData);
     } else {
-      console.log("hello");
+      // console.log("hello");
 
       await request.post(`/editRoom/${id.id}`, formData);
     }
@@ -190,7 +190,7 @@ export default function EditRoomDetails({
   React.useEffect(() => {
     setPreviewIndex(previewIndex);
   }, [previewIndex, editRoom]);
-  console.log(editRoom?.roomType, "Type");
+  // console.log(editRoom?.roomType, "Type");
   return (
     <Dialog
       fullScreen={fullScreen}

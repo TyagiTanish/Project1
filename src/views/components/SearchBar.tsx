@@ -59,7 +59,7 @@ function SearchBar() {
   const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
 
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
-    console.log(anchorEl2);
+    // console.log(anchorEl2);
     setAnchorEl2(anchorEl2 ? null : event.currentTarget);
   };
 

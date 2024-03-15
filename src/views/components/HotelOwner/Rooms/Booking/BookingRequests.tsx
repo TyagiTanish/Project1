@@ -58,7 +58,7 @@ export default function Bookings() {
     },
     []
   );
-  console.log(data);
+  // console.log(data);
   const columns: GridColDef[] = [
     {
       field: "fullName",

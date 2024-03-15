@@ -65,7 +65,7 @@ export default function HotelAmenities({ amenities }: any) {
     amenities?.includes(String(item.index))
   );
 
-  console.log(ShowAmenities, amenities);
+  // console.log(ShowAmenities, amenities);
 
   return (
     <>

@@ -8,6 +8,7 @@ import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 import InputLabel from "@mui/material/InputLabel";
+import CloseIcon from '@mui/icons-material/Close';
 import {
   Box,
   Divider,
@@ -18,17 +19,11 @@ import {
   TextField,
 } from "@mui/material";
 import MenuItem from "@mui/material/MenuItem";
-import useAuth from "../../../../Hooks/useAuth/useAuth";
+import useAuth from "../../Hooks/useAuth/useAuth";
 
 import { useForm } from "react-hook-form";
 
-export default function EditDialog({
-  open,
-  setOpen,
-  item,
-  setItem,
-  setRender,
-}: any) {
+export default function EditDialog({ open, setOpen, item, setItem ,setRender}: any) {
   const { request } = useAuth();
   const theme = useTheme();
 
@@ -38,6 +33,8 @@ export default function EditDialog({
 
   const handleClose = () => {
     setOpen(false);
+    setItem(item);
+    // console.log(item);
   };
   const [age, setAge] = React.useState("Admin");
 
@@ -45,9 +42,9 @@ export default function EditDialog({
     setAge(event.target.value as string);
   };
 
-  const handleDelete = async () => {
-    await request.put(`/memberDelete/${item?._id}`);
-    setRender((prev: any) => prev + 1);
+  const handleDelete =async () => {
+ await  request.put(`/memberDelete/${item?._id}`);
+   
   };
 
   const {
@@ -64,9 +61,9 @@ export default function EditDialog({
       role: item?.role,
     },
   });
-  const onSubmit = async (data: any) => {
-    await request.put(`/memberUpdate/${item?._id}`, data);
-    setRender((prev: any) => prev + 1);
+  const onSubmit = async(data: any) => {
+   await request.put(`/memberUpdate/${item?._id}`, data);
+    setRender((prev:any)=> prev+1)
     handleClose();
   };
   React.useMemo(() => {
@@ -82,7 +79,8 @@ export default function EditDialog({
         onClose={handleClose}
         aria-labelledby="responsive-dialog-title"
       >
-        <DialogTitle id="responsive-dialog-title">{item?.name}</DialogTitle>
+        <Stack direction={'row'} justifyContent={'space-between'} alignItems={'center'}> <DialogTitle id="responsive-dialog-title">{item?.name}</DialogTitle><Box sx={{mr:1,cursor:'pointer'}} onClick={handleClose}><CloseIcon fontSize="small"/></Box></Stack>
+       
         <Divider />
         <DialogContent>
           <form onSubmit={handleSubmit(onSubmit)}>

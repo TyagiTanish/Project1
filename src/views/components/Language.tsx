@@ -23,7 +23,7 @@ export default function Language() {
   };
 
 const handleChangeLanguage = (value:any) => {
-  console.log(value)
+  // console.log(value)
    localStorage.setItem('locale',value) 
    dispatch(locale(value))
    setLocale(value)
