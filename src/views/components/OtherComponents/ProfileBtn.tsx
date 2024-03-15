@@ -8,27 +8,19 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
-import PersonAdd from "@mui/icons-material/PersonAdd";
-import Settings from "@mui/icons-material/Settings";
 import Logout from "@mui/icons-material/Logout";
-import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
-import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { userLogin, userLogout } from "../components/redux/user/userSlice";
-import Account from "../components/Customer/AccountSettings/Account";
-import { Stack } from "@mui/material";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import { userLogout } from "../redux/user/userSlice";
+import { Link } from "react-router-dom";
+import PersonIcon from "@mui/icons-material/Person";
+import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
+import { Stack } from "@mui/system";
 
-/**
- * A component to show on the navbar for giving more features . Markdown is Menu*.
- */
 export default function AccountMenu() {
-  const user = useSelector((state: any) => state.userReducer.user);
-  // console.log(user);
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
+  const user = useSelector((state: any) => state.userReducer.user);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -36,20 +28,14 @@ export default function AccountMenu() {
     setAnchorEl(null);
   };
 
-  const handleLogout = async () => {
-    await localStorage.clear();
+  const handleLogOut = () => {
+    localStorage.removeItem("authToken");
     dispatch(userLogout());
-    navigate("/");
+    setAnchorEl(null);
   };
-  const openProfile = () => {
-    if (user?.role === "member") {
-      navigate("/member/profile");
-    } else {
-      navigate("/superAdmin/profile");
-    }
-  };
+
   return (
-    <>
+    <React.Fragment>
       <Tooltip title="Account settings">
         <Stack
           onClick={handleClick}
@@ -66,7 +52,7 @@ export default function AccountMenu() {
           borderRadius={10}
         >
           <Avatar
-            src={require(`./user.png`)}
+            src={require(`../../layout/user.png`)}
             sx={{ width: 32, height: 32, mr: 1 }}
           ></Avatar>
           <SettingsOutlinedIcon sx={{ color: "gray" }} />
@@ -90,13 +76,13 @@ export default function AccountMenu() {
               ml: -0.5,
               mr: 1,
             },
-            "&::before": {
+            "&:before": {
               content: '""',
               display: "block",
               position: "absolute",
               top: 0,
               right: 14,
-              width: 10,
+              width: 20,
               height: 10,
               bgcolor: "background.paper",
               transform: "translateY(-50%) rotate(45deg)",
@@ -107,20 +93,39 @@ export default function AccountMenu() {
         transformOrigin={{ horizontal: "right", vertical: "top" }}
         anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
       >
-        <Divider />
-        <MenuItem onClick={openProfile}>
-          <ListItemIcon>
-            <AccountBoxIcon fontSize="small" />
-          </ListItemIcon>
-          My Account
+        {" "}
+        <MenuItem
+          onClick={handleClose}
+          sx={{ display: "flex", flexDirection: "row" }}
+        >
+          <PersonIcon />
+          <Link
+            to="/profile/accountSetting"
+            style={{ textDecoration: "none", color: "black", marginTop: 3 }}
+          >
+            Profile
+          </Link>
         </MenuItem>
-        <MenuItem onClick={handleLogout}>
+        <MenuItem
+          onClick={handleClose}
+          sx={{ display: "flex", flexDirection: "row" }}
+        >
+          <PersonIcon />
+          <Link
+            to="/profile/myBookings"
+            style={{ textDecoration: "none", color: "black", marginTop: 3 }}
+          >
+            My Bookings
+          </Link>
+        </MenuItem>
+        <Divider />
+        <MenuItem onClick={handleLogOut}>
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
           Logout
         </MenuItem>
       </Menu>
-    </>
+    </React.Fragment>
   );
 }

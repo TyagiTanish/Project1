@@ -1,37 +1,43 @@
-import * as React from 'react';
-import AspectRatio from '@mui/joy/AspectRatio';
-import Box from '@mui/joy/Box';
-import Drawer from '@mui/joy/Drawer';
-import Button from '@mui/joy/Button';
-import Card from '@mui/joy/Card';
-import CardContent from '@mui/joy/CardContent';
-import Checkbox from '@mui/joy/Checkbox';
-import DialogTitle from '@mui/joy/DialogTitle';
-import DialogContent from '@mui/joy/DialogContent';
-import ModalClose from '@mui/joy/ModalClose';
-import Divider from '@mui/joy/Divider';
-import FormControl from '@mui/joy/FormControl';
-import FormLabel from '@mui/joy/FormLabel';
-import FormHelperText from '@mui/joy/FormHelperText';
-import List from '@mui/joy/List';
-import ListItem from '@mui/joy/ListItem';
-import Stack from '@mui/joy/Stack';
-import RadioGroup from '@mui/joy/RadioGroup';
-import Radio from '@mui/joy/Radio';
-import Sheet from '@mui/joy/Sheet';
-import Switch from '@mui/joy/Switch';
-import Typography from '@mui/joy/Typography';
-import TuneIcon from '@mui/icons-material/TuneRounded';
-import HomeRoundedIcon from '@mui/icons-material/HomeRounded';
-import ApartmentRoundedIcon from '@mui/icons-material/ApartmentRounded';
-import MeetingRoomRoundedIcon from '@mui/icons-material/MeetingRoomRounded';
-import HotelRoundedIcon from '@mui/icons-material/HotelRounded';
-import Done from '@mui/icons-material/Done';
-import SearchHotels from '../../../SearchHotels';
+import * as React from "react";
+import AspectRatio from "@mui/joy/AspectRatio";
+import Box from "@mui/joy/Box";
+import Drawer from "@mui/joy/Drawer";
+import Button from "@mui/joy/Button";
+import Card from "@mui/joy/Card";
+import CardContent from "@mui/joy/CardContent";
+import Checkbox from "@mui/joy/Checkbox";
+import DialogTitle from "@mui/joy/DialogTitle";
+import DialogContent from "@mui/joy/DialogContent";
+import ModalClose from "@mui/joy/ModalClose";
+import Divider from "@mui/joy/Divider";
+import FormControl from "@mui/joy/FormControl";
+import FormLabel from "@mui/joy/FormLabel";
+import FormHelperText from "@mui/joy/FormHelperText";
+import List from "@mui/joy/List";
+import ListItem from "@mui/joy/ListItem";
+import Stack from "@mui/joy/Stack";
+import RadioGroup from "@mui/joy/RadioGroup";
+import Radio from "@mui/joy/Radio";
+import Sheet from "@mui/joy/Sheet";
+import Switch from "@mui/joy/Switch";
+import Typography from "@mui/joy/Typography";
+import TuneIcon from "@mui/icons-material/TuneRounded";
+import HomeRoundedIcon from "@mui/icons-material/HomeRounded";
+import ApartmentRoundedIcon from "@mui/icons-material/ApartmentRounded";
+import MeetingRoomRoundedIcon from "@mui/icons-material/MeetingRoomRounded";
+import HotelRoundedIcon from "@mui/icons-material/HotelRounded";
+import Done from "@mui/icons-material/Done";
+import SearchHotels from "../SearchHotels";
 
-export default function HotelListDrawer({filteredData,handleClick,handleInputChange,seacrhTerm,data}:any) {
+export default function HotelListDrawer({
+  filteredData,
+  handleClick,
+  handleInputChange,
+  seacrhTerm,
+  data,
+}: any) {
   const [open, setOpen] = React.useState(false);
-  const [type, setType] = React.useState('Guesthouse');
+  const [type, setType] = React.useState("Guesthouse");
   const [amenities, setAmenities] = React.useState([0, 6]);
 
   return (
@@ -52,27 +58,33 @@ export default function HotelListDrawer({filteredData,handleClick,handleInputCha
         slotProps={{
           content: {
             sx: {
-              bgcolor: 'transparent',
+              bgcolor: "transparent",
               p: { md: 3, sm: 0 },
-              boxShadow: 'none',
-              m:2,
-              height:'90vh'
+              boxShadow: "none",
+              m: 2,
+              height: "90vh",
             },
           },
         }}
       >
         <Sheet
           sx={{
-            borderRadius: 'md',
+            borderRadius: "md",
             p: 2,
-            display: 'flex',
-            flexDirection: 'column',
+            display: "flex",
+            flexDirection: "column",
             gap: 2,
-            height: '100%',
-            overflow: 'auto',
+            height: "100%",
+            overflow: "auto",
           }}
         >
-            <SearchHotels  filteredData={filteredData} handleClick={handleClick} handleInputChange={handleInputChange} seacrhTerm={seacrhTerm} data={{id:filteredData[0]?._id}}  />
+          <SearchHotels
+            filteredData={filteredData}
+            handleClick={handleClick}
+            handleInputChange={handleInputChange}
+            seacrhTerm={seacrhTerm}
+            data={{ id: filteredData[0]?._id }}
+          />
           {/* <DialogTitle>Filters</DialogTitle>
           <ModalClose />
           <Divider sx={{ mt: 'auto' }} />
@@ -175,7 +187,7 @@ export default function HotelListDrawer({filteredData,handleClick,handleInputCha
                         sx={{ width: 20, borderRadius: 20, ml: -0.5, mr: 0.75 }}
                       >
                         {/* <div>{selected && <Done fontSize="md" />}</div> */}
-                      {/* </AspectRatio>
+          {/* </AspectRatio>
                       <Checkbox
                         size="sm"
                         color="neutral"

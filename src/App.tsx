@@ -1,11 +1,11 @@
 import "./App.css";
 import { useNavigate } from "react-router-dom";
-import LoginSystem from "./views/components/LoginSystem";
+import LoginSystem from "./views/components/Router/LoginSystem";
 import { SnackbarProvider } from "notistack";
 import useAuth from "./Hooks/useAuth/useAuth";
 import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
-import Locales from "./views/components/Locale";
+import Locales from "./views/components/Language/Locale";
 import { QueryClient, QueryClientProvider } from "react-query";
 
 function App() {

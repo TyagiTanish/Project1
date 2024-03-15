@@ -8,7 +8,7 @@ import {
   Link,
   BrowserRouter,
 } from "react-router-dom";
-import LoginSystem from "./views/components/LoginSystem";
+import LoginSystem from "./views/components/Router/LoginSystem";
 import store, { persistor } from "./views/components/redux/store";
 import { PersistGate } from "redux-persist/integration/react";
 
