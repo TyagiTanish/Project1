@@ -11,7 +11,7 @@ function guestAuth() {
   request.interceptors.request.use(config => {
     const controller = new AbortController();
     if (!localStorage.getItem("authToken")) {
-      console.log("token..........");
+      // console.log("token..........");
       controller.abort();
     }
     return {

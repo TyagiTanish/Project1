@@ -21,7 +21,7 @@ function ShowCustomerBooking() {
   const [bookings, setBookings] = React.useState<any>([]);
   const fetchBookings = async () => {
     const result = await request.get("/getBookings");
-    console.log(result.data);
+    // console.log(result.data);
     setBookings(result.data);
   };
 
