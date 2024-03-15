@@ -6,7 +6,7 @@ import RoomDetailModal from "./RoomDetailsModal";
 import RoomDetailBox from "./RoomDetailsDialog";
 import { useParams } from "react-router-dom";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
-import AddRooms from "../../../Rooms";
+import AddRooms from "../../../OtherComponents/Rooms";
 import { Stack } from "@mui/material";
 
 export default function AllRooms() {
@@ -23,7 +23,7 @@ export default function AllRooms() {
       const result = await request.get("/hotels");
       setRooms(result?.data[0]?.rooms);
       const rooms = result?.data[0]?.rooms;
-      setCategories(result?.data[0]?.categories)
+      setCategories(result?.data[0]?.categories);
       // filtering categories for showing while adding a room
 
       if (rooms?.length > 0) {
@@ -39,7 +39,7 @@ export default function AllRooms() {
       const result = await request.get(`/getInfo/${id.id}`);
       setRooms(result?.data[0]?.rooms);
       const rooms = result?.data[0]?.rooms;
-      setCategories(result?.data[0]?.categories)
+      setCategories(result?.data[0]?.categories);
       // filtering categories for showing while adding a room
 
       if (rooms?.length > 0) {
@@ -52,7 +52,6 @@ export default function AllRooms() {
         setShowCategories(result?.data[0]?.categories);
       }
     }
-    
   };
 
   React.useEffect(() => {
@@ -61,13 +60,13 @@ export default function AllRooms() {
 
   return (
     <>
-        <AddRooms setRender={setRender} showCategories={showCategories} />
+      <AddRooms setRender={setRender} showCategories={showCategories} />
       <Box sx={{ flexGrow: 1 }} padding={9}>
         <Grid
           container
           // spacing={{ xs: 2, md: 2 }}
           gap={2}
-          columns={{ xs: 1, sm: 5,md: 4, xl: 12 }}
+          columns={{ xs: 1, sm: 5, md: 4, xl: 12 }}
         >
           {Rooms?.map((room, index) => (
             <RoomDetail

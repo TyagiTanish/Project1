@@ -18,12 +18,12 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import MailIcon from "@mui/icons-material/Mail";
-import Logo from "../components/Logo";
+import Logo from "../components/Logo/Logo";
 import { Stack, Tooltip } from "@mui/material";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import BedIcon from "@mui/icons-material/Bed";
-import SearchHotels from "../components/SearchHotels";
-import AboutHotel from "../components/AboutHotel";
+import SearchHotels from "../components/HotelOwner/hotels/SearchHotels";
+import AboutHotel from "../components/HotelOwner/AboutHotel";
 import { Navigate, Outlet } from "react-router";
 import { useNavigate } from "react-router-dom";
 import LogoutIcon from "@mui/icons-material/Logout";
@@ -31,7 +31,7 @@ import Menu from "./Menu";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
 import InsertInvitationIcon from "@mui/icons-material/InsertInvitation";
 import { useSelector } from "react-redux";
-import Language from "../components/Language";
+import Language from "../components/Language/Language";
 // import ApartmentOutlinedIcon from '@mui/icons-material/ApartmentOutlined';
 const drawerWidth = 240;
 
@@ -180,12 +180,19 @@ export default function HotelOwnerView() {
               </Stack>
               <Stack
                 direction={"row"}
-                alignItems={'center'}
+                alignItems={"center"}
                 spacing={2}
                 // ml={{ lg: "85%", md: "87%", sm: "80%" }}
               >
-                <Language/>
-                <Stack><Typography  color={'black'} fontWeight={'bolder'}  >Hello,{user?.name}</Typography><Typography color={'gray'} fontSize={'0.9rem'} >{user?.role?.toUpperCase()}</Typography></Stack>
+                <Language />
+                <Stack>
+                  <Typography color={"black"} fontWeight={"bolder"}>
+                    Hello,{user?.name}
+                  </Typography>
+                  <Typography color={"gray"} fontSize={"0.9rem"}>
+                    {user?.role?.toUpperCase()}
+                  </Typography>
+                </Stack>
                 <Menu />
               </Stack>
             </Stack>
@@ -230,7 +237,10 @@ export default function HotelOwnerView() {
                   backgroundColor: selectedIndex === 0 ? "lightgray" : null,
                 }}
                 // selected={selectedIndex === 0}
-                onClick={(event) => {handleListItemClick(event, 0); navigate("/member");}}
+                onClick={(event) => {
+                  handleListItemClick(event, 0);
+                  navigate("/member");
+                }}
               >
                 <ListItemIcon
                   sx={{

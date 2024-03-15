@@ -33,7 +33,7 @@ import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { useDropzone } from "react-dropzone";
 import * as Yup from "yup";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
-import AddHotelLocation from "../../../AddHotelLocation";
+import AddHotelLocation from "../../../Register/MemberRegister/AddHotelLocation";
 
 const HotelDetails = () => {
   const navigate = useNavigate();

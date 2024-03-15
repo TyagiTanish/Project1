@@ -4,9 +4,9 @@ import { Box, Button, Stack } from "@mui/material";
 
 import { Link, useNavigate } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
-import SearchHotels from "../../SearchHotels";
-import AboutHotel from "../../AboutHotel";
-import Message from "../../Message";
+import SearchHotels from "./SearchHotels";
+import AboutHotel from "../AboutHotel";
+import Message from "../../OtherComponents/Message";
 import HotelListDrawer from "./DrawerWithHotelName/HotelLIstDrawer";
 
 const Allhotels = () => {

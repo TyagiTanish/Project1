@@ -1,9 +1,9 @@
 import React from "react";
-import TabletNavbar from "../../components/TabletNavbar";
+import TabletNavbar from "../../components/Customer/AccountSettings/TabletNavbar";
 import { Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
-import AccountMenu from "../../components/ProfileBtn";
-import Language from "../../components/Language";
+import AccountMenu from "../../components/OtherComponents/ProfileBtn";
+import Language from "../../components/Language/Language";
 import { FormattedMessage } from "react-intl";
 import CallIcon from "@mui/icons-material/Call";
 import PersonIcon from "@mui/icons-material/Person";
@@ -32,7 +32,12 @@ const ProfileIcons = () => {
         </Box>
       ) : user ? (
         <>
-          <Stack direction={"row"} spacing={3} alignItems={"center"} marginRight={2}>
+          <Stack
+            direction={"row"}
+            spacing={3}
+            alignItems={"center"}
+            marginRight={2}
+          >
             <Language />
             <Stack direction={"row"} alignItems={"center"} spacing={1}>
               <BusinessIcon sx={{ fontSize: "30px" }} />
@@ -56,11 +61,19 @@ const ProfileIcons = () => {
                 {user?.role?.toUpperCase()}
               </Typography>
             </Stack>
-          <Box sx={{cursor:'pointer'}}> <AccountMenu /></Box> 
+            <Box sx={{ cursor: "pointer" }}>
+              {" "}
+              <AccountMenu />
+            </Box>
           </Stack>
         </>
       ) : (
-        <Stack direction={"row"} spacing={2} alignItems={"center"} marginRight={2}>
+        <Stack
+          direction={"row"}
+          spacing={2}
+          alignItems={"center"}
+          marginRight={2}
+        >
           <Language />
           <IconButton
             href="/memberRegister"
