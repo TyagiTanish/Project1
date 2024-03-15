@@ -419,6 +419,9 @@ const Billing = () => {
             setRoomPrice={setRoomPrice}
             totalRoomsAndGuests={totalRoomsAndGuests}
             setSubmitButton={setSubmitButton}
+            calculateDifference={calculateDifference}
+            startdate={startdate}
+            enddate={enddate}
           />
         </>
       )}
