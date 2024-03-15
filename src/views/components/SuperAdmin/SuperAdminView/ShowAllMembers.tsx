@@ -417,7 +417,10 @@ export default function ShowAllMembers() {
         setOpen={setOpenDialog}
         item={item}
         setItem={setItem}
+<<<<<<< Updated upstream
         setRender={setRender}
+=======
+>>>>>>> Stashed changes
       /> */}
     </>
   );
