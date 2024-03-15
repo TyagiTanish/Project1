@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 const UseRoomAndGuestQuantity = () => {
   // const data: any = localStorage.getItem("Rooms&Guests");
   // const parsedData = JSON.parse(data);
-  const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
+  const data = useSelector((state: any) => state?.userReducer?.locale);
   const TotalRooms = useRef(0);
   const TotalGuests = useRef(0);
   useMemo(() => {

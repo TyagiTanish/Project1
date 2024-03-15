@@ -22,7 +22,7 @@ function ProfileBox() {
         {" "}
         <Stack
           sx={{
-            mt: 10,
+            mt: 5,
             // fontSize: { md: 14, xl: 18 },
             ml: { lg: 20, sm: 4 },
           }}
@@ -36,7 +36,11 @@ function ProfileBox() {
             className="account"
             sx={{
               mt: 2,
-              backgroundColor: "rgba(243,244,245)",
+              backgroundColor:
+                window.location.href ===
+                "http://localhost:3000/profile/accountSetting"
+                  ? "lightgray"
+                  : "white",
               padding: 1,
               width: 140,
               cursor: "pointer",
@@ -55,11 +59,14 @@ function ProfileBox() {
             className="account"
             sx={{
               mt: 2,
-              backgroundColor: "rgba(243,244,245)",
+              backgroundColor:
+                window.location.href ===
+                "http://localhost:3000/profile/myBookings"
+                  ? "lightgray"
+                  : "white",
               padding: 1,
               width: 140,
               cursor: "pointer",
-              // fontSize: { xl: 14, md: 14, sm: 12 },
               textTransform: "none",
               color: "black",
             }}
@@ -83,7 +90,7 @@ function ProfileBox() {
             <FormattedMessage defaultMessage="Log Out" />
           </Box>
         </Stack>
-        <Stack ml={"10%"} mt={10}>
+        <Stack ml={"10%"} mt={5}>
           <Outlet />
         </Stack>
       </Stack>

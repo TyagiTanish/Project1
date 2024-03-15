@@ -105,15 +105,9 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
       <Box width={{ sm: 350, md: 400, xl: 400 }}>
         <Typography
           sx={{
-            // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-            // minHeight: {xl:"30px",md:"20px"},
-            // paddingTop:{xl:1,md:0.5,sm:0.5},
-            // paddingBottom:{md:0.5,sm:0.5},
-            // paddingLeft:{xl:"95px",md:"65px",sm:'50px'},
             fontWeight: 700,
             color: "white",
-            fontSize: { xl: "20px" },
             textAlign: "center",
           }}
         >
@@ -122,8 +116,6 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
 
         <Box
           sx={{
-            // paddingLeft: 3,
-            // paddingRight: 2,
             p: 2,
             background: "white",
           }}
@@ -135,7 +127,6 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             sx={{
               fontSize: { xl: "32px", md: "25px", sm: "25px" },
               fontWeight: "700",
-              // ml: { sm: -1, md: -1, xl: 0 },
             }}
           >
             <FormattedMessage defaultMessage="Login" />
@@ -170,13 +161,6 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                   <b>
                     <FormattedMessage defaultMessage="Password " />
                   </b>
-                  {/* <br /> */}
-                  {/* <TextField
-                    id="password"
-                    type="password"
-                    sx={{ fontWeight: "500", mt: -2 }}
-                    {...register("password")}
-                  ></TextField> */}
                   <FormControl sx={{ width: "41ch" }} variant="outlined">
                     <OutlinedInput
                       id="outlined-adornment-password"

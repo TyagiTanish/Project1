@@ -70,9 +70,8 @@ function BookingDetails() {
     <>
       <Stack sx={{ m: 5 }}>
         <Box sx={{ mb: -3 }}>
-          {" "}
           {loader && (
-            <Box sx={{ width: "100%", mt: -3 }}>
+            <Box sx={{ mt: -3, ml: -10 }}>
               <LinearIndeterminate />
             </Box>
           )}
