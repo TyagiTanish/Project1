@@ -12,8 +12,9 @@ import TuneIcon from "@mui/icons-material/TuneRounded";
 import ToggleDrawerFilter from "../../Filters/ToggleDrawerFilter";
 import Loader from "../../loader/Loader";
 import { useDispatch } from "react-redux";
-import { price, category } from "./redux/user/userSlice";
+
 import { FormattedMessage } from "react-intl";
+import { price, category } from "../../redux/user/userSlice";
 
 /**
  *  To show all the hotels to user. Markdown is *HotelsPage*.
