@@ -4,7 +4,7 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { StaticDateRangePicker } from "@mui/x-date-pickers-pro/StaticDateRangePicker";
 import dayjs from "dayjs";
-import { Button, FormHelperText, Stack, Typography } from "@mui/material";
+import { Box, Button, FormHelperText, Stack, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { date } from "../../../../redux/user/userSlice";
 
@@ -59,6 +59,9 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
     <>
       {" "}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
+        <Box color={"red"} m={1} width={"90%"}>
+          {disabled?.message}
+        </Box>
         <StaticDateRangePicker
           minDate={dayjs(new Date())}
           slotProps={{
@@ -70,8 +73,8 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
           }}
         />
       </LocalizationProvider>
+      {/* <Stack width={"100%"}> */}
       <Stack direction={"row"} sx={{ float: "right", m: 1 }} spacing={1}>
-        {" "}
         <Button onClick={onClose}>Cancel</Button>
         <Button
           onClick={handleClick}
@@ -80,6 +83,7 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
         >
           Ok
         </Button>
+        {/* </Stack> */}
       </Stack>
     </>
   );

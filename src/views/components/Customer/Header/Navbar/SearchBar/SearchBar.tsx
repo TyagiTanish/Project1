@@ -46,6 +46,7 @@ function SearchBar() {
   const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
   const [open, setOpen] = React.useState(false);
   const [message, setMessage] = useState("");
+  const [dateValidationMessage, setDateValidationMessage] = useState(false);
 
   const handleClose = () => {
     setAnchorEl2(null);

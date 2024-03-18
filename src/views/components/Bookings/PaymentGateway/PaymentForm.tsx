@@ -11,19 +11,23 @@ const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 
-
 /**
-* to show payment card . Markdown is *PaymentForm*.
-*/
+ * to show payment card . Markdown is *PaymentForm*.
+ */
 
-
-const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result }: any) => {
+const PaymentForm = ({
+  setDisplayLoader,
+  setDisplay,
+  bookingId,
+  totalPrice,
+  result,
+}: any) => {
   const stripe = useStripe();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const elements = useElements();
-  const [message,setMessage] = useState(false)
+  const [message, setMessage] = useState(false);
   const [error, setError] = useState(null);
-  const [disableButton,setDisableButton] = useState(false);
+  const [disableButton, setDisableButton] = useState(false);
   const { request } = useAuth();
   const cardElementOptions = {
     style: {
@@ -41,13 +45,13 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
   };
 
   const handleSubmit = async (event: any) => {
-    setDisableButton(true)
+    setDisableButton(true);
     event.preventDefault();
 
     if (!stripe || !elements) {
       return;
     }
-    setMessage(true)
+    setMessage(true);
     const cardElement = elements.getElement(CardElement);
 
     const { token, error } = await stripe.createToken(cardElement as any);
@@ -62,7 +66,7 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         headers: {
           "Content-Type": "application/json",
         },
-        body: {token:JSON.stringify({token}),price:totalPrice},
+        body: { token: JSON.stringify({ token }), price: totalPrice },
       });
 
       const result = await response.data;
@@ -75,7 +79,7 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         });
         setTimeout(() => {
           setDisplayLoader(false);
-          navigate('/myBookings')
+          navigate("/profile/myBookings");
         });
         socket.emit("response", true);
       } else {
@@ -83,8 +87,8 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         console.error("Payment failed:", result.error);
       }
     }
-    setDisableButton(false)
-    setMessage(false)
+    setDisableButton(false);
+    setMessage(false);
   };
 
   return (
@@ -94,10 +98,18 @@ const PaymentForm = ({ setDisplayLoader, setDisplay, bookingId,totalPrice,result
         <CardElement options={cardElementOptions} />
       </Box>
       {error && <div style={{ color: "red" }}>{error}</div>}
-      <Button variant="contained" type="submit" disabled={!stripe || disableButton}>
+      <Button
+        variant="contained"
+        type="submit"
+        disabled={!stripe || disableButton}
+      >
         Pay
       </Button>
-      {message && <Typography width={'100%'} mt={2} color={'error'} >Your Payment is processing please do not refresh...</Typography>}
+      {message && (
+        <Typography width={"100%"} mt={2} color={"error"}>
+          Your Payment is processing please do not refresh...
+        </Typography>
+      )}
     </form>
   );
 };
