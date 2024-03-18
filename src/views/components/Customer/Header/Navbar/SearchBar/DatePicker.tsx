@@ -20,7 +20,7 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
     if (String(e?.[0]?.$d) === String(e?.[1]?.$d)) {
       setDisabled({
         status: true,
-        message: "check-In date and check-out date should not be same ",
+        message: "check-In date and check-out date can't be same ",
       });
     } else {
       setDisabled({
@@ -59,7 +59,7 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
     <>
       {" "}
       <LocalizationProvider dateAdapter={AdapterDayjs}>
-        <Box color={"red"} m={1} width={"90%"}>
+        <Box color={"red"} m={2}>
           {disabled?.message}
         </Box>
         <StaticDateRangePicker

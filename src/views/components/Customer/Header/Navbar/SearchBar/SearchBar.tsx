@@ -80,7 +80,7 @@ function SearchBar() {
     data?.Rooms != null ? data?.Rooms : 0
   );
   const [render, setRender] = React.useState(0);
-  const [searchTerm, setSearchTerm] = useState<any>(search || "");
+  const [searchTerm, setSearchTerm] = useState<any>(search ? search : "" || "");
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [dates, setDates] = useState<any>("");
@@ -144,7 +144,7 @@ function SearchBar() {
   }, [date]);
 
   useMemo(() => {
-    setSearchTerm(search);
+    setSearchTerm(search ? search : "");
   }, [search]);
 
   function error() {}
@@ -201,7 +201,7 @@ function SearchBar() {
             zIndex={0}
           >
             <TextField
-              sx={{ bgcolor: "white" }}
+              sx={{ bgcolor: "white", width: 400 }}
               id="searchField"
               placeholder="Search by city,hotel or state"
               onChange={(e) => {
@@ -239,7 +239,7 @@ function SearchBar() {
             <Box mt={0}>
               <TextField
                 id="datePicker"
-                sx={{ bgcolor: "white", width: 300 }}
+                sx={{ bgcolor: "white", width: 400 }}
                 placeholder="Check in - Check out"
                 onClick={handleClick2}
                 value={date}
@@ -265,6 +265,7 @@ function SearchBar() {
                 ml: 0,
                 fontWeight: "bolder",
                 bgcolor: "white",
+                width: 300,
               }}
               value={`${rooms.length} Room , ${guests} guest`}
               onClick={(event: any) => handleClick(event)}
@@ -278,6 +279,7 @@ function SearchBar() {
                 fontWeight: "bolder",
                 height: "100%",
                 borderRadius: 0,
+                width: 150,
               }}
               onClick={() => {
                 if (searchTerm !== "") {

@@ -154,6 +154,7 @@ function Seachbar2() {
             backgroundColor: "white",
             borderRadius: 3,
             mt: 1,
+            width: 410,
           }}
           InputProps={{
             endAdornment: (
