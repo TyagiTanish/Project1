@@ -44,6 +44,7 @@ import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSha
 import AddDiscription from "../../HotelOwner/Rooms/RoomDetails/AddDiscription";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Language from "../../Language";
 function Copyright(props: any) {
   return (
     <Typography
@@ -349,6 +350,7 @@ export default function MemberRegister() {
         >
           Sign up & Get ₹500 OYO Money
         </Box>
+
         <Box
           sx={{
             background: "white",
@@ -357,7 +359,10 @@ export default function MemberRegister() {
           <Box
             sx={{
               // marginTop: { sm: 1, md: 5 },
-              textAlign: "center",
+              // textAlign: "center",
+              justifyContent: "space-between",
+              p: 2,
+              pb: 0,
             }}
           >
             {page === 1 && (
@@ -444,7 +449,11 @@ export default function MemberRegister() {
                 Enter Hotel Amenities....
               </Typography>
             )}
+            <Box sx={{ float: "right", mt: -5 }}>
+              <Language />
+            </Box>
           </Box>
+
           {page === 1 && (
             <>
               <form>

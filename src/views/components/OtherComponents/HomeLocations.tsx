@@ -4,12 +4,17 @@ import Grid from "@mui/material/Grid";
 import MapJpg from "../../../assets/map.jpg";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
+import { useDispatch } from "react-redux";
+import { searchDetails } from "../redux/user/userSlice";
 /**
  * A Component to add on the landing page . Markdown is HomeLocations*.
  */
 function HomeLocations() {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
-  const handleOpen = () => {
+  const handleOpen = (location: any) => {
+    dispatch(searchDetails(location));
+    window.scroll(0, 0);
     navigate("/hotels");
   };
   return (
@@ -61,7 +66,9 @@ function HomeLocations() {
                 &nbsp;
                 <Button
                   sx={{ textTransform: "none", color: "black" }}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen("Mumbai");
+                  }}
                 >
                   <FormattedMessage defaultMessage="Mumbai" />
                 </Button>
@@ -80,9 +87,11 @@ function HomeLocations() {
                 &nbsp;
                 <Button
                   sx={{ textTransform: "none", color: "black" }}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen("Partap Nagar");
+                  }}
                 >
-                  Delhi
+                  Partap Nagar
                 </Button>
               </Grid>
               <Grid item xs={4}>
@@ -99,7 +108,9 @@ function HomeLocations() {
                 &nbsp;
                 <Button
                   sx={{ textTransform: "none", color: "black" }}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen("YamunaNagar");
+                  }}
                 >
                   <FormattedMessage defaultMessage="Yamuna Nagar" />
                 </Button>
@@ -118,7 +129,9 @@ function HomeLocations() {
                 &nbsp;
                 <Button
                   sx={{ textTransform: "none", color: "black" }}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen("Bilaspur");
+                  }}
                 >
                   <FormattedMessage defaultMessage="Bilaspur" />
                 </Button>
@@ -137,7 +150,9 @@ function HomeLocations() {
                 &nbsp;{" "}
                 <Button
                   sx={{ textTransform: "none", color: "black" }}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen("Jagadhri");
+                  }}
                 >
                   <FormattedMessage defaultMessage="Jagadhri" />
                 </Button>
@@ -156,9 +171,11 @@ function HomeLocations() {
                 &nbsp;
                 <Button
                   sx={{ textTransform: "none", color: "black" }}
-                  onClick={handleOpen}
+                  onClick={() => {
+                    handleOpen("Mohali");
+                  }}
                 >
-                  <FormattedMessage defaultMessage=" Mohali" />
+                  <FormattedMessage defaultMessage="Mohali" />
                 </Button>
               </Grid>
             </Grid>
