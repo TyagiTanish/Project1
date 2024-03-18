@@ -35,6 +35,7 @@ import * as Yup from "yup";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddHotelLocation from "../../../Register/MemberRegister/AddHotelLocation";
 import { FormattedMessage, useIntl } from "react-intl";
+import Language from "../../../Language";
 
 const HotelDetails = () => {
   const intl = useIntl();
@@ -294,13 +295,16 @@ const HotelDetails = () => {
       >
         <FormattedMessage defaultMessage="Add hotel & Get ₹500 OYO Money" />
       </Typography>
+      <Box sx={{ float: "right" }}>
+        <Language />
+      </Box>
       {step === 0 && (
         <Typography
           sx={{
             m: "1%",
             fontWeight: "bold",
             fontFamily: "Inter,sans-serif",
-            fontSize: { xl: "30px", md: "25px", sm: 15 },
+            fontSize: { xl: "25px", md: "20px", sm: 15 },
             textAlign: "center",
           }}
         >
@@ -313,7 +317,7 @@ const HotelDetails = () => {
             m: "1%",
             fontWeight: "bold",
             fontFamily: "Inter,sans-serif",
-            fontSize: { xl: "30px", md: "25px", sm: 15 },
+            fontSize: { xl: "25px", md: "20px", sm: 15 },
             textAlign: "center",
           }}
         >
@@ -326,7 +330,7 @@ const HotelDetails = () => {
             m: "1%",
             fontWeight: "bold",
             fontFamily: "Inter,sans-serif",
-            fontSize: { xl: "30px", md: "25px", sm: 15 },
+            fontSize: { xl: "25px", md: "20px", sm: 15 },
             textAlign: "center",
           }}
         >

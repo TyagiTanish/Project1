@@ -336,13 +336,16 @@ export default function AddHotelAftrLgn() {
             >
               <FormattedMessage defaultMessage="Add hotel & Get ₹500 OYO Money" />
             </Typography>
+            <Box sx={{ float: "right" }}>
+              <Language />
+            </Box>
             {step === 0 && (
               <Typography
                 sx={{
                   m: "1%",
                   fontWeight: "bold",
                   fontFamily: "Inter,sans-serif",
-                  fontSize: { xl: "30px", md: "25px", sm: 15 },
+                  fontSize: { xl: "25px", md: "20px", sm: 15 },
                   textAlign: "center",
                 }}
               >
@@ -356,20 +359,20 @@ export default function AddHotelAftrLgn() {
                   m: "1%",
                   fontWeight: "bold",
                   fontFamily: "Inter,sans-serif",
-                  fontSize: { xl: "30px", md: "25px", sm: 15 },
+                  fontSize: { xl: "25px", md: "20px", sm: 15 },
                   textAlign: "center",
                 }}
               >
                 <FormattedMessage defaultMessage="Add Hotel Location" />
               </Typography>
             )}
-            {step == 4 && (
+            {step === 4 && (
               <Typography
                 sx={{
                   m: "1%",
                   fontWeight: "bold",
                   fontFamily: "Inter,sans-serif",
-                  fontSize: { xl: "30px", md: "25px", sm: 15 },
+                  fontSize: { xl: "25px", md: "20px", sm: 15 },
                   textAlign: "center",
                 }}
               >
