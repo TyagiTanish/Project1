@@ -15,7 +15,7 @@ import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { userLogin, userLogout } from "../components/redux/user/userSlice";
-import Account from "../components/Account";
+import Account from "../components/Customer/AccountSettings/Account";
 import { Stack } from "@mui/material";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 

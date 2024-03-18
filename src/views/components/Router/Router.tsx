@@ -1,14 +1,14 @@
 import { useRoutes } from "react-router-dom";
-import MainPage from "../../pages/MainPage";
+import MainPage from "../Customer/Login-Register/MainPage";
 import CustomerRoutes from "./Authentication/CustomerRoutes";
-import HomePage from "../Home";
-import HotelsPage from "../HotelsPage";
-import Account from "../Account";
-import Billing from "../Billing/Billing";
+import HomePage from "../Customer/Header/Navbar/HotelLocations/Home";
+import HotelsPage from "../Customer/Hotels/HotelsPage";
+import Account from "../Customer/AccountSettings/Account";
+import Billing from "../Customer/Billing/Billing";
 import SuperAdminRoute from "./Authentication/SuperAdmin";
-import MemberRegistrationPage from "../MemberRegistrationPage";
-import AddHotelAftrLgn from "../AddHotelAftrLgn";
-import ViewDeal from "../ViewDeal";
+import MemberRegistrationPage from "../Register/MemberRegister/MemberRegistrationPage";
+import AddHotelAftrLgn from "../Register/MemberRegister/AddHotelAftrLgn";
+import ViewDeal from "../Customer/Hotels/ViewDeal";
 import HotelOwnerView from "../../layout/HotelOwnerView";
 import MemberAccount from "../HotelOwner/MemberAccount";
 import MemberRoute from "./Authentication/MemberRoutes";
@@ -21,11 +21,11 @@ import SuperAdminView from "../SuperAdmin/SuperAdminView/SuperAdminView";
 import ShowAllUsers from "../SuperAdmin/SuperAdminView/ShowAllUsers";
 import ShowAllMembers from "../SuperAdmin/SuperAdminView/ShowAllMembers";
 import CustomerView from "../../layout/CustomerView/CustomerView";
-import CustomerBooking from "../CustomerBooking";
+import CustomerBooking from "../Customer/AccountSettings/CustomerBooking";
 import AdminDashboard from "../HotelOwner/Dashboard/AdminDashboard";
-import ProfileBox from "../ProfileBox";
-import BookingDetails from "../BookingDetails";
-import ShowCustomerBooking from "../ShowCustomerBooking";
+import ProfileBox from "../OtherComponents/ProfileBox";
+import BookingDetails from "../Customer/AccountSettings/BookingDetails";
+import ShowCustomerBooking from "../Customer/AccountSettings/ShowCustomerBooking";
 
 /**
  * Contains all the routers used within the webApp , Markdown is *Router*.

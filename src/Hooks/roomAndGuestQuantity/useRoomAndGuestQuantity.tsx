@@ -10,7 +10,7 @@ const UseRoomAndGuestQuantity = () => {
   useMemo(() => {
     var result = 0;
     var totalRooms = 0;
-    data.forEach((element: any) => {
+    data?.forEach((element: any) => {
       result = result + +element.guest;
       totalRooms = totalRooms + 1;
     });

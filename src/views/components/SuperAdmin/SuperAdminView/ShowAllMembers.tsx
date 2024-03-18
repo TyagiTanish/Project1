@@ -26,6 +26,7 @@ import { useIntl, FormattedMessage } from "react-intl";
 // import LoginModal from "./LoginModal";
 // import EditDialog from "../../EditDialog";
 import Actions from "./Actions";
+import Loaders from "../../loader/Loaders";
 
 /**
  * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
@@ -42,7 +43,7 @@ export default function ShowAllMembers() {
     page: 0,
     pageSize: 5,
   });
-
+  const [loader, setLoader] = React.useState(true);
   const [length, setLength] = React.useState();
   const [queryOptions, setQueryOptions] = React.useState<any>();
   const [open, setOpen] = React.useState(false);
@@ -238,6 +239,9 @@ export default function ShowAllMembers() {
 
   return (
     <>
+      {/* <Box width={"85%"} height={"90rem"} position={"absolute"}>
+        {loader && <Loaders />}
+      </Box> */}
       {/* using accordion to display hotels of members  */}
       <Box>
         <Typography
@@ -362,7 +366,6 @@ export default function ShowAllMembers() {
               modalHotel={modalHotel}
               open={open}
               setOpen={setOpen}
-            
             />
 
             {/* <AccordionDetails sx={{ ml: 4, mt: -1 }}> </AccordionDetails> */}
@@ -418,7 +421,6 @@ export default function ShowAllMembers() {
         setOpen={setOpenDialog}
         item={item}
         setItem={setItem}
-        setRender={setRender}
       /> */}
     </>
   );

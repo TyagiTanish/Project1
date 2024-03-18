@@ -4,8 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import "../../../App.css";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
 import { useForm } from "react-hook-form";
-import Password from "../Password";
-import Update from "../Update";
+import Password from "../OtherComponents/Password";
+import Update from "../Customer/AccountSettings/Update";
 import { useDispatch, useSelector } from "react-redux";
 
 import { FormattedMessage } from "react-intl";

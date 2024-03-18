@@ -1,8 +1,8 @@
 import { Box, Stack } from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import OyoLogo from "../../../assets/OyoLogo";
-import Logo from "../../components/Logo";
-import Seachbar2 from "../../components/Seachbar2";
+import Logo from "../../components/Logo/Logo";
+import Seachbar2 from "../../components/Customer/Header/Navbar/SearchBar/Seachbar2";
 import { Outlet, useParams } from "react-router-dom";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
