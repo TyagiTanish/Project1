@@ -43,6 +43,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { enqueueSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
+import { FormattedMessage, useIntl } from "react-intl";
 
 /**
  *   To Edit the Details of a particular Room
@@ -56,6 +57,7 @@ export default function EditRoomDetails({
   showCategories,
 }: any) {
   const theme = useTheme();
+  const intl = useIntl();
   const [imagePreView, setImagePreView] = React.useState(false);
   const [previewIndex, setPreviewIndex] = React.useState(0);
   const [editRoom, setEditRoom] = React.useState(room);
@@ -107,10 +109,18 @@ export default function EditRoomDetails({
 
   const FormSchema = Yup.object().shape({
     // type: Yup.string().required("type is required"),
-    roomQuantity: Yup.string().required("type is required").max(3).min(1),
+    roomQuantity: Yup.string()
+      .required(intl.formatMessage({ defaultMessage: "Type is required" }))
+      .max(3)
+      .min(1),
     // description: Yup.string().required("description is required"),
-    amenities: Yup.array().min(1, "minimum one amenity required"),
-    price: Yup.string().required("price is required"),
+    amenities: Yup.array().min(
+      1,
+      intl.formatMessage({ defaultMessage: "Minimum one amenity required" })
+    ),
+    price: Yup.string().required(
+      intl.formatMessage({ defaultMessage: "Price is required" })
+    ),
   });
 
   interface User {
@@ -205,7 +215,9 @@ export default function EditRoomDetails({
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography variant="h5">Edit Room Details</Typography>
+          <Typography variant="h5">
+            <FormattedMessage defaultMessage="Edit Room Details" />
+          </Typography>
           <Tooltip title={"close"}>
             <IconButton onClick={handleClose}>
               <CloseIcon />
@@ -225,7 +237,7 @@ export default function EditRoomDetails({
               <Box>
                 <FormControl sx={{ width: 235 }}>
                   <Typography sx={{ fontWeight: "bold" }}>
-                    Type of Room
+                    <FormattedMessage defaultMessage="Type of Room" />
                   </Typography>
                   <Select
                     labelId="demo-simple-select-label"
@@ -250,7 +262,9 @@ export default function EditRoomDetails({
               </Stack>
               <Stack spacing={2}>
                 <Stack spacing={1}>
-                  <label style={{ fontSize: "22px " }}>Room Description:</label>
+                  <label style={{ fontSize: "22px " }}>
+                    <FormattedMessage defaultMessage="Room Description:" />
+                  </label>
                   <Editor room={editRoom} setDescription={setDescription} />
                 </Stack>
               </Stack>
@@ -267,7 +281,7 @@ export default function EditRoomDetails({
                 borderRadius={"10px"}
               >
                 <Typography variant="h5" color={"gray"}>
-                  Room Images
+                  <FormattedMessage defaultMessage="Room Images" />
                 </Typography>
                 <Stack m={2} direction={"row"} gap={2} flexWrap={"wrap"}>
                   {photos?.map((image: any, index: any) => (
@@ -330,7 +344,7 @@ export default function EditRoomDetails({
                               }}
                               disabled={photos?.length === 4 ? true : false}
                             >
-                              Upload New Photo
+                              <FormattedMessage defaultMessage="Upload New Photo" />
                             </Button>
                           }
                         </div>
@@ -371,7 +385,7 @@ export default function EditRoomDetails({
                   {...register("price")}
                 />
                 <Button variant="contained" color="success" type="submit">
-                  Save Changes
+                  <FormattedMessage defaultMessage="Save Changes" />
                 </Button>
               </Stack>
             </Stack>

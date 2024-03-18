@@ -26,6 +26,7 @@ import {
 } from "@mui/x-data-grid";
 import BookingRequestDialogBox from "./BookingRequestDialogBox";
 import LoaderBeforeReciept from "./LoaderBeforeReciept";
+import { FormattedMessage } from "react-intl";
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
@@ -66,7 +67,9 @@ export default function Bookings() {
       width: 300,
 
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Customer Name</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Customer Name" />
+        </strong>
       ),
     },
 
@@ -76,7 +79,9 @@ export default function Bookings() {
       width: 300,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Customer Email</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Customer Email" />
+        </strong>
       ),
     },
     {
@@ -85,7 +90,10 @@ export default function Bookings() {
       width: 300,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}> Phone No.</strong>
+        <strong style={{ fontSize: 18 }}>
+          {" "}
+          <FormattedMessage defaultMessage="Phone No." />
+        </strong>
       ),
     },
     {
@@ -94,7 +102,9 @@ export default function Bookings() {
       width: 300,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Payment Status</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Payment Status" />
+        </strong>
       ),
     },
 
@@ -116,7 +126,7 @@ export default function Bookings() {
                   backgroundImage: "linear-gradient(270deg,green,green)",
                 }}
               >
-                Accept
+                <FormattedMessage defaultMessage="Accept" />
               </Button>
             }
             label="view"
@@ -138,7 +148,7 @@ export default function Bookings() {
                   backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
                 }}
               >
-                Reject
+                <FormattedMessage defaultMessage="Reject" />
               </Button>
             }
             label="view"
@@ -159,7 +169,7 @@ export default function Bookings() {
                   textTransform: "capitalize",
                 }}
               >
-                View
+                <FormattedMessage defaultMessage="View" />
               </Button>
             }
             label="view"
@@ -173,7 +183,9 @@ export default function Bookings() {
         ];
       },
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Actions</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Actions" />
+        </strong>
       ),
     },
   ];
@@ -221,51 +233,55 @@ export default function Bookings() {
   }, [socket]);
   return (
     <>
-       {data.length!==0 ?
-       <> <Typography
-        sx={{
-          fontWeight: "bold",
-          fontSize: 35,
-          color: "rgb(215, 0, 64)",
-          fontFamily: "system-ui",
-        }}
-      >
-        Requests
-      </Typography>
-     <Stack
-        sx={{ ml: "77%", mb: 2 }}
-        direction={"row"}
-        alignItems={"center"}
-        spacing={2}
-      >
-        {" "}
-     <TextField
-          variant="outlined"
-          size="small"
-          InputProps={{
-            startAdornment: (
-              <InputAdornment position="start">
-                <SearchIcon />
-              </InputAdornment>
-            ),
-          }}
-          placeholder="Search Here...."
-          sx={{ width: 300 }}
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
-      </Stack>
-      </>: <></>}  
+      {data.length !== 0 ? (
+        <>
+          {" "}
+          <Typography
+            sx={{
+              fontWeight: "bold",
+              fontSize: 35,
+              color: "rgb(215, 0, 64)",
+              fontFamily: "system-ui",
+            }}
+          >
+            <FormattedMessage defaultMessage="Requests" />
+          </Typography>
+          <Stack
+            sx={{ ml: "77%", mb: 2 }}
+            direction={"row"}
+            alignItems={"center"}
+            spacing={2}
+          >
+            {" "}
+            <TextField
+              variant="outlined"
+              size="small"
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+              }}
+              placeholder="Search Here...."
+              sx={{ width: 300 }}
+              onChange={(e) => {
+                setSearch(e.target.value);
+              }}
+            />
+          </Stack>
+        </>
+      ) : (
+        <></>
+      )}
       {data.length === 0 ? (
-        <Typography sx={{mt:'20%', textAlign:'center',color: "red" ,fontSize:22}}>
-          No Bookings till now*
+        <Typography
+          sx={{ mt: "20%", textAlign: "center", color: "red", fontSize: 22 }}
+        >
+          <FormattedMessage defaultMessage="No Bookings till now*" />
         </Typography>
       ) : (
         <Box sx={{ height: "auto", width: "100%" }}>
-
-
-
           {/* data grid to implement server side sorting , pagination and searching */}
           <DataGrid
             rows={data}
@@ -273,7 +289,6 @@ export default function Bookings() {
             getRowId={(row) => row._id}
             disableColumnMenu
             sx={{ fontSize: 15 }}
-          
             rowCount={length}
             pageSizeOptions={[5, 10, 20]}
             paginationModel={paginationModel}
@@ -281,12 +296,17 @@ export default function Bookings() {
             onPaginationModelChange={setPaginationModel}
             sortingMode="server"
             onSortModelChange={handleSortModelChange}
-        
           />
         </Box>
       )}
-      
-      {open && <BookingRequestDialogBox data={display} open={open} onClose={handleClose} />}
+
+      {open && (
+        <BookingRequestDialogBox
+          data={display}
+          open={open}
+          onClose={handleClose}
+        />
+      )}
     </>
   );
 }

@@ -28,6 +28,7 @@ import MeetingRoomRoundedIcon from "@mui/icons-material/MeetingRoomRounded";
 import HotelRoundedIcon from "@mui/icons-material/HotelRounded";
 import Done from "@mui/icons-material/Done";
 import SearchHotels from "../SearchHotels";
+import { FormattedMessage } from "react-intl";
 
 export default function HotelListDrawer({
   filteredData,
@@ -48,7 +49,7 @@ export default function HotelListDrawer({
         startDecorator={<TuneIcon />}
         onClick={() => setOpen(true)}
       >
-        All Hotels
+        <FormattedMessage defaultMessage="All Hotels" />
       </Button>
       <Drawer
         size="md"

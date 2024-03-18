@@ -25,6 +25,7 @@ import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
 import CloseIcon from "@mui/icons-material/Close";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
+import { FormattedMessage } from "react-intl";
 
 // to edit the amenities
 function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
@@ -100,8 +101,9 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
         alignItems={"center"}
         justifyContent={"space-between"}
       >
-        {" "}
-        <DialogTitle maxWidth={"lg"}>Edit Amenities</DialogTitle>
+        <DialogTitle maxWidth={"lg"}>
+          <FormattedMessage defaultMessage="Edit Amenities" />
+        </DialogTitle>
         <Stack sx={{ mr: 2, cursor: "pointer" }} onClick={onClose}>
           <CloseIcon fontSize="small" />
         </Stack>
@@ -162,7 +164,7 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
           mr={2}
           mb={2}
         >
-          {arr.length == 0 ? (
+          {arr.length === 0 ? (
             <Button
               type="submit"
               variant="contained"
@@ -171,7 +173,7 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
                 fontSize: { xl: 15, md: 13, sm: 11 },
               }}
             >
-              Submit
+              <FormattedMessage defaultMessage="Submit" />
             </Button>
           ) : (
             <Button
@@ -181,7 +183,7 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
                 fontSize: { xl: 15, md: 13, sm: 11 },
               }}
             >
-              Submit
+              <FormattedMessage defaultMessage="Submit" />
             </Button>
           )}
         </Stack>

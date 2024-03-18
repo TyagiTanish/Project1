@@ -15,6 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { object } from "yup";
 import DomainAddOutlinedIcon from "@mui/icons-material/DomainAddOutlined";
 import AddHotelDialogBox from "./AddHotel/AddHotelDialogBox";
+import { FormattedMessage } from "react-intl";
 
 function SearchHotels({
   filteredData,
@@ -131,7 +132,7 @@ function SearchHotels({
                         fontSize="10px"
                         color={"red"}
                       >
-                        Removed
+                        <FormattedMessage defaultMessage="Removed" />
                       </Typography>
                     )}
                   </Stack>

@@ -7,6 +7,7 @@ import TabPanel from "@mui/lab/TabPanel";
 import { Outlet, useNavigate } from "react-router-dom";
 import AllRooms from "./Rooms/RoomDetails/Rooms";
 import { rowSelectionStateInitializer } from "@mui/x-data-grid/internals";
+
 /**
  * A Component to Show a particular hotel detail . Markdown is hotel/id*.
  */

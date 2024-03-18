@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import HotelAmenities from "../../HotelOwner/hotels/hotelAmenities/hotelAmenities";
 import { useParams } from "react-router-dom";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
+import { FormattedMessage } from "react-intl";
 
 function HotelInfo() {
   const [data, setData] = useState<any>([]);
@@ -59,39 +60,36 @@ function HotelInfo() {
         </Stack>
       </Stack>
       <Stack spacing={4}>
-        {" "}
         <Box
           sx={{ fontWeight: "bold", fontSize: 22 }}
           justifyItems={"space-evenly"}
         >
-          Location Info:
+          <FormattedMessage defaultMessage="Location Info:" />
         </Box>
         <Stack direction={"row"} justifyContent={"space-evenly"}>
-          {" "}
           <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-              City:
+              <FormattedMessage defaultMessage="City:" />
             </Typography>
             <Typography>{data[0]?.city}</Typography>
           </Stack>
           <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-              State:
+              <FormattedMessage defaultMessage="State:" />
             </Typography>
             <Typography>{data[0]?.state}</Typography>
           </Stack>
         </Stack>
         <Stack direction={"row"} justifyContent={"space-evenly"}>
-          {" "}
           <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-              Country
+              <FormattedMessage defaultMessage="Country:" />
             </Typography>
             <Typography>{data[0]?.country}</Typography>
           </Stack>
           <Stack spacing={1} direction={"column"}>
             <Typography sx={{ fontWeight: "bold", fontSize: 20 }}>
-              Pin Code
+              <FormattedMessage defaultMessage="Pin Code" />
             </Typography>
             <Typography>{data[0]?.pinCode}</Typography>
           </Stack>

@@ -13,6 +13,8 @@ import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/user/userSlice";
 import { useNavigate } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
+import { FormattedMessage } from "react-intl";
+
 const Transition = React.forwardRef(function Transition(
   props: TransitionProps & {
     children: React.ReactElement<any, any>;
@@ -36,10 +38,12 @@ export default function AlertDialogSlide({
         onClose={handleCloseDelete}
         aria-describedby="alert-dialog-slide-description"
       >
-        <DialogTitle>Warning</DialogTitle>
+        <DialogTitle>
+          <FormattedMessage defaultMessage="Warning" />
+        </DialogTitle>
         <DialogContent>
           <DialogContentText id="alert-dialog-slide-description">
-            Do You Want to Delete This Hotel ?
+            <FormattedMessage defaultMessage="Do You Want to Delete This Hotel ?" />
           </DialogContentText>
         </DialogContent>
         <DialogActions>
@@ -49,9 +53,11 @@ export default function AlertDialogSlide({
               handleDelete();
             }}
           >
-            Yes
+            <FormattedMessage defaultMessage="Yes" />
           </Button>
-          <Button onClick={handleCloseDelete}>No</Button>
+          <Button onClick={handleCloseDelete}>
+            <FormattedMessage defaultMessage="No" />
+          </Button>
         </DialogActions>
       </Dialog>
     </React.Fragment>

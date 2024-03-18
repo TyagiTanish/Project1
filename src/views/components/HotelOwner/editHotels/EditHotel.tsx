@@ -25,6 +25,8 @@ import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { render } from "react-dom";
 import { useSelector } from "react-redux";
 import { enqueueSnackbar } from "notistack";
+import { FormattedMessage } from "react-intl";
+
 function EditHotel(props: any) {
   const [value, setValue] = useState(props.data?.discription);
   const [category, setcategory] = useState<any>(props?.data?.categories);
@@ -124,7 +126,9 @@ function EditHotel(props: any) {
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Typography variant="h5">Edit Hotel Details</Typography>
+          <Typography variant="h5">
+            <FormattedMessage defaultMessage="Edit Hotel Details" />
+          </Typography>
           <Tooltip title={"close"}>
             <IconButton onClick={props.handleClose}>
               <CloseIcon />
@@ -206,7 +210,7 @@ function EditHotel(props: any) {
               borderRadius={"10px"}
             >
               <Typography variant="h5" color={"gray"}>
-                Hotel Image
+                <FormattedMessage defaultMessage="Hotel Image" />
               </Typography>
               <Stack m={2} direction={"row"} gap={2} flexWrap={"wrap"}>
                 {!(photoValue === "") ? (
@@ -242,7 +246,7 @@ function EditHotel(props: any) {
                         <Typography sx={{ mt: 1 }}>
                           <AddPhotoAlternateSharpIcon fontSize="large" />
                           <Typography sx={{ fontSize: "10px" }}>
-                            Drop a Photo Here
+                            <FormattedMessage defaultMessage="Drop a Photo Here" />
                           </Typography>
                         </Typography>
                       </IconButton>
@@ -280,7 +284,9 @@ function EditHotel(props: any) {
                 />
               </Stack>
               <Stack spacing={1}>
-                <label style={{ fontSize: "18px " }}>Room Description:</label>
+                <label style={{ fontSize: "18px " }}>
+                  <FormattedMessage defaultMessage="Room Description:" />
+                </label>
                 <Box width={500}>
                   <QuillEditor
                     theme="snow"
@@ -301,7 +307,7 @@ function EditHotel(props: any) {
                 }}
                 onClick={handleClick}
               >
-                Update Data
+                <FormattedMessage defaultMessage="Update Data" />
               </Button>
             ) : (
               <Button
@@ -316,7 +322,7 @@ function EditHotel(props: any) {
                 }}
                 onClick={handleClick}
               >
-                Update Data
+                <FormattedMessage defaultMessage="Update Data" />
               </Button>
             )}
           </Stack>

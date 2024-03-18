@@ -15,7 +15,8 @@ import { Document, Page } from "react-pdf";
 import PdfViewerFromBuffer from "./DisplayPdf";
 import { DialogActions } from "@mui/joy";
 import { FormattedMessage } from "react-intl";
-import { saveAs } from 'file-saver';
+import { saveAs } from "file-saver";
+
 /**
  * To display the detailed view of Booking Requests. Markdown is *DialogBox*.
  */
@@ -25,22 +26,19 @@ function RecieptDialogBox(props: any) {
     setOpen(selectedValue);
   };
 
-
   const handleDownload = () => {
     if (pdfBuffer) {
-      const pdfBlob = new Blob([pdfBuffer], { type: 'application/pdf' });
-      saveAs(pdfBlob, 'Reciept.pdf');
+      const pdfBlob = new Blob([pdfBuffer], { type: "application/pdf" });
+      saveAs(pdfBlob, "Reciept.pdf");
     }
   };
-
-
 
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <DialogTitle>
         <Stack direction={"row"} justifyContent={"space-between"}>
           <Typography sx={{ fontWeight: "bolder", fontSize: "1.2rem" }}>
-            Reciept
+            <FormattedMessage defaultMessage="Reciept" />
           </Typography>
           <CloseIcon
             style={{ cursor: "pointer", float: "right" }}
@@ -52,8 +50,12 @@ function RecieptDialogBox(props: any) {
         <PdfViewerFromBuffer pdfBuffer={pdfBuffer} />
         <DialogActions>
           <Stack direction={"row"} spacing={2}>
-            <Button variant="contained"   onClick={handleDownload}  ><FormattedMessage defaultMessage={'download'} /> </Button>
-            <Button variant="contained"  onClick={handleClose}  ><FormattedMessage  defaultMessage={'close'} /></Button>
+            <Button variant="contained" onClick={handleDownload}>
+              <FormattedMessage defaultMessage={"download"} />{" "}
+            </Button>
+            <Button variant="contained" onClick={handleClose}>
+              <FormattedMessage defaultMessage={"close"} />
+            </Button>
           </Stack>
         </DialogActions>
       </DialogContent>

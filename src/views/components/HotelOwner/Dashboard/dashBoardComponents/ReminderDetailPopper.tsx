@@ -4,6 +4,7 @@ import Popper from "@mui/material/Popper";
 import Fade from "@mui/material/Fade";
 import { Stack, Typography } from "@mui/material";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
+import { FormattedMessage } from "react-intl";
 
 export default function TransitionsPopper({ open, anchorEl, value }: any) {
   const canBeOpen = open && Boolean(anchorEl);
@@ -35,7 +36,6 @@ export default function TransitionsPopper({ open, anchorEl, value }: any) {
                 <Stack
                   direction={"row"}
                   justifyContent={"space-between"}
-            
                   fontSize={{ sm: "small", md: "medium" }}
                 >
                   <Stack
@@ -43,14 +43,16 @@ export default function TransitionsPopper({ open, anchorEl, value }: any) {
                     direction={"row"}
                     alignItems={"center"}
                     spacing={2}
-                    color={'gray'}
+                    color={"gray"}
                   >
-                    <CalendarMonthIcon  />
+                    <CalendarMonthIcon />
                     {`${new Date(value?.bookFrom)}`} --{" "}
                     {`${new Date(value?.bookTo)}`}
-                    
-                    <Stack fontSize={{ sm: "small", md: "medium" }} >
-                      {value?.totalRooms} Room {value?.totalGuests} Guest
+                    <Stack fontSize={{ sm: "small", md: "medium" }}>
+                      {value?.totalRooms}{" "}
+                      <FormattedMessage defaultMessage="Room" />{" "}
+                      {value?.totalGuests}{" "}
+                      <FormattedMessage defaultMessage="Guest" />
                     </Stack>
                   </Stack>
                 </Stack>

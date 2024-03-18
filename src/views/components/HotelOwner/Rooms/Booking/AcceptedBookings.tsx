@@ -25,6 +25,7 @@ import {
 import PdfViewer from "./DisplayPdf";
 import PdfViewerFromBuffer from "./DisplayPdf";
 import LoaderBeforeReciept from "./LoaderBeforeReciept";
+import { FormattedMessage } from "react-intl";
 
 /**
  * To show all the accepted Bookings by the Hotel Owner. Markdown is *AcceptedBooking*.
@@ -54,13 +55,13 @@ function AcceptedBookings() {
   const [loader, setLoader] = React.useState(false);
   const [search, setSearch] = React.useState("");
   const [length, setLength] = useState();
-  const [render,setRender]=useState(0);
+  const [render, setRender] = useState(0);
   const [queryOptions, setQueryOptions] = useState<any>();
   const handleChange = async (event: any, id: any) => {
     await request.put(`/updateArrival/${id}`, {
       value: event.target.value,
     });
-    setRender((prev:any)=>prev+1)
+    setRender((prev: any) => prev + 1);
   };
   const columns: GridColDef[] = [
     {
@@ -74,7 +75,9 @@ function AcceptedBookings() {
         </div>
       ),
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Hotel Name</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Hotel Name" />
+        </strong>
       ),
     },
 
@@ -84,7 +87,9 @@ function AcceptedBookings() {
       width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Customer Email</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Customer Email" />
+        </strong>
       ),
     },
     {
@@ -94,7 +99,9 @@ function AcceptedBookings() {
 
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Check in</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Check in" />
+        </strong>
       ),
       renderCell: (params: any) => (
         <div> {format(new Date(params?.row?.bookFrom), "MMMM do,yyyy")}</div>
@@ -106,7 +113,9 @@ function AcceptedBookings() {
       width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Check Out</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Check Out" />
+        </strong>
       ),
       renderCell: (params: any) => (
         <div>{format(new Date(params?.row?.bookTo), "MMMM do,yyyy")}</div>
@@ -118,7 +127,9 @@ function AcceptedBookings() {
       width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Payment Status</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Payment Status" />
+        </strong>
       ),
       renderCell: (params: any) => (
         <div style={{ textTransform: "capitalize" }}>
@@ -133,7 +144,9 @@ function AcceptedBookings() {
       width: 200,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Booking Status</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Booking Status" />
+        </strong>
       ),
       renderCell: (params: any) => (
         <Box
@@ -141,9 +154,9 @@ function AcceptedBookings() {
           color={
             params?.row?.status === "accepted"
               ? "green"
-              // : params?.row?.status === "rejected"
-              // ? "red"
-              : "red"
+              : // : params?.row?.status === "rejected"
+                // ? "red"
+                "red"
           }
         >
           {" "}
@@ -158,35 +171,65 @@ function AcceptedBookings() {
 
       renderCell: (params: any) => (
         <FormControl fullWidth size="small">
-          {params?.row?.arrival !=="Canceled" &&   params?.row?.status !=="rejected" &&   params?.row?.status !=="pending" ? <Select
-            //  to  save the arrival status of customer
-            defaultValue={ params?.row?.status ==='accepted' ? "Booked" : params?.row?.arrival}
-            onChange={(e) => {
-              handleChange(e, params.row._id);
-            }}
-          >
-            <MenuItem value={"Checked in"}>Checked In</MenuItem>
-            <MenuItem value={"Checked Out"}>Checked Out</MenuItem>
-            <MenuItem value={"Booked"}>Booked</MenuItem>
-            <MenuItem value={"Canceled"}>Canceled</MenuItem>
-          </Select> :  (  params?.row?.status === "rejected" || params?.row?.status === "pending"  ? <Typography textAlign={'center'}>--</Typography> : <Select
-          disabled
-            //  to  save the arrival status of customer
-            defaultValue={params?.row?.arrival}
-            onChange={(e) => {
-              handleChange(e, params.row._id);
-            }}
-          >
-            <MenuItem value={"Checked in"}>Checked In</MenuItem>
-            <MenuItem value={"Checked Out"}>Checked Out</MenuItem>
-            <MenuItem value={"Booked"}>Booked</MenuItem>
-            <MenuItem value={"Canceled"}>Canceled</MenuItem>
-          </Select> ) }
-        
+          {params?.row?.arrival !== "Canceled" &&
+          params?.row?.status !== "rejected" &&
+          params?.row?.status !== "pending" ? (
+            <Select
+              //  to  save the arrival status of customer
+              defaultValue={
+                params?.row?.status === "accepted"
+                  ? "Booked"
+                  : params?.row?.arrival
+              }
+              onChange={(e) => {
+                handleChange(e, params.row._id);
+              }}
+            >
+              <MenuItem value={"Checked in"}>
+                <FormattedMessage defaultMessage="Checked In" />
+              </MenuItem>
+              <MenuItem value={"Checked Out"}>
+                <FormattedMessage defaultMessage="Checked Out" />
+              </MenuItem>
+              <MenuItem value={"Booked"}>
+                <FormattedMessage defaultMessage="Booked" />
+              </MenuItem>
+              <MenuItem value={"Canceled"}>
+                <FormattedMessage defaultMessage="Canceled" />
+              </MenuItem>
+            </Select>
+          ) : params?.row?.status === "rejected" ||
+            params?.row?.status === "pending" ? (
+            <Typography textAlign={"center"}>--</Typography>
+          ) : (
+            <Select
+              disabled
+              //  to  save the arrival status of customer
+              defaultValue={params?.row?.arrival}
+              onChange={(e) => {
+                handleChange(e, params.row._id);
+              }}
+            >
+              <MenuItem value={"Checked in"}>
+                <FormattedMessage defaultMessage="Checked In" />
+              </MenuItem>
+              <MenuItem value={"Checked Out"}>
+                <FormattedMessage defaultMessage="Checked Out" />
+              </MenuItem>
+              <MenuItem value={"Booked"}>
+                <FormattedMessage defaultMessage="Booked" />
+              </MenuItem>
+              <MenuItem value={"Canceled"}>
+                <FormattedMessage defaultMessage="Canceled" />
+              </MenuItem>
+            </Select>
+          )}
         </FormControl>
       ),
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Arrival Status</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Arrival Status" />
+        </strong>
       ),
     },
     {
@@ -217,7 +260,7 @@ function AcceptedBookings() {
                     textTransform: "capitalize",
                   }}
                 >
-                  View Reciept
+                  <FormattedMessage defaultMessage="View Reciept" />
                 </Button>
               }
               label="view"
@@ -234,7 +277,9 @@ function AcceptedBookings() {
         ];
       },
       renderHeader: (params: GridColumnHeaderParams) => (
-        <strong style={{ fontSize: 18 }}>Actions</strong>
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Actions" />
+        </strong>
       ),
     },
   ];
@@ -262,7 +307,7 @@ function AcceptedBookings() {
       setData(data.data);
     };
     get();
-  }, [paginationModel, queryOptions, search,render]);
+  }, [paginationModel, queryOptions, search, render]);
   const [age, setAge] = React.useState("");
 
   const handleClickOpen = async (data: any) => {
@@ -300,59 +345,59 @@ function AcceptedBookings() {
           No Bookings found*
         </Typography>
       ) : ( */}
-        <>
-          <Typography
-            sx={{
-              fontWeight: "bold",
-              fontSize: 35,
-              color: "rgb(215, 0, 64)",
-              fontFamily: "system-ui",
-              mb: 3,
+      <>
+        <Typography
+          sx={{
+            fontWeight: "bold",
+            fontSize: 35,
+            color: "rgb(215, 0, 64)",
+            fontFamily: "system-ui",
+            mb: 3,
+          }}
+        >
+          <FormattedMessage defaultMessage="Bookings" />
+        </Typography>
+        <Stack
+          sx={{ ml: "77%", mb: 4 }}
+          direction={"row"}
+          alignItems={"center"}
+          spacing={2}
+        >
+          {" "}
+          <TextField
+            variant="outlined"
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
             }}
-          >
-            Bookings
-          </Typography>
-          <Stack
-            sx={{ ml: "77%", mb: 4 }}
-            direction={"row"}
-            alignItems={"center"}
-            spacing={2}
-          >
-            {" "}
-            <TextField
-              variant="outlined"
-              size="small"
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-              }}
-              placeholder="Search Here...."
-              sx={{ width: 370 }}
-              onChange={(e) => {
-                setSearch(e.target.value);
-              }}
-            />
-          </Stack>
-          <Box sx={{ height: "auto", width: "100%", fontSize: 20 }}>
-            {loader && <LoaderBeforeReciept />}
-            <DataGrid
-              rows={data}
-              columns={columns}
-              getRowId={(row: any) => row._id}
-              disableColumnMenu
-              rowCount={length}
-              pageSizeOptions={[5, 10, 20]}
-              paginationModel={paginationModel}
-              paginationMode="server"
-              onPaginationModelChange={setPaginationModel}
-              sortingMode="server"
-              onSortModelChange={handleSortModelChange}
-            />
-          </Box>
-        </>
+            placeholder="Search Here...."
+            sx={{ width: 370 }}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
+          />
+        </Stack>
+        <Box sx={{ height: "auto", width: "100%", fontSize: 20 }}>
+          {loader && <LoaderBeforeReciept />}
+          <DataGrid
+            rows={data}
+            columns={columns}
+            getRowId={(row: any) => row._id}
+            disableColumnMenu
+            rowCount={length}
+            pageSizeOptions={[5, 10, 20]}
+            paginationModel={paginationModel}
+            paginationMode="server"
+            onPaginationModelChange={setPaginationModel}
+            sortingMode="server"
+            onSortModelChange={handleSortModelChange}
+          />
+        </Box>
+      </>
       {/* )} */}
 
       {open && <DialogBox pdfBuffer={display} open={open} setOpen={setOpen} />}

@@ -17,6 +17,8 @@ import {
 import CloseIcon from "@mui/icons-material/Close";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import CheckIcon from "@mui/icons-material/Check";
+import { FormattedMessage } from "react-intl";
+
 export default function RoomDetailBox({
   open,
   setOpen,
@@ -89,7 +91,7 @@ export default function RoomDetailBox({
                     (image: any, index: number) => {
                       return (
                         <>
-                          {index != roomImage && (
+                          {index !== roomImage && (
                             <Box
                               component={"img"}
                               width={{ xl: "85%", sm: "80%", md: "80%" }}
@@ -110,7 +112,7 @@ export default function RoomDetailBox({
               <Typography
                 style={{ width: "40%", color: "black", fontWeight: "bolder" }}
               >
-                Room Description
+                <FormattedMessage defaultMessage="Room Description" />
               </Typography>
               <hr color="lightgray" />
 
@@ -126,7 +128,7 @@ export default function RoomDetailBox({
             <Box>
               {" "}
               <Typography sx={{ fontWeight: "bolder", color: "black" }}>
-                Room Highlights
+                <FormattedMessage defaultMessage="Room Highlights" />
               </Typography>
               <hr color="lightgray" />
               <br />
@@ -165,7 +167,7 @@ export default function RoomDetailBox({
                     color={"black"}
                     fontWeight={"bolder"}
                   >
-                    Price
+                    <FormattedMessage defaultMessage="Price" />
                   </Typography>{" "}
                   <Stack
                     direction={"row"}
@@ -180,19 +182,18 @@ export default function RoomDetailBox({
                 <Stack spacing={2} padding={1}>
                   <Stack spacing={1}>
                     <Typography fontSize={"12px"} fontWeight={"bold"}>
-                      Cancellation Policy
+                      <FormattedMessage defaultMessage="Cancellation Policy" />
                     </Typography>
                     <Typography fontSize={"10px"}>
-                      72h Prior To 11:59 Pm Local Time The Day Of Arrival Or
-                      1night Fee/ One Night Deposit At Booking
+                      <FormattedMessage defaultMessage=" 72h Prior To 11:59 Pm Local Time The Day Of Arrival Or 1 night Fee/ One Night Deposit At Booking" />
                     </Typography>
                   </Stack>
                   <Stack spacing={1}>
                     <Typography fontWeight={"bold"} fontSize={"12px"}>
-                      Deposit Policy
+                      <FormattedMessage defaultMessage="Deposit Policy" />
                     </Typography>
                     <Typography fontSize={"10px"}>
-                      Credit Card Deposit Required
+                      <FormattedMessage defaultMessage="Credit Card Deposit Required" />
                     </Typography>
                   </Stack>
                 </Stack>
