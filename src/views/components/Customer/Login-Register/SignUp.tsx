@@ -125,7 +125,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
             textAlign: "center",
             fontWeight: 700,
             color: "white",
-            fontSize: { xl: "20px" },
+            // fontSize: { xl: "20px" },
           }}
           color="text.secondary"
           gutterBottom
