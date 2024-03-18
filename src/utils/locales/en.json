@@ -1,4 +1,10 @@
 {
+  "+7HeVJ": [
+    {
+      "type": 0,
+      "value": "Super Deluxe"
+    }
+  ],
   "+R6HRl": [
     {
       "type": 0,
@@ -41,6 +47,12 @@
       "value": "Select at least one amenity"
     }
   ],
+  "00/IyC": [
+    {
+      "type": 0,
+      "value": "Night"
+    }
+  ],
   "0xWUYr": [
     {
       "type": 0,
@@ -75,6 +87,12 @@
     {
       "type": 0,
       "value": "Room"
+    }
+  ],
+  "2RDzgc": [
+    {
+      "type": 0,
+      "value": "Check-Out"
     }
   ],
   "2apuGa": [
@@ -131,6 +149,12 @@
       "value": "There is a booking today"
     }
   ],
+  "47FYwb": [
+    {
+      "type": 0,
+      "value": "Cancel"
+    }
+  ],
   "4OjOXO": [
     {
       "type": 0,
@@ -185,6 +209,12 @@
       "value": "Owner Name -"
     }
   ],
+  "6I+DHW": [
+    {
+      "type": 0,
+      "value": "Select price range"
+    }
+  ],
   "7TFbhV": [
     {
       "type": 0,
@@ -201,6 +231,12 @@
     {
       "type": 0,
       "value": "All Hotels"
+    }
+  ],
+  "7tD4iU": [
+    {
+      "type": 0,
+      "value": "Payable Amount"
     }
   ],
   "8uXS99": [
@@ -243,6 +279,12 @@
     {
       "type": 0,
       "value": "Photos"
+    }
+  ],
+  "9mXFUz": [
+    {
+      "type": 0,
+      "value": "No Results Match your search"
     }
   ],
   "9uOFF3": [
@@ -437,6 +479,18 @@
       "value": "Removed"
     }
   ],
+  "J+S/E8": [
+    {
+      "type": 0,
+      "value": "Invalid Email"
+    }
+  ],
+  "K3r6DQ": [
+    {
+      "type": 0,
+      "value": "Delete"
+    }
+  ],
   "KkDJ/P": [
     {
       "type": 0,
@@ -471,6 +525,12 @@
     {
       "type": 0,
       "value": "Guests"
+    }
+  ],
+  "N4ReBT": [
+    {
+      "type": 0,
+      "value": "View Details"
     }
   ],
   "NQgbYA": [
@@ -515,6 +575,12 @@
       "value": "Available"
     }
   ],
+  "Q/7RZn": [
+    {
+      "type": 0,
+      "value": "Room price for 1 Night X 1 Room"
+    }
+  ],
   "Q8Qw5B": [
     {
       "type": 0,
@@ -557,6 +623,12 @@
       "value": "Edit Room Details"
     }
   ],
+  "QwDSj/": [
+    {
+      "type": 0,
+      "value": "Min length should be 10"
+    }
+  ],
   "Rtrei/": [
     {
       "type": 0,
@@ -585,6 +657,12 @@
     {
       "type": 0,
       "value": "In-room safe"
+    }
+  ],
+  "TWTu/9": [
+    {
+      "type": 0,
+      "value": "Credit Card Guarantee Required"
     }
   ],
   "U41zpQ": [
@@ -665,6 +743,12 @@
       "value": "Check in"
     }
   ],
+  "X7IMRK": [
+    {
+      "type": 0,
+      "value": "Check-In"
+    }
+  ],
   "Y2s5iu": [
     {
       "type": 0,
@@ -693,6 +777,18 @@
     {
       "type": 0,
       "value": "Disagree"
+    }
+  ],
+  "Yg9wZZ": [
+    {
+      "type": 0,
+      "value": "12:00 PM"
+    }
+  ],
+  "YtKv1z": [
+    {
+      "type": 0,
+      "value": "Avg/Night"
     }
   ],
   "ZmsB1S": [
@@ -743,6 +839,12 @@
       "value": "Text in a child modal"
     }
   ],
+  "dM+p3/": [
+    {
+      "type": 0,
+      "value": "From"
+    }
+  ],
   "dmGKS5": [
     {
       "type": 0,
@@ -779,6 +881,24 @@
       "value": "Postal Code. must be a number"
     }
   ],
+  "dtgi/W": [
+    {
+      "type": 0,
+      "value": "Email is Required"
+    }
+  ],
+  "e38GOF": [
+    {
+      "type": 0,
+      "value": "Amenities"
+    }
+  ],
+  "evTYb/": [
+    {
+      "type": 0,
+      "value": "11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night Fee /Credit Card Required"
+    }
+  ],
   "eyOT/X": [
     {
       "type": 0,
@@ -789,6 +909,12 @@
     {
       "type": 0,
       "value": "Ac"
+    }
+  ],
+  "g5DEE8": [
+    {
+      "type": 0,
+      "value": "Cancelation Policy"
     }
   ],
   "gCsYTJ": [
@@ -813,6 +939,12 @@
     {
       "type": 0,
       "value": "Checked Out"
+    }
+  ],
+  "h73tAE": [
+    {
+      "type": 0,
+      "value": "Phone No. must not contain any special character and should start with 9 , 7 or 8"
     }
   ],
   "hN9DjA": [
@@ -845,6 +977,12 @@
       "value": "Do You Want to Delete This Hotel ?"
     }
   ],
+  "j6WSBC": [
+    {
+      "type": 0,
+      "value": "Show Hotels"
+    }
+  ],
   "jUTmkf": [
     {
       "type": 0,
@@ -869,6 +1007,24 @@
       "value": "Booked"
     }
   ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Save"
+    }
+  ],
+  "kTo0o2": [
+    {
+      "type": 0,
+      "value": "Suite"
+    }
+  ],
+  "kg6n2g": [
+    {
+      "type": 0,
+      "value": "Max length should be 10"
+    }
+  ],
   "ku+mDU": [
     {
       "type": 0,
@@ -891,6 +1047,12 @@
     {
       "type": 0,
       "value": "Additional Information"
+    }
+  ],
+  "lRJWXn": [
+    {
+      "type": 0,
+      "value": "First Letter of name should be capital and name should be string"
     }
   ],
   "lhgV6Z": [
@@ -941,6 +1103,18 @@
       "value": "No"
     }
   ],
+  "oMYHHk": [
+    {
+      "type": 0,
+      "value": "03:00 PM"
+    }
+  ],
+  "ocaqXc": [
+    {
+      "type": 0,
+      "value": "Deluxe"
+    }
+  ],
   "p2cPVQ": [
     {
       "type": 0,
@@ -975,6 +1149,12 @@
     {
       "type": 0,
       "value": "Log In"
+    }
+  ],
+  "r6Hj+h": [
+    {
+      "type": 0,
+      "value": "Points Calendar"
     }
   ],
   "rvirM2": [
@@ -1061,6 +1241,12 @@
       "value": "Actions"
     }
   ],
+  "vmQF1b": [
+    {
+      "type": 0,
+      "value": "Night X"
+    }
+  ],
   "wNLUau": [
     {
       "type": 0,
@@ -1121,10 +1307,17 @@
       "value": "24-hour room service"
     }
   ],
+
   "zF7Cth": [
     {
       "type": 0,
       "value": "Guest"
+    }
+  ],
+  "zFG+sR": [
+    {
+      "type": 0,
+      "value": "First Name is required"
     }
   ],
   "zFegDD": [
@@ -1137,6 +1330,18 @@
     {
       "type": 0,
       "value": "Checked In"
+    }
+  ],
+  "zSOvI0": [
+    {
+      "type": 0,
+      "value": "Filters"
+    }
+  ],
+  "zZn9wA": [
+    {
+      "type": 0,
+      "value": "Room price for"
     }
   ]
 }

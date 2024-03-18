@@ -23,6 +23,7 @@ import Loader from "./loader/Loader";
 import { useNavigate, useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import UseRoomAndGuestQuantity from "../../../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
+import { useIntl } from "react-intl";
 
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
@@ -140,30 +141,31 @@ const Billing = () => {
     guestName: string | undefined;
     guestEmail: string | undefined;
   }
+  const intl=useIntl()
   const FormSchema = Yup.object().shape({
     fullName: Yup.string()
-      .required("First Name is required")
+      .required(intl.formatMessage({ defaultMessage: "First Name is required"}))
       .min(3)
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-        "First Letter of name should be capital and name should be string"
+        intl.formatMessage({ defaultMessage: "First Letter of name should be capital and name should be string" })    
       ),
-    email: Yup.string().email("Invalid email !").required("Email is Required"),
+    email: Yup.string().email(intl.formatMessage({defaultMessage:'Invalid Email'})).required(intl.formatMessage({defaultMessage:"Email is Required"})),
     phone: Yup.string()
-      .required("Phone no. is required")
-      .min(10, "Min length should be 10")
-      .max(10, "Max length should be 10")
+      .required()
+      .min(10, intl.formatMessage({ defaultMessage: "Min length should be 10"}))
+      .max(10, intl.formatMessage({ defaultMessage: "Max length should be 10"}))
       .matches(
         /^[789]\d{9}$/,
-        "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+        intl.formatMessage({ defaultMessage: "Phone No. must not contain any special character and should start with 9 , 7 or 8" }) 
       ),
     guestName: Yup.string()
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-        "First Letter of name should be capital and name should be string"
+        intl.formatMessage({ defaultMessage: "First Letter of name should be capital and name should be string" }),  
       )
       .notRequired(),
-    guestEmail: Yup.string().email("Invalid Email").notRequired(),
+    guestEmail: Yup.string().email(intl.formatMessage({defaultMessage:'Invalid Email'})).notRequired(),
   });
 
   const {

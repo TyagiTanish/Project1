@@ -19,7 +19,7 @@
   "7444aR": { "defaultMessage": "Kolkata" },
   "HBbJIL": { "defaultMessage": "Il existe un moyen plus intelligent de OYO" },
   "Y2s5iu": {
-    "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
+    "defaultMessage": "Inscrivez-vous avec un numéro de téléphone et obtenez un accès exclusif à des réductions et des économies sur les séjours OYO et auprès de nos nombreux partenaires de voyage."
   },
 
   "9khnVR": { "defaultMessage": "Photos" },
@@ -123,7 +123,6 @@
   "/0TOL5": { "defaultMessage": "Montant" },
   "/s3yB5": { "defaultMessage": "État:" },
   "1jx3mr": { "defaultMessage": "Date de réservation" },
-  "2Ml/7i": { "defaultMessage": "Chambre" },
   "3SVI5p": { "defaultMessage": "Avertissement" },
   "3VI9mt": { "defaultMessage": "Sauvegarder les modifications" },
   "3bytUc": { "defaultMessage": "Toutes les réservations" },
@@ -161,7 +160,6 @@
   "P3MfNj": { "defaultMessage": "Dépôt par carte de crédit requis" },
   "PFtMy9": { "defaultMessage": "Annulé" },
   "PgJGHT": { "defaultMessage": "Disponible" },
-  "Q8Qw5B": { "defaultMessage": "Description" },
   "Q9UkZQ": { "defaultMessage": "Wi-Fi haut débit gratuit" },
   "QJNaAH": {
     "defaultMessage": "Prix ​​de la chambre pour 1 nuit * 1 personne"
@@ -233,5 +231,51 @@
   "kunS6i": { "defaultMessage": "Le type est requis" },
   "qe19tD": {
     "defaultMessage": "Devrait être une chaîne ou devrait avoir au moins une lettre majuscule"
-  }
+  },
+  "47FYwb": { "defaultMessage": "Annuler" },
+  "9mXFUz": {
+    "defaultMessage": "Aucun résultat ne correspond à votre recherche"
+  },
+  "K3r6DQ": { "defaultMessage": "Supprimer" },
+  "jvo0vs": { "defaultMessage": "Sauvegarder" },
+  "2RDzgc": { "defaultMessage": "Vérifier" },
+  "Q8Qw5B": { "defaultMessage": "Description" },
+  "X7IMRK": { "defaultMessage": "Enregistrement" },
+  "Yg9wZZ": { "defaultMessage": "12h00" },
+  "e38GOF": { "defaultMessage": "Agréments" },
+  "oMYHHk": { "defaultMessage": "15h00" },
+  "r6Hj+h": { "defaultMessage": "Calendrier des points" },
+  "TWTu/9": { "defaultMessage": "Garantie de carte de crédit requise" },
+  "YtKv1z": { "defaultMessage": "Moy./nuit" },
+  "dM+p3/": { "defaultMessage": "Depuis" },
+  "evTYb/": {
+    "defaultMessage": "23h59, heure de l'hôtel 2 jours avant l'arrivée ou payer 1 nuit / Carte de crédit requise"
+  },
+  "g5DEE8": { "defaultMessage": "Politique d'annulation" },
+  "J+S/E8": { "defaultMessage": "Email invalide" },
+  "N4ReBT": { "defaultMessage": "Voir les détails" },
+  "QwDSj/": { "defaultMessage": "La longueur minimale doit être de 10" },
+  "h73tAE": {
+    "defaultMessage": "Le numéro de téléphone ne doit contenir aucun caractère spécial et doit commencer par 9 , 7 ou 8"
+  },
+  "kg6n2g": { "defaultMessage": "La longueur maximale doit être de 10" },
+  "lRJWXn": {
+    "defaultMessage": "La première lettre du nom doit être majuscule et le nom doit être une chaîne"
+  },
+  "zFG+sR": { "defaultMessage": "Le prénom est requis" },
+  "Q/7RZn": {
+    "defaultMessage": "Prix ​​de la chambre pour 1 Nuit X 1 Chambre"
+  },
+  "dtgi/W": { "defaultMessage": "L'e-mail est requis" },
+  "00/IyC": { "defaultMessage": "Nuit" },
+  "2Ml/7i": { "defaultMessage": "Chambre" },
+  "7tD4iU": { "defaultMessage": "Montant payable" },
+  "vmQF1b": { "defaultMessage": "Nuit X" },
+  "zZn9wA": { "defaultMessage": "Prix ​​de la chambre pour" },
+  "+7HeVJ": { "defaultMessage": "Super Deluxe" },
+  "6I+DHW": { "defaultMessage": "Sélectionnez une fourchette de prix" },
+  "j6WSBC": { "defaultMessage": "Afficher les hôtels" },
+  "kTo0o2": { "defaultMessage": "Suite" },
+  "ocaqXc": { "defaultMessage": "De luxe" },
+  "zSOvI0": { "defaultMessage": "Filtres" }
 }

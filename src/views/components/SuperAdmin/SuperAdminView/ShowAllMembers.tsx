@@ -366,7 +366,6 @@ export default function ShowAllMembers() {
               modalHotel={modalHotel}
               open={open}
               setOpen={setOpen}
-              setLoader={setLoader}
             />
 
             {/* <AccordionDetails sx={{ ml: 4, mt: -1 }}> </AccordionDetails> */}
@@ -422,10 +421,6 @@ export default function ShowAllMembers() {
         setOpen={setOpenDialog}
         item={item}
         setItem={setItem}
-<<<<<<< Updated upstream
-        setRender={setRender}
-=======
->>>>>>> Stashed changes
       /> */}
     </>
   );
