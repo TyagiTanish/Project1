@@ -12,6 +12,7 @@ import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
+import { FormattedMessage } from "react-intl";
 
 /**
  * To show Details of a specific hotel. Markdown is *Hotels*.
@@ -103,7 +104,7 @@ function ViewDeal() {
               }}
             >
               <CalendarMonthIcon fontSize="small" />
-              <Typography sx={{ fontSize: 14 }}>Points Calendar</Typography>
+              <Typography sx={{ fontSize: 14 }}><FormattedMessage defaultMessage="Points Calendar"/></Typography>
             </Stack>
           </Stack>
         </Stack>
@@ -117,7 +118,7 @@ function ViewDeal() {
           justifyContent={"center"}
         >
           <Typography textAlign={"center"} fontSize={15}>
-            View Details
+          <FormattedMessage defaultMessage="View Details"/>
           </Typography>
           {open ? (
             <KeyboardArrowUpIcon fontSize="small" />

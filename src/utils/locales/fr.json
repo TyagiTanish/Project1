@@ -1,4 +1,10 @@
 {
+  "+7HeVJ": [
+    {
+      "type": 0,
+      "value": "Super Deluxe"
+    }
+  ],
   "+QNm85": [
     {
       "type": 0,
@@ -21,6 +27,12 @@
     {
       "type": 0,
       "value": "Pas de téléphone"
+    }
+  ],
+  "00/IyC": [
+    {
+      "type": 0,
+      "value": "Nuit"
     }
   ],
   "0xWUYr": [
@@ -53,6 +65,18 @@
       "value": "Identifiant du propriétaire"
     }
   ],
+  "2Ml/7i": [
+    {
+      "type": 0,
+      "value": "Chambre"
+    }
+  ],
+  "2RDzgc": [
+    {
+      "type": 0,
+      "value": "Vérifier"
+    }
+  ],
   "2apuGa": [
     {
       "type": 0,
@@ -77,10 +101,22 @@
       "value": "Arrivée: 15h00"
     }
   ],
+  "3bytUc": [
+    {
+      "type": 0,
+      "value": "Toutes les réservations"
+    }
+  ],
   "3rvTzG": [
     {
       "type": 0,
       "value": "S'inscrire"
+    }
+  ],
+  "47FYwb": [
+    {
+      "type": 0,
+      "value": "Annuler"
     }
   ],
   "4OjOXO": [
@@ -113,6 +149,12 @@
       "value": "Mot de passe"
     }
   ],
+  "6I+DHW": [
+    {
+      "type": 0,
+      "value": "Sélectionnez une fourchette de prix"
+    }
+  ],
   "7444aR": [
     {
       "type": 0,
@@ -123,6 +165,12 @@
     {
       "type": 0,
       "value": "Ajouter l'emplacement de l'hôtel"
+    }
+  ],
+  "7tD4iU": [
+    {
+      "type": 0,
+      "value": "Montant payable"
     }
   ],
   "8oWVZA": [
@@ -149,10 +197,22 @@
       "value": "Email client"
     }
   ],
+  "9CHoi1": [
+    {
+      "type": 0,
+      "value": "Politique de dépôt"
+    }
+  ],
   "9khnVR": [
     {
       "type": 0,
       "value": "Photos"
+    }
+  ],
+  "9mXFUz": [
+    {
+      "type": 0,
+      "value": "Aucun résultat ne correspond à votre recherche"
     }
   ],
   "9rwIcL": [
@@ -287,10 +347,22 @@
       "value": "Villes"
     }
   ],
+  "J+S/E8": [
+    {
+      "type": 0,
+      "value": "Email invalide"
+    }
+  ],
   "JH2EfS": [
     {
       "type": 0,
       "value": "Animaux domestiques"
+    }
+  ],
+  "K3r6DQ": [
+    {
+      "type": 0,
+      "value": "Supprimer"
     }
   ],
   "KkDJ/P": [
@@ -303,6 +375,12 @@
     {
       "type": 0,
       "value": "télécharger"
+    }
+  ],
+  "N4ReBT": [
+    {
+      "type": 0,
+      "value": "Voir les détails"
     }
   ],
   "NQgbYA": [
@@ -323,6 +401,18 @@
       "value": "Bombay"
     }
   ],
+  "Q/7RZn": [
+    {
+      "type": 0,
+      "value": "Prix ​​de la chambre pour 1 Nuit X 1 Chambre"
+    }
+  ],
+  "Q8Qw5B": [
+    {
+      "type": 0,
+      "value": "Description"
+    }
+  ],
   "QQSdHP": [
     {
       "type": 0,
@@ -333,6 +423,12 @@
     {
       "type": 0,
       "value": "Changer le mot de passe"
+    }
+  ],
+  "QwDSj/": [
+    {
+      "type": 0,
+      "value": "La longueur minimale doit être de 10"
     }
   ],
   "RiZXe1": [
@@ -351,6 +447,12 @@
     {
       "type": 0,
       "value": "Ville"
+    }
+  ],
+  "TWTu/9": [
+    {
+      "type": 0,
+      "value": "Garantie de carte de crédit requise"
     }
   ],
   "U41zpQ": [
@@ -389,10 +491,28 @@
       "value": "Nom:"
     }
   ],
+  "X7IMRK": [
+    {
+      "type": 0,
+      "value": "Enregistrement"
+    }
+  ],
   "Y2s5iu": [
     {
       "type": 0,
-      "value": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
+      "value": "Inscrivez-vous avec un numéro de téléphone et obtenez un accès exclusif à des réductions et des économies sur les séjours OYO et auprès de nos nombreux partenaires de voyage."
+    }
+  ],
+  "Yg9wZZ": [
+    {
+      "type": 0,
+      "value": "12h00"
+    }
+  ],
+  "YtKv1z": [
+    {
+      "type": 0,
+      "value": "Moy./nuit"
     }
   ],
   "ZmsB1S": [
@@ -413,10 +533,34 @@
       "value": "Plus de destinations. Plus de facilité. Plus abordable."
     }
   ],
+  "dM+p3/": [
+    {
+      "type": 0,
+      "value": "Depuis"
+    }
+  ],
   "dmGKS5": [
     {
       "type": 0,
       "value": "Départ: 12h00"
+    }
+  ],
+  "dtgi/W": [
+    {
+      "type": 0,
+      "value": "L'e-mail est requis"
+    }
+  ],
+  "e38GOF": [
+    {
+      "type": 0,
+      "value": "Agréments"
+    }
+  ],
+  "evTYb/": [
+    {
+      "type": 0,
+      "value": "23h59, heure de l'hôtel 2 jours avant l'arrivée ou payer 1 nuit / Carte de crédit requise"
     }
   ],
   "eyOT/X": [
@@ -425,10 +569,22 @@
       "value": "Emplacement des points"
     }
   ],
+  "g5DEE8": [
+    {
+      "type": 0,
+      "value": "Politique d'annulation"
+    }
+  ],
   "gCsYTJ": [
     {
       "type": 0,
       "value": "Nouveau mot de passe:"
+    }
+  ],
+  "h73tAE": [
+    {
+      "type": 0,
+      "value": "Le numéro de téléphone ne doit contenir aucun caractère spécial et doit commencer par 9 , 7 ou 8"
     }
   ],
   "h9FUr8": [
@@ -443,6 +599,18 @@
       "value": "Notre prix le plus bas"
     }
   ],
+  "iqbd3D": [
+    {
+      "type": 0,
+      "value": "Équipements de l'hôtel"
+    }
+  ],
+  "j6WSBC": [
+    {
+      "type": 0,
+      "value": "Afficher les hôtels"
+    }
+  ],
   "jUTmkf": [
     {
       "type": 0,
@@ -455,10 +623,28 @@
       "value": "Changez votre mot de passe"
     }
   ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Sauvegarder"
+    }
+  ],
+  "kTo0o2": [
+    {
+      "type": 0,
+      "value": "Suite"
+    }
+  ],
   "kUDcH0": [
     {
       "type": 0,
       "value": "Spa"
+    }
+  ],
+  "kg6n2g": [
+    {
+      "type": 0,
+      "value": "La longueur maximale doit être de 10"
     }
   ],
   "ku+mDU": [
@@ -477,6 +663,12 @@
     {
       "type": 0,
       "value": "Téléphone : +91 2239879999 | Télécopie : +91 2239879600"
+    }
+  ],
+  "lRJWXn": [
+    {
+      "type": 0,
+      "value": "La première lettre du nom doit être majuscule et le nom doit être une chaîne"
     }
   ],
   "lhgV6Z": [
@@ -503,10 +695,28 @@
       "value": "Yamuna Nagar"
     }
   ],
+  "oMYHHk": [
+    {
+      "type": 0,
+      "value": "15h00"
+    }
+  ],
+  "ocaqXc": [
+    {
+      "type": 0,
+      "value": "De luxe"
+    }
+  ],
   "p2cPVQ": [
     {
       "type": 0,
       "value": "Bilaspur"
+    }
+  ],
+  "q4I+Ga": [
+    {
+      "type": 0,
+      "value": "Description de la pièce"
     }
   ],
   "qwx3Nk": [
@@ -519,6 +729,12 @@
     {
       "type": 0,
       "value": "Se connecter"
+    }
+  ],
+  "r6Hj+h": [
+    {
+      "type": 0,
+      "value": "Calendrier des points"
     }
   ],
   "rvirM2": [
@@ -563,6 +779,12 @@
       "value": "Pays"
     }
   ],
+  "vmQF1b": [
+    {
+      "type": 0,
+      "value": "Nuit X"
+    }
+  ],
   "wNLUau": [
     {
       "type": 0,
@@ -593,10 +815,34 @@
       "value": "Banglore"
     }
   ],
+  "zF7Cth": [
+    {
+      "type": 0,
+      "value": "Invitée"
+    }
+  ],
+  "zFG+sR": [
+    {
+      "type": 0,
+      "value": "Le prénom est requis"
+    }
+  ],
   "zFegDD": [
     {
       "type": 0,
       "value": "Contact"
+    }
+  ],
+  "zSOvI0": [
+    {
+      "type": 0,
+      "value": "Filtres"
+    }
+  ],
+  "zZn9wA": [
+    {
+      "type": 0,
+      "value": "Prix ​​de la chambre pour"
     }
   ]
 }

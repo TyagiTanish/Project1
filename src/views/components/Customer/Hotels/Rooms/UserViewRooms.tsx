@@ -15,6 +15,7 @@ import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { useDispatch } from "react-redux";
 import { roomDetails } from "../../../redux/user/userSlice";
 import { Theme, useTheme } from "@emotion/react";
+import { FormattedMessage } from "react-intl";
 function RoomImageSlider({ images }: any) {
   const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -127,7 +128,7 @@ function UserViewRooms({ hotels }: any) {
                   textAlign={"justify"}
                 >
                   <Typography fontWeight={"bold"} fontSize={18}>
-                    Room Description
+                  <FormattedMessage defaultMessage="Room Description"/>       
                   </Typography>
                   <Box
                     dangerouslySetInnerHTML={{
@@ -140,7 +141,7 @@ function UserViewRooms({ hotels }: any) {
               <div style={{ border: "1px solid lightgray" }}></div>
               <Stack width={"50%"} justifyContent={"space-between"}>
                 <Typography fontWeight={"bold"} fontSize={18}>
-                  Hotel Amenities
+                <FormattedMessage defaultMessage="Hotel Amenities"/>        
                 </Typography>
                 <Stack
                   gap={2}
@@ -160,13 +161,13 @@ function UserViewRooms({ hotels }: any) {
                 <Stack direction={"row"} spacing={2}>
                   <Stack direction={"column"} padding={1}>
                     <Typography sx={{ fontWeight: 300, fontSize: 12 }}>
-                      From
+                    <FormattedMessage defaultMessage="From"/>       
                     </Typography>
                     <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
                       ₹{item?.price}
                     </Typography>
                     <Typography sx={{ fontSize: 13, color: "gray" }}>
-                      Avg/Night
+                    <FormattedMessage defaultMessage="Avg/Night"/>        
                     </Typography>
                   </Stack>
                   <Stack
@@ -177,19 +178,19 @@ function UserViewRooms({ hotels }: any) {
                   >
                     <Stack>
                       <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>
-                        Cancelation Policy
+                      <FormattedMessage defaultMessage="Cancelation Policy"/>         
                       </Typography>
                       <Typography sx={{ fontSize: 12 }}>
-                        11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night
-                        Fee /Credit Card Required
+                      <FormattedMessage defaultMessage="11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night
+                        Fee /Credit Card Required"/>      
                       </Typography>
                     </Stack>
                     <Stack>
                       <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>
-                        Deposit Policy
+                      <FormattedMessage defaultMessage=" Deposit Policy"/>      
                       </Typography>
                       <Typography sx={{ fontSize: 12 }}>
-                        Credit Card Guarantee Required
+                      <FormattedMessage defaultMessage="Credit Card Guarantee Required"/>      
                       </Typography>
                     </Stack>
                   </Stack>

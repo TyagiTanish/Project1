@@ -12,6 +12,8 @@ import TuneIcon from "@mui/icons-material/TuneRounded";
 import ToggleDrawerFilter from "../../Filters/ToggleDrawerFilter";
 import Loader from "../../loader/Loader";
 import { useDispatch } from "react-redux";
+
+import { FormattedMessage } from "react-intl";
 import { price, category } from "../../redux/user/userSlice";
 
 /**
@@ -168,7 +170,7 @@ const HotelsPage = () => {
               marginLeft={"30%"}
               sx={{ fontSize: 20, color: "red" }}
             >
-              No Results Match your search
+           <FormattedMessage defaultMessage="No Results Match your search"/>
             </Box>
           </>
         )}

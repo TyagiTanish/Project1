@@ -30,6 +30,7 @@ import Done from "@mui/icons-material/Done";
 import PriceRangeSlider from "./PriceRangeSlider";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
+import { FormattedMessage, useIntl } from "react-intl";
 
 export default function DrawerFilters({
   open,
@@ -50,11 +51,11 @@ export default function DrawerFilters({
 
   const filterCategory = reduxCategory?.map((item: any) => item?.index);
   const [amenities, setAmenities] = React.useState<any>();
-
+const intl=useIntl();
   const totalCategories = [
-    { name: "Suite", index: 1 },
-    { name: "Deluxe", index: 2 },
-    { name: "Super Deluxe", index: 3 },
+    { name: intl.formatMessage({defaultMessage:"Suite"}), index: 1 },
+    { name:intl.formatMessage({defaultMessage:"Deluxe"}) , index: 2 },
+    { name:intl.formatMessage({defaultMessage:"Super Deluxe"}) , index: 3 },
   ];
 
   const setCategories = (item: any, index: any) => {
@@ -107,12 +108,12 @@ export default function DrawerFilters({
             mt: "10%",
           }}
         >
-          <DialogTitle>Filters</DialogTitle>
+          <DialogTitle><FormattedMessage defaultMessage="Filters"/></DialogTitle>
           <ModalClose />
           <Divider sx={{ mt: "auto" }} />
           <DialogContent sx={{ gap: 2 }}>
             <FormLabel sx={{ typography: "title-md", fontWeight: "bold" }}>
-              Select price range
+             <FormattedMessage defaultMessage="Select price range"/> 
             </FormLabel>
             <Box ml={3}>
               <PriceRangeSlider price={price} setPrice={setPrice} />
@@ -195,7 +196,7 @@ export default function DrawerFilters({
             </FormControl> */}
 
             <Typography level="title-md" fontWeight="bold" sx={{ mt: 1 }}>
-              Amenities
+            <FormattedMessage defaultMessage="Amenities"/>  
             </Typography>
             <div role="group" aria-labelledby="rank">
               <List
@@ -277,7 +278,7 @@ export default function DrawerFilters({
               setOpen(false);
             }}
           >
-            Show Hotels
+           <FormattedMessage defaultMessage="Show Hotels"/>       
           </Button>
           {/* </Stack> */}
         </Sheet>

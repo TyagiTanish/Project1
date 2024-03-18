@@ -12,6 +12,7 @@ import WineBarIcon from "@mui/icons-material/WineBar";
 import GroupsIcon from "@mui/icons-material/Groups";
 import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
 import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import { FormattedMessage } from "react-intl";
 function ViewDetails({ hotels }: any) {
   const amenitie = [
     { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: "0" },
@@ -67,7 +68,7 @@ function ViewDetails({ hotels }: any) {
         <Typography
           sx={{ fontWeight: "bold", fontSize: { xl: 18, md: 16, sm: 16 } }}
         >
-          Description
+        <FormattedMessage defaultMessage="Description"/>  
         </Typography>
         <Typography
           sx={{ fontSize: { xl: 14, md: 12, sm: 11 }, letterSpacing: 1 }}
@@ -83,23 +84,23 @@ function ViewDetails({ hotels }: any) {
           sx={{ fontWeight: "bold", fontSize: { xl: 18, md: 18, sm: 15 } }}
         >
           <Typography sx={{ fontSize: { xl: 20, md: 16, sm: 15 } }}>
-            Check-In
+          <FormattedMessage defaultMessage=" Check-In"/>     
           </Typography>
           <Typography sx={{ fontSize: { xl: 20, md: 16, sm: 15 } }}>
-            Check-Out
+          <FormattedMessage defaultMessage="Check-Out"/>         
           </Typography>
         </Stack>
         <Stack direction={"row"} spacing={9} alignItems={"center"}>
           <Stack direction={"row"} spacing={1}>
             <AccessTimeIcon fontSize="small" />
             <Typography sx={{ fontSize: { xl: 17, md: 15, sm: 15 } }}>
-              03:00 PM
+            <FormattedMessage defaultMessage="03:00 PM"/>          
             </Typography>
           </Stack>
           <Stack direction={"row"} spacing={1}>
             <AccessTimeIcon fontSize="small" />
             <Typography sx={{ fontSize: { xl: 17, md: 15, sm: 15 } }}>
-              12:00 PM
+            <FormattedMessage defaultMessage="12:00 PM"/>      
             </Typography>
           </Stack>
         </Stack>
@@ -111,7 +112,7 @@ function ViewDetails({ hotels }: any) {
           fontSize: { xl: 18, md: 16, sm: 16 },
         }}
       >
-        Amenities
+        <FormattedMessage defaultMessage="Amenities"/>     
       </Typography>
       <Grid container spacing={2} sx={{ mb: 4, ml: { lg: -2, md: 0 } }}>
         {ShowAmenities.map((item) => (
