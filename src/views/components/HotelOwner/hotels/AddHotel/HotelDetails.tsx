@@ -34,8 +34,10 @@ import { useDropzone } from "react-dropzone";
 import * as Yup from "yup";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddHotelLocation from "../../../Register/MemberRegister/AddHotelLocation";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const HotelDetails = () => {
+  const intl = useIntl();
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
   const { request } = useAuth();
@@ -90,7 +92,6 @@ const HotelDetails = () => {
     const handleWindowSize = () => {
       setScreenSize(window.outerWidth);
     };
-    
 
     window.addEventListener("resize", handleWindowSize);
   });
@@ -181,11 +182,16 @@ const HotelDetails = () => {
   if (step === 0) {
     FormSchema = Yup.object().shape({
       hotelName: Yup.string()
-        .required("This field is required")
+        .required(
+          intl.formatMessage({ defaultMessage: "This field is required" })
+        )
         .min(3)
         .matches(
           /^[a-zA-Z]+ [a-zA-Z]+$/,
-          "should be a string or should atleat have one upper case letter"
+          intl.formatMessage({
+            defaultMessage:
+              "should be a string or should atleat have one upper case letter",
+          })
         ),
       //   email: Yup.string().email("invalid email !").required("Email is Required"),
     });
@@ -193,29 +199,51 @@ const HotelDetails = () => {
   if (step === 1) {
     FormSchema = Yup.object().shape({
       city: Yup.string()
-        .required("This field is required")
+        .required(
+          intl.formatMessage({ defaultMessage: "This field is required" })
+        )
         .min(3)
         .matches(
           /^[a-zA-Z]+ [a-zA-Z]+$/,
-          "should be a string or should atleat have one upper case letter"
+          intl.formatMessage({
+            defaultMessage:
+              "should be a string or should atleat have one upper case letter",
+          })
         ),
       state: Yup.string()
-        .required("This field is required")
+        .required(
+          intl.formatMessage({ defaultMessage: "This field is required" })
+        )
         .min(3)
         .matches(
           /^[a-zA-Z]+ [a-zA-Z]+$/,
-          "should be a string or should atleat have one upper case letter"
+          intl.formatMessage({
+            defaultMessage:
+              "should be a string or should atleat have one upper case letter",
+          })
         ),
       postalCode: Yup.string()
-        .required("This field is required")
+        .required(
+          intl.formatMessage({ defaultMessage: "This field is required" })
+        )
         .min(3)
-        .matches(/(?=.*[0-9])\w+/, "Postal Code. must be a number"),
+        .matches(
+          /(?=.*[0-9])\w+/,
+          intl.formatMessage({
+            defaultMessage: "Postal Code. must be a number",
+          })
+        ),
       country: Yup.string()
-        .required("This field is required")
+        .required(
+          intl.formatMessage({ defaultMessage: "This field is required" })
+        )
         .min(3)
         .matches(
           /(?=.*[a-z])(?=.*[A-Z])\w+/,
-          "should be a string or should atleat have one upper case letter"
+          intl.formatMessage({
+            defaultMessage:
+              "should be a string or should atleat have one upper case letter",
+          })
         ),
     });
   }
@@ -227,7 +255,10 @@ const HotelDetails = () => {
   }
   if (step === 3) {
     FormSchema = Yup.object().shape({
-      amenities: Yup.array().min(1, "Select at least one amenity"),
+      amenities: Yup.array().min(
+        1,
+        intl.formatMessage({ defaultMessage: "Select at least one amenity" })
+      ),
     });
   }
   if (step === 4) {
@@ -261,7 +292,7 @@ const HotelDetails = () => {
         color="text.secondary"
         gutterBottom
       >
-        Add hotel & Get ₹500 OYO Money
+        <FormattedMessage defaultMessage="Add hotel & Get ₹500 OYO Money" />
       </Typography>
       {step === 0 && (
         <Typography
@@ -273,7 +304,7 @@ const HotelDetails = () => {
             textAlign: "center",
           }}
         >
-          Add Hotel Details...
+          <FormattedMessage defaultMessage="Add Hotel Details..." />
         </Typography>
       )}
       {step === 1 && (
@@ -286,10 +317,10 @@ const HotelDetails = () => {
             textAlign: "center",
           }}
         >
-          Add Hotel Location
+          <FormattedMessage defaultMessage="Add Hotel Location" />
         </Typography>
       )}
-      {step == 4 && (
+      {step === 4 && (
         <Typography
           sx={{
             m: "1%",
@@ -299,7 +330,7 @@ const HotelDetails = () => {
             textAlign: "center",
           }}
         >
-          Point location
+          <FormattedMessage defaultMessage="Point location" />
         </Typography>
       )}
       {step === 3 && (
@@ -311,7 +342,7 @@ const HotelDetails = () => {
             opacity: 0.7,
           }}
         >
-          Enter Hotel Amenities....
+          <FormattedMessage defaultMessage="Enter Hotel Amenities...." />
         </Typography>
       )}
       {step === 2 && (
@@ -323,7 +354,7 @@ const HotelDetails = () => {
             opacity: 0.7,
           }}
         >
-          Enter Hotel Discription....
+          <FormattedMessage defaultMessage="Enter Hotel Discription...." />
         </Typography>
       )}
 
@@ -345,7 +376,7 @@ const HotelDetails = () => {
                         fontSize: { xl: 16, md: 15, sm: 12 },
                       }}
                     >
-                      Hotel name
+                      <FormattedMessage defaultMessage="Hotel name" />
                     </Typography>
                     <TextField
                       // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
@@ -376,7 +407,7 @@ const HotelDetails = () => {
                         <Typography sx={{ mt: 1 }}>
                           <AddPhotoAlternateSharpIcon fontSize="large" />
                           <Typography sx={{ fontSize: "10px" }}>
-                            Drop a Photo Here
+                            <FormattedMessage defaultMessage="Drop a Photo Here" />
                           </Typography>
                         </Typography>
                       </IconButton>
@@ -409,7 +440,7 @@ const HotelDetails = () => {
                         }}
                         onClick={handleSubmit(onSubmit)}
                       >
-                        Next
+                        <FormattedMessage defaultMessage="Next" />
                       </Button>
                     ) : (
                       <Button
@@ -420,7 +451,7 @@ const HotelDetails = () => {
                         disabled
                         onClick={handleSubmit(onSubmit)}
                       >
-                        Next
+                        <FormattedMessage defaultMessage="Next" />
                       </Button>
                     )}
                   </Stack>
@@ -444,7 +475,7 @@ const HotelDetails = () => {
                           fontSize: { xl: 16, md: 15, sm: 13 },
                         }}
                       >
-                        City
+                        <FormattedMessage defaultMessage="City" />
                       </Typography>
                       <TextField
                         sx={{ width: "80%" }}
@@ -462,7 +493,7 @@ const HotelDetails = () => {
                           fontSize: { xl: 16, md: 15, sm: 13 },
                         }}
                       >
-                        State
+                        <FormattedMessage defaultMessage="State" />
                       </Typography>
                       <TextField
                         sx={{ width: "80%" }}
@@ -488,7 +519,7 @@ const HotelDetails = () => {
                           fontSize: { xl: 16, md: 15, sm: 13 },
                         }}
                       >
-                        Postal code
+                        <FormattedMessage defaultMessage="Postal code" />
                       </Typography>
                       <TextField
                         sx={{ width: "80%" }}
@@ -507,7 +538,7 @@ const HotelDetails = () => {
                           fontSize: { xl: 16, md: 15, sm: 13 },
                         }}
                       >
-                        Country
+                        <FormattedMessage defaultMessage="Country" />
                       </Typography>
                       <TextField
                         sx={{ width: "80%" }}
@@ -546,7 +577,7 @@ const HotelDetails = () => {
                         fontSize: { xl: 15, md: 13, sm: 11 },
                       }}
                     >
-                      Next
+                      <FormattedMessage defaultMessage="Next" />
                     </Button>
                   </Stack>
                 </form>
@@ -587,7 +618,7 @@ const HotelDetails = () => {
                     // onClick={() => setStep(0)}
                     onClick={handleSubmit(onSubmit)}
                   >
-                    Add Hotel
+                    <FormattedMessage defaultMessage="Add Hotel" />
                   </Button>
                 </Stack>
               </form>
@@ -716,7 +747,7 @@ const HotelDetails = () => {
                     fontSize: { xl: 15, md: 13, sm: 11 },
                   }}
                 >
-                  Next
+                  <FormattedMessage defaultMessage="Next" />
                 </Button>
               </Stack>
             </form>
@@ -762,7 +793,7 @@ const HotelDetails = () => {
                         fontSize: { xl: 15, md: 13, sm: 11 },
                       }}
                     >
-                      Next
+                      <FormattedMessage defaultMessage="Next" />
                     </Button>
                   </Stack>
                 </form>
@@ -772,7 +803,7 @@ const HotelDetails = () => {
         </Stack>
       </CardContent>
       <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
-        To use Another Email for adding hotel{" "}
+        <FormattedMessage defaultMessage="To use Another Email for adding hotel" />
         <Button
           sx={{
             textTransform: "none",
@@ -780,7 +811,7 @@ const HotelDetails = () => {
           }}
           onClick={() => navigate("/memberRegister")}
         >
-          Click here...
+          <FormattedMessage defaultMessage="Click here..." />
         </Button>
       </Box>
     </>

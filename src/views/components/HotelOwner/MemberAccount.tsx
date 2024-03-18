@@ -38,7 +38,9 @@ function Account() {
           >
             <FormattedMessage defaultMessage="Personal Information" />
           </Typography>
-          <Typography sx={{ mt: 2 }}>Email:</Typography>
+          <Typography sx={{ mt: 2 }}>
+            <FormattedMessage defaultMessage="Email:" />
+          </Typography>
           <TextField
             id="outlined-basic"
             variant="outlined"

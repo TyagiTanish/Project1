@@ -5,6 +5,8 @@ import Button from "@mui/material/Button";
 import { IconButton, List, ListItem, Stack, Typography } from "@mui/material";
 import SimpleImageSlider from "react-simple-image-slider";
 import CloseIcon from "@mui/icons-material/Close";
+import { FormattedMessage } from "react-intl";
+
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -25,7 +27,9 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen}>Open Child Modal</Button>
+      <Button onClick={handleOpen}>
+        <FormattedMessage defaultMessage="Open Child Modal" />
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
@@ -33,11 +37,15 @@ function ChildModal() {
         aria-describedby="child-modal-description"
       >
         <Box sx={{ ...style, width: 200 }}>
-          <h2 id="child-modal-title">Text in a child modal</h2>
+          <h2 id="child-modal-title">
+            <FormattedMessage defaultMessage="Text in a child modal" />
+          </h2>
           <p id="child-modal-description">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+            <FormattedMessage defaultMessage="Lorem ipsum, dolor sit amet consectetur adipisicing elit." />
           </p>
-          <Button onClick={handleClose}>Close Child Modal</Button>
+          <Button onClick={handleClose}>
+            <FormattedMessage defaultMessage="Close Child Modal" />
+          </Button>
         </Box>
       </Modal>
     </React.Fragment>
@@ -51,7 +59,6 @@ export default function RoomDetailModal({
   Detailedroom,
   setDetailedRoom,
 }: any) {
-
   const handleOpen = () => {
     setOpen(true);
   };
@@ -86,11 +93,10 @@ export default function RoomDetailModal({
             </IconButton>
           </Box>
           <Stack direction={"row"} justifyContent={"space-evenly"} spacing={1}>
-            <Box  border={"1px solid"}>
+            <Box border={"1px solid"}>
               <Stack spacing={1} padding={"1%"} margin={2}>
                 <Box>
                   <SimpleImageSlider
-                 
                     width={400}
                     height={350}
                     images={Images}
@@ -99,18 +105,24 @@ export default function RoomDetailModal({
                   />
                 </Box>
                 <Stack>
-                  <b>Room Description</b>
+                  <b>
+                    <FormattedMessage defaultMessage="Room Description" />
+                  </b>
                   <Typography fontSize={"15px"}>
-                    Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+                    <FormattedMessage
+                      defaultMessage=" Lorem ipsum dolor, sit amet consectetur adipisicing elit.
                     Expedita tempore provident tempora quisquam fuga, nihil
                     beatae voluptate veniam doloribus cum at omnis fugit qui
-                    perferendis laboriosam, reiciendis rerum consequatur neque?
+                    perferendis laboriosam, reiciendis rerum consequatur neque?"
+                    />
                   </Typography>
                 </Stack>
               </Stack>
             </Box>
             <Box padding={3}>
-              <b>Room Highlights</b>
+              <b>
+                <FormattedMessage defaultMessage="Room Highlights" />
+              </b>
               <Stack
                 direction={"row"}
                 spacing={3}
@@ -119,22 +131,50 @@ export default function RoomDetailModal({
                 margin={2}
               >
                 <Stack spacing={1}>
-                  <li>Ac</li>
-                  <li>42” LED Smart TV</li>
-                  <li>Coffee and tea maker</li>
-                  <li>Hair dryer</li>
-                  <li>Bath amenities</li>
-                  <li>Bath robes and slippers</li>
-                  <li>Minibar upon request</li>
+                  <li>
+                    <FormattedMessage defaultMessage="Ac" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="42” LED Smart TV" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Coffee and tea maker" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Hair dryer" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Bath amenities" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Bath robes and slippers" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Minibar upon request" />
+                  </li>
                 </Stack>
                 <Stack spacing={1}>
-                  <li>24-hour room service</li>
-                  <li>Complimentary water bottles</li>
-                  <li>In-room safe</li>
-                  <li>Iron and ironing board</li>
-                  <li>Complimentary high-speed Wi-Fi</li>
-                  <li>Daily newspaper upon request</li>
-                  <li>Extra bed upon request</li>
+                  <li>
+                    <FormattedMessage defaultMessage="24-hour room service" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Complimentary water bottles" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="In-room safe" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Iron and ironing board" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Complimentary high-speed Wi-Fi" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Daily newspaper upon request" />
+                  </li>
+                  <li>
+                    <FormattedMessage defaultMessage="Extra bed upon request" />
+                  </li>
                 </Stack>
               </Stack>
             </Box>

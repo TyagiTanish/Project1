@@ -21,6 +21,8 @@ import OnDeleteDialogBox from "../EditRoomDetails/DeleteRoomDialogBox";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
+import { FormattedMessage } from "react-intl";
+
 const Item = styled(Paper)(({ theme }) => ({
   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
   ...theme.typography.body2,
@@ -228,7 +230,7 @@ const RoomDetail = ({
                   </Tooltip>
                 </Stack>
               </Stack>
-              {room?.isAvailable == "true" ? (
+              {room?.isAvailable === "true" ? (
                 <Button
                   variant="contained"
                   // sx={{
@@ -236,7 +238,7 @@ const RoomDetail = ({
                   // }}
                   color="success"
                 >
-                  Available
+                  <FormattedMessage defaultMessage="Available" />
                 </Button>
               ) : (
                 <Button
@@ -246,7 +248,7 @@ const RoomDetail = ({
                   // }}
                   color="error"
                 >
-                  Not Available
+                  <FormattedMessage defaultMessage="Not Available" />
                 </Button>
               )}
             </Stack>

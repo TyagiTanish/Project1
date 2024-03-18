@@ -10,6 +10,7 @@ import { useTheme } from "@mui/material/styles";
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
+import { FormattedMessage } from "react-intl";
 
 export default function OnDeleteDialogBox({
   deleteOpen,
@@ -53,17 +54,17 @@ export default function OnDeleteDialogBox({
         aria-labelledby="responsive-dialog-title"
       >
         <DialogTitle id="responsive-dialog-title">
-          {"Do you Want to Delete room?"}
+          <FormattedMessage defaultMessage="Do you Want to Delete room?" />
         </DialogTitle>
         <DialogContent>
           <DialogContentText></DialogContentText>
         </DialogContent>
         <DialogActions>
           <Button autoFocus onClick={handleClose}>
-            Disagree
+            <FormattedMessage defaultMessage="Disagree" />
           </Button>
           <Button onClick={handleAgree} autoFocus>
-            Agree
+            <FormattedMessage defaultMessage="Agree" />
           </Button>
         </DialogActions>
       </Dialog>

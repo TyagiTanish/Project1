@@ -12,6 +12,8 @@ import { enqueueSnackbar } from "notistack";
 import EditIcon from "@mui/icons-material/Edit";
 import HotelAmenities from "./hotelAmenities/hotelAmenities";
 import EditAmenities from "../editHotels/EditAmenities";
+import { FormattedMessage } from "react-intl";
+
 function HotelInfo({ setRender }: any) {
   const [data, setData] = useState<any>([]);
   const [ownerData, setOwnerData] = useState<any>([]);
@@ -133,7 +135,7 @@ function HotelInfo({ setRender }: any) {
           marginLeft={6}
         >
           <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}>
-            Description
+            <FormattedMessage defaultMessage="Description" />
           </Typography>
           <Box
             dangerouslySetInnerHTML={{ __html: data?.discription }}
@@ -154,7 +156,7 @@ function HotelInfo({ setRender }: any) {
             <Typography
               sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold", ml: 6 }}
             >
-              Hotel Amenities
+              <FormattedMessage defaultMessage="Hotel Amenities" />
             </Typography>
             <Button onClick={() => setOpen3(true)} sx={{ color: "gray" }}>
               <EditIcon fontSize="small" sx={{ cursor: "pointer" }} />
@@ -167,12 +169,12 @@ function HotelInfo({ setRender }: any) {
 
         <Stack direction={"column"} spacing={2} marginLeft={6}>
           <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}>
-            Owner Details
+            <FormattedMessage defaultMessage="Owner Details" />
           </Typography>
           <Stack direction={"row"} spacing={10}>
             <Stack spacing={1}>
               <Typography sx={{ fontSize: { xl: 18, md: 14 } }}>
-                Owner Name -
+                <FormattedMessage defaultMessage="Owner Name -" />
               </Typography>
               <Typography sx={{ fontSize: { xl: 15, md: 12 } }}>
                 {user?.name}
@@ -180,7 +182,7 @@ function HotelInfo({ setRender }: any) {
             </Stack>
             <Stack spacing={1}>
               <Typography sx={{ fontSize: { xl: 18, md: 14 } }}>
-                Owner Email -
+                <FormattedMessage defaultMessage="Owner Email -" />
               </Typography>
               <Typography sx={{ fontSize: { xl: 15, md: 12 } }}>
                 {/* {ownerData?.user?.email} */}

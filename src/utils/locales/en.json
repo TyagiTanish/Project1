@@ -5,6 +5,18 @@
       "value": "List Your Property"
     }
   ],
+  "+qRNso": [
+    {
+      "type": 0,
+      "value": "Close Child Modal"
+    }
+  ],
+  "/0TOL5": [
+    {
+      "type": 0,
+      "value": "Amount"
+    }
+  ],
   "/28JSA": [
     {
       "type": 0,
@@ -17,10 +29,28 @@
       "value": "Phone No"
     }
   ],
+  "/s3yB5": [
+    {
+      "type": 0,
+      "value": "State:"
+    }
+  ],
+  "0C1YbO": [
+    {
+      "type": 0,
+      "value": "Select at least one amenity"
+    }
+  ],
   "0xWUYr": [
     {
       "type": 0,
       "value": "Customer Phone"
+    }
+  ],
+  "1jx3mr": [
+    {
+      "type": 0,
+      "value": "Booking Date"
     }
   ],
   "1umnAX": [
@@ -39,6 +69,12 @@
     {
       "type": 0,
       "value": "Owner Id"
+    }
+  ],
+  "2Ml/7i": [
+    {
+      "type": 0,
+      "value": "Room"
     }
   ],
   "2apuGa": [
@@ -65,10 +101,34 @@
       "value": "Check in: 15:00"
     }
   ],
+  "3SVI5p": [
+    {
+      "type": 0,
+      "value": "Warning"
+    }
+  ],
+  "3VI9mt": [
+    {
+      "type": 0,
+      "value": "Save Changes"
+    }
+  ],
+  "3bytUc": [
+    {
+      "type": 0,
+      "value": "All Bookings"
+    }
+  ],
   "3rvTzG": [
     {
       "type": 0,
       "value": "SignUp"
+    }
+  ],
+  "4/u1B2": [
+    {
+      "type": 0,
+      "value": "There is a booking today"
     }
   ],
   "4OjOXO": [
@@ -77,10 +137,22 @@
       "value": "Please enter your email to continue"
     }
   ],
+  "4UoaOO": [
+    {
+      "type": 0,
+      "value": "view details"
+    }
+  ],
   "4jYQG+": [
     {
       "type": 0,
       "value": "Hotels & Homes"
+    }
+  ],
+  "4vOWRW": [
+    {
+      "type": 0,
+      "value": "Room Images"
     }
   ],
   "5GxMk2": [
@@ -95,16 +167,52 @@
       "value": "Password"
     }
   ],
+  "6lhgE5": [
+    {
+      "type": 0,
+      "value": "Minibar upon request"
+    }
+  ],
+  "6t1o49": [
+    {
+      "type": 0,
+      "value": "Total No. of Days-"
+    }
+  ],
+  "7E/yNW": [
+    {
+      "type": 0,
+      "value": "Owner Name -"
+    }
+  ],
   "7TFbhV": [
     {
       "type": 0,
       "value": "Add Hotel Location"
     }
   ],
+  "7dr1md": [
+    {
+      "type": 0,
+      "value": "Room Description:"
+    }
+  ],
+  "8GH/al": [
+    {
+      "type": 0,
+      "value": "All Hotels"
+    }
+  ],
   "8uXS99": [
     {
       "type": 0,
       "value": "Popular Locations"
+    }
+  ],
+  "8xkJT9": [
+    {
+      "type": 0,
+      "value": "Edit Hotel Details"
     }
   ],
   "9+Ddtu": [
@@ -119,6 +227,18 @@
       "value": "Customer Email"
     }
   ],
+  "9CHoi1": [
+    {
+      "type": 0,
+      "value": "Deposit Policy"
+    }
+  ],
+  "9ZDiXG": [
+    {
+      "type": 0,
+      "value": "Location Info:"
+    }
+  ],
   "9khnVR": [
     {
       "type": 0,
@@ -129,6 +249,24 @@
     {
       "type": 0,
       "value": "Overview"
+    }
+  ],
+  "A+BGBs": [
+    {
+      "type": 0,
+      "value": "Check-out"
+    }
+  ],
+  "A2IauC": [
+    {
+      "type": 0,
+      "value": "Cancellation Policy"
+    }
+  ],
+  "AWsQuR": [
+    {
+      "type": 0,
+      "value": "Update Data"
     }
   ],
   "AyGauy": [
@@ -155,10 +293,22 @@
       "value": "User Details-"
     }
   ],
+  "CDQSzi": [
+    {
+      "type": 0,
+      "value": "Type of Room"
+    }
+  ],
   "CDnwtH": [
     {
       "type": 0,
       "value": "Jagadhri"
+    }
+  ],
+  "DelP+4": [
+    {
+      "type": 0,
+      "value": "Reciept"
     }
   ],
   "EZEH2+": [
@@ -173,6 +323,24 @@
       "value": "Hotel's Discription"
     }
   ],
+  "FRPiFb": [
+    {
+      "type": 0,
+      "value": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
+    }
+  ],
+  "FgydNe": [
+    {
+      "type": 0,
+      "value": "View"
+    }
+  ],
+  "FriMSM": [
+    {
+      "type": 0,
+      "value": "View Reciept"
+    }
+  ],
   "GB83+B": [
     {
       "type": 0,
@@ -183,6 +351,12 @@
     {
       "type": 0,
       "value": "Register here"
+    }
+  ],
+  "GhOlp0": [
+    {
+      "type": 0,
+      "value": "Complimentary water bottles"
     }
   ],
   "GodOg+": [
@@ -201,6 +375,12 @@
     {
       "type": 0,
       "value": "Enter Hotel Discription...."
+    }
+  ],
+  "GzxlXs": [
+    {
+      "type": 0,
+      "value": "Extra bed upon request"
     }
   ],
   "H0JBH6": [
@@ -239,16 +419,58 @@
       "value": "Cities"
     }
   ],
+  "ISly67": [
+    {
+      "type": 0,
+      "value": "Agree"
+    }
+  ],
+  "JyRQ6S": [
+    {
+      "type": 0,
+      "value": "Country:"
+    }
+  ],
+  "KGzfLt": [
+    {
+      "type": 0,
+      "value": "Removed"
+    }
+  ],
   "KkDJ/P": [
     {
       "type": 0,
       "value": "Sign up & Get ₹500 OYO Money"
     }
   ],
+  "KlvzVf": [
+    {
+      "type": 0,
+      "value": "Not Available"
+    }
+  ],
   "LaM7n1": [
     {
       "type": 0,
       "value": "download"
+    }
+  ],
+  "LpTgVJ": [
+    {
+      "type": 0,
+      "value": "Open Child Modal"
+    }
+  ],
+  "MNFqIW": [
+    {
+      "type": 0,
+      "value": "Requests"
+    }
+  ],
+  "NIVTxd": [
+    {
+      "type": 0,
+      "value": "Guests"
     }
   ],
   "NQgbYA": [
@@ -263,10 +485,58 @@
       "value": "There's an OYO around. Always."
     }
   ],
+  "OX/lwN": [
+    {
+      "type": 0,
+      "value": "Booking Details"
+    }
+  ],
   "OgF6Am": [
     {
       "type": 0,
       "value": "Mumbai"
+    }
+  ],
+  "P3MfNj": [
+    {
+      "type": 0,
+      "value": "Credit Card Deposit Required"
+    }
+  ],
+  "PFtMy9": [
+    {
+      "type": 0,
+      "value": "Canceled"
+    }
+  ],
+  "PgJGHT": [
+    {
+      "type": 0,
+      "value": "Available"
+    }
+  ],
+  "Q8Qw5B": [
+    {
+      "type": 0,
+      "value": "Description"
+    }
+  ],
+  "Q9UkZQ": [
+    {
+      "type": 0,
+      "value": "Complimentary high-speed Wi-Fi"
+    }
+  ],
+  "QJNaAH": [
+    {
+      "type": 0,
+      "value": "Room Price for 1 Night * 1 Guest"
+    }
+  ],
+  "QOAy/W": [
+    {
+      "type": 0,
+      "value": "Reminder"
     }
   ],
   "QQSdHP": [
@@ -281,16 +551,40 @@
       "value": "Change Password"
     }
   ],
+  "RLXaEm": [
+    {
+      "type": 0,
+      "value": "Edit Room Details"
+    }
+  ],
   "Rtrei/": [
     {
       "type": 0,
       "value": "View Deal"
     }
   ],
+  "SHZrda": [
+    {
+      "type": 0,
+      "value": "Type of room"
+    }
+  ],
   "TE4fIS": [
     {
       "type": 0,
       "value": "City"
+    }
+  ],
+  "TKmub+": [
+    {
+      "type": 0,
+      "value": "This field is required"
+    }
+  ],
+  "TZacpB": [
+    {
+      "type": 0,
+      "value": "In-room safe"
     }
   ],
   "U41zpQ": [
@@ -305,6 +599,12 @@
       "value": "Verify email"
     }
   ],
+  "UdgCF7": [
+    {
+      "type": 0,
+      "value": "Add Hotel Details..."
+    }
+  ],
   "UjxXg4": [
     {
       "type": 0,
@@ -317,10 +617,28 @@
       "value": "Hotel"
     }
   ],
+  "VcqbWi": [
+    {
+      "type": 0,
+      "value": "No Bookings till now*"
+    }
+  ],
+  "VzIOKf": [
+    {
+      "type": 0,
+      "value": "Reject"
+    }
+  ],
   "W2tpY0": [
     {
       "type": 0,
       "value": "Phone No:"
+    }
+  ],
+  "W6urRz": [
+    {
+      "type": 0,
+      "value": "Coffee and tea maker"
     }
   ],
   "WF8jKB": [
@@ -329,16 +647,82 @@
       "value": "Name:"
     }
   ],
+  "Wlg93r": [
+    {
+      "type": 0,
+      "value": "Phone No."
+    }
+  ],
+  "WwY6F2": [
+    {
+      "type": 0,
+      "value": "Check-in"
+    }
+  ],
+  "XEotoJ": [
+    {
+      "type": 0,
+      "value": "Check in"
+    }
+  ],
   "Y2s5iu": [
     {
       "type": 0,
       "value": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
     }
   ],
+  "YDqlkM": [
+    {
+      "type": 0,
+      "value": "Owner Email -"
+    }
+  ],
+  "YOiOAx": [
+    {
+      "type": 0,
+      "value": "Room Highlights"
+    }
+  ],
+  "Yx6py4": [
+    {
+      "type": 0,
+      "value": "Payment Status"
+    }
+  ],
+  "ZT1AQD": [
+    {
+      "type": 0,
+      "value": "Disagree"
+    }
+  ],
   "ZmsB1S": [
     {
       "type": 0,
       "value": "Hotel lists"
+    }
+  ],
+  "Zp+AOk": [
+    {
+      "type": 0,
+      "value": "Price is required"
+    }
+  ],
+  "a5msuh": [
+    {
+      "type": 0,
+      "value": "Yes"
+    }
+  ],
+  "arE5Cb": [
+    {
+      "type": 0,
+      "value": "Hotel Image"
+    }
+  ],
+  "b1zuN9": [
+    {
+      "type": 0,
+      "value": "Price"
     }
   ],
   "cyR7Kh": [
@@ -353,10 +737,46 @@
       "value": "More Destinations.More Ease. More Affordable."
     }
   ],
+  "dfXq0N": [
+    {
+      "type": 0,
+      "value": "Text in a child modal"
+    }
+  ],
   "dmGKS5": [
     {
       "type": 0,
       "value": "Check out: 12:00"
+    }
+  ],
+  "dmnqYy": [
+    {
+      "type": 0,
+      "value": "42” LED Smart TV"
+    }
+  ],
+  "driI3j": [
+    {
+      "type": 0,
+      "value": "Hotel Name"
+    }
+  ],
+  "eECf2y": [
+    {
+      "type": 0,
+      "value": "Do you Want to Delete room?"
+    }
+  ],
+  "eQRxMR": [
+    {
+      "type": 0,
+      "value": "Check Out"
+    }
+  ],
+  "eXd24c": [
+    {
+      "type": 0,
+      "value": "Postal Code. must be a number"
     }
   ],
   "eyOT/X": [
@@ -365,16 +785,64 @@
       "value": "Point location"
     }
   ],
+  "fYcx67": [
+    {
+      "type": 0,
+      "value": "Ac"
+    }
+  ],
   "gCsYTJ": [
     {
       "type": 0,
       "value": "New password:"
     }
   ],
+  "gJN7OT": [
+    {
+      "type": 0,
+      "value": "Hair dryer"
+    }
+  ],
+  "h2KacN": [
+    {
+      "type": 0,
+      "value": "72h Prior To 11:59 Pm Local Time The Day Of Arrival Or 1 night Fee/ One Night Deposit At Booking"
+    }
+  ],
+  "h3SW0S": [
+    {
+      "type": 0,
+      "value": "Checked Out"
+    }
+  ],
   "hN9DjA": [
     {
       "type": 0,
       "value": "Our Lowest Price"
+    }
+  ],
+  "hXfCth": [
+    {
+      "type": 0,
+      "value": "Booking"
+    }
+  ],
+  "hplG07": [
+    {
+      "type": 0,
+      "value": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita tempore provident tempora quisquam fuga, nihil beatae voluptate veniam doloribus cum at omnis fugit qui perferendis laboriosam, reiciendis rerum consequatur neque?"
+    }
+  ],
+  "iqbd3D": [
+    {
+      "type": 0,
+      "value": "Hotel Amenities"
+    }
+  ],
+  "j48wd9": [
+    {
+      "type": 0,
+      "value": "Do You Want to Delete This Hotel ?"
     }
   ],
   "jUTmkf": [
@@ -389,6 +857,18 @@
       "value": "Change Your Password"
     }
   ],
+  "kDEHkT": [
+    {
+      "type": 0,
+      "value": "Minimum one amenity required"
+    }
+  ],
+  "kHkPdE": [
+    {
+      "type": 0,
+      "value": "Booked"
+    }
+  ],
   "ku+mDU": [
     {
       "type": 0,
@@ -401,10 +881,28 @@
       "value": "Enter Hotel Amenities...."
     }
   ],
+  "kunS6i": [
+    {
+      "type": 0,
+      "value": "Type is required"
+    }
+  ],
+  "laUK3e": [
+    {
+      "type": 0,
+      "value": "Additional Information"
+    }
+  ],
   "lhgV6Z": [
     {
       "type": 0,
       "value": "Top amenities"
+    }
+  ],
+  "lottYP": [
+    {
+      "type": 0,
+      "value": "Owner Details"
     }
   ],
   "lqSLwV": [
@@ -425,10 +923,46 @@
       "value": "Yamuna Nagar"
     }
   ],
+  "oDknJe": [
+    {
+      "type": 0,
+      "value": "Daily newspaper upon request"
+    }
+  ],
+  "oJVr1K": [
+    {
+      "type": 0,
+      "value": "Upload New Photo"
+    }
+  ],
+  "oUWADl": [
+    {
+      "type": 0,
+      "value": "No"
+    }
+  ],
   "p2cPVQ": [
     {
       "type": 0,
       "value": "Bilaspur"
+    }
+  ],
+  "puODkp": [
+    {
+      "type": 0,
+      "value": "City:"
+    }
+  ],
+  "q4I+Ga": [
+    {
+      "type": 0,
+      "value": "Room Description"
+    }
+  ],
+  "qe19tD": [
+    {
+      "type": 0,
+      "value": "should be a string or should atleat have one upper case letter"
     }
   ],
   "qwx3Nk": [
@@ -449,10 +983,28 @@
       "value": "Location"
     }
   ],
+  "s+JXi4": [
+    {
+      "type": 0,
+      "value": "Booked By"
+    }
+  ],
+  "sjzLbX": [
+    {
+      "type": 0,
+      "value": "Accept"
+    }
+  ],
   "sy+pv5": [
     {
       "type": 0,
       "value": "Email"
+    }
+  ],
+  "txdipB": [
+    {
+      "type": 0,
+      "value": "Iron and ironing board"
     }
   ],
   "uCk8r+": [
@@ -461,10 +1013,28 @@
       "value": "Already have an account?"
     }
   ],
+  "um8jag": [
+    {
+      "type": 0,
+      "value": "Bath amenities"
+    }
+  ],
   "uta34T": [
     {
       "type": 0,
       "value": "Hotel name"
+    }
+  ],
+  "uxvKKF": [
+    {
+      "type": 0,
+      "value": "Bookings"
+    }
+  ],
+  "vBmrzu": [
+    {
+      "type": 0,
+      "value": "Booking Status"
     }
   ],
   "vNbJei": [
@@ -479,10 +1049,28 @@
       "value": "Country"
     }
   ],
+  "vuG8Qo": [
+    {
+      "type": 0,
+      "value": "Edit Amenities"
+    }
+  ],
+  "wL7VAE": [
+    {
+      "type": 0,
+      "value": "Actions"
+    }
+  ],
   "wNLUau": [
     {
       "type": 0,
       "value": "Login / SignUp"
+    }
+  ],
+  "wSZR47": [
+    {
+      "type": 0,
+      "value": "Submit"
     }
   ],
   "we4Lby": [
@@ -491,10 +1079,34 @@
       "value": "Info"
     }
   ],
+  "x456Dl": [
+    {
+      "type": 0,
+      "value": "Arrival Status"
+    }
+  ],
+  "x9xrT3": [
+    {
+      "type": 0,
+      "value": "Pin Code"
+    }
+  ],
+  "xYmt1a": [
+    {
+      "type": 0,
+      "value": "Bath robes and slippers"
+    }
+  ],
   "xmcVZ0": [
     {
       "type": 0,
       "value": "Search"
+    }
+  ],
+  "xpTPb3": [
+    {
+      "type": 0,
+      "value": "Email:"
     }
   ],
   "xzKMCh": [
@@ -503,10 +1115,28 @@
       "value": "All Cities"
     }
   ],
+  "z11Y+B": [
+    {
+      "type": 0,
+      "value": "24-hour room service"
+    }
+  ],
+  "zF7Cth": [
+    {
+      "type": 0,
+      "value": "Guest"
+    }
+  ],
   "zFegDD": [
     {
       "type": 0,
       "value": "Contact"
+    }
+  ],
+  "zk9MMk": [
+    {
+      "type": 0,
+      "value": "Checked In"
     }
   ]
 }
