@@ -67,14 +67,7 @@ const Actions = ({
           View Hotels
         </Button>
       </Stack>
-      {open && (
-        // view details button
-        <ShowHotelsModal
-          open={open}
-          onClose={handleClose}
-          modalHotel={modalHotel}
-        />
-      )}
+
       <LoginModal
         loginModal={loginModal}
         setLogInModal={setLogInModal}
