@@ -680,24 +680,51 @@
   "Q/7RZn": {
     "defaultMessage": "Prix ​​de la chambre pour 1 Nuit X 1 Chambre"
   },
-<<<<<<< Updated upstream
-  "dtgi/W": { "defaultMessage": "L'e-mail est requis" },
-  "00/IyC": { "defaultMessage": "Nuit" },
-  "2Ml/7i": { "defaultMessage": "Chambre" },
-  "7tD4iU": { "defaultMessage": "Montant payable" },
-  "vmQF1b": { "defaultMessage": "Nuit X" },
-  "zZn9wA": { "defaultMessage": "Prix ​​de la chambre pour" },
-  "+7HeVJ": { "defaultMessage": "Super Deluxe" },
-  "6I+DHW": { "defaultMessage": "Sélectionnez une fourchette de prix" },
-  "j6WSBC": { "defaultMessage": "Afficher les hôtels" },
-  "kTo0o2": { "defaultMessage": "Suite" },
-  "ocaqXc": { "defaultMessage": "De luxe" },
-  "zSOvI0": { "defaultMessage": "Filtres" },
-  "5A6hoi": { "defaultMessage": "Quantité de chambre" },
-  "h/KUaP": { "defaultMessage": "Équipements de la chambre" },
-  "ng+41Q": { "defaultMessage": "Prix ​​de la chambre" }
-}
-=======
+  "dtgi/W": {
+    "defaultMessage": "L'e-mail est requis"
+  },
+  "00/IyC": {
+    "defaultMessage": "Nuit"
+  },
+  "2Ml/7i": {
+    "defaultMessage": "Chambre"
+  },
+  "7tD4iU": {
+    "defaultMessage": "Montant payable"
+  },
+  "vmQF1b": {
+    "defaultMessage": "Nuit X"
+  },
+  "zZn9wA": {
+    "defaultMessage": "Prix ​​de la chambre pour"
+  },
+  "+7HeVJ": {
+    "defaultMessage": "Super Deluxe"
+  },
+  "6I+DHW": {
+    "defaultMessage": "Sélectionnez une fourchette de prix"
+  },
+  "j6WSBC": {
+    "defaultMessage": "Afficher les hôtels"
+  },
+  "kTo0o2": {
+    "defaultMessage": "Suite"
+  },
+  "ocaqXc": {
+    "defaultMessage": "De luxe"
+  },
+  "zSOvI0": {
+    "defaultMessage": "Filtres"
+  },
+  "5A6hoi": {
+    "defaultMessage": "Quantité de chambre"
+  },
+  "h/KUaP": {
+    "defaultMessage": "Équipements de la chambre"
+  },
+  "ng+41Q": {
+    "defaultMessage": "Prix ​​de la chambre"
+  },
   "dtgi/W": {
     "defaultMessage": "L'e-mail est requis"
   },
@@ -912,4 +939,3 @@
     "defaultMessage": "Le code postal est requis"
   }
 }
->>>>>>> Stashed changes
