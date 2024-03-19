@@ -29,6 +29,7 @@ function ShowCustomerBooking() {
   React.useEffect(() => {
     fetchBookings();
   }, []);
+
   return (
     <>
       <Stack
@@ -48,58 +49,65 @@ function ShowCustomerBooking() {
       >
         {/* <Divider /> */}
 
-        {bookings?.map((item: any, index: any) => (
-          <Card
-            variant="outlined"
-            // sx={{
-            //   backgroundColor: "#f5f5f5",
-            // }}
-            sx={{ borderRadius: 2, minHeight: 180 }}
-          >
-            <CardContent>
-              <Stack
-                direction={"row"}
-                // spacing={{ sm: 3, md: 5, lg: 10, xl: 8 }}
-              >
-                <Stack direction={"row"} spacing={3}>
-                  {window?.outerWidth > 768 && (
-                    <Box
-                      component={"img"}
-                      sx={{ width: "200px", borderRadius: 2 }}
-                      src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
-                    />
-                  )}
-                  <Stack textAlign={"left"} width={200}>
-                    <Typography sx={{ fontSize: 20, fontFamily: "system-ui" }}>
-                      {item?.hotelId?.hotelName}
-                    </Typography>
-                    <Typography sx={{ color: "gray", fontSize: 14 }}>
-                      {item?.hotelId?.state}
-                    </Typography>
-                    <Typography sx={{ color: "gray", fontSize: 14 }}>
-                      {`${item?.bookFrom?.split("T")[0]} - ${
-                        item?.bookTo?.split("T")[0]
-                      }`}
-                    </Typography>
-                    <Typography sx={{ color: "gray", fontSize: 14 }}>
-                      {" "}
-                      {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
-                    </Typography>
-                  </Stack>
-                </Stack>
-
-                <Stack textAlign={"center"} padding={2}>
-                  {" "}
-                </Stack>
-
+        {bookings.length === 0 ? (
+          <Stack color={"red"} fontSize={"large"}>
+            <FormattedMessage defaultMessage="You Don't have any booking yet!!!" />
+          </Stack>
+        ) : (
+          bookings?.map((item: any, index: any) => (
+            <Card
+              variant="outlined"
+              // sx={{
+              //   backgroundColor: "#f5f5f5",
+              // }}
+              sx={{ borderRadius: 2, minHeight: 180 }}
+            >
+              <CardContent>
                 <Stack
-                  direction={"column"}
-                  alignItems={"center"}
-                  textAlign={"center"}
-                  spacing={0.5}
+                  direction={"row"}
+                  // spacing={{ sm: 3, md: 5, lg: 10, xl: 8 }}
                 >
-                  {/* <Typography fontWeight={"bolder"}>Payment Status</Typography> */}
-                  {/* <Chip
+                  <Stack direction={"row"} spacing={3}>
+                    {window?.outerWidth > 768 && (
+                      <Box
+                        component={"img"}
+                        sx={{ width: "200px", borderRadius: 2 }}
+                        src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                      />
+                    )}
+                    <Stack textAlign={"left"} width={200}>
+                      <Typography
+                        sx={{ fontSize: 20, fontFamily: "system-ui" }}
+                      >
+                        {item?.hotelId?.hotelName}
+                      </Typography>
+                      <Typography sx={{ color: "gray", fontSize: 14 }}>
+                        {item?.hotelId?.state}
+                      </Typography>
+                      <Typography sx={{ color: "gray", fontSize: 14 }}>
+                        {`${item?.bookFrom?.split("T")[0]} - ${
+                          item?.bookTo?.split("T")[0]
+                        }`}
+                      </Typography>
+                      <Typography sx={{ color: "gray", fontSize: 14 }}>
+                        {" "}
+                        {`${item?.totalRooms} Room - ${item?.totalGuests} Guests`}
+                      </Typography>
+                    </Stack>
+                  </Stack>
+
+                  <Stack textAlign={"center"} padding={2}>
+                    {" "}
+                  </Stack>
+
+                  <Stack
+                    direction={"column"}
+                    alignItems={"center"}
+                    textAlign={"center"}
+                    spacing={0.5}
+                  >
+                    {/* <Typography fontWeight={"bolder"}>Payment Status</Typography> */}
+                    {/* <Chip
                     color={
                       item?.paymentStatus === "unpaid" ? "error" : "success"
                     }
@@ -109,37 +117,45 @@ function ShowCustomerBooking() {
                     label={item?.paymentStatus}
                   /> */}
 
-                  <Typography fontWeight={"bold"} fontFamily={"system-ui"}>
-               <FormattedMessage defaultMessage="Booking Id"/>
-                  </Typography>
-                  <Typography fontFamily={"system-ui"}>{item?._id}</Typography>
-                  <Stack direction={"row"}>
-                    {" "}
-                    <Typography alignSelf={"left"}> <FormattedMessage defaultMessage="Payment Status- "/></Typography>
-                    <Typography
-                      color={item?.paymentStatus === "paid" ? "green" : " red"}
-                    >
-                      {item?.paymentStatus}
+                    <Typography fontWeight={"bold"} fontFamily={"system-ui"}>
+                      <FormattedMessage defaultMessage="Booking Id" />
                     </Typography>
-                  </Stack>
+                    <Typography fontFamily={"system-ui"}>
+                      {item?._id}
+                    </Typography>
+                    <Stack direction={"row"}>
+                      {" "}
+                      <Typography alignSelf={"left"}>
+                        {" "}
+                        <FormattedMessage defaultMessage="Payment Status- " />
+                      </Typography>
+                      <Typography
+                        color={
+                          item?.paymentStatus === "paid" ? "green" : " red"
+                        }
+                      >
+                        {item?.paymentStatus}
+                      </Typography>
+                    </Stack>
 
-                  <Button
-                    sx={{
-                      textTransform: "none",
-                      color: "red",
-                      fontWeight: "bolder",
-                    }}
-                    onClick={() => {
-                      navigate(`/profile/myBookings/${item._id}`);
-                    }}
-                  >
-                      <FormattedMessage defaultMessage=" View Details"/>
-                  </Button>
+                    <Button
+                      sx={{
+                        textTransform: "none",
+                        color: "red",
+                        fontWeight: "bolder",
+                      }}
+                      onClick={() => {
+                        navigate(`/profile/myBookings/${item._id}`);
+                      }}
+                    >
+                      <FormattedMessage defaultMessage=" View Details" />
+                    </Button>
+                  </Stack>
                 </Stack>
-              </Stack>
-            </CardContent>
-          </Card>
-        ))}
+              </CardContent>
+            </Card>
+          ))
+        )}
       </Stack>
     </>
   );

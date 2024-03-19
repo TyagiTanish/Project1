@@ -1031,6 +1031,12 @@
       "value": "To use Another Email for adding hotel"
     }
   ],
+  "UsOCsz": [
+    {
+      "type": 0,
+      "value": "ViewMap"
+    }
+  ],
   "V+XwpG": [
     {
       "type": 0,
@@ -1917,6 +1923,12 @@
     {
       "type": 0,
       "value": "24-hour room service"
+    }
+  ],
+  "zAaNps": [
+    {
+      "type": 0,
+      "value": "You Don't have any booking yet!!!"
     }
   ],
   "zF7Cth": [
