@@ -30,7 +30,7 @@ const ProfileIcons = () => {
         <Box mt={-4}>
           <TabletNavbar />
         </Box>
-      ) : user ? (
+      ) : (user ? (
         <>
           <Stack
             direction={"row"}
@@ -50,12 +50,12 @@ const ProfileIcons = () => {
                 }}
               >
                 {" "}
-                Add Hotel
+              <FormattedMessage defaultMessage=  "Add Hotel"/>
               </Link>
             </Stack>
             <Stack>
               <Typography color={"black"} fontWeight={"bolder"}>
-                Hello,{user?.name}
+             <FormattedMessage defaultMessage=  "Hello"/>,{user?.name}
               </Typography>
               <Typography color={"gray"} fontSize={"0.9rem"}>
                 {user?.role?.toUpperCase()}
@@ -107,7 +107,7 @@ const ProfileIcons = () => {
             </Link>
           </Stack>
         </Stack>
-      )}
+      ))}
     </>
   );
 };

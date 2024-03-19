@@ -128,7 +128,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     sx={{ height: "30px" }}
                   >
                     <TuneIcon sx={{ mr: 1 }} />
-                    Filters
+                  <FormattedMessage defaultMessage="Filters" />
                   </Button>
                   <Box>
                     <img
@@ -162,7 +162,7 @@ function Hotels({ filteredData, screenSize }: any) {
                       }}
                     >
                       {" "}
-                      <LocationOnIcon fontSize="small" /> ViewMap
+                      <LocationOnIcon fontSize="small" />    <FormattedMessage defaultMessage="ViewMap" />
                     </IconButton>
                   </Box>
                 </Stack>
