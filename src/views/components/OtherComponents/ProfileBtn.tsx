@@ -16,6 +16,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Stack } from "@mui/system";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 export default function AccountMenu() {
   const navigate = useNavigate();
@@ -107,7 +108,7 @@ export default function AccountMenu() {
             to="/profile/accountSetting"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
-            Profile
+            <FormattedMessage defaultMessage="Profile"/>   
           </Link>
         </MenuItem>
         <MenuItem
@@ -119,7 +120,7 @@ export default function AccountMenu() {
             to="/profile/myBookings"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
-            My Bookings
+           <FormattedMessage defaultMessage="My Bookings"/>      
           </Link>
         </MenuItem>
         <Divider />
@@ -127,7 +128,7 @@ export default function AccountMenu() {
           <ListItemIcon>
             <Logout fontSize="small" />
           </ListItemIcon>
-          Logout
+          <FormattedMessage defaultMessage="Logout"/>
         </MenuItem>
       </Menu>
     </React.Fragment>

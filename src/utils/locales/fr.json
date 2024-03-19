@@ -17,6 +17,7 @@
       "value": "Inscrivez votre propriété"
     }
   ],
+
   "+qRNso": [
     {
       "type": 0,
@@ -26,7 +27,15 @@
   "/0TOL5": [
     {
       "type": 0,
-      "value": "Montant"
+
+      "value": "Montant"}],
+
+
+  "+Y705c": [
+    {
+      "type": 0,
+      "value": "Faire cette réservation pour quelqu'un d'autre"
+
     }
   ],
   "/28JSA": [
@@ -99,6 +108,12 @@
     {
       "type": 0,
       "value": "Hôtels à Oyo"
+    }],
+  "1SphRN": [
+    {
+      "type": 0,
+      "value": "Pas de téléphone."
+
     }
   ],
   "1umnAX": [
@@ -301,8 +316,12 @@
   ],
   "7dr1md": [
     {
+      "type": 0,      "value": "Description de la pièce:"}],
+
+  "7lsiX8": [
+    {
       "type": 0,
-      "value": "Description de la pièce:"
+      "value": "Plus de 157 000 hôtels et résidences dans 35 pays"
     }
   ],
   "7tD4iU": [
@@ -416,7 +435,14 @@
   "AmAHiZ": [
     {
       "type": 0,
-      "value": "Entrez vos informations personnelles...."
+
+      "value": "Entrez vos informations personnelles...."}],
+
+  "AK1Eri": [
+    {
+      "type": 0,
+      "value": "En procédant à cette réservation, j'accepte les conditions d'utilisation et la politique de confidentialité d'OYO."
+
     }
   ],
   "AyGauy": [
@@ -476,7 +502,19 @@
   "DelP+4": [
     {
       "type": 0,
-      "value": "Réception"
+      "value": "Réception"}],
+
+  "DX9QSt": [
+    {
+      "type": 0,
+      "value": "Entrez votre nom"
+    }
+  ],
+  "DrySlw": [
+    {
+      "type": 0,
+      "value": "Recherche par ville, hôtel ou état"
+
     }
   ],
   "EZEH2+": [
@@ -584,7 +622,13 @@
   "HWX0Ow": [
     {
       "type": 0,
-      "value": "Hôtel OYO Royaume-Uni"
+      "value": "Hôtel OYO Royaume-Uni"}],
+
+  "HRU6eg": [
+    {
+      "type": 0,
+      "value": "Prénom *"
+
     }
   ],
   "HfAXbq": [
@@ -674,7 +718,14 @@
   "KGzfLt": [
     {
       "type": 0,
+
       "value": "Supprimé"
+    }],
+  "KAneyV": [
+    {
+      "type": 0,
+      "value": "Informations client"
+
     }
   ],
   "KkDJ/P": [
@@ -716,7 +767,12 @@
   "MNFqIW": [
     {
       "type": 0,
-      "value": "Demandes"
+      "value": "Demandes"}],
+  "Lm91r/": [
+    {
+      "type": 0,
+      "value": "Nom de l'invité"
+
     }
   ],
   "N4ReBT": [
@@ -800,13 +856,25 @@
   "PgJGHT": [
     {
       "type": 0,
-      "value": "Disponible"
+      "value": "Disponible"}],
+
+  "OtuYup": [
+    {
+      "type": 0,
+      "value": "E-mail *"
+
     }
   ],
   "Q/7RZn": [
     {
       "type": 0,
       "value": "Prix ​​de la chambre pour 1 Nuit X 1 Chambre"
+    }
+  ],
+  "Q4TEcV": [
+    {
+      "type": 0,
+      "value": "E-mail invité"
     }
   ],
   "Q8Qw5B": [
@@ -890,7 +958,12 @@
   "SuiXEn": [
     {
       "type": 0,
-      "value": "Divulgation responsable"
+      "value": "Divulgation responsable"}],
+  "Ss0sWu": [
+    {
+      "type": 0,
+      "value": "Payez maintenant"
+
     }
   ],
   "TE4fIS": [
@@ -929,6 +1002,12 @@
       "value": "Ancien mot de passe:"
     }
   ],
+  "U80d0/": [
+    {
+      "type": 0,
+      "value": "Actuellement indisponible"
+    }
+  ],
   "UFXy0j": [
     {
       "type": 0,
@@ -962,7 +1041,12 @@
   "VzIOKf": [
     {
       "type": 0,
-      "value": "Rejeter"
+      "value": "Rejeter"}],
+  "VHWEyT": [
+    {
+      "type": 0,
+      "value": "Connectez-vous ici"
+
     }
   ],
   "W2tpY0": [
@@ -1118,7 +1202,15 @@
   "cErphj": [
     {
       "type": 0,
-      "value": "Cadres OYO"
+      "value": "Cadres OYO"}],
+
+
+
+  "ZsJnVJ": [
+    {
+      "type": 0,
+      "value": "L'utilisateur ne se connecte pas"
+
     }
   ],
   "cyR7Kh": [
@@ -1160,7 +1252,12 @@
   "driI3j": [
     {
       "type": 0,
-      "value": "Nom de l'Hotel"
+      "value": "Nom de l'Hotel"}],
+  "drmYS0": [
+    {
+      "type": 0,
+      "value": "Pas de téléphone *"
+
     }
   ],
   "dtgi/W": [
@@ -1244,9 +1341,7 @@
   "h/KUaP": [
     {
       "type": 0,
-      "value": "Équipements de la chambre"
-    }
-  ],
+      "value": "Équipements de la chambre"}],
   "h/VIiN": [
     {
       "type": 0,
@@ -1514,7 +1609,12 @@
   "oUWADl": [
     {
       "type": 0,
-      "value": "Non"
+      "value": "Non"}],
+
+  "oQdfSt": [
+    {
+      "type": 0,
+      "value": "E-mail invité"
     }
   ],
   "ocaqXc": [
@@ -1635,6 +1735,12 @@
     {
       "type": 0,
       "value": "Vous avez déjà un compte?"
+    }
+  ],
+  "uGWhlc": [
+    {
+      "type": 0,
+      "value": "Arrivée - Départ"
     }
   ],
   "uXYcYf": [

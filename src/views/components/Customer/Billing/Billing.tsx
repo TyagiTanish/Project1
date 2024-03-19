@@ -23,7 +23,7 @@ import Loader from "./loader/Loader";
 import { useNavigate, useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import UseRoomAndGuestQuantity from "../../../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
-import { useIntl } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
@@ -204,7 +204,7 @@ const Billing = () => {
       setDisplay(true);
       setSubmitButton(false);
     } else {
-      enqueueSnackbar("User not Login", { variant: "error" });
+      enqueueSnackbar(intl.formatMessage({ defaultMessage:"User not Login"}), { variant: "error" });
       navigate("/login", { state: { from: `/billing/${id?.id}/${id?.hid}` } });
     }
 
@@ -238,11 +238,11 @@ const Billing = () => {
                     p={2}
                   >
                     <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                      First Name *
+                     <FormattedMessage defaultMessage="First Name *"/> 
                     </Typography>
                     <TextField
                       variant="outlined"
-                      placeholder="Enter your name"
+                      placeholder= {intl.formatMessage({ defaultMessage:"Enter your name" })}                
                       defaultValue={user?.name}
                       {...register("fullName")}
                       fullWidth
@@ -253,12 +253,11 @@ const Billing = () => {
                       </FormHelperText>
                     )}
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                      Email *
+                    <FormattedMessage defaultMessage="Email *"/>   
                     </Typography>
                     <TextField
                       variant="outlined"
-                      placeholder="Email"
-                      defaultValue={user?.email}
+                      placeholder= {intl.formatMessage({ defaultMessage:"Email" })}                      defaultValue={user?.email}
                       {...register("email")}
                       fullWidth
                     />
@@ -268,12 +267,12 @@ const Billing = () => {
                       </FormHelperText>
                     )}
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                      Phone No. *
+                    <FormattedMessage defaultMessage="Phone No. *"/>     
                     </Typography>
 
                     <TextField
                       // id="standard-password-input"
-                      placeholder="Phone Number"
+                      placeholder= {intl.formatMessage({ defaultMessage:"Phone no." })}              
                       {...register("phone")}
                       defaultValue={user?.phone}
                       // autoComplete="current-password"
@@ -286,7 +285,7 @@ const Billing = () => {
                     <Stack direction={"row"} ml={-1}>
                       <Checkbox onChange={handleCheckbox} />
                       <Typography sx={{ mt: 1 }}>
-                        Make this booking for someone else
+                      <FormattedMessage defaultMessage="Make this booking for someone else"/>    
                       </Typography>
                     </Stack>
                     {guest === true ? (
@@ -297,14 +296,14 @@ const Billing = () => {
                         }}
                       >
                         <Typography sx={{ fontWeight: "Bolder", mt: 3, mb: 2 }}>
-                          Guest Information
+                        <FormattedMessage defaultMessage="Guest Information"/>        
                         </Typography>
                         <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                          Guest name
+                        <FormattedMessage defaultMessage="Guest name"/>             
                         </Typography>
                         <TextField
                           {...register("guestName")}
-                          placeholder="Guest Name"
+                          placeholder= "Guest Name"
                           variant="outlined"
                           fullWidth
                         />
@@ -314,11 +313,11 @@ const Billing = () => {
                           </FormHelperText>
                         )}
                         <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                          Guest email
+                        <FormattedMessage defaultMessage=" Guest email"/>        
                         </Typography>
                         <TextField
                           variant="outlined"
-                          placeholder="Guest Email"
+                          placeholder= {intl.formatMessage({ defaultMessage:"Guest Email" })} 
                           {...register("guestEmail")}
                           fullWidth
                         />
@@ -343,8 +342,8 @@ const Billing = () => {
                         sx={{ mt: -2 }}
                       />
                       <Typography mt={1}>
-                        By proceeding with this booking, I agree to OYO's Terms
-                        of Use and Privacy Policy.
+                      <FormattedMessage defaultMessage="By proceeding with this booking, I agree to OYO's Terms
+                        of Use and Privacy Policy."/>        
                       </Typography>
                     </Stack>
                     {TotalRooms.current > roomDetails?.roomQuantity ? (
@@ -363,7 +362,7 @@ const Billing = () => {
                         }
                         // onClick={handleClick}
                       >
-                        Currently Unavailable
+                  <FormattedMessage defaultMessage="Currently Unavailable"/>        
                       </Button>
                     ) : (
                       <Button
@@ -378,7 +377,7 @@ const Billing = () => {
                         disabled={!submitButton}
                         // onClick={handleClick}
                       >
-                        Pay Now
+                   <FormattedMessage defaultMessage="Pay Now"/>              
                       </Button>
                     )}
                   </Stack>

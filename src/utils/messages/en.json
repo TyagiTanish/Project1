@@ -9,7 +9,9 @@
     "defaultMessage": "Close Child Modal"
   },
   "/0TOL5": {
-    "defaultMessage": "Amount"
+    "defaultMessage": "Amount"},
+  "+Y705c": {
+    "defaultMessage": "Make this booking for someone else"
   },
   "/28JSA": {
     "defaultMessage": "Click here..."
@@ -22,15 +24,12 @@
   },
   "00/IyC": {
     "defaultMessage": "Night"
-<<<<<<< Updated upstream
-=======
   },
   "0C1YbO": {
     "defaultMessage": "Select at least one amenity"
   },
   "0Zdb0S": {
     "defaultMessage": "Trust And Safety"
->>>>>>> Stashed changes
   },
   "0C1YbO": {
     "defaultMessage": "Select at least one amenity"
@@ -45,7 +44,12 @@
     "defaultMessage": "Booking Date"
   },
   "1nX3+D": {
-    "defaultMessage": "Oyo Hotels"
+    "defaultMessage": "Oyo Hotels"},
+  "0xt78r": {
+    "defaultMessage": "Please select a Check-In and Check-Out date"
+  },
+  "1SphRN": {
+    "defaultMessage": "Phone no."
   },
   "1umnAX": {
     "defaultMessage": "Personal Information"
@@ -64,6 +68,9 @@
   },
   "2apuGa": {
     "defaultMessage": "Mohali"
+  },
+  "2hIqkE": {
+    "defaultMessage": "Popular Cities"
   },
   "39AHJm": {
     "defaultMessage": "Sign Up"
@@ -111,23 +118,24 @@
     "defaultMessage": "Room Images"
   },
   "5A6hoi": {
-    "defaultMessage": "Room Quantity"
+    "defaultMessage": "Room Quantity"},
+  "5Gqjr7": {
+    "defaultMessage": "Mg Road"
   },
   "5GxMk2": {
     "defaultMessage": "Add hotel & Get ₹500 OYO Money"
   },
   "5RUHNr": {
-    "defaultMessage": "Hotels in Gurgaon"
+    "defaultMessage": "Hotels in Gurgaon"},
+  "5Qhl64": {
+    "defaultMessage": "Check In On"
   },
   "5sg7KC": {
     "defaultMessage": "Password"
   },
-<<<<<<< Updated upstream
-=======
   "629tiI": {
     "defaultMessage": "Investor Relations"
   },
->>>>>>> Stashed changes
   "6I+DHW": {
     "defaultMessage": "Select price range"
   },
@@ -143,14 +151,17 @@
   "7TFbhV": {
     "defaultMessage": "Add Hotel Location"
   },
-  "7dr1md": {
-    "defaultMessage": "Room Description:"
+  "7dr1md": {},
+  "7lsiX8": {
+    "defaultMessage": "Over 157,000 hotels and homes across 35 countries"
   },
   "7tD4iU": {
     "defaultMessage": "Payable Amount"
   },
   "8GH/al": {
-    "defaultMessage": "All Hotels"
+    "defaultMessage": "All Hotels"},
+  "8pvKg1": {
+    "defaultMessage": "Payment Details"
   },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
@@ -195,7 +206,9 @@
     "defaultMessage": "Hotels in Coimbatore"
   },
   "AmAHiZ": {
-    "defaultMessage": "Enter Your Personal Details...."
+    "defaultMessage": "Enter Your Personal Details...."},
+  "AK1Eri": {
+    "defaultMessage": "By proceeding with this booking, I agree to OYO's Terms of Use and Privacy Policy."
   },
   "AyGauy": {
     "defaultMessage": "Login"
@@ -213,7 +226,18 @@
     "defaultMessage": "Minimum length should be 3"
   },
   "CDQSzi": {
-    "defaultMessage": "Type of Room"
+    "defaultMessage": "Type of Room"},
+  "BuhU4W": {
+    "defaultMessage": "Mobile Number"
+  },
+  "C81/uG": {
+    "defaultMessage": "Logout"
+  },
+  "CDTMW3": {
+    "defaultMessage": "Total Amount"
+  },
+  "CDkA+T": {
+    "defaultMessage": "Check Out Time"
   },
   "CDnwtH": {
     "defaultMessage": "Jagadhri"
@@ -225,7 +249,12 @@
     "defaultMessage": "Choose a Photo...."
   },
   "DelP+4": {
-    "defaultMessage": "Reciept"
+    "defaultMessage": "Reciept"},
+  "DX9QSt": {
+    "defaultMessage": "Enter your name"
+  },
+  "DrySlw": {
+    "defaultMessage": "Search by city,hotel or state"
   },
   "EZEH2+": {
     "defaultMessage": "Add Hotel Details.."
@@ -249,7 +278,9 @@
     "defaultMessage": "Register here"
   },
   "GhOlp0": {
-    "defaultMessage": "Complimentary water bottles"
+    "defaultMessage": "Complimentary water bottles"},
+  "GdDqb/": {
+    "defaultMessage": "10:00 PM"
   },
   "GodOg+": {
     "defaultMessage": "Arrival / Departure"
@@ -276,7 +307,9 @@
     "defaultMessage": "Official OYO Blog"
   },
   "HWX0Ow": {
-    "defaultMessage": "OYO Hotel UK"
+    "defaultMessage": "OYO Hotel UK"},
+  "HRU6eg": {
+    "defaultMessage": "First Name *"
   },
   "HfAXbq": {
     "defaultMessage": "Drop a Photo Here"
@@ -299,35 +332,41 @@
   "J+S/E8": {
     "defaultMessage": "Invalid Email"
   },
-<<<<<<< Updated upstream
-=======
+
+
   "JGsVts": {
     "defaultMessage": "Invalid email !"
   },
->>>>>>> Stashed changes
+
   "JyRQ6S": {
-    "defaultMessage": "Country:"
+    "defaultMessage": "Country:"},
+
+  "JXvIwW": {
+    "defaultMessage": "Primary Guest"
+
   },
   "K3r6DQ": {
     "defaultMessage": "Delete"
-<<<<<<< Updated upstream
-=======
   },
   "KGzfLt": {
     "defaultMessage": "Removed"
   },
   "KK80W3": {
     "defaultMessage": "Cyber Security"
->>>>>>> Stashed changes
   },
   "KGzfLt": {
     "defaultMessage": "Removed"
+  },
+  "KAneyV": {
+    "defaultMessage": "Guest Information"
   },
   "KkDJ/P": {
     "defaultMessage": "Sign up & Get ₹500 OYO Money"
   },
   "KlvzVf": {
-    "defaultMessage": "Not Available"
+    "defaultMessage": "Not Available"},
+  "LDGBnw": {
+    "defaultMessage": "Check In Time"
   },
   "LaM7n1": {
     "defaultMessage": "download"
@@ -342,7 +381,9 @@
     "defaultMessage": "Open Child Modal"
   },
   "MNFqIW": {
-    "defaultMessage": "Requests"
+    "defaultMessage": "Requests"},
+  "Lm91r/": {
+    "defaultMessage": "Guest name"
   },
   "N4ReBT": {
     "defaultMessage": "View Details"
@@ -384,10 +425,15 @@
     "defaultMessage": "Canceled"
   },
   "PgJGHT": {
-    "defaultMessage": "Available"
+    "defaultMessage": "Available"},
+  "OtuYup": {
+    "defaultMessage": "Email *"
   },
   "Q/7RZn": {
     "defaultMessage": "Room price for 1 Night X 1 Room"
+  },
+  "Q4TEcV": {
+    "defaultMessage": "Guest email"
   },
   "Q8Qw5B": {
     "defaultMessage": "Description"
@@ -407,12 +453,9 @@
   "QiKKFz": {
     "defaultMessage": "Change Password"
   },
-<<<<<<< Updated upstream
-=======
   "Ql3Y9n": {
     "defaultMessage": "Blogs"
   },
->>>>>>> Stashed changes
   "QwDSj/": {
     "defaultMessage": "Min length should be 10"
   },
@@ -429,7 +472,9 @@
     "defaultMessage": "Hotels in Nainital"
   },
   "SuiXEn": {
-    "defaultMessage": "Responsible Disclosure"
+    "defaultMessage": "Responsible Disclosure"},
+  "Ss0sWu": {
+    "defaultMessage": "Pay Now"
   },
   "TE4fIS": {
     "defaultMessage": "City"
@@ -437,12 +482,9 @@
   "TKmub+": {
     "defaultMessage": "This field is required"
   },
-<<<<<<< Updated upstream
-=======
   "TP/PBK": {
     "defaultMessage": "Advertise your Homes"
   },
->>>>>>> Stashed changes
   "TWTu/9": {
     "defaultMessage": "Credit Card Guarantee Required"
   },
@@ -451,6 +493,9 @@
   },
   "U41zpQ": {
     "defaultMessage": "Old password:"
+  },
+  "U80d0/": {
+    "defaultMessage": "Currently Unavailable"
   },
   "UFXy0j": {
     "defaultMessage": "Verify email"
@@ -468,7 +513,9 @@
     "defaultMessage": "No Bookings till now*"
   },
   "VzIOKf": {
-    "defaultMessage": "Reject"
+    "defaultMessage": "Reject"},
+  "VHWEyT": {
+    "defaultMessage": "Login here"
   },
   "W2tpY0": {
     "defaultMessage": "Phone No:"
@@ -495,23 +542,31 @@
     "defaultMessage": "Check-In"
   },
   "XEotoJ": {
-    "defaultMessage": "Check in"
+    "defaultMessage": "Check in"},
+  "XKxl1k": {
+    "defaultMessage": "My Bookings"
+  },
+  "XT1jLe": {
+    "defaultMessage": "Menu Items...."
   },
   "Y2s5iu": {
     "defaultMessage": "Sign up with phone number and get exclusive access to discounts and savings on OYO stays and with our many travel partners."
   },
+
   "YDqlkM": {
     "defaultMessage": "Owner Email -"
   },
   "YOiOAx": {
     "defaultMessage": "Room Highlights"
   },
-<<<<<<< Updated upstream
-=======
   "YdyP0Y": {
     "defaultMessage": "OYO Circles"
   },
->>>>>>> Stashed changes
+
+  "YKXkbB": {
+    "defaultMessage": "Hello,"
+  },
+
   "Yg9wZZ": {
     "defaultMessage": "12:00 PM"
   },
@@ -524,12 +579,9 @@
   "ZT1AQD": {
     "defaultMessage": "Disagree"
   },
-<<<<<<< Updated upstream
-=======
   "ZibE+c": {
     "defaultMessage": "Terms and conditions"
   },
->>>>>>> Stashed changes
   "ZmsB1S": {
     "defaultMessage": "Hotel lists"
   },
@@ -552,7 +604,12 @@
     "defaultMessage": "Price"
   },
   "cErphj": {
-    "defaultMessage": "OYO Frames"
+    "defaultMessage": "OYO Frames"},
+  "ZsJnVJ": {
+    "defaultMessage": "User not Login"
+  },
+  "bTXPa9": {
+    "defaultMessage": "Please select a destination"
   },
   "cyR7Kh": {
     "defaultMessage": "Back"
@@ -573,7 +630,9 @@
     "defaultMessage": "42” LED Smart TV"
   },
   "driI3j": {
-    "defaultMessage": "Hotel Name"
+    "defaultMessage": "Hotel Name"},
+  "drmYS0": {
+    "defaultMessage": "Phone No. *"
   },
   "dtgi/W": {
     "defaultMessage": "Email is Required"
@@ -581,6 +640,7 @@
   "e38GOF": {
     "defaultMessage": "Amenities"
   },
+
   "eECf2y": {
     "defaultMessage": "Do you Want to Delete room?"
   },
@@ -590,12 +650,14 @@
   "eXd24c": {
     "defaultMessage": "Postal Code. must be a number"
   },
-<<<<<<< Updated upstream
-=======
   "esvUBZ": {
     "defaultMessage": "Password should contain at least one number"
   },
->>>>>>> Stashed changes
+
+  "eQRxMR": {
+    "defaultMessage": "Check Out"
+  },
+
   "evTYb/": {
     "defaultMessage": "11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night Fee /Credit Card Required"
   },
@@ -609,27 +671,31 @@
     "defaultMessage": "Cancelation Policy"
   },
   "g5pX+a": {
-    "defaultMessage": "About"
+    "defaultMessage": "About"},
+  "g9twjI": {
+    "defaultMessage": "Rajaji nagar"
   },
   "gCsYTJ": {
     "defaultMessage": "New password:"
   },
+
   "gJN7OT": {
     "defaultMessage": "Hair dryer"
   },
-<<<<<<< Updated upstream
   "h/KUaP": {
-    "defaultMessage": "Room Amenities"
-=======
+    "defaultMessage": "Room Amenities"},
   "h/VIiN": {
     "defaultMessage": "Hotel Name is Required"
->>>>>>> Stashed changes
   },
   "h2KacN": {
     "defaultMessage": "72h Prior To 11:59 Pm Local Time The Day Of Arrival Or 1 night Fee/ One Night Deposit At Booking"
   },
   "h3SW0S": {
-    "defaultMessage": "Checked Out"
+    "defaultMessage": "Checked Out"},
+
+  "gssrq6": {
+    "defaultMessage": "Super OYO"
+
   },
   "h73tAE": {
     "defaultMessage": "Phone No. must not contain any special character and should start with 9 , 7 or 8"
@@ -653,7 +719,9 @@
     "defaultMessage": "Hotels in Agra"
   },
   "j48wd9": {
-    "defaultMessage": "Do You Want to Delete This Hotel ?"
+    "defaultMessage": "Do You Want to Delete This Hotel ?"},
+  "itPgxd": {
+    "defaultMessage": "Profile"
   },
   "j6WSBC": {
     "defaultMessage": "Show Hotels"
@@ -697,12 +765,9 @@
   "kunS6i": {
     "defaultMessage": "Type is required"
   },
-<<<<<<< Updated upstream
-=======
   "ky/NSF": {
     "defaultMessage": "First Letter of State name should be capital and name should be string"
   },
->>>>>>> Stashed changes
   "lRJWXn": {
     "defaultMessage": "First Letter of name should be capital and name should be string"
   },
@@ -741,18 +806,18 @@
   },
   "oMYHHk": {
     "defaultMessage": "03:00 PM"
-<<<<<<< Updated upstream
-=======
   },
   "oUWADl": {
     "defaultMessage": "No"
   },
   "oUWTom": {
     "defaultMessage": "Hotels near me"
->>>>>>> Stashed changes
   },
   "oUWADl": {
     "defaultMessage": "No"
+  },
+  "oQdfSt": {
+    "defaultMessage": "Guest Email"
   },
   "ocaqXc": {
     "defaultMessage": "Deluxe"
@@ -776,7 +841,9 @@
     "defaultMessage": "OYO Vacation Homes in Europe"
   },
   "qe19tD": {
-    "defaultMessage": "should be a string or should atleat have one upper case letter"
+    "defaultMessage": "should be a string or should atleat have one upper case letter"},
+  "qkaIU1": {
+    "defaultMessage": "11:00 AM"
   },
   "qwx3Nk": {
     "defaultMessage": "Update Personal Information"
@@ -815,7 +882,9 @@
     "defaultMessage": "Already have an account?"
   },
   "um8jag": {
-    "defaultMessage": "Bath amenities"
+    "defaultMessage": "Bath amenities"},
+  "uGWhlc": {
+    "defaultMessage": "Check in - Check out"
   },
   "uta34T": {
     "defaultMessage": "Hotel name"
@@ -860,7 +929,9 @@
     "defaultMessage": "Pin Code"
   },
   "xYmt1a": {
-    "defaultMessage": "Bath robes and slippers"
+    "defaultMessage": "Bath robes and slippers"},
+  "wl5cm4": {
+    "defaultMessage": "Book Now"
   },
   "xmcVZ0": {
     "defaultMessage": "Search"
@@ -878,7 +949,9 @@
     "defaultMessage": "Zip Code is required"
   },
   "z11Y+B": {
-    "defaultMessage": "24-hour room service"
+    "defaultMessage": "24-hour room service"},
+  "yrx0I+": {
+    "defaultMessage": "Booking Id"
   },
   "zF7Cth": {
     "defaultMessage": "Guest"
@@ -889,6 +962,9 @@
   "zFegDD": {
     "defaultMessage": "Contact"
   },
+  "zNb4yX": {
+    "defaultMessage": "Payment Status-"
+  },
   "zSOvI0": {
     "defaultMessage": "Filters"
   },
@@ -897,11 +973,8 @@
   },
   "zk9MMk": {
     "defaultMessage": "Checked In"
-<<<<<<< Updated upstream
-=======
   },
   "zqrpQ9": {
     "defaultMessage": "Enter hotel discription...."
->>>>>>> Stashed changes
   }
 }

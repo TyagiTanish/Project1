@@ -3,6 +3,7 @@ import { Stack, Typography, Button, Chip, Box } from "@mui/material";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { Card, CardContent, Divider } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import { FormattedMessage } from "react-intl";
 
 function ShowCustomerBooking() {
   const navigate = useNavigate();
@@ -109,12 +110,12 @@ function ShowCustomerBooking() {
                   /> */}
 
                   <Typography fontWeight={"bold"} fontFamily={"system-ui"}>
-                    Booking Id
+               <FormattedMessage defaultMessage="Booking Id"/>
                   </Typography>
                   <Typography fontFamily={"system-ui"}>{item?._id}</Typography>
                   <Stack direction={"row"}>
                     {" "}
-                    <Typography alignSelf={"left"}>Payment Status- </Typography>
+                    <Typography alignSelf={"left"}> <FormattedMessage defaultMessage="Payment Status- "/></Typography>
                     <Typography
                       color={item?.paymentStatus === "paid" ? "green" : " red"}
                     >
@@ -132,7 +133,7 @@ function ShowCustomerBooking() {
                       navigate(`/profile/myBookings/${item._id}`);
                     }}
                   >
-                    View Details
+                      <FormattedMessage defaultMessage=" View Details"/>
                   </Button>
                 </Stack>
               </Stack>
