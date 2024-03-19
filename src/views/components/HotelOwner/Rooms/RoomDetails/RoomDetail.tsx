@@ -119,7 +119,7 @@ const RoomDetail = ({
               <Stack direction={"row"} spacing={0.2}>
                 <Box
                   component={"img"}
-                  width={{ xl: "75%", md: "60%", sm: "65%", xs: "50%" }}
+                  width={{ xl: "75%", md: "80%", sm: "65%", xs: "50%" }}
                   height={181.8}
                   src={`http://localhost:8000/${room?.photos[roomImage]?.path}`}
                 />
