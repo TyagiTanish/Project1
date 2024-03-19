@@ -24,6 +24,7 @@ import {
 import { useNavigate } from "react-router-dom";
 import { cleanFilterItem } from "@mui/x-data-grid/hooks/features/filter/gridFilterUtils";
 import SearchBarValidationPopper from "./searchBarValidationPopper";
+import { FormattedMessage, useIntl } from "react-intl";
 function SearchBar() {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
@@ -121,7 +122,7 @@ function SearchBar() {
     setValue("Around me");
     // Make API call to OpenWeatherMap
   }
-
+const intl=useIntl();
   const handleCloseValidationPopper = (event: any) => {
     if (event?.value === "") {
       setSearchBarAnchorEl(event);
@@ -130,7 +131,7 @@ function SearchBar() {
         setSearchBarAnchorEl(null);
       } else {
         const datePicker = document?.querySelector("#datePicker");
-        setMessage("Please select a Check-In and Check-Out date");
+        setMessage(intl.formatMessage({defaultMessage:"Please select a Check-In and Check-Out date"}));
         setSearchBarAnchorEl(datePicker || event);
       }
     }
@@ -189,7 +190,7 @@ function SearchBar() {
               zIndex: "0",
             }}
           >
-            Over 157,000 hotels and homes across 35 countries
+            <FormattedMessage defaultMessage="Over 157,000 hotels and homes across 35 countries"/>   
           </Box>
           <Stack
             sx={{
@@ -203,7 +204,7 @@ function SearchBar() {
             <TextField
               sx={{ bgcolor: "white", width: 400 }}
               id="searchField"
-              placeholder="Search by city,hotel or state"
+              placeholder={intl.formatMessage({defaultMessage:"Search by city,hotel or state"})}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
                 const field = document.querySelector("#searchField");
@@ -224,7 +225,7 @@ function SearchBar() {
                       }}
                     >
                       <MyLocationIcon />
-                      Near me
+                     <FormattedMessage defaultMessage=" Near me"/>
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -240,7 +241,8 @@ function SearchBar() {
               <TextField
                 id="datePicker"
                 sx={{ bgcolor: "white", width: 400 }}
-                placeholder="Check in - Check out"
+              
+                placeholder={intl.formatMessage({defaultMessage:"Check in - Check out"})}
                 onClick={handleClick2}
                 value={date}
               />
@@ -290,17 +292,17 @@ function SearchBar() {
                     navigate("/hotels");
                   } else {
                     const datePicker = document?.querySelector("#datePicker");
-                    setMessage("Please select a Check-In and Check-Out date");
+                    setMessage(intl.formatMessage({defaultMessage:"Please select a Check-In and Check-Out date"}));
                     handleCloseValidationPopper(datePicker);
                   }
                 } else {
                   const searchField = document.querySelector("#searchField");
-                  setMessage(" Please select a destination");
+                  setMessage(intl.formatMessage({defaultMessage:" Please select a destination"}));
                   handleCloseValidationPopper(searchField);
                 }
               }}
             >
-              Search
+            <FormattedMessage defaultMessage="Search"/>  
             </Button>
           </Stack>
         </Stack>

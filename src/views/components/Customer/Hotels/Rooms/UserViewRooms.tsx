@@ -215,8 +215,8 @@ function UserViewRooms({ hotels }: any) {
                     {item?.isAvailable === "false" ||
                     item?.roomQuantity === "0" ||
                     TotalRooms.current > +item?.roomQuantity
-                      ? "Currently Unavailable"
-                      : "Book Now "}
+                      ? <FormattedMessage defaultMessage="Currently Unavailable"/>
+                      : <FormattedMessage defaultMessage="Book Now"/>}
                   </Button>
                 </Stack>
               </Stack>

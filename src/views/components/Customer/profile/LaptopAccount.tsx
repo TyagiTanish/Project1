@@ -14,6 +14,7 @@ import PersonIcon from "@mui/icons-material/Person";
 import Logout from "@mui/icons-material/Logout";
 import { userLogout } from "../../redux/user/userSlice";
 import { useDispatch } from "react-redux";
+import { FormattedMessage } from "react-intl";
 function LaptopAccount() {
   const user = useSelector((state: any) => state.userReducer.user);
   const dispatch = useDispatch();
@@ -36,11 +37,11 @@ function LaptopAccount() {
         style={{ fontWeight: "bold", fontSize: 17 }}
         expandIcon={<ExpandMoreIcon />}
       >
-        Account Settings
+        <FormattedMessage defaultMessage="Account Settings"/>
       </AccordionSummary>
       <AccordionDetails sx={{ ml: 4, mt: -1 }}>
         <Typography sx={{ fontFamily: "cursive" }}>
-          Hello, {user.name}
+        <FormattedMessage defaultMessage="Hello,"/>   {user.name}
         </Typography>
         <Stack direction={"row"} spacing={1}>
           {" "}
@@ -49,15 +50,15 @@ function LaptopAccount() {
             to="/profile"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
-            Profile
+          <FormattedMessage defaultMessage="Profile"/>   
           </Link>
         </Stack>
         <Stack direction={"row"} spacing={1} onClick={handleLogOut}>
           {" "}
           <Logout fontSize="small" />
-          <Typography>LogOut</Typography>
+          <Typography><FormattedMessage defaultMessage="Logout"/></Typography>
         </Stack>
-      </AccordionDetails>
+      </AccordionDetails> 
     </Accordion>
   );
 }

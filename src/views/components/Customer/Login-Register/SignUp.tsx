@@ -225,7 +225,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
               type="submit"
               sx={{ mt: 2, textTransform: "none" }}
             >
-              <FormattedMessage defaultMessage="   SignUp" />
+              <FormattedMessage defaultMessage="SignUp" />
             </Button>
           </form>
         </CardContent>
@@ -241,7 +241,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
               setLogReg(false);
             }}
           >
-            Login here
+           <FormattedMessage defaultMessage="Login here" />   
           </Button>
         </Stack>
       </Card>

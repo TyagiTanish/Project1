@@ -20,7 +20,7 @@ import {
   userLocation,
 } from "../../../../redux/user/userSlice";
 import { Navigate, useNavigate } from "react-router-dom";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import RoomSelection from "./RoomSelection";
 import { enqueueSnackbar } from "notistack";
 import SearchBarValidationPopper from "./searchBarValidationPopper";
@@ -136,7 +136,7 @@ function Seachbar2() {
   const handleClose = () => {
     setAnchorEl2(null);
   };
-
+const intl=useIntl();
   return (
     <>
       <Stack
@@ -173,7 +173,7 @@ function Seachbar2() {
               </InputAdornment>
             ),
           }}
-          placeholder="Search by city,hotel or state"
+          placeholder={intl.formatMessage({defaultMessage: "Search by city,hotel or state"})}
           onChange={(e) => {
             setSearchTerm(e.target.value);
             const field = document.querySelector("#searchField");
@@ -193,7 +193,8 @@ function Seachbar2() {
         <Box sx={{ mt: 1 }}>
           <TextField
             sx={{ bgcolor: "white", width: { sm: 240, md: 300 } }}
-            placeholder="Check in - Check out"
+            placeholder={intl.formatMessage({defaultMessage: "Check in - Check out"})}
+           
             onClick={handleClick2}
             value={date}
           />

@@ -5,7 +5,7 @@ import {
   AccordionDetails,
   AccordionSummary,
   IconButton,
-  ListItemIcon,
+
   Stack,
   Tooltip,
   Typography,
@@ -21,13 +21,12 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import CircleIcon from "@mui/icons-material/Circle";
-import LocationCityIcon from "@mui/icons-material/LocationCity";
+
 import BusinessIcon from "@mui/icons-material/Business";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CallIcon from "@mui/icons-material/Call";
-import AccountMenu from "../../OtherComponents/ProfileBtn";
-import Language from "../../Language/Language";
+
 import { FormattedMessage } from "react-intl";
 import SelectLang from "../../OtherComponents/SelectLang";
 import LaptopAccount from "../profile/LaptopAccount";
@@ -73,7 +72,7 @@ function TabletNavbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Typography sx={{ m: 2, fontSize: 20, color: "#D4164B" }}>
-        Menu Items....
+      <FormattedMessage defaultMessage=" Menu Items...." />        
       </Typography>
       {user ? (
         <>
@@ -94,7 +93,7 @@ function TabletNavbar() {
                 }}
               >
                 {" "}
-                Add Hotel
+                <FormattedMessage defaultMessage="Add Hotel" />      
               </Link>
             </Stack>
             <Stack
@@ -152,7 +151,7 @@ function TabletNavbar() {
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: "bold", fontSize: 17 }}>
-            Popular Cities
+          <FormattedMessage defaultMessage="Popular Cities" /> 
           </Typography>
         </AccordionSummary>
         <AccordionDetails style={{ marginTop: -30 }}>
@@ -181,7 +180,7 @@ function TabletNavbar() {
                             <Typography
                               sx={{ fontWeight: "bold", fontSize: 15 }}
                             >
-                              Popular Locations
+                         <FormattedMessage defaultMessage="Popular Locations" />        
                             </Typography>
                             <Stack
                               direction={"row"}
@@ -197,7 +196,7 @@ function TabletNavbar() {
                                   textDecorationLine: "none",
                                 }}
                               >
-                                Mg Road
+                             <FormattedMessage defaultMessage=" Mg Road" />     
                               </Link>
                             </Stack>
 
@@ -215,7 +214,7 @@ function TabletNavbar() {
                                   textDecorationLine: "none",
                                 }}
                               >
-                                Rajaji nagar
+                               <FormattedMessage defaultMessage=" Rajaji nagar" />      
                               </Link>
                             </Stack>
                           </Typography>
