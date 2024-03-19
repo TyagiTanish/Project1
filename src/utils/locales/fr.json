@@ -1094,7 +1094,7 @@
   "UsOCsz": [
     {
       "type": 0,
-      "value": "ViewMap"
+      "value": "Voir la carte"
     }
   ],
   "V+XwpG": [
@@ -2013,6 +2013,12 @@
     {
       "type": 0,
       "value": "Service de chambre 24h/24"
+    }
+  ],
+  "zAaNps": [
+    {
+      "type": 0,
+      "value": "Vous n'avez pas encore de réservation !!!"
     }
   ],
   "zF7Cth": [
