@@ -19,7 +19,7 @@ import {
   searchDetails,
   userLocation,
 } from "../../../../redux/user/userSlice";
-import { Navigate, useNavigate } from "react-router-dom";
+import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
 import RoomSelection from "./RoomSelection";
 import { enqueueSnackbar } from "notistack";
@@ -69,7 +69,8 @@ function Seachbar2() {
   const dispatch = useDispatch();
 
   // const search = localStorage.getItem("searchTerm");
-
+  const params = useParams();
+  const location = `http://localhost:3000/billing/${params?.id}/${params?.hid}`;
   const search = useSelector((state: any) => state?.userReducer?.searchDetails);
 
   const [value, setValue] = useState<any>(search);
@@ -111,12 +112,13 @@ function Seachbar2() {
     };
     dispatch(userLocation(data));
     // localStorage.setItem("searchTerm", "around me");
-
     setSearchTerm("around me");
     dispatch(searchDetails(searchTerm));
     setValue("Around me");
+    // Make API call to OpenWeatherMap
   }
   function error() {}
+  const intl = useIntl();
   const [anchorEl2, setAnchorEl2] = React.useState<null | HTMLElement>(null);
   const [dates, setDates] = useState<any>("");
   const handleClick2 = (event: React.MouseEvent<HTMLElement>) => {
@@ -136,7 +138,7 @@ function Seachbar2() {
   const handleClose = () => {
     setAnchorEl2(null);
   };
-const intl=useIntl();
+
   return (
     <>
       <Stack
@@ -148,53 +150,64 @@ const intl=useIntl();
           alignSelf: "center",
         }}
       >
-        <TextField
-          id="searchField"
-          sx={{
-            backgroundColor: "white",
-            borderRadius: 3,
-            mt: 1,
-            width: 410,
-          }}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="start">
-                <IconButton
-                  onClick={handleLocationClick}
-                  sx={{
-                    fontSize: { sm: "10px", lg: "15px" },
-                    fontWeight: "bolder",
-                    color: "black",
-                  }}
-                >
-                  <MyLocationIcon />
-                  <FormattedMessage defaultMessage="Near me" />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-          placeholder={intl.formatMessage({defaultMessage: "Search by city,hotel or state"})}
-          onChange={(e) => {
-            setSearchTerm(e.target.value);
-            const field = document.querySelector("#searchField");
-            setMessage("Please select a destination");
-            handleCloseValidationPopper(field);
-          }}
-          defaultValue={searchTerm}
-          value={searchTerm}
-        />
-        <SearchBarValidationPopper
-          searchBarAnchorEl={searchBarAnchorEl}
-          handleCloseValidationPopper={handleCloseValidationPopper}
-          setSearchBarAnchorEl={setSearchBarAnchorEl}
-          message={message}
-        />
+        {params?.hid !== undefined ? (
+          location !== document?.location?.href
+        ) : document?.location?.href !==
+          `http://localhost:3000/viewDeal/${params?.id}` ? (
+          <>
+            <TextField
+              id="searchField"
+              sx={{
+                backgroundColor: "white",
+                borderRadius: 3,
+                mt: 1,
+                width: 410,
+              }}
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="start">
+                    <IconButton
+                      onClick={handleLocationClick}
+                      sx={{
+                        fontSize: { sm: "10px", lg: "15px" },
+                        fontWeight: "bolder",
+                        color: "black",
+                      }}
+                    >
+                      <MyLocationIcon />
+                      <FormattedMessage defaultMessage="Near me" />
+                    </IconButton>
+                  </InputAdornment>
+                ),
+              }}
+              placeholder={intl.formatMessage({
+                defaultMessage: "Search by city,hotel or state",
+              })}
+              onChange={(e) => {
+                setSearchTerm(e.target.value);
+                const field = document.querySelector("#searchField");
+                setMessage("Please select a destination");
+                handleCloseValidationPopper(field);
+              }}
+              defaultValue={searchTerm}
+              value={searchTerm}
+            />
+            <SearchBarValidationPopper
+              searchBarAnchorEl={searchBarAnchorEl}
+              handleCloseValidationPopper={handleCloseValidationPopper}
+              setSearchBarAnchorEl={setSearchBarAnchorEl}
+              message={message}
+            />
+          </>
+        ) : null}
+
         {/* <DateRangePickers /> */}
         <Box sx={{ mt: 1 }}>
           <TextField
             sx={{ bgcolor: "white", width: { sm: 240, md: 300 } }}
-            placeholder={intl.formatMessage({defaultMessage: "Check in - Check out"})}
-           
+            placeholder={intl.formatMessage({
+              defaultMessage: "Check in - Check out",
+            })}
             onClick={handleClick2}
             value={date}
           />
@@ -225,34 +238,42 @@ const intl=useIntl();
           value={`${rooms.length} Room , ${guests} guest`}
           onClick={(event: any) => handleClick(event)}
         />
-        <Button
-          variant="contained"
-          sx={{
-            bgcolor: "#1ab64f",
-            "&:hover": { bgcolor: "green" },
-            color: "white",
-            fontWeight: "bolder",
-            height: 55,
-            mt: 0.75,
-            borderRadius: 1,
-          }}
-          onClick={() => {
-            // localStorage.setItem("searchTerm", searchTerm);
-            if (searchTerm !== "") {
-              dispatch(searchDetails(searchTerm));
-              const field = document.querySelector("#searchField");
-              setMessage("Please select a destination");
-              handleCloseValidationPopper(field);
+        {params?.hid !== undefined ? (
+          location !== document?.location?.href
+        ) : document?.location?.href !==
+          `http://localhost:3000/viewDeal/${params?.id}` ? (
+          <>
+            {" "}
+            <Button
+              variant="contained"
+              sx={{
+                bgcolor: "#1ab64f",
+                "&:hover": { bgcolor: "green" },
+                color: "white",
+                fontWeight: "bolder",
+                height: 55,
+                mt: 0.75,
+                borderRadius: 1,
+              }}
+              onClick={() => {
+                // localStorage.setItem("searchTerm", searchTerm);
+                if (searchTerm !== "") {
+                  dispatch(searchDetails(searchTerm));
+                  const field = document.querySelector("#searchField");
+                  setMessage("Please select a destination");
+                  handleCloseValidationPopper(field);
 
-              // navigate("/hotels");
-            } else {
-              const field = document.querySelector("#searchField");
-              handleCloseValidationPopper(field);
-            }
-          }}
-        >
-          <FormattedMessage defaultMessage="Search" />
-        </Button>
+                  // navigate("/hotels");
+                } else {
+                  const field = document.querySelector("#searchField");
+                  handleCloseValidationPopper(field);
+                }
+              }}
+            >
+              <FormattedMessage defaultMessage="Search" />
+            </Button>
+          </>
+        ) : null}
       </Stack>
       <RoomSelection
         anchorEl={anchorEl}

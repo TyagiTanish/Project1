@@ -122,7 +122,7 @@ function SearchBar() {
     setValue("Around me");
     // Make API call to OpenWeatherMap
   }
-const intl=useIntl();
+  const intl = useIntl();
   const handleCloseValidationPopper = (event: any) => {
     if (event?.value === "") {
       setSearchBarAnchorEl(event);
@@ -131,7 +131,11 @@ const intl=useIntl();
         setSearchBarAnchorEl(null);
       } else {
         const datePicker = document?.querySelector("#datePicker");
-        setMessage(intl.formatMessage({defaultMessage:"Please select a Check-In and Check-Out date"}));
+        setMessage(
+          intl.formatMessage({
+            defaultMessage: "Please select a Check-In and Check-Out date",
+          })
+        );
         setSearchBarAnchorEl(datePicker || event);
       }
     }
@@ -190,7 +194,7 @@ const intl=useIntl();
               zIndex: "0",
             }}
           >
-            <FormattedMessage defaultMessage="Over 157,000 hotels and homes across 35 countries"/>   
+            <FormattedMessage defaultMessage="Over 157,000 hotels and homes across 35 countries" />
           </Box>
           <Stack
             sx={{
@@ -202,9 +206,11 @@ const intl=useIntl();
             zIndex={0}
           >
             <TextField
-              sx={{ bgcolor: "white", width: 400 }}
+              sx={{ bgcolor: "white", width: { lg: 400, md: 300 } }}
               id="searchField"
-              placeholder={intl.formatMessage({defaultMessage:"Search by city,hotel or state"})}
+              placeholder={intl.formatMessage({
+                defaultMessage: "Search by city,hotel or state",
+              })}
               onChange={(e) => {
                 setSearchTerm(e.target.value);
                 const field = document.querySelector("#searchField");
@@ -225,7 +231,7 @@ const intl=useIntl();
                       }}
                     >
                       <MyLocationIcon />
-                     <FormattedMessage defaultMessage=" Near me"/>
+                      <FormattedMessage defaultMessage=" Near me" />
                     </IconButton>
                   </InputAdornment>
                 ),
@@ -240,9 +246,10 @@ const intl=useIntl();
             <Box mt={0}>
               <TextField
                 id="datePicker"
-                sx={{ bgcolor: "white", width: 400 }}
-              
-                placeholder={intl.formatMessage({defaultMessage:"Check in - Check out"})}
+                sx={{ bgcolor: "white", width: { lg: 400, md: 300 } }}
+                placeholder={intl.formatMessage({
+                  defaultMessage: "Check in - Check out",
+                })}
                 onClick={handleClick2}
                 value={date}
               />
@@ -267,7 +274,7 @@ const intl=useIntl();
                 ml: 0,
                 fontWeight: "bolder",
                 bgcolor: "white",
-                width: 300,
+                width: { lg: 300, md: 200 },
               }}
               value={`${rooms.length} Room , ${guests} guest`}
               onClick={(event: any) => handleClick(event)}
@@ -292,17 +299,26 @@ const intl=useIntl();
                     navigate("/hotels");
                   } else {
                     const datePicker = document?.querySelector("#datePicker");
-                    setMessage(intl.formatMessage({defaultMessage:"Please select a Check-In and Check-Out date"}));
+                    setMessage(
+                      intl.formatMessage({
+                        defaultMessage:
+                          "Please select a Check-In and Check-Out date",
+                      })
+                    );
                     handleCloseValidationPopper(datePicker);
                   }
                 } else {
                   const searchField = document.querySelector("#searchField");
-                  setMessage(intl.formatMessage({defaultMessage:" Please select a destination"}));
+                  setMessage(
+                    intl.formatMessage({
+                      defaultMessage: " Please select a destination",
+                    })
+                  );
                   handleCloseValidationPopper(searchField);
                 }
               }}
             >
-            <FormattedMessage defaultMessage="Search"/>  
+              <FormattedMessage defaultMessage="Search" />
             </Button>
           </Stack>
         </Stack>
