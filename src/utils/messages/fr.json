@@ -1,271 +1,686 @@
 {
-  "+R6HRl": { "defaultMessage": "Inscrivez votre propriété" },
-  "8uXS99": { "defaultMessage": "Lieux populaires" },
-  "wNLUau": { "defaultMessage": "Se connecter S'inscrire" },
-  "yGgJD/": { "defaultMessage": "Banglore" },
+  "+R6HRl": {
+    "defaultMessage": "Inscrivez votre propriété"
+  },
+  "8uXS99": {
+    "defaultMessage": "Lieux populaires"
+  },
+  "wNLUau": {
+    "defaultMessage": "Se connecter S'inscrire"
+  },
+  "yGgJD/": {
+    "defaultMessage": "Banglore"
+  },
   "Hm2NzP": {
     "defaultMessage": "Première chaîne mondiale d'hôtels et de résidences"
   },
-  "1umnAX": { "defaultMessage": "informations personnelles" },
-  "FrO6L4": { "defaultMessage": "Prénom:" },
-  "H0JBH6": { "defaultMessage": "Se déconnecter" },
-  "NQgbYA": { "defaultMessage": "Paramètres du compte" },
-  "QiKKFz": { "defaultMessage": "Changer le mot de passe" },
-  "U41zpQ": { "defaultMessage": "Ancien mot de passe:" },
-  "cyR7Kh": { "defaultMessage": "Dos" },
-  "gCsYTJ": { "defaultMessage": "Nouveau mot de passe:" },
-  "jvaZOr": { "defaultMessage": "Changez votre mot de passe" },
-  "Hl6eet": { "defaultMessage": "Chennai" },
-  "7444aR": { "defaultMessage": "Kolkata" },
-  "HBbJIL": { "defaultMessage": "Il existe un moyen plus intelligent de OYO" },
+  "1umnAX": {
+    "defaultMessage": "informations personnelles"
+  },
+  "FrO6L4": {
+    "defaultMessage": "Prénom:"
+  },
+  "H0JBH6": {
+    "defaultMessage": "Se déconnecter"
+  },
+  "NQgbYA": {
+    "defaultMessage": "Paramètres du compte"
+  },
+  "QiKKFz": {
+    "defaultMessage": "Changer le mot de passe"
+  },
+  "U41zpQ": {
+    "defaultMessage": "Ancien mot de passe:"
+  },
+  "cyR7Kh": {
+    "defaultMessage": "Dos"
+  },
+  "gCsYTJ": {
+    "defaultMessage": "Nouveau mot de passe:"
+  },
+  "jvaZOr": {
+    "defaultMessage": "Changez votre mot de passe"
+  },
+  "Hl6eet": {
+    "defaultMessage": "Chennai"
+  },
+  "7444aR": {
+    "defaultMessage": "Kolkata"
+  },
+  "HBbJIL": {
+    "defaultMessage": "Il existe un moyen plus intelligent de OYO"
+  },
   "Y2s5iu": {
     "defaultMessage": "Inscrivez-vous avec un numéro de téléphone et obtenez un accès exclusif à des réductions et des économies sur les séjours OYO et auprès de nos nombreux partenaires de voyage."
   },
-
-  "9khnVR": { "defaultMessage": "Photos" },
-  "9uOFF3": { "defaultMessage": "Aperçu" },
-  "we4Lby": { "defaultMessage": "Info" },
-  "+QNm85": { "defaultMessage": "Parking" },
-  "11oARw": { "defaultMessage": "Pool" },
-  "3KiaqX": { "defaultMessage": "Arrivée: 15h00" },
+  "9khnVR": {
+    "defaultMessage": "Photos"
+  },
+  "9uOFF3": {
+    "defaultMessage": "Aperçu"
+  },
+  "we4Lby": {
+    "defaultMessage": "Info"
+  },
+  "+QNm85": {
+    "defaultMessage": "Parking"
+  },
+  "11oARw": {
+    "defaultMessage": "Pool"
+  },
+  "3KiaqX": {
+    "defaultMessage": "Arrivée: 15h00"
+  },
   "5V00Mx": {
     "defaultMessage": "Offrant une vue imprenable sur la mer d'Oman dans la capitale commerciale de l'Inde, l'InterContinental Marine Drive établit des normes en matière de service personnalisé pour les voyageurs d'affaires et de loisirs. L'expérience commence lorsque l'horizon scintillant de Mumbai, appelé à juste titre le Collier de la Reine, vous accueille. Entrez dans l'InterContinental Marine Drive et l'attention chaleureuse et personnalisée vous aidera à vous détendre. L'InterContinental Marine Drive est stratégiquement situé au cœur du quartier des affaires et financier de Mumbai, à 1,5 km de Nariman Point et à 3 km de la principale zone commerçante de Colaba. Vous offrant le luxe primordial de gagner du temps pendant votre travail. Les installations de communication et de réunion d'affaires ultramodernes optimisent davantage la gestion du temps."
   },
-  "8oWVZA": { "defaultMessage": "Restaurant" },
-  "9rwIcL": { "defaultMessage": "Climatisation" },
-  "GodOg+": { "defaultMessage": "Arrivée Départ" },
-  "JH2EfS": { "defaultMessage": "Animaux domestiques" },
-  "RiZXe1": { "defaultMessage": "Bar de l'hôtel" },
-  "dmGKS5": { "defaultMessage": "Départ: 12h00" },
-  "h9FUr8": { "defaultMessage": "Wifi gratuit" },
-  "kUDcH0": { "defaultMessage": "Spa" },
+  "8oWVZA": {
+    "defaultMessage": "Restaurant"
+  },
+  "9rwIcL": {
+    "defaultMessage": "Climatisation"
+  },
+  "GodOg+": {
+    "defaultMessage": "Arrivée Départ"
+  },
+  "JH2EfS": {
+    "defaultMessage": "Animaux domestiques"
+  },
+  "RiZXe1": {
+    "defaultMessage": "Bar de l'hôtel"
+  },
+  "dmGKS5": {
+    "defaultMessage": "Départ: 12h00"
+  },
+  "h9FUr8": {
+    "defaultMessage": "Wifi gratuit"
+  },
+  "kUDcH0": {
+    "defaultMessage": "Spa"
+  },
   "l4GiZS": {
     "defaultMessage": "Téléphone : +91 2239879999 | Télécopie : +91 2239879600"
   },
-  "lhgV6Z": { "defaultMessage": "Équipements haut de gamme" },
-  "rvirM2": { "defaultMessage": "Emplacement" },
-  "uXYcYf": { "defaultMessage": "Wi-Fi dans le hall" },
-  "zFegDD": { "defaultMessage": "Contact" },
-  "25WwxF": { "defaultMessage": "Vous n'avez pas de compte ?" },
-  "4OjOXO": { "defaultMessage": "Veuillez entrer votre email pour continuer" },
-  "5sg7KC": { "defaultMessage": "Mot de passe" },
-  "AyGauy": { "defaultMessage": "Se connecter" },
-  "GPLny2": { "defaultMessage": "Inscrivez-vous ici" },
+  "lhgV6Z": {
+    "defaultMessage": "Équipements haut de gamme"
+  },
+  "rvirM2": {
+    "defaultMessage": "Emplacement"
+  },
+  "uXYcYf": {
+    "defaultMessage": "Wi-Fi dans le hall"
+  },
+  "zFegDD": {
+    "defaultMessage": "Contact"
+  },
+  "25WwxF": {
+    "defaultMessage": "Vous n'avez pas de compte ?"
+  },
+  "4OjOXO": {
+    "defaultMessage": "Veuillez entrer votre email pour continuer"
+  },
+  "5sg7KC": {
+    "defaultMessage": "Mot de passe"
+  },
+  "AyGauy": {
+    "defaultMessage": "Se connecter"
+  },
+  "GPLny2": {
+    "defaultMessage": "Inscrivez-vous ici"
+  },
   "KkDJ/P": {
     "defaultMessage": "Inscrivez-vous et obtenez 500 ₹ d'argent OYO"
   },
-  "UFXy0j": { "defaultMessage": "Vérifier les courriels" },
-  "qwx3Nk": { "defaultMessage": "Mettre à jour les informations personnelles" },
-  "r2Jjms": { "defaultMessage": "Se connecter" },
-  "/2PAGq": { "defaultMessage": "Pas de téléphone" },
-  "39AHJm": { "defaultMessage": "S'inscrire" },
-  "3rvTzG": { "defaultMessage": "S'inscrire" },
-  "HAlOn1": { "defaultMessage": "Nom" },
-  "sy+pv5": { "defaultMessage": "E-mail" },
-  "uCk8r+": { "defaultMessage": "Vous avez déjà un compte?" },
-  "/28JSA": { "defaultMessage": "Cliquez ici..." },
-  "2apuGa": { "defaultMessage": "locale" },
-  "3EnruA": { "defaultMessage": "Code Postal" },
-  "4jYQG+": { "defaultMessage": "Hôtels et maisons" },
+  "UFXy0j": {
+    "defaultMessage": "Vérifier les courriels"
+  },
+  "qwx3Nk": {
+    "defaultMessage": "Mettre à jour les informations personnelles"
+  },
+  "r2Jjms": {
+    "defaultMessage": "Se connecter"
+  },
+  "/2PAGq": {
+    "defaultMessage": "Pas de téléphone"
+  },
+  "39AHJm": {
+    "defaultMessage": "S'inscrire"
+  },
+  "3rvTzG": {
+    "defaultMessage": "S'inscrire"
+  },
+  "HAlOn1": {
+    "defaultMessage": "Nom"
+  },
+  "sy+pv5": {
+    "defaultMessage": "E-mail"
+  },
+  "uCk8r+": {
+    "defaultMessage": "Vous avez déjà un compte?"
+  },
+  "/28JSA": {
+    "defaultMessage": "Cliquez ici..."
+  },
+  "2apuGa": {
+    "defaultMessage": "locale"
+  },
+  "3EnruA": {
+    "defaultMessage": "Code Postal"
+  },
+  "4jYQG+": {
+    "defaultMessage": "Hôtels et maisons"
+  },
   "5GxMk2": {
     "defaultMessage": "Ajoutez un hôtel et obtenez 500 ₹ d'argent OYO"
   },
-  "7TFbhV": { "defaultMessage": "Ajouter l'emplacement de l'hôtel" },
-  "9+Ddtu": { "defaultMessage": "Suivant" },
-  "BSij1a": { "defaultMessage": "fermer" },
-  "BUu6Wn": { "defaultMessage": "Ajouter un hôtel" },
-  "CDnwtH": { "defaultMessage": "Jagadhri" },
-  "EZEH2+": { "defaultMessage": "Ajouter les détails de l'hôtel.." },
-  "GB83+B": { "defaultMessage": "Proche de moi" },
-  "GrQf+i": { "defaultMessage": "Entrez la description de l'hôtel...." },
-  "HfAXbq": { "defaultMessage": "Déposez une photo ici" },
-  "IFkDw5": { "defaultMessage": "Villes" },
-  "LaM7n1": { "defaultMessage": "télécharger" },
-  "NxNgkz": { "defaultMessage": "Il y a un OYO dans le coin. Toujours." },
-  "OgF6Am": { "defaultMessage": "Bombay" },
-  "QQSdHP": { "defaultMessage": "Voir plus" },
-  "Rtrei/": { "defaultMessage": "Voir l'offre" },
-  "TE4fIS": { "defaultMessage": "Ville" },
+  "7TFbhV": {
+    "defaultMessage": "Ajouter l'emplacement de l'hôtel"
+  },
+  "9+Ddtu": {
+    "defaultMessage": "Suivant"
+  },
+  "BSij1a": {
+    "defaultMessage": "fermer"
+  },
+  "BUu6Wn": {
+    "defaultMessage": "Ajouter un hôtel"
+  },
+  "CDnwtH": {
+    "defaultMessage": "Jagadhri"
+  },
+  "EZEH2+": {
+    "defaultMessage": "Ajouter les détails de l'hôtel.."
+  },
+  "GB83+B": {
+    "defaultMessage": "Proche de moi"
+  },
+  "GrQf+i": {
+    "defaultMessage": "Entrez la description de l'hôtel...."
+  },
+  "HfAXbq": {
+    "defaultMessage": "Déposez une photo ici"
+  },
+  "IFkDw5": {
+    "defaultMessage": "Villes"
+  },
+  "LaM7n1": {
+    "defaultMessage": "télécharger"
+  },
+  "NxNgkz": {
+    "defaultMessage": "Il y a un OYO dans le coin. Toujours."
+  },
+  "OgF6Am": {
+    "defaultMessage": "Bombay"
+  },
+  "QQSdHP": {
+    "defaultMessage": "Voir plus"
+  },
+  "Rtrei/": {
+    "defaultMessage": "Voir l'offre"
+  },
+  "TE4fIS": {
+    "defaultMessage": "Ville"
+  },
   "UjxXg4": {
     "defaultMessage": "Pour utiliser un autre e-mail pour ajouter un hôtel"
   },
-  "V+XwpG": { "defaultMessage": "Hôtel" },
-  "W2tpY0": { "defaultMessage": "Pas de téléphone:" },
-  "WF8jKB": { "defaultMessage": "Nom:" },
-  "ZmsB1S": { "defaultMessage": "Listes d'hôtels" },
+  "V+XwpG": {
+    "defaultMessage": "Hôtel"
+  },
+  "W2tpY0": {
+    "defaultMessage": "Pas de téléphone:"
+  },
+  "WF8jKB": {
+    "defaultMessage": "Nom:"
+  },
+  "ZmsB1S": {
+    "defaultMessage": "Listes d'hôtels"
+  },
   "d/gBvP": {
     "defaultMessage": "Plus de destinations. Plus de facilité. Plus abordable."
   },
-  "eyOT/X": { "defaultMessage": "Emplacement des points" },
-  "hN9DjA": { "defaultMessage": "Notre prix le plus bas" },
-  "jUTmkf": { "defaultMessage": "Détails du membre-" },
-  "ku+mDU": { "defaultMessage": "État" },
-  "kuVWTT": { "defaultMessage": "Entrez les commodités de l’hôtel...." },
+  "eyOT/X": {
+    "defaultMessage": "Emplacement des points"
+  },
+  "hN9DjA": {
+    "defaultMessage": "Notre prix le plus bas"
+  },
+  "jUTmkf": {
+    "defaultMessage": "Détails du membre-"
+  },
+  "ku+mDU": {
+    "defaultMessage": "État"
+  },
+  "kuVWTT": {
+    "defaultMessage": "Entrez les commodités de l’hôtel...."
+  },
   "lqSLwV": {
     "defaultMessage": "Il existe un moyen plus intelligent de gérer les relations avec OYO"
   },
-  "mXiD5u": { "defaultMessage": "Numéro de téléphone" },
-  "nsZqim": { "defaultMessage": "Yamuna Nagar" },
-  "p2cPVQ": { "defaultMessage": "Bilaspur" },
-  "uta34T": { "defaultMessage": "Nom de l'Hotel" },
-  "vNbJei": { "defaultMessage": "E-mail-" },
-  "vONi+O": { "defaultMessage": "Pays" },
-  "xmcVZ0": { "defaultMessage": "Recherche" },
-  "xzKMCh": { "defaultMessage": "Toutes les villes" },
-  "0xWUYr": { "defaultMessage": "Téléphone du client" },
-  "2HUE26": { "defaultMessage": "Identifiant du propriétaire" },
-  "97l2MO": { "defaultMessage": "Email client" },
-  "BmfoZ2": { "defaultMessage": "Détails de l'utilisateur-" },
-  "Eta9Rl": { "defaultMessage": "Description de l'hôtel" },
-  "Gr1SAu": { "defaultMessage": "Nom du client" },
-
-  "+qRNso": { "defaultMessage": "Fermer le modal enfant" },
-  "/0TOL5": { "defaultMessage": "Montant" },
-  "/s3yB5": { "defaultMessage": "État:" },
-  "1jx3mr": { "defaultMessage": "Date de réservation" },
-  "3SVI5p": { "defaultMessage": "Avertissement" },
-  "3VI9mt": { "defaultMessage": "Sauvegarder les modifications" },
-  "3bytUc": { "defaultMessage": "Toutes les réservations" },
-  "4/u1B2": { "defaultMessage": "Il y a une réservation aujourd'hui" },
-  "4UoaOO": { "defaultMessage": "voir les détails" },
-  "4vOWRW": { "defaultMessage": "Images des chambres" },
-  "6lhgE5": { "defaultMessage": "Minibar sur demande" },
-  "6t1o49": { "defaultMessage": "Nombre total de jours-" },
-  "7E/yNW": { "defaultMessage": "Le nom du propriétaire-" },
-  "7dr1md": { "defaultMessage": "Description de la pièce:" },
-  "8GH/al": { "defaultMessage": "Tous les hôtels" },
-  "8xkJT9": { "defaultMessage": "Modifier les détails de l'hôtel" },
-  "9CHoi1": { "defaultMessage": "Politique de dépôt" },
-  "9ZDiXG": { "defaultMessage": "Informations sur l'emplacement:" },
-  "A+BGBs": { "defaultMessage": "Vérifier" },
-  "A2IauC": { "defaultMessage": "Politique d'annulation" },
-  "AWsQuR": { "defaultMessage": "Mettre à jour les données" },
-  "CDQSzi": { "defaultMessage": "Type de pièce" },
-  "DelP+4": { "defaultMessage": "Réception" },
+  "mXiD5u": {
+    "defaultMessage": "Numéro de téléphone"
+  },
+  "nsZqim": {
+    "defaultMessage": "Yamuna Nagar"
+  },
+  "p2cPVQ": {
+    "defaultMessage": "Bilaspur"
+  },
+  "uta34T": {
+    "defaultMessage": "Nom de l'Hotel"
+  },
+  "vNbJei": {
+    "defaultMessage": "E-mail-"
+  },
+  "vONi+O": {
+    "defaultMessage": "Pays"
+  },
+  "xmcVZ0": {
+    "defaultMessage": "Recherche"
+  },
+  "xzKMCh": {
+    "defaultMessage": "Toutes les villes"
+  },
+  "0xWUYr": {
+    "defaultMessage": "Téléphone du client"
+  },
+  "2HUE26": {
+    "defaultMessage": "Identifiant du propriétaire"
+  },
+  "97l2MO": {
+    "defaultMessage": "Email client"
+  },
+  "BmfoZ2": {
+    "defaultMessage": "Détails de l'utilisateur-"
+  },
+  "Eta9Rl": {
+    "defaultMessage": "Description de l'hôtel"
+  },
+  "Gr1SAu": {
+    "defaultMessage": "Nom du client"
+  },
+  "+qRNso": {
+    "defaultMessage": "Fermer le modal enfant"
+  },
+  "/0TOL5": {
+    "defaultMessage": "Montant"
+  },
+  "/s3yB5": {
+    "defaultMessage": "État:"
+  },
+  "1jx3mr": {
+    "defaultMessage": "Date de réservation"
+  },
+  "3SVI5p": {
+    "defaultMessage": "Avertissement"
+  },
+  "3VI9mt": {
+    "defaultMessage": "Sauvegarder les modifications"
+  },
+  "3bytUc": {
+    "defaultMessage": "Toutes les réservations"
+  },
+  "4/u1B2": {
+    "defaultMessage": "Il y a une réservation aujourd'hui"
+  },
+  "4UoaOO": {
+    "defaultMessage": "voir les détails"
+  },
+  "4vOWRW": {
+    "defaultMessage": "Images des chambres"
+  },
+  "6lhgE5": {
+    "defaultMessage": "Minibar sur demande"
+  },
+  "6t1o49": {
+    "defaultMessage": "Nombre total de jours-"
+  },
+  "7E/yNW": {
+    "defaultMessage": "Le nom du propriétaire-"
+  },
+  "7dr1md": {
+    "defaultMessage": "Description de la pièce:"
+  },
+  "8GH/al": {
+    "defaultMessage": "Tous les hôtels"
+  },
+  "8xkJT9": {
+    "defaultMessage": "Modifier les détails de l'hôtel"
+  },
+  "9CHoi1": {
+    "defaultMessage": "Politique de dépôt"
+  },
+  "9ZDiXG": {
+    "defaultMessage": "Informations sur l'emplacement:"
+  },
+  "A+BGBs": {
+    "defaultMessage": "Vérifier"
+  },
+  "A2IauC": {
+    "defaultMessage": "Politique d'annulation"
+  },
+  "AWsQuR": {
+    "defaultMessage": "Mettre à jour les données"
+  },
+  "CDQSzi": {
+    "defaultMessage": "Type de pièce"
+  },
+  "DelP+4": {
+    "defaultMessage": "Réception"
+  },
   "FRPiFb": {
     "defaultMessage": "Le client lui-même, le client pourra poursuivre l'adipiscing de l'entreprise."
   },
-  "FgydNe": { "defaultMessage": "Voir" },
-  "FriMSM": { "defaultMessage": "Voir le reçu" },
-  "GhOlp0": { "defaultMessage": "Bouteilles d'eau gratuites" },
-  "GzxlXs": { "defaultMessage": "Lit supplémentaire sur demande" },
-  "ISly67": { "defaultMessage": "Accepter" },
-  "JyRQ6S": { "defaultMessage": "Pays:" },
-  "KGzfLt": { "defaultMessage": "Supprimé" },
-  "KlvzVf": { "defaultMessage": "Pas disponible" },
-  "LpTgVJ": { "defaultMessage": "Modal enfant ouvert" },
-  "MNFqIW": { "defaultMessage": "Demandes" },
-  "NIVTxd": { "defaultMessage": "Invités" },
-  "OX/lwN": { "defaultMessage": "Les détails de réservation" },
-  "P3MfNj": { "defaultMessage": "Dépôt par carte de crédit requis" },
-  "PFtMy9": { "defaultMessage": "Annulé" },
-  "PgJGHT": { "defaultMessage": "Disponible" },
-  "Q9UkZQ": { "defaultMessage": "Wi-Fi haut débit gratuit" },
+  "FgydNe": {
+    "defaultMessage": "Voir"
+  },
+  "FriMSM": {
+    "defaultMessage": "Voir le reçu"
+  },
+  "GhOlp0": {
+    "defaultMessage": "Bouteilles d'eau gratuites"
+  },
+  "GzxlXs": {
+    "defaultMessage": "Lit supplémentaire sur demande"
+  },
+  "ISly67": {
+    "defaultMessage": "Accepter"
+  },
+  "JyRQ6S": {
+    "defaultMessage": "Pays:"
+  },
+  "KGzfLt": {
+    "defaultMessage": "Supprimé"
+  },
+  "KlvzVf": {
+    "defaultMessage": "Pas disponible"
+  },
+  "LpTgVJ": {
+    "defaultMessage": "Modal enfant ouvert"
+  },
+  "MNFqIW": {
+    "defaultMessage": "Demandes"
+  },
+  "NIVTxd": {
+    "defaultMessage": "Invités"
+  },
+  "OX/lwN": {
+    "defaultMessage": "Les détails de réservation"
+  },
+  "P3MfNj": {
+    "defaultMessage": "Dépôt par carte de crédit requis"
+  },
+  "PFtMy9": {
+    "defaultMessage": "Annulé"
+  },
+  "PgJGHT": {
+    "defaultMessage": "Disponible"
+  },
+  "Q9UkZQ": {
+    "defaultMessage": "Wi-Fi haut débit gratuit"
+  },
   "QJNaAH": {
     "defaultMessage": "Prix ​​de la chambre pour 1 nuit * 1 personne"
   },
-  "QOAy/W": { "defaultMessage": "Rappel" },
-  "RLXaEm": { "defaultMessage": "Modifier les détails de la salle" },
-  "SHZrda": { "defaultMessage": "Type de pièce" },
-  "TZacpB": { "defaultMessage": "Coffre-fort dans la chambre" },
-  "UdgCF7": { "defaultMessage": "Ajouter les détails de l'hôtel..." },
-  "VcqbWi": { "defaultMessage": "Aucune réservation pour l'instant*" },
-  "VzIOKf": { "defaultMessage": "Rejeter" },
-  "W6urRz": { "defaultMessage": "Cafetière et théière" },
-  "Wlg93r": { "defaultMessage": "Pas de téléphone." },
-  "WwY6F2": { "defaultMessage": "Enregistrement" },
-  "XEotoJ": { "defaultMessage": "Enregistrement" },
-  "YDqlkM": { "defaultMessage": "E-mail du propriétaire-" },
-  "YOiOAx": { "defaultMessage": "Points forts de la chambre" },
-  "Yx6py4": { "defaultMessage": "Statut de paiement" },
-  "ZT1AQD": { "defaultMessage": "Être en désaccord" },
-  "a5msuh": { "defaultMessage": "Oui" },
-  "arE5Cb": { "defaultMessage": "Image de l'hôtel" },
-  "b1zuN9": { "defaultMessage": "Prix" },
-  "dfXq0N": { "defaultMessage": "Texte dans un modal enfant" },
-  "dmnqYy": { "defaultMessage": "Téléviseur intelligent LED 42 pouces" },
-  "driI3j": { "defaultMessage": "Nom de l'Hotel" },
-  "eECf2y": { "defaultMessage": "Voulez-vous supprimer une salle?" },
-  "eQRxMR": { "defaultMessage": "Vérifier" },
-  "fYcx67": { "defaultMessage": "Ac" },
-  "gJN7OT": { "defaultMessage": "Sèche-cheveux" },
+  "QOAy/W": {
+    "defaultMessage": "Rappel"
+  },
+  "RLXaEm": {
+    "defaultMessage": "Modifier les détails de la salle"
+  },
+  "SHZrda": {
+    "defaultMessage": "Type de pièce"
+  },
+  "TZacpB": {
+    "defaultMessage": "Coffre-fort dans la chambre"
+  },
+  "UdgCF7": {
+    "defaultMessage": "Ajouter les détails de l'hôtel..."
+  },
+  "VcqbWi": {
+    "defaultMessage": "Aucune réservation pour l'instant*"
+  },
+  "VzIOKf": {
+    "defaultMessage": "Rejeter"
+  },
+  "W6urRz": {
+    "defaultMessage": "Cafetière et théière"
+  },
+  "Wlg93r": {
+    "defaultMessage": "Pas de téléphone."
+  },
+  "WwY6F2": {
+    "defaultMessage": "Enregistrement"
+  },
+  "XEotoJ": {
+    "defaultMessage": "Enregistrement"
+  },
+  "YDqlkM": {
+    "defaultMessage": "E-mail du propriétaire-"
+  },
+  "YOiOAx": {
+    "defaultMessage": "Points forts de la chambre"
+  },
+  "Yx6py4": {
+    "defaultMessage": "Statut de paiement"
+  },
+  "ZT1AQD": {
+    "defaultMessage": "Être en désaccord"
+  },
+  "a5msuh": {
+    "defaultMessage": "Oui"
+  },
+  "arE5Cb": {
+    "defaultMessage": "Image de l'hôtel"
+  },
+  "b1zuN9": {
+    "defaultMessage": "Prix"
+  },
+  "dfXq0N": {
+    "defaultMessage": "Texte dans un modal enfant"
+  },
+  "dmnqYy": {
+    "defaultMessage": "Téléviseur intelligent LED 42 pouces"
+  },
+  "driI3j": {
+    "defaultMessage": "Nom de l'Hotel"
+  },
+  "eECf2y": {
+    "defaultMessage": "Voulez-vous supprimer une salle?"
+  },
+  "eQRxMR": {
+    "defaultMessage": "Vérifier"
+  },
+  "fYcx67": {
+    "defaultMessage": "Ac"
+  },
+  "gJN7OT": {
+    "defaultMessage": "Sèche-cheveux"
+  },
   "h2KacN": {
     "defaultMessage": "72h avant 23h59, heure locale, le jour de l'arrivée ou frais d'une nuit/dépôt d'une nuit à la réservation"
   },
-  "h3SW0S": { "defaultMessage": "Extrait" },
-  "hXfCth": { "defaultMessage": "Réservation" },
+  "h3SW0S": {
+    "defaultMessage": "Extrait"
+  },
+  "hXfCth": {
+    "defaultMessage": "Réservation"
+  },
   "hplG07": {
     "defaultMessage": "Merci beaucoup. Lorsque le moment est venu, les temps permettent à chacun de s'échapper, et il n'y a pas de plaisir bienheureux dans les douleurs, puisque quiconque souffre péniblement et rejette les choses s'enfuit."
   },
-  "iqbd3D": { "defaultMessage": "Équipements de l'hôtel" },
-  "j48wd9": { "defaultMessage": "Voulez-vous supprimer cet hôtel?" },
-  "kHkPdE": { "defaultMessage": "Réservé" },
-  "laUK3e": { "defaultMessage": "Informations Complémentaires" },
-  "lottYP": { "defaultMessage": "Détails du propriétaire" },
-  "oDknJe": { "defaultMessage": "Journal quotidien sur demande" },
-  "oJVr1K": { "defaultMessage": "Télécharger une nouvelle photo" },
-  "oUWADl": { "defaultMessage": "Non" },
-  "puODkp": { "defaultMessage": "Ville:" },
-  "q4I+Ga": { "defaultMessage": "Description de la pièce" },
-  "s+JXi4": { "defaultMessage": "Réservé par" },
-  "sjzLbX": { "defaultMessage": "Accepter" },
-  "txdipB": { "defaultMessage": "Fer et planche à repasser" },
-  "um8jag": { "defaultMessage": "Produits de bain" },
-  "uxvKKF": { "defaultMessage": "Réservations" },
-  "vBmrzu": { "defaultMessage": "Statut de réservation" },
-  "vuG8Qo": { "defaultMessage": "Modifier les équipements" },
-  "wL7VAE": { "defaultMessage": "Actions" },
-  "wSZR47": { "defaultMessage": "Soumettre" },
-  "x456Dl": { "defaultMessage": "Statut d'arrivée" },
-  "x9xrT3": { "defaultMessage": "Code PIN" },
-  "xYmt1a": { "defaultMessage": "Peignoirs et pantoufles" },
-  "xpTPb3": { "defaultMessage": "E-mail:" },
-  "z11Y+B": { "defaultMessage": "Service de chambre 24h/24" },
-  "zF7Cth": { "defaultMessage": "Invité" },
-  "zk9MMk": { "defaultMessage": "Enregistré" },
-  "0C1YbO": { "defaultMessage": "Sélectionnez au moins un équipement" },
-  "TKmub+": { "defaultMessage": "Ce champ est obligatoire" },
-  "Zp+AOk": { "defaultMessage": "Le prix est obligatoire" },
-  "eXd24c": { "defaultMessage": "Code Postal. doit être un nombre" },
-  "kDEHkT": { "defaultMessage": "Au moins un équipement requis" },
-  "kunS6i": { "defaultMessage": "Le type est requis" },
+  "iqbd3D": {
+    "defaultMessage": "Équipements de l'hôtel"
+  },
+  "j48wd9": {
+    "defaultMessage": "Voulez-vous supprimer cet hôtel?"
+  },
+  "kHkPdE": {
+    "defaultMessage": "Réservé"
+  },
+  "laUK3e": {
+    "defaultMessage": "Informations Complémentaires"
+  },
+  "lottYP": {
+    "defaultMessage": "Détails du propriétaire"
+  },
+  "oDknJe": {
+    "defaultMessage": "Journal quotidien sur demande"
+  },
+  "oJVr1K": {
+    "defaultMessage": "Télécharger une nouvelle photo"
+  },
+  "oUWADl": {
+    "defaultMessage": "Non"
+  },
+  "puODkp": {
+    "defaultMessage": "Ville:"
+  },
+  "q4I+Ga": {
+    "defaultMessage": "Description de la pièce"
+  },
+  "s+JXi4": {
+    "defaultMessage": "Réservé par"
+  },
+  "sjzLbX": {
+    "defaultMessage": "Accepter"
+  },
+  "txdipB": {
+    "defaultMessage": "Fer et planche à repasser"
+  },
+  "um8jag": {
+    "defaultMessage": "Produits de bain"
+  },
+  "uxvKKF": {
+    "defaultMessage": "Réservations"
+  },
+  "vBmrzu": {
+    "defaultMessage": "Statut de réservation"
+  },
+  "vuG8Qo": {
+    "defaultMessage": "Modifier les équipements"
+  },
+  "wL7VAE": {
+    "defaultMessage": "Actions"
+  },
+  "wSZR47": {
+    "defaultMessage": "Soumettre"
+  },
+  "x456Dl": {
+    "defaultMessage": "Statut d'arrivée"
+  },
+  "x9xrT3": {
+    "defaultMessage": "Code PIN"
+  },
+  "xYmt1a": {
+    "defaultMessage": "Peignoirs et pantoufles"
+  },
+  "xpTPb3": {
+    "defaultMessage": "E-mail:"
+  },
+  "z11Y+B": {
+    "defaultMessage": "Service de chambre 24h/24"
+  },
+  "zF7Cth": {
+    "defaultMessage": "Invité"
+  },
+  "zk9MMk": {
+    "defaultMessage": "Enregistré"
+  },
+  "0C1YbO": {
+    "defaultMessage": "Sélectionnez au moins un équipement"
+  },
+  "TKmub+": {
+    "defaultMessage": "Ce champ est obligatoire"
+  },
+  "Zp+AOk": {
+    "defaultMessage": "Le prix est obligatoire"
+  },
+  "eXd24c": {
+    "defaultMessage": "Code Postal. doit être un nombre"
+  },
+  "kDEHkT": {
+    "defaultMessage": "Au moins un équipement requis"
+  },
+  "kunS6i": {
+    "defaultMessage": "Le type est requis"
+  },
   "qe19tD": {
     "defaultMessage": "Devrait être une chaîne ou devrait avoir au moins une lettre majuscule"
   },
-  "47FYwb": { "defaultMessage": "Annuler" },
+  "47FYwb": {
+    "defaultMessage": "Annuler"
+  },
   "9mXFUz": {
     "defaultMessage": "Aucun résultat ne correspond à votre recherche"
   },
-  "K3r6DQ": { "defaultMessage": "Supprimer" },
-  "jvo0vs": { "defaultMessage": "Sauvegarder" },
-  "2RDzgc": { "defaultMessage": "Vérifier" },
-  "Q8Qw5B": { "defaultMessage": "Description" },
-  "X7IMRK": { "defaultMessage": "Enregistrement" },
-  "Yg9wZZ": { "defaultMessage": "12h00" },
-  "e38GOF": { "defaultMessage": "Agréments" },
-  "oMYHHk": { "defaultMessage": "15h00" },
-  "r6Hj+h": { "defaultMessage": "Calendrier des points" },
-  "TWTu/9": { "defaultMessage": "Garantie de carte de crédit requise" },
-  "YtKv1z": { "defaultMessage": "Moy./nuit" },
-  "dM+p3/": { "defaultMessage": "Depuis" },
+  "K3r6DQ": {
+    "defaultMessage": "Supprimer"
+  },
+  "jvo0vs": {
+    "defaultMessage": "Sauvegarder"
+  },
+  "2RDzgc": {
+    "defaultMessage": "Vérifier"
+  },
+  "Q8Qw5B": {
+    "defaultMessage": "Description"
+  },
+  "X7IMRK": {
+    "defaultMessage": "Enregistrement"
+  },
+  "Yg9wZZ": {
+    "defaultMessage": "12h00"
+  },
+  "e38GOF": {
+    "defaultMessage": "Agréments"
+  },
+  "oMYHHk": {
+    "defaultMessage": "15h00"
+  },
+  "r6Hj+h": {
+    "defaultMessage": "Calendrier des points"
+  },
+  "TWTu/9": {
+    "defaultMessage": "Garantie de carte de crédit requise"
+  },
+  "YtKv1z": {
+    "defaultMessage": "Moy./nuit"
+  },
+  "dM+p3/": {
+    "defaultMessage": "Depuis"
+  },
   "evTYb/": {
     "defaultMessage": "23h59, heure de l'hôtel 2 jours avant l'arrivée ou payer 1 nuit / Carte de crédit requise"
   },
-  "g5DEE8": { "defaultMessage": "Politique d'annulation" },
-  "J+S/E8": { "defaultMessage": "Email invalide" },
-  "N4ReBT": { "defaultMessage": "Voir les détails" },
-  "QwDSj/": { "defaultMessage": "La longueur minimale doit être de 10" },
+  "g5DEE8": {
+    "defaultMessage": "Politique d'annulation"
+  },
+  "J+S/E8": {
+    "defaultMessage": "Email invalide"
+  },
+  "N4ReBT": {
+    "defaultMessage": "Voir les détails"
+  },
+  "QwDSj/": {
+    "defaultMessage": "La longueur minimale doit être de 10"
+  },
   "h73tAE": {
     "defaultMessage": "Le numéro de téléphone ne doit contenir aucun caractère spécial et doit commencer par 9 , 7 ou 8"
   },
-  "kg6n2g": { "defaultMessage": "La longueur maximale doit être de 10" },
+  "kg6n2g": {
+    "defaultMessage": "La longueur maximale doit être de 10"
+  },
   "lRJWXn": {
     "defaultMessage": "La première lettre du nom doit être majuscule et le nom doit être une chaîne"
   },
-  "zFG+sR": { "defaultMessage": "Le prénom est requis" },
+  "zFG+sR": {
+    "defaultMessage": "Le prénom est requis"
+  },
   "Q/7RZn": {
     "defaultMessage": "Prix ​​de la chambre pour 1 Nuit X 1 Chambre"
   },
+<<<<<<< Updated upstream
   "dtgi/W": { "defaultMessage": "L'e-mail est requis" },
   "00/IyC": { "defaultMessage": "Nuit" },
   "2Ml/7i": { "defaultMessage": "Chambre" },
@@ -282,3 +697,219 @@
   "h/KUaP": { "defaultMessage": "Équipements de la chambre" },
   "ng+41Q": { "defaultMessage": "Prix ​​de la chambre" }
 }
+=======
+  "dtgi/W": {
+    "defaultMessage": "L'e-mail est requis"
+  },
+  "00/IyC": {
+    "defaultMessage": "Nuit"
+  },
+  "2Ml/7i": {
+    "defaultMessage": "Chambre"
+  },
+  "7tD4iU": {
+    "defaultMessage": "Montant payable"
+  },
+  "vmQF1b": {
+    "defaultMessage": "Nuit X"
+  },
+  "zZn9wA": {
+    "defaultMessage": "Prix ​​de la chambre pour"
+  },
+  "+7HeVJ": {
+    "defaultMessage": "Super Deluxe"
+  },
+  "6I+DHW": {
+    "defaultMessage": "Sélectionnez une fourchette de prix"
+  },
+  "j6WSBC": {
+    "defaultMessage": "Afficher les hôtels"
+  },
+  "kTo0o2": {
+    "defaultMessage": "Suite"
+  },
+  "ocaqXc": {
+    "defaultMessage": "De luxe"
+  },
+  "zSOvI0": {
+    "defaultMessage": "Filtres"
+  },
+  "0Zdb0S": {
+    "defaultMessage": "Confiance et sécurité"
+  },
+  "1gnJ3b": {
+    "defaultMessage": "Hôtels à Mount Abu"
+  },
+  "1nX3+D": {
+    "defaultMessage": "Hôtels à Oyo"
+  },
+  "3EqGQY": {
+    "defaultMessage": "Sensibilisation à la cybersécurité"
+  },
+  "5RUHNr": {
+    "defaultMessage": "Hôtels à Gurgaon"
+  },
+  "629tiI": {
+    "defaultMessage": "Relations avec les investisseurs"
+  },
+  "AcUOul": {
+    "defaultMessage": "Hôtels à Coimbatore"
+  },
+  "HOmXxw": {
+    "defaultMessage": "Blog officiel d'OYO"
+  },
+  "HWX0Ow": {
+    "defaultMessage": "Hôtel OYO Royaume-Uni"
+  },
+  "HqRNN8": {
+    "defaultMessage": "Soutien"
+  },
+  "KK80W3": {
+    "defaultMessage": "La cyber-sécurité"
+  },
+  "Lg2qOQ": {
+    "defaultMessage": "Rejoignez notre réseau et développez votre entreprise !"
+  },
+  "OMKj6q": {
+    "defaultMessage": "Hôtels à Manali"
+  },
+  "Ql3Y9n": {
+    "defaultMessage": "Blogues"
+  },
+  "Su429b": {
+    "defaultMessage": "Hôtels à Nainital"
+  },
+  "SuiXEn": {
+    "defaultMessage": "Divulgation responsable"
+  },
+  "TP/PBK": {
+    "defaultMessage": "Annoncez vos maisons"
+  },
+  "YdyP0Y": {
+    "defaultMessage": "Cercles OYO"
+  },
+  "ZibE+c": {
+    "defaultMessage": "Termes et conditions"
+  },
+  "ZxycJU": {
+    "defaultMessage": "Conditions pour les clients"
+  },
+  "cErphj": {
+    "defaultMessage": "Cadres OYO"
+  },
+  "g5pX+a": {
+    "defaultMessage": "À propos"
+  },
+  "hkCxFL": {
+    "defaultMessage": "Hôtels à Haridwar"
+  },
+  "it8gy5": {
+    "defaultMessage": "Hôtels à Āgrā"
+  },
+  "o5Sw9b": {
+    "defaultMessage": "Équipes / Carrières"
+  },
+  "oUWTom": {
+    "defaultMessage": "Hôtels à proximité"
+  },
+  "p9oLNw": {
+    "defaultMessage": "Téléchargez l'application OYO pour des offres intéressantes."
+  },
+  "q6Pi+D": {
+    "defaultMessage": "Maisons de vacances OYO en Europe"
+  },
+  "tMDch4": {
+    "defaultMessage": "2013-2022 © Oravel Séjours Limité"
+  },
+  "vx0nkZ": {
+    "defaultMessage": "politique de confidentialité"
+  },
+  "AmAHiZ": {
+    "defaultMessage": "Entrez vos informations personnelles...."
+  },
+  "CvN+lu": {
+    "defaultMessage": "Choisissez une photo...."
+  },
+  "HnbWvO": {
+    "defaultMessage": "Tapez votre mot de passe...."
+  },
+  "OK+zKV": {
+    "defaultMessage": "Entrez les détails de votre localisation...."
+  },
+  "acrOoz": {
+    "defaultMessage": "Continuer"
+  },
+  "jCGvSr": {
+    "defaultMessage": "L'e-mail existe déjà. Si vous souhaitez continuer avec cet e-mail, appuyez sur Continuer ou appuyez sur Retour pour modifier l'e-mail."
+  },
+  "kcNawJ": {
+    "defaultMessage": "Épinglez votre position sur la carte...."
+  },
+  "xxQxLE": {
+    "defaultMessage": "Adresse e-mail"
+  },
+  "zqrpQ9": {
+    "defaultMessage": "Entrez la description de l'hôtel...."
+  },
+  "3O6vm3": {
+    "defaultMessage": "La première lettre du nom du pays doit être en majuscule et le nom doit être une chaîne"
+  },
+  "8wrF/p": {
+    "defaultMessage": "Le code postal doit être un chiffre"
+  },
+  "CC/6/1": {
+    "defaultMessage": "La longueur minimale doit être de 3"
+  },
+  "CKG2zT": {
+    "defaultMessage": "La longueur maximale doit être de 6"
+  },
+  "JGsVts": {
+    "defaultMessage": "Email invalide !"
+  },
+  "Lmlys/": {
+    "defaultMessage": "L'état est requis"
+  },
+  "NRJ2ln": {
+    "defaultMessage": "la longueur minimale doit être de 3"
+  },
+  "OsXwrh": {
+    "defaultMessage": "Le nom de l'hôtel doit contenir au moins 5 lettres"
+  },
+  "OzDkHr": {
+    "defaultMessage": "Pas de téléphone. est requis"
+  },
+  "W435jR": {
+    "defaultMessage": "La ville est obligatoire"
+  },
+  "WsjDFp": {
+    "defaultMessage": "La première lettre du nom de la ville doit être majuscule et le nom doit être une chaîne"
+  },
+  "esvUBZ": {
+    "defaultMessage": "Le mot de passe doit contenir au moins un chiffre"
+  },
+  "h/VIiN": {
+    "defaultMessage": "Le nom de l'hôtel est obligatoire"
+  },
+  "jlqOPq": {
+    "defaultMessage": "Le pays est requis"
+  },
+  "ky/NSF": {
+    "defaultMessage": "La première lettre du nom de l'État doit être en majuscule et le nom doit être une chaîne"
+  },
+  "mI63KF": {
+    "defaultMessage": "Le mot de passe doit contenir au moins un caractère majuscule et minuscule"
+  },
+  "pU++Lb": {
+    "defaultMessage": "Le nom doit contenir au moins 5 lettres"
+  },
+  "s1iStG": {
+    "defaultMessage": "Le mot de passe doit comporter 8 caractères ou plus"
+  },
+  "suJKJW": {
+    "defaultMessage": "Le mot de passe doit contenir au moins un caractère spécial"
+  },
+  "yGJ420": {
+    "defaultMessage": "Le code postal est requis"
+  }
+}
+>>>>>>> Stashed changes

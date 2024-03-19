@@ -11,7 +11,7 @@ import { FormattedMessage } from "react-intl";
  */
 function BookingRequestDialogBox(props: any) {
   const { onClose, data, selectedValue, open } = props;
-  const [display, setDisplay] = React.useState<any>({});
+  const [display, setDisplay] = React.useState<any>();
   const [hotel, setHotel] = React.useState<any>({});
   const { request } = useAuth();
   const handleClose = () => {
@@ -21,13 +21,18 @@ function BookingRequestDialogBox(props: any) {
     onClose(value);
   };
   React.useMemo(async () => {
-    const display = await request.get(`/getDetails/${data.hotelId?._id}`);
-    const result = display.data.rooms.filter((item: any) => {
-      return (item._id = data.roomId);
-    });
-    setHotel(display?.data);
-    setDisplay(result);
+    try {
+      const display = await request.get(`/getDetails/${data.hotelId?._id}`);
+      const result = display.data.rooms.filter((item: any) => {
+        return (item._id = data.roomId);
+      });
+      setHotel(display?.data);
+      setDisplay(result);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
+
   return (
     <Dialog onClose={handleClose} open={open} fullWidth maxWidth="md">
       <Stack justifyContent={"space-between"} direction={"row"}>
@@ -134,7 +139,7 @@ function BookingRequestDialogBox(props: any) {
               <Typography sx={{ fontSize: 15 }}>
                 <FormattedMessage defaultMessage="Room Price for 1 Night * 1 Guest" />
               </Typography>
-              <Typography sx={{ fontSize: 15 }}>{display?.price}</Typography>
+              <Typography sx={{ fontSize: 15 }}>{data?.price}</Typography>
             </Stack>
           </Stack>
         </Stack>
@@ -146,7 +151,9 @@ function BookingRequestDialogBox(props: any) {
             <Typography>
               <FormattedMessage defaultMessage="Type of room" />
             </Typography>
-            <Typography sx={{ fontSize: 15 }}>{display?.roomType}</Typography>
+            <Typography sx={{ fontSize: 15 }}>
+              {display?.[0]?.roomType}
+            </Typography>
           </Stack>
           <Stack direction={"row"} spacing={2}>
             <Typography>

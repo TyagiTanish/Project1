@@ -117,7 +117,7 @@ export default function RoomDetailBox({
               <hr color="lightgray" />
 
               <Box
-                sx={{ wordWrap: "break-word" }}
+                sx={{ wordWrap: "break-word", width: "90%" }}
                 dangerouslySetInnerHTML={{
                   __html: Rooms[Detailedroom]?.discription,
                 }}
@@ -136,7 +136,7 @@ export default function RoomDetailBox({
                 gap={2}
                 alignItems={"center"}
                 direction={"row"}
-                width={600}
+                width={500}
                 flexWrap={"wrap"}
               >
                 {Rooms[Detailedroom]?.amenities?.map(

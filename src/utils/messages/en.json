@@ -22,6 +22,15 @@
   },
   "00/IyC": {
     "defaultMessage": "Night"
+<<<<<<< Updated upstream
+=======
+  },
+  "0C1YbO": {
+    "defaultMessage": "Select at least one amenity"
+  },
+  "0Zdb0S": {
+    "defaultMessage": "Trust And Safety"
+>>>>>>> Stashed changes
   },
   "0C1YbO": {
     "defaultMessage": "Select at least one amenity"
@@ -29,8 +38,14 @@
   "0xWUYr": {
     "defaultMessage": "Customer Phone"
   },
+  "1gnJ3b": {
+    "defaultMessage": "Hotels in Mount Abu"
+  },
   "1jx3mr": {
     "defaultMessage": "Booking Date"
+  },
+  "1nX3+D": {
+    "defaultMessage": "Oyo Hotels"
   },
   "1umnAX": {
     "defaultMessage": "Personal Information"
@@ -56,8 +71,14 @@
   "3EnruA": {
     "defaultMessage": "Postal code"
   },
+  "3EqGQY": {
+    "defaultMessage": "Cyber Security Awareness"
+  },
   "3KiaqX": {
     "defaultMessage": "Check in: 15:00"
+  },
+  "3O6vm3": {
+    "defaultMessage": "First Letter of Country name should be capital and name should be string"
   },
   "3SVI5p": {
     "defaultMessage": "Warning"
@@ -95,9 +116,18 @@
   "5GxMk2": {
     "defaultMessage": "Add hotel & Get ₹500 OYO Money"
   },
+  "5RUHNr": {
+    "defaultMessage": "Hotels in Gurgaon"
+  },
   "5sg7KC": {
     "defaultMessage": "Password"
   },
+<<<<<<< Updated upstream
+=======
+  "629tiI": {
+    "defaultMessage": "Investor Relations"
+  },
+>>>>>>> Stashed changes
   "6I+DHW": {
     "defaultMessage": "Select price range"
   },
@@ -124,6 +154,9 @@
   },
   "8uXS99": {
     "defaultMessage": "Popular Locations"
+  },
+  "8wrF/p": {
+    "defaultMessage": "Zip Code must be a number"
   },
   "8xkJT9": {
     "defaultMessage": "Edit Hotel Details"
@@ -158,6 +191,12 @@
   "AWsQuR": {
     "defaultMessage": "Update Data"
   },
+  "AcUOul": {
+    "defaultMessage": "Hotels in Coimbatore"
+  },
+  "AmAHiZ": {
+    "defaultMessage": "Enter Your Personal Details...."
+  },
   "AyGauy": {
     "defaultMessage": "Login"
   },
@@ -170,11 +209,20 @@
   "BmfoZ2": {
     "defaultMessage": "User Details-"
   },
+  "CC/6/1": {
+    "defaultMessage": "Minimum length should be 3"
+  },
   "CDQSzi": {
     "defaultMessage": "Type of Room"
   },
   "CDnwtH": {
     "defaultMessage": "Jagadhri"
+  },
+  "CKG2zT": {
+    "defaultMessage": "Max length should be 6"
+  },
+  "CvN+lu": {
+    "defaultMessage": "Choose a Photo...."
   },
   "DelP+4": {
     "defaultMessage": "Reciept"
@@ -224,11 +272,23 @@
   "HBbJIL": {
     "defaultMessage": "There's a smarter way to OYO around"
   },
+  "HOmXxw": {
+    "defaultMessage": "Official OYO Blog"
+  },
+  "HWX0Ow": {
+    "defaultMessage": "OYO Hotel UK"
+  },
   "HfAXbq": {
     "defaultMessage": "Drop a Photo Here"
   },
   "Hm2NzP": {
     "defaultMessage": "World's leading chain of hotels and homes"
+  },
+  "HnbWvO": {
+    "defaultMessage": "Enter Your Password...."
+  },
+  "HqRNN8": {
+    "defaultMessage": "Support"
   },
   "IFkDw5": {
     "defaultMessage": "Cities"
@@ -239,11 +299,26 @@
   "J+S/E8": {
     "defaultMessage": "Invalid Email"
   },
+<<<<<<< Updated upstream
+=======
+  "JGsVts": {
+    "defaultMessage": "Invalid email !"
+  },
+>>>>>>> Stashed changes
   "JyRQ6S": {
     "defaultMessage": "Country:"
   },
   "K3r6DQ": {
     "defaultMessage": "Delete"
+<<<<<<< Updated upstream
+=======
+  },
+  "KGzfLt": {
+    "defaultMessage": "Removed"
+  },
+  "KK80W3": {
+    "defaultMessage": "Cyber Security"
+>>>>>>> Stashed changes
   },
   "KGzfLt": {
     "defaultMessage": "Removed"
@@ -256,6 +331,12 @@
   },
   "LaM7n1": {
     "defaultMessage": "download"
+  },
+  "Lg2qOQ": {
+    "defaultMessage": "Join our network and grow your business!"
+  },
+  "Lmlys/": {
+    "defaultMessage": "State is required"
   },
   "LpTgVJ": {
     "defaultMessage": "Open Child Modal"
@@ -272,14 +353,29 @@
   "NQgbYA": {
     "defaultMessage": "Account Settings"
   },
+  "NRJ2ln": {
+    "defaultMessage": "minimum length should be 3"
+  },
   "NxNgkz": {
     "defaultMessage": "There's an OYO around. Always."
+  },
+  "OK+zKV": {
+    "defaultMessage": "Enter Your Location Details...."
+  },
+  "OMKj6q": {
+    "defaultMessage": "Hotels in Manali"
   },
   "OX/lwN": {
     "defaultMessage": "Booking Details"
   },
   "OgF6Am": {
     "defaultMessage": "Mumbai"
+  },
+  "OsXwrh": {
+    "defaultMessage": "Hotel name should contain at least 5 letters"
+  },
+  "OzDkHr": {
+    "defaultMessage": "Phone no. is required"
   },
   "P3MfNj": {
     "defaultMessage": "Credit Card Deposit Required"
@@ -311,6 +407,12 @@
   "QiKKFz": {
     "defaultMessage": "Change Password"
   },
+<<<<<<< Updated upstream
+=======
+  "Ql3Y9n": {
+    "defaultMessage": "Blogs"
+  },
+>>>>>>> Stashed changes
   "QwDSj/": {
     "defaultMessage": "Min length should be 10"
   },
@@ -323,12 +425,24 @@
   "SHZrda": {
     "defaultMessage": "Type of room"
   },
+  "Su429b": {
+    "defaultMessage": "Hotels in Nainital"
+  },
+  "SuiXEn": {
+    "defaultMessage": "Responsible Disclosure"
+  },
   "TE4fIS": {
     "defaultMessage": "City"
   },
   "TKmub+": {
     "defaultMessage": "This field is required"
   },
+<<<<<<< Updated upstream
+=======
+  "TP/PBK": {
+    "defaultMessage": "Advertise your Homes"
+  },
+>>>>>>> Stashed changes
   "TWTu/9": {
     "defaultMessage": "Credit Card Guarantee Required"
   },
@@ -359,6 +473,9 @@
   "W2tpY0": {
     "defaultMessage": "Phone No:"
   },
+  "W435jR": {
+    "defaultMessage": "City is required"
+  },
   "W6urRz": {
     "defaultMessage": "Coffee and tea maker"
   },
@@ -367,6 +484,9 @@
   },
   "Wlg93r": {
     "defaultMessage": "Phone No."
+  },
+  "WsjDFp": {
+    "defaultMessage": "First Letter of City name should be capital and name should be string"
   },
   "WwY6F2": {
     "defaultMessage": "Check-in"
@@ -386,6 +506,12 @@
   "YOiOAx": {
     "defaultMessage": "Room Highlights"
   },
+<<<<<<< Updated upstream
+=======
+  "YdyP0Y": {
+    "defaultMessage": "OYO Circles"
+  },
+>>>>>>> Stashed changes
   "Yg9wZZ": {
     "defaultMessage": "12:00 PM"
   },
@@ -398,20 +524,35 @@
   "ZT1AQD": {
     "defaultMessage": "Disagree"
   },
+<<<<<<< Updated upstream
+=======
+  "ZibE+c": {
+    "defaultMessage": "Terms and conditions"
+  },
+>>>>>>> Stashed changes
   "ZmsB1S": {
     "defaultMessage": "Hotel lists"
   },
   "Zp+AOk": {
     "defaultMessage": "Price is required"
   },
+  "ZxycJU": {
+    "defaultMessage": "Guest Policies"
+  },
   "a5msuh": {
     "defaultMessage": "Yes"
+  },
+  "acrOoz": {
+    "defaultMessage": "Continue"
   },
   "arE5Cb": {
     "defaultMessage": "Hotel Image"
   },
   "b1zuN9": {
     "defaultMessage": "Price"
+  },
+  "cErphj": {
+    "defaultMessage": "OYO Frames"
   },
   "cyR7Kh": {
     "defaultMessage": "Back"
@@ -449,6 +590,12 @@
   "eXd24c": {
     "defaultMessage": "Postal Code. must be a number"
   },
+<<<<<<< Updated upstream
+=======
+  "esvUBZ": {
+    "defaultMessage": "Password should contain at least one number"
+  },
+>>>>>>> Stashed changes
   "evTYb/": {
     "defaultMessage": "11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night Fee /Credit Card Required"
   },
@@ -461,14 +608,22 @@
   "g5DEE8": {
     "defaultMessage": "Cancelation Policy"
   },
+  "g5pX+a": {
+    "defaultMessage": "About"
+  },
   "gCsYTJ": {
     "defaultMessage": "New password:"
   },
   "gJN7OT": {
     "defaultMessage": "Hair dryer"
   },
+<<<<<<< Updated upstream
   "h/KUaP": {
     "defaultMessage": "Room Amenities"
+=======
+  "h/VIiN": {
+    "defaultMessage": "Hotel Name is Required"
+>>>>>>> Stashed changes
   },
   "h2KacN": {
     "defaultMessage": "72h Prior To 11:59 Pm Local Time The Day Of Arrival Or 1 night Fee/ One Night Deposit At Booking"
@@ -485,11 +640,17 @@
   "hXfCth": {
     "defaultMessage": "Booking"
   },
+  "hkCxFL": {
+    "defaultMessage": "Hotels in Haridwar"
+  },
   "hplG07": {
     "defaultMessage": "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Expedita tempore provident tempora quisquam fuga, nihil beatae voluptate veniam doloribus cum at omnis fugit qui perferendis laboriosam, reiciendis rerum consequatur neque?"
   },
   "iqbd3D": {
     "defaultMessage": "Hotel Amenities"
+  },
+  "it8gy5": {
+    "defaultMessage": "Hotels in Agra"
   },
   "j48wd9": {
     "defaultMessage": "Do You Want to Delete This Hotel ?"
@@ -497,8 +658,14 @@
   "j6WSBC": {
     "defaultMessage": "Show Hotels"
   },
+  "jCGvSr": {
+    "defaultMessage": "Email Already Exist If You want to continue with this email then press continue or press back to change email"
+  },
   "jUTmkf": {
     "defaultMessage": "Member Details-"
+  },
+  "jlqOPq": {
+    "defaultMessage": "Country is required"
   },
   "jvaZOr": {
     "defaultMessage": "Change Your Password"
@@ -515,6 +682,9 @@
   "kTo0o2": {
     "defaultMessage": "Suite"
   },
+  "kcNawJ": {
+    "defaultMessage": "Pin Your Location On Map...."
+  },
   "kg6n2g": {
     "defaultMessage": "Max length should be 10"
   },
@@ -527,6 +697,12 @@
   "kunS6i": {
     "defaultMessage": "Type is required"
   },
+<<<<<<< Updated upstream
+=======
+  "ky/NSF": {
+    "defaultMessage": "First Letter of State name should be capital and name should be string"
+  },
+>>>>>>> Stashed changes
   "lRJWXn": {
     "defaultMessage": "First Letter of name should be capital and name should be string"
   },
@@ -542,6 +718,9 @@
   "lqSLwV": {
     "defaultMessage": "There's a smarter way to OYO aroundties"
   },
+  "mI63KF": {
+    "defaultMessage": "Password ahould contain at least one uppercase and lowercase character"
+  },
   "mXiD5u": {
     "defaultMessage": "Phone Number"
   },
@@ -551,6 +730,9 @@
   "nsZqim": {
     "defaultMessage": "Yamuna Nagar"
   },
+  "o5Sw9b": {
+    "defaultMessage": "Teams / Careers"
+  },
   "oDknJe": {
     "defaultMessage": "Daily newspaper upon request"
   },
@@ -559,6 +741,15 @@
   },
   "oMYHHk": {
     "defaultMessage": "03:00 PM"
+<<<<<<< Updated upstream
+=======
+  },
+  "oUWADl": {
+    "defaultMessage": "No"
+  },
+  "oUWTom": {
+    "defaultMessage": "Hotels near me"
+>>>>>>> Stashed changes
   },
   "oUWADl": {
     "defaultMessage": "No"
@@ -569,11 +760,20 @@
   "p2cPVQ": {
     "defaultMessage": "Bilaspur"
   },
+  "p9oLNw": {
+    "defaultMessage": "Download OYO app for exciting offers."
+  },
+  "pU++Lb": {
+    "defaultMessage": "Name should contain at least 5 letters"
+  },
   "puODkp": {
     "defaultMessage": "City:"
   },
   "q4I+Ga": {
     "defaultMessage": "Room Description"
+  },
+  "q6Pi+D": {
+    "defaultMessage": "OYO Vacation Homes in Europe"
   },
   "qe19tD": {
     "defaultMessage": "should be a string or should atleat have one upper case letter"
@@ -593,11 +793,20 @@
   "s+JXi4": {
     "defaultMessage": "Booked By"
   },
+  "s1iStG": {
+    "defaultMessage": "Pasword must be 8 or more characters"
+  },
   "sjzLbX": {
     "defaultMessage": "Accept"
   },
+  "suJKJW": {
+    "defaultMessage": "Password should contain at least one special character"
+  },
   "sy+pv5": {
     "defaultMessage": "Email"
+  },
+  "tMDch4": {
+    "defaultMessage": "2013-2022 © Oravel Stays Limited"
   },
   "txdipB": {
     "defaultMessage": "Iron and ironing board"
@@ -629,6 +838,9 @@
   "vuG8Qo": {
     "defaultMessage": "Edit Amenities"
   },
+  "vx0nkZ": {
+    "defaultMessage": "Privacy Policy"
+  },
   "wL7VAE": {
     "defaultMessage": "Actions"
   },
@@ -656,8 +868,14 @@
   "xpTPb3": {
     "defaultMessage": "Email:"
   },
+  "xxQxLE": {
+    "defaultMessage": "Email Address"
+  },
   "xzKMCh": {
     "defaultMessage": "All Cities"
+  },
+  "yGJ420": {
+    "defaultMessage": "Zip Code is required"
   },
   "z11Y+B": {
     "defaultMessage": "24-hour room service"
@@ -679,5 +897,11 @@
   },
   "zk9MMk": {
     "defaultMessage": "Checked In"
+<<<<<<< Updated upstream
+=======
+  },
+  "zqrpQ9": {
+    "defaultMessage": "Enter hotel discription...."
+>>>>>>> Stashed changes
   }
 }

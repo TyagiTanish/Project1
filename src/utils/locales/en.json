@@ -42,9 +42,24 @@
     }
   ],
   "00/IyC": [
+<<<<<<< Updated upstream
+=======
     {
       "type": 0,
       "value": "Night"
+    }
+  ],
+  "0C1YbO": [
+    {
+      "type": 0,
+      "value": "Select at least one amenity"
+    }
+  ],
+  "0Zdb0S": [
+>>>>>>> Stashed changes
+    {
+      "type": 0,
+      "value": "Trust And Safety"
     }
   ],
   "0C1YbO": [
@@ -59,10 +74,22 @@
       "value": "Customer Phone"
     }
   ],
+  "1gnJ3b": [
+    {
+      "type": 0,
+      "value": "Hotels in Mount Abu"
+    }
+  ],
   "1jx3mr": [
     {
       "type": 0,
       "value": "Booking Date"
+    }
+  ],
+  "1nX3+D": [
+    {
+      "type": 0,
+      "value": "Oyo Hotels"
     }
   ],
   "1umnAX": [
@@ -113,10 +140,22 @@
       "value": "Postal code"
     }
   ],
+  "3EqGQY": [
+    {
+      "type": 0,
+      "value": "Cyber Security Awareness"
+    }
+  ],
   "3KiaqX": [
     {
       "type": 0,
       "value": "Check in: 15:00"
+    }
+  ],
+  "3O6vm3": [
+    {
+      "type": 0,
+      "value": "First Letter of Country name should be capital and name should be string"
     }
   ],
   "3SVI5p": [
@@ -191,12 +230,27 @@
       "value": "Add hotel & Get ₹500 OYO Money"
     }
   ],
+  "5RUHNr": [
+    {
+      "type": 0,
+      "value": "Hotels in Gurgaon"
+    }
+  ],
   "5sg7KC": [
     {
       "type": 0,
       "value": "Password"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "629tiI": [
+    {
+      "type": 0,
+      "value": "Investor Relations"
+    }
+  ],
+>>>>>>> Stashed changes
   "6I+DHW": [
     {
       "type": 0,
@@ -249,6 +303,12 @@
     {
       "type": 0,
       "value": "Popular Locations"
+    }
+  ],
+  "8wrF/p": [
+    {
+      "type": 0,
+      "value": "Zip Code must be a number"
     }
   ],
   "8xkJT9": [
@@ -317,6 +377,18 @@
       "value": "Update Data"
     }
   ],
+  "AcUOul": [
+    {
+      "type": 0,
+      "value": "Hotels in Coimbatore"
+    }
+  ],
+  "AmAHiZ": [
+    {
+      "type": 0,
+      "value": "Enter Your Personal Details...."
+    }
+  ],
   "AyGauy": [
     {
       "type": 0,
@@ -341,6 +413,12 @@
       "value": "User Details-"
     }
   ],
+  "CC/6/1": [
+    {
+      "type": 0,
+      "value": "Minimum length should be 3"
+    }
+  ],
   "CDQSzi": [
     {
       "type": 0,
@@ -351,6 +429,18 @@
     {
       "type": 0,
       "value": "Jagadhri"
+    }
+  ],
+  "CKG2zT": [
+    {
+      "type": 0,
+      "value": "Max length should be 6"
+    }
+  ],
+  "CvN+lu": [
+    {
+      "type": 0,
+      "value": "Choose a Photo...."
     }
   ],
   "DelP+4": [
@@ -449,6 +539,18 @@
       "value": "There's a smarter way to OYO around"
     }
   ],
+  "HOmXxw": [
+    {
+      "type": 0,
+      "value": "Official OYO Blog"
+    }
+  ],
+  "HWX0Ow": [
+    {
+      "type": 0,
+      "value": "OYO Hotel UK"
+    }
+  ],
   "HfAXbq": [
     {
       "type": 0,
@@ -459,6 +561,18 @@
     {
       "type": 0,
       "value": "World's leading chain of hotels and homes"
+    }
+  ],
+  "HnbWvO": [
+    {
+      "type": 0,
+      "value": "Enter Your Password...."
+    }
+  ],
+  "HqRNN8": [
+    {
+      "type": 0,
+      "value": "Support"
     }
   ],
   "IFkDw5": [
@@ -474,6 +588,7 @@
     }
   ],
   "J+S/E8": [
+<<<<<<< Updated upstream
     {
       "type": 0,
       "value": "Invalid Email"
@@ -489,6 +604,41 @@
     {
       "type": 0,
       "value": "Delete"
+=======
+    {
+      "type": 0,
+      "value": "Invalid Email"
+    }
+  ],
+  "JGsVts": [
+    {
+      "type": 0,
+      "value": "Invalid email !"
+    }
+  ],
+  "JyRQ6S": [
+    {
+      "type": 0,
+      "value": "Country:"
+    }
+  ],
+  "K3r6DQ": [
+    {
+      "type": 0,
+      "value": "Delete"
+    }
+  ],
+  "KGzfLt": [
+    {
+      "type": 0,
+      "value": "Removed"
+    }
+  ],
+  "KK80W3": [
+    {
+      "type": 0,
+      "value": "Cyber Security"
+>>>>>>> Stashed changes
     }
   ],
   "KGzfLt": [
@@ -513,6 +663,18 @@
     {
       "type": 0,
       "value": "download"
+    }
+  ],
+  "Lg2qOQ": [
+    {
+      "type": 0,
+      "value": "Join our network and grow your business!"
+    }
+  ],
+  "Lmlys/": [
+    {
+      "type": 0,
+      "value": "State is required"
     }
   ],
   "LpTgVJ": [
@@ -545,10 +707,28 @@
       "value": "Account Settings"
     }
   ],
+  "NRJ2ln": [
+    {
+      "type": 0,
+      "value": "minimum length should be 3"
+    }
+  ],
   "NxNgkz": [
     {
       "type": 0,
       "value": "There's an OYO around. Always."
+    }
+  ],
+  "OK+zKV": [
+    {
+      "type": 0,
+      "value": "Enter Your Location Details...."
+    }
+  ],
+  "OMKj6q": [
+    {
+      "type": 0,
+      "value": "Hotels in Manali"
     }
   ],
   "OX/lwN": [
@@ -561,6 +741,18 @@
     {
       "type": 0,
       "value": "Mumbai"
+    }
+  ],
+  "OsXwrh": [
+    {
+      "type": 0,
+      "value": "Hotel name should contain at least 5 letters"
+    }
+  ],
+  "OzDkHr": [
+    {
+      "type": 0,
+      "value": "Phone no. is required"
     }
   ],
   "P3MfNj": [
@@ -623,6 +815,15 @@
       "value": "Change Password"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "Ql3Y9n": [
+    {
+      "type": 0,
+      "value": "Blogs"
+    }
+  ],
+>>>>>>> Stashed changes
   "QwDSj/": [
     {
       "type": 0,
@@ -647,6 +848,18 @@
       "value": "Type of room"
     }
   ],
+  "Su429b": [
+    {
+      "type": 0,
+      "value": "Hotels in Nainital"
+    }
+  ],
+  "SuiXEn": [
+    {
+      "type": 0,
+      "value": "Responsible Disclosure"
+    }
+  ],
   "TE4fIS": [
     {
       "type": 0,
@@ -659,6 +872,15 @@
       "value": "This field is required"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "TP/PBK": [
+    {
+      "type": 0,
+      "value": "Advertise your Homes"
+    }
+  ],
+>>>>>>> Stashed changes
   "TWTu/9": [
     {
       "type": 0,
@@ -719,6 +941,12 @@
       "value": "Phone No:"
     }
   ],
+  "W435jR": [
+    {
+      "type": 0,
+      "value": "City is required"
+    }
+  ],
   "W6urRz": [
     {
       "type": 0,
@@ -735,6 +963,12 @@
     {
       "type": 0,
       "value": "Phone No."
+    }
+  ],
+  "WsjDFp": [
+    {
+      "type": 0,
+      "value": "First Letter of City name should be capital and name should be string"
     }
   ],
   "WwY6F2": [
@@ -773,6 +1007,15 @@
       "value": "Room Highlights"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "YdyP0Y": [
+    {
+      "type": 0,
+      "value": "OYO Circles"
+    }
+  ],
+>>>>>>> Stashed changes
   "Yg9wZZ": [
     {
       "type": 0,
@@ -797,6 +1040,15 @@
       "value": "Disagree"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "ZibE+c": [
+    {
+      "type": 0,
+      "value": "Terms and conditions"
+    }
+  ],
+>>>>>>> Stashed changes
   "ZmsB1S": [
     {
       "type": 0,
@@ -809,10 +1061,22 @@
       "value": "Price is required"
     }
   ],
+  "ZxycJU": [
+    {
+      "type": 0,
+      "value": "Guest Policies"
+    }
+  ],
   "a5msuh": [
     {
       "type": 0,
       "value": "Yes"
+    }
+  ],
+  "acrOoz": [
+    {
+      "type": 0,
+      "value": "Continue"
     }
   ],
   "arE5Cb": [
@@ -825,6 +1089,12 @@
     {
       "type": 0,
       "value": "Price"
+    }
+  ],
+  "cErphj": [
+    {
+      "type": 0,
+      "value": "OYO Frames"
     }
   ],
   "cyR7Kh": [
@@ -899,6 +1169,15 @@
       "value": "Postal Code. must be a number"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "esvUBZ": [
+    {
+      "type": 0,
+      "value": "Password should contain at least one number"
+    }
+  ],
+>>>>>>> Stashed changes
   "evTYb/": [
     {
       "type": 0,
@@ -923,6 +1202,12 @@
       "value": "Cancelation Policy"
     }
   ],
+  "g5pX+a": [
+    {
+      "type": 0,
+      "value": "About"
+    }
+  ],
   "gCsYTJ": [
     {
       "type": 0,
@@ -935,10 +1220,17 @@
       "value": "Hair dryer"
     }
   ],
+<<<<<<< Updated upstream
   "h/KUaP": [
     {
       "type": 0,
       "value": "Room Amenities"
+=======
+  "h/VIiN": [
+    {
+      "type": 0,
+      "value": "Hotel Name is Required"
+>>>>>>> Stashed changes
     }
   ],
   "h2KacN": [
@@ -971,6 +1263,12 @@
       "value": "Booking"
     }
   ],
+  "hkCxFL": [
+    {
+      "type": 0,
+      "value": "Hotels in Haridwar"
+    }
+  ],
   "hplG07": [
     {
       "type": 0,
@@ -981,6 +1279,12 @@
     {
       "type": 0,
       "value": "Hotel Amenities"
+    }
+  ],
+  "it8gy5": [
+    {
+      "type": 0,
+      "value": "Hotels in Agra"
     }
   ],
   "j48wd9": [
@@ -995,10 +1299,22 @@
       "value": "Show Hotels"
     }
   ],
+  "jCGvSr": [
+    {
+      "type": 0,
+      "value": "Email Already Exist If You want to continue with this email then press continue or press back to change email"
+    }
+  ],
   "jUTmkf": [
     {
       "type": 0,
       "value": "Member Details-"
+    }
+  ],
+  "jlqOPq": [
+    {
+      "type": 0,
+      "value": "Country is required"
     }
   ],
   "jvaZOr": [
@@ -1031,6 +1347,12 @@
       "value": "Suite"
     }
   ],
+  "kcNawJ": [
+    {
+      "type": 0,
+      "value": "Pin Your Location On Map...."
+    }
+  ],
   "kg6n2g": [
     {
       "type": 0,
@@ -1055,6 +1377,15 @@
       "value": "Type is required"
     }
   ],
+<<<<<<< Updated upstream
+=======
+  "ky/NSF": [
+    {
+      "type": 0,
+      "value": "First Letter of State name should be capital and name should be string"
+    }
+  ],
+>>>>>>> Stashed changes
   "lRJWXn": [
     {
       "type": 0,
@@ -1085,6 +1416,12 @@
       "value": "There's a smarter way to OYO aroundties"
     }
   ],
+  "mI63KF": [
+    {
+      "type": 0,
+      "value": "Password ahould contain at least one uppercase and lowercase character"
+    }
+  ],
   "mXiD5u": [
     {
       "type": 0,
@@ -1103,6 +1440,12 @@
       "value": "Yamuna Nagar"
     }
   ],
+  "o5Sw9b": [
+    {
+      "type": 0,
+      "value": "Teams / Careers"
+    }
+  ],
   "oDknJe": [
     {
       "type": 0,
@@ -1116,9 +1459,24 @@
     }
   ],
   "oMYHHk": [
+<<<<<<< Updated upstream
+=======
     {
       "type": 0,
       "value": "03:00 PM"
+    }
+  ],
+  "oUWADl": [
+    {
+      "type": 0,
+      "value": "No"
+    }
+  ],
+  "oUWTom": [
+>>>>>>> Stashed changes
+    {
+      "type": 0,
+      "value": "Hotels near me"
     }
   ],
   "oUWADl": [
@@ -1139,6 +1497,18 @@
       "value": "Bilaspur"
     }
   ],
+  "p9oLNw": [
+    {
+      "type": 0,
+      "value": "Download OYO app for exciting offers."
+    }
+  ],
+  "pU++Lb": [
+    {
+      "type": 0,
+      "value": "Name should contain at least 5 letters"
+    }
+  ],
   "puODkp": [
     {
       "type": 0,
@@ -1149,6 +1519,12 @@
     {
       "type": 0,
       "value": "Room Description"
+    }
+  ],
+  "q6Pi+D": [
+    {
+      "type": 0,
+      "value": "OYO Vacation Homes in Europe"
     }
   ],
   "qe19tD": [
@@ -1187,16 +1563,34 @@
       "value": "Booked By"
     }
   ],
+  "s1iStG": [
+    {
+      "type": 0,
+      "value": "Pasword must be 8 or more characters"
+    }
+  ],
   "sjzLbX": [
     {
       "type": 0,
       "value": "Accept"
     }
   ],
+  "suJKJW": [
+    {
+      "type": 0,
+      "value": "Password should contain at least one special character"
+    }
+  ],
   "sy+pv5": [
     {
       "type": 0,
       "value": "Email"
+    }
+  ],
+  "tMDch4": [
+    {
+      "type": 0,
+      "value": "2013-2022 © Oravel Stays Limited"
     }
   ],
   "txdipB": [
@@ -1259,6 +1653,12 @@
       "value": "Edit Amenities"
     }
   ],
+  "vx0nkZ": [
+    {
+      "type": 0,
+      "value": "Privacy Policy"
+    }
+  ],
   "wL7VAE": [
     {
       "type": 0,
@@ -1313,10 +1713,22 @@
       "value": "Email:"
     }
   ],
+  "xxQxLE": [
+    {
+      "type": 0,
+      "value": "Email Address"
+    }
+  ],
   "xzKMCh": [
     {
       "type": 0,
       "value": "All Cities"
+    }
+  ],
+  "yGJ420": [
+    {
+      "type": 0,
+      "value": "Zip Code is required"
     }
   ],
   "z11Y+B": [
@@ -1360,5 +1772,14 @@
       "type": 0,
       "value": "Checked In"
     }
+<<<<<<< Updated upstream
+=======
+  ],
+  "zqrpQ9": [
+    {
+      "type": 0,
+      "value": "Enter hotel discription...."
+    }
+>>>>>>> Stashed changes
   ]
 }
