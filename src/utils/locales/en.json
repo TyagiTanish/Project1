@@ -42,8 +42,6 @@
     }
   ],
   "00/IyC": [
-<<<<<<< Updated upstream
-=======
     {
       "type": 0,
       "value": "Night"
@@ -56,7 +54,6 @@
     }
   ],
   "0Zdb0S": [
->>>>>>> Stashed changes
     {
       "type": 0,
       "value": "Trust And Safety"
@@ -242,15 +239,12 @@
       "value": "Password"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "629tiI": [
     {
       "type": 0,
       "value": "Investor Relations"
     }
   ],
->>>>>>> Stashed changes
   "6I+DHW": [
     {
       "type": 0,
@@ -588,7 +582,6 @@
     }
   ],
   "J+S/E8": [
-<<<<<<< Updated upstream
     {
       "type": 0,
       "value": "Invalid Email"
@@ -604,10 +597,6 @@
     {
       "type": 0,
       "value": "Delete"
-=======
-    {
-      "type": 0,
-      "value": "Invalid Email"
     }
   ],
   "JGsVts": [
@@ -638,7 +627,6 @@
     {
       "type": 0,
       "value": "Cyber Security"
->>>>>>> Stashed changes
     }
   ],
   "KGzfLt": [
@@ -815,15 +803,12 @@
       "value": "Change Password"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "Ql3Y9n": [
     {
       "type": 0,
       "value": "Blogs"
     }
   ],
->>>>>>> Stashed changes
   "QwDSj/": [
     {
       "type": 0,
@@ -872,15 +857,12 @@
       "value": "This field is required"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "TP/PBK": [
     {
       "type": 0,
       "value": "Advertise your Homes"
     }
   ],
->>>>>>> Stashed changes
   "TWTu/9": [
     {
       "type": 0,
@@ -1007,15 +989,12 @@
       "value": "Room Highlights"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "YdyP0Y": [
     {
       "type": 0,
       "value": "OYO Circles"
     }
   ],
->>>>>>> Stashed changes
   "Yg9wZZ": [
     {
       "type": 0,
@@ -1040,15 +1019,12 @@
       "value": "Disagree"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "ZibE+c": [
     {
       "type": 0,
       "value": "Terms and conditions"
     }
   ],
->>>>>>> Stashed changes
   "ZmsB1S": [
     {
       "type": 0,
@@ -1169,15 +1145,12 @@
       "value": "Postal Code. must be a number"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "esvUBZ": [
     {
       "type": 0,
       "value": "Password should contain at least one number"
     }
   ],
->>>>>>> Stashed changes
   "evTYb/": [
     {
       "type": 0,
@@ -1220,17 +1193,16 @@
       "value": "Hair dryer"
     }
   ],
-<<<<<<< Updated upstream
   "h/KUaP": [
     {
       "type": 0,
       "value": "Room Amenities"
-=======
+    }
+  ],
   "h/VIiN": [
     {
       "type": 0,
       "value": "Hotel Name is Required"
->>>>>>> Stashed changes
     }
   ],
   "h2KacN": [
@@ -1377,15 +1349,12 @@
       "value": "Type is required"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "ky/NSF": [
     {
       "type": 0,
       "value": "First Letter of State name should be capital and name should be string"
     }
   ],
->>>>>>> Stashed changes
   "lRJWXn": [
     {
       "type": 0,
@@ -1459,8 +1428,6 @@
     }
   ],
   "oMYHHk": [
-<<<<<<< Updated upstream
-=======
     {
       "type": 0,
       "value": "03:00 PM"
@@ -1473,7 +1440,6 @@
     }
   ],
   "oUWTom": [
->>>>>>> Stashed changes
     {
       "type": 0,
       "value": "Hotels near me"
@@ -1772,14 +1738,11 @@
       "type": 0,
       "value": "Checked In"
     }
-<<<<<<< Updated upstream
-=======
   ],
   "zqrpQ9": [
     {
       "type": 0,
       "value": "Enter hotel discription...."
     }
->>>>>>> Stashed changes
   ]
 }

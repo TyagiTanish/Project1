@@ -48,8 +48,6 @@
     }
   ],
   "00/IyC": [
-<<<<<<< Updated upstream
-=======
     {
       "type": 0,
       "value": "Nuit"
@@ -62,7 +60,6 @@
     }
   ],
   "0Zdb0S": [
->>>>>>> Stashed changes
     {
       "type": 0,
       "value": "Confiance et sécurité"
@@ -260,15 +257,12 @@
       "value": "Mot de passe"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "629tiI": [
     {
       "type": 0,
       "value": "Relations avec les investisseurs"
     }
   ],
->>>>>>> Stashed changes
   "6I+DHW": [
     {
       "type": 0,
@@ -660,8 +654,6 @@
     }
   ],
   "K3r6DQ": [
-<<<<<<< Updated upstream
-=======
     {
       "type": 0,
       "value": "Supprimer"
@@ -674,7 +666,6 @@
     }
   ],
   "KK80W3": [
->>>>>>> Stashed changes
     {
       "type": 0,
       "value": "La cyber-sécurité"
@@ -854,15 +845,12 @@
       "value": "Changer le mot de passe"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "Ql3Y9n": [
     {
       "type": 0,
       "value": "Blogues"
     }
   ],
->>>>>>> Stashed changes
   "QwDSj/": [
     {
       "type": 0,
@@ -917,15 +905,12 @@
       "value": "Ce champ est obligatoire"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "TP/PBK": [
     {
       "type": 0,
       "value": "Annoncez vos maisons"
     }
   ],
->>>>>>> Stashed changes
   "TWTu/9": [
     {
       "type": 0,
@@ -1052,15 +1037,12 @@
       "value": "Points forts de la chambre"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "YdyP0Y": [
     {
       "type": 0,
       "value": "Cercles OYO"
     }
   ],
->>>>>>> Stashed changes
   "Yg9wZZ": [
     {
       "type": 0,
@@ -1211,15 +1193,12 @@
       "value": "Code Postal. doit être un nombre"
     }
   ],
-<<<<<<< Updated upstream
-=======
   "esvUBZ": [
     {
       "type": 0,
       "value": "Le mot de passe doit contenir au moins un chiffre"
     }
   ],
->>>>>>> Stashed changes
   "evTYb/": [
     {
       "type": 0,
@@ -1262,17 +1241,16 @@
       "value": "Sèche-cheveux"
     }
   ],
-<<<<<<< Updated upstream
   "h/KUaP": [
     {
       "type": 0,
       "value": "Équipements de la chambre"
-=======
+    }
+  ],
   "h/VIiN": [
     {
       "type": 0,
       "value": "Le nom de l'hôtel est obligatoire"
->>>>>>> Stashed changes
     }
   ],
   "h2KacN": [
@@ -1516,8 +1494,6 @@
     }
   ],
   "oMYHHk": [
-<<<<<<< Updated upstream
-=======
     {
       "type": 0,
       "value": "15h00"
@@ -1530,7 +1506,6 @@
     }
   ],
   "oUWTom": [
->>>>>>> Stashed changes
     {
       "type": 0,
       "value": "Hôtels à proximité"
@@ -1841,14 +1816,11 @@
       "type": 0,
       "value": "Enregistré"
     }
-<<<<<<< Updated upstream
-=======
   ],
   "zqrpQ9": [
     {
       "type": 0,
       "value": "Entrez la description de l'hôtel...."
     }
->>>>>>> Stashed changes
   ]
 }
