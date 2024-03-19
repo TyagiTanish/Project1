@@ -118,7 +118,7 @@ const HotelsPage = () => {
               }}
             >
               <TuneIcon sx={{ mr: 1 }} />
-              Filters
+            <FormattedMessage defaultMessage="Filters"/>
             </Button>
             <Box
               sx={{
@@ -163,7 +163,7 @@ const HotelsPage = () => {
               }}
             >
               <TuneIcon sx={{ mr: 1 }} />
-              Filters
+        <FormattedMessage defaultMessage="Filters"/>
             </Button>
             <Box
               margin={15}
