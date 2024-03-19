@@ -416,6 +416,14 @@ export default function ShowAllMembers() {
           hotelOwner={hotelOwner}
         /> */}
       </Box>
+      {/* {open && (
+        // view details button */}
+      <ShowHotelsModal
+        open={open}
+        onClose={handleClose}
+        modalHotel={modalHotel}
+      />
+      {/* )} */}
       {/* <EditDialog
         open={openDialog}
         setOpen={setOpenDialog}
