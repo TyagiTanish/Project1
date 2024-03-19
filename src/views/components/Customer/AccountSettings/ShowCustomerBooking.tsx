@@ -21,9 +21,11 @@ function ShowCustomerBooking() {
   const { request } = useAuth();
   const [bookings, setBookings] = React.useState<any>([]);
   const fetchBookings = async () => {
-    const result = await request.get("/getBookings");
-    // console.log(result.data);
-    setBookings(result.data);
+    try {
+      const result = await request.get("/getBookings");
+      // console.log(result.data);
+      setBookings(result.data);
+    } catch (error) {}
   };
 
   React.useEffect(() => {
@@ -51,7 +53,16 @@ function ShowCustomerBooking() {
 
         {bookings.length === 0 ? (
           <Stack color={"red"} fontSize={"large"}>
-            <FormattedMessage defaultMessage="You Don't have any booking yet!!!" />
+            <Typography
+              sx={{
+                ml: { xl: 35, md: 12, lg: 10 },
+                mt: 35,
+                fontSize: { xl: 25, lg: 20, md: 20 },
+              }}
+            >
+              {" "}
+              <FormattedMessage defaultMessage="You Don't have any booking yet!!!" />
+            </Typography>
           </Stack>
         ) : (
           bookings?.map((item: any, index: any) => (

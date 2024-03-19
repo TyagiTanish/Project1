@@ -197,6 +197,14 @@ const BillingDetailsCard = ({
                   direction={"row"}
                 >
                   {/* <CurrencyRupeeIcon
+
+              <Stack
+                fontSize={{ sm: "small", md: "medium" }}
+                // fontWeight={"bolder"}
+                alignItems={"center"}
+                direction={"row"}
+              >
+                <CurrencyRupeeIcon
                   sx={{
                     fontSize: { sm: "small", md: "medium", lg: "large" },
                   }}

@@ -8,7 +8,7 @@ export default function PhotosDetails({ item }: any) {
   return (
     <Box
       sx={{
-        width: { sm: 725, md: 560, lg: 960, xl: 970 },
+        width: { sm: 725, md: 560, lg: 800, xl: 970 },
         mb: 3,
         // border: "1px solid lightgray",
       }}
@@ -32,7 +32,7 @@ export default function PhotosDetails({ item }: any) {
               <Box
                 component="img"
                 sx={{
-                  width: { sm: 170, lg: 225, md: 135, xl: 220 },
+                  width: { sm: 170, lg: 190, md: 135, xl: 220 },
 
                   borderRadius: "5px",
                 }}

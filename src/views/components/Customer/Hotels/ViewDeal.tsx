@@ -104,7 +104,9 @@ function ViewDeal() {
               }}
             >
               <CalendarMonthIcon fontSize="small" />
-              <Typography sx={{ fontSize: 14 }}><FormattedMessage defaultMessage="Points Calendar"/></Typography>
+              <Typography sx={{ fontSize: 14 }}>
+                <FormattedMessage defaultMessage="Points Calendar" />
+              </Typography>
             </Stack>
           </Stack>
         </Stack>
@@ -118,7 +120,7 @@ function ViewDeal() {
           justifyContent={"center"}
         >
           <Typography textAlign={"center"} fontSize={15}>
-          <FormattedMessage defaultMessage="View Details"/>
+            <FormattedMessage defaultMessage="View Details" />
           </Typography>
           {open ? (
             <KeyboardArrowUpIcon fontSize="small" />

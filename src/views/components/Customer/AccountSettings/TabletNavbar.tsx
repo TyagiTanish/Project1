@@ -4,8 +4,8 @@ import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
+  Box,
   IconButton,
-
   Stack,
   Tooltip,
   Typography,
@@ -13,7 +13,6 @@ import {
 import "../../../../App";
 import PersonIcon from "@mui/icons-material/Person";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
-import Box from "@mui/material/Box";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
@@ -23,7 +22,7 @@ import ListItemButton from "@mui/material/ListItemButton";
 import CircleIcon from "@mui/icons-material/Circle";
 
 import BusinessIcon from "@mui/icons-material/Business";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import CallIcon from "@mui/icons-material/Call";
 
@@ -32,6 +31,7 @@ import SelectLang from "../../OtherComponents/SelectLang";
 import LaptopAccount from "../profile/LaptopAccount";
 type Anchor = "top" | "left" | "bottom" | "right";
 function TabletNavbar() {
+  const navigate = useNavigate();
   const [state, setState] = React.useState({
     top: false,
     left: false,
@@ -72,7 +72,7 @@ function TabletNavbar() {
       onKeyDown={toggleDrawer(anchor, false)}
     >
       <Typography sx={{ m: 2, fontSize: 20, color: "#D4164B" }}>
-      <FormattedMessage defaultMessage=" Menu Items...." />        
+        <FormattedMessage defaultMessage=" Menu Items...." />
       </Typography>
       {user ? (
         <>
@@ -93,7 +93,7 @@ function TabletNavbar() {
                 }}
               >
                 {" "}
-                <FormattedMessage defaultMessage="Add Hotel" />      
+                <FormattedMessage defaultMessage="Add Hotel" />
               </Link>
             </Stack>
             <Stack
@@ -131,18 +131,18 @@ function TabletNavbar() {
             </Stack>
 
             <Stack direction={"row"} alignItems={"center"} spacing={1}>
-              {" "}
               <PersonIcon />
-              <Link
-                to="/login"
-                style={{
+              <Box
+                onClick={() =>
+                  navigate("/", { state: { from: window?.location?.pathname } })
+                }
+                sx={{
                   textDecoration: "none",
                   color: "black",
                 }}
               >
-                {" "}
                 <FormattedMessage defaultMessage="Login / SignUp" />
-              </Link>
+              </Box>
             </Stack>
           </Stack>
           <SelectLang />
@@ -151,7 +151,7 @@ function TabletNavbar() {
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
           <Typography sx={{ fontWeight: "bold", fontSize: 17 }}>
-          <FormattedMessage defaultMessage="Popular Cities" /> 
+            <FormattedMessage defaultMessage="Popular Cities" />
           </Typography>
         </AccordionSummary>
         <AccordionDetails style={{ marginTop: -30 }}>
@@ -180,7 +180,7 @@ function TabletNavbar() {
                             <Typography
                               sx={{ fontWeight: "bold", fontSize: 15 }}
                             >
-                         <FormattedMessage defaultMessage="Popular Locations" />        
+                              <FormattedMessage defaultMessage="Popular Locations" />
                             </Typography>
                             <Stack
                               direction={"row"}
@@ -196,7 +196,7 @@ function TabletNavbar() {
                                   textDecorationLine: "none",
                                 }}
                               >
-                             <FormattedMessage defaultMessage=" Mg Road" />     
+                                <FormattedMessage defaultMessage=" Mg Road" />
                               </Link>
                             </Stack>
 
@@ -214,7 +214,7 @@ function TabletNavbar() {
                                   textDecorationLine: "none",
                                 }}
                               >
-                               <FormattedMessage defaultMessage=" Rajaji nagar" />      
+                                <FormattedMessage defaultMessage=" Rajaji nagar" />
                               </Link>
                             </Stack>
                           </Typography>

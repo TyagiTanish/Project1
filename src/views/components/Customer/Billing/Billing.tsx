@@ -141,31 +141,52 @@ const Billing = () => {
     guestName: string | undefined;
     guestEmail: string | undefined;
   }
-  const intl=useIntl()
+  const intl = useIntl();
   const FormSchema = Yup.object().shape({
     fullName: Yup.string()
-      .required(intl.formatMessage({ defaultMessage: "First Name is required"}))
+      .required(
+        intl.formatMessage({ defaultMessage: "First Name is required" })
+      )
       .min(3)
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-        intl.formatMessage({ defaultMessage: "First Letter of name should be capital and name should be string" })    
+        intl.formatMessage({
+          defaultMessage:
+            "First Letter of name should be capital and name should be string",
+        })
       ),
-    email: Yup.string().email(intl.formatMessage({defaultMessage:'Invalid Email'})).required(intl.formatMessage({defaultMessage:"Email is Required"})),
+    email: Yup.string()
+      .email(intl.formatMessage({ defaultMessage: "Invalid Email" }))
+      .required(intl.formatMessage({ defaultMessage: "Email is Required" })),
     phone: Yup.string()
       .required()
-      .min(10, intl.formatMessage({ defaultMessage: "Min length should be 10"}))
-      .max(10, intl.formatMessage({ defaultMessage: "Max length should be 10"}))
+      .min(
+        10,
+        intl.formatMessage({ defaultMessage: "Min length should be 10" })
+      )
+      .max(
+        10,
+        intl.formatMessage({ defaultMessage: "Max length should be 10" })
+      )
       .matches(
         /^[789]\d{9}$/,
-        intl.formatMessage({ defaultMessage: "Phone No. must not contain any special character and should start with 9 , 7 or 8" }) 
+        intl.formatMessage({
+          defaultMessage:
+            "Phone No. must not contain any special character and should start with 9 , 7 or 8",
+        })
       ),
     guestName: Yup.string()
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-        intl.formatMessage({ defaultMessage: "First Letter of name should be capital and name should be string" }),  
+        intl.formatMessage({
+          defaultMessage:
+            "First Letter of name should be capital and name should be string",
+        })
       )
       .notRequired(),
-    guestEmail: Yup.string().email(intl.formatMessage({defaultMessage:'Invalid Email'})).notRequired(),
+    guestEmail: Yup.string()
+      .email(intl.formatMessage({ defaultMessage: "Invalid Email" }))
+      .notRequired(),
   });
 
   const {
@@ -204,7 +225,10 @@ const Billing = () => {
       setDisplay(true);
       setSubmitButton(false);
     } else {
-      enqueueSnackbar(intl.formatMessage({ defaultMessage:"User not Login"}), { variant: "error" });
+      enqueueSnackbar(
+        intl.formatMessage({ defaultMessage: "User not Login" }),
+        { variant: "error" }
+      );
       navigate("/login", { state: { from: `/billing/${id?.id}/${id?.hid}` } });
     }
 
@@ -238,11 +262,13 @@ const Billing = () => {
                     p={2}
                   >
                     <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                     <FormattedMessage defaultMessage="First Name *"/> 
+                      <FormattedMessage defaultMessage="First Name *" />
                     </Typography>
                     <TextField
                       variant="outlined"
-                      placeholder= {intl.formatMessage({ defaultMessage:"Enter your name" })}                
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Enter your name",
+                      })}
                       defaultValue={user?.name}
                       {...register("fullName")}
                       fullWidth
@@ -253,11 +279,14 @@ const Billing = () => {
                       </FormHelperText>
                     )}
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                    <FormattedMessage defaultMessage="Email *"/>   
+                      <FormattedMessage defaultMessage="Email *" />
                     </Typography>
                     <TextField
                       variant="outlined"
-                      placeholder= {intl.formatMessage({ defaultMessage:"Email" })}                      defaultValue={user?.email}
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Email",
+                      })}
+                      defaultValue={user?.email}
                       {...register("email")}
                       fullWidth
                     />
@@ -267,12 +296,14 @@ const Billing = () => {
                       </FormHelperText>
                     )}
                     <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                    <FormattedMessage defaultMessage="Phone No. *"/>     
+                      <FormattedMessage defaultMessage="Phone No. *" />
                     </Typography>
 
                     <TextField
                       // id="standard-password-input"
-                      placeholder= {intl.formatMessage({ defaultMessage:"Phone no." })}              
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Phone no.",
+                      })}
                       {...register("phone")}
                       defaultValue={user?.phone}
                       // autoComplete="current-password"
@@ -285,7 +316,7 @@ const Billing = () => {
                     <Stack direction={"row"} ml={-1}>
                       <Checkbox onChange={handleCheckbox} />
                       <Typography sx={{ mt: 1 }}>
-                      <FormattedMessage defaultMessage="Make this booking for someone else"/>    
+                        <FormattedMessage defaultMessage="Make this booking for someone else" />
                       </Typography>
                     </Stack>
                     {guest === true ? (
@@ -296,14 +327,14 @@ const Billing = () => {
                         }}
                       >
                         <Typography sx={{ fontWeight: "Bolder", mt: 3, mb: 2 }}>
-                        <FormattedMessage defaultMessage="Guest Information"/>        
+                          <FormattedMessage defaultMessage="Guest Information" />
                         </Typography>
                         <Typography sx={{ fontWeight: "Bolder", mb: 1 }}>
-                        <FormattedMessage defaultMessage="Guest name"/>             
+                          <FormattedMessage defaultMessage="Guest name" />
                         </Typography>
                         <TextField
                           {...register("guestName")}
-                          placeholder= "Guest Name"
+                          placeholder="Guest Name"
                           variant="outlined"
                           fullWidth
                         />
@@ -313,11 +344,13 @@ const Billing = () => {
                           </FormHelperText>
                         )}
                         <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
-                        <FormattedMessage defaultMessage=" Guest email"/>        
+                          <FormattedMessage defaultMessage=" Guest email" />
                         </Typography>
                         <TextField
                           variant="outlined"
-                          placeholder= {intl.formatMessage({ defaultMessage:"Guest Email" })} 
+                          placeholder={intl.formatMessage({
+                            defaultMessage: "Guest Email",
+                          })}
                           {...register("guestEmail")}
                           fullWidth
                         />
@@ -342,8 +375,10 @@ const Billing = () => {
                         sx={{ mt: -2 }}
                       />
                       <Typography mt={1}>
-                      <FormattedMessage defaultMessage="By proceeding with this booking, I agree to OYO's Terms
-                        of Use and Privacy Policy."/>        
+                        <FormattedMessage
+                          defaultMessage="By proceeding with this booking, I agree to OYO's Terms
+                        of Use and Privacy Policy."
+                        />
                       </Typography>
                     </Stack>
                     {TotalRooms.current > roomDetails?.roomQuantity ? (
@@ -362,7 +397,7 @@ const Billing = () => {
                         }
                         // onClick={handleClick}
                       >
-                  <FormattedMessage defaultMessage="Currently Unavailable"/>        
+                        <FormattedMessage defaultMessage="Currently Unavailable" />
                       </Button>
                     ) : (
                       <Button
@@ -377,7 +412,7 @@ const Billing = () => {
                         disabled={!submitButton}
                         // onClick={handleClick}
                       >
-                   <FormattedMessage defaultMessage="Pay Now"/>              
+                        <FormattedMessage defaultMessage="Pay Now" />
                       </Button>
                     )}
                   </Stack>

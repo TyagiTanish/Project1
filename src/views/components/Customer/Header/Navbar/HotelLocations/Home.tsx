@@ -30,7 +30,7 @@ const MP: any = City.getCitiesOfState("IN", "MP");
 const UP: any = City.getCitiesOfState("IN", "UP");
 const UT: any = City.getCitiesOfState("IN", "UT");
 /**
- * Landing page of the project. Markdown is *localhost:3000*.
+ * Landing page of the project. Markdown is *http://localhost:3000*.
  */
 
 export default function BasicCard() {
