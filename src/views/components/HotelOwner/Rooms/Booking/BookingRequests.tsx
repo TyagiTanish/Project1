@@ -50,7 +50,7 @@ export default function Bookings() {
   const [queryOptions, setQueryOptions] = React.useState<any>();
   const handleClickOpen = (data: any) => {
     setOpen(true);
-
+    console.log(data);
     setDisplay(data);
   };
   const handleSortModelChange = React.useCallback(
@@ -193,39 +193,58 @@ export default function Bookings() {
     setOpen(false);
   };
   const handleClickAccept = async (id: any) => {
-    const data = await request.put(`/bookingAccept/${id}`);
-    setData(data.data);
+    try {
+      const data = await request.put(`/bookingAccept/${id}`);
+      setData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   const handleClick = async (id: any) => {
-    const data = await request.delete(`/bookingDelete/${id}`);
-    setData(data.data);
+    try {
+      const data = await request.delete(`/bookingDelete/${id}`);
+      setData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
   };
   React.useMemo(async () => {
-    const data = await request.get("/bookingDetails");
+    try {
+      const data = await request.get("/bookingDetails");
 
-    setData(data.data);
-    setLength(data?.data?.length);
+      setData(data.data);
+      setLength(data?.data?.length);
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
   React.useMemo(async () => {
-    const data = await request.get("/bookingDetails", {
-      params: {
-        limit: paginationModel.pageSize || null,
-        page: paginationModel.page,
-        orderby: queryOptions?.sortModel[0]?.field || "_id",
-        sortby: queryOptions?.sortModel[0]?.sort || "asc",
-        search: search,
-      },
-    });
+    try {
+      const data = await request.get("/bookingDetails", {
+        params: {
+          limit: paginationModel.pageSize || null,
+          page: paginationModel.page,
+          orderby: queryOptions?.sortModel[0]?.field || "_id",
+          sortby: queryOptions?.sortModel[0]?.sort || "asc",
+          search: search,
+        },
+      });
 
-    setData(data.data);
+      setData(data.data);
+    } catch (error) {
+      console.log(error);
+    }
   }, [paginationModel, queryOptions, search]);
   React.useMemo(() => {
     socket.on("recieved", (data) => {
       if (data) {
         const get = async () => {
-          const data = await request.get("/bookingDetails");
-
-          setData(data.data);
+          try {
+            const data = await request.get("/bookingDetails");
+            setData(data.data);
+          } catch (error) {
+            console.log(error);
+          }
         };
         get();
       }

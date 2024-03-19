@@ -45,6 +45,7 @@ import AddDiscription from "../../HotelOwner/Rooms/RoomDetails/AddDiscription";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Language from "../../Language";
+import { FormattedMessage, useIntl } from "react-intl";
 function Copyright(props: any) {
   return (
     <Typography
@@ -76,6 +77,8 @@ export default function MemberRegister() {
   const [showPassword2, setShowPassword2] = React.useState(false);
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
+  const intl = useIntl();
+
   React.useEffect(() => {
     if (acceptedFiles.length > 1) {
       setError("Only One file can be selected");
@@ -156,73 +159,147 @@ export default function MemberRegister() {
   page === 2 &&
     (FormSchema = Yup.object().shape({
       pinCode: Yup.string()
-        .required("Zip Code is required")
-        .max(6, "Max length should be 6")
-        .matches(/^[1-9][0-9]{5}$/, "Zip Code must be a number"),
+        .required(
+          intl.formatMessage({ defaultMessage: "Zip Code is required" })
+        )
+        .max(
+          6,
+          intl.formatMessage({ defaultMessage: "Max length should be 6" })
+        )
+        .matches(
+          /^[1-9][0-9]{5}$/,
+          intl.formatMessage({ defaultMessage: "Zip Code must be a number" })
+        ),
       country: Yup.string()
-        .required("Country is required ")
-        .min(3, "Minimum length should be 3")
+        .required(
+          intl.formatMessage({ defaultMessage: "Country is required " })
+        )
+        .min(
+          3,
+          intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
+        )
         .matches(
           /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "First Letter of Country name should be capital and name should be string"
+          intl.formatMessage({
+            defaultMessage:
+              "First Letter of Country name should be capital and name should be string",
+          })
         ),
       state: Yup.string()
-        .required("State is required")
-        .min(3, "Minimum length should be 3")
+        .required(intl.formatMessage({ defaultMessage: "State is required" }))
+        .min(
+          3,
+          intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
+        )
         .matches(
           /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "First Letter of State name should be capital and name should be string"
+          intl.formatMessage({
+            defaultMessage:
+              "First Letter of State name should be capital and name should be string",
+          })
         ),
       city: Yup.string()
-        .required("City is required")
-        .min(3, "minimum length should be 3 ")
+        .required(intl.formatMessage({ defaultMessage: "City is required" }))
+        .min(
+          3,
+          intl.formatMessage({ defaultMessage: "minimum length should be 3 " })
+        )
         .matches(
           /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "First Letter of City name should be capital and name should be string"
+          intl.formatMessage({
+            defaultMessage:
+              "First Letter of City name should be capital and name should be string",
+          })
         ),
     }));
 
   page === 1 &&
     (FormSchema = Yup.object().shape({
       name: Yup.string()
-        .required("First Name is required")
-        .min(3, "Name should contain at least 5 letters")
+        .required(
+          intl.formatMessage({ defaultMessage: "First Name is required" })
+        )
+        .min(
+          3,
+          intl.formatMessage({
+            defaultMessage: "Name should contain at least 5 letters",
+          })
+        )
         .matches(
           /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "First Letter of name should be capital and name should be string"
+          intl.formatMessage({
+            defaultMessage:
+              "First Letter of name should be capital and name should be string",
+          })
         ),
       email: Yup.string()
-        .email("Invalid email !")
-        .required("Email is Required"),
+        .email(intl.formatMessage({ defaultMessage: "Invalid email !" }))
+        .required(intl.formatMessage({ defaultMessage: "Email is Required" })),
       phone: Yup.string()
-        .required("Phone no. is required")
-        .max(10, "Max length should be 10")
+        .required(
+          intl.formatMessage({ defaultMessage: "Phone no. is required" })
+        )
+        .max(
+          10,
+          intl.formatMessage({ defaultMessage: "Max length should be 10" })
+        )
         .matches(
           /^[789]\d{9}$/,
-          "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+          intl.formatMessage({
+            defaultMessage:
+              "Phone No. must not contain any special character and should start with 9 , 7 or 8",
+          })
         ),
       hotelName: Yup.string()
-        .min(5, "Hotel name should contain at least 5 letters")
+        .min(
+          5,
+          intl.formatMessage({
+            defaultMessage: "Hotel name should contain at least 5 letters",
+          })
+        )
         .matches(
           /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "First Letter of name should be capital and name should be string"
+          intl.formatMessage({
+            defaultMessage:
+              "First Letter of name should be capital and name should be string",
+          })
         )
-        .required("Hotel Name is Required"),
+        .required(
+          intl.formatMessage({ defaultMessage: "Hotel Name is Required" })
+        ),
     }));
 
   page === 7 &&
     (FormSchema = Yup.object().shape({
       password: Yup.string()
-        .required("This field is required")
-        .min(8, "Pasword must be 8 or more characters")
+        .required(
+          intl.formatMessage({ defaultMessage: "This field is required" })
+        )
+        .min(
+          8,
+          intl.formatMessage({
+            defaultMessage: "Pasword must be 8 or more characters",
+          })
+        )
         .matches(
           /(?=.*[a-z])(?=.*[A-Z])\w+/,
-          "Password ahould contain at least one uppercase and lowercase character"
+          intl.formatMessage({
+            defaultMessage:
+              "Password ahould contain at least one uppercase and lowercase character",
+          })
         )
-        .matches(/\d/, "Password should contain at least one number")
+        .matches(
+          /\d/,
+          intl.formatMessage({
+            defaultMessage: "Password should contain at least one number",
+          })
+        )
         .matches(
           /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-          "Password should contain at least one special character"
+          intl.formatMessage({
+            defaultMessage:
+              "Password should contain at least one special character",
+          })
         ),
     }));
   if (page === 6) {
@@ -348,7 +425,7 @@ export default function MemberRegister() {
             fontSize: { xl: 17, md: 14, sm: 13 },
           }}
         >
-          Sign up & Get ₹500 OYO Money
+          <FormattedMessage defaultMessage={"Sign up & Get ₹500 OYO Money"} />
         </Box>
 
         <Box
@@ -374,7 +451,9 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Enter Your Personal Details....
+                <FormattedMessage
+                  defaultMessage={"Enter Your Personal Details...."}
+                />
               </Typography>
             )}
             {page === 2 && (
@@ -386,7 +465,9 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Enter Your Location Details....
+                <FormattedMessage
+                  defaultMessage={"Enter Your Location Details...."}
+                />
               </Typography>
             )}
             {page === 3 && (
@@ -398,7 +479,9 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Pin Your Location On Map....
+                <FormattedMessage
+                  defaultMessage={" Pin Your Location On Map...."}
+                />
               </Typography>
             )}
             {page === 4 && (
@@ -410,7 +493,7 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Choose a Photo....
+                <FormattedMessage defaultMessage={"Choose a Photo...."} />
               </Typography>
             )}
             {page === 6 && (
@@ -422,7 +505,9 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Enter hotel discription....
+                <FormattedMessage
+                  defaultMessage={"Enter hotel discription...."}
+                />
               </Typography>
             )}
             {page === 7 && (
@@ -434,7 +519,7 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Enter Your Password....
+                <FormattedMessage defaultMessage={"Enter Your Password...."} />
               </Typography>
             )}
             {page === 5 && (
@@ -446,7 +531,9 @@ export default function MemberRegister() {
                   opacity: 0.7,
                 }}
               >
-                Enter Hotel Amenities....
+                <FormattedMessage
+                  defaultMessage={"Enter Hotel Amenities...."}
+                />
               </Typography>
             )}
             <Box sx={{ float: "right", mt: -5 }}>
@@ -470,7 +557,7 @@ export default function MemberRegister() {
                         fontSize: { xl: 17, md: 14, sm: 13 },
                       }}
                     >
-                      Name
+                      <FormattedMessage defaultMessage={"Name"} />
                     </Typography>
                     <TextField
                       autoComplete="given-name"
@@ -486,7 +573,7 @@ export default function MemberRegister() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                      Phone No.
+                      <FormattedMessage defaultMessage={"Phone No."} />
                     </Typography>
                     <TextField
                       variant="outlined"
@@ -498,7 +585,7 @@ export default function MemberRegister() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                      Email Address
+                      <FormattedMessage defaultMessage={"Email Address"} />
                     </Typography>
                     <TextField
                       required
@@ -514,7 +601,7 @@ export default function MemberRegister() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                      Hotel Name
+                      <FormattedMessage defaultMessage={"Hotel Name"} />
                     </Typography>
                     <TextField
                       required
@@ -551,7 +638,7 @@ export default function MemberRegister() {
                   }}
                   onClick={handleSubmit(Submit)}
                 >
-                  Next
+                  <FormattedMessage defaultMessage={"Next"} />
                 </Button>
               </form>
             </>
@@ -566,7 +653,7 @@ export default function MemberRegister() {
               >
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    City
+                    <FormattedMessage defaultMessage={"City"} />
                   </Typography>
                   <TextField
                     autoComplete="given-name"
@@ -581,7 +668,7 @@ export default function MemberRegister() {
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    State
+                    <FormattedMessage defaultMessage={"State"} />
                   </Typography>
                   <TextField
                     variant="outlined"
@@ -593,7 +680,7 @@ export default function MemberRegister() {
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    Pin Code{" "}
+                    <FormattedMessage defaultMessage={"City"} /> Pin Code{" "}
                   </Typography>
                   <TextField required fullWidth {...register("pinCode")} />
                   <FormHelperText sx={{ color: "red" }}>
@@ -602,7 +689,7 @@ export default function MemberRegister() {
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    Country
+                    <FormattedMessage defaultMessage={"Country"} />
                   </Typography>
                   <TextField required fullWidth {...register("country")} />
                   <FormHelperText sx={{ color: "red" }}>
@@ -633,7 +720,7 @@ export default function MemberRegister() {
                 }}
                 onClick={handleSubmit(Submit)}
               >
-                Next
+                <FormattedMessage defaultMessage={"Next"} />
               </Button>
             </form>
           )}
@@ -666,7 +753,7 @@ export default function MemberRegister() {
                   }}
                   onClick={handleNextClick}
                 >
-                  Next
+                  <FormattedMessage defaultMessage={"Next"} />
                 </Button>
               </Stack>
             </>
@@ -683,7 +770,7 @@ export default function MemberRegister() {
                 >
                   <Stack>
                     <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 12 } }}>
-                      Password
+                      <FormattedMessage defaultMessage={"Password"} />
                     </Typography>
 
                     <OutlinedInput
@@ -751,7 +838,7 @@ export default function MemberRegister() {
                   }}
                   onClick={handleSubmit(Submit)}
                 >
-                  Submit
+                  <FormattedMessage defaultMessage={"Submit"} />
                 </Button>
               </form>
             </>
@@ -890,7 +977,7 @@ export default function MemberRegister() {
                       mt: 0,
                     }}
                   >
-                    Next
+                    <FormattedMessage defaultMessage={"Next"} />
                   </Button>
                 ) : (
                   <Button
@@ -903,7 +990,7 @@ export default function MemberRegister() {
                       mt: 0,
                     }}
                   >
-                    Next
+                    <FormattedMessage defaultMessage={"Next"} />
                   </Button>
                 )}
               </form>
@@ -942,7 +1029,7 @@ export default function MemberRegister() {
                   }}
                   onClick={handleSubmit(Submit)}
                 >
-                  Next
+                  <FormattedMessage defaultMessage={"Next"} />
                 </Button>
               </form>
             </>
@@ -956,8 +1043,11 @@ export default function MemberRegister() {
                     m: "5%",
                   }}
                 >
-                  Email Already Exist If You want to continue with this email
-                  then press continue or press back to change email{" "}
+                  <FormattedMessage
+                    defaultMessage={
+                      " Email Already Exist If You want to continue with this email then press continue or press back to change email"
+                    }
+                  />{" "}
                 </Typography>
                 <Stack direction={"row"} sx={{ padding: "10px" }}>
                   {" "}
@@ -969,14 +1059,14 @@ export default function MemberRegister() {
                       fontSize: { md: 13, sm: 11 },
                     }}
                   >
-                    Back
+                    <FormattedMessage defaultMessage={"Back"} />
                   </Button>
                   <Button
                     variant="contained"
                     sx={{ fontSize: { md: 13, sm: 11 } }}
                     onClick={() => navigate("/login")}
                   >
-                    Continue
+                    <FormattedMessage defaultMessage={"Continue"} />
                   </Button>
                 </Stack>
               </Box>
@@ -1000,7 +1090,9 @@ export default function MemberRegister() {
                       <Typography sx={{ mt: 1 }}>
                         <AddPhotoAlternateSharpIcon fontSize="large" />
                         <Typography sx={{ fontSize: "10px" }}>
-                          Drop a Photo Here
+                          <FormattedMessage
+                            defaultMessage={"Drop a Photo Here"}
+                          />
                         </Typography>
                       </Typography>
                     </IconButton>
@@ -1041,7 +1133,7 @@ export default function MemberRegister() {
                     }}
                     onClick={handleNextClick}
                   >
-                    Next
+                    <FormattedMessage defaultMessage={"Next"} />
                   </Button>
                 )}
                 {!maxPhoto && (
@@ -1053,7 +1145,7 @@ export default function MemberRegister() {
                     }}
                     disabled
                   >
-                    Next
+                    <FormattedMessage defaultMessage={"Next"} />
                   </Button>
                 )}
               </Stack>

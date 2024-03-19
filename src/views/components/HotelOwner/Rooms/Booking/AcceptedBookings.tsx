@@ -177,9 +177,7 @@ function AcceptedBookings() {
             <Select
               //  to  save the arrival status of customer
               defaultValue={
-                params?.row?.status === "accepted"
-                  ? "Booked"
-                  : params?.row?.arrival
+                params?.row?.arrival === "" ? "Booked" : params?.row?.arrival
               }
               onChange={(e) => {
                 handleChange(e, params.row._id);

@@ -68,7 +68,9 @@ function Footer() {
               fontWeight: "900",
             }}
           >
-            Join our network and grow your business!
+            <FormattedMessage
+              defaultMessage={"Join our network and grow your business!"}
+            />
             <Button
               sx={{
                 color: "#616161",
@@ -85,7 +87,7 @@ function Footer() {
                 navigate("/memberRegister");
               }}
             >
-              List Your Property
+              <FormattedMessage defaultMessage={" List Your Property"} />
             </Button>
           </Box>
         </Box>
@@ -109,7 +111,9 @@ function Footer() {
           }}
         >
           <Box sx={{ fontSize: { xl: 18, md: 15, sm: 12 } }}>
-            Download OYO app for exciting offers.
+            <FormattedMessage
+              defaultMessage={"Download OYO app for exciting offers."}
+            />
           </Box>
           <Box>
             <AppStoreLogo />
@@ -129,16 +133,16 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            About
+            <FormattedMessage defaultMessage={"About"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Teams / Careers
+            <FormattedMessage defaultMessage={"Teams / Careers"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Blogs
+            <FormattedMessage defaultMessage={"Blogs"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Support
+            <FormattedMessage defaultMessage={"Support"} />
           </Link>
         </Box>
         <Box
@@ -150,16 +154,16 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Official OYO Blog
+            <FormattedMessage defaultMessage={"Official OYO Blog"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Investor Relations
+            <FormattedMessage defaultMessage={"Investor Relations"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Circles
+            <FormattedMessage defaultMessage={"OYO Circles"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Frames
+            <FormattedMessage defaultMessage={" OYO Frames"} />
           </Link>
         </Box>
 
@@ -174,16 +178,16 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Terms and conditions
+            <FormattedMessage defaultMessage={" Terms and conditions"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Guest Policies
+            <FormattedMessage defaultMessage={" Guest Policies"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Privacy Policy
+            <FormattedMessage defaultMessage={" Privacy Policy"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Trust And Safety
+            <FormattedMessage defaultMessage={"Trust And Safety"} />
           </Link>
         </Box>
         <Box
@@ -194,16 +198,16 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Cyber Security
+            <FormattedMessage defaultMessage={"Cyber Security"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Cyber Security Awareness
+            <FormattedMessage defaultMessage={"Cyber Security Awareness"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Responsible Disclosure
+            <FormattedMessage defaultMessage={" Responsible Disclosure"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Advertise your Homes
+            <FormattedMessage defaultMessage={"Advertise your Homes"} />
           </Link>
         </Box>
       </Box>
@@ -219,7 +223,7 @@ function Footer() {
           fontSize: "18px",
         }}
       >
-        Oyo Hotels
+        <FormattedMessage defaultMessage={"Oyo Hotels"} />
       </Box>
       <Box
         sx={{
@@ -241,34 +245,34 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Hotels near me
+            <FormattedMessage defaultMessage={"Hotels near me"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Manali
+            <FormattedMessage defaultMessage={"Hotels in Manali"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Nainital
+            <FormattedMessage defaultMessage={"Hotels in Nainital"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Mount Abu
+            <FormattedMessage defaultMessage={"Hotels in Mount Abu"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Agra
+            <FormattedMessage defaultMessage={"Hotels in Agra"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Haridwar
+            <FormattedMessage defaultMessage={" Hotels in Haridwar"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Gurgaon
+            <FormattedMessage defaultMessage={"Hotels in Gurgaon"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Coimbatore
+            <FormattedMessage defaultMessage={"Hotels in Coimbatore"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Hotel UK
+            <FormattedMessage defaultMessage={"OYO Hotel UK"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Vacation Homes in Europe
+            <FormattedMessage defaultMessage={"OYO Vacation Homes in Europe"} />
           </Link>
         </Box>
 
@@ -282,75 +286,36 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Hotels near me
+            <FormattedMessage defaultMessage={"Hotels near me"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Manali
+            <FormattedMessage defaultMessage={"Hotels in Manali"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Nainital
+            <FormattedMessage defaultMessage={"Hotels in Nainital"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Mount Abu
+            <FormattedMessage defaultMessage={"Hotels in Mount Abu"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Agra
+            <FormattedMessage defaultMessage={"Hotels in Agra"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Haridwar
+            <FormattedMessage defaultMessage={"Hotels in Haridwar"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Gurgaon
+            <FormattedMessage defaultMessage={"Hotels in Gurgaon"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Coimbatore
+            <FormattedMessage defaultMessage={"Hotels in Coimbatore"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Hotel UK
+            <FormattedMessage defaultMessage={"OYO Hotel UK"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Vacation Homes in Europe
-          </Link>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            fontSize: { xl: 18, md: 15, sm: 12 },
-            ml: { xl: 0, md: 2, sm: 4 },
-            width: "40%",
-          }}
-        >
-          <Link to="/" className="linkStyle">
-            Hotels near me
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Manali
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Nainital
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Mount Abu
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Agra
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Haridwar
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Gurgaon
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Coimbatore
-          </Link>
-          <Link to="/" className="linkStyle">
-            OYO Hotel UK
-          </Link>
-          <Link to="/" className="linkStyle">
-            OYO Vacation Homes in Europe
+            <FormattedMessage
+              defaultMessage={" OYO Vacation Homes in Europe"}
+            />
           </Link>
         </Box>
 
@@ -364,75 +329,36 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Hotels near me
+            <FormattedMessage defaultMessage={" Hotels near me"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Manali
+            <FormattedMessage defaultMessage={" Hotels in Manali"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Nainital
+            <FormattedMessage defaultMessage={" Hotels in Nainital"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Mount Abu
+            <FormattedMessage defaultMessage={" Hotels in Mount Abu"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Agra
+            <FormattedMessage defaultMessage={" Hotels in Agra"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Haridwar
+            <FormattedMessage defaultMessage={"Hotels in Haridwar"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Gurgaon
+            <FormattedMessage defaultMessage={"  Hotels in Gurgaon"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Coimbatore
+            <FormattedMessage defaultMessage={" Hotels in Coimbatore"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Hotel UK
+            <FormattedMessage defaultMessage={"OYO Hotel UK"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Vacation Homes in Europe
-          </Link>
-        </Box>
-
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            fontSize: { xl: 18, md: 15, sm: 12 },
-            ml: { xl: 0, md: 2, sm: 4 },
-            width: "40%",
-          }}
-        >
-          <Link to="/" className="linkStyle">
-            Hotels near me
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Manali
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Nainital
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Mount Abu
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Agra
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Haridwar
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Gurgaon
-          </Link>
-          <Link to="/" className="linkStyle">
-            Hotels in Coimbatore
-          </Link>
-          <Link to="/" className="linkStyle">
-            OYO Hotel UK
-          </Link>
-          <Link to="/" className="linkStyle">
-            OYO Vacation Homes in Europe
+            <FormattedMessage
+              defaultMessage={" OYO Vacation Homes in Europe"}
+            />
           </Link>
         </Box>
 
@@ -446,34 +372,118 @@ function Footer() {
           }}
         >
           <Link to="/" className="linkStyle">
-            Hotels near me
+            <FormattedMessage defaultMessage={" Hotels near me"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Manali
+            <FormattedMessage defaultMessage={" Hotels in Manali"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Nainital
+            <FormattedMessage defaultMessage={"Hotels in Nainital"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Mount Abu
+            <FormattedMessage defaultMessage={"Hotels in Mount Abu"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Agra
+            <FormattedMessage defaultMessage={"Hotels in Agra"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Haridwar
+            <FormattedMessage defaultMessage={"Hotels in Haridwar"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Gurgaon
+            <FormattedMessage defaultMessage={"Hotels in Gurgaon"} />
           </Link>
           <Link to="/" className="linkStyle">
-            Hotels in Coimbatore
+            <FormattedMessage defaultMessage={"Hotels in Coimbatore"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Hotel UK
+            <FormattedMessage defaultMessage={"OYO Hotel UK"} />
           </Link>
           <Link to="/" className="linkStyle">
-            OYO Vacation Homes in Europe
+            <FormattedMessage defaultMessage={"OYO Vacation Homes in Europe"} />
+          </Link>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            ml: { xl: 0, md: 2, sm: 4 },
+            width: "40%",
+          }}
+        >
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels near me"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Manali"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Nainital"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Mount Abu"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Agra"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Haridwar"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Gurgaon"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Coimbatore"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={" OYO Hotel UK"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage
+              defaultMessage={" OYO Vacation Homes in Europe"}
+            />
+          </Link>
+        </Box>
+
+        <Box
+          sx={{
+            display: "flex",
+            flexDirection: "column",
+            fontSize: { xl: 18, md: 15, sm: 12 },
+            ml: { xl: 0, md: 2, sm: 4 },
+            width: "40%",
+          }}
+        >
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels near me"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Manali"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Nainital"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Mount Abu"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Agra"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Haridwar"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Gurgaon"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"Hotels in Coimbatore"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"OYO Hotel UK"} />
+          </Link>
+          <Link to="/" className="linkStyle">
+            <FormattedMessage defaultMessage={"OYO Vacation Homes in Europe"} />
           </Link>
         </Box>
       </Box>
@@ -495,7 +505,11 @@ function Footer() {
           <PlayArrowIcon sx={{ marginRight: "5px" }} />
           <PinterestIcon sx={{ marginRight: "5px" }} />
         </Box>
-        <Box fontSize={"12px"}>2013-2022 © Oravel Stays Limited</Box>
+        <Box fontSize={"12px"}>
+          <FormattedMessage
+            defaultMessage={"2013-2022 © Oravel Stays Limited"}
+          />
+        </Box>
       </Box>
     </Box>
   );
