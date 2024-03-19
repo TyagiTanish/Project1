@@ -112,6 +112,7 @@ export default function SuperAdminView() {
   const theme = useTheme();
   const [open, setOpen] = React.useState(true);
   const [open2, setOpen2] = React.useState(false);
+  const [selectedIndex, setSelectedIndex] = React.useState<any>();
 
   const handleClick = () => {
     if (open) {
@@ -288,44 +289,50 @@ export default function SuperAdminView() {
                   {/* <Typography sx={{ p: 2 }}>
                     The content of the Popover.
                   </Typography> */}
-                  <ListItemButton>
-                    <ListItemText
-                      primary="Customers"
-                      onClick={() => {
-                        handleClose();
-                        navigate("/superAdmin/users");
-                      }}
-                    />
+                  <ListItemButton
+                    selected={selectedIndex === 0}
+                    onClick={() => {
+                      setSelectedIndex(0);
+                      handleClose();
+                      navigate("/superAdmin/users");
+                    }}
+                  >
+                    <ListItemText primary="Customers" />
                   </ListItemButton>
-                  <ListItemButton>
-                    <ListItemText
-                      primary="Members"
-                      onClick={() => {
-                        handleClose();
-                        navigate("/superAdmin/members");
-                      }}
-                    />
+                  <ListItemButton
+                    selected={selectedIndex === 1}
+                    onClick={() => {
+                      setSelectedIndex(1);
+                      handleClose();
+                      navigate("/superAdmin/members");
+                    }}
+                  >
+                    <ListItemText primary="Members" />
                   </ListItemButton>
                 </Popover>
                 {open2 ? <ExpandLess /> : <ExpandMore />}
               </ListItemButton>
               <Collapse in={open2} timeout="auto" unmountOnExit>
                 <List component="div" disablePadding>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText
-                      primary="Customers"
-                      onClick={() => {
-                        navigate("/superAdmin/users");
-                      }}
-                    />
+                  <ListItemButton
+                    selected={selectedIndex === 0}
+                    sx={{ pl: 4 }}
+                    onClick={() => {
+                      setSelectedIndex(0);
+                      navigate("/superAdmin/users");
+                    }}
+                  >
+                    <ListItemText primary="Customers" />
                   </ListItemButton>
-                  <ListItemButton sx={{ pl: 4 }}>
-                    <ListItemText
-                      primary="Members"
-                      onClick={() => {
-                        navigate("/superAdmin/members");
-                      }}
-                    />
+                  <ListItemButton
+                    selected={selectedIndex === 1}
+                    sx={{ pl: 4 }}
+                    onClick={() => {
+                      setSelectedIndex(1);
+                      navigate("/superAdmin/members");
+                    }}
+                  >
+                    <ListItemText primary="Members" />
                   </ListItemButton>
                 </List>
               </Collapse>

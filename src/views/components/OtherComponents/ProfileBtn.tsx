@@ -15,8 +15,10 @@ import { Link } from "react-router-dom";
 import PersonIcon from "@mui/icons-material/Person";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import { Stack } from "@mui/system";
+import { useNavigate } from "react-router-dom";
 
 export default function AccountMenu() {
+  const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const user = useSelector((state: any) => state.userReducer.user);
   const open = Boolean(anchorEl);
@@ -31,6 +33,8 @@ export default function AccountMenu() {
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
     dispatch(userLogout());
+    navigate("/");
+
     setAnchorEl(null);
   };
 

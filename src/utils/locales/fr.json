@@ -47,16 +47,16 @@
       "value": "État:"
     }
   ],
-  "0C1YbO": [
-    {
-      "type": 0,
-      "value": "Sélectionnez au moins un équipement"
-    }
-  ],
   "00/IyC": [
     {
       "type": 0,
       "value": "Nuit"
+    }
+  ],
+  "0C1YbO": [
+    {
+      "type": 0,
+      "value": "Sélectionnez au moins un équipement"
     }
   ],
   "0xWUYr": [
@@ -191,6 +191,12 @@
       "value": "Images des chambres"
     }
   ],
+  "5A6hoi": [
+    {
+      "type": 0,
+      "value": "Quantité de chambre"
+    }
+  ],
   "5GxMk2": [
     {
       "type": 0,
@@ -209,6 +215,12 @@
       "value": "Mot de passe"
     }
   ],
+  "6I+DHW": [
+    {
+      "type": 0,
+      "value": "Sélectionnez une fourchette de prix"
+    }
+  ],
   "6lhgE5": [
     {
       "type": 0,
@@ -219,12 +231,6 @@
     {
       "type": 0,
       "value": "Nombre total de jours-"
-    }
-  ],
-  "6I+DHW": [
-    {
-      "type": 0,
-      "value": "Sélectionnez une fourchette de prix"
     }
   ],
   "7444aR": [
@@ -251,16 +257,16 @@
       "value": "Description de la pièce:"
     }
   ],
-  "8GH/al": [
-    {
-      "type": 0,
-      "value": "Tous les hôtels"
-    }
-  ],
   "7tD4iU": [
     {
       "type": 0,
       "value": "Montant payable"
+    }
+  ],
+  "8GH/al": [
+    {
+      "type": 0,
+      "value": "Tous les hôtels"
     }
   ],
   "8oWVZA": [
@@ -533,16 +539,16 @@
       "value": "Pays:"
     }
   ],
-  "KGzfLt": [
-    {
-      "type": 0,
-      "value": "Supprimé"
-    }
-  ],
   "K3r6DQ": [
     {
       "type": 0,
       "value": "Supprimer"
+    }
+  ],
+  "KGzfLt": [
+    {
+      "type": 0,
+      "value": "Supprimé"
     }
   ],
   "KkDJ/P": [
@@ -575,16 +581,16 @@
       "value": "Demandes"
     }
   ],
-  "NIVTxd": [
-    {
-      "type": 0,
-      "value": "Invités"
-    }
-  ],
   "N4ReBT": [
     {
       "type": 0,
       "value": "Voir les détails"
+    }
+  ],
+  "NIVTxd": [
+    {
+      "type": 0,
+      "value": "Invités"
     }
   ],
   "NQgbYA": [
@@ -671,16 +677,16 @@
       "value": "Changer le mot de passe"
     }
   ],
-  "RLXaEm": [
-    {
-      "type": 0,
-      "value": "Modifier les détails de la salle"
-    }
-  ],
   "QwDSj/": [
     {
       "type": 0,
       "value": "La longueur minimale doit être de 10"
+    }
+  ],
+  "RLXaEm": [
+    {
+      "type": 0,
+      "value": "Modifier les détails de la salle"
     }
   ],
   "RiZXe1": [
@@ -713,16 +719,16 @@
       "value": "Ce champ est obligatoire"
     }
   ],
-  "TZacpB": [
-    {
-      "type": 0,
-      "value": "Coffre-fort dans la chambre"
-    }
-  ],
   "TWTu/9": [
     {
       "type": 0,
       "value": "Garantie de carte de crédit requise"
+    }
+  ],
+  "TZacpB": [
+    {
+      "type": 0,
+      "value": "Coffre-fort dans la chambre"
     }
   ],
   "U41zpQ": [
@@ -803,22 +809,16 @@
       "value": "Enregistrement"
     }
   ],
+  "XEotoJ": [
+    {
+      "type": 0,
+      "value": "Enregistrement"
+    }
+  ],
   "Y2s5iu": [
     {
       "type": 0,
       "value": "Inscrivez-vous avec un numéro de téléphone et obtenez un accès exclusif à des réductions et des économies sur les séjours OYO et auprès de nos nombreux partenaires de voyage."
-    }
-  ],
-  "Yg9wZZ": [
-    {
-      "type": 0,
-      "value": "12h00"
-    }
-  ],
-  "YtKv1z": [
-    {
-      "type": 0,
-      "value": "Moy./nuit"
     }
   ],
   "YDqlkM": [
@@ -831,6 +831,18 @@
     {
       "type": 0,
       "value": "Points forts de la chambre"
+    }
+  ],
+  "Yg9wZZ": [
+    {
+      "type": 0,
+      "value": "12h00"
+    }
+  ],
+  "YtKv1z": [
+    {
+      "type": 0,
+      "value": "Moy./nuit"
     }
   ],
   "Yx6py4": [
@@ -887,16 +899,16 @@
       "value": "Plus de destinations. Plus de facilité. Plus abordable."
     }
   ],
-  "dfXq0N": [
-    {
-      "type": 0,
-      "value": "Texte dans un modal enfant"
-    }
-  ],
   "dM+p3/": [
     {
       "type": 0,
       "value": "Depuis"
+    }
+  ],
+  "dfXq0N": [
+    {
+      "type": 0,
+      "value": "Texte dans un modal enfant"
     }
   ],
   "dmGKS5": [
@@ -917,6 +929,18 @@
       "value": "Nom de l'Hotel"
     }
   ],
+  "dtgi/W": [
+    {
+      "type": 0,
+      "value": "L'e-mail est requis"
+    }
+  ],
+  "e38GOF": [
+    {
+      "type": 0,
+      "value": "Agréments"
+    }
+  ],
   "eECf2y": [
     {
       "type": 0,
@@ -933,18 +957,6 @@
     {
       "type": 0,
       "value": "Code Postal. doit être un nombre"
-    }
-  ],
-  "dtgi/W": [
-    {
-      "type": 0,
-      "value": "L'e-mail est requis"
-    }
-  ],
-  "e38GOF": [
-    {
-      "type": 0,
-      "value": "Agréments"
     }
   ],
   "evTYb/": [
@@ -981,6 +993,12 @@
     {
       "type": 0,
       "value": "Sèche-cheveux"
+    }
+  ],
+  "h/KUaP": [
+    {
+      "type": 0,
+      "value": "Équipements de la chambre"
     }
   ],
   "h2KacN": [
@@ -1055,6 +1073,12 @@
       "value": "Changez votre mot de passe"
     }
   ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Sauvegarder"
+    }
+  ],
   "kDEHkT": [
     {
       "type": 0,
@@ -1065,12 +1089,6 @@
     {
       "type": 0,
       "value": "Réservé"
-    }
-  ],
-  "jvo0vs": [
-    {
-      "type": 0,
-      "value": "Sauvegarder"
     }
   ],
   "kTo0o2": [
@@ -1115,16 +1133,16 @@
       "value": "Téléphone : +91 2239879999 | Télécopie : +91 2239879600"
     }
   ],
-  "laUK3e": [
-    {
-      "type": 0,
-      "value": "Informations Complémentaires"
-    }
-  ],
   "lRJWXn": [
     {
       "type": 0,
       "value": "La première lettre du nom doit être majuscule et le nom doit être une chaîne"
+    }
+  ],
+  "laUK3e": [
+    {
+      "type": 0,
+      "value": "Informations Complémentaires"
     }
   ],
   "lhgV6Z": [
@@ -1151,6 +1169,12 @@
       "value": "Numéro de téléphone"
     }
   ],
+  "ng+41Q": [
+    {
+      "type": 0,
+      "value": "Prix ​​de la chambre"
+    }
+  ],
   "nsZqim": [
     {
       "type": 0,
@@ -1169,16 +1193,16 @@
       "value": "Télécharger une nouvelle photo"
     }
   ],
-  "oUWADl": [
-    {
-      "type": 0,
-      "value": "Non"
-    }
-  ],
   "oMYHHk": [
     {
       "type": 0,
       "value": "15h00"
+    }
+  ],
+  "oUWADl": [
+    {
+      "type": 0,
+      "value": "Non"
     }
   ],
   "ocaqXc": [
@@ -1307,6 +1331,12 @@
       "value": "Pays"
     }
   ],
+  "vmQF1b": [
+    {
+      "type": 0,
+      "value": "Nuit X"
+    }
+  ],
   "vuG8Qo": [
     {
       "type": 0,
@@ -1317,12 +1347,6 @@
     {
       "type": 0,
       "value": "Actions"
-    }
-  ],
-  "vmQF1b": [
-    {
-      "type": 0,
-      "value": "Nuit X"
     }
   ],
   "wNLUau": [
@@ -1397,7 +1421,6 @@
       "value": "Invité"
     }
   ],
-
   "zFG+sR": [
     {
       "type": 0,
@@ -1410,12 +1433,6 @@
       "value": "Contact"
     }
   ],
-  "zk9MMk": [
-    {
-      "type": 0,
-      "value": "Enregistré"
-    }
-  ],
   "zSOvI0": [
     {
       "type": 0,
@@ -1426,6 +1443,12 @@
     {
       "type": 0,
       "value": "Prix ​​de la chambre pour"
+    }
+  ],
+  "zk9MMk": [
+    {
+      "type": 0,
+      "value": "Enregistré"
     }
   ]
 }

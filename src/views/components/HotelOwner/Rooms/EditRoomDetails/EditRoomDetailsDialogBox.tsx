@@ -255,7 +255,7 @@ export default function EditRoomDetails({
               <Stack spacing={2}>
                 <TextField
                   variant="outlined"
-                  label={"Room Quantity"}
+                  label={<FormattedMessage defaultMessage="Room Quantity" />}
                   defaultValue={editRoom?.roomQuantity}
                   {...register("roomQuantity")}
                 />
@@ -372,7 +372,9 @@ export default function EditRoomDetails({
                   renderInput={(params: any) => (
                     <TextField
                       {...params}
-                      label="Room Amenities"
+                      label={
+                        <FormattedMessage defaultMessage="Room Amenities" />
+                      }
                       placeholder="Add Amenities"
                     />
                   )}
@@ -380,7 +382,7 @@ export default function EditRoomDetails({
                 {/* <FormHelperText>{errors.amenities}</FormHelperText> */}
                 <TextField
                   variant="outlined"
-                  label={"Room Price"}
+                  label={<FormattedMessage defaultMessage="Room Price" />}
                   defaultValue={editRoom.price}
                   {...register("price")}
                 />

@@ -41,16 +41,16 @@
       "value": "State:"
     }
   ],
-  "0C1YbO": [
-    {
-      "type": 0,
-      "value": "Select at least one amenity"
-    }
-  ],
   "00/IyC": [
     {
       "type": 0,
       "value": "Night"
+    }
+  ],
+  "0C1YbO": [
+    {
+      "type": 0,
+      "value": "Select at least one amenity"
     }
   ],
   "0xWUYr": [
@@ -179,6 +179,12 @@
       "value": "Room Images"
     }
   ],
+  "5A6hoi": [
+    {
+      "type": 0,
+      "value": "Room Quantity"
+    }
+  ],
   "5GxMk2": [
     {
       "type": 0,
@@ -189,6 +195,12 @@
     {
       "type": 0,
       "value": "Password"
+    }
+  ],
+  "6I+DHW": [
+    {
+      "type": 0,
+      "value": "Select price range"
     }
   ],
   "6lhgE5": [
@@ -209,12 +221,6 @@
       "value": "Owner Name -"
     }
   ],
-  "6I+DHW": [
-    {
-      "type": 0,
-      "value": "Select price range"
-    }
-  ],
   "7TFbhV": [
     {
       "type": 0,
@@ -227,16 +233,16 @@
       "value": "Room Description:"
     }
   ],
-  "8GH/al": [
-    {
-      "type": 0,
-      "value": "All Hotels"
-    }
-  ],
   "7tD4iU": [
     {
       "type": 0,
       "value": "Payable Amount"
+    }
+  ],
+  "8GH/al": [
+    {
+      "type": 0,
+      "value": "All Hotels"
     }
   ],
   "8uXS99": [
@@ -467,28 +473,28 @@
       "value": "Agree"
     }
   ],
-  "JyRQ6S": [
-    {
-      "type": 0,
-      "value": "Country:"
-    }
-  ],
-  "KGzfLt": [
-    {
-      "type": 0,
-      "value": "Removed"
-    }
-  ],
   "J+S/E8": [
     {
       "type": 0,
       "value": "Invalid Email"
     }
   ],
+  "JyRQ6S": [
+    {
+      "type": 0,
+      "value": "Country:"
+    }
+  ],
   "K3r6DQ": [
     {
       "type": 0,
       "value": "Delete"
+    }
+  ],
+  "KGzfLt": [
+    {
+      "type": 0,
+      "value": "Removed"
     }
   ],
   "KkDJ/P": [
@@ -521,16 +527,16 @@
       "value": "Requests"
     }
   ],
-  "NIVTxd": [
-    {
-      "type": 0,
-      "value": "Guests"
-    }
-  ],
   "N4ReBT": [
     {
       "type": 0,
       "value": "View Details"
+    }
+  ],
+  "NIVTxd": [
+    {
+      "type": 0,
+      "value": "Guests"
     }
   ],
   "NQgbYA": [
@@ -617,16 +623,16 @@
       "value": "Change Password"
     }
   ],
-  "RLXaEm": [
-    {
-      "type": 0,
-      "value": "Edit Room Details"
-    }
-  ],
   "QwDSj/": [
     {
       "type": 0,
       "value": "Min length should be 10"
+    }
+  ],
+  "RLXaEm": [
+    {
+      "type": 0,
+      "value": "Edit Room Details"
     }
   ],
   "Rtrei/": [
@@ -653,16 +659,16 @@
       "value": "This field is required"
     }
   ],
-  "TZacpB": [
-    {
-      "type": 0,
-      "value": "In-room safe"
-    }
-  ],
   "TWTu/9": [
     {
       "type": 0,
       "value": "Credit Card Guarantee Required"
+    }
+  ],
+  "TZacpB": [
+    {
+      "type": 0,
+      "value": "In-room safe"
     }
   ],
   "U41zpQ": [
@@ -737,16 +743,16 @@
       "value": "Check-in"
     }
   ],
-  "XEotoJ": [
-    {
-      "type": 0,
-      "value": "Check in"
-    }
-  ],
   "X7IMRK": [
     {
       "type": 0,
       "value": "Check-In"
+    }
+  ],
+  "XEotoJ": [
+    {
+      "type": 0,
+      "value": "Check in"
     }
   ],
   "Y2s5iu": [
@@ -767,18 +773,6 @@
       "value": "Room Highlights"
     }
   ],
-  "Yx6py4": [
-    {
-      "type": 0,
-      "value": "Payment Status"
-    }
-  ],
-  "ZT1AQD": [
-    {
-      "type": 0,
-      "value": "Disagree"
-    }
-  ],
   "Yg9wZZ": [
     {
       "type": 0,
@@ -789,6 +783,18 @@
     {
       "type": 0,
       "value": "Avg/Night"
+    }
+  ],
+  "Yx6py4": [
+    {
+      "type": 0,
+      "value": "Payment Status"
+    }
+  ],
+  "ZT1AQD": [
+    {
+      "type": 0,
+      "value": "Disagree"
     }
   ],
   "ZmsB1S": [
@@ -833,16 +839,16 @@
       "value": "More Destinations.More Ease. More Affordable."
     }
   ],
-  "dfXq0N": [
-    {
-      "type": 0,
-      "value": "Text in a child modal"
-    }
-  ],
   "dM+p3/": [
     {
       "type": 0,
       "value": "From"
+    }
+  ],
+  "dfXq0N": [
+    {
+      "type": 0,
+      "value": "Text in a child modal"
     }
   ],
   "dmGKS5": [
@@ -863,6 +869,18 @@
       "value": "Hotel Name"
     }
   ],
+  "dtgi/W": [
+    {
+      "type": 0,
+      "value": "Email is Required"
+    }
+  ],
+  "e38GOF": [
+    {
+      "type": 0,
+      "value": "Amenities"
+    }
+  ],
   "eECf2y": [
     {
       "type": 0,
@@ -879,18 +897,6 @@
     {
       "type": 0,
       "value": "Postal Code. must be a number"
-    }
-  ],
-  "dtgi/W": [
-    {
-      "type": 0,
-      "value": "Email is Required"
-    }
-  ],
-  "e38GOF": [
-    {
-      "type": 0,
-      "value": "Amenities"
     }
   ],
   "evTYb/": [
@@ -927,6 +933,12 @@
     {
       "type": 0,
       "value": "Hair dryer"
+    }
+  ],
+  "h/KUaP": [
+    {
+      "type": 0,
+      "value": "Room Amenities"
     }
   ],
   "h2KacN": [
@@ -995,6 +1007,12 @@
       "value": "Change Your Password"
     }
   ],
+  "jvo0vs": [
+    {
+      "type": 0,
+      "value": "Save"
+    }
+  ],
   "kDEHkT": [
     {
       "type": 0,
@@ -1005,12 +1023,6 @@
     {
       "type": 0,
       "value": "Booked"
-    }
-  ],
-  "jvo0vs": [
-    {
-      "type": 0,
-      "value": "Save"
     }
   ],
   "kTo0o2": [
@@ -1043,16 +1055,16 @@
       "value": "Type is required"
     }
   ],
-  "laUK3e": [
-    {
-      "type": 0,
-      "value": "Additional Information"
-    }
-  ],
   "lRJWXn": [
     {
       "type": 0,
       "value": "First Letter of name should be capital and name should be string"
+    }
+  ],
+  "laUK3e": [
+    {
+      "type": 0,
+      "value": "Additional Information"
     }
   ],
   "lhgV6Z": [
@@ -1079,6 +1091,12 @@
       "value": "Phone Number"
     }
   ],
+  "ng+41Q": [
+    {
+      "type": 0,
+      "value": "Room Price"
+    }
+  ],
   "nsZqim": [
     {
       "type": 0,
@@ -1097,16 +1115,16 @@
       "value": "Upload New Photo"
     }
   ],
-  "oUWADl": [
-    {
-      "type": 0,
-      "value": "No"
-    }
-  ],
   "oMYHHk": [
     {
       "type": 0,
       "value": "03:00 PM"
+    }
+  ],
+  "oUWADl": [
+    {
+      "type": 0,
+      "value": "No"
     }
   ],
   "ocaqXc": [
@@ -1229,6 +1247,12 @@
       "value": "Country"
     }
   ],
+  "vmQF1b": [
+    {
+      "type": 0,
+      "value": "Night X"
+    }
+  ],
   "vuG8Qo": [
     {
       "type": 0,
@@ -1239,12 +1263,6 @@
     {
       "type": 0,
       "value": "Actions"
-    }
-  ],
-  "vmQF1b": [
-    {
-      "type": 0,
-      "value": "Night X"
     }
   ],
   "wNLUau": [
@@ -1307,7 +1325,6 @@
       "value": "24-hour room service"
     }
   ],
-
   "zF7Cth": [
     {
       "type": 0,
@@ -1326,12 +1343,6 @@
       "value": "Contact"
     }
   ],
-  "zk9MMk": [
-    {
-      "type": 0,
-      "value": "Checked In"
-    }
-  ],
   "zSOvI0": [
     {
       "type": 0,
@@ -1342,6 +1353,12 @@
     {
       "type": 0,
       "value": "Room price for"
+    }
+  ],
+  "zk9MMk": [
+    {
+      "type": 0,
+      "value": "Checked In"
     }
   ]
 }
