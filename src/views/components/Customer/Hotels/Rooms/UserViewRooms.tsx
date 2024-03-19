@@ -12,10 +12,11 @@ import { useNavigate } from "react-router-dom";
 import UseRoomAndGuestQuantity from "../../../../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { roomDetails } from "../../../redux/user/userSlice";
 import { Theme, useTheme } from "@emotion/react";
 import { FormattedMessage } from "react-intl";
+
 function RoomImageSlider({ images }: any) {
   const theme = useTheme();
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -81,6 +82,7 @@ function RoomImageSlider({ images }: any) {
 }
 
 function UserViewRooms({ hotels }: any) {
+  const lang = useSelector((state: any) => state?.userReducer?.locale);
   const { TotalRooms } = UseRoomAndGuestQuantity();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -128,7 +130,7 @@ function UserViewRooms({ hotels }: any) {
                   textAlign={"justify"}
                 >
                   <Typography fontWeight={"bold"} fontSize={18}>
-                  <FormattedMessage defaultMessage="Room Description"/>       
+                    <FormattedMessage defaultMessage="Room Description" />
                   </Typography>
                   <Box
                     dangerouslySetInnerHTML={{
@@ -141,7 +143,7 @@ function UserViewRooms({ hotels }: any) {
               <div style={{ border: "1px solid lightgray" }}></div>
               <Stack width={"50%"} justifyContent={"space-between"}>
                 <Typography fontWeight={"bold"} fontSize={18}>
-                <FormattedMessage defaultMessage="Hotel Amenities"/>        
+                  <FormattedMessage defaultMessage="Hotel Amenities" />
                 </Typography>
                 <Stack
                   gap={2}
@@ -161,13 +163,19 @@ function UserViewRooms({ hotels }: any) {
                 <Stack direction={"row"} spacing={2}>
                   <Stack direction={"column"} padding={1}>
                     <Typography sx={{ fontWeight: 300, fontSize: 12 }}>
-                    <FormattedMessage defaultMessage="From"/>       
+                      <FormattedMessage defaultMessage="From" />
                     </Typography>
-                    <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
-                      ₹{item?.price}
-                    </Typography>
+                    {lang === "en" ? (
+                      <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
+                        ₹{item?.price}
+                      </Typography>
+                    ) : (
+                      <Typography sx={{ fontWeight: "bold", fontSize: 30 }}>
+                        €{(item?.price / 90).toFixed(1)}
+                      </Typography>
+                    )}
                     <Typography sx={{ fontSize: 13, color: "gray" }}>
-                    <FormattedMessage defaultMessage="Avg/Night"/>        
+                      <FormattedMessage defaultMessage="Avg/Night" />
                     </Typography>
                   </Stack>
                   <Stack
@@ -178,19 +186,21 @@ function UserViewRooms({ hotels }: any) {
                   >
                     <Stack>
                       <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>
-                      <FormattedMessage defaultMessage="Cancelation Policy"/>         
+                        <FormattedMessage defaultMessage="Cancelation Policy" />
                       </Typography>
                       <Typography sx={{ fontSize: 12 }}>
-                      <FormattedMessage defaultMessage="11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night
-                        Fee /Credit Card Required"/>      
+                        <FormattedMessage
+                          defaultMessage="11:59pm Hotel Time 2 Days Before Arrival Or Pay 1 Night
+                        Fee /Credit Card Required"
+                        />
                       </Typography>
                     </Stack>
                     <Stack>
                       <Typography sx={{ fontWeight: "bold", fontSize: 14 }}>
-                      <FormattedMessage defaultMessage=" Deposit Policy"/>      
+                        <FormattedMessage defaultMessage=" Deposit Policy" />
                       </Typography>
                       <Typography sx={{ fontSize: 12 }}>
-                      <FormattedMessage defaultMessage="Credit Card Guarantee Required"/>      
+                        <FormattedMessage defaultMessage="Credit Card Guarantee Required" />
                       </Typography>
                     </Stack>
                   </Stack>
@@ -214,9 +224,11 @@ function UserViewRooms({ hotels }: any) {
                   >
                     {item?.isAvailable === "false" ||
                     item?.roomQuantity === "0" ||
-                    TotalRooms.current > +item?.roomQuantity
-                      ? <FormattedMessage defaultMessage="Currently Unavailable"/>
-                      : <FormattedMessage defaultMessage="Book Now"/>}
+                    TotalRooms.current > +item?.roomQuantity ? (
+                      <FormattedMessage defaultMessage="Currently Unavailable" />
+                    ) : (
+                      <FormattedMessage defaultMessage="Book Now" />
+                    )}
                   </Button>
                 </Stack>
               </Stack>

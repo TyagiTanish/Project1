@@ -16,6 +16,7 @@ const BillingDetailsCard = ({
   startdate,
   enddate,
 }: any) => {
+  const lang = useSelector((state: any) => state?.userReducer?.locale);
   const data: any = localStorage.getItem("Date");
   const [difference, setDifference] = useState<any>(null);
   // const RoomsAndGuests: any = JSON.parse(
@@ -90,7 +91,9 @@ const BillingDetailsCard = ({
                 textAlign={"left"}
                 fontSize={"13px"}
                 fontWeight={"bolder"}
-              >{difference} <FormattedMessage defaultMessage="Night"/></Stack>
+              >
+                {difference} <FormattedMessage defaultMessage="Night" />
+              </Stack>
             </Stack>
           </Stack>
           <Stack width={90}>
@@ -115,8 +118,10 @@ const BillingDetailsCard = ({
             <CalendarMonthIcon style={{ marginRight: 4 }} />
             {startdate} -- {enddate}
             <Stack fontSize={{ sm: "small", md: "medium" }} ml={2}>
-              {totalRoomsAndGuests?.rooms} <FormattedMessage defaultMessage="Room"/> {totalRoomsAndGuests?.guests}
-              {" " }<FormattedMessage defaultMessage="Guest"/>
+              {totalRoomsAndGuests?.rooms}{" "}
+              <FormattedMessage defaultMessage="Room" />{" "}
+              {totalRoomsAndGuests?.guests}{" "}
+              <FormattedMessage defaultMessage="Guest" />
             </Stack>
           </Stack>
         </Stack>
@@ -131,16 +136,29 @@ const BillingDetailsCard = ({
               justifyContent={"space-between"}
               fontSize={{ sm: "small", md: "medium" }}
             >
-              <Box><FormattedMessage defaultMessage="Room price for 1 Night X 1 Room"/></Box>{" "}
               <Box>
-                <Stack direction={"row"} alignItems={"center"}>
-                  <CurrencyRupeeIcon
+                <FormattedMessage defaultMessage="Room price for 1 Night X 1 Room" />
+              </Box>{" "}
+              <Box>
+                {lang === "en" ? (
+                  <Stack direction={"row"} alignItems={"center"}>
+                    <CurrencyRupeeIcon
+                      sx={{
+                        fontSize: { sm: "small", md: "medium", lg: "large" },
+                      }}
+                    />
+                    {roomDetails?.price}
+                  </Stack>
+                ) : (
+                  <Stack direction={"row"} alignItems={"center"}>
+                    {/* <CurrencyRupeeIcon
                     sx={{
                       fontSize: { sm: "small", md: "medium", lg: "large" },
                     }}
-                  />
-                  {roomDetails?.price}
-                </Stack>
+                  /> */}
+                    €{(roomDetails?.price / 90).toFixed(1)}
+                  </Stack>
+                )}
               </Box>
             </Stack>
 
@@ -149,24 +167,49 @@ const BillingDetailsCard = ({
               direction={"row"}
               justifyContent={"space-between"}
             >
-              <Box><FormattedMessage defaultMessage="Room price for"/>{" "}{difference} {" "}<FormattedMessage defaultMessage="Night X"/>  {" "} {
-                totalRoomsAndGuests?.rooms
-              } {" "} <FormattedMessage defaultMessage="Room"/>  </Box>
-              <Stack
-                fontSize={{ sm: "small", md: "medium" }}
-                // fontWeight={"bolder"}
-                alignItems={"center"}
-                direction={"row"}
-              >
-                <CurrencyRupeeIcon
+              <Box>
+                <FormattedMessage defaultMessage="Room price for" />{" "}
+                {difference} <FormattedMessage defaultMessage="Night X" />{" "}
+                {totalRoomsAndGuests?.rooms}{" "}
+                <FormattedMessage defaultMessage="Room" />{" "}
+              </Box>
+              {lang === "en" ? (
+                <Stack
+                  fontSize={{ sm: "small", md: "medium" }}
+                  // fontWeight={"bolder"}
+                  alignItems={"center"}
+                  direction={"row"}
+                >
+                  <CurrencyRupeeIcon
+                    sx={{
+                      fontSize: { sm: "small", md: "medium", lg: "large" },
+                    }}
+                  />
+                  {Number(roomDetails?.price) *
+                    Number(difference) *
+                    Number(totalRoomsAndGuests?.rooms)}
+                </Stack>
+              ) : (
+                <Stack
+                  fontSize={{ sm: "small", md: "medium" }}
+                  // fontWeight={"bolder"}
+                  alignItems={"center"}
+                  direction={"row"}
+                >
+                  {/* <CurrencyRupeeIcon
                   sx={{
                     fontSize: { sm: "small", md: "medium", lg: "large" },
                   }}
-                />
-                {Number(roomDetails?.price) *
-                  Number(difference) *
-                  Number(totalRoomsAndGuests?.rooms)}
-              </Stack>
+                /> */}
+                  €
+                  {(
+                    (Number(roomDetails?.price) *
+                      Number(difference) *
+                      Number(totalRoomsAndGuests?.rooms)) /
+                    90
+                  ).toFixed(1)}
+                </Stack>
+              )}
             </Stack>
           </Stack>
           <Divider sx={{ marginTop: 3 }} />
@@ -176,22 +219,42 @@ const BillingDetailsCard = ({
             mt={3}
             fontSize={{ sm: "small", md: "medium", lg: "large" }}
           >
-            <Stack fontWeight={"bolder"}><FormattedMessage defaultMessage="Payable Amount"/></Stack>
-            <Stack
-              direction={"row"}
-              fontWeight={"bolder"}
-              alignItems={"center"}
-            >
-              <CurrencyRupeeIcon
+            <Stack fontWeight={"bolder"}>
+              <FormattedMessage defaultMessage="Payable Amount" />
+            </Stack>
+            {lang === "en" ? (
+              <Stack
+                direction={"row"}
+                fontWeight={"bolder"}
+                alignItems={"center"}
+              >
+                <CurrencyRupeeIcon
+                  sx={{
+                    fontSize: { sm: "small", md: "medium", lg: "large" },
+                  }}
+                />
+                {/* {Number(roomDetails?.price) *
+                Number(difference?.days) *
+                Number(totalRoomsAndGuests?.rooms)} */}
+                {totalPrice}
+              </Stack>
+            ) : (
+              <Stack
+                direction={"row"}
+                fontWeight={"bolder"}
+                alignItems={"center"}
+              >
+                {/* <CurrencyRupeeIcon
                 sx={{
                   fontSize: { sm: "small", md: "medium", lg: "large" },
                 }}
-              />
-              {/* {Number(roomDetails?.price) *
+              /> */}
+                {/* {Number(roomDetails?.price) *
                 Number(difference?.days) *
                 Number(totalRoomsAndGuests?.rooms)} */}
-              {totalPrice}
-            </Stack>
+                €{(totalPrice / 90).toFixed(1)}
+              </Stack>
+            )}
           </Stack>
         </Stack>
       </CardContent>

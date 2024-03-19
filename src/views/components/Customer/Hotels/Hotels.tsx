@@ -98,6 +98,7 @@ function Hotels({ filteredData, screenSize }: any) {
     },
     [detailIndex]
   );
+  const lang = useSelector((state: any) => state?.userReducer?.locale);
   const setRedux = (id: any) => {
     dispatch(hotelId(id));
   };
@@ -128,7 +129,7 @@ function Hotels({ filteredData, screenSize }: any) {
                     sx={{ height: "30px" }}
                   >
                     <TuneIcon sx={{ mr: 1 }} />
-                  <FormattedMessage defaultMessage="Filters" />
+                    <FormattedMessage defaultMessage="Filters" />
                   </Button>
                   <Box>
                     <img
@@ -162,7 +163,8 @@ function Hotels({ filteredData, screenSize }: any) {
                       }}
                     >
                       {" "}
-                      <LocationOnIcon fontSize="small" />    <FormattedMessage defaultMessage="ViewMap" />
+                      <LocationOnIcon fontSize="small" />{" "}
+                      <FormattedMessage defaultMessage="ViewMap" />
                     </IconButton>
                   </Box>
                 </Stack>
@@ -323,18 +325,33 @@ function Hotels({ filteredData, screenSize }: any) {
                             <FormattedMessage defaultMessage=" View More" />
                           </Typography>
                         </Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { sm: "15px", lg: "18px", md: "15px" },
-                            opacity: 0.7,
-                          }}
-                        >
-                          ₹
-                          {item?.rooms[0]?.price
-                            ? item?.rooms[0]?.price
-                            : Math.floor(Math.random() * 10000)}
-                        </Typography>
+                        {lang === "en" ? (
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                              fontSize: { sm: "15px", lg: "18px", md: "15px" },
+                              opacity: 0.7,
+                            }}
+                          >
+                            ₹
+                            {item?.rooms[0]?.price
+                              ? item?.rooms[0]?.price
+                              : Math.floor(Math.random() * 10000)}
+                          </Typography>
+                        ) : (
+                          <Typography
+                            sx={{
+                              fontWeight: "bold",
+                              fontSize: { sm: "15px", lg: "18px", md: "15px" },
+                              opacity: 0.7,
+                            }}
+                          >
+                            €
+                            {item?.rooms[0]?.price
+                              ? (item?.rooms[0]?.price / 90).toFixed(1)
+                              : Math.floor(Math.random() * 10000)}
+                          </Typography>
+                        )}
                       </Stack>
                       <Stack spacing={1}>
                         <Chip
