@@ -8,16 +8,16 @@ import QuillEditor from "react-quill";
 
 import "react-quill/dist/quill.snow.css";
 
-const AddDiscription = ({ setContent, content }: any) => {
+const AddDiscription = ({ setContent, content ,addHotel}: any) => {
   // Editor state
   //   const [value, setValue] = useState();
 
   return (
-    <Box width={400} >
+    <Box width={addHotel ? 360 : 400}>
       <QuillEditor
         theme="snow"
         value={content}
-        onChange={(value) => {
+        onChange={(value:any) => {
           setContent(value);
           //   console.log(content);
         }}
