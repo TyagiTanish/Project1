@@ -12,14 +12,17 @@ import {
   Icon,
   IconButton,
 } from "@mui/material";
+import EuroIcon from "@mui/icons-material/Euro";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import BookingProgress from "./ProgressBar";
 import RecieptDialogBox from "../../HotelOwner/Rooms/Booking/RecieptDialogBox";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import LinearIndeterminate from "../../HotelOwner/Rooms/Booking/LoaderBeforeReciept";
 import { FormattedMessage } from "react-intl";
+import { useSelector } from "react-redux";
 
 function BookingDetails() {
+  const lang = useSelector((state: any) => state?.userReducer?.locale);
   const [data, setData] = React.useState<any>([]);
   const [open, setOpen] = React.useState(false);
   const [display, setDisplay] = useState<any>(null);
@@ -86,7 +89,7 @@ function BookingDetails() {
           ml={{ sm: -10 }}
           marginTop={0}
           overflow={"auto"}
-          height={680}
+          // height={680}
         >
           <Stack justifyContent={"flex-end"} direction={"row"}>
             <Tooltip title="View reciept" sx={{ cursor: "pointer" }}>
@@ -108,7 +111,7 @@ function BookingDetails() {
             alignItems={"center"}
           >
             <Typography sx={{ fontSize: 20, fontWeight: 600 }} mt={5}>
-            <FormattedMessage defaultMessage="Booking Id"/>    
+              <FormattedMessage defaultMessage="Booking Id" />
             </Typography>
             <span style={{ marginTop: 14, fontWeight: "bold" }}>
               {` Booked by ${data?.userId?.name} on ${
@@ -129,7 +132,8 @@ function BookingDetails() {
               >
                 <Stack>
                   <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 2 }}>
-                  <FormattedMessage defaultMessage="Super OYO "/>      {data?.hotelId?.hotelName}
+                    <FormattedMessage defaultMessage="Super OYO " />{" "}
+                    {data?.hotelId?.hotelName}
                   </Typography>
                   <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
                     {data?.hotelId?.hotelName}
@@ -151,7 +155,8 @@ function BookingDetails() {
             <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
               <Box>
                 <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 3 }}>
-                <FormattedMessage defaultMessage="Super OYO "/>  {data?.hotelId?.hotelName}
+                  <FormattedMessage defaultMessage="Super OYO " />{" "}
+                  {data?.hotelId?.hotelName}
                 </Typography>
                 <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
                   {data?.hotelId?.hotelName}
@@ -173,36 +178,53 @@ function BookingDetails() {
               <Stack mt={3}>
                 <Stack direction={"row"}>
                   <Stack>
-                    <Typography fontWeight={600}> <FormattedMessage defaultMessage="Primary Guest"/></Typography>
+                    <Typography fontWeight={600}>
+                      {" "}
+                      <FormattedMessage defaultMessage="Primary Guest" />
+                    </Typography>
                     <Typography>{data?.userId?.name}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography fontWeight={600}><FormattedMessage defaultMessage="Check In On"/></Typography>
+                    <Typography fontWeight={600}>
+                      <FormattedMessage defaultMessage="Check In On" />
+                    </Typography>
                     <Typography>{data?.bookFrom?.split("T")[0]}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography fontWeight={600}><FormattedMessage defaultMessage="Check In Time"/></Typography>
-                    <Typography><FormattedMessage defaultMessage="10:00 PM"/></Typography>
+                    <Typography fontWeight={600}>
+                      <FormattedMessage defaultMessage="Check In Time" />
+                    </Typography>
+                    <Typography>
+                      <FormattedMessage defaultMessage="10:00 PM" />
+                    </Typography>
                   </Stack>
                 </Stack>
                 <Stack direction={"row"} mt={3}>
                   <Stack>
-                    <Typography fontWeight={600}><FormattedMessage defaultMessage="Mobile Number"/></Typography>
+                    <Typography fontWeight={600}>
+                      <FormattedMessage defaultMessage="Mobile Number" />
+                    </Typography>
                     <Typography>{data?.userId?.phone}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography fontWeight={600}><FormattedMessage defaultMessage="Check Out"/></Typography>
+                    <Typography fontWeight={600}>
+                      <FormattedMessage defaultMessage="Check Out" />
+                    </Typography>
                     <Typography>{data?.bookTo?.split("T")[0]}</Typography>
                   </Stack>
                   <Stack>
-                    <Typography fontWeight={600}><FormattedMessage defaultMessage="Check Out Time"/></Typography>
-                    <Typography><FormattedMessage defaultMessage="11:00 AM"/></Typography>
+                    <Typography fontWeight={600}>
+                      <FormattedMessage defaultMessage="Check Out Time" />
+                    </Typography>
+                    <Typography>
+                      <FormattedMessage defaultMessage="11:00 AM" />
+                    </Typography>
                   </Stack>
                 </Stack>
               </Stack>
               <Stack minWidth={"30%"} mt={3}>
                 <Typography sx={{ fontSize: 24, fontWeight: 700 }}>
-                  {data?.totalDays} <FormattedMessage defaultMessage="Night"/>
+                  {data?.totalDays} <FormattedMessage defaultMessage="Night" />
                 </Typography>
                 <Stack
                   direction={"row"}
@@ -211,10 +233,15 @@ function BookingDetails() {
                   spacing={5}
                 >
                   <Typography sx={{ fontSize: 16 }}>
-                    {data?.totalGuests}  <FormattedMessage defaultMessage="Guests"/>
+                    {data?.totalGuests}{" "}
+                    <FormattedMessage defaultMessage="Guests" />
                   </Typography>
                   <Stack>
-                    <Typography> {data?.totalRooms}<FormattedMessage defaultMessage="Room"/> </Typography>
+                    <Typography>
+                      {" "}
+                      {data?.totalRooms}
+                      <FormattedMessage defaultMessage="Room" />{" "}
+                    </Typography>
                     {/* <Typography>Classic</Typography> */}
                   </Stack>
                 </Stack>
@@ -231,7 +258,7 @@ function BookingDetails() {
                 <Stack direction={"row"} justifyContent={"space-between"}>
                   <Stack>
                     <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
-                    <FormattedMessage defaultMessage="Primary Guest"/>   
+                      <FormattedMessage defaultMessage="Primary Guest" />
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.userId?.name}
@@ -239,7 +266,7 @@ function BookingDetails() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
-                    <FormattedMessage defaultMessage=" Check In On"/>   
+                      <FormattedMessage defaultMessage=" Check In On" />
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.bookFrom?.split("T")[0]}
@@ -247,9 +274,12 @@ function BookingDetails() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
-                    <FormattedMessage defaultMessage="Check In Time"/>      
+                      <FormattedMessage defaultMessage="Check In Time" />
                     </Typography>
-                    <Typography sx={{ fontSize: 15 }}>  <FormattedMessage defaultMessage="12:00 PM"/>     </Typography>
+                    <Typography sx={{ fontSize: 15 }}>
+                      {" "}
+                      <FormattedMessage defaultMessage="12:00 PM" />{" "}
+                    </Typography>
                   </Stack>
                 </Stack>
                 <Stack
@@ -259,7 +289,7 @@ function BookingDetails() {
                 >
                   <Stack>
                     <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
-                    <FormattedMessage defaultMessage="Mobile Number"/>    
+                      <FormattedMessage defaultMessage="Mobile Number" />
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.userId?.phone}
@@ -267,7 +297,7 @@ function BookingDetails() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
-                    <FormattedMessage defaultMessage="Check Out"/>       
+                      <FormattedMessage defaultMessage="Check Out" />
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>
                       {data?.bookTo?.split("T")[0]}
@@ -275,15 +305,18 @@ function BookingDetails() {
                   </Stack>
                   <Stack>
                     <Typography sx={{ fontSize: 15, fontWeight: 600 }}>
-                    <FormattedMessage defaultMessage="Check Out Time"/>          
+                      <FormattedMessage defaultMessage="Check Out Time" />
                     </Typography>
-                    <Typography sx={{ fontSize: 15 }}><FormattedMessage defaultMessage=" 11:00 AM"/>    </Typography>
+                    <Typography sx={{ fontSize: 15 }}>
+                      <FormattedMessage defaultMessage=" 11:00 AM" />{" "}
+                    </Typography>
                   </Stack>
                 </Stack>
               </Stack>
               <Stack>
                 <Typography sx={{ fontSize: 20, fontWeight: 700, ml: 6 }}>
-                  {data?.totalDays}<FormattedMessage defaultMessage="Night"/>  
+                  {data?.totalDays}
+                  <FormattedMessage defaultMessage="Night" />
                 </Typography>
                 <Stack
                   direction={"row"}
@@ -294,12 +327,14 @@ function BookingDetails() {
                 >
                   <Typography sx={{ fontSize: 13 }}>
                     {" "}
-                    {data?.totalGuests} <FormattedMessage defaultMessage="Guests"/> 
+                    {data?.totalGuests}{" "}
+                    <FormattedMessage defaultMessage="Guests" />
                   </Typography>
                   <Stack>
                     <Typography sx={{ fontSize: 14 }}>
                       {" "}
-                      {data?.totalRooms} <FormattedMessage defaultMessage="Room"/> 
+                      {data?.totalRooms}{" "}
+                      <FormattedMessage defaultMessage="Room" />
                     </Typography>
                     {/* <Typography>Classic</Typography> */}
                   </Stack>
@@ -307,26 +342,44 @@ function BookingDetails() {
               </Stack>
             </Stack>
           )}
-          <Typography mt={3}> <FormattedMessage defaultMessage=" Email Address"/></Typography>
+          <Typography mt={3}>
+            {" "}
+            <FormattedMessage defaultMessage=" Email Address" />
+          </Typography>
           <Typography>{data?.email}</Typography>
           <Divider sx={{ borderBottomWidth: 2.5, mt: 3 }} />
           <Typography sx={{ mt: 3, fontSize: 16, fontWeight: 700 }}>
-          <FormattedMessage defaultMessage="Payment Details"/>
+            <FormattedMessage defaultMessage="Payment Details" />
           </Typography>
           <Stack
             direction={"row"}
             justifyContent={"space-between"}
             sx={{ border: "1px solid lightgray", p: 2, mt: 3 }}
           >
-            <Typography fontWeight={"bolder"}>  <FormattedMessage defaultMessage="Total Amount
-            "/></Typography>
+            <Typography fontWeight={"bolder"}>
+              {" "}
+              <FormattedMessage
+                defaultMessage="Total Amount
+            "
+              />
+            </Typography>
             <Stack direction={"row"} spacing={2} alignItems={"center"}>
-              <Stack direction={"row"} alignItems={"center"}>
-                <CurrencyRupeeIcon fontSize="small" />
-                <Typography fontWeight={"bolder"} fontSize={"20px"}>
-                  {data?.price}
-                </Typography>
-              </Stack>
+              {lang === "en" ? (
+                <Stack direction={"row"} alignItems={"center"}>
+                  <CurrencyRupeeIcon fontSize="small" />
+                  <Typography fontWeight={"bolder"} fontSize={"20px"}>
+                    {data?.price}
+                  </Typography>
+                </Stack>
+              ) : (
+                <Stack direction={"row"} alignItems={"center"}>
+                  <EuroIcon fontSize="small" />
+
+                  <Typography fontWeight={"bolder"} fontSize={"20px"}>
+                    {(data?.price / 90).toFixed(1)}
+                  </Typography>
+                </Stack>
+              )}
               <Chip
                 color={data?.paymentStatus === "unpaid" ? "error" : "success"}
                 // fontSize={"small"}
