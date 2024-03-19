@@ -110,9 +110,23 @@ export default function HotelOwnerView() {
   const [open2, setOpen2] = React.useState(false);
   const navigate = useNavigate();
 
-  const [selectedIndex, setSelectedIndex] = React.useState(0);
+  const [selectedIndex, setSelectedIndex] = React.useState<any>(0);
   const [screenSize, setScreenSize] = React.useState<any>(window.outerWidth);
-
+  React.useEffect(() => {
+    if (window.location.href === "http://localhost:3000/member") {
+      setSelectedIndex(0);
+    } else if (window.location.href === "http://localhost:3000/member/hotels") {
+      setSelectedIndex(1);
+    } else if (
+      window.location.href === "http://localhost:3000/member/bookings"
+    ) {
+      setSelectedIndex(2);
+    } else if (
+      window.location.href === "http://localhost:3000/member/acceptedBookings"
+    ) {
+      setSelectedIndex(3);
+    }
+  }, [window.location.href]);
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
     const handleWindowSize = () => {
@@ -139,12 +153,12 @@ export default function HotelOwnerView() {
     }
   };
 
-  const handleListItemClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    index: number
-  ) => {
-    setSelectedIndex(index);
-  };
+  // const handleListItemClick = (
+  //   event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+  //   index: number
+  // ) => {
+  //   // setSelectedIndex(index);
+  // };
 
   return (
     <>
@@ -238,7 +252,7 @@ export default function HotelOwnerView() {
                 }}
                 // selected={selectedIndex === 0}
                 onClick={(event) => {
-                  handleListItemClick(event, 0);
+                  // handleListItemClick(event, 0);
                   navigate("/member");
                 }}
               >
@@ -278,7 +292,7 @@ export default function HotelOwnerView() {
                 }}
                 // selected={selectedIndex === 1}
                 onClick={(event) => {
-                  handleListItemClick(event, 1);
+                  // handleListItemClick(event, 1);
                   navigate("/member/hotels");
                 }}
                 // onClick={() => navigate("/member/hotels")}
@@ -319,7 +333,7 @@ export default function HotelOwnerView() {
                 }}
                 // selected={selectedIndex === 2}
                 onClick={(event) => {
-                  handleListItemClick(event, 2);
+                  // handleListItemClick(event, 2);
                   navigate("/member/bookings");
                 }}
                 // onClick={() => navigate("/member/bookings")}
@@ -360,7 +374,7 @@ export default function HotelOwnerView() {
                 }}
                 // selected={selectedIndex === 3}
                 onClick={(event) => {
-                  handleListItemClick(event, 3);
+                  // handleListItemClick(event, 3);
                   navigate("/member/acceptedBookings");
                 }}
                 // onClick={() => navigate("/member/acceptedBookings")}
