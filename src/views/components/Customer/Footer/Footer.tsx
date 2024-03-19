@@ -11,10 +11,12 @@ import PlayStoreLogo from "../../../../assets/PlayStoreLogo";
 import AppStoreLogo from "../../../../assets/AppStoreLogo";
 import OyoLogo from "../../../../assets/OyoLogo";
 import { useNavigate } from "react-router-dom";
-import { useIntl, FormattedMessage } from "react-intl";
+import {FormattedMessage } from "react-intl";
+import { useSelector } from "react-redux";
 
 function Footer() {
   const navigate = useNavigate();
+  const user = useSelector((state: any) => state.userReducer.user);
   return (
     <Box
       sx={{
@@ -71,7 +73,24 @@ function Footer() {
             <FormattedMessage
               defaultMessage={"Join our network and grow your business!"}
             />
-            <Button
+            {user ?    <Button
+              sx={{
+                color: "#616161",
+                textTransform: "none",
+                background: "white",
+                ml: 2,
+                fontWeight: 700,
+                fontSize: { xl: 15, md: 12, sm: 8 },
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              onClick={() => {
+                navigate("/AddHotel");
+              }}
+            >
+              <FormattedMessage defaultMessage={" List Your Property"} />
+            </Button> :    <Button
               sx={{
                 color: "#616161",
                 textTransform: "none",
@@ -88,7 +107,25 @@ function Footer() {
               }}
             >
               <FormattedMessage defaultMessage={" List Your Property"} />
-            </Button>
+            </Button>}
+            {/* <Button
+              sx={{
+                color: "#616161",
+                textTransform: "none",
+                background: "white",
+                ml: 2,
+                fontWeight: 700,
+                fontSize: { xl: 15, md: 12, sm: 8 },
+                "&:hover": {
+                  backgroundColor: "white",
+                },
+              }}
+              onClick={() => {
+                navigate("/memberRegister");
+              }}
+            >
+              <FormattedMessage defaultMessage={" List Your Property"} />
+            </Button> */}
           </Box>
         </Box>
       </Box>

@@ -680,7 +680,7 @@
   "Q/7RZn": {
     "defaultMessage": "Prix ​​de la chambre pour 1 Nuit X 1 Chambre"
   },
-<<<<<<< Updated upstream
+
   "dtgi/W": {
     "defaultMessage": "L'e-mail est requis"
   },
@@ -726,8 +726,8 @@
   "ng+41Q": {
     "defaultMessage": "Prix ​​de la chambre"
   },
-=======
-<<<<<<< Updated upstream
+
+
   "dtgi/W": { "defaultMessage": "L'e-mail est requis" },
   "00/IyC": { "defaultMessage": "Nuit" },
   "2Ml/7i": { "defaultMessage": "Chambre" },
@@ -740,11 +740,9 @@
   "kTo0o2": { "defaultMessage": "Suite" },
   "ocaqXc": { "defaultMessage": "De luxe" },
   "zSOvI0": { "defaultMessage": "Filtres" },
-<<<<<<< Updated upstream
   "5A6hoi": { "defaultMessage": "Quantité de chambre" },
   "h/KUaP": { "defaultMessage": "Équipements de la chambre" },
-  "ng+41Q": { "defaultMessage": "Prix ​​de la chambre" }
-=======
+  "ng+41Q": { "defaultMessage": "Prix ​​de la chambre" },
   "7lsiX8":{"defaultMessage":"Plus de 157 000 hôtels et résidences dans 35 pays"},
   "+Y705c":{"defaultMessage":"Faire cette réservation pour quelqu'un d'autre"},
   "1SphRN":{"defaultMessage":"Pas de téléphone."},
@@ -794,11 +792,9 @@
   "wl5cm4":{"defaultMessage":"Book Now"},
   "xxQxLE":{"defaultMessage":"Email Address"},
   "yrx0I+":{"defaultMessage":"Booking Id"},
-  "zNb4yX":{"defaultMessage":"Payment Status-"}
->>>>>>> Stashed changes
-}
-=======
->>>>>>> Stashed changes
+  "zNb4yX":{"defaultMessage":"Payment Status-"},
+
+
   "dtgi/W": {
     "defaultMessage": "L'e-mail est requis"
   },
@@ -1011,5 +1007,6 @@
   },
   "yGJ420": {
     "defaultMessage": "Le code postal est requis"
-  }
+  },
+  "NhX4DJ":{"defaultMessage":"Bonjour"}
 }
