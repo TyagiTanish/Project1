@@ -18,7 +18,7 @@ import {
   Typography,
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import React, { useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useState } from "react";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import Chip from "@mui/material/Chip";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
@@ -31,6 +31,7 @@ import Autocomplete from "@mui/material/Autocomplete";
 import AddDiscription from "../HotelOwner/Rooms/RoomDetails/AddDiscription";
 import { useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
+import { FormattedMessage, useIntl } from "react-intl";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -64,6 +65,7 @@ const highlights = [
   { Highlight: "Extra bed upon request" },
 ];
 function AddRooms({ setRender, showCategories }: any) {
+  const intl = useIntl();
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -115,13 +117,31 @@ function AddRooms({ setRender, showCategories }: any) {
     roomQuantity: string;
     price: string;
     roomHighlight?: any[];
+    type: string;
   }
   const FormSchema = Yup.object().shape({
-    roomQuantity: Yup.string().required("Room Number is required"),
+    roomQuantity: Yup.string().required(
+      intl.formatMessage({ defaultMessage: "Room Number is required" })
+    ),
     price: Yup.string()
-      .required("Price is required!")
-      .min(3, "Should be above 1k"),
-    roomHighlight: Yup.array(),
+      .required(intl.formatMessage({ defaultMessage: "Price is required!" }))
+      .min(3, intl.formatMessage({ defaultMessage: "Should be above 1k" })),
+    // roomHighlight: Yup.array()
+    //   .required(
+    //     intl.formatMessage({ defaultMessage: "Room highlight is required" })
+    //   )
+    //   .min(
+    //     1,
+    //     intl.formatMessage({
+    //       defaultMessage: "Room highlight must have at least 1 item",
+    //     })
+    //   ),
+    type: Yup.string().required(
+      intl.formatMessage({ defaultMessage: "Room type is required" })
+    ),
+    // discription: Yup.string().required(
+    //   intl.formatMessage({ defaultMessage: "Discription is required" })
+    // ),
   });
 
   const {
@@ -177,7 +197,7 @@ function AddRooms({ setRender, showCategories }: any) {
         color="error"
         sx={{ float: "right", width: 150 }}
       >
-        Add Room +
+        <FormattedMessage defaultMessage={"Add Room +"} />
       </Button>
       <Modal
         open={open}
@@ -207,7 +227,7 @@ function AddRooms({ setRender, showCategories }: any) {
                     // mb: 4,
                   }}
                 >
-                  Add Rooms
+                  <FormattedMessage defaultMessage={"Add Rooms"} />
                 </Box>
                 <IconButton
                   sx={{ mr: -10, mt: { xl: -6, md: -4 } }}
@@ -220,14 +240,14 @@ function AddRooms({ setRender, showCategories }: any) {
                 <Box>
                   <FormControl sx={{ width: 235 }}>
                     <Typography sx={{ fontWeight: "bold" }}>
-                      Type of Room
+                      <FormattedMessage defaultMessage={"Type of Room"} />
                     </Typography>
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
                       value={type}
                       // label="type"
-
+                      {...register("type")}
                       sx={{ width: 400, mb: 2 }}
                       onChange={handleChange}
                     >
@@ -236,9 +256,12 @@ function AddRooms({ setRender, showCategories }: any) {
                       ))}
                     </Select>
                   </FormControl>
+                  <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                    {errors?.type?.message}
+                  </FormHelperText>
                 </Box>
                 <Typography sx={{ fontWeight: "bold" }}>
-                  Room Quantity
+                  <FormattedMessage defaultMessage={"Room Quantity"} />
                 </Typography>
                 <TextField
                   id="outlined-basic"
@@ -249,7 +272,9 @@ function AddRooms({ setRender, showCategories }: any) {
                 <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
                   {errors.roomQuantity?.message}
                 </FormHelperText>
-                <Typography sx={{ fontWeight: "bold" }}>Price</Typography>
+                <Typography sx={{ fontWeight: "bold" }}>
+                  <FormattedMessage defaultMessage={"Price"} />
+                </Typography>
                 <TextField
                   id="outlined-basic"
                   variant="outlined"
@@ -271,13 +296,14 @@ function AddRooms({ setRender, showCategories }: any) {
                   {errors.price?.message}
                 </FormHelperText>
                 <Typography sx={{ fontWeight: "bold", mt: 2 }}>
-                  Room Highlights
+                  <FormattedMessage defaultMessage={"Room Highlights"} />
                 </Typography>
                 <Autocomplete
                   sx={{ mb: 2 }}
                   multiple
                   id="tags-filled"
                   options={highlights.map((item) => item.Highlight)}
+                  // {...register("roomHighlight")}
                   // defaultValue={[highlights[0].Highlight]}
                   freeSolo
                   onChange={(event, value) => setRoomHighlight(value)}
@@ -299,20 +325,27 @@ function AddRooms({ setRender, showCategories }: any) {
                     />
                   )}
                 />
-                <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                {/* <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
                   {errors.roomHighlight?.message}
-                </FormHelperText>
+                </FormHelperText> */}
                 <Typography sx={{ fontWeight: "bold", mt: 3 }}>
-                  Add Room Discription
+                  <FormattedMessage defaultMessage={"Add Room Discription"} />
                 </Typography>
                 <Stack width={"125%"}>
-                  <AddDiscription setContent={setContent} content={content} />
+                  <AddDiscription
+                    setContent={setContent}
+                    content={content}
+                    // {...register("discription")}
+                  />
                 </Stack>
+                {/* <FormHelperText sx={{ color: "#EE2A24" }}>
+                  {errors.discription?.message}
+                </FormHelperText> */}
                 <Typography sx={{ fontWeight: "bold", mt: 1 }}>
-                  Add Room Photos
+                  <FormattedMessage defaultMessage={"Add Room Photos"} />
                 </Typography>
                 <Typography sx={{ fontSize: "10px" }}>
-                  Upload 4 photos
+                  <FormattedMessage defaultMessage={"Upload 4 photos"} />
                 </Typography>
                 <div
                   style={{
@@ -339,7 +372,9 @@ function AddRooms({ setRender, showCategories }: any) {
                             <Typography sx={{}}>
                               <AddAPhotoIcon fontSize="small" />
                               <Typography sx={{ fontSize: "10px" }}>
-                                Add Room photos
+                                <FormattedMessage
+                                  defaultMessage={"Add Room photos"}
+                                />
                               </Typography>
                             </Typography>
                           </IconButton>
@@ -407,7 +442,9 @@ function AddRooms({ setRender, showCategories }: any) {
                           <Typography>
                             <AddAPhotoIcon fontSize="small" />
                             <Typography sx={{ fontSize: "10px" }}>
-                              Add Room photos
+                              <FormattedMessage
+                                defaultMessage={"Add Room photos"}
+                              />
                             </Typography>
                           </Typography>
                         </IconButton>
@@ -431,7 +468,7 @@ function AddRooms({ setRender, showCategories }: any) {
                     }}
                     type="submit"
                   >
-                    Submit
+                    <FormattedMessage defaultMessage={"Submit"} />
                   </Button>
                 ) : (
                   <>
@@ -445,7 +482,7 @@ function AddRooms({ setRender, showCategories }: any) {
                       }}
                       type="submit"
                     >
-                      Submit
+                      <FormattedMessage defaultMessage={"Submit"} />
                     </Button>
                   </>
                 )}
