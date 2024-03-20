@@ -12,6 +12,8 @@ const CustomerView = () => {
   const URL = useParams();
   const [url, setUrl] = useState<any>(URL);
   const [screenSize, setScreenSize] = useState(window?.innerWidth);
+  const params = useParams();
+  console.log(params);
 
   // useEffect(() => {
   //   console.log(URL);
@@ -50,6 +52,8 @@ const CustomerView = () => {
             alignItems={"center"}
           >
             {window.location.href === "http://localhost:3000/" ||
+            window?.location?.href ===
+              `http://localhost:3000/profile/myBookings/${params?.id}` ||
             window?.location?.href ===
               "http://localhost:3000/profile/accountSetting" ||
             window?.location?.href ===

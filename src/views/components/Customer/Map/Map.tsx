@@ -12,7 +12,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       "pk.eyJ1IjoidGFuaXNoLXR5YWdpIiwiYSI6ImNscmV0YWJmcTFocmoybHFpZDQ3dHFkdzMifQ.szsjsVkaiJpDsGUe7LR_4A";
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/satellite-streets-v12",
       center: [
         filteredData[0]?.location?.longitude || 76.779419,
         filteredData[0]?.location?.latitude || 30.733315,
