@@ -17,14 +17,12 @@
       "value": "Inscrivez votre propriété"
     }
   ],
-
   "+Y705c": [
     {
       "type": 0,
       "value": "Faire cette réservation pour quelqu'un d'autre"
     }
   ],
-
   "+qRNso": [
     {
       "type": 0,
@@ -35,12 +33,6 @@
     {
       "type": 0,
       "value": "Montant"
-    }],
-  "+Y705c": [
-    {
-      "type": 0,
-      "value": "Faire cette réservation pour quelqu'un d'autre"
-
     }
   ],
   "/28JSA": [
@@ -97,14 +89,12 @@
       "value": "Pool"
     }
   ],
-
   "1SphRN": [
     {
       "type": 0,
       "value": "Pas de téléphone."
     }
   ],
-
   "1gnJ3b": [
     {
       "type": 0,
@@ -121,12 +111,6 @@
     {
       "type": 0,
       "value": "Hôtels à Oyo"
-    }],
-  "1SphRN": [
-    {
-      "type": 0,
-      "value": "Pas de téléphone."
-
     }
   ],
   "1umnAX": [
@@ -339,23 +323,22 @@
       "value": "Le nom du propriétaire-"
     }
   ],
+  "7SODD1": [
+    {
+      "type": 0,
+      "value": "Room type is required"
+    }
+  ],
   "7TFbhV": [
     {
       "type": 0,
       "value": "Ajouter l'emplacement de l'hôtel"
     }
   ],
-
   "7dr1md": [
     {
       "type": 0,
       "value": "Description de la pièce:"
-    }],
-  "7lsiX8": [
-    {
-      "type": 0,
-      "value": "Plus de 157 000 hôtels et résidences dans 35 pays"
-
     }
   ],
   "7lsiX8": [
@@ -454,7 +437,6 @@
       "value": "Aperçu"
     }
   ],
-
   "A+BGBs": [
     {
       "type": 0,
@@ -489,12 +471,6 @@
     {
       "type": 0,
       "value": "Entrez vos informations personnelles...."
-    }],
-  "AK1Eri": [
-    {
-      "type": 0,
-      "value": "En procédant à cette réservation, j'accepte les conditions d'utilisation et la politique de confidentialité d'OYO."
-
     }
   ],
   "AyGauy": [
@@ -563,7 +539,6 @@
       "value": "Jagadhri"
     }
   ],
-
   "CKG2zT": [
     {
       "type": 0,
@@ -586,18 +561,6 @@
     {
       "type": 0,
       "value": "Réception"
-    }],
-  "DX9QSt": [
-    {
-      "type": 0,
-      "value": "Entrez votre nom"
-    }
-  ],
-  "DrySlw": [
-    {
-      "type": 0,
-      "value": "Recherche par ville, hôtel ou état"
-
     }
   ],
   "DrySlw": [
@@ -708,7 +671,6 @@
       "value": "Il existe un moyen plus intelligent de OYO"
     }
   ],
-
   "HOmXxw": [
     {
       "type": 0,
@@ -725,12 +687,6 @@
     {
       "type": 0,
       "value": "Hôtel OYO Royaume-Uni"
-    }],
-  "HRU6eg": [
-    {
-      "type": 0,
-      "value": "Prénom *"
-
     }
   ],
   "HfAXbq": [
@@ -811,14 +767,12 @@
       "value": "Supprimer"
     }
   ],
-
   "KAneyV": [
     {
       "type": 0,
       "value": "Informations client"
     }
   ],
-
   "KGzfLt": [
     {
       "type": 0,
@@ -831,21 +785,6 @@
       "value": "La cyber-sécurité"
     }
   ],
-
-
-  "KGzfLt": [
-    {
-      "type": 0,
-      "value": "Supprimé"
-    }],
-  "KAneyV": [
-    {
-      "type": 0,
-      "value": "Informations client"
-
-    }
-  ],
-
   "KkDJ/P": [
     {
       "type": 0,
@@ -870,7 +809,6 @@
       "value": "télécharger"
     }
   ],
-
   "Lg2qOQ": [
     {
       "type": 0,
@@ -899,12 +837,18 @@
     {
       "type": 0,
       "value": "Demandes"
-    }],
-  "Lm91r/": [
+    }
+  ],
+  "MWAiJK": [
     {
       "type": 0,
-      "value": "Nom de l'invité"
-
+      "value": "Add Room Discription"
+    }
+  ],
+  "N/NQ2z": [
+    {
+      "type": 0,
+      "value": "Upload 4 photos"
     }
   ],
   "N4ReBT": [
@@ -967,7 +911,6 @@
       "value": "Bombay"
     }
   ],
-
   "OsXwrh": [
     {
       "type": 0,
@@ -1002,12 +945,12 @@
     {
       "type": 0,
       "value": "Disponible"
-    }],
-  "OtuYup": [
+    }
+  ],
+  "Pm50Iy": [
     {
       "type": 0,
-      "value": "E-mail *"
-
+      "value": "Add Rooms"
     }
   ],
   "Q/7RZn": [
@@ -1064,10 +1007,22 @@
       "value": "Blogues"
     }
   ],
+  "QmTzIz": [
+    {
+      "type": 0,
+      "value": "Price is required!"
+    }
+  ],
   "QwDSj/": [
     {
       "type": 0,
       "value": "La longueur minimale doit être de 10"
+    }
+  ],
+  "R53e2J": [
+    {
+      "type": 0,
+      "value": "Add Room +"
     }
   ],
   "RLXaEm": [
@@ -1088,7 +1043,6 @@
       "value": "Voir l'offre"
     }
   ],
-
   "SHZrda": [
     {
       "type": 0,
@@ -1111,12 +1065,6 @@
     {
       "type": 0,
       "value": "Divulgation responsable"
-    }],
-  "Ss0sWu": [
-    {
-      "type": 0,
-      "value": "Payez maintenant"
-
     }
   ],
   "TE4fIS": [
@@ -1191,14 +1139,12 @@
       "value": "Hôtel"
     }
   ],
-
   "VHWEyT": [
     {
       "type": 0,
       "value": "Connectez-vous ici"
     }
   ],
-
   "VcqbWi": [
     {
       "type": 0,
@@ -1209,12 +1155,6 @@
     {
       "type": 0,
       "value": "Rejeter"
-    }],
-  "VHWEyT": [
-    {
-      "type": 0,
-      "value": "Connectez-vous ici"
-
     }
   ],
   "W2tpY0": [
@@ -1349,7 +1289,6 @@
       "value": "Listes d'hôtels"
     }
   ],
-
   "Zp+AOk": [
     {
       "type": 0,
@@ -1398,16 +1337,22 @@
       "value": "Please select a destination"
     }
   ],
+  "bct4uR": [
+    {
+      "type": 0,
+      "value": "Add Room photos"
+    }
+  ],
   "cErphj": [
     {
       "type": 0,
       "value": "Cadres OYO"
-    }],
-  "ZsJnVJ": [
+    }
+  ],
+  "cgIcHS": [
     {
       "type": 0,
-      "value": "L'utilisateur ne se connecte pas"
-
+      "value": "Add Room Photos"
     }
   ],
   "cyR7Kh": [
@@ -1440,7 +1385,6 @@
       "value": "Départ: 12h00"
     }
   ],
-
   "dmnqYy": [
     {
       "type": 0,
@@ -1451,12 +1395,6 @@
     {
       "type": 0,
       "value": "Nom de l'Hotel"
-    }],
-  "drmYS0": [
-    {
-      "type": 0,
-      "value": "Pas de téléphone *"
-
     }
   ],
   "drmYS0": [
@@ -1645,6 +1583,12 @@
       "value": "Afficher les hôtels"
     }
   ],
+  "j9uf50": [
+    {
+      "type": 0,
+      "value": "Room Number is required"
+    }
+  ],
   "jCGvSr": [
     {
       "type": 0,
@@ -1819,14 +1763,12 @@
       "value": "15h00"
     }
   ],
-
   "oQdfSt": [
     {
       "type": 0,
       "value": "E-mail invité"
     }
   ],
-
   "oUWADl": [
     {
       "type": 0,
@@ -1839,21 +1781,6 @@
       "value": "Hôtels à proximité"
     }
   ],
-
-
-  "oUWADl": [
-    {
-      "type": 0,
-      "value": "Non"
-    }],
-  "oQdfSt": [
-    {
-      "type": 0,
-      "value": "E-mail invité"
-
-    }
-  ],
-
   "ocaqXc": [
     {
       "type": 0,
@@ -2074,6 +2001,12 @@
     {
       "type": 0,
       "value": "Book Now"
+    }
+  ],
+  "x+EcXU": [
+    {
+      "type": 0,
+      "value": "Should be above 1k"
     }
   ],
   "x456Dl": [

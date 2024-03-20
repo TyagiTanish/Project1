@@ -70,7 +70,7 @@ export default function RoomDetailBox({
             spacing={1}
             padding={1}
             margin={2}
-            width={{ sm: "100%", xl: "50%" }}
+            width={{ sm: "100%", xl: "50%", lg: "50%" }}
             borderRight={screenSize <= 1024 ? "none" : "1px solid lightgray"}
           >
             <Stack direction={"row"} spacing={0.2}>
