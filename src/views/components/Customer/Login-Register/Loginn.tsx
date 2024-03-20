@@ -69,6 +69,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             localStorage.setItem("authToken", result.data.token);
             setDisplay(false);
             if (result?.data?.data?.role === "customer") {
+              console.log(state);
               const from = location?.state?.from;
 
               navigate(from || "/");

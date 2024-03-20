@@ -1,7 +1,7 @@
 import React from "react";
 import TabletNavbar from "../../components/Customer/AccountSettings/TabletNavbar";
 import { Box, IconButton, Stack, Tooltip, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import AccountMenu from "../../components/OtherComponents/ProfileBtn";
 import Language from "../../components/Language/Language";
 import { FormattedMessage } from "react-intl";
@@ -15,6 +15,8 @@ import { useSelector } from "react-redux";
  */
 const ProfileIcons = () => {
   const user = useSelector((state: any) => state.userReducer.user);
+  const navigate = useNavigate();
+
   const [data, updateData] = React.useState<any>(window.innerWidth);
   React.useEffect(() => {
     const setData = () => {
@@ -30,7 +32,7 @@ const ProfileIcons = () => {
         <Box mt={-4}>
           <TabletNavbar />
         </Box>
-      ) : (user ? (
+      ) : user ? (
         <>
           <Stack
             direction={"row"}
@@ -50,12 +52,12 @@ const ProfileIcons = () => {
                 }}
               >
                 {" "}
-              <FormattedMessage defaultMessage=  "Add Hotel"/>
+                <FormattedMessage defaultMessage="Add Hotel" />
               </Link>
             </Stack>
             <Stack>
               <Typography color={"black"} fontWeight={"bolder"}>
-             <FormattedMessage defaultMessage=  "Hello"/>,{user?.name}
+                <FormattedMessage defaultMessage="Hello" />,{user?.name}
               </Typography>
               <Typography color={"gray"} fontSize={"0.9rem"}>
                 {user?.role?.toUpperCase()}
@@ -95,19 +97,24 @@ const ProfileIcons = () => {
             <Tooltip title="Login / SignUp">
               <PersonIcon />
             </Tooltip>
-            <Link
-              to="/login"
-              style={{
+            <Box
+              onClick={() =>
+                navigate("/login", {
+                  state: { from: window?.location?.pathname },
+                })
+              }
+              sx={{
                 textDecoration: "none",
                 color: "black",
                 fontWeight: "bolder",
+                cursor: "pointer",
               }}
             >
               <FormattedMessage defaultMessage="Login / SignUp" />
-            </Link>
+            </Box>
           </Stack>
         </Stack>
-      ))}
+      )}
     </>
   );
 };

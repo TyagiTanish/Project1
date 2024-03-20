@@ -27,10 +27,15 @@ function ProfileBox() {
             ml: { lg: 20, sm: 4 },
           }}
         >
-          <Link style={{ textDecoration: "none", color: "#D4164B" }} to="/">
+          <Box
+            sx={{ textDecoration: "none", color: "#D4164B", cursor: "pointer" }}
+            onClick={() => {
+              window?.history.back();
+            }}
+          >
             <ArrowBackIosIcon sx={{ fontSize: { sm: 10, md: 12, xl: 14 } }} />
             <FormattedMessage defaultMessage="Back" />
-          </Link>
+          </Box>
 
           <Button
             className="account"
@@ -42,11 +47,12 @@ function ProfileBox() {
                   ? "lightgray"
                   : "white",
               padding: 1,
-              width: 140,
+              // width: 140,
               cursor: "pointer",
               // fontSize: { xl: 14, md: 14, sm: 12 },
               textTransform: "none",
               color: "black",
+              justifyContent: "flex-start",
             }}
             onClick={() => {
               navigate("/profile/accountSetting");
@@ -65,10 +71,11 @@ function ProfileBox() {
                   ? "lightgray"
                   : "white",
               padding: 1,
-              width: 140,
+              // width: 140,
               cursor: "pointer",
               textTransform: "none",
               color: "black",
+              justifyContent: "flex-start",
             }}
             onClick={() => {
               navigate("/profile/myBookings");

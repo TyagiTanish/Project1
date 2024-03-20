@@ -196,7 +196,7 @@ function BookingDetails() {
                     <Typography fontWeight={600}>
                       <FormattedMessage defaultMessage="Check In On" />
                     </Typography>
-                    <Typography>{data?.bookFrom?.split("T")[0]}</Typography>
+                    <Typography>{data?.bookFrom}</Typography>
                   </Stack>
                   <Stack>
                     <Typography fontWeight={600}>
@@ -218,7 +218,7 @@ function BookingDetails() {
                     <Typography fontWeight={600}>
                       <FormattedMessage defaultMessage="Check Out" />
                     </Typography>
-                    <Typography>{data?.bookTo?.split("T")[0]}</Typography>
+                    <Typography>{data?.bookTo}</Typography>
                   </Stack>
                   <Stack>
                     <Typography fontWeight={600}>
@@ -278,7 +278,7 @@ function BookingDetails() {
                       <FormattedMessage defaultMessage=" Check In On" />
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>
-                      {data?.bookFrom?.split("T")[0]}
+                      {data?.bookFrom}
                     </Typography>
                   </Stack>
                   <Stack>
@@ -309,7 +309,7 @@ function BookingDetails() {
                       <FormattedMessage defaultMessage="Check Out" />
                     </Typography>
                     <Typography sx={{ fontSize: 15 }}>
-                      {data?.bookTo?.split("T")[0]}
+                      {data?.bookTo}
                     </Typography>
                   </Stack>
                   <Stack>

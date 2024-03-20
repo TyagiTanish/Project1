@@ -23,7 +23,7 @@ function HotelDetails({
         sx={{
           display: "flex",
           width: { sm: "150px", lg: "400px" },
-          ml: { xl: "30%", sm: "30%", md: "230px" },
+          ml: { xl: "30%", sm: "40%", md: "40%", lg: "25%" },
           justifyContent: "space-evenly",
         }}
       >

@@ -16,7 +16,7 @@ export default function SimpleMap() {
 
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/streets-v11",
+      style: "mapbox://styles/mapbox/satellite-streets-v12",
       center: [
         location?.longitude || 76.779419,
         location?.latitude || 30.733315,

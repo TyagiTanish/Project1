@@ -26,6 +26,7 @@ import AdminDashboard from "../HotelOwner/Dashboard/AdminDashboard";
 import ProfileBox from "../OtherComponents/ProfileBox";
 import BookingDetails from "../Customer/AccountSettings/BookingDetails";
 import ShowCustomerBooking from "../Customer/AccountSettings/ShowCustomerBooking";
+import PrivateRoute from "./Authentication/PrivateRoute";
 
 /**
  * Contains all the routers used within the webApp , Markdown is *Router*.
@@ -144,7 +145,11 @@ const router = [
   },
   {
     path: "/login",
-    element: <MainPage />,
+    element: (
+      <PrivateRoute>
+        <MainPage />
+      </PrivateRoute>
+    ),
   },
   {
     path: "/customer",
@@ -152,7 +157,6 @@ const router = [
   },
   {
     path: "/memberRegister",
-
     element: <MemberRegistrationPage />,
   },
   {

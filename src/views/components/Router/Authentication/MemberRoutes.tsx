@@ -16,6 +16,8 @@ const MemberRoute = ({ children }: props) => {
     } else {
       if (user && user?.role === "customer") {
         navigate("/");
+      } else if (!user) {
+        navigate("/");
       }
     }
   }, [user]);

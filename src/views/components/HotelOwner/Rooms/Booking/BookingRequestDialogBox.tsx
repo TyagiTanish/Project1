@@ -20,24 +20,19 @@ function BookingRequestDialogBox(props: any) {
   const handleListItemClick = (value: string) => {
     onClose(value);
   };
-
-  console.log(data)
   React.useMemo(async () => {
     try {
-
-    if(data?.hotelId?._id){
-      const display = await request.get(`/getDetails/${data.hotelId?._id}`);
-      const result = display.data.rooms.filter((item: any) => {
-        return (item._id = data.roomId);
-      });
-      setHotel(display?.data);
-      setDisplay(result);
-    }
+      if (data?.hotelId?._id) {
+        const display = await request.get(`/getDetails/${data.hotelId?._id}`);
+        const result = display.data.rooms.filter((item: any) => {
+          return (item._id = data.roomId);
+        });
+        setHotel(display?.data);
+        setDisplay(result);
+      }
     } catch (error) {
       console.log(error);
     }
-    
-   
   }, []);
 
   return (

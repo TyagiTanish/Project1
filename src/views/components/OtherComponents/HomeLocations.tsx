@@ -4,18 +4,23 @@ import Grid from "@mui/material/Grid";
 import MapJpg from "../../../assets/map.jpg";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { searchDetails } from "../redux/user/userSlice";
 /**
  * A Component to add on the landing page . Markdown is HomeLocations*.
  */
 function HomeLocations() {
   const dispatch = useDispatch();
+  const date = useSelector((state: any) => state?.userReducer?.date);
   const navigate = useNavigate();
   const handleOpen = (location: any) => {
     dispatch(searchDetails(location));
-    window.scroll(0, 0);
-    navigate("/hotels");
+    if (date) {
+      window.scroll(0, 0);
+      navigate("/hotels");
+    } else {
+      window.scroll(0, 0);
+    }
   };
   return (
     <>

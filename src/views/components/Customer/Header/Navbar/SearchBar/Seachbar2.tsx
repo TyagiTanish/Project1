@@ -70,7 +70,7 @@ function Seachbar2() {
 
   // const search = localStorage.getItem("searchTerm");
   const params = useParams();
-  const location = `http://localhost:3000/billing/${params?.id}/${params?.hid}`;
+  const location = `http://http://localhost:3000/billing/${params?.id}/${params?.hid}`;
   const search = useSelector((state: any) => state?.userReducer?.searchDetails);
 
   const [value, setValue] = useState<any>(search);
@@ -151,8 +151,8 @@ function Seachbar2() {
         }}
       >
         {params?.hid !== undefined ? (
-          location !== document?.location?.href
-        ) : document?.location?.href !==
+          location !== window?.location?.href
+        ) : window?.location?.href !==
           `http://localhost:3000/viewDeal/${params?.id}` ? (
           <>
             <TextField
@@ -239,8 +239,8 @@ function Seachbar2() {
           onClick={(event: any) => handleClick(event)}
         />
         {params?.hid !== undefined ? (
-          location !== document?.location?.href
-        ) : document?.location?.href !==
+          location !== window?.location?.href
+        ) : window?.location?.href !==
           `http://localhost:3000/viewDeal/${params?.id}` ? (
           <>
             {" "}

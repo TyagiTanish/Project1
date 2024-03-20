@@ -864,7 +864,7 @@ export default function AddHotelAftrLgn() {
                 ) : null}
               </Stack>
 
-              <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
+              {/* <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
                 <FormattedMessage defaultMessage="To use Another Email for adding hotel" />
                 <Button
                   sx={{
@@ -875,7 +875,7 @@ export default function AddHotelAftrLgn() {
                 >
                   <FormattedMessage defaultMessage="Click here..." />
                 </Button>
-              </Box>
+              </Box> */}
             </CardContent>
           </Card>
         </Box>
