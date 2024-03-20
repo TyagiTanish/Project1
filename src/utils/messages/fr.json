@@ -739,8 +739,10 @@
   "kTo0o2": { "defaultMessage": "Suite" },
   "ocaqXc": { "defaultMessage": "De luxe" },
   "zSOvI0": { "defaultMessage": "Filtres" },
+
   "5A6hoi": { "defaultMessage": "Quantité de chambre" },
   "h/KUaP": { "defaultMessage": "Équipements de la chambre" },
+
   "ng+41Q": { "defaultMessage": "Prix ​​de la chambre" },
   "7lsiX8": {
     "defaultMessage": "Plus de 157 000 hôtels et résidences dans 35 pays"
@@ -795,6 +797,62 @@
   "xxQxLE": { "defaultMessage": "Email Address" },
   "yrx0I+": { "defaultMessage": "Booking Id" },
   "zNb4yX": { "defaultMessage": "Payment Status-" },
+
+
+  "ng+41Q": { "defaultMessage": "Prix ​​de la chambre" },
+
+  "7lsiX8":{"defaultMessage":"Plus de 157 000 hôtels et résidences dans 35 pays"},
+  "+Y705c":{"defaultMessage":"Faire cette réservation pour quelqu'un d'autre"},
+  "1SphRN":{"defaultMessage":"Pas de téléphone."},
+  "AK1Eri":{"defaultMessage":"En procédant à cette réservation, j'accepte les conditions d'utilisation et la politique de confidentialité d'OYO."},
+  "DX9QSt":{"defaultMessage":"Entrez votre nom"},
+  "DrySlw":{"defaultMessage":"Recherche par ville, hôtel ou état"},
+  "HRU6eg":{"defaultMessage":"Prénom *"},
+  "KAneyV":{"defaultMessage":"Informations client"},
+  "Lm91r/":{"defaultMessage":"Nom de l'invité"},
+  "OtuYup":{"defaultMessage":"E-mail *"},
+  "Q4TEcV":{"defaultMessage":"E-mail invité"},
+  "Ss0sWu":{"defaultMessage":"Payez maintenant"},
+  "U80d0/":{"defaultMessage":"Actuellement indisponible"},
+  "VHWEyT":{"defaultMessage":"Connectez-vous ici"},
+  "ZsJnVJ":{"defaultMessage":"L'utilisateur ne se connecte pas"},
+  "drmYS0":{"defaultMessage":"Pas de téléphone *"},
+  "oQdfSt":{"defaultMessage":"E-mail invité"},
+  "uGWhlc":{"defaultMessage":"Arrivée - Départ"},
+  "0xt78r":{"defaultMessage":"Veuillez sélectionner une date d'arrivée et de départ"},
+  "2hIqkE":{"defaultMessage":"Villes populaires"},
+  "5Gqjr7":{"defaultMessage":"Route Mg"},
+  "5Qhl64":{"defaultMessage":"Check In On"},
+  "8pvKg1":{"defaultMessage":"Détails de paiement"},
+  "BuhU4W":{"defaultMessage":"Numéro de portable"},
+  "C81/uG":{"defaultMessage":"Se déconnecter"},
+  "CDTMW3":{"defaultMessage":"Montant total"},
+  "CDkA+T":{"defaultMessage":"Heure de départ"},
+  "GdDqb/":{"defaultMessage":"22H00"},
+  "JXvIwW":{"defaultMessage":"Invité principal"},
+  "LDGBnw":{"defaultMessage":"Heure d'arrivée"},
+  "NIVTxd":{"defaultMessage":"Invités"},
+  "XKxl1k":{"defaultMessage":"Mes réservations"},
+  "XT1jLe":{"defaultMessage":"Éléments de menu...."},
+
+
+
+
+
+
+  "YKXkbB":{"defaultMessage":"Hello,"},
+  "bTXPa9":{"defaultMessage":"Please select a destination"},
+  "eQRxMR":{"defaultMessage":"Check Out"},
+  "g9twjI":{"defaultMessage":"Rajaji nagar"},
+  "gssrq6":{"defaultMessage":"Super OYO"},
+  "itPgxd":{"defaultMessage":"Profile"},
+  "qkaIU1":{"defaultMessage":"11:00 AM"},
+  "wl5cm4":{"defaultMessage":"Book Now"},
+  "xxQxLE":{"defaultMessage":"Email Address"},
+  "yrx0I+":{"defaultMessage":"Booking Id"},
+  "zNb4yX":{"defaultMessage":"Payment Status-"},
+
+
 
   "dtgi/W": {
     "defaultMessage": "L'e-mail est requis"
