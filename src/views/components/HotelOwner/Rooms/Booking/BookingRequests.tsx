@@ -64,7 +64,7 @@ export default function Bookings() {
     {
       field: "fullName",
 
-      width: 300,
+      width: 270,
 
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
@@ -76,7 +76,7 @@ export default function Bookings() {
     {
       field: "email",
 
-      width: 300,
+      width: 270,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
@@ -87,7 +87,7 @@ export default function Bookings() {
     {
       field: "phone",
       headerName: "Phone No.",
-      width: 300,
+      width: 250,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
@@ -97,9 +97,31 @@ export default function Bookings() {
       ),
     },
     {
+      field: "type",
+      headerName: "Payment Method",
+      width: 250,
+      editable: true,
+      renderCell: (params: any) => {
+       
+      return  <div style={{ textTransform: "capitalize" }}>
+       {params?.row?.paymentId?.type}
+        </div>
+
+      },
+      renderHeader: (params: GridColumnHeaderParams) => 
+        {
+     
+      return  <strong style={{ fontSize: 18 }}>
+          {" "}
+          <FormattedMessage defaultMessage="Payment Method" />
+        </strong>
+      },
+
+    },
+    {
       field: "paymentStatus",
       headerName: "Payment Status",
-      width: 300,
+      width: 250,
       editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
@@ -112,7 +134,7 @@ export default function Bookings() {
       field: "actions",
       type: "actions",
 
-      width: 300,
+      width: 270,
       cellClassName: "actions",
       getActions: (value: any) => {
         return [
@@ -283,7 +305,7 @@ export default function Bookings() {
                 ),
               }}
               placeholder="Search Here...."
-              sx={{ width: 300 }}
+              sx={{ width: 270 }}
               onChange={(e) => {
                 setSearch(e.target.value);
               }}

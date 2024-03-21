@@ -224,12 +224,12 @@ const Billing = () => {
         guests: totalGuests,
       };
       setResult(result);
-      if (selectedMethod !== "b") {
+            if (selectedMethod !== "b") {
         setDisplay(true);
       } else {
         try {
           const data = await request?.post("/paymentSuccess", {
-            bookingId: bookingId,
+            bookingId: value?.data?.bookingId,
             amount_captured: totalPrice,
             type: "cash",
           });
@@ -439,7 +439,7 @@ const Billing = () => {
                         variant="contained"
                         disabled={selectedMethod === "a" || !selectedMethod}
                       >
-                        <FormattedMessage defaultMessage="Use this payment method" />
+                        <FormattedMessage defaultMessage="Book Now" />
                       </Button>
                     )}
                   </Stack>
