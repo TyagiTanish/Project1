@@ -51,13 +51,13 @@ const CustomerView = () => {
             justifyContent={"space-between"}
             alignItems={"center"}
           >
-            {window.location.href === "http://192.168.1.114:3000/" ||
+            {window.location.href === "http://localhost:3000/" ||
             window?.location?.href ===
-              `http://192.168.1.114:3000/profile/myBookings/${params?.id}` ||
+              `http://localhost:3000/profile/myBookings/${params?.id}` ||
             window?.location?.href ===
-              "http://192.168.1.114:3000/profile/accountSetting" ||
+              "http://localhost:3000/profile/accountSetting" ||
             window?.location?.href ===
-              "http://192.168.1.114:3000/profile/myBookings" ? (
+              "http://localhost:3000/profile/myBookings" ? (
               <></>
             ) : (
               <Box sx={{ ml: { sm: 0, md: 2 }, mt: 1 }}>
