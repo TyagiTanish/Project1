@@ -61,7 +61,7 @@ export default function AddHotelAftrLgn() {
       setStep(0);
     }
   };
-
+  const lang = useSelector((state: any) => state?.userReducer?.locale);
   const [files, setfile] = React.useState<any>([]);
   const [error, setError] = React.useState("");
   const [maxPhoto, setMaxPhoto] = React.useState(false);
@@ -247,7 +247,7 @@ export default function AddHotelAftrLgn() {
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
-
+  
   return (
     <Box
       sx={{
@@ -326,8 +326,8 @@ export default function AddHotelAftrLgn() {
 
                 color: "white",
                 fontWeight: "bold",
-
-                fontSize: { xl: 17, md: 16, sm: 13 },
+          
+                fontSize: { xl: lang === 'fr' ? 15 : 17 , md: lang === 'fr' ? 14 : 16 , sm: lang === 'fr' ? 13 : 13  },
                 textAlign: "center",
                 p: "1%",
               }}
@@ -414,6 +414,7 @@ export default function AddHotelAftrLgn() {
                         spacing={3}
                         // margin={"2%"}
                         justifyContent={"center"}
+                        sx={{width:{xl:350,md:280,sm:280}}}
                       >
                         <Stack>
                           <Typography
@@ -505,7 +506,7 @@ export default function AddHotelAftrLgn() {
                   </>
                 ) : step === 1 ? (
                   <>
-                    <Stack maxWidth={{ sm: 300, md: 400, lg: 500 }}>
+                    <Stack width={{ sm: 300, md: 400, xl: 450 }}>
                       <form>
                         <Stack
                           spacing={2}
@@ -813,7 +814,7 @@ export default function AddHotelAftrLgn() {
                 ) : step === 2 ? (
                   <>
                     {/* {console.log(content)} */}
-                    <Stack minWidth={{ sm: 300, md: 400, lg: 500 }}>
+                    <Stack minWidth={{ sm: 300, md: 400, xl: 420 }}>
                       <form>
                         {/* <ReactQuill
                             theme="snow"
