@@ -8,7 +8,13 @@ import {
   FormHelperText,
 } from "@mui/material";
 import moment from "moment";
-import React, { useEffect, useMemo, useState } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from "react";
 
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -33,8 +39,11 @@ import PaymentMethods from "./PaymentMethods";
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
+export const dataContext = createContext<any>({});
+
 const Billing = () => {
   const [hotelDetail, sethotelDetail] = useState<any>({});
+  const [data, setData] = useState();
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   const [selectedMethod, setSelectedMethod] = useState();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -199,7 +208,7 @@ const Billing = () => {
     resolver: yupResolver(FormSchema),
   });
 
-  const cardPayment = async (data: any) => {
+  const Payment = async (data: any) => {
     data.startdate = startdate;
     data.enddate = enddate;
     data.totalGuests = totalRoomsAndGuests?.guests;
@@ -209,24 +218,23 @@ const Billing = () => {
     data.roomId = roomDetails?._id;
     data.price = RoomPrice;
     // console.log(data);
+    setData(data);
     if (user) {
-      const value = await request.post("/bookRoom", { data, hotelId });
-      setBookingId(value.data.bookingId);
-      const result = {
-        fullName: data.fullName,
-        email: data.email,
-        phone: data.phone,
-        hotelId: hotelId,
-        days: difference?.days,
-        roomId: roomDetails?._id,
-        startDate: startdate,
-        endDate: enddate,
-        guests: totalGuests,
-      };
-      setResult(result);
-      if (selectedMethod !== "b") {
-        setDisplay(true);
-      } else {
+      if (selectedMethod !== "a") {
+        const value = await request.post("/bookRoom", { data, hotelId });
+        setBookingId(value.data.bookingId);
+        const result = {
+          fullName: data.fullName,
+          email: data.email,
+          phone: data.phone,
+          hotelId: hotelId,
+          days: difference?.days,
+          roomId: roomDetails?._id,
+          startDate: startdate,
+          endDate: enddate,
+          guests: totalGuests,
+        };
+        setResult(result);
         try {
           const data = await request?.post("/paymentSuccess", {
             bookingId: bookingId,
@@ -239,8 +247,10 @@ const Billing = () => {
             setSubmitButton(false);
           }
         } catch (error) {}
+        setSubmitButton(false);
+      } else {
+        setDisplay(true);
       }
-      setSubmitButton(false);
     } else {
       enqueueSnackbar(
         intl.formatMessage({ defaultMessage: "User not Login" }),
@@ -275,7 +285,7 @@ const Billing = () => {
               mt={10}
             >
               <Stack width={"40%"}>
-                <form onSubmit={handleSubmit(cardPayment)}>
+                <form onSubmit={handleSubmit(Payment)}>
                   <Stack
                     border={"2px solid lightgray"}
                     borderRadius={"10px"}
@@ -386,6 +396,7 @@ const Billing = () => {
                     border={"1px solid lightgrey"}
                     borderRadius={"10px"}
                     mt={2}
+                    p={2}
                   >
                     {/* <Stack direction={"row"}>
                       {}
@@ -407,7 +418,6 @@ const Billing = () => {
                       setDisplay={setDisplay}
                       TotalRooms={TotalRooms.current}
                       roomQuantity={roomDetails?.roomQuantity}
-                      cardPayment={cardPayment}
                     />
                     {TotalRooms.current > roomDetails?.roomQuantity ? (
                       <Button
@@ -466,26 +476,28 @@ const Billing = () => {
               </Stack>
             </Stack>
           </Box>
-          <PaymentDialogBox
-            display={display}
-            setDisplay={setDisplay}
-            hotelDetail={hotelDetail}
-            roomDetails={roomDetails}
-            totalGuests={totalGuests}
-            totalRooms={totalRooms}
-            totalPrice={totalPrice}
-            setDisplayLoader={setDisplayLoader}
-            bookingId={bookingId}
-            result={result}
-            setTotalRoomsAndGuests={setTotalRoomsAndGuests}
-            setTotalPrice={setTotalPrice}
-            setRoomPrice={setRoomPrice}
-            totalRoomsAndGuests={totalRoomsAndGuests}
-            setSubmitButton={setSubmitButton}
-            calculateDifference={calculateDifference}
-            startdate={startdate}
-            enddate={enddate}
-          />
+          <dataContext.Provider value={data}>
+            <PaymentDialogBox
+              display={display}
+              setDisplay={setDisplay}
+              hotelDetail={hotelDetail}
+              roomDetails={roomDetails}
+              totalGuests={totalGuests}
+              totalRooms={totalRooms}
+              totalPrice={totalPrice}
+              setDisplayLoader={setDisplayLoader}
+              bookingId={bookingId}
+              result={result}
+              setTotalRoomsAndGuests={setTotalRoomsAndGuests}
+              setTotalPrice={setTotalPrice}
+              setRoomPrice={setRoomPrice}
+              totalRoomsAndGuests={totalRoomsAndGuests}
+              setSubmitButton={setSubmitButton}
+              calculateDifference={calculateDifference}
+              startdate={startdate}
+              enddate={enddate}
+            />
+          </dataContext.Provider>
         </>
       )}
     </>
