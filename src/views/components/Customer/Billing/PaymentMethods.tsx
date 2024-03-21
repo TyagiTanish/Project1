@@ -57,16 +57,20 @@ const PaymentMethods = ({
                   src={require("../../../../assets/cardMethods.png")}
                 />
                 <Box
-                  component={"button"}
+                  component={Button}
                   type="submit"
                   marginLeft={7}
-                  padding={2}
                   sx={{
                     color: "gray",
-                    "&:hover": { textDecoration: "underLine" },
+                    "&:hover": {
+                      textDecoration: "underLine",
+                      background: "white",
+                    },
                     cursor: "pointer",
                     fontWeight: "800",
                     fontSize: "12px",
+                    width: 170,
+                    textAlign: "center",
                   }}
                   onClick={() => {
                     setDisplay(true);

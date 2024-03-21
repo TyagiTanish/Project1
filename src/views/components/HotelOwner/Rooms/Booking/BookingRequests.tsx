@@ -300,7 +300,7 @@ export default function Bookings() {
           <FormattedMessage defaultMessage="No Bookings till now*" />
         </Typography>
       ) : (
-        <Box sx={{ height: "auto", width: "100%" }}>
+        <Box sx={{ height: "38vh", width: "100%" }}>
           {/* data grid to implement server side sorting , pagination and searching */}
           <DataGrid
             rows={data}

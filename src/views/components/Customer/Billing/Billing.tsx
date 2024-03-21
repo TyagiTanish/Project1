@@ -260,8 +260,6 @@ const Billing = () => {
   //   socket.emit("response", true);
   // }
 
-  console.log(selectedMethod);
-
   return (
     <>
       {displayLoader ? (
