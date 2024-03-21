@@ -63,6 +63,14 @@ function AcceptedBookings() {
     });
     setRender((prev: any) => prev + 1);
   };
+  const handleChangeStatus = async (event: any, id: any) => {
+    await request.put(`/updatePaymentStatus/${id}`, {
+      value: event.target.value,
+    });
+
+    setRender((prev: any) => prev + 1);
+  };
+
   const columns: GridColDef[] = [
     {
       field: "hotelId",
@@ -125,16 +133,50 @@ function AcceptedBookings() {
       field: "paymentStatus",
       headerName: "Payment Status",
       width: 200,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Payment Status" />
         </strong>
       ),
       renderCell: (params: any) => (
+        <FormControl fullWidth size="small">
+          {params?.row?.paymentStatus === "paid" ? (
+            <Select disabled value={params?.row?.paymentStatus}>
+              <MenuItem value={"paid"}>
+                <FormattedMessage defaultMessage="Paid" />
+              </MenuItem>
+            </Select>
+          ) : (
+            <Select
+              defaultValue={params?.row?.paymentStatus}
+              onChange={(e) => {
+                handleChangeStatus(e, params.row._id);
+              }}
+            >
+              <MenuItem value={"paid"}>
+                <FormattedMessage defaultMessage="Paid" />
+              </MenuItem>
+              <MenuItem value={"unpaid"}>
+                <FormattedMessage defaultMessage="Unpaid" />
+              </MenuItem>
+            </Select>
+          )}
+        </FormControl>
+      ),
+    },
+    {
+      field: "paymentMethod",
+      headerName: "Payment Method",
+      width: 200,
+      editable: true,
+      renderHeader: (params: GridColumnHeaderParams) => (
+        <strong style={{ fontSize: 18 }}>
+          <FormattedMessage defaultMessage="Payment Method" />
+        </strong>
+      ),
+      renderCell: (params: any) => (
         <div style={{ textTransform: "capitalize" }}>
-          {" "}
-          {params?.row?.paymentStatus}
+          {params?.row?.paymentId?.type}
         </div>
       ),
     },
