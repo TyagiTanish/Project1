@@ -71,7 +71,6 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             if (result?.data?.data?.role === "customer") {
               console.log(state);
               const from = location?.state?.from;
-
               navigate(from || "/");
             } else {
               navigate("/member");

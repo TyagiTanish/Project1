@@ -146,9 +146,9 @@ const router = [
   {
     path: "/login",
     element: (
-      <PrivateRoute>
-        <MainPage />
-      </PrivateRoute>
+      // <PrivateRoute>
+      <MainPage />
+      // {/* </PrivateRoute> */}
     ),
   },
   {

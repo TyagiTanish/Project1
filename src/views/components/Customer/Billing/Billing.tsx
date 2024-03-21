@@ -24,6 +24,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import UseRoomAndGuestQuantity from "../../../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
 import { FormattedMessage, useIntl } from "react-intl";
+import PaymentMethods from "./PaymentMethods";
 
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
@@ -35,6 +36,7 @@ const socket = io("http://localhost:8000", {
 const Billing = () => {
   const [hotelDetail, sethotelDetail] = useState<any>({});
   const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const [selectedMethod, setSelectedMethod] = useState();
   const user = useSelector((state: any) => state.userReducer.user);
   const [roomDetails, setroomDetails] = useState<any>();
   const [totalRoomsAndGuests, setTotalRoomsAndGuests] = useState<any>();
@@ -197,7 +199,7 @@ const Billing = () => {
     resolver: yupResolver(FormSchema),
   });
 
-  const Submit = async (data: any) => {
+  const cardPayment = async (data: any) => {
     data.startdate = startdate;
     data.enddate = enddate;
     data.totalGuests = totalRoomsAndGuests?.guests;
@@ -222,14 +224,31 @@ const Billing = () => {
         guests: totalGuests,
       };
       setResult(result);
-      setDisplay(true);
+            if (selectedMethod !== "b") {
+        setDisplay(true);
+      } else {
+        try {
+          const data = await request?.post("/paymentSuccess", {
+            bookingId: value?.data?.bookingId,
+            amount_captured: totalPrice,
+            type: "cash",
+          });
+          if (data.data === "success") {
+            enqueueSnackbar("success", { variant: "success" });
+            navigate("/profile/myBookings");
+            setSubmitButton(false);
+          }
+        } catch (error) {}
+      }
       setSubmitButton(false);
     } else {
       enqueueSnackbar(
         intl.formatMessage({ defaultMessage: "User not Login" }),
         { variant: "error" }
       );
-      navigate("/login", { state: { from: `/billing/${id?.id}/${id?.hid}` } });
+      navigate("/login", {
+        state: { from: `/billing/${id?.id}/${id?.hid}` },
+      });
     }
 
     // socket.emit("send_Message", result);
@@ -240,6 +259,7 @@ const Billing = () => {
   // const handleClick=()=>{
   //   socket.emit("response", true);
   // }
+
   return (
     <>
       {displayLoader ? (
@@ -255,7 +275,7 @@ const Billing = () => {
               mt={10}
             >
               <Stack width={"40%"}>
-                <form onSubmit={handleSubmit(Submit)}>
+                <form onSubmit={handleSubmit(cardPayment)}>
                   <Stack
                     border={"2px solid lightgray"}
                     borderRadius={"10px"}
@@ -367,7 +387,7 @@ const Billing = () => {
                     borderRadius={"10px"}
                     mt={2}
                   >
-                    <Stack direction={"row"}>
+                    {/* <Stack direction={"row"}>
                       {}
                       <Checkbox
                         onChange={handleCheckboxSubmit}
@@ -380,7 +400,15 @@ const Billing = () => {
                         of Use and Privacy Policy."
                         />
                       </Typography>
-                    </Stack>
+                    </Stack> */}
+                    <PaymentMethods
+                      selectedMethod={selectedMethod}
+                      setSelectedMethod={setSelectedMethod}
+                      setDisplay={setDisplay}
+                      TotalRooms={TotalRooms.current}
+                      roomQuantity={roomDetails?.roomQuantity}
+                      cardPayment={cardPayment}
+                    />
                     {TotalRooms.current > roomDetails?.roomQuantity ? (
                       <Button
                         type="submit"
@@ -392,7 +420,7 @@ const Billing = () => {
                         color="error"
                         variant="contained"
                         disabled={
-                          !submitButton ||
+                          !selectedMethod ||
                           TotalRooms.current > roomDetails?.roomQuantity
                         }
                         // onClick={handleClick}
@@ -403,16 +431,15 @@ const Billing = () => {
                       <Button
                         type="submit"
                         sx={{
-                          width: "30%",
+                          width: "50%",
                           m: 2,
                           textTransform: "none",
                         }}
                         color="error"
                         variant="contained"
-                        disabled={!submitButton}
-                        // onClick={handleClick}
+                        disabled={selectedMethod === "a" || !selectedMethod}
                       >
-                        <FormattedMessage defaultMessage="Pay Now" />
+                        <FormattedMessage defaultMessage="Book Now" />
                       </Button>
                     )}
                   </Stack>

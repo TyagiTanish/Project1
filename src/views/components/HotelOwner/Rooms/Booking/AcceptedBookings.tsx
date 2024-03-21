@@ -379,7 +379,7 @@ function AcceptedBookings() {
             }}
           />
         </Stack>
-        <Box sx={{ height: "auto", width: "100%", fontSize: 20 }}>
+        <Box sx={{ height: "38vh", width: "100%", fontSize: 20 }}>
           {loader && <LoaderBeforeReciept />}
           <DataGrid
             rows={data}

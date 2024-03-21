@@ -3,14 +3,28 @@ import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
-import { Dialog, DialogTitle, Stack } from "@mui/material";
+import { Checkbox, Dialog, DialogTitle, FormControlLabel, Grid, Stack } from "@mui/material";
 import CloseIcon from "@mui/icons-material/Close";
 import Divider from "@mui/material/Divider";
 import PlaceIcon from "@mui/icons-material/Place";
-import { useIntl, FormattedMessage } from "react-intl";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import LocalParkingIcon from "@mui/icons-material/LocalParking";
+import NetworkWifiIcon from "@mui/icons-material/NetworkWifi";
+import PoolIcon from "@mui/icons-material/Pool";
+import RoomServiceIcon from "@mui/icons-material/RoomService";
+import FitnessCenterIcon from "@mui/icons-material/FitnessCenter";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import WineBarIcon from "@mui/icons-material/WineBar";
+import GroupsIcon from "@mui/icons-material/Groups";
 
+import { Swiper, SwiperSlide } from "swiper/react";
+
+// Import Swiper styles
+
+// import required modules
+import "../../../components/HotelOwner/hotels/hotelAmenities/styles2.css";
+import { FreeMode, Pagination } from "swiper/modules";
 const style = {
   position: "absolute" as "absolute",
   top: "50%",
@@ -29,6 +43,51 @@ export default function BasicModal(props: any) {
   console.log(modalHotel);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+
+  const amenitie = [
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: 0 },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon />, index: 1 },
+    { id: "pool", label: "Pool", icon: <PoolIcon />, index: 2 },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <RoomServiceIcon />,
+      index: 3,
+    },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon />, index: 4 },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <DryCleaningIcon />,
+      index: 5,
+    },
+    { id: "bar", label: "Bar", icon: <WineBarIcon />, index: 6 },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: "7" },
+    { id: "parking", label: "Parking", icon: <LocalParkingIcon />, index: 8 },
+    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon />, index: 9 },
+    { id: "pool", label: "Pool", icon: <PoolIcon />, index: 10 },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <RoomServiceIcon />,
+      index: 11,
+    },
+    { id: "gym", label: "Gym", icon: <FitnessCenterIcon />, index: 12 },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <DryCleaningIcon />,
+      index: 13,
+    },
+    { id: "bar", label: "Bar", icon: <WineBarIcon />, index: 14 },
+    { id: "meeting", label: "Meeting", icon: <GroupsIcon />, index: 15 },
+  ];
+
+  const ShowAmenities = amenitie.filter((item: any, index: any) =>
+  modalHotel?.amenities?.includes(String(item.index))
+  );
+
   return (
     // <div>
     //   <Modal
@@ -167,6 +226,26 @@ export default function BasicModal(props: any) {
               );
             })}
           </Stack>
+          <Swiper
+            slidesPerView={3}
+            spaceBetween={0}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            modules={[FreeMode, Pagination]}
+          
+            
+          >
+            {ShowAmenities.map((item) => (
+              <SwiperSlide  >
+                    <Stack alignItems={"center"} fontSize={'small'} >
+                      {item?.icon}
+                      {item?.label}
+                    </Stack>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </Stack>
       </Stack>
     </Dialog>
