@@ -9,7 +9,7 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 
 const PaymentMethods = ({
   selectedMethod,
@@ -17,14 +17,13 @@ const PaymentMethods = ({
   setDisplay,
   TotalRooms,
   roomQuantity,
-  cardPayment,
 }: any) => {
   const handleChange = (e: any) => {
     setSelectedMethod(e?.target?.value);
   };
 
   return (
-    <Card>
+    <Card variant="outlined">
       <CardContent>
         <Stack gap={2}>
           <Box>

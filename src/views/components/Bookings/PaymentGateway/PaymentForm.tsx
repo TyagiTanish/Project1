@@ -1,5 +1,5 @@
 // PaymentForm.js
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { CardElement, useStripe, useElements } from "@stripe/react-stripe-js";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import Button from "@mui/material/Button";
@@ -7,6 +7,8 @@ import { Box } from "@mui/system";
 import io from "socket.io-client";
 import { Typography } from "@mui/material";
 import { useNavigate } from "react-router";
+import { dataContext } from "../../Customer/Billing/Billing";
+import { useSelector } from "react-redux";
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
@@ -28,6 +30,10 @@ const PaymentForm = ({
   const [message, setMessage] = useState(false);
   const [error, setError] = useState(null);
   const [disableButton, setDisableButton] = useState(false);
+  const hotelId = useSelector((state: any) => state.userReducer.hotelId);
+  const data = React.useContext(dataContext);
+  console.log(data);
+
   const { request } = useAuth();
   const cardElementOptions = {
     style: {
@@ -60,31 +66,37 @@ const PaymentForm = ({
       console.error(error);
     } else {
       // Send the token to your server
+
       setDisplay(false);
       setDisplayLoader(true);
-      const response = await request.post("/order", {
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: { token: JSON.stringify({ token }), price: totalPrice },
-      });
 
-      const result = await response.data;
-
-      if (result.success) {
-        const data = await request.post("/paymentSuccess", {
-          transactionId: result.charge.balance_transaction,
-          amount_captured: result.charge.amount_captured,
-          bookingId: bookingId,
+      const booking = await request?.post("/bookRoom", { data, hotelId });
+      if (booking?.data) {
+        console.log(booking?.data);
+        const response = await request.post("/order", {
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: { token: JSON.stringify({ token }), price: totalPrice },
         });
-        setTimeout(() => {
+
+        const result = await response.data;
+
+        if (result.success) {
+          const data = await request.post("/paymentSuccess", {
+            transactionId: result.charge.balance_transaction,
+            amount_captured: result.charge.amount_captured,
+            bookingId: booking?.data?.bookingId,
+          });
+          setTimeout(() => {
+            setDisplayLoader(false);
+            navigate("/profile/myBookings");
+          });
+          socket.emit("response", true);
+        } else {
           setDisplayLoader(false);
-          navigate("/profile/myBookings");
-        });
-        socket.emit("response", true);
-      } else {
-        setDisplayLoader(false);
-        console.error("Payment failed:", result.error);
+          console.error("Payment failed:", result.error);
+        }
       }
     }
     setDisableButton(false);
