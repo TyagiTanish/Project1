@@ -12,7 +12,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       "pk.eyJ1IjoidGFuaXNoLXR5YWdpIiwiYSI6ImNscmV0YWJmcTFocmoybHFpZDQ3dHFkdzMifQ.szsjsVkaiJpDsGUe7LR_4A";
     const map = new mapboxgl.Map({
       container: "map",
-      style: "mapbox://styles/mapbox/satellite-streets-v12",
+      style: "mapbox://styles/mapbox/streets-v12",
       center: [
         filteredData[0]?.location?.longitude || 76.779419,
         filteredData[0]?.location?.latitude || 30.733315,
@@ -62,9 +62,10 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
         <Box
           id="map"
           sx={{
-            width: { xl: 700, sm: 700, md: "90%", lg: 550 },
+            width: { xl: 800, sm: 700, md: "90%", lg: 650 },
             // height: { sm: 600, xl: 800, md: 1000 },
-            height: { md: "80vh", lg: "90vh", xl: "90vh" },
+            height: { md: "80vh", lg: "90vh", xl: "78vh" },
+            borderRadius: 5,
           }}
         />
       </Stack>
