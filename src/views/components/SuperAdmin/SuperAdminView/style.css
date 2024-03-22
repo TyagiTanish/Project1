@@ -14,9 +14,10 @@ body {
 }
 
 .swiper {
-  width: 20vw;
+  width: 200;
   height: 15vh;
-  margin-left: 15vw;
+  margin-left: 0vw;
+  
 }
 
 .swiper-slide {

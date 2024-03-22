@@ -230,16 +230,16 @@ export default function Bookings() {
       console.log(error);
     }
   };
-  React.useMemo(async () => {
-    try {
-      const data = await request.get("/bookingDetails");
+  // React.useMemo(async () => {
+  //   try {
+  //     const data = await request.get("/bookingDetails");
 
-      setData(data.data);
-      setLength(data?.data?.length);
-    } catch (error) {
-      console.log(error);
-    }
-  }, []);
+  //     setData(data.data);
+  //     setLength(data?.data?.length);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // }, []);
   React.useMemo(async () => {
     try {
       const data = await request.get("/bookingDetails", {

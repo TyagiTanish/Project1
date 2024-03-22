@@ -35,6 +35,7 @@ export default function PaymentDialogBox({
   calculateDifference,
   startdate,
   enddate,
+  Payment,
 }: any) {
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));

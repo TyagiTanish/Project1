@@ -16,6 +16,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { roomDetails } from "../../../redux/user/userSlice";
 import { Theme, useTheme } from "@emotion/react";
 import { FormattedMessage } from "react-intl";
+import TvIcon from "@mui/icons-material/Tv";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import BathroomIcon from "@mui/icons-material/Bathroom";
+import LiquorIcon from "@mui/icons-material/Liquor";
+import { IconHours24 } from "@tabler/icons-react";
+import { IconLockSquareRounded } from "@tabler/icons-react";
+import { IconAirConditioningDisabled } from "@tabler/icons-react";
+import { IconIroningSteam } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconBottle } from "@tabler/icons-react";
+import { IconNews } from "@tabler/icons-react";
+import { IconBed } from "@tabler/icons-react";
+import HairDryer from "../../../icons/HairDryer";
+import BathRobes from "../../../icons/BathRobes";
+import CoffeeAndTeaMaker from "../../../icons/CoffeeAndTeaMaker";
 
 function RoomImageSlider({ images }: any) {
   const theme = useTheme();
@@ -86,6 +102,27 @@ function UserViewRooms({ hotels }: any) {
   const { TotalRooms } = UseRoomAndGuestQuantity();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+
+  const highlights = [
+    { Highlight: "A/C", icon: <IconAirConditioningDisabled /> },
+    { Highlight: "42' LED Smart TV", icon: <TvIcon /> },
+    { Highlight: "Coffee and tea maker", icon: <CoffeeAndTeaMaker /> },
+    { Highlight: "Hair dryer", icon: <HairDryer /> },
+    { Highlight: "bath amenities", icon: <BathroomIcon /> },
+    { Highlight: "bath robes and slippers", icon: <BathRobes /> },
+    { Highlight: "Minibar upon request", icon: <LiquorIcon /> },
+    {
+      Highlight: "24-hour room service",
+      icon: <IconHours24 />,
+    },
+    { Highlight: "Complimentry water bottles", icon: <IconBottle /> },
+    { Highlight: "In-room safe ", icon: <IconLockSquareRounded /> },
+    { Highlight: "Iron and ironing board", icon: <IconIroningSteam /> },
+    { Highlight: "Complimentry high speed Wi-Fi", icon: <IconWifi /> },
+    { Highlight: "Daily newspaper upon request", icon: <IconNews /> },
+    { Highlight: "Extra bed upon request", icon: <IconBed /> },
+  ];
+
   var reduxValue: any = {};
   const updateRedux = (item: any) => {
     reduxValue = {
@@ -141,21 +178,42 @@ function UserViewRooms({ hotels }: any) {
                 </Stack>
               </Stack>
               <div style={{ border: "1px solid lightgray" }}></div>
-              <Stack width={"50%"} justifyContent={"space-between"}>
+              <Stack width={"50%"} justifyContent={"space-between"} spacing={2}>
                 <Typography fontWeight={"bold"} fontSize={18}>
-                  <FormattedMessage defaultMessage="Hotel Amenities" />
+                  <FormattedMessage defaultMessage="Amenities" />
                 </Typography>
                 <Stack
-                  gap={2}
+                  gap={4}
                   direction={"row"}
                   sx={{ flexWrap: "wrap" }}
-                  maxHeight={"35%"}
-                  minHeight={"10%"}
+                  maxHeight={"60%"}
+                  // minHeight={"50%"}
                   overflow={"auto"}
                 >
                   {item?.amenities.map((item: any, i: any) => (
-                    <li key={i} style={{ minWidth: 200 }}>
-                      {item}
+                    <li
+                      key={i}
+                      style={{
+                        minWidth: 200,
+                        listStyle: "none",
+
+                        alignItems: "center",
+                      }}
+                    >
+                      <Stack
+                        direction={"row"}
+                        gap={2}
+                        alignItems={"center"}
+                        width={200}
+                      >
+                        <Box>
+                          {highlights?.map(
+                            (highLight) =>
+                              item === highLight?.Highlight && highLight?.icon
+                          )}
+                        </Box>
+                        <Box width={200}> {item}</Box>
+                      </Stack>
                     </li>
                   ))}
                 </Stack>
