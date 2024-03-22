@@ -18,6 +18,22 @@ import CloseIcon from "@mui/icons-material/Close";
 import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 import CheckIcon from "@mui/icons-material/Check";
 import { FormattedMessage } from "react-intl";
+import TvIcon from "@mui/icons-material/Tv";
+import AcUnitIcon from "@mui/icons-material/AcUnit";
+import DryCleaningIcon from "@mui/icons-material/DryCleaning";
+import BathroomIcon from "@mui/icons-material/Bathroom";
+import LiquorIcon from "@mui/icons-material/Liquor";
+import { IconHours24 } from "@tabler/icons-react";
+import { IconLockSquareRounded } from "@tabler/icons-react";
+import { IconAirConditioningDisabled } from "@tabler/icons-react";
+import { IconIroningSteam } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconBottle } from "@tabler/icons-react";
+import { IconNews } from "@tabler/icons-react";
+import { IconBed } from "@tabler/icons-react";
+import HairDryer from "../../../icons/HairDryer";
+import BathRobes from "../../../icons/BathRobes";
+import CoffeeAndTeaMaker from "../../../icons/CoffeeAndTeaMaker";
 
 export default function RoomDetailBox({
   open,
@@ -26,6 +42,26 @@ export default function RoomDetailBox({
   Detailedroom,
   setDetailedRoom,
 }: any) {
+  const highlights = [
+    { Highlight: "A/C", icon: <IconAirConditioningDisabled /> },
+    { Highlight: "42' LED Smart TV", icon: <TvIcon /> },
+    { Highlight: "Coffee and tea maker", icon: <CoffeeAndTeaMaker /> },
+    { Highlight: "Hair dryer", icon: <HairDryer /> },
+    { Highlight: "bath amenities", icon: <BathroomIcon /> },
+    { Highlight: "bath robes and slippers", icon: <BathRobes /> },
+    { Highlight: "Minibar upon request", icon: <LiquorIcon /> },
+    {
+      Highlight: "24-hour room service",
+      icon: <IconHours24 />,
+    },
+    { Highlight: "Complimentry water bottles", icon: <IconBottle /> },
+    { Highlight: "In-room safe ", icon: <IconLockSquareRounded /> },
+    { Highlight: "Iron and ironing board", icon: <IconIroningSteam /> },
+    { Highlight: "Complimentry high speed Wi-Fi", icon: <IconWifi /> },
+    { Highlight: "Daily newspaper upon request", icon: <IconNews /> },
+    { Highlight: "Extra bed upon request", icon: <IconBed /> },
+  ];
+
   const handleClickOpen = () => {
     setOpen(true);
   };
@@ -133,10 +169,10 @@ export default function RoomDetailBox({
               <hr color="lightgray" />
               <br />
               <Stack
-                gap={2}
+                gap={3}
                 alignItems={"center"}
                 direction={"row"}
-                width={500}
+                width={550}
                 flexWrap={"wrap"}
               >
                 {Rooms[Detailedroom]?.amenities?.map(
@@ -145,11 +181,17 @@ export default function RoomDetailBox({
                       <Stack
                         direction={"row"}
                         alignItems={"center"}
-                        width={200}
+                        width={240}
+                        gap={2}
                       >
                         {/* <CheckIcon fontSize="small" sx={{ml:2}}  /> */}
-                        <Checkbox disabled checked />
-                        {item}
+                        <Box>
+                          {highlights?.map(
+                            (highLight) =>
+                              item === highLight?.Highlight && highLight?.icon
+                          )}
+                        </Box>
+                        <Box> {item}</Box>
                       </Stack>
                     </>
                   )
