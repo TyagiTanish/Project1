@@ -104,7 +104,7 @@ const HotelsPage = () => {
     <>
       {screenSize > 1024 && filteredData?.length !== 0 ? (
         <>
-          <Stack direction={"row"}>
+          <Stack direction={"row"} bgcolor={"rgb(250 250 250 0%)"}>
             {" "}
             <Button
               variant="outlined"
@@ -118,7 +118,7 @@ const HotelsPage = () => {
               }}
             >
               <TuneIcon sx={{ mr: 1 }} />
-            <FormattedMessage defaultMessage="Filters"/>
+              <FormattedMessage defaultMessage="Filters" />
             </Button>
             <Box
               sx={{
@@ -134,7 +134,11 @@ const HotelsPage = () => {
           </Stack>
         </>
       ) : null}
-      <Stack direction={"row"} sx={{ ml: { md: 4, xl: 3, sm: 3, lg: 1 } }}>
+      <Stack
+        direction={"row"}
+        sx={{ bgcolor: "rgb(250 250 250 0%)" }}
+        padding={2}
+      >
         {filteredData?.length !== 0 ? (
           <>
             {" "}
@@ -163,14 +167,14 @@ const HotelsPage = () => {
               }}
             >
               <TuneIcon sx={{ mr: 1 }} />
-        <FormattedMessage defaultMessage="Filters"/>
+              <FormattedMessage defaultMessage="Filters" />
             </Button>
             <Box
               margin={15}
               marginLeft={"30%"}
               sx={{ fontSize: 20, color: "red" }}
             >
-           <FormattedMessage defaultMessage="No Results Match your search"/>
+              <FormattedMessage defaultMessage="No Results Match your search" />
             </Box>
           </>
         )}

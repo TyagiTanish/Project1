@@ -52,7 +52,11 @@ export default function SimpleMap() {
   return (
     <Box
       id="map"
-      sx={{ height: "200px", minWidth: { sm: "48vw", lg: "35vw" } }}
+      sx={{
+        height: "200px",
+        minWidth: { sm: "48vw", lg: "35vw" },
+        borderRadius: 5,
+      }}
     />
   );
 }

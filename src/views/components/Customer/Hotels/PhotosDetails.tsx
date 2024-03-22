@@ -8,9 +8,13 @@ export default function PhotosDetails({ item }: any) {
   return (
     <Box
       sx={{
-        width: { sm: 725, md: 1000, lg: 800, xl: 1000 },
+        width: { sm: 725, md: 930, lg: 690, xl: 920 },
         mb: 3,
         // border: "1px solid lightgray",
+        ml: 2,
+        boxShadow: 2,
+        borderRadius: 5,
+        p: 2,
       }}
     >
       <Grid container>

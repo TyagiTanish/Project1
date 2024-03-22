@@ -1,20 +1,22 @@
 import { Box, Grid, Stack } from "@mui/material";
 import React from "react";
 
-
-
-
-import { IconParkingCircle } from '@tabler/icons-react';
-import { IconWifi } from '@tabler/icons-react';
-import { IconSwimming } from '@tabler/icons-react';
-import { IconHotelService } from '@tabler/icons-react';
-import { IconBarbell } from '@tabler/icons-react';
-import { IconWashMachine } from '@tabler/icons-react';
-import { IconGlassGin } from '@tabler/icons-react';
-import { IconUsersGroup } from '@tabler/icons-react';
+import { IconParkingCircle } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconSwimming } from "@tabler/icons-react";
+import { IconHotelService } from "@tabler/icons-react";
+import { IconBarbell } from "@tabler/icons-react";
+import { IconWashMachine } from "@tabler/icons-react";
+import { IconGlassGin } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
 function OverViewHotel({ item }: any) {
   const amenitie = [
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 0 },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 0,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 1 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 2 },
     {
@@ -31,8 +33,18 @@ function OverViewHotel({ item }: any) {
       index: 5,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 6 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: "7" },
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 8 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: "7",
+    },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 8,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
     {
@@ -49,7 +61,12 @@ function OverViewHotel({ item }: any) {
       index: 13,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: 15 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: 15,
+    },
   ];
 
   const ShowAmenities = amenitie.filter((v, i) =>
@@ -63,7 +80,9 @@ function OverViewHotel({ item }: any) {
         border: "1px solid lightgray",
         mb: 2,
         borderRadius: 5,
-        width: { sm: 642, lg: 690, md: 880, xl: 880 },
+        width: { sm: 642, lg: 640, md: 880, xl: 880 },
+        ml: 2,
+        boxShadow: 2,
       }}
     >
       <Box
