@@ -13,6 +13,7 @@ import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { enqueueSnackbar } from "notistack";
 import { FormattedMessage } from "react-intl";
+import Footer from "../Footer/Footer";
 
 /**
  * To show Details of a specific hotel. Markdown is *Hotels*.
@@ -132,6 +133,7 @@ function ViewDeal() {
         <Box padding={1}>
           <UserViewRooms hotels={hotels} />
         </Box>
+        <Footer />
       </Stack>
     </>
   );
