@@ -26,7 +26,7 @@ import {
 } from "@mui/x-data-grid";
 import BookingRequestDialogBox from "./BookingRequestDialogBox";
 import LoaderBeforeReciept from "./LoaderBeforeReciept";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
@@ -48,6 +48,7 @@ export default function Bookings() {
   });
   const [search, setSearch] = React.useState("");
   const [queryOptions, setQueryOptions] = React.useState<any>();
+  const intl = useIntl();
   const handleClickOpen = (data: any) => {
     setOpen(true);
     console.log(data);
@@ -102,21 +103,20 @@ export default function Bookings() {
       width: 250,
       editable: true,
       renderCell: (params: any) => {
-       
-      return  <div style={{ textTransform: "capitalize" }}>
-       {params?.row?.paymentId?.type}
-        </div>
-
+        return (
+          <div style={{ textTransform: "capitalize" }}>
+            {params?.row?.paymentId?.type}
+          </div>
+        );
       },
-      renderHeader: (params: GridColumnHeaderParams) => 
-        {
-     
-      return  <strong style={{ fontSize: 18 }}>
-          {" "}
-          <FormattedMessage defaultMessage="Payment Method" />
-        </strong>
+      renderHeader: (params: GridColumnHeaderParams) => {
+        return (
+          <strong style={{ fontSize: 18 }}>
+            {" "}
+            <FormattedMessage defaultMessage="Payment Method" />
+          </strong>
+        );
       },
-
     },
     {
       field: "paymentStatus",
@@ -304,7 +304,9 @@ export default function Bookings() {
                   </InputAdornment>
                 ),
               }}
-              placeholder="Search Here...."
+              placeholder={intl.formatMessage({
+                defaultMessage: "Search Here....",
+              })}
               sx={{ width: 270 }}
               onChange={(e) => {
                 setSearch(e.target.value);

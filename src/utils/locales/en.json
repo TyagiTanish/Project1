@@ -239,6 +239,12 @@
       "value": "Room Quantity"
     }
   ],
+  "5Fs4aA": [
+    {
+      "type": 0,
+      "value": "Add Category"
+    }
+  ],
   "5Gqjr7": [
     {
       "type": 0,
@@ -291,6 +297,18 @@
     {
       "type": 0,
       "value": "Total No. of Days-"
+    }
+  ],
+  "6uMqL1": [
+    {
+      "type": 0,
+      "value": "Unpaid"
+    }
+  ],
+  "6yd2sS": [
+    {
+      "type": 0,
+      "value": "Search Here...."
     }
   ],
   "7E/yNW": [
@@ -353,6 +371,12 @@
       "value": "Zip Code must be a number"
     }
   ],
+  "8xVmzh": [
+    {
+      "type": 0,
+      "value": "Enter Country"
+    }
+  ],
   "8xkJT9": [
     {
       "type": 0,
@@ -411,12 +435,6 @@
     {
       "type": 0,
       "value": "Cancellation Policy"
-    }
-  ],
-  "AK1Eri": [
-    {
-      "type": 0,
-      "value": "By proceeding with this booking, I agree to OYO's Terms of Use and Privacy Policy."
     }
   ],
   "AWsQuR": [
@@ -537,6 +555,12 @@
     {
       "type": 0,
       "value": "Add Hotel Details.."
+    }
+  ],
+  "FHz5Gf": [
+    {
+      "type": 0,
+      "value": "Enter State"
     }
   ],
   "FRPiFb": [
@@ -677,10 +701,22 @@
       "value": "Agree"
     }
   ],
+  "IU7R5R": [
+    {
+      "type": 0,
+      "value": "Add Amenities"
+    }
+  ],
   "J+S/E8": [
     {
       "type": 0,
       "value": "Invalid Email"
+    }
+  ],
+  "JDOOWa": [
+    {
+      "type": 0,
+      "value": "Enter City"
     }
   ],
   "JGsVts": [
@@ -983,12 +1019,6 @@
       "value": "Type of room"
     }
   ],
-  "Ss0sWu": [
-    {
-      "type": 0,
-      "value": "Pay Now"
-    }
-  ],
   "Su429b": [
     {
       "type": 0,
@@ -999,6 +1029,12 @@
     {
       "type": 0,
       "value": "Responsible Disclosure"
+    }
+  ],
+  "T4w4dV": [
+    {
+      "type": 0,
+      "value": "Guest Name"
     }
   ],
   "TE4fIS": [
@@ -1289,6 +1325,12 @@
       "value": "Add Room Photos"
     }
   ],
+  "cxSZFw": [
+    {
+      "type": 0,
+      "value": "Room's Highlight"
+    }
+  ],
   "cyR7Kh": [
     {
       "type": 0,
@@ -1305,6 +1347,12 @@
     {
       "type": 0,
       "value": "From"
+    }
+  ],
+  "dZAi6E": [
+    {
+      "type": 0,
+      "value": "Enter Postal code"
     }
   ],
   "dfXq0N": [
@@ -1643,6 +1691,12 @@
       "value": "Phone Number"
     }
   ],
+  "nFQbxh": [
+    {
+      "type": 0,
+      "value": "Payment Method"
+    }
+  ],
   "ng+41Q": [
     {
       "type": 0,
@@ -1701,6 +1755,12 @@
     {
       "type": 0,
       "value": "Deluxe"
+    }
+  ],
+  "ozyoh7": [
+    {
+      "type": 0,
+      "value": "Search Hotels"
     }
   ],
   "p2cPVQ": [
@@ -1817,6 +1877,12 @@
       "value": "Iron and ironing board"
     }
   ],
+  "u/vOPu": [
+    {
+      "type": 0,
+      "value": "Paid"
+    }
+  ],
   "uCk8r+": [
     {
       "type": 0,
@@ -1929,6 +1995,12 @@
     {
       "type": 0,
       "value": "Pin Code"
+    }
+  ],
+  "xFenH3": [
+    {
+      "type": 0,
+      "value": "Enter Hotel Name"
     }
   ],
   "xYmt1a": [

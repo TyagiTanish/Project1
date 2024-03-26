@@ -1233,5 +1233,19 @@
   "bct4uR": { "defaultMessage": "Ajouter des photos de la chambre" },
   "cgIcHS": { "defaultMessage": "Ajouter des photos de la pièce" },
   "j9uf50": { "defaultMessage": "Le numéro de chambre est requis" },
-  "x+EcXU": { "defaultMessage": "Doit être supérieur à 1k" }
+  "x+EcXU": { "defaultMessage": "Doit être supérieur à 1k" },
+  "5Fs4aA": { "defaultMessage": "ajouter une catégorie" },
+  "6uMqL1": { "defaultMessage": "Non payé" },
+  "6yd2sS": { "defaultMessage": "Cherche ici...." },
+  "8xVmzh": { "defaultMessage": "Entrez le pays" },
+  "FHz5Gf": { "defaultMessage": "Entrer l'état" },
+  "IU7R5R": { "defaultMessage": "Ajouter des commodités" },
+  "JDOOWa": { "defaultMessage": "Entrez la ville" },
+  "T4w4dV": { "defaultMessage": "Nom de l'invité" },
+  "cxSZFw": { "defaultMessage": "Le point fort de la chambre" },
+  "dZAi6E": { "defaultMessage": "Entrez le code postal" },
+  "nFQbxh": { "defaultMessage": "Mode de paiement" },
+  "ozyoh7": { "defaultMessage": "Rechercher des hôtels" },
+  "u/vOPu": { "defaultMessage": "Payé" },
+  "xFenH3": { "defaultMessage": "Entrez le nom de l'hôtel" }
 }

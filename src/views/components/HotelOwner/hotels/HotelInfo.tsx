@@ -86,8 +86,8 @@ function HotelInfo({ setRender }: any) {
             <Box
               component="img"
               sx={{
-                width: "30%",
-                height: "auto",
+                width: { lg: "40%", md: 500, sm: 300 },
+                height: { xl: 300, lg: 200, md: 200, sm: 150 },
               }}
               alt="The house from the offer."
               src={`http://localhost:8000/${data?.photo}`}
@@ -162,7 +162,7 @@ function HotelInfo({ setRender }: any) {
               <EditIcon fontSize="small" sx={{ cursor: "pointer" }} />
             </Button>
           </Stack>
-          <Box ml={-50}>
+          <Box ml={{ xl: -50, lg: -40, md: -25, sm: -15 }}>
             <HotelAmenities amenities={data.amenities} />
           </Box>
         </Stack>

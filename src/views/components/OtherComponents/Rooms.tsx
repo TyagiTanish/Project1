@@ -320,7 +320,9 @@ function AddRooms({ setRender, showCategories }: any) {
                     <TextField
                       {...params}
                       variant="outlined"
-                      placeholder="Room's Highlight"
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Room's Highlight",
+                      })}
                       sx={{ width: 400 }}
                     />
                   )}

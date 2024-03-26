@@ -251,6 +251,12 @@
       "value": "Quantité de chambre"
     }
   ],
+  "5Fs4aA": [
+    {
+      "type": 0,
+      "value": "ajouter une catégorie"
+    }
+  ],
   "5Gqjr7": [
     {
       "type": 0,
@@ -311,6 +317,18 @@
       "value": "Nombre total de jours-"
     }
   ],
+  "6uMqL1": [
+    {
+      "type": 0,
+      "value": "Non payé"
+    }
+  ],
+  "6yd2sS": [
+    {
+      "type": 0,
+      "value": "Cherche ici...."
+    }
+  ],
   "7444aR": [
     {
       "type": 0,
@@ -326,7 +344,7 @@
   "7SODD1": [
     {
       "type": 0,
-      "value": "Room type is required"
+      "value": "Le type de chambre est requis"
     }
   ],
   "7TFbhV": [
@@ -381,6 +399,12 @@
     {
       "type": 0,
       "value": "Le code postal doit être un chiffre"
+    }
+  ],
+  "8xVmzh": [
+    {
+      "type": 0,
+      "value": "Entrez le pays"
     }
   ],
   "8xkJT9": [
@@ -581,6 +605,12 @@
       "value": "Description de l'hôtel"
     }
   ],
+  "FHz5Gf": [
+    {
+      "type": 0,
+      "value": "Entrer l'état"
+    }
+  ],
   "FRPiFb": [
     {
       "type": 0,
@@ -731,10 +761,22 @@
       "value": "Accepter"
     }
   ],
+  "IU7R5R": [
+    {
+      "type": 0,
+      "value": "Ajouter des commodités"
+    }
+  ],
   "J+S/E8": [
     {
       "type": 0,
       "value": "Email invalide"
+    }
+  ],
+  "JDOOWa": [
+    {
+      "type": 0,
+      "value": "Entrez la ville"
     }
   ],
   "JGsVts": [
@@ -842,13 +884,13 @@
   "MWAiJK": [
     {
       "type": 0,
-      "value": "Add Room Discription"
+      "value": "Ajouter une description de la pièce"
     }
   ],
   "N/NQ2z": [
     {
       "type": 0,
-      "value": "Upload 4 photos"
+      "value": "Téléchargez 4 photos"
     }
   ],
   "N4ReBT": [
@@ -950,7 +992,7 @@
   "Pm50Iy": [
     {
       "type": 0,
-      "value": "Add Rooms"
+      "value": "Ajouter des pièces"
     }
   ],
   "Q/7RZn": [
@@ -1010,7 +1052,7 @@
   "QmTzIz": [
     {
       "type": 0,
-      "value": "Price is required!"
+      "value": "Le prix est obligatoire!"
     }
   ],
   "QwDSj/": [
@@ -1022,7 +1064,7 @@
   "R53e2J": [
     {
       "type": 0,
-      "value": "Add Room +"
+      "value": "Ajouter une pièce +"
     }
   ],
   "RLXaEm": [
@@ -1065,6 +1107,12 @@
     {
       "type": 0,
       "value": "Divulgation responsable"
+    }
+  ],
+  "T4w4dV": [
+    {
+      "type": 0,
+      "value": "Nom de l'invité"
     }
   ],
   "TE4fIS": [
@@ -1340,7 +1388,7 @@
   "bct4uR": [
     {
       "type": 0,
-      "value": "Add Room photos"
+      "value": "Ajouter des photos de la chambre"
     }
   ],
   "cErphj": [
@@ -1352,7 +1400,13 @@
   "cgIcHS": [
     {
       "type": 0,
-      "value": "Add Room Photos"
+      "value": "Ajouter des photos de la pièce"
+    }
+  ],
+  "cxSZFw": [
+    {
+      "type": 0,
+      "value": "Le point fort de la chambre"
     }
   ],
   "cyR7Kh": [
@@ -1371,6 +1425,12 @@
     {
       "type": 0,
       "value": "Depuis"
+    }
+  ],
+  "dZAi6E": [
+    {
+      "type": 0,
+      "value": "Entrez le code postal"
     }
   ],
   "dfXq0N": [
@@ -1586,7 +1646,7 @@
   "j9uf50": [
     {
       "type": 0,
-      "value": "Room Number is required"
+      "value": "Le numéro de chambre est requis"
     }
   ],
   "jCGvSr": [
@@ -1727,6 +1787,12 @@
       "value": "Numéro de téléphone"
     }
   ],
+  "nFQbxh": [
+    {
+      "type": 0,
+      "value": "Mode de paiement"
+    }
+  ],
   "ng+41Q": [
     {
       "type": 0,
@@ -1785,6 +1851,12 @@
     {
       "type": 0,
       "value": "De luxe"
+    }
+  ],
+  "ozyoh7": [
+    {
+      "type": 0,
+      "value": "Rechercher des hôtels"
     }
   ],
   "p2cPVQ": [
@@ -1901,6 +1973,12 @@
       "value": "Fer et planche à repasser"
     }
   ],
+  "u/vOPu": [
+    {
+      "type": 0,
+      "value": "Payé"
+    }
+  ],
   "uCk8r+": [
     {
       "type": 0,
@@ -2006,7 +2084,7 @@
   "x+EcXU": [
     {
       "type": 0,
-      "value": "Should be above 1k"
+      "value": "Doit être supérieur à 1k"
     }
   ],
   "x456Dl": [
@@ -2019,6 +2097,12 @@
     {
       "type": 0,
       "value": "Code PIN"
+    }
+  ],
+  "xFenH3": [
+    {
+      "type": 0,
+      "value": "Entrez le nom de l'hôtel"
     }
   ],
   "xYmt1a": [

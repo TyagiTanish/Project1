@@ -7,14 +7,14 @@ import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
-import { IconParkingCircle } from '@tabler/icons-react';
-import { IconWifi } from '@tabler/icons-react';
-import { IconSwimming } from '@tabler/icons-react';
-import { IconHotelService } from '@tabler/icons-react';
-import { IconBarbell } from '@tabler/icons-react';
-import { IconWashMachine } from '@tabler/icons-react';
-import { IconGlassGin } from '@tabler/icons-react';
-import { IconUsersGroup } from '@tabler/icons-react';
+import { IconParkingCircle } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconSwimming } from "@tabler/icons-react";
+import { IconHotelService } from "@tabler/icons-react";
+import { IconBarbell } from "@tabler/icons-react";
+import { IconWashMachine } from "@tabler/icons-react";
+import { IconGlassGin } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
 import ChangedImagePreview from "./changedImagePreview";
 import {
   Autocomplete,
@@ -107,7 +107,12 @@ export default function EditRoomDetails({
   //   { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
   // ];
   const amenities = [
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 0 },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 0,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 1 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 2 },
     {
@@ -124,8 +129,18 @@ export default function EditRoomDetails({
       index: 5,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 6 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: "7" },
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 8 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: "7",
+    },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 8,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
     {
@@ -142,7 +157,12 @@ export default function EditRoomDetails({
       index: 13,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: 15 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: 15,
+    },
   ];
 
   const FormSchema = Yup.object().shape({
@@ -413,7 +433,9 @@ export default function EditRoomDetails({
                       label={
                         <FormattedMessage defaultMessage="Room Amenities" />
                       }
-                      placeholder="Add Amenities"
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Add Amenities",
+                      })}
                     />
                   )}
                 />
