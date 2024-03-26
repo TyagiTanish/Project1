@@ -15,7 +15,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { object } from "yup";
 import DomainAddOutlinedIcon from "@mui/icons-material/DomainAddOutlined";
 import AddHotelDialogBox from "./AddHotel/AddHotelDialogBox";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function SearchHotels({
   filteredData,
@@ -27,7 +27,7 @@ function SearchHotels({
   setSearchTerm,
 }: any) {
   const { id } = useParams();
-
+  const intl = useIntl();
   const [selected, setSelected] = useState<any>(data);
   const [open, setOpen] = React.useState(false);
   const selectedID = useMemo(() => {
@@ -60,7 +60,9 @@ function SearchHotels({
         >
           <TextField
             variant="outlined"
-            placeholder="Search Hotels"
+            placeholder={intl.formatMessage({
+              defaultMessage: "Search Hotels",
+            })}
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">

@@ -25,7 +25,7 @@ import {
 import PdfViewer from "./DisplayPdf";
 import PdfViewerFromBuffer from "./DisplayPdf";
 import LoaderBeforeReciept from "./LoaderBeforeReciept";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 /**
  * To show all the accepted Bookings by the Hotel Owner. Markdown is *AcceptedBooking*.
@@ -57,6 +57,7 @@ function AcceptedBookings() {
   const [length, setLength] = useState();
   const [render, setRender] = useState(0);
   const [queryOptions, setQueryOptions] = useState<any>();
+  const intl = useIntl();
   const handleChange = async (event: any, id: any) => {
     await request.put(`/updateArrival/${id}`, {
       value: event.target.value,
@@ -414,7 +415,9 @@ function AcceptedBookings() {
                 </InputAdornment>
               ),
             }}
-            placeholder="Search Here...."
+            placeholder={intl.formatMessage({
+              defaultMessage: "Search Here....",
+            })}
             sx={{ width: 370 }}
             onChange={(e) => {
               setSearch(e.target.value);

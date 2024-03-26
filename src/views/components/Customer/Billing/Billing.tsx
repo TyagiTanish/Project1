@@ -364,7 +364,9 @@ const Billing = () => {
                         </Typography>
                         <TextField
                           {...register("guestName")}
-                          placeholder="Guest Name"
+                          placeholder={intl.formatMessage({
+                            defaultMessage: "Guest Name",
+                          })}
                           variant="outlined"
                           fullWidth
                         />

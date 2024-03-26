@@ -26,17 +26,17 @@ import { useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
-import { IconParkingCircle } from '@tabler/icons-react';
-import { IconWifi } from '@tabler/icons-react';
-import { IconSwimming } from '@tabler/icons-react';
-import { IconHotelService } from '@tabler/icons-react';
-import { IconBarbell } from '@tabler/icons-react';
-import { IconWashMachine } from '@tabler/icons-react';
-import { IconGlassGin } from '@tabler/icons-react';
-import { IconUsersGroup } from '@tabler/icons-react';
+import { IconParkingCircle } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconSwimming } from "@tabler/icons-react";
+import { IconHotelService } from "@tabler/icons-react";
+import { IconBarbell } from "@tabler/icons-react";
+import { IconWashMachine } from "@tabler/icons-react";
+import { IconGlassGin } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
 
 import AddDiscription from "../../HotelOwner/Rooms/RoomDetails/AddDiscription";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 export default function AddHotelAftrLgn() {
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -67,8 +67,14 @@ export default function AddHotelAftrLgn() {
   const [maxPhoto, setMaxPhoto] = React.useState(false);
 
   const [arr, setArr]: any = React.useState([]);
+  const intl = useIntl();
   const amenitie = [
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 0 },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 0,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 1 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 2 },
     {
@@ -85,8 +91,18 @@ export default function AddHotelAftrLgn() {
       index: 5,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 6 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: "7" },
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 8 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: "7",
+    },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 8,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
     {
@@ -103,7 +119,12 @@ export default function AddHotelAftrLgn() {
       index: 13,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: 15 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: 15,
+    },
   ];
 
   const [content, setContent] = useState("");
@@ -267,7 +288,7 @@ export default function AddHotelAftrLgn() {
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
-  
+
   return (
     <Box
       sx={{
@@ -346,8 +367,12 @@ export default function AddHotelAftrLgn() {
 
                 color: "white",
                 fontWeight: "bold",
-          
-                fontSize: { xl: lang === 'fr' ? 15 : 17 , md: lang === 'fr' ? 14 : 16 , sm: lang === 'fr' ? 13 : 13  },
+
+                fontSize: {
+                  xl: lang === "fr" ? 15 : 17,
+                  md: lang === "fr" ? 14 : 16,
+                  sm: lang === "fr" ? 13 : 13,
+                },
                 textAlign: "center",
                 p: "1%",
               }}
@@ -434,7 +459,7 @@ export default function AddHotelAftrLgn() {
                         spacing={3}
                         // margin={"2%"}
                         justifyContent={"center"}
-                        sx={{width:{xl:350,md:280,sm:280}}}
+                        sx={{ width: { xl: 350, md: 280, sm: 280 } }}
                       >
                         <Stack>
                           <Typography
@@ -448,7 +473,9 @@ export default function AddHotelAftrLgn() {
                           <TextField
                             // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
 
-                            placeholder="Enter Hotel Name"
+                            placeholder={intl.formatMessage({
+                              defaultMessage: "Enter Hotel Name",
+                            })}
                             {...register("hotelName")}
                           />
                           <FormHelperText sx={{ color: "red" }}>
@@ -545,7 +572,9 @@ export default function AddHotelAftrLgn() {
                             </Typography>
                             <TextField
                               sx={{ width: "80%" }}
-                              placeholder="Enter City"
+                              placeholder={intl.formatMessage({
+                                defaultMessage: "Enter City",
+                              })}
                               {...register("city")}
                             />
                             <FormHelperText sx={{ color: "red" }}>
@@ -564,7 +593,9 @@ export default function AddHotelAftrLgn() {
                             <TextField
                               sx={{ width: "80%" }}
                               id="demo-helper-text-aligned"
-                              placeholder="Enter State"
+                              placeholder={intl.formatMessage({
+                                defaultMessage: "Enter State",
+                              })}
                               {...register("state")}
                             />{" "}
                             <FormHelperText sx={{ color: "red" }}>
@@ -590,7 +621,9 @@ export default function AddHotelAftrLgn() {
                             <TextField
                               sx={{ width: "80%" }}
                               id="demo-helper-text-aligned"
-                              placeholder="Enter Postal code"
+                              placeholder={intl.formatMessage({
+                                defaultMessage: "Enter Postal code",
+                              })}
                               {...register("postalCode")}
                             />{" "}
                             <FormHelperText sx={{ color: "red" }}>
@@ -609,7 +642,9 @@ export default function AddHotelAftrLgn() {
                             <TextField
                               sx={{ width: "80%" }}
                               id="demo-helper-text-aligned"
-                              placeholder="Enter Country"
+                              placeholder={intl.formatMessage({
+                                defaultMessage: "Enter Country",
+                              })}
                               {...register("country")}
                             />{" "}
                             <FormHelperText sx={{ color: "red" }}>

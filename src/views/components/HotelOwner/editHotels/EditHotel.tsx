@@ -25,9 +25,10 @@ import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { render } from "react-dom";
 import { useSelector } from "react-redux";
 import { enqueueSnackbar } from "notistack";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 
 function EditHotel(props: any) {
+  const intl = useIntl();
   const [value, setValue] = useState(props.data?.discription);
   const [category, setcategory] = useState<any>(props?.data?.categories);
   const [imagePreView, setImagePreView] = React.useState(false);
@@ -278,7 +279,9 @@ function EditHotel(props: any) {
                     <TextField
                       {...params}
                       variant="filled"
-                      placeholder="Add Category"
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Add Category",
+                      })}
                     />
                   )}
                 />

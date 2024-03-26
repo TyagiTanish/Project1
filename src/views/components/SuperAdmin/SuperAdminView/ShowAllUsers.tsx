@@ -37,6 +37,7 @@ function ShowAllUsers() {
     setQueryOptions({ sortModel: [...sortModel] });
   }, []);
   const [queryOptions, setQueryOptions] = useState<any>();
+  const intl = useIntl();
   const columns: GridColDef[] = [
     {
       field: "name",
@@ -131,7 +132,9 @@ function ShowAllUsers() {
               </InputAdornment>
             ),
           }}
-          placeholder="Search Here...."
+          placeholder={intl.formatMessage({
+            defaultMessage: "Search Here....",
+          })}
           sx={{ width: 300 }}
           onChange={(e) => {
             setSearch(e.target.value);
