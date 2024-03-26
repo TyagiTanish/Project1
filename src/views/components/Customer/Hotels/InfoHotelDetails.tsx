@@ -108,7 +108,7 @@ function InfoHotelDetails({ item }: any) {
         <FormattedMessage defaultMessage="Location" />
       </Box>
       <Box sx={{ m: 2 }}>
-        <Map2 />
+        <Map2 isViewDeal={false}/>
       </Box>
       <Box>
         <Box

@@ -8,7 +8,7 @@ import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux";
 // const AnyReactComponent = ({ text }: any) => <div>{text}</div>;
-export default function SimpleMap() {
+export default function SimpleMap({isViewDeal}:any) {
   const location = useSelector((state: any) => state.userReducer.location);
   useEffect(() => {
     mapboxgl.accessToken =
@@ -52,7 +52,7 @@ export default function SimpleMap() {
   return (
     <Box
       id="map"
-      sx={{ height: "200px", minWidth: { sm: "48vw", lg: "35vw" } }}
+      sx={{ height: "200px", minWidth: isViewDeal === true ?  { sm: "25vw", lg: "20vw" } :  { sm: "48vw", lg: "35vw" } }}
     />
   );
 }
@@ -76,4 +76,4 @@ export default function SimpleMap() {
       </GoogleMapReact> */
 }
 
-// </Box>
+// </Box> 
