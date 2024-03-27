@@ -33,6 +33,11 @@ const CustomerView = () => {
         padding={2}
         justifyContent={"space-between"}
         height={70}
+        position={"fixed"}
+        width={"100%"}
+        top={0}
+        bgcolor={"white"}
+        zIndex={2}
       >
         {screenSize === 768 && (
           <Box>
@@ -75,7 +80,9 @@ const CustomerView = () => {
           </Box>
         </Stack>
       </Stack>
-      <Outlet />
+      <Stack mt={15}>
+        <Outlet />
+      </Stack>
     </Stack>
   );
 };

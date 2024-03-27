@@ -66,6 +66,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
             // height: { sm: 600, xl: 800, md: 1000 },
             height: { md: "80vh", lg: "90vh", xl: "78vh" },
             borderRadius: 5,
+            zIndex: -1,
           }}
         />
       </Stack>

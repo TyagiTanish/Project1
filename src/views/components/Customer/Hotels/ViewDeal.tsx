@@ -128,9 +128,9 @@ function ViewDeal() {
       setOpen(true);
     }
   };
-  const scrollToElement= (id:any) => {
+  const scrollToElement = (id: any) => {
     const element = document.getElementById(id);
-    console.log(id)
+    console.log(id);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
     }
@@ -220,7 +220,7 @@ function ViewDeal() {
           <Box
             component="img"
             sx={{
-              width: {xl:550,lg:470,sm:350,md:370},
+              width: { xl: 550, lg: 470, sm: 350, md: 370 },
               height: 302,
             }}
             alt="The house from the offer."
@@ -233,7 +233,7 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-                width: {xl:250,md:190,sm:180,lg:200},
+                width: { xl: 250, md: 190, sm: 180, lg: 200 },
                 height: 149,
               }}
               alt="The house from the offer."
@@ -242,11 +242,11 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-               width: {xl:250,md:190,sm:180,lg:200},
+                width: { xl: 250, md: 190, sm: 180, lg: 200 },
                 height: 149,
               }}
               alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
+              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[1]?.path}`}
             />
           </Stack>
           <Stack direction={"column"} spacing={0.5}>
@@ -254,34 +254,37 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-               width: {xl:250,md:190,sm:180,lg:200},
+                width: { xl: 250, md: 190, sm: 180, lg: 200 },
                 height: 149,
               }}
               alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
+              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[2]?.path}`}
             />
             <Box
               component="img"
               sx={{
-               width: {xl:250,md:190,sm:180,lg:200},
+                width: { xl: 250, md: 190, sm: 180, lg: 200 },
                 height: 149,
               }}
               alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
+              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[3]?.path}`}
             />
           </Stack>
         </Stack>
       </Stack>
-      <Stack alignItems={'center'} >
+      <Stack alignItems={"center"}>
         {" "}
-        <Tabs activeButton={activeButton} setActiveButton={setActiveButton}  scrollToElement={scrollToElement}/>
+        <Tabs
+          activeButton={activeButton}
+          setActiveButton={setActiveButton}
+          scrollToElement={scrollToElement}
+        />
       </Stack>
-      <Box alignSelf={"center"} sx={{width:{xl:'57%',lg:'62%'}}}>
+      <Box alignSelf={"center"} sx={{ width: { xl: "57%", lg: "62%" } }}>
         <Stack
           direction={"row"}
           justifyContent={"space-between"}
           width={"100%"}
-         
         >
           <Stack>
             {" "}
@@ -332,27 +335,27 @@ function ViewDeal() {
           direction={"row"}
           sx={{ mt: "5%" }}
           alignItems={"center"}
-        
           width={"100%"}
-          justifyContent={'space-between'}
+          justifyContent={"space-between"}
           // border={'1px solid'}
-       
         >
-          <Typography sx={{fontSize:{xl:20,md:18,sm:17,lg:18}}}    id="Discription">About this property</Typography>{" "}
+          <Typography
+            sx={{ fontSize: { xl: 20, md: 18, sm: 17, lg: 18 } }}
+            id="Discription"
+          >
+            About this property
+          </Typography>{" "}
           <Box
             dangerouslySetInnerHTML={{ __html: filterData?.[0]?.discription }}
-          
             sx={{
               // flex: 1,
               letterSpacing: "1px",
               wordWrap: "break-word",
-          
-             width:{xl:600,md:500,lg:550,sm:500}           
+
+              width: { xl: 600, md: 500, lg: 550, sm: 500 },
             }}
           />
-          
         </Stack>
-
       </Box>
 
       <Box padding={1}>
