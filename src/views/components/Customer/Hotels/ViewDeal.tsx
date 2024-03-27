@@ -1,5 +1,6 @@
 import { Box, Button, Divider, Grid, Stack, Typography } from "@mui/material";
 import React, { useState, useEffect, useMemo } from "react";
+import Skeleton from "@mui/material/Skeleton";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import CallIcon from "@mui/icons-material/Call";
 import CalendarMonthIcon from "@mui/icons-material/CalendarMonth";
@@ -28,10 +29,12 @@ import { IconWashMachine } from "@tabler/icons-react";
 import { IconGlassGin } from "@tabler/icons-react";
 import { IconUsersGroup } from "@tabler/icons-react";
 import SimpleMap from "../Map/Map2";
+import Skeletons from "../../loader/skeleton/ImageSkeleton";
 function ViewDeal() {
   const { id } = useParams();
   const [filterData, setFilteredData] = useState<any>([]);
   const [activeButton, setActiveButton] = React.useState("Overview");
+  const [imageLoad, handleImageLoad] = useState(false);
   // console.log(id);
   // const hotelId = useSelector((state: any) => state.userReducer.hotelId);
   // console.log(hotelId);
@@ -135,6 +138,20 @@ function ViewDeal() {
       element.scrollIntoView({ behavior: "smooth", inline: "nearest" });
     }
   };
+  // const HandleImageLoad = (width: any, height: any) => {
+  //   return (
+  //     <Box>
+  //       <Skeleton variant="rectangular" width={width} height={height} />
+  //     </Box>
+  //   );
+  // };
+
+  useMemo(() => {
+    handleImageLoad(true);
+    setTimeout(() => {
+      handleImageLoad(false);
+    }, 1500);
+  }, []);
 
   return (
     <>
@@ -217,65 +234,110 @@ function ViewDeal() {
         spacing={0.5}
       >
         <Stack>
-          <Box
-            component="img"
-            sx={{
-              width: { xl: 550, lg: 470, sm: 350, md: 370 },
-              height: 302,
-            }}
-            alt="The house from the offer."
-            src={`http://localhost:8000/${filterData[0]?.photo}`}
-          />
+          {imageLoad ? (
+            <Skeletons
+              width={{ xl: 550, lg: 470, sm: 350, md: 370 }}
+              height={302}
+            />
+          ) : (
+            <Box
+              component="img"
+              sx={{
+                width: { xl: 550, lg: 470, sm: 350, md: 370 },
+                height: 302,
+                borderRadius: 2,
+              }}
+              alt="The house from the offer."
+              src={`http://localhost:8000/${filterData[0]?.photo}`}
+            />
+          )}
         </Stack>
         <Stack direction={"row"} spacing={0.5}>
           <Stack direction={"column"} spacing={0.5}>
             {" "}
-            <Box
-              component="img"
-              sx={{
-                width: { xl: 250, md: 190, sm: 180, lg: 200 },
-                height: 149,
-              }}
-              alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
-            />
-            <Box
-              component="img"
-              sx={{
-                width: { xl: 250, md: 190, sm: 180, lg: 200 },
-                height: 149,
-              }}
-              alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[1]?.path}`}
-            />
+            {imageLoad ? (
+              <Skeletons
+                width={{ xl: 250, md: 190, sm: 180, lg: 200 }}
+                height={149}
+              />
+            ) : (
+              <Box
+                component="img"
+                sx={{
+                  width: { xl: 250, md: 190, sm: 180, lg: 200 },
+                  height: 149,
+                  borderRadius: 2,
+                }}
+                alt="The house from the offer."
+                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
+              />
+            )}
+            {imageLoad ? (
+              <Skeletons
+                width={{ xl: 250, md: 190, sm: 180, lg: 200 }}
+                height={149}
+              />
+            ) : (
+              <Box
+                component="img"
+                sx={{
+                  width: { xl: 250, md: 190, sm: 180, lg: 200 },
+                  height: 149,
+                  borderRadius: 2,
+                }}
+                alt="The house from the offer."
+                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[1]?.path}`}
+              />
+            )}
           </Stack>
           <Stack direction={"column"} spacing={0.5}>
             {" "}
-            <Box
-              component="img"
-              sx={{
-                width: { xl: 250, md: 190, sm: 180, lg: 200 },
-                height: 149,
-              }}
-              alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[2]?.path}`}
-            />
-            <Box
-              component="img"
-              sx={{
-                width: { xl: 250, md: 190, sm: 180, lg: 200 },
-                height: 149,
-              }}
-              alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[3]?.path}`}
-            />
+            {imageLoad ? (
+              <Skeletons
+                width={{ xl: 250, md: 190, sm: 180, lg: 200 }}
+                height={149}
+              />
+            ) : (
+              <Box
+                component="img"
+                sx={{
+                  width: { xl: 250, md: 190, sm: 180, lg: 200 },
+                  height: 149,
+                  borderRadius: 2,
+                }}
+                alt="The house from the offer."
+                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[2]?.path}`}
+              />
+            )}
+            {imageLoad ? (
+              <Skeletons
+                width={{ xl: 250, md: 190, sm: 180, lg: 200 }}
+                height={149}
+              />
+            ) : (
+              <Box
+                component="img"
+                sx={{
+                  width: { xl: 250, md: 190, sm: 180, lg: 200 },
+                  height: 149,
+                  borderRadius: 2,
+                }}
+                alt="The house from the offer."
+                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[3]?.path}`}
+              />
+            )}
           </Stack>
         </Stack>
       </Stack>
 
       <Stack alignItems={"center"}>
         {" "}
-        <Typography id="Amenities" width={0}></Typography>
+        <Typography
+          id="Amenities"
+          width={0}
+          position={"absolute"}
+          mt={7}
+        ></Typography>
         <Tabs
           activeButton={activeButton}
           setActiveButton={setActiveButton}
@@ -322,7 +384,11 @@ function ViewDeal() {
           <Stack spacing={2}>
             <Typography sx={{ fontSize: 20 }}>What's Around</Typography>
             <Box borderRadius={4}>
-              <SimpleMap isViewDeal={true} />
+              {imageLoad ? (
+                <Skeletons width={350} height={200} />
+              ) : (
+                <SimpleMap isViewDeal={true} />
+              )}
             </Box>
 
             <Stack direction={"row"}>
@@ -334,7 +400,11 @@ function ViewDeal() {
             </Stack>
           </Stack>
         </Stack>
-
+        <Typography
+          id="Discription"
+          mt={-10}
+          position={"absolute"}
+        ></Typography>
         <Stack
           direction={"row"}
           alignItems={"center"}
@@ -364,7 +434,7 @@ function ViewDeal() {
           />
         </Stack>
       </Box>
-      <Typography id="Rooms"></Typography>
+
       <Box padding={1}>
         <UserViewRooms hotels={hotels} />
       </Box>

@@ -51,7 +51,6 @@ export default function SimpleMap({ isViewDeal }: any) {
   // };
   return (
     <>
-      <Typography id="Discription"></Typography>
       <Box
         id="map"
         sx={{
@@ -61,6 +60,7 @@ export default function SimpleMap({ isViewDeal }: any) {
               ? { sm: "25vw", lg: "20vw" }
               : { sm: "48vw", lg: "35vw" },
           zIndex: -1,
+          borderRadius: 2,
         }}
       />
     </>

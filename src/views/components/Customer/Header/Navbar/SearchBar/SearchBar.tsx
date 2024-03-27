@@ -246,6 +246,7 @@ function SearchBar() {
             <Box mt={0}>
               <TextField
                 id="datePicker"
+                autoComplete="off"
                 sx={{ bgcolor: "white", width: { lg: 400, md: 300 } }}
                 placeholder={intl.formatMessage({
                   defaultMessage: "Check in - Check out",

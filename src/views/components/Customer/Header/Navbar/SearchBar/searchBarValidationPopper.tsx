@@ -52,7 +52,7 @@ export default function SearchBarValidationPopper({
           //   },
           // },
         ]}
-        sx={{ width: 300, mt: 2 }}
+        sx={{ width: 300, mt: 2, zIndex: 2 }}
       >
         <Box
           sx={{ border: 1, p: 1, bgcolor: "background.paper", color: "red" }}

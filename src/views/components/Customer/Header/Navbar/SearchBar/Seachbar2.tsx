@@ -129,10 +129,19 @@ function Seachbar2() {
   const id = open ? "simple-popper" : undefined;
   const handleCloseValidationPopper = (event: any) => {
     if (event?.value === "") {
-      // console.log("hii");
       setSearchBarAnchorEl(event);
     } else {
-      setSearchBarAnchorEl(null);
+      if (date) {
+        setSearchBarAnchorEl(null);
+      } else {
+        const datePicker = document?.querySelector("#datePicker");
+        setMessage(
+          intl.formatMessage({
+            defaultMessage: "Please select a Check-In and Check-Out date",
+          })
+        );
+        setSearchBarAnchorEl(datePicker || event);
+      }
     }
   };
   const handleClose = () => {
@@ -205,6 +214,7 @@ function Seachbar2() {
         <Box sx={{ mt: 1 }}>
           <TextField
             sx={{ bgcolor: "white", width: { sm: 240, md: 300 } }}
+            autoComplete="off"
             placeholder={intl.formatMessage({
               defaultMessage: "Check in - Check out",
             })}
@@ -259,6 +269,21 @@ function Seachbar2() {
                 // localStorage.setItem("searchTerm", searchTerm);
                 if (searchTerm !== "") {
                   dispatch(searchDetails(searchTerm));
+                  if (window?.location?.pathname == "/") {
+                    if (date) {
+                      navigate("/hotels");
+                      window?.scroll(0, 0);
+                    } else {
+                      const datePicker = document?.querySelector("#datePicker");
+                      setMessage(
+                        intl.formatMessage({
+                          defaultMessage:
+                            "Please select a Check-In and Check-Out date",
+                        })
+                      );
+                      handleCloseValidationPopper(datePicker);
+                    }
+                  }
                   const field = document.querySelector("#searchField");
                   setMessage("Please select a destination");
                   handleCloseValidationPopper(field);
@@ -266,6 +291,7 @@ function Seachbar2() {
                   // navigate("/hotels");
                 } else {
                   const field = document.querySelector("#searchField");
+                  setMessage("Please select a destination");
                   handleCloseValidationPopper(field);
                 }
               }}
