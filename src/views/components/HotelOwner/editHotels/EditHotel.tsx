@@ -36,7 +36,7 @@ function EditHotel(props: any) {
   const [photoValue, setPhotoValue] = useState(props.data?.photo.slice(7));
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<any>([]);
-  const url = "http://localhost:8000/";
+  const url = "http://192.168.1.114:8000/";
   const { request } = useAuth();
   const user = useSelector((state: any) => state.userReducer.user);
   const handleDelete = () => {

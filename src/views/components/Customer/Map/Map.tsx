@@ -39,7 +39,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       const popup = new mapboxgl.Popup()
         .setLngLat(location.coordinates)
         .setHTML(
-          `<div  style='width:100%;' ><span><img src='http://localhost:8000/${location?.image}'  style="width: 95%;"  /></span><span style='width:100%;' ><p   style='width:100%;font-size:15px;font-weight:bolder' >${location.title}</p><p>${location.description}</p></span></div><p></p>`
+          `<div  style='width:100%;' ><span><img src='http://192.168.1.114:8000/${location?.image}'  style="width: 95%;"  /></span><span style='width:100%;' ><p   style='width:100%;font-size:15px;font-weight:bolder' >${location.title}</p><p>${location.description}</p></span></div><p></p>`
         );
       const marker = new mapboxgl.Marker()
         .setLngLat(location.coordinates)

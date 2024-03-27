@@ -3,7 +3,7 @@ import React from "react";
 import HomeLocations from "../../components/OtherComponents/HomeLocations";
 
 /**
- * A Component to add on the landing page . Markdown is http://localhost:3000*.
+ * A Component to add on the landing page . Markdown is http://192.168.1.114:3000*.
  */
 function HomeBody() {
   return (

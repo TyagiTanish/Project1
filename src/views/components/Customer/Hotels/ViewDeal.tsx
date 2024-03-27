@@ -164,7 +164,7 @@ function ViewDeal() {
               height: "auto",
             }}
             alt="The house from the offer."
-            src={`http://localhost:8000/${filterData[0]?.photo}`}
+            src={`http://192.168.1.114:8000/${filterData[0]?.photo}`}
           />
           <Stack direction={"column"} spacing={1}>
             <Typography sx={{ fontSize: 22 }}>
@@ -248,7 +248,7 @@ function ViewDeal() {
                 borderRadius: 2,
               }}
               alt="The house from the offer."
-              src={`http://localhost:8000/${filterData[0]?.photo}`}
+              src={`http://192.168.1.114:8000/${filterData[0]?.photo}`}
             />
           )}
         </Stack>
@@ -269,7 +269,7 @@ function ViewDeal() {
                   borderRadius: 2,
                 }}
                 alt="The house from the offer."
-                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
+                src={`http://192.168.1.114:8000/${filterData[0]?.rooms[0]?.photos[0]?.path}`}
               />
             )}
             {imageLoad ? (
@@ -286,7 +286,7 @@ function ViewDeal() {
                   borderRadius: 2,
                 }}
                 alt="The house from the offer."
-                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[1]?.path}`}
+                src={`http://192.168.1.114:8000/${filterData[0]?.rooms[0]?.photos[1]?.path}`}
               />
             )}
           </Stack>
@@ -306,7 +306,7 @@ function ViewDeal() {
                   borderRadius: 2,
                 }}
                 alt="The house from the offer."
-                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[2]?.path}`}
+                src={`http://192.168.1.114:8000/${filterData[0]?.rooms[0]?.photos[2]?.path}`}
               />
             )}
             {imageLoad ? (
@@ -323,7 +323,7 @@ function ViewDeal() {
                   borderRadius: 2,
                 }}
                 alt="The house from the offer."
-                src={`http://localhost:8000/${filterData[0]?.rooms[0]?.photos[3]?.path}`}
+                src={`http://192.168.1.114:8000/${filterData[0]?.rooms[0]?.photos[3]?.path}`}
               />
             )}
           </Stack>

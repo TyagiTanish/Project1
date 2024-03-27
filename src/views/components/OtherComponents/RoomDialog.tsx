@@ -103,7 +103,7 @@ function RoomDialog(props: any) {
                   component={"img"}
                   width={{ xl: "70%", md: "60%", sm: "65%", xs: "50%" }}
                   // height={181.8}
-                  src={`http://localhost:8000/${props?.details?.photos[roomImage]?.path}`}
+                  src={`http://192.168.1.114:8000/${props?.details?.photos[roomImage]?.path}`}
                 />
                 <>
                   <Stack direction={"column"} spacing={0.2}>
@@ -116,7 +116,7 @@ function RoomDialog(props: any) {
                                 component={"img"}
                                 width={100}
                                 height={{ lg: 90 }}
-                                src={`http://localhost:8000/${image?.path}`}
+                                src={`http://192.168.1.114:8000/${image?.path}`}
                                 onClick={() => setRoomImage(index)}
                               />
                             )}
