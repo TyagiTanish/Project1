@@ -4,7 +4,9 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 
 import { Divider, Stack, Tab } from "@mui/material";
-function Tabs({ activeButton, setActiveButton }: any) {
+function Tabs({ activeButton, setActiveButton,scrollToElement }: any) {
+
+ 
   return (
     <TabContext value={activeButton}>
       <Stack
@@ -13,7 +15,7 @@ function Tabs({ activeButton, setActiveButton }: any) {
         sx={{
         //   border: "1px solid lightgray",
         //   p: 1,
-          width: { xl: "73%", md: "70%", sm: "100%" },  
+          width: { xl: "58%", md: "74%", sm: "100%" , lg:'61%'},  
         //   height: "90vh",
         // ml:'21vw'
         }}
@@ -26,14 +28,17 @@ function Tabs({ activeButton, setActiveButton }: any) {
         <TabList
           onChange={(event: React.SyntheticEvent, newValue: string) =>
             setActiveButton(newValue)
-          }
+          } 
           sx={{
             borderBottom: "1px solid lightgray",
+          
           }}
+        
         >
-          <Tab label="Overview" value={"Overview"}  sx={{textTransform:'capitalize'}}/>
-          <Tab label="Amenities" value={"amenities"} sx={{textTransform:'capitalize'}}/>
-          <Tab label="All Rooms" value={"rooms"} sx={{textTransform:'capitalize'}}/>
+          <Tab label="Overview" value={"Overview"}  sx={{textTransform:'capitalize'}} />
+          <Tab label="Amenities" value={"amenities"} sx={{textTransform:'capitalize'}} onClick={()=>{scrollToElement("Amenities")}}/>
+          <Tab label="All Rooms" value={"rooms"} sx={{textTransform:'capitalize'}} onClick={()=>{scrollToElement("Rooms")}}/>
+          <Tab label="Discription" value={"discription"} sx={{textTransform:'capitalize'}} onClick={()=>{scrollToElement("Discription")}}/>
           {/* <Tab label="All Rooms" value={"rooms"} sx={{textTransform:'capitalize'}}/> */}
         </TabList>
 

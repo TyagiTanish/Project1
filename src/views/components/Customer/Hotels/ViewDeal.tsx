@@ -128,7 +128,14 @@ function ViewDeal() {
       setOpen(true);
     }
   };
-  console.log(filterData);
+  const scrollToElement= (id:any) => {
+    const element = document.getElementById(id);
+    console.log(id)
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return (
     <>
       {/* <Stack overflow={"auto"} height={"90vh"}>
@@ -213,7 +220,7 @@ function ViewDeal() {
           <Box
             component="img"
             sx={{
-              width: 550,
+              width: {xl:550,lg:470,sm:350,md:370},
               height: 302,
             }}
             alt="The house from the offer."
@@ -226,7 +233,7 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-                width: 250,
+                width: {xl:250,md:190,sm:180,lg:200},
                 height: 149,
               }}
               alt="The house from the offer."
@@ -235,7 +242,7 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-                width: 250,
+               width: {xl:250,md:190,sm:180,lg:200},
                 height: 149,
               }}
               alt="The house from the offer."
@@ -247,7 +254,7 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-                width: 250,
+               width: {xl:250,md:190,sm:180,lg:200},
                 height: 149,
               }}
               alt="The house from the offer."
@@ -256,7 +263,7 @@ function ViewDeal() {
             <Box
               component="img"
               sx={{
-                width: 250,
+               width: {xl:250,md:190,sm:180,lg:200},
                 height: 149,
               }}
               alt="The house from the offer."
@@ -265,22 +272,23 @@ function ViewDeal() {
           </Stack>
         </Stack>
       </Stack>
-      <Stack ml={"21.5%"}>
+      <Stack alignItems={'center'} >
         {" "}
-        <Tabs activeButton={activeButton} setActiveButton={setActiveButton} />
+        <Tabs activeButton={activeButton} setActiveButton={setActiveButton}  scrollToElement={scrollToElement}/>
       </Stack>
-      <Box alignSelf={"center"} width={"57%"}>
+      <Box alignSelf={"center"} sx={{width:{xl:'57%',lg:'62%'}}}>
         <Stack
           direction={"row"}
           justifyContent={"space-between"}
           width={"100%"}
+         
         >
           <Stack>
             {" "}
             <Typography sx={{ fontSize: 28 }}>
               {filterData[0]?.hotelName}
             </Typography>
-            <Stack marginTop={2}>
+            <Stack marginTop={2} id="Amenities">
               {" "}
               <Typography sx={{ fontSize: 16 }}>Popular Amenities</Typography>
             </Stack>
@@ -326,34 +334,25 @@ function ViewDeal() {
           alignItems={"center"}
         
           width={"100%"}
-          spacing={42}
+          justifyContent={'space-between'}
+          // border={'1px solid'}
+       
         >
-          <Typography fontSize={25}>About this property</Typography>{" "}
+          <Typography sx={{fontSize:{xl:20,md:18,sm:17,lg:18}}}    id="Discription">About this property</Typography>{" "}
           <Box
             dangerouslySetInnerHTML={{ __html: filterData?.[0]?.discription }}
+          
             sx={{
-              flex: 1,
+              // flex: 1,
               letterSpacing: "1px",
               wordWrap: "break-word",
-              width: 600,
+          
+             width:{xl:600,md:500,lg:550,sm:500}           
             }}
           />
           
         </Stack>
-        <Stack
-          direction={"row"}
-          sx={{ mt: "1%" }}
-          alignItems={"center"}
-        
-          width={"100%"}
-          spacing={80}
-        >
-          <Typography fontSize={17}>Categories Available</Typography>{" "}
-        <Typography width={400}>{filterData?.[0]?.categories.map((item:any,i:any)=>(
-           filterData?.[0]?.categories.length === i+1 ? <span>{item} {" "}</span>  : <span>{item} {" ,"}</span>
-        ))}</Typography>
-          
-        </Stack>
+
       </Box>
 
       <Box padding={1}>
