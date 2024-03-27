@@ -7,6 +7,7 @@ const UseRoomAndGuestQuantity = () => {
   const data = useSelector((state: any) => state?.userReducer?.RoomsAndGuests);
   const TotalRooms = useRef(0);
   const TotalGuests = useRef(0);
+ 
   useMemo(() => {
     var result = 0;
     var totalRooms = 0;

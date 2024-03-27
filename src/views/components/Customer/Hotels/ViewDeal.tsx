@@ -132,7 +132,7 @@ function ViewDeal() {
     const element = document.getElementById(id);
     console.log(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+      element.scrollIntoView({ behavior: "smooth", inline: "nearest"});
     }
   };
 
@@ -333,19 +333,20 @@ function ViewDeal() {
 
         <Stack
           direction={"row"}
-          sx={{ mt: "5%" }}
+        
           alignItems={"center"}
           width={"100%"}
           justifyContent={"space-between"}
           // border={'1px solid'}
+         sx={{ position:"sticky",
+         top:"0",
+         zIndex:1,
+         backgroundColor:"white",mt: "5%"}}
+
         >
-          <Typography
-            sx={{ fontSize: { xl: 20, md: 18, sm: 17, lg: 18 } }}
-            id="Discription"
-          >
-            About this property
-          </Typography>{" "}
+          <Typography sx={{fontSize:{xl:20,md:18,sm:17,lg:18}}}>About this property</Typography>{" "}
           <Box
+          id="Discription"
             dangerouslySetInnerHTML={{ __html: filterData?.[0]?.discription }}
             sx={{
               // flex: 1,
@@ -357,7 +358,7 @@ function ViewDeal() {
           />
         </Stack>
       </Box>
-
+     
       <Box padding={1}>
         <UserViewRooms hotels={hotels} />
       </Box>

@@ -25,23 +25,25 @@ function Tabs({ activeButton, setActiveButton,scrollToElement }: any) {
       </Typography>
     </Stack> */}
 
-        <TabList
-          onChange={(event: React.SyntheticEvent, newValue: string) =>
-            setActiveButton(newValue)
-          } 
-          sx={{
-            borderBottom: "1px solid lightgray",
-          
-          }}
-        
-        >
-          <Tab label="Overview" value={"Overview"}  sx={{textTransform:'capitalize'}} />
-          <Tab label="Amenities" value={"amenities"} sx={{textTransform:'capitalize'}} onClick={()=>{scrollToElement("Amenities")}}/>
-          <Tab label="All Rooms" value={"rooms"} sx={{textTransform:'capitalize'}} onClick={()=>{scrollToElement("Rooms")}}/>
-          <Tab label="Discription" value={"discription"} sx={{textTransform:'capitalize'}} onClick={()=>{scrollToElement("Discription")}}/>
-          {/* <Tab label="All Rooms" value={"rooms"} sx={{textTransform:'capitalize'}}/> */}
-        </TabList>
+       
 
+          <TabList
+            onChange={(event: React.SyntheticEvent, newValue: string) =>
+              setActiveButton(newValue)
+            }
+            sx={{
+              borderBottom: "1px solid lightgray",
+              // position: '-webkit-sticky',
+            }}
+
+          >
+            <Tab label="Overview" value={"Overview"} sx={{ textTransform: 'capitalize' }} />
+            <Tab label="Amenities" value={"amenities"} sx={{ textTransform: 'capitalize' }} onClick={() => { scrollToElement("Amenities") }} />
+            <Tab label="All Rooms" value={"rooms"} sx={{ textTransform: 'capitalize' }} onClick={() => { scrollToElement("Rooms") }} />
+            <Tab label="Discription" value={"discription"} sx={{ textTransform: 'capitalize' }} onClick={() => { scrollToElement("Discription") }} />
+            {/* <Tab label="All Rooms" value={"rooms"} sx={{textTransform:'capitalize'}}/> */}
+          </TabList>
+        
         <TabPanel value="Overview" sx={{ overflow: "auto"}}>
           {/* <HotelInfo setRender={setRender} data={data} /> */}
         </TabPanel>
@@ -50,6 +52,9 @@ function Tabs({ activeButton, setActiveButton,scrollToElement }: any) {
         </TabPanel>
         <TabPanel value="rooms" sx={{ overflow: "auto" }}>
           {/* <AllRooms /> */}
+        </TabPanel>
+        <TabPanel value="discription" sx={{ overflow: "auto"}}>
+          {/* <HotelInfo setRender={setRender} data={data} /> */}
         </TabPanel>
       </Stack>
     </TabContext>

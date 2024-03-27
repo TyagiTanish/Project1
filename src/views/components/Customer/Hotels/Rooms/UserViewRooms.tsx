@@ -137,10 +137,12 @@ function UserViewRooms({ hotels }: any) {
 
   return (
     <>
+
       <Stack
         justifyContent={"space-evenly"}
         marginTop={"4%"}
         marginBottom={"4%"}
+       
       >
         {hotels[0]?.rooms?.map((item: any, i: any) => (
           <Stack
