@@ -212,7 +212,9 @@ function SearchBar() {
                 defaultMessage: "Search by city,hotel or state",
               })}
               onChange={(e) => {
-                setSearchTerm(e.target.value);
+                setSearchTerm(e?.target?.value);
+                const value: any = e?.target?.value;
+                dispatch(searchDetails(value));
                 const field = document.querySelector("#searchField");
                 setMessage(" Please select a destination");
                 handleCloseValidationPopper(field);

@@ -147,6 +147,14 @@ function Seachbar2() {
   const handleClose = () => {
     setAnchorEl2(null);
   };
+  useMemo(() => {
+    if (date) {
+      setSearchBarAnchorEl(null);
+    }
+  }, [date]);
+  useMemo(() => {
+    setSearchTerm(search ? search : "");
+  }, [search]);
 
   return (
     <>
@@ -213,6 +221,7 @@ function Seachbar2() {
         {/* <DateRangePickers /> */}
         <Box sx={{ mt: 1 }}>
           <TextField
+            id="datePicker"
             sx={{ bgcolor: "white", width: { sm: 240, md: 300 } }}
             autoComplete="off"
             placeholder={intl.formatMessage({
@@ -269,30 +278,31 @@ function Seachbar2() {
                 // localStorage.setItem("searchTerm", searchTerm);
                 if (searchTerm !== "") {
                   dispatch(searchDetails(searchTerm));
-                  if (window?.location?.pathname == "/") {
-                    if (date) {
+                  const field = document.querySelector("#searchField");
+                  handleCloseValidationPopper(field);
+                  if (date) {
+                    if (document?.location?.pathname === "/") {
                       navigate("/hotels");
                       window?.scroll(0, 0);
-                    } else {
-                      const datePicker = document?.querySelector("#datePicker");
-                      setMessage(
-                        intl.formatMessage({
-                          defaultMessage:
-                            "Please select a Check-In and Check-Out date",
-                        })
-                      );
-                      handleCloseValidationPopper(datePicker);
                     }
+                  } else {
+                    const datePicker = document?.querySelector("#datePicker");
+                    setMessage(
+                      intl.formatMessage({
+                        defaultMessage:
+                          "Please select a Check-In and Check-Out date",
+                      })
+                    );
+                    handleCloseValidationPopper(datePicker);
                   }
-                  const field = document.querySelector("#searchField");
-                  setMessage("Please select a destination");
-                  handleCloseValidationPopper(field);
-
-                  // navigate("/hotels");
                 } else {
-                  const field = document.querySelector("#searchField");
-                  setMessage("Please select a destination");
-                  handleCloseValidationPopper(field);
+                  const searchField = document.querySelector("#searchField");
+                  setMessage(
+                    intl.formatMessage({
+                      defaultMessage: " Please select a destination",
+                    })
+                  );
+                  handleCloseValidationPopper(searchField);
                 }
               }}
             >
