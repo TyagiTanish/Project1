@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import GoogleMapReact from "google-map-react";
-import { Box, IconButton } from "@mui/material";
+import { Box, IconButton, Typography } from "@mui/material";
 
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import mapboxgl from "mapbox-gl";
@@ -50,17 +50,20 @@ export default function SimpleMap({ isViewDeal }: any) {
   //   console.log(value);
   // };
   return (
-    <Box
-      id="map"
-      sx={{
-        height: "200px",
-        minWidth:
-          isViewDeal === true
-            ? { sm: "25vw", lg: "20vw" }
-            : { sm: "48vw", lg: "35vw" },
-        zIndex: -1,
-      }}
-    />
+    <>
+      <Typography id="Discription"></Typography>
+      <Box
+        id="map"
+        sx={{
+          height: "200px",
+          minWidth:
+            isViewDeal === true
+              ? { sm: "25vw", lg: "20vw" }
+              : { sm: "48vw", lg: "35vw" },
+          zIndex: -1,
+        }}
+      />
+    </>
   );
 }
 // <Box sx={{ height: "200px", minWidth: { sm: "48vw", lg: "35vw" } }}>

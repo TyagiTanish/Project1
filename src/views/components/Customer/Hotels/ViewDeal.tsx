@@ -132,7 +132,7 @@ function ViewDeal() {
     const element = document.getElementById(id);
     console.log(id);
     if (element) {
-      element.scrollIntoView({ behavior: "smooth", inline: "nearest"});
+      element.scrollIntoView({ behavior: "smooth", inline: "nearest" });
     }
   };
 
@@ -272,14 +272,17 @@ function ViewDeal() {
           </Stack>
         </Stack>
       </Stack>
+
       <Stack alignItems={"center"}>
         {" "}
+        <Typography id="Amenities" width={0}></Typography>
         <Tabs
           activeButton={activeButton}
           setActiveButton={setActiveButton}
           scrollToElement={scrollToElement}
         />
       </Stack>
+
       <Box alignSelf={"center"} sx={{ width: { xl: "57%", lg: "62%" } }}>
         <Stack
           direction={"row"}
@@ -291,7 +294,7 @@ function ViewDeal() {
             <Typography sx={{ fontSize: 28 }}>
               {filterData[0]?.hotelName}
             </Typography>
-            <Stack marginTop={2} id="Amenities">
+            <Stack marginTop={2}>
               {" "}
               <Typography sx={{ fontSize: 16 }}>Popular Amenities</Typography>
             </Stack>
@@ -321,6 +324,7 @@ function ViewDeal() {
             <Box borderRadius={4}>
               <SimpleMap isViewDeal={true} />
             </Box>
+
             <Stack direction={"row"}>
               {" "}
               <LocationOnIcon fontSize="small" />
@@ -333,20 +337,22 @@ function ViewDeal() {
 
         <Stack
           direction={"row"}
-        
           alignItems={"center"}
           width={"100%"}
           justifyContent={"space-between"}
           // border={'1px solid'}
-         sx={{ position:"sticky",
-         top:"0",
-         zIndex:1,
-         backgroundColor:"white",mt: "5%"}}
-
+          sx={{
+            position: "sticky",
+            top: "0",
+            zIndex: 1,
+            backgroundColor: "white",
+            mt: "5%",
+          }}
         >
-          <Typography sx={{fontSize:{xl:20,md:18,sm:17,lg:18}}}>About this property</Typography>{" "}
+          <Typography sx={{ fontSize: { xl: 20, md: 18, sm: 17, lg: 18 } }}>
+            About this property
+          </Typography>{" "}
           <Box
-          id="Discription"
             dangerouslySetInnerHTML={{ __html: filterData?.[0]?.discription }}
             sx={{
               // flex: 1,
@@ -358,7 +364,7 @@ function ViewDeal() {
           />
         </Stack>
       </Box>
-     
+      <Typography id="Rooms"></Typography>
       <Box padding={1}>
         <UserViewRooms hotels={hotels} />
       </Box>
