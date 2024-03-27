@@ -12,13 +12,19 @@ function HotelDetails({
   handleClick,
   openModule,
   setOpenModule,
+  scrollRef,
 }: any) {
   const [activeButton, setActiveButton] = useState<any>("info");
   useEffect(() => {
     setOpenModule("info");
   }, []);
   return (
-    <Box sx={{ fontFamily: "sans-serif", Width: { sm: "100%", lg: "100%" } }}>
+    <Box
+      sx={{
+        fontFamily: "sans-serif",
+        Width: { sm: "100%", lg: "100%" },
+      }}
+    >
       <Box
         sx={{
           display: "flex",
@@ -147,7 +153,7 @@ function HotelDetails({
         X
       </Button>
       {openModule === "info" ? (
-        <InfoHotelDetails item={item} />
+        <InfoHotelDetails item={item} scrollRef={scrollRef} />
       ) : openModule === "Overview" ? (
         <OverViewHotel item={item} />
       ) : openModule === "Photos" ? (

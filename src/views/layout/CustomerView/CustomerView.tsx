@@ -28,7 +28,12 @@ const CustomerView = () => {
 
   return (
     <Stack>
-      <Stack boxShadow={3} padding={2} justifyContent={"space-between"}>
+      <Stack
+        boxShadow={3}
+        padding={2}
+        justifyContent={"space-between"}
+        height={70}
+      >
         {screenSize === 768 && (
           <Box>
             <Logo />

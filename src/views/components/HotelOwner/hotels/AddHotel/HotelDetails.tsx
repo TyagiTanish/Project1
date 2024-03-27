@@ -385,7 +385,9 @@ const HotelDetails = () => {
                     <TextField
                       // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
 
-                      placeholder="Enter Hotel Name"
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Enter Hotel Name",
+                      })}
                       {...register("hotelName")}
                     />
                     <FormHelperText sx={{ color: "red" }}>
@@ -483,7 +485,9 @@ const HotelDetails = () => {
                       </Typography>
                       <TextField
                         sx={{ width: "80%" }}
-                        placeholder="Enter City"
+                        placeholder={intl.formatMessage({
+                          defaultMessage: "Enter City",
+                        })}
                         {...register("city")}
                       />
                       <FormHelperText sx={{ color: "red" }}>
@@ -502,7 +506,9 @@ const HotelDetails = () => {
                       <TextField
                         sx={{ width: "80%" }}
                         id="demo-helper-text-aligned"
-                        placeholder="Enter State"
+                        placeholder={intl.formatMessage({
+                          defaultMessage: "Enter State",
+                        })}
                         {...register("state")}
                       />{" "}
                       <FormHelperText sx={{ color: "red" }}>
@@ -528,7 +534,9 @@ const HotelDetails = () => {
                       <TextField
                         sx={{ width: "80%" }}
                         id="demo-helper-text-aligned"
-                        placeholder="Enter Postal code"
+                        placeholder={intl.formatMessage({
+                          defaultMessage: "Enter Postal code",
+                        })}
                         {...register("postalCode")}
                       />{" "}
                       <FormHelperText sx={{ color: "red" }}>
@@ -547,7 +555,9 @@ const HotelDetails = () => {
                       <TextField
                         sx={{ width: "80%" }}
                         id="demo-helper-text-aligned"
-                        placeholder="Enter Country"
+                        placeholder={intl.formatMessage({
+                          defaultMessage: "Enter Country",
+                        })}
                         {...register("country")}
                       />{" "}
                       <FormHelperText sx={{ color: "red" }}>

@@ -119,6 +119,9 @@
   "5A6hoi": {
     "defaultMessage": "Room Quantity"
   },
+  "5Fs4aA": {
+    "defaultMessage": "Add Category"
+  },
   "5Gqjr7": {
     "defaultMessage": "Mg Road"
   },
@@ -145,6 +148,12 @@
   },
   "6t1o49": {
     "defaultMessage": "Total No. of Days-"
+  },
+  "6uMqL1": {
+    "defaultMessage": "Unpaid"
+  },
+  "6yd2sS": {
+    "defaultMessage": "Search Here...."
   },
   "7E/yNW": {
     "defaultMessage": "Owner Name -"
@@ -176,6 +185,9 @@
   "8wrF/p": {
     "defaultMessage": "Zip Code must be a number"
   },
+  "8xVmzh": {
+    "defaultMessage": "Enter Country"
+  },
   "8xkJT9": {
     "defaultMessage": "Edit Hotel Details"
   },
@@ -205,9 +217,6 @@
   },
   "A2IauC": {
     "defaultMessage": "Cancellation Policy"
-  },
-  "AK1Eri": {
-    "defaultMessage": "By proceeding with this booking, I agree to OYO's Terms of Use and Privacy Policy."
   },
   "AWsQuR": {
     "defaultMessage": "Update Data"
@@ -268,6 +277,9 @@
   },
   "EZEH2+": {
     "defaultMessage": "Add Hotel Details.."
+  },
+  "FHz5Gf": {
+    "defaultMessage": "Enter State"
   },
   "FRPiFb": {
     "defaultMessage": "Lorem ipsum, dolor sit amet consectetur adipisicing elit."
@@ -338,8 +350,14 @@
   "ISly67": {
     "defaultMessage": "Agree"
   },
+  "IU7R5R": {
+    "defaultMessage": "Add Amenities"
+  },
   "J+S/E8": {
     "defaultMessage": "Invalid Email"
+  },
+  "JDOOWa": {
+    "defaultMessage": "Enter City"
   },
   "JGsVts": {
     "defaultMessage": "Invalid email !"
@@ -491,14 +509,14 @@
   "SHZrda": {
     "defaultMessage": "Type of room"
   },
-  "Ss0sWu": {
-    "defaultMessage": "Pay Now"
-  },
   "Su429b": {
     "defaultMessage": "Hotels in Nainital"
   },
   "SuiXEn": {
     "defaultMessage": "Responsible Disclosure"
+  },
+  "T4w4dV": {
+    "defaultMessage": "Guest Name"
   },
   "TE4fIS": {
     "defaultMessage": "City"
@@ -644,6 +662,9 @@
   "cgIcHS": {
     "defaultMessage": "Add Room Photos"
   },
+  "cxSZFw": {
+    "defaultMessage": "Room's Highlight"
+  },
   "cyR7Kh": {
     "defaultMessage": "Back"
   },
@@ -652,6 +673,9 @@
   },
   "dM+p3/": {
     "defaultMessage": "From"
+  },
+  "dZAi6E": {
+    "defaultMessage": "Enter Postal code"
   },
   "dfXq0N": {
     "defaultMessage": "Text in a child modal"
@@ -821,6 +845,9 @@
   "mXiD5u": {
     "defaultMessage": "Phone Number"
   },
+  "nFQbxh": {
+    "defaultMessage": "Payment Method"
+  },
   "ng+41Q": {
     "defaultMessage": "Room Price"
   },
@@ -850,6 +877,9 @@
   },
   "ocaqXc": {
     "defaultMessage": "Deluxe"
+  },
+  "ozyoh7": {
+    "defaultMessage": "Search Hotels"
   },
   "p2cPVQ": {
     "defaultMessage": "Bilaspur"
@@ -908,6 +938,9 @@
   "txdipB": {
     "defaultMessage": "Iron and ironing board"
   },
+  "u/vOPu": {
+    "defaultMessage": "Paid"
+  },
   "uCk8r+": {
     "defaultMessage": "Already have an account?"
   },
@@ -964,6 +997,9 @@
   },
   "x9xrT3": {
     "defaultMessage": "Pin Code"
+  },
+  "xFenH3": {
+    "defaultMessage": "Enter Hotel Name"
   },
   "xYmt1a": {
     "defaultMessage": "Bath robes and slippers"

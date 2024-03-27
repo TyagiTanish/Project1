@@ -30,17 +30,22 @@ import TuneIcon from "@mui/icons-material/TuneRounded";
 import ToggleDrawerFilter from "../../Filters/ToggleDrawerFilter";
 import BoltIcon from "@mui/icons-material/Bolt";
 import TvIcon from "@mui/icons-material/Tv";
-import { IconParkingCircle } from '@tabler/icons-react';
-import { IconWifi } from '@tabler/icons-react';
-import { IconSwimming } from '@tabler/icons-react';
-import { IconHotelService } from '@tabler/icons-react';
-import { IconBarbell } from '@tabler/icons-react';
-import { IconWashMachine } from '@tabler/icons-react';
-import { IconGlassGin } from '@tabler/icons-react';
-import { IconUsersGroup } from '@tabler/icons-react';
+import { IconParkingCircle } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconSwimming } from "@tabler/icons-react";
+import { IconHotelService } from "@tabler/icons-react";
+import { IconBarbell } from "@tabler/icons-react";
+import { IconWashMachine } from "@tabler/icons-react";
+import { IconGlassGin } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
 function Hotels({ filteredData, screenSize }: any) {
   const amenitie = [
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 0 },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 0,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 1 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 2 },
     {
@@ -57,8 +62,18 @@ function Hotels({ filteredData, screenSize }: any) {
       index: 5,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 6 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: "7" },
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 8 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: "7",
+    },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 8,
+    },
     { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
     { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
     {
@@ -75,7 +90,12 @@ function Hotels({ filteredData, screenSize }: any) {
       index: 13,
     },
     { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: 15 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: 15,
+    },
   ];
 
   const dispatch = useDispatch();
@@ -106,6 +126,7 @@ function Hotels({ filteredData, screenSize }: any) {
           height: "90vh",
           overflowY: "scroll",
           width: { sm: "98%", md: "100%", lg: "55%" },
+          "::-webkit-scrollbar ": { display: "none" },
         }}
       >
         {screenSize <= 1024 ? (
@@ -191,7 +212,9 @@ function Hotels({ filteredData, screenSize }: any) {
                       direction: "row",
                       border: "1px solid lightgrey",
                       borderRadius: "10px",
+                      bgcolor: "white",
                     }}
+                    boxShadow={2}
                   >
                     <Box
                       component="img"
@@ -238,7 +261,7 @@ function Hotels({ filteredData, screenSize }: any) {
                                 spacing={0.5}
                                 color={"grey"}
                                 alignItems={"center"}
-                                ml={i === 0 ? 1 : 2}
+                                ml={i === 0 ? 1 : 1}
                               >
                                 <>
                                   <Typography fontSize={"small"}>
