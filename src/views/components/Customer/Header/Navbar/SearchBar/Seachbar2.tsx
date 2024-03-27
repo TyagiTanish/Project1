@@ -129,15 +129,32 @@ function Seachbar2() {
   const id = open ? "simple-popper" : undefined;
   const handleCloseValidationPopper = (event: any) => {
     if (event?.value === "") {
-      // console.log("hii");
       setSearchBarAnchorEl(event);
     } else {
-      setSearchBarAnchorEl(null);
+      if (date) {
+        setSearchBarAnchorEl(null);
+      } else {
+        const datePicker = document?.querySelector("#datePicker");
+        setMessage(
+          intl.formatMessage({
+            defaultMessage: "Please select a Check-In and Check-Out date",
+          })
+        );
+        setSearchBarAnchorEl(datePicker || event);
+      }
     }
   };
   const handleClose = () => {
     setAnchorEl2(null);
   };
+  useMemo(() => {
+    if (date) {
+      setSearchBarAnchorEl(null);
+    }
+  }, [date]);
+  useMemo(() => {
+    setSearchTerm(search ? search : "");
+  }, [search]);
 
   return (
     <>
@@ -204,7 +221,9 @@ function Seachbar2() {
         {/* <DateRangePickers /> */}
         <Box sx={{ mt: 1 }}>
           <TextField
+            id="datePicker"
             sx={{ bgcolor: "white", width: { sm: 240, md: 300 } }}
+            autoComplete="off"
             placeholder={intl.formatMessage({
               defaultMessage: "Check in - Check out",
             })}
@@ -260,13 +279,30 @@ function Seachbar2() {
                 if (searchTerm !== "") {
                   dispatch(searchDetails(searchTerm));
                   const field = document.querySelector("#searchField");
-                  setMessage("Please select a destination");
                   handleCloseValidationPopper(field);
-
-                  // navigate("/hotels");
+                  if (date) {
+                    if (document?.location?.pathname === "/") {
+                      navigate("/hotels");
+                      window?.scroll(0, 0);
+                    }
+                  } else {
+                    const datePicker = document?.querySelector("#datePicker");
+                    setMessage(
+                      intl.formatMessage({
+                        defaultMessage:
+                          "Please select a Check-In and Check-Out date",
+                      })
+                    );
+                    handleCloseValidationPopper(datePicker);
+                  }
                 } else {
-                  const field = document.querySelector("#searchField");
-                  handleCloseValidationPopper(field);
+                  const searchField = document.querySelector("#searchField");
+                  setMessage(
+                    intl.formatMessage({
+                      defaultMessage: " Please select a destination",
+                    })
+                  );
+                  handleCloseValidationPopper(searchField);
                 }
               }}
             >

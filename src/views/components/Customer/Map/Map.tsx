@@ -1,12 +1,14 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import mapboxgl from "mapbox-gl";
 import "mapbox-gl/dist/mapbox-gl.css";
 import { useSelector } from "react-redux";
 import AllRooms from "../../HotelOwner/Rooms/RoomDetails/Rooms";
 import { Box, Stack } from "@mui/material";
+import Skeletons from "../../loader/skeleton/ImageSkeleton";
 
 const SimpleMap = ({ filteredData, setToggle }: any) => {
   const location = useSelector((state: any) => state.userReducer.location);
+
   useEffect(() => {
     mapboxgl.accessToken =
       "pk.eyJ1IjoidGFuaXNoLXR5YWdpIiwiYSI6ImNscmV0YWJmcTFocmoybHFpZDQ3dHFkdzMifQ.szsjsVkaiJpDsGUe7LR_4A";
@@ -66,6 +68,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
             // height: { sm: 600, xl: 800, md: 1000 },
             height: { md: "80vh", lg: "90vh", xl: "78vh" },
             borderRadius: 5,
+            zIndex: -1,
           }}
         />
       </Stack>

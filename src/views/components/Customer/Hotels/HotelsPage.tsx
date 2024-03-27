@@ -1,4 +1,11 @@
-import { Box, Button, IconButton, Stack, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  IconButton,
+  Skeleton,
+  Stack,
+  Typography,
+} from "@mui/material";
 import React, { useEffect, useMemo, useState } from "react";
 import SimpleMap from "../Map/Map";
 import Footer from "../Footer/Footer";
@@ -15,6 +22,7 @@ import { useDispatch } from "react-redux";
 
 import { FormattedMessage } from "react-intl";
 import { price, category } from "../../redux/user/userSlice";
+import Skeletons from "../../loader/skeleton/ImageSkeleton";
 
 /**
  *  To show all the hotels to user. Markdown is *HotelsPage*.
@@ -30,6 +38,7 @@ const HotelsPage = () => {
   const [searchTerm, setSearchTerm] = useState(search || "");
   const [filteredData, setFilteredData] = useState([]);
   const [screenSize, setScreenSize] = useState(window.innerWidth);
+
   const [open, setOpen] = React.useState(false);
   const [filterPrice, setFilterPrice] = React.useState<any>(
     reduxPrice ? reduxPrice : [0, 37000]
@@ -39,6 +48,7 @@ const HotelsPage = () => {
   );
   const location = useSelector((state: any) => state.userReducer.location);
   const [applyFilter, setApplyFilter] = React.useState<any>(0);
+  const [isMapLoading, setMapLoading] = useState(false);
   const filterData = async () => {
     try {
       if (searchTerm === "around me") {
@@ -100,6 +110,14 @@ const HotelsPage = () => {
   useMemo(() => {
     setFilterCategory(reduxCategory ? reduxCategory : []);
   }, [open]);
+
+  useMemo(() => {
+    setMapLoading(true);
+    setTimeout(() => {
+      setMapLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <>
       {screenSize > 1024 && filteredData?.length !== 0 ? (
@@ -149,6 +167,11 @@ const HotelsPage = () => {
             ) : null}
             {screenSize <= 1024 ? (
               <></>
+            ) : isMapLoading ? (
+              <Skeletons
+                width={{ xl: 800, sm: 700, md: "90%", lg: 650 }}
+                height={{ md: "80vh", lg: "90vh", xl: "78vh" }}
+              />
             ) : (
               <SimpleMap filteredData={filteredData} />
             )}

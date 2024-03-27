@@ -5,7 +5,7 @@ const useUserLogin = () => {
   const { request } = useAuth();
   const loginUser = async ({ userId, loggedInUserId }) => {
     const data = {
-      userId: userId,
+      userId: userId,                                               
       loggedInUserId: loggedInUserId
     }
     const auth = await request.post("/auth", data);

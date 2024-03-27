@@ -12,6 +12,7 @@ const CustomerView = () => {
   const URL = useParams();
   const [url, setUrl] = useState<any>(URL);
   const [screenSize, setScreenSize] = useState(window?.innerWidth);
+  const [viewSearchBar, setViewSearchBar] = useState(false);
   const params = useParams();
   console.log(params);
 
@@ -24,6 +25,14 @@ const CustomerView = () => {
       setScreenSize(window.innerWidth);
     };
     window.addEventListener("resize", handleWindowSize);
+    window?.addEventListener("scroll", (event) => {
+      const scroll = window?.scrollY;
+      if (scroll >= 234 && window?.location?.pathname === "/") {
+        setViewSearchBar(true);
+      } else {
+        setViewSearchBar(false);
+      }
+    });
   });
 
   return (
@@ -33,6 +42,11 @@ const CustomerView = () => {
         padding={2}
         justifyContent={"space-between"}
         height={70}
+        position={"fixed"}
+        width={"100%"}
+        top={0}
+        bgcolor={"white"}
+        zIndex={2}
       >
         {screenSize === 768 && (
           <Box>
@@ -69,13 +83,21 @@ const CustomerView = () => {
                 <Seachbar2 />
               </Box>
             )}
+            {viewSearchBar && (
+              <Box sx={{ ml: { sm: 0, md: 2 }, mt: 1 }}>
+                <Seachbar2 />
+              </Box>
+            )}
           </Stack>
+          {}
           <Box>
             <ProfileIcons />
           </Box>
         </Stack>
       </Stack>
-      <Outlet />
+      <Stack mt={window?.location?.pathname !== "/" ? 15 : 13}>
+        <Outlet />
+      </Stack>
     </Stack>
   );
 };
