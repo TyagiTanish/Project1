@@ -89,11 +89,17 @@ const Billing = () => {
   //   startdate = dayjs(JSON.parse(data).startDate);
   //   enddate = dayjs(JSON.parse(data).endDate);
   // }
-var startdate:any=useSelector((state: any) => state?.userReducer?.start)
-var enddate:any=useSelector((state: any) => state?.userReducer?.end)
+  var startdate: any = useSelector((state: any) => state?.userReducer?.start);
+  var enddate: any = useSelector((state: any) => state?.userReducer?.end);
+
   const calculateDifference = () => {
     // console.log(enddate.slice(6, 9), startdate.slice(4, 6));
-    const diff = Number(enddate.slice(6, 9)) - Number(startdate.slice(4, 6));
+    const startDateArray = startdate.split(" ");
+    const startDay = parseInt(startDateArray[1]);
+    const endDateArray = enddate.split(" ");
+    const endDay = parseInt(endDateArray[1]);
+
+    const diff = Number(endDay) - Number(startDay);
     const duration = moment.duration(diff);
 
     setDifference({

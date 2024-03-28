@@ -47,7 +47,9 @@ export function TotalEarnings({
         );
       }
     });
-  }, [bookingData, setTotalEarnings, locale]);
+  }, [bookingData, locale]);
+
+  console.log(totalEarnings);
 
   return (
     <Card sx={sx}>
