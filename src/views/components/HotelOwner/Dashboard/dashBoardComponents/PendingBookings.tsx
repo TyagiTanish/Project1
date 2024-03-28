@@ -7,15 +7,25 @@ import type { SxProps } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import { Receipt as ReceiptIcon } from "@phosphor-icons/react/dist/ssr/Receipt";
 
-export interface TotalProfitProps {
+export interface PendingBookingProps {
   sx?: SxProps;
-  value: string;
+  value: any;
 }
 
-export function TotalProfit({
+export function PendingBookings({
   value,
   sx,
-}: TotalProfitProps): React.JSX.Element {
+}: PendingBookingProps): React.JSX.Element {
+  const [pendingBookings, setPendingBookings] = React.useState(0);
+  React.useMemo(() => {
+    setPendingBookings(0);
+    value?.map((booking: any) => {
+      if (booking?.status === "pending") {
+        setPendingBookings((prev: any) => prev + 1);
+      }
+    });
+  }, [value]);
+
   return (
     <Card sx={sx}>
       <CardContent>
@@ -26,9 +36,9 @@ export function TotalProfit({
         >
           <Stack spacing={1}>
             <Typography color="text.secondary" variant="overline">
-              Total Profit
+              Pending Bookings
             </Typography>
-            <Typography variant="h4">{value}</Typography>
+            <Typography variant="h4">{pendingBookings}</Typography>
           </Stack>
           <Avatar
             sx={{

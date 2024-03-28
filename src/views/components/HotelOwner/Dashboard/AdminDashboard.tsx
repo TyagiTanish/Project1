@@ -3,18 +3,17 @@ import Grid from "@mui/material/Unstable_Grid2";
 import dayjs from "dayjs";
 
 import { TotalEarnings } from "./dashBoardComponents/TotalEarnings";
-import { TotalProfit } from "./dashBoardComponents/TotalProfit";
+import { TotalBookings } from "./dashBoardComponents/TotalBookings";
 import { TotalCustomers } from "./dashBoardComponents/TotalCustomers";
 import { BookingChart } from "./dashBoardComponents/BookingChart";
 import { LatestBookings } from "./dashBoardComponents/LatestBookings";
 import { Stack } from "@mui/material";
 import useAllBookings from "../../../../Hooks/Member/useAllBookings";
+import { AcceptedBookings } from "./dashBoardComponents/AcceptedBookings";
+import { PendingBookings } from "./dashBoardComponents/PendingBookings";
+import Remainder from "./dashBoardComponents/reminder";
 
-// export const metadata = {
-//   title: `Overview | Dashboard | ${config.site.name}`,
-// } satisfies Metadata;
-
-export default function AdminDashboard(): React.JSX.Element {
+export default function AdminDashboard() {
   const { AllBooking, data } = useAllBookings();
   const [bookingData, setBookingData] = React.useState<any>();
   React.useMemo(() => {
@@ -25,6 +24,7 @@ export default function AdminDashboard(): React.JSX.Element {
     get();
   }, [AllBooking]);
   console.log(bookingData);
+
   return (
     // <Stack
     //   bgcolor={"whitesmoke"}
@@ -39,18 +39,25 @@ export default function AdminDashboard(): React.JSX.Element {
           trend="up"
           sx={{ height: "100%" }}
           value="$24k"
+          bookingData={bookingData}
         />
       </Grid>
-      <Grid lg={3} sm={6} xs={12}>
+      {/* <Grid lg={3} sm={6} xs={12}>
         <TotalCustomers
           diff={16}
           trend="down"
           sx={{ height: "100%" }}
           value="1.6k"
         />
+      </Grid> */}
+      <Grid lg={3} sm={6} xs={12}>
+        <TotalBookings sx={{ height: "100%" }} value={bookingData?.length} />
       </Grid>
       <Grid lg={3} sm={6} xs={12}>
-        <TotalProfit sx={{ height: "100%" }} value="$15k" />
+        <AcceptedBookings sx={{ height: "100%" }} value={bookingData} />
+      </Grid>
+      <Grid lg={3} sm={6} xs={12}>
+        <PendingBookings sx={{ height: "100%" }} value={bookingData} />
       </Grid>
       <Grid lg={8} xs={12}>
         <BookingChart
@@ -66,6 +73,9 @@ export default function AdminDashboard(): React.JSX.Element {
           ]}
           sx={{ height: "100%" }}
         />
+      </Grid>
+      <Grid lg={4} xs={12}>
+        <Remainder />
       </Grid>
       <Grid lg={8} md={12} xs={12}>
         <LatestBookings
