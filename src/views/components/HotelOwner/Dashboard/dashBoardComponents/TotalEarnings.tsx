@@ -39,7 +39,7 @@ export function TotalEarnings({
           >
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-                Budget
+                Total Earnings
               </Typography>
               <Typography variant="h4">{value}</Typography>
             </Stack>

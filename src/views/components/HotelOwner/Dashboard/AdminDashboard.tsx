@@ -8,12 +8,23 @@ import { TotalCustomers } from "./dashBoardComponents/TotalCustomers";
 import { BookingChart } from "./dashBoardComponents/BookingChart";
 import { LatestBookings } from "./dashBoardComponents/LatestBookings";
 import { Stack } from "@mui/material";
+import useAllBookings from "../../../../Hooks/Member/useAllBookings";
 
 // export const metadata = {
 //   title: `Overview | Dashboard | ${config.site.name}`,
 // } satisfies Metadata;
 
 export default function AdminDashboard(): React.JSX.Element {
+  const { AllBooking, data } = useAllBookings();
+  const [bookingData, setBookingData] = React.useState<any>();
+  React.useMemo(() => {
+    const get = async () => {
+      const data = await AllBooking();
+      setBookingData(data);
+    };
+    get();
+  }, [AllBooking]);
+  console.log(bookingData);
   return (
     // <Stack
     //   bgcolor={"whitesmoke"}
