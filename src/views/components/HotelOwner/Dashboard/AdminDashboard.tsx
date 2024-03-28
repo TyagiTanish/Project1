@@ -26,13 +26,12 @@ export default function AdminDashboard() {
   console.log(bookingData);
 
   return (
-
     <Grid container spacing={3} xs={12} bgcolor={"whitesmoke"} p={2}>
       <Grid lg={3} sm={6} xs={12}>
         <TotalEarnings
           diff={12}
           trend="up"
-          sx={{ height: "100%" }}
+          sx={{ height: "100%", borderRadius: 3 }}
           value="$24k"
           bookingData={bookingData}
         />
@@ -46,13 +45,22 @@ export default function AdminDashboard() {
         />
       </Grid> */}
       <Grid lg={3} sm={6} xs={12}>
-        <TotalBookings sx={{ height: "100%" }} value={bookingData?.length} />
+        <TotalBookings
+          sx={{ height: "100%", borderRadius: 3 }}
+          value={bookingData?.length}
+        />
       </Grid>
       <Grid lg={3} sm={6} xs={12}>
-        <AcceptedBookings sx={{ height: "100%" }} value={bookingData} />
+        <AcceptedBookings
+          sx={{ height: "100%", borderRadius: 3 }}
+          value={bookingData}
+        />
       </Grid>
       <Grid lg={3} sm={6} xs={12}>
-        <PendingBookings sx={{ height: "100%" }} value={bookingData} />
+        <PendingBookings
+          sx={{ height: "100%", borderRadius: 3 }}
+          value={bookingData}
+        />
       </Grid>
       <Grid lg={8} xs={12}>
         <BookingChart
@@ -66,7 +74,7 @@ export default function AdminDashboard() {
               data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13],
             },
           ]}
-          sx={{ height: "100%" }}
+          sx={{ height: "100%", borderRadius: 3 }}
         />
       </Grid>
       <Grid lg={4} xs={12}>
@@ -75,7 +83,7 @@ export default function AdminDashboard() {
       <Grid lg={8} md={12} xs={12}>
         <LatestBookings
           orders={bookingData}
-          sx={{ height: "100%" }}
+          sx={{ height: "100%", borderRadius: 3 }}
         />
       </Grid>
     </Grid>

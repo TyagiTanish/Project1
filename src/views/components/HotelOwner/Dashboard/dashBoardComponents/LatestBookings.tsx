@@ -22,46 +22,36 @@ const statusMap = {
   refunded: { label: "Refunded", color: "error" },
 } as const;
 
-
-export function LatestBookings({
- orders,
-  sx,
-}: any): React.JSX.Element {
-  var today = new Date()
-  console.log(today)
-
-
+export function LatestBookings({ orders, sx }: any): React.JSX.Element {
+  var today = new Date();
+  console.log(today);
 
   return (
     <Card sx={sx}>
-      <CardHeader title="Latest orders" />
+      <CardHeader sx={{ fontWeight: "bolder" }} title="Upcoming Bookings  " />
       <Divider />
       <Box sx={{ overflow: "auto" }}>
         <Table sx={{ minWidth: 800 }}>
           <TableHead>
             <TableRow>
-            
-              <TableCell>Customer Name</TableCell>
-              <TableCell>Customer Email</TableCell>
-              <TableCell sortDirection="desc">Date</TableCell>
-              <TableCell>Status</TableCell>
+              <TableCell sx={{ fontWeight: "bolder" }}>Customer Name</TableCell>
+              <TableCell sx={{ fontWeight: "bolder" }}>
+                Customer Email
+              </TableCell>
+              <TableCell sx={{ fontWeight: "bolder" }} sortDirection="desc">
+                Date
+              </TableCell>
+              <TableCell sx={{ fontWeight: "bolder" }}>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders?.map((order:any) => {
-            
-
+            {orders?.map((order: any) => {
               return (
                 <TableRow hover key={order?._id}>
                   <TableCell>{order?.fullName}</TableCell>
                   <TableCell>{order?.email}</TableCell>
-                  <TableCell>
-                   {order?.bookFrom }
-                 
-                  </TableCell>
-                  <TableCell>
-                  
-                  </TableCell>
+                  <TableCell>{order?.bookFrom}</TableCell>
+                  <TableCell></TableCell>
                 </TableRow>
               );
             })}

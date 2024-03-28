@@ -45,7 +45,10 @@ const Remainder = () => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 600, minHeight: 500 }} variant="outlined">
+      <Card
+        sx={{ maxWidth: 600, minHeight: 500, borderRadius: 3 }}
+        variant="outlined"
+      >
         <CardContent>
           <Stack>
             <Typography sx={{ fontSize: "30px" }}>

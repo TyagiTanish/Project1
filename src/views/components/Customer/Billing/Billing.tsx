@@ -100,10 +100,10 @@ const Billing = () => {
     const endDay = parseInt(endDateArray[1]);
 
     const diff = Number(endDay) - Number(startDay);
-    const duration = moment.duration(diff);
+    // const duration = moment.duration(diff);
 
     setDifference({
-      days: duration?.days() + 1,
+      days: diff,
     });
     return diff;
   };
@@ -112,6 +112,8 @@ const Billing = () => {
       calculateDifference();
     }
   }, [date]);
+
+  console.log(difference);
 
   let totalRooms;
   let totalGuests: any;
