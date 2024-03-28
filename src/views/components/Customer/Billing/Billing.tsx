@@ -82,13 +82,15 @@ const Billing = () => {
   }, [hotelDetail, id?.hid]);
   // const data: any = localStorage.getItem("Date");
   const date: any = useSelector((state: any) => state?.userReducer?.date);
-  var startdate: any = date?.slice(0, date?.indexOf("-")) || "";
-  var enddate: any = date?.slice(date?.indexOf("-") + 1, date?.length) || "";
+  // var startdate: any = date?.slice(0, date?.indexOf("-")) || "";
+  // var enddate: any = date?.slice(date?.indexOf("-") + 1, date?.length) || "";
+
   // if (data) {
   //   startdate = dayjs(JSON.parse(data).startDate);
   //   enddate = dayjs(JSON.parse(data).endDate);
   // }
-
+var startdate:any=useSelector((state: any) => state?.userReducer?.start)
+var enddate:any=useSelector((state: any) => state?.userReducer?.end)
   const calculateDifference = () => {
     // console.log(enddate.slice(6, 9), startdate.slice(4, 6));
     const diff = Number(enddate.slice(6, 9)) - Number(startdate.slice(4, 6));

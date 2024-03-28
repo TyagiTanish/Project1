@@ -8,6 +8,8 @@ export const userSlice = createSlice({
     hotelId: null,
     RoomsAndGuests: [{ Room: 1, guest: 1 }],
     date: null,
+    start: null,
+    end: null,
   },
   reducers: {
     userLogin: (state: any, action: any) => {
@@ -43,6 +45,12 @@ export const userSlice = createSlice({
     category: (state: any, action: any) => {
       state.category = action.payload;
     },
+    start: (state: any, action: any) => {
+      state.start = action.payload;
+    },
+    end: (state: any, action: any) => {
+      state.end= action.payload;
+    },
   },
 });
 // Action creators
@@ -58,5 +66,7 @@ export const {
   date,
   price,
   category,
+  start,
+  end
 } = userSlice.actions;
 export default userSlice.reducer;

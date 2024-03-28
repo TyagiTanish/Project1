@@ -7,7 +7,9 @@ import dayjs from "dayjs";
 import { Box, Button, FormHelperText, Stack, Typography } from "@mui/material";
 import { useDispatch } from "react-redux";
 import { date } from "../../../../redux/user/userSlice";
-
+import moment from "moment";
+import {start} from "../../../../redux/user/userSlice"
+import {end} from "../../../../redux/user/userSlice"
 export default function BasicRangeShortcuts({ setDates, onClose }: any) {
   const dispatch = useDispatch();
   const [storeDate, setStoreDate] = React.useState<any>("");
@@ -15,7 +17,8 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
     status: false,
     message: "",
   });
-
+const [reduxStartDate,setStartDate]=React.useState<any>()
+const [reduxEndDate,setEndDate]=React.useState<any>()
   const handleDate = (e: any) => {
     if (String(e?.[0]?.$d) === String(e?.[1]?.$d)) {
       setDisabled({
@@ -28,22 +31,34 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
         message: "",
       });
     }
+
+  
+
     if (e?.[0]?.$d && e?.[1]?.$d) {
       const start = format(new Date(e?.[0]?.$d), "eee,dd MMMM");
       const end = format(new Date(e?.[1]?.$d), "eee,dd MMMM");
+      let startDate = moment(e?.[0]?.$d).format('MMMM Do YYYY');
+      let endDate = moment(e?.[1]?.$d).format('MMMM Do YYYY');
+      
       if (start !== end) {
+        setStartDate(startDate);
+        setEndDate(endDate)
         setStoreDate(`${start}  -  ${end}`);
       }
     } else if (e?.[0]?.$d && !e?.[1]) {
       const startDate = new Date(e?.[0]?.$d);
       const start = format(new Date(e?.[0]?.$d), "eee,dd MMMM");
-
+      let startDate2 = moment(e?.[0]?.$d).format('MMMM Do YYYY');
       const date = addDays(startDate, 1);
 
       var end = "";
+      var endDate=""
       if (date) {
+         endDate = moment(date).format('MMMM Do YYYY');
         end = format(new Date(date?.toString()), "eee,dd MMMM");
       }
+      setStartDate(startDate2);
+      setEndDate(endDate)
       setStoreDate(`${start}  -  ${end}`);
     }
   };
@@ -52,6 +67,8 @@ export default function BasicRangeShortcuts({ setDates, onClose }: any) {
     setDates(storeDate);
     if (storeDate) {
       dispatch(date(storeDate));
+      dispatch(start<any>(reduxStartDate))
+      dispatch(end<any>(reduxEndDate))
     }
   };
 

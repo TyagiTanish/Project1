@@ -13,7 +13,8 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import { ArrowRight as ArrowRightIcon } from "@phosphor-icons/react/dist/ssr/ArrowRight";
-import dayjs from "dayjs";
+import { useDispatch } from "react-redux";
+import { end } from "../../../redux/user/userSlice";
 
 const statusMap = {
   pending: { label: "Pending", color: "warning" },
@@ -21,23 +22,16 @@ const statusMap = {
   refunded: { label: "Refunded", color: "error" },
 } as const;
 
-export interface Order {
-  id: string;
-  customer: { name: string };
-  amount: number;
-  status: "pending" | "delivered" | "refunded";
-  createdAt: Date;
-}
-
-export interface LatestOrdersProps {
-  orders?: Order[];
-  sx?: SxProps;
-}
 
 export function LatestBookings({
-  orders = [],
+ orders,
   sx,
-}: LatestOrdersProps): React.JSX.Element {
+}: any): React.JSX.Element {
+  var today = new Date()
+  console.log(today)
+
+
+
   return (
     <Card sx={sx}>
       <CardHeader title="Latest orders" />
@@ -46,28 +40,27 @@ export function LatestBookings({
         <Table sx={{ minWidth: 800 }}>
           <TableHead>
             <TableRow>
-              <TableCell>Order</TableCell>
-              <TableCell>Customer</TableCell>
+            
+              <TableCell>Customer Name</TableCell>
+              <TableCell>Customer Email</TableCell>
               <TableCell sortDirection="desc">Date</TableCell>
               <TableCell>Status</TableCell>
             </TableRow>
           </TableHead>
           <TableBody>
-            {orders.map((order) => {
-              const { label, color } = statusMap[order.status] ?? {
-                label: "Unknown",
-                color: "default",
-              };
+            {orders?.map((order:any) => {
+            
 
               return (
-                <TableRow hover key={order.id}>
-                  <TableCell>{order.id}</TableCell>
-                  <TableCell>{order.customer.name}</TableCell>
+                <TableRow hover key={order?._id}>
+                  <TableCell>{order?.fullName}</TableCell>
+                  <TableCell>{order?.email}</TableCell>
                   <TableCell>
-                    {dayjs(order.createdAt).format("MMM D, YYYY")}
+                   {order?.bookFrom }
+                 
                   </TableCell>
                   <TableCell>
-                    <Chip color={color} label={label} size="small" />
+                  
                   </TableCell>
                 </TableRow>
               );
