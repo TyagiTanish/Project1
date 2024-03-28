@@ -49,7 +49,7 @@ export default function ImagePreview({
         <Box
           component={"img"}
           width={450}
-          src={`http://192.168.1.114:8000/${room.photos[previewIndex]?.path}`}
+          src={`http://localhost:8000/${room.photos[previewIndex]?.path}`}
         />
       </DialogContent>
     </Dialog>

@@ -28,7 +28,7 @@ import BookingRequestDialogBox from "./BookingRequestDialogBox";
 import LoaderBeforeReciept from "./LoaderBeforeReciept";
 import { FormattedMessage, useIntl } from "react-intl";
 
-const socket = io("http://192.168.1.114:8000", {
+const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 

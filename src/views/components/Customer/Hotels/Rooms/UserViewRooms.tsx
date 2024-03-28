@@ -60,7 +60,7 @@ function RoomImageSlider({ images }: any) {
     <Box position={"relative"} width={"100%"}>
       <Box
         component={"img"}
-        src={`http://192.168.1.114:8000/${images[currentImageIndex]?.path}`}
+        src={`http://localhost:8000/${images[currentImageIndex]?.path}`}
         alt={"RoomImage"}
         sx={{
           width: "100%",

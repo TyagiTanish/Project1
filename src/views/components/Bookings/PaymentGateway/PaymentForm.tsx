@@ -9,7 +9,7 @@ import { Typography } from "@mui/material";
 import { useNavigate } from "react-router";
 import { dataContext } from "../../Customer/Billing/Billing";
 import { useSelector } from "react-redux";
-const socket = io("http://192.168.1.114:8000", {
+const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 

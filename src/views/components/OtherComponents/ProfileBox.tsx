@@ -43,7 +43,7 @@ function ProfileBox() {
               mt: 2,
               backgroundColor:
                 window.location.href ===
-                "http://192.168.1.114:3000/profile/accountSetting"
+                "http://localhost:3000/profile/accountSetting"
                   ? "lightgray"
                   : "white",
               padding: 1,
@@ -67,7 +67,7 @@ function ProfileBox() {
               mt: 2,
               backgroundColor:
                 window.location.href ===
-                "http://192.168.1.114:3000/profile/myBookings"
+                "http://localhost:3000/profile/myBookings"
                   ? "lightgray"
                   : "white",
               padding: 1,

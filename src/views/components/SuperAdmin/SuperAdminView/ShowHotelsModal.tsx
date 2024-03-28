@@ -135,7 +135,7 @@ export default function BasicModal(props: any) {
         <Stack>
           <Stack direction={"column"} spacing={1} mb={3} padding={2}>
             <img
-              src={`http://192.168.1.114:8000/${modalHotel?.photo}`}
+              src={`http://localhost:8000/${modalHotel?.photo}`}
               width={400}
               height={250}
             />

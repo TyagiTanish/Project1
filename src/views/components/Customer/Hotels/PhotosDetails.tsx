@@ -27,7 +27,7 @@ export default function PhotosDetails({ item }: any) {
               borderRadius: "5px",
             }}
             alt="The house from the offer."
-            src={`http://192.168.1.114:8000/${item?.photo}`}
+            src={`http://localhost:8000/${item?.photo}`}
           />
         </Grid> */}
         {item?.rooms?.map((room: any) =>
@@ -41,7 +41,7 @@ export default function PhotosDetails({ item }: any) {
                   borderRadius: "5px",
                 }}
                 alt="The house from the offer."
-                src={`http://192.168.1.114:8000/${photo?.path}`}
+                src={`http://localhost:8000/${photo?.path}`}
               />
             </Grid>
           ))

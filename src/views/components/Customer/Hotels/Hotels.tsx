@@ -248,7 +248,7 @@ function Hotels({ filteredData, screenSize }: any) {
                         }}
                         alt="The house from the offer."
                         // src={require(`./${item.photo}`)}
-                        src={`http://192.168.1.114:8000/${item?.photo}`}
+                        src={`http://localhost:8000/${item?.photo}`}
                       />
                     )}
 

@@ -113,19 +113,16 @@ export default function HotelOwnerView() {
   const [selectedIndex, setSelectedIndex] = React.useState<any>(0);
   const [screenSize, setScreenSize] = React.useState<any>(window.outerWidth);
   React.useEffect(() => {
-    if (window.location.href === "http://192.168.1.114:3000/member") {
+    if (window.location.href === "http://localhost:3000/member") {
       setSelectedIndex(0);
-    } else if (
-      window.location.href === "http://192.168.1.114:3000/member/hotels"
-    ) {
+    } else if (window.location.href === "http://localhost:3000/member/hotels") {
       setSelectedIndex(1);
     } else if (
-      window.location.href === "http://192.168.1.114:3000/member/bookings"
+      window.location.href === "http://localhost:3000/member/bookings"
     ) {
       setSelectedIndex(2);
     } else if (
-      window.location.href ===
-      "http://192.168.1.114:3000/member/acceptedBookings"
+      window.location.href === "http://localhost:3000/member/acceptedBookings"
     ) {
       setSelectedIndex(3);
     }
@@ -405,7 +402,7 @@ export default function HotelOwnerView() {
             </ListItem>
           </List>
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
+        <Box sx={{ flexGrow: 1, p: 2, overflow: "auto", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>
