@@ -16,6 +16,81 @@ import Remainder from "./dashBoardComponents/reminder";
 export default function AdminDashboard() {
   const { AllBooking, data } = useAllBookings();
   const [bookingData, setBookingData] = React.useState<any>();
+  // State to hold monthly bookings
+  const [monthlyBookings, setMonthlyBookings] = React.useState({});
+  const [bookingType, setBookingType] = React.useState("Total");
+  React.useEffect(() => {
+    // Function to calculate monthly bookings
+    const calculateMonthlyBookings = () => {
+      const monthlyBookingsObj: any = {};
+
+      // Iterate through each booking
+      if (bookingType === "Total") {
+        bookingData?.forEach((booking: any) => {
+          // Extracting the bookFrom date string
+          const dateString = booking.bookFrom;
+
+          // Extract month from the booking date string
+          const monthName = dateString.split(" ")[0].trim(); // Extracting the month name part
+          const month =
+            new Date(Date.parse(monthName + " 1, 2023")).getMonth() + 1; // Parse month name and get its index (JavaScript's getMonth() returns zero-based index)
+
+          // Add bookings count to corresponding month
+          if (monthlyBookingsObj[month]) {
+            monthlyBookingsObj[month] += 1;
+          } else {
+            monthlyBookingsObj[month] = 1;
+          }
+        });
+      } else if (bookingType === "Accepted") {
+        const filterBookingdata = bookingData.filter(
+          (booking: any) => booking.status === "accepted"
+        );
+        filterBookingdata?.forEach((booking: any) => {
+          // Extracting the bookFrom date string
+          const dateString = booking.bookFrom;
+
+          // Extract month from the booking date string
+          const monthName = dateString.split(" ")[0].trim(); // Extracting the month name part
+          const month =
+            new Date(Date.parse(monthName + " 1, 2023")).getMonth() + 1; // Parse month name and get its index (JavaScript's getMonth() returns zero-based index)
+
+          // Add bookings count to corresponding month
+          if (monthlyBookingsObj[month]) {
+            monthlyBookingsObj[month] += 1;
+          } else {
+            monthlyBookingsObj[month] = 1;
+          }
+        });
+      } else {
+        const filterBookingdata = bookingData.filter(
+          (booking: any) => booking.status === "pending"
+        );
+        filterBookingdata?.forEach((booking: any) => {
+          // Extracting the bookFrom date string
+          const dateString = booking.bookFrom;
+
+          // Extract month from the booking date string
+          const monthName = dateString.split(" ")[0].trim(); // Extracting the month name part
+          const month =
+            new Date(Date.parse(monthName + " 1, 2023")).getMonth() + 1; // Parse month name and get its index (JavaScript's getMonth() returns zero-based index)
+
+          // Add bookings count to corresponding month
+          if (monthlyBookingsObj[month]) {
+            monthlyBookingsObj[month] += 1;
+          } else {
+            monthlyBookingsObj[month] = 1;
+          }
+        });
+      }
+
+      // Set the state with the calculated monthly bookings
+      setMonthlyBookings(monthlyBookingsObj);
+    };
+
+    // Call the function to calculate monthly bookings
+    calculateMonthlyBookings();
+  }, [bookingData, bookingType]);
   React.useMemo(() => {
     const get = async () => {
       const data = await AllBooking();
@@ -24,6 +99,7 @@ export default function AdminDashboard() {
     get();
   }, [AllBooking]);
   console.log(bookingData);
+  const booking: { [key: number]: number } = monthlyBookings;
 
   return (
     <Grid container spacing={3} xs={12} bgcolor={"whitesmoke"} p={2}>
@@ -67,14 +143,25 @@ export default function AdminDashboard() {
           chartSeries={[
             {
               name: "This year",
-              data: [18, 16, 5, 8, 3, 14, 14, 16, 17, 19, 18, 20],
-            },
-            {
-              name: "Last year",
-              data: [12, 11, 4, 6, 2, 9, 9, 10, 11, 12, 13, 13],
+              data: [
+                booking[1],
+                booking[2],
+                booking[3],
+                booking[4],
+                booking[5],
+                booking[6],
+                booking[7],
+                booking[8],
+                booking[9],
+                booking[10],
+                booking[11],
+                booking[12],
+              ],
             },
           ]}
           sx={{ height: "100%", borderRadius: 3 }}
+          setBookingType={setBookingType}
+          bookingType={bookingType}
         />
       </Grid>
       <Grid lg={4} xs={12}>
