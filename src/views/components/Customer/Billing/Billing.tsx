@@ -82,20 +82,28 @@ const Billing = () => {
   }, [hotelDetail, id?.hid]);
   // const data: any = localStorage.getItem("Date");
   const date: any = useSelector((state: any) => state?.userReducer?.date);
-  var startdate: any = date?.slice(0, date?.indexOf("-")) || "";
-  var enddate: any = date?.slice(date?.indexOf("-") + 1, date?.length) || "";
+  // var startdate: any = date?.slice(0, date?.indexOf("-")) || "";
+  // var enddate: any = date?.slice(date?.indexOf("-") + 1, date?.length) || "";
+
   // if (data) {
   //   startdate = dayjs(JSON.parse(data).startDate);
   //   enddate = dayjs(JSON.parse(data).endDate);
   // }
+  var startdate: any = useSelector((state: any) => state?.userReducer?.start);
+  var enddate: any = useSelector((state: any) => state?.userReducer?.end);
 
   const calculateDifference = () => {
     // console.log(enddate.slice(6, 9), startdate.slice(4, 6));
-    const diff = Number(enddate.slice(6, 9)) - Number(startdate.slice(4, 6));
-    const duration = moment.duration(diff);
+    const startDateArray = startdate.split(" ");
+    const startDay = parseInt(startDateArray[1]);
+    const endDateArray = enddate.split(" ");
+    const endDay = parseInt(endDateArray[1]);
+
+    const diff = Number(endDay) - Number(startDay);
+    // const duration = moment.duration(diff);
 
     setDifference({
-      days: duration?.days() + 1,
+      days: diff,
     });
     return diff;
   };
@@ -104,6 +112,8 @@ const Billing = () => {
       calculateDifference();
     }
   }, [date]);
+
+  console.log(difference);
 
   let totalRooms;
   let totalGuests: any;

@@ -22,7 +22,6 @@ import { FormattedMessage } from "react-intl";
 
 import { useSelector } from "react-redux";
 
-
 function BookingDetails() {
   const lang = useSelector((state: any) => state?.userReducer?.locale);
   const [data, setData] = React.useState<any>([]);
@@ -113,9 +112,7 @@ function BookingDetails() {
             alignItems={"center"}
           >
             <Typography sx={{ fontSize: 20, fontWeight: 600 }} mt={5}>
-
               <FormattedMessage defaultMessage="Booking Id" />
-
             </Typography>
             <span style={{ marginTop: 14, fontWeight: "bold" }}>
               {` Booked by ${data?.userId?.name} on ${
@@ -136,10 +133,8 @@ function BookingDetails() {
               >
                 <Stack>
                   <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 2 }}>
-
                     <FormattedMessage defaultMessage="Super OYO " />{" "}
                     {data?.hotelId?.hotelName}
-
                   </Typography>
                   <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
                     {data?.hotelId?.hotelName}
@@ -161,10 +156,8 @@ function BookingDetails() {
             <Stack direction={"row"} justifyContent={"space-between"} mt={3}>
               <Box>
                 <Typography sx={{ fontSize: 16, fontWeight: 700, mb: 3 }}>
-
                   <FormattedMessage defaultMessage="Super OYO " />{" "}
                   {data?.hotelId?.hotelName}
-
                 </Typography>
                 <Typography sx={{ fontSize: 16, fontWeight: 700 }}>
                   {data?.hotelId?.hotelName}
@@ -233,7 +226,6 @@ function BookingDetails() {
               <Stack minWidth={"30%"} mt={3}>
                 <Typography sx={{ fontSize: 24, fontWeight: 700 }}>
                   {data?.totalDays} <FormattedMessage defaultMessage="Night" />
-
                 </Typography>
                 <Stack
                   direction={"row"}

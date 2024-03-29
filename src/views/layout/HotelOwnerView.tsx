@@ -402,7 +402,7 @@ export default function HotelOwnerView() {
             </ListItem>
           </List>
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 2, overflow: "hidden", height: "100vh" }}>
+        <Box sx={{ flexGrow: 1, p: 2, overflow: "auto", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>

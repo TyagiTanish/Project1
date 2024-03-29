@@ -16,7 +16,7 @@ import ReminderDetail from "./ReminderDetailPopper";
 import ReminderDetailPopper from "./ReminderDetailPopper";
 import { FormattedMessage } from "react-intl";
 
-const Reminder = () => {
+const Remainder = () => {
   const { request } = useAuth();
   const [value, setValue] = useState();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -45,7 +45,10 @@ const Reminder = () => {
 
   return (
     <>
-      <Card sx={{ maxWidth: 600 }} variant="outlined">
+      <Card
+        sx={{ maxWidth: 600, minHeight: 500, borderRadius: 3 }}
+        variant="outlined"
+      >
         <CardContent>
           <Stack>
             <Typography sx={{ fontSize: "30px" }}>
@@ -74,11 +77,11 @@ const Reminder = () => {
               </Card>
             ))}
           </Stack>
-          <ReminderDetailPopper open={open} anchorEl={anchorEl} value={value} />
+          {/* <ReminderDetailPopper open={open} anchorEl={anchorEl} value={value} /> */}
         </CardContent>
       </Card>
     </>
   );
 };
 
-export default Reminder;
+export default Remainder;

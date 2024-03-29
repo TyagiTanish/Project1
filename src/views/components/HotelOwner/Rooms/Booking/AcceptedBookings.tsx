@@ -112,9 +112,7 @@ function AcceptedBookings() {
           <FormattedMessage defaultMessage="Check in" />
         </strong>
       ),
-      renderCell: (params: any) => (
-        <div> {format(new Date(params?.row?.bookFrom), "MMMM do,yyyy")}</div>
-      ),
+      renderCell: (params: any) => <div> {params?.row?.bookFrom}</div>,
     },
     {
       field: "bookTo",
@@ -126,9 +124,7 @@ function AcceptedBookings() {
           <FormattedMessage defaultMessage="Check Out" />
         </strong>
       ),
-      renderCell: (params: any) => (
-        <div>{format(new Date(params?.row?.bookTo), "MMMM do,yyyy")}</div>
-      ),
+      renderCell: (params: any) => <div>{params?.row?.bookTo}</div>,
     },
     {
       field: "paymentStatus",

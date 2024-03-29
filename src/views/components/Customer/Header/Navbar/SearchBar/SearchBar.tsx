@@ -300,6 +300,7 @@ function SearchBar() {
                   handleCloseValidationPopper(field);
                   if (date) {
                     navigate("/hotels");
+                    window?.scroll(0, 0);
                   } else {
                     const datePicker = document?.querySelector("#datePicker");
                     setMessage(
