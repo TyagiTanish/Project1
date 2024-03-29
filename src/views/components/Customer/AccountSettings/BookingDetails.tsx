@@ -147,7 +147,7 @@ function BookingDetails() {
                 </Stack>
                 <img
                   style={{ width: 150 }}
-                  src={`http://localhost:8000/${data?.hotelId?.photo}`}
+                  src={`http://192.168.1.114:8000/${data?.hotelId?.photo}`}
                   alt="imag"
                 />
               </Stack>
@@ -168,7 +168,7 @@ function BookingDetails() {
               </Box>
               <img
                 style={{ width: 200 }}
-                src={`http://localhost:8000/${data?.hotelId?.photo}`}
+                src={`http://192.168.1.114:8000/${data?.hotelId?.photo}`}
                 alt="phot"
               />
             </Stack>

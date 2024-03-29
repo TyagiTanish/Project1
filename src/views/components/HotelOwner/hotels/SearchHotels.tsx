@@ -116,7 +116,7 @@ function SearchHotels({
                   {" "}
                   <Avatar
                     sx={{ width: 32, height: 32 }}
-                    src={`http://localhost:8000/${item?.photo}`}
+                    src={`http://192.168.1.114:8000/${item?.photo}`}
                   >
                     {/* {item?.hotelName[0]?.toUpperCase()} */}
                   </Avatar>

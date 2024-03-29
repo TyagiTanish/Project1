@@ -36,7 +36,7 @@ import PaymentMethods from "./PaymentMethods";
  * for entering details of a user and checking the payment , Markdown is *Billing*.
  */
 
-const socket = io("http://localhost:8000", {
+const socket = io("http://192.168.1.114:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
 export const dataContext = createContext<any>({});

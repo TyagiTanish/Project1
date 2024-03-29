@@ -2,7 +2,7 @@ import axios from "axios";
 
 function useAuth() {
   const request = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "http://192.168.1.114:8000",
     headers: {
       Authorization: `Bearer ${localStorage.getItem("authToken")}`,
     },

@@ -83,7 +83,7 @@ function ShowCustomerBooking() {
                       <Box
                         component={"img"}
                         sx={{ width: "200px", borderRadius: 2 }}
-                        src={`http://localhost:8000/${bookings[index]?.hotelId?.photo}`}
+                        src={`http://192.168.1.114:8000/${bookings[index]?.hotelId?.photo}`}
                       />
                     )}
                     <Stack textAlign={"left"} width={200}>

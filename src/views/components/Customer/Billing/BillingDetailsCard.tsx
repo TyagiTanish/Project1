@@ -98,7 +98,7 @@ const BillingDetailsCard = ({
           </Stack>
           <Stack width={90}>
             <img
-              src={`http://localhost:8000/${hotelDetail?.[0]?.photo}`}
+              src={`http://192.168.1.114:8000/${hotelDetail?.[0]?.photo}`}
               style={{ borderRadius: "5px", marginTop: "-1rem" }}
             />
           </Stack>
