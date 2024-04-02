@@ -6,6 +6,11 @@ import {
   CardActionArea,
   CardContent,
   CardMedia,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Divider,
   FormControl,
   FormHelperText,
   IconButton,
@@ -18,7 +23,7 @@ import {
   Typography,
 } from "@mui/material";
 import ClearIcon from "@mui/icons-material/Clear";
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ReactNode, useEffect, useMemo, useState } from "react";
 import useAuth from "../../../Hooks/useAuth/useAuth";
 import Chip from "@mui/material/Chip";
 import AddAPhotoIcon from "@mui/icons-material/AddAPhoto";
@@ -83,34 +88,41 @@ function AddRooms({ setRender, showCategories }: any) {
   const [files1, setFiles1] = useState<any>([]);
 
   const handleDelete = (photo: any) => {
-    var acceptedFiles = file.filter((pic: any) => {
+    var acceptedFile = file.filter((pic: any) => {
       return pic !== photo;
     });
 
-    if (acceptedFiles.length === 0) {
+    if (acceptedFile.length === 0) {
       setphotos(false);
+      console.log(acceptedFile);
     }
-    setFile(acceptedFiles);
-    setDisplay(acceptedFiles.length);
+    setFile(acceptedFile);
+    setDisplay(acceptedFile.length);
   };
   const { getRootProps, getInputProps, acceptedFiles } = useDropzone({
     maxFiles: 4,
   });
 
-  useEffect(() => {
-    setDisplay(acceptedFiles.length);
+  useMemo(() => {
+    setDisplay(file.length);
     if (acceptedFiles.length === 0) {
       setphotos(false);
     } else {
       setphotos(true);
     }
+    // setFile(
+    //   acceptedFiles.map((file) => {
+    //     const previewURL = URL.createObjectURL(file);
+    //     return { ...file, preview: previewURL };
+    //   })
+    // );
 
-    setFile(
+    if (acceptedFiles.length !== 0) {
       acceptedFiles.map((file) => {
         const previewURL = URL.createObjectURL(file);
-        return { ...file, preview: previewURL };
-      })
-    );
+        setFile((prev: any) => [...prev, { ...file, preview: previewURL }]);
+      });
+    }
   }, [acceptedFiles]);
 
   interface User {
@@ -199,89 +211,95 @@ function AddRooms({ setRender, showCategories }: any) {
       >
         <FormattedMessage defaultMessage={"Add Room +"} />
       </Button>
-      <Modal
+      <Dialog
         open={open}
         onClose={handleClose}
-        aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
-        sx={{
-          maxHeight: { md: "100vh", xl: "90vh", sm: "95vh" },
-          mt: { md: 1, xl: 6, sm: 5 },
-          overflow: "auto",
-        }}
+        aria-labelledby="responsive-dialog-title"
+        maxWidth={"xl"}
+        // sx={{
+        //   maxHeight: { md: "100vh", xl: "90vh", sm: "95vh" },
+        //   mt: { md: 1, xl: 6, sm: 5 },
+        //   overflow: "auto",
+        // }}
       >
         <>
-          <Box>
-            <Box sx={style}>
-              <Stack
-                direction={"row"}
-                alignItems={"center"}
-                justifyContent={"space-between"}
-                mb={4}
+          <DialogTitle>
+            <Stack
+              direction={"row"}
+              alignItems={"center"}
+              justifyContent={"space-between"}
+            >
+              <Box
+                sx={{
+                  color: "#EE2A24",
+                  fontWeight: "bold",
+                  fontSize: 30,
+                  // mb: 4,
+                }}
               >
-                <Box
-                  sx={{
-                    color: "#EE2A24",
-                    fontWeight: "bold",
-                    fontSize: 30,
-                    // mb: 4,
-                  }}
-                >
-                  <FormattedMessage defaultMessage={"Add Rooms"} />
-                </Box>
-                <IconButton
-                  sx={{ mr: -10, mt: { xl: -6, md: -4 } }}
-                  onClick={handleClose}
-                >
-                  <CloseIcon />
-                </IconButton>
-              </Stack>
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <Box>
-                  <FormControl sx={{ width: 235 }}>
+                <FormattedMessage defaultMessage={"Add Rooms"} />
+              </Box>
+              <IconButton onClick={handleClose}>
+                <CloseIcon />
+              </IconButton>
+            </Stack>{" "}
+          </DialogTitle>
+          <Divider />
+          <DialogContent>
+            {" "}
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <Stack direction={"row"} spacing={5}>
+                {" "}
+                <Stack spacing={2}>
+                  {" "}
+                  <Box>
+                    <FormControl sx={{ width: 235 }}>
+                      <Typography sx={{ fontWeight: "bold" }}>
+                        <FormattedMessage defaultMessage={"Type of Room"} />
+                      </Typography>
+                      <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={type}
+                        // label="type"
+                        {...register("type")}
+                        sx={{ width: 400, mb: 2 }}
+                        onChange={handleChange}
+                      >
+                        {showCategories?.map((category: any) => (
+                          <MenuItem value={category}>{category}</MenuItem>
+                        ))}
+                      </Select>
+                    </FormControl>
+                    <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                      {errors?.type?.message}
+                    </FormHelperText>
+                  </Box>
+                  <Box>
                     <Typography sx={{ fontWeight: "bold" }}>
-                      <FormattedMessage defaultMessage={"Type of Room"} />
+                      <FormattedMessage defaultMessage={"Room Quantity"} />
                     </Typography>
-                    <Select
-                      labelId="demo-simple-select-label"
-                      id="demo-simple-select"
-                      value={type}
-                      // label="type"
-                      {...register("type")}
+                    <TextField
+                      id="outlined-basic"
+                      variant="outlined"
                       sx={{ width: 400, mb: 2 }}
-                      onChange={handleChange}
-                    >
-                      {showCategories?.map((category: any) => (
-                        <MenuItem value={category}>{category}</MenuItem>
-                      ))}
-                    </Select>
-                  </FormControl>
-                  <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
-                    {errors?.type?.message}
-                  </FormHelperText>
-                </Box>
-                <Typography sx={{ fontWeight: "bold" }}>
-                  <FormattedMessage defaultMessage={"Room Quantity"} />
-                </Typography>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  sx={{ width: 400, mb: 2 }}
-                  {...register("roomQuantity")}
-                />
-                <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
-                  {errors.roomQuantity?.message}
-                </FormHelperText>
-                <Typography sx={{ fontWeight: "bold" }}>
-                  <FormattedMessage defaultMessage={"Price"} />
-                </Typography>
-                <TextField
-                  id="outlined-basic"
-                  variant="outlined"
-                  sx={{ width: 400, mb: 2 }}
-                  {...register("price")}
-                />
-                {/* <input
+                      {...register("roomQuantity")}
+                    />
+                    <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                      {errors.roomQuantity?.message}
+                    </FormHelperText>
+                  </Box>
+                  <Box>
+                    <Typography sx={{ fontWeight: "bold" }}>
+                      <FormattedMessage defaultMessage={"Price"} />
+                    </Typography>
+                    <TextField
+                      id="outlined-basic"
+                      variant="outlined"
+                      sx={{ width: 400, mb: 2 }}
+                      {...register("price")}
+                    />
+                    {/* <input
                         id="fileUpload"
                         type="file"
                         accept=".gif, .jpg , .jpeg , .jfif , .pjpeg , .pjp, .png, .svg, .webp,
@@ -291,208 +309,221 @@ function AddRooms({ setRender, showCategories }: any) {
                         // disabled={uploadedFiles.length >= MAX_COUNT}
                       "  // onInputCapture={handleloading}
                       /> */}
-
-                <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
-                  {errors.price?.message}
-                </FormHelperText>
-                <Typography sx={{ fontWeight: "bold", mt: 2 }}>
-                  <FormattedMessage defaultMessage={"Room Highlights"} />
-                </Typography>
-                <Autocomplete
-                  sx={{ mb: 2 }}
-                  multiple
-                  id="tags-filled"
-                  options={highlights.map((item) => item.Highlight)}
-                  // {...register("roomHighlight")}
-                  // defaultValue={[highlights[0].Highlight]}
-                  freeSolo
-                  onChange={(event, value) => setRoomHighlight(value)}
-                  renderTags={(value: readonly string[], getTagProps) =>
-                    value.map((option: string, index: number) => (
-                      <Chip
-                        variant="outlined"
-                        label={option}
-                        {...getTagProps({ index })}
-                      />
-                    ))
-                  }
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      variant="outlined"
-                      placeholder={intl.formatMessage({
-                        defaultMessage: "Room's Highlight",
-                      })}
-                      sx={{ width: 400 }}
+                    <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                      {errors.price?.message}
+                    </FormHelperText>
+                  </Box>
+                  <Box>
+                    <Typography sx={{ fontWeight: "bold", mt: 2 }}>
+                      <FormattedMessage defaultMessage={"Room Highlights"} />
+                    </Typography>
+                    <Autocomplete
+                      sx={{ mb: 2 }}
+                      multiple
+                      id="tags-filled"
+                      options={highlights.map((item) => item.Highlight)}
+                      // {...register("roomHighlight")}
+                      // defaultValue={[highlights[0].Highlight]}
+                      freeSolo
+                      onChange={(event, value) => setRoomHighlight(value)}
+                      renderTags={(value: readonly string[], getTagProps) =>
+                        value.map((option: string, index: number) => (
+                          <Chip
+                            variant="outlined"
+                            label={option}
+                            {...getTagProps({ index })}
+                          />
+                        ))
+                      }
+                      renderInput={(params) => (
+                        <TextField
+                          {...params}
+                          variant="outlined"
+                          placeholder={intl.formatMessage({
+                            defaultMessage: "Room's Highlight",
+                          })}
+                          sx={{ width: 400 }}
+                        />
+                      )}
                     />
-                  )}
-                />
-                {/* <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
+                  </Box>
+                </Stack>
+                <Stack spacing={2}>
+                  {" "}
+                  {/* <FormHelperText sx={{ mt: -2, color: "#EE2A24" }}>
                   {errors.roomHighlight?.message}
                 </FormHelperText> */}
-                <Typography sx={{ fontWeight: "bold", mt: 3 }}>
-                  <FormattedMessage defaultMessage={"Add Room Discription"} />
-                </Typography>
-                <Stack width={"125%"}>
-                  <AddDiscription
-                    setContent={setContent}
-                    content={content}
-                    // {...register("discription")}
-                  />
-                </Stack>
-                {/* <FormHelperText sx={{ color: "#EE2A24" }}>
+                  <Stack width={"100%"}>
+                    <Typography sx={{ fontWeight: "bold" }}>
+                      <FormattedMessage
+                        defaultMessage={"Add Room Discription"}
+                      />
+                    </Typography>
+                    <AddDiscription
+                      setContent={setContent}
+                      content={content}
+                      placeHolder="Enter a room discription "
+                      // {...register("discription")}
+                    />
+                  </Stack>
+                  {/* <FormHelperText sx={{ color: "#EE2A24" }}>
                   {errors.discription?.message}
                 </FormHelperText> */}
-                <Typography sx={{ fontWeight: "bold", mt: 1 }}>
-                  <FormattedMessage defaultMessage={"Add Room Photos"} />
-                </Typography>
-                <Typography sx={{ fontSize: "10px" }}>
-                  <FormattedMessage defaultMessage={"Upload 4 photos"} />
-                </Typography>
-                <div
-                  style={{
-                    display: "flex",
-                    padding: 10,
-                    width: "20vw",
-                    height: "5vw",
-                    justifyTracks: "center",
-                  }}
-                >
-                  {photos ? (
-                    <Box
-                      sx={{
+                  <Box>
+                    {" "}
+                    <Typography sx={{ fontWeight: "bold", mt: 5 }}>
+                      <FormattedMessage defaultMessage={"Add Room Photos"} />
+                    </Typography>
+                    <Typography sx={{ fontSize: "10px" }}>
+                      <FormattedMessage defaultMessage={"Upload 4 photos"} />
+                    </Typography>
+                    <div
+                      style={{
                         display: "flex",
-                        flexDirection: "row",
-                        justifyContent: "space-between",
+                        padding: 10,
                         width: "20vw",
+                        height: "5vw",
+                        justifyTracks: "center",
                       }}
                     >
-                      <Typography {...getRootProps()}>
-                        <input {...getInputProps()} />
-                        {
-                          <IconButton sx={{ ml: -4, mt: 2 }}>
-                            <Typography sx={{}}>
-                              <AddAPhotoIcon fontSize="small" />
-                              <Typography sx={{ fontSize: "10px" }}>
-                                <FormattedMessage
-                                  defaultMessage={"Add Room photos"}
-                                />
-                              </Typography>
-                            </Typography>
-                          </IconButton>
-                          // <Button>Add photos</Button>
-                        }
-                      </Typography>
-                      <Box sx={{ width: "14vw", ml: 0.3 }}>
-                        {" "}
-                        <Stack direction={"row"}>
-                          {file?.map((photo: any, index: any) => (
-                            <Stack direction={"row"}>
-                              <Box
-                                // component="div"
-                                sx={{
-                                  position: "relative",
-                                  height: 70,
-                                  width: 70,
-                                  p: 0.5,
-                                }}
-                              >
-                                <img
-                                  alt="Preview imag"
-                                  src={photo.preview}
-                                  style={{
-                                    width: "100%",
-                                    height: "100%",
-                                  }}
-                                />
-                                <span
-                                  style={{
-                                    position: "absolute",
-                                    // top: "90%",
-                                    left: "70%",
-                                    borderRadius: "50%",
-                                    height: 20,
-                                    // transform: "translate(-50%, -50%)",
-                                    color: "red", // Change color as needed
-                                    cursor: "pointer",
-                                    background: "white",
-                                  }}
-                                  onClick={() => handleDelete(photo)} // Add your click event handler
-                                >
-                                  <ClearIcon fontSize="small" />
-                                </span>
-                              </Box>
-                            </Stack>
-                          ))}
-                        </Stack>
-                      </Box>
-                    </Box>
-                  ) : (
-                    <Typography {...getRootProps()}>
-                      <input {...getInputProps()} />
-                      {
-                        <IconButton
+                      {photos ? (
+                        <Box
                           sx={{
-                            alignItems: "center",
-                            border: "2px dashed lightgrey",
-                            borderRadius: 0,
-                            width: "10vw",
-                            height: "10vw",
-                            ml: 15,
+                            display: "flex",
+                            flexDirection: "row",
+                            justifyContent: "space-between",
+                            width: "20vw",
                           }}
                         >
-                          <Typography>
-                            <AddAPhotoIcon fontSize="small" />
-                            <Typography sx={{ fontSize: "10px" }}>
-                              <FormattedMessage
-                                defaultMessage={"Add Room photos"}
-                              />
+                          {file.length !== 4 && (
+                            <Typography {...getRootProps()}>
+                              <input {...getInputProps()} />
+                              {
+                                <IconButton sx={{ ml: -4, mt: 2 }}>
+                                  <Typography sx={{}}>
+                                    <AddAPhotoIcon fontSize="small" />
+                                    <Typography sx={{ fontSize: "10px" }}>
+                                      <FormattedMessage
+                                        defaultMessage={"Add Room photos"}
+                                      />
+                                    </Typography>
+                                  </Typography>
+                                </IconButton>
+                                // <Button>Add photos</Button>
+                              }
                             </Typography>
-                          </Typography>
-                        </IconButton>
-                        // <Button>Add photos</Button>
-                      }
-                    </Typography>
-                  )}
-                </div>
+                          )}
 
-                {/* <Button onClick={upload}>Upload</Button>   */}
-
-                {display === 4 ? (
-                  <Button
-                    variant="contained"
-                    sx={{
-                      backgroundImage:
-                        "linear-gradient(270deg,#D11450,#EE2A24)",
-                      width: "100%",
-                      mt: 5,
-                      fontWeight: "bold",
-                    }}
-                    type="submit"
-                  >
-                    <FormattedMessage defaultMessage={"Submit"} />
-                  </Button>
-                ) : (
-                  <>
+                          <Box sx={{ width: "14vw", ml: 0.3 }}>
+                            {" "}
+                            <Stack direction={"row"}>
+                              {file?.map((photo: any, index: any) => (
+                                <Stack direction={"row"}>
+                                  <Box
+                                    // component="div"
+                                    sx={{
+                                      position: "relative",
+                                      height: 70,
+                                      width: 70,
+                                      p: 0.5,
+                                    }}
+                                  >
+                                    <img
+                                      alt="Preview image"
+                                      src={photo.preview}
+                                      style={{
+                                        width: "100%",
+                                        height: "100%",
+                                      }}
+                                    />
+                                    <span
+                                      style={{
+                                        position: "absolute",
+                                        // top: "90%",
+                                        left: "70%",
+                                        borderRadius: "50%",
+                                        height: 20,
+                                        // transform: "translate(-50%, -50%)",
+                                        color: "red", // Change color as needed
+                                        cursor: "pointer",
+                                        background: "white",
+                                      }}
+                                      onClick={() => handleDelete(photo)} // Add your click event handler
+                                    >
+                                      <ClearIcon fontSize="small" />
+                                    </span>
+                                  </Box>
+                                </Stack>
+                              ))}
+                            </Stack>
+                          </Box>
+                        </Box>
+                      ) : (
+                        <Typography {...getRootProps()}>
+                          <input {...getInputProps()} />
+                          {
+                            <IconButton
+                              sx={{
+                                alignItems: "center",
+                                border: "2px dashed lightgrey",
+                                borderRadius: 0,
+                                width: "10vw",
+                                ml: 15,
+                              }}
+                            >
+                              <Typography>
+                                <AddAPhotoIcon fontSize="small" />
+                                <Typography sx={{ fontSize: "10px" }}>
+                                  <FormattedMessage
+                                    defaultMessage={"Add Room photos"}
+                                  />
+                                </Typography>
+                              </Typography>
+                            </IconButton>
+                            // <Button>Add photos</Button>
+                          }
+                        </Typography>
+                      )}
+                    </div>
+                  </Box>
+                  {/* <Button onClick={upload}>Upload</Button>   */}
+                  {/* {file.length === 4 ? (
                     <Button
-                      disabled
+                      variant="contained"
                       sx={{
-                        mt: 14,
+                        backgroundImage:
+                          "linear-gradient(270deg,#D11450,#EE2A24)",
                         width: "100%",
-                        border: "1px solid lightgray",
+                        mt: 5,
                         fontWeight: "bold",
                       }}
                       type="submit"
                     >
                       <FormattedMessage defaultMessage={"Submit"} />
                     </Button>
-                  </>
-                )}
-              </form>
-            </Box>
-          </Box>
+                  ) : (
+                    <> */}
+                  {/* </>
+                  )} */}
+                </Stack>
+              </Stack>
+              <Divider sx={{ mt: 2 }} />
+              <DialogActions sx={{ mt: 1 }}>
+                <Button
+                  disabled={file.length !== 4}
+                  sx={{
+                    border: "1px solid lightgray",
+                    fontWeight: "bold",
+                  }}
+                  type="submit"
+                >
+                  <FormattedMessage defaultMessage={"Submit"} />
+                </Button>
+              </DialogActions>
+            </form>
+          </DialogContent>
         </>
-      </Modal>
+      </Dialog>
     </>
   );
 }

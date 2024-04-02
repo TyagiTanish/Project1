@@ -164,7 +164,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
 
   return (
     <>
-      <Card sx={{ minWidth: 400 }}>
+      {/* <Card sx={{ minWidth: 400 }}>
         <Typography
           sx={{
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -177,16 +177,15 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
           gutterBottom
         >
           <FormattedMessage defaultMessage="  Sign up & Get ₹500 OYO Money" />
-        </Typography>
-        <Box sx={{ float: "right" }}>
-          <Language />
-        </Box>
+        </Typography> */}
+      {/* <Box sx={{ float: "right" }}>
+        <Language />
+      </Box> */}
+      <Stack width={500} mb={3} gap={1}>
         <Typography
           sx={{
-            fontWeight: "bold",
-            fontFamily: "Inter,sans-serif",
-            fontSize: { xl: "30px", md: "25px", sm: "25px" },
-            m: 2,
+            fontSize: { xl: "20px", md: "25px", sm: "25px" },
+            fontWeight: "700",
           }}
         >
           <FormattedMessage defaultMessage="  Sign Up" />
@@ -198,11 +197,20 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
                 <FormattedMessage defaultMessage="Name" />
               </Typography>
-              <TextField id="demo-helper-text-aligned" {...register("name")} />
+              <TextField
+                id="demo-helper-text-aligned"
+                {...register("name")}
+                sx={{
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+              />
               <FormHelperText sx={{ color: "red" }}>
                 {errors.name?.message}
               </FormHelperText>
@@ -210,12 +218,18 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
                 <FormattedMessage defaultMessage="Email" />
               </Typography>
               <TextField
-                sx={{ border: "none" }}
+                sx={{
+                  border: "none",
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
                 id="demo-helper-text-aligned"
                 {...register("email")}
               />
@@ -226,11 +240,20 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
                 <FormattedMessage defaultMessage="Phone No" />
               </Typography>
-              <TextField id="demo-helper-text-aligned" {...register("phone")} />
+              <TextField
+                id="demo-helper-text-aligned"
+                {...register("phone")}
+                sx={{
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+              />
               <FormHelperText sx={{ color: "red" }}>
                 {errors.phone?.message}
               </FormHelperText>
@@ -238,6 +261,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
                 <FormattedMessage defaultMessage="Currency" />
@@ -253,6 +277,11 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 value={currency}
                 {...register("currency")}
                 onChange={handleChange}
+                sx={{
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
               >
                 <MenuItem value={"INR"}>
                   <FormattedMessage defaultMessage="INR ₹" />
@@ -268,11 +297,20 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
                 <FormattedMessage defaultMessage="Password" />
               </Typography>
-              <FormControl sx={{ width: "47ch" }} variant="outlined">
+              <FormControl
+                sx={{
+                  width: "60ch",
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+                variant="outlined"
+              >
                 <OutlinedInput
                   id="outlined-adornment-password"
                   {...register("password")}
@@ -296,7 +334,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
               </FormHelperText>
             </Stack>
             <Button
-              size="small"
+              size="medium"
               variant="contained"
               type="submit"
               sx={{ mt: 2, textTransform: "none" }}
@@ -305,7 +343,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
             </Button>
           </form>
         </CardContent>
-        <Stack
+        {/* <Stack
           direction={"row"}
           alignItems={"center"}
           margin={2}
@@ -319,8 +357,35 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
           >
             <FormattedMessage defaultMessage="Login here" />
           </Button>
-        </Stack>
-      </Card>
+        </Stack> */}
+        {/* <Button
+              // fullWidth
+              size="small"
+              variant="contained"
+              type="submit"
+              sx={{ mt: 2, textTransform: "none" }}
+            >
+              <FormattedMessage defaultMessage="SignUp" />
+            </Button>
+          </form>
+        </CardContent> */}
+      </Stack>
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        margin={2}
+        justifyContent={"space-between"}
+      >
+        <FormattedMessage defaultMessage=" Already have an account?" />
+        <Button
+          onClick={() => {
+            setLogReg(false);
+          }}
+        >
+          <FormattedMessage defaultMessage="Login here" />
+        </Button>
+      </Stack>
+      {/* </Card> */}
     </>
   );
 };

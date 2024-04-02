@@ -175,10 +175,10 @@ export default function HotelOwnerView() {
                 direction={"row"}
                 spacing={3}
                 alignItems={"center"}
-                height={"2vh"}
+                height={"5vh"}
               >
                 {" "}
-                {!open && <Logo />}
+                <Box>{!open && <Logo />}</Box>
                 <IconButton
                   color="inherit"
                   aria-label="open drawer"
@@ -236,7 +236,7 @@ export default function HotelOwnerView() {
                 DashBoard
               </Typography>
             )} */}
-            <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItem disablePadding sx={{ display: "block", p: 1 }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -277,7 +277,7 @@ export default function HotelOwnerView() {
                 />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItem disablePadding sx={{ display: "block", p: 1 }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -318,7 +318,7 @@ export default function HotelOwnerView() {
                 />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItem disablePadding sx={{ display: "block", p: 1 }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
@@ -359,7 +359,7 @@ export default function HotelOwnerView() {
                 />
               </ListItemButton>
             </ListItem>
-            <ListItem disablePadding sx={{ display: "block" }}>
+            <ListItem disablePadding sx={{ display: "block", p: 1 }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,

@@ -1,4 +1,4 @@
-import { Box, Stack, Typography } from "@mui/material";
+import { Box, Grid, Stack, Typography } from "@mui/material";
 import SignUpComp from "../../Customer/Login-Register/Loginn";
 import Footer from "../../Customer/Footer/Footer";
 import { useState } from "react";
@@ -7,6 +7,8 @@ import SignUp from "../../Customer/Login-Register/SignUp";
 import { useSelector } from "react-redux";
 import BasicCard from "../../Customer/Header/Navbar/HotelLocations/Home";
 import MemberRegister from "./MemberRegister";
+import Language from "../../Language";
+import Logo from "../../Logo/Logo";
 
 function MemberRegistrationPage() {
   const [verify, setVerify]: any = useState(0);
@@ -17,32 +19,45 @@ function MemberRegistrationPage() {
     <>
       {!user ? (
         <>
-          <Box
-            sx={{
-              background: `
-        linear-gradient(
-          rgba(0, 0, 0, 1),
-          rgba(0, 0, 0, 0.1)
-        ),
-        url("https://assets.oyoroomscdn.com/cmsMedia/b3c9905c-31d1-4349-8594-c07deae6b36d.jpg") no-repeat`,
-              width: "100%",
-              height: "100vh",
+          <Grid
+            container
+            xs={12}
+            direction={"row"}
+            //     sx={{
+            //       background: `
+            // linear-gradient(
+            //   rgba(0, 0, 0, 1),
+            //   rgba(0, 0, 0, 0.1)
+            // ),
+            // url("https://assets.oyoroomscdn.com/cmsMedia/b3c9905c-31d1-4349-8594-c07deae6b36d.jpg") no-repeat`,
+            //       width: "100%",
+            //       height: "100vh",
 
-              backgroundSize: "cover",
+            //       backgroundSize: "cover",
 
-              opacity: "80%",
-              display: "flex",
-              justifyContent: "center",
-            }}
+            //       opacity: "80%",
+            //       display: "flex",
+            //       justifyContent: "center",
+            //     }}
           >
-            <Stack
+            <Grid container xs={7}>
+              <Box
+                component={"img"}
+                src={require("../../../../assets/Group 13.jpg")}
+                width={"50vw"}
+                height={"100vh"}
+                position={"fixed"}
+              />
+            </Grid>
+
+            {/* <Stack
               direction={"row"}
               alignItems={"center"}
               spacing={4}
               justifyContent={"space-around"}
               width={"100%"}
-            >
-              <Typography
+            > */}
+            {/* <Typography
                 sx={{
                   color: "white",
 
@@ -74,14 +89,21 @@ function MemberRegistrationPage() {
                   discounts and savings on OYO stays and with our many travel
                   partners.
                 </Typography>
-              </Typography>
-
-              <Box>
+              </Typography> */}
+            <Grid container xs={5} direction={"column"} mt={10}>
+              <Stack alignItems={"flex-end"}>
+                <Language />
+              </Stack>
+              <Grid item ml={15}>
+                <Logo />
+              </Grid>
+              <Grid item>
                 <MemberRegister />
-              </Box>
-            </Stack>
-          </Box>
-          <Footer />{" "}
+              </Grid>
+            </Grid>
+          </Grid>
+          {/* </Stack> */}
+          {/* <Footer />{" "} */}
         </>
       ) : (
         <BasicCard />

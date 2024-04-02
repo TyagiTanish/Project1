@@ -152,6 +152,8 @@ export default function MemberRegister() {
     }
   };
 
+  console.log(page);
+
   React.useEffect(() => {
     // console.log(amenities);s
   }, [amenities]);
@@ -160,7 +162,7 @@ export default function MemberRegister() {
     (FormSchema = Yup.object().shape({
       pinCode: Yup.string()
         .required(
-          intl.formatMessage({ defaultMessage: "Zip Code is required" })
+          intl.formatMessage({ defaultMessage: "Pin Code is required" })
         )
         .max(
           6,
@@ -168,11 +170,11 @@ export default function MemberRegister() {
         )
         .matches(
           /^[1-9][0-9]{5}$/,
-          intl.formatMessage({ defaultMessage: "Zip Code must be a number" })
+          intl.formatMessage({ defaultMessage: "Pin Code must be a number" })
         ),
       country: Yup.string()
         .required(
-          intl.formatMessage({ defaultMessage: "Country is required " })
+          intl.formatMessage({ defaultMessage: "Country name is required " })
         )
         .min(
           3,
@@ -186,7 +188,9 @@ export default function MemberRegister() {
           })
         ),
       state: Yup.string()
-        .required(intl.formatMessage({ defaultMessage: "State is required" }))
+        .required(
+          intl.formatMessage({ defaultMessage: "State name is required" })
+        )
         .min(
           3,
           intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
@@ -199,7 +203,9 @@ export default function MemberRegister() {
           })
         ),
       city: Yup.string()
-        .required(intl.formatMessage({ defaultMessage: "City is required" }))
+        .required(
+          intl.formatMessage({ defaultMessage: "City name is required" })
+        )
         .min(
           3,
           intl.formatMessage({ defaultMessage: "minimum length should be 3 " })
@@ -269,7 +275,7 @@ export default function MemberRegister() {
         ),
     }));
 
-  page === 7 &&
+  page === 6 &&
     (FormSchema = Yup.object().shape({
       password: Yup.string()
         .required(
@@ -302,12 +308,12 @@ export default function MemberRegister() {
           })
         ),
     }));
-  if (page === 6) {
+  if (page === 5) {
     FormSchema = Yup.object().shape({
       discription: Yup.string(),
     });
   }
-  page === 5 && (FormSchema = Yup.object().shape({}));
+  page === 4 && (FormSchema = Yup.object().shape({}));
   // amenities: Yup.array().min(1, "Check at list one amenity"),
   interface User {
     name: string;
@@ -361,7 +367,7 @@ export default function MemberRegister() {
     detail.discription = content;
     // }
     // console.log(detail);
-    if (page === 7) {
+    if (page === 6) {
       detail.latitude = location.latitude;
       detail.longitude = location.longitude;
       const formdata = new FormData();
@@ -405,13 +411,13 @@ export default function MemberRegister() {
       <Stack
         direction={"column"}
         sx={{
-          border: "1px solid lightgrey",
+          // border: "1px solid lightgrey",
 
           background: "white",
           width: { sm: "40vw", xl: "25vw" },
         }}
       >
-        <Box
+        {/* <Box
           sx={{
             // background: "#D4164B",
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -426,7 +432,7 @@ export default function MemberRegister() {
           }}
         >
           <FormattedMessage defaultMessage={"Sign up & Get ₹500 OYO Money"} />
-        </Box>
+        </Box> */}
 
         <Box
           sx={{
@@ -470,7 +476,7 @@ export default function MemberRegister() {
                 />
               </Typography>
             )}
-            {page === 3 && (
+            {/* {page === 3 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -483,8 +489,8 @@ export default function MemberRegister() {
                   defaultMessage={" Pin Your Location On Map...."}
                 />
               </Typography>
-            )}
-            {page === 4 && (
+            )} */}
+            {page === 3 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -496,7 +502,7 @@ export default function MemberRegister() {
                 <FormattedMessage defaultMessage={"Choose a Photo...."} />
               </Typography>
             )}
-            {page === 6 && (
+            {page === 5 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -510,7 +516,7 @@ export default function MemberRegister() {
                 />
               </Typography>
             )}
-            {page === 7 && (
+            {page === 6 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -522,7 +528,7 @@ export default function MemberRegister() {
                 <FormattedMessage defaultMessage={"Enter Your Password...."} />
               </Typography>
             )}
-            {page === 5 && (
+            {page === 4 && (
               <Typography
                 sx={{
                   fontSize: { xl: 28, md: 20 },
@@ -536,9 +542,6 @@ export default function MemberRegister() {
                 />
               </Typography>
             )}
-            <Box sx={{ float: "right", mt: -5 }}>
-              <Language />
-            </Box>
           </Box>
 
           {page === 1 && (
@@ -557,7 +560,7 @@ export default function MemberRegister() {
                         fontSize: { xl: 17, md: 14, sm: 13 },
                       }}
                     >
-                      <FormattedMessage defaultMessage={"Name"} />
+                      <FormattedMessage defaultMessage={"Owner Name"} />
                     </Typography>
                     <TextField
                       autoComplete="given-name"
@@ -566,6 +569,11 @@ export default function MemberRegister() {
                       id="firstName"
                       autoFocus
                       {...register("name")}
+                      sx={{
+                        [`& fieldset`]: {
+                          borderRadius: "12px",
+                        },
+                      }}
                     />
                     <FormHelperText sx={{ color: "red" }}>
                       {errors?.name?.message}
@@ -578,6 +586,11 @@ export default function MemberRegister() {
                     <TextField
                       variant="outlined"
                       {...register("phone")}
+                      sx={{
+                        [`& fieldset`]: {
+                          borderRadius: "12px",
+                        },
+                      }}
                     ></TextField>
                     <FormHelperText sx={{ color: "red" }}>
                       {errors?.phone?.message}
@@ -591,6 +604,11 @@ export default function MemberRegister() {
                       required
                       fullWidth
                       id="email"
+                      sx={{
+                        [`& fieldset`]: {
+                          borderRadius: "12px",
+                        },
+                      }}
                       autoComplete="email"
                       {...register("email")}
                       onChange={(e: any) => setEmail(e.target.value)}
@@ -607,6 +625,11 @@ export default function MemberRegister() {
                       required
                       fullWidth
                       {...register("hotelName")}
+                      sx={{
+                        [`& fieldset`]: {
+                          borderRadius: "12px",
+                        },
+                      }}
                       // onChange={(e: any) => setEmail(e.target.value)}
                     />
                     <FormHelperText sx={{ color: "red" }}>
@@ -653,17 +676,20 @@ export default function MemberRegister() {
               >
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    <FormattedMessage defaultMessage={"City"} />
+                    <FormattedMessage defaultMessage={"Country"} />
                   </Typography>
                   <TextField
-                    autoComplete="given-name"
                     required
                     fullWidth
-                    autoFocus
-                    {...register("city")}
+                    {...register("country")}
+                    sx={{
+                      [`& fieldset`]: {
+                        borderRadius: "12px",
+                      },
+                    }}
                   />
                   <FormHelperText sx={{ color: "red" }}>
-                    {errors?.city?.message}
+                    {errors?.country?.message}
                   </FormHelperText>
                 </Stack>
                 <Stack>
@@ -673,6 +699,11 @@ export default function MemberRegister() {
                   <TextField
                     variant="outlined"
                     {...register("state")}
+                    sx={{
+                      [`& fieldset`]: {
+                        borderRadius: "12px",
+                      },
+                    }}
                   ></TextField>
                   <FormHelperText sx={{ color: "red" }}>
                     {errors?.state?.message}
@@ -680,21 +711,45 @@ export default function MemberRegister() {
                 </Stack>
                 <Stack>
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    <FormattedMessage defaultMessage={"City"} /> Pin Code{" "}
+                    <FormattedMessage defaultMessage={"City"} />
                   </Typography>
-                  <TextField required fullWidth {...register("pinCode")} />
+                  <TextField
+                    autoComplete="given-name"
+                    required
+                    fullWidth
+                    autoFocus
+                    {...register("city")}
+                    sx={{
+                      [`& fieldset`]: {
+                        borderRadius: "12px",
+                      },
+                    }}
+                  />
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors?.city?.message}
+                  </FormHelperText>
+                </Stack>
+
+                <Stack>
+                  <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
+                    <FormattedMessage defaultMessage={"Pin Code"} />{" "}
+                  </Typography>
+                  <TextField
+                    required
+                    fullWidth
+                    {...register("pinCode")}
+                    sx={{
+                      [`& fieldset`]: {
+                        borderRadius: "12px",
+                      },
+                    }}
+                  />
                   <FormHelperText sx={{ color: "red" }}>
                     {errors?.pinCode?.message}
                   </FormHelperText>
                 </Stack>
                 <Stack>
-                  <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
-                    <FormattedMessage defaultMessage={"Country"} />
-                  </Typography>
-                  <TextField required fullWidth {...register("country")} />
-                  <FormHelperText sx={{ color: "red" }}>
-                    {errors?.country?.message}
-                  </FormHelperText>
+                  <HotelLocationMap setLocation={setLocation} />
                 </Stack>
               </Stack>
               <IconButton
@@ -724,16 +779,13 @@ export default function MemberRegister() {
               </Button>
             </form>
           )}
-          {page === 3 && (
+          {/* {page === 3 && (
             <>
-              <Typography sx={{ mr: 1 }}>
-                <HotelLocationMap setLocation={setLocation} />
-              </Typography>
               <Stack direction={"row"} sx={{ mr: 2, alignItems: "center" }}>
                 <IconButton
                   sx={{
                     borderRadius: "50px",
-                    border: "1px solid",
+                    border: "1px solid gray ",
                     m: { md: 5, sm: 2 },
                   }}
                   onClick={() => setPage((prev) => prev - 1)}
@@ -757,9 +809,9 @@ export default function MemberRegister() {
                 </Button>
               </Stack>
             </>
-          )}
+          )} */}
 
-          {page === 7 && (
+          {page === 6 && (
             <>
               <form>
                 <Stack
@@ -843,7 +895,7 @@ export default function MemberRegister() {
               </form>
             </>
           )}
-          {page === 5 && (
+          {page === 4 && (
             <>
               <form>
                 <Stack ml={4} direction={"column"}>
@@ -996,134 +1048,162 @@ export default function MemberRegister() {
               </form>
             </>
           )}
-          {page === 6 && (
+          {page === 5 && (
             <>
               <form>
-                <Stack justifyItems={"center"} ml={"10%"}>
-                  <AddDiscription setContent={setContent} content={content} />
+                <Stack gap={5}>
+                  {" "}
+                  <Stack justifyItems={"center"}>
+                    <AddDiscription
+                      setContent={setContent}
+                      content={content}
+                      placeHolder="Enter a hotel discription"
+                    />
 
-                  <FormHelperText sx={{ color: "red" }}>
-                    {errors.discription?.message}
-                  </FormHelperText>
+                    <FormHelperText sx={{ color: "red" }}>
+                      {errors.discription?.message}
+                    </FormHelperText>
+                  </Stack>
+                  <Stack
+                    direction={"row"}
+                    justifyContent={"center"}
+                    alignItems={"center"}
+                    spacing={5}
+                  >
+                    <IconButton
+                      sx={{
+                        borderRadius: "50px",
+                        border: "1px solid",
+                      }}
+                      onClick={() => setPage((prev) => prev - 1)}
+                    >
+                      <ArrowBackIcon
+                        sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                      />
+                    </IconButton>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      type="submit"
+                      sx={{
+                        // width: { xl: 150, md: 100, sm: 50 },
+                        fontSize: { xl: 15, md: 13, sm: 12 },
+                      }}
+                      onClick={handleSubmit(Submit)}
+                    >
+                      <FormattedMessage defaultMessage={"Next"} />
+                    </Button>
+                  </Stack>
                 </Stack>
-                <IconButton
-                  sx={{
-                    borderRadius: "50px",
-                    border: "1px solid",
-                    m: 2,
-                  }}
-                  onClick={() => setPage((prev) => prev - 1)}
-                >
-                  <ArrowBackIcon
-                    sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
-                  />
-                </IconButton>
-                <Button
-                  size="small"
-                  variant="contained"
-                  type="submit"
-                  sx={{
-                    // width: { xl: 150, md: 100, sm: 50 },
-                    fontSize: { xl: 15, md: 13, sm: 12 },
-                    mt: 0,
-                  }}
-                  onClick={handleSubmit(Submit)}
-                >
-                  <FormattedMessage defaultMessage={"Next"} />
-                </Button>
               </form>
             </>
           )}
           {page === 8 && (
             <>
-              <Box>
-                <Typography
-                  sx={{
-                    width: "90%",
-                    m: "5%",
-                  }}
-                >
-                  <FormattedMessage
-                    defaultMessage={
-                      " Email Already Exist If You want to continue with this email then press continue or press back to change email"
-                    }
-                  />{" "}
-                </Typography>
-                <Stack direction={"row"} sx={{ padding: "10px" }}>
-                  {" "}
-                  <Button
-                    variant="contained"
-                    onClick={() => setPage(1)}
+              <Box mt={10}>
+                <Stack alignItems={"flex-start"} spacing={3}>
+                  <Typography
                     sx={{
-                      mr: { md: 5, sm: 2 },
-                      fontSize: { md: 13, sm: 11 },
+                      width: "100%",
+                      // m: "5%",
+                      fontWeight: "bold",
                     }}
                   >
-                    <FormattedMessage defaultMessage={"Back"} />
-                  </Button>
-                  <Button
-                    variant="contained"
-                    sx={{ fontSize: { md: 13, sm: 11 } }}
-                    onClick={() => navigate("/login")}
-                  >
-                    <FormattedMessage defaultMessage={"Continue"} />
-                  </Button>
+                    <FormattedMessage
+                      defaultMessage={
+                        " Email Already Exist If You want to continue with this email then press continue or press back to change email"
+                      }
+                    />{" "}
+                  </Typography>
+                  <Stack direction={"row"} gap={3}>
+                    <Button
+                      variant="outlined"
+                      onClick={() => setPage(1)}
+                      sx={{
+                        // mr: { md: 5, sm: 2 },
+                        fontSize: { md: 13, sm: 11 },
+                      }}
+                    >
+                      <FormattedMessage defaultMessage={"Back"} />
+                    </Button>
+                    <Button
+                      variant="contained"
+                      sx={{ fontSize: { md: 13, sm: 11 } }}
+                      onClick={() => navigate("/login")}
+                    >
+                      <FormattedMessage defaultMessage={"Continue"} />
+                    </Button>
+                  </Stack>
                 </Stack>
               </Box>
             </>
           )}
-          {page === 4 && (
+          {page === 3 && (
             <>
-              <Stack spacing={5} direction={"column"} sx={{ m: 2 }}>
-                <Typography {...getRootProps()}>
-                  <input {...getInputProps()} />
-                  {
-                    <IconButton
-                      sx={{
-                        border: "2px dashed lightgrey",
-                        borderRadius: 0,
-                        width: { xl: "10vw", md: "12vw" },
-                        height: { xl: "5vw", md: "10vw" },
-                        // ml: { sm: 2, md: 5, lg: 10 },
-                      }}
-                    >
-                      <Typography sx={{ mt: 1 }}>
-                        <AddPhotoAlternateSharpIcon fontSize="large" />
-                        <Typography sx={{ fontSize: "10px" }}>
-                          <FormattedMessage
-                            defaultMessage={"Drop a Photo Here"}
-                          />
+              <Stack gap={1}>
+                {" "}
+                <Stack spacing={5} direction={"column"} sx={{ m: 2 }}>
+                  <Typography {...getRootProps()}>
+                    <input {...getInputProps()} />
+                    {
+                      <IconButton
+                        sx={{
+                          border: "2px dashed lightgrey",
+                          borderRadius: 0,
+                          width: { xl: "20vw", md: "12vw" },
+                          height: { xl: "10vw", md: "10vw" },
+                          ml: { sm: 2, md: 5, lg: 10 },
+                        }}
+                      >
+                        <Typography sx={{ mt: 1 }}>
+                          <AddPhotoAlternateSharpIcon fontSize="large" />
+                          <Typography sx={{ fontSize: "10px" }}>
+                            <FormattedMessage
+                              defaultMessage={"Drop a Photo Here"}
+                            />
+                          </Typography>
                         </Typography>
-                      </Typography>
-                    </IconButton>
-                  }
-                </Typography>
-              </Stack>
-              {files.map((photo: any) => (
-                <Chip
+                      </IconButton>
+                    }
+                  </Typography>
+                </Stack>
+                <Stack>
+                  {files.map((photo: any) => (
+                    <Chip
+                      sx={{
+                        fontSize: { xl: "13px", md: "12px" },
+                        mt: 1,
+                        alignContent: "center",
+                        width: 200,
+                        ml: 20,
+                      }}
+                      label={photo.name}
+                      onDelete={() => handleDelete(photo)}
+                    ></Chip>
+                  ))}
+                </Stack>
+                {error && (
+                  <FormHelperText sx={{ color: "red" }}>{error}</FormHelperText>
+                )}
+                <Stack
+                  direction={"row"}
                   sx={{
-                    fontSize: { xl: "13px", md: "12px" },
-                    mt: 1,
                     alignContent: "center",
+                    justifyContent: "center",
+                    m: 2,
                   }}
-                  label={photo.name}
-                  onDelete={() => handleDelete(photo)}
-                ></Chip>
-              ))}
+                  spacing={7}
+                >
+                  <IconButton
+                    sx={{ borderRadius: "50px", border: "1px solid gray " }}
+                    onClick={() => setPage((prev) => prev - 1)}
+                  >
+                    <ArrowBackIcon
+                      sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
+                    />
+                  </IconButton>
 
-              {error && <FormHelperText>{error}</FormHelperText>}
-              <Stack
-                direction={"row"}
-                sx={{ alignContent: "center", justifyContent: "center", m: 2 }}
-                spacing={7}
-              >
-                <IconButton sx={{}} onClick={() => setPage((prev) => prev - 1)}>
-                  <ArrowBackIcon
-                    sx={{ fontSize: { sm: 10, md: 13, xl: 15 } }}
-                  />
-                </IconButton>
-
-                {maxPhoto && (
+                  {/* {maxPhoto && ( */}
                   <Button
                     size="small"
                     variant="contained"
@@ -1132,10 +1212,11 @@ export default function MemberRegister() {
                       fontSize: { xl: 15, md: 13 },
                     }}
                     onClick={handleNextClick}
+                    disabled={!maxPhoto}
                   >
                     <FormattedMessage defaultMessage={"Next"} />
                   </Button>
-                )}
+                  {/* )}
                 {!maxPhoto && (
                   <Button
                     variant="contained"
@@ -1143,11 +1224,12 @@ export default function MemberRegister() {
                       width: { xl: 150, md: 100, sm: 50 },
                       fontSize: { xl: 15, md: 13, sm: 12 },
                     }}
-                    disabled
+                  
                   >
                     <FormattedMessage defaultMessage={"Next"} />
                   </Button>
-                )}
+                )} */}
+                </Stack>
               </Stack>
             </>
           )}

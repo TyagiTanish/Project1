@@ -1,19 +1,23 @@
-import * as React from 'react';
-import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
-import { IconButton, Tooltip } from '@mui/material';
-import LanguageIcon from '@mui/icons-material/Language';
-import { useDispatch, useSelector } from 'react-redux';
-import { locale } from './redux/user/userSlice';
-import TranslateIcon from '@mui/icons-material/Translate';
-import { Box } from '@mui/system';
-
+import * as React from "react";
+import Button from "@mui/material/Button";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import { IconButton, Stack, Tooltip, Typography } from "@mui/material";
+import LanguageIcon from "@mui/icons-material/Language";
+import { useDispatch, useSelector } from "react-redux";
+import { locale } from "./redux/user/userSlice";
+import TranslateIcon from "@mui/icons-material/Translate";
+import { Box } from "@mui/system";
+import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Language() {
+  const locales = useSelector((state: any) => state?.userReducer?.locale);
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
-  const [Locale,setLocale] = React.useState(localStorage.getItem('locale')||'en')
-  const dispatch = useDispatch()
+  const [Locale, setLocale] = React.useState(
+    localStorage.getItem("locale") || "en"
+  );
+  const dispatch = useDispatch();
   const open = Boolean(anchorEl);
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -22,43 +26,98 @@ export default function Language() {
     setAnchorEl(null);
   };
 
-const handleChangeLanguage = (value:any) => {
-  // console.log(value)
-   localStorage.setItem('locale',value) 
-   dispatch(locale(value))
-   setLocale(value)
-    handleClose()
-}
+  const handleChangeLanguage = (value: any) => {
+    // console.log(value)
+    localStorage.setItem("locale", value);
+    dispatch(locale(value));
+    setLocale(value);
+    handleClose();
+  };
 
-// console.log(Locale)
-
+  // console.log(Locale)
 
   return (
     <div>
-      <IconButton
+      <Typography
         id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
+        aria-controls={open ? "basic-menu" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
         onClick={handleClick}
-        sx={{'&:hover':{background:'lightgray',borderRadius:1}}}
+        sx={{ p: 1, width: 200 }}
       >
-      <Tooltip title='Translation' ><TranslateIcon  sx={{fontWeight:'bolder'}}  fontSize='medium' /></Tooltip>
-      </IconButton>
+        {locales === "fr" ? (
+          <Stack
+            direction={"row"}
+            gap={1}
+            alignItems={"center"}
+            sx={{ cursor: "pointer" }}
+          >
+            <Box>Francais-CA</Box>
+            <Box>
+              {open === true ? (
+                <KeyboardArrowUpIcon
+                  sx={{
+                    "&:hover": {
+                      color: "blue",
+                      borderRadius: 1,
+                      cursor: "pointer",
+                    },
+                  }}
+                />
+              ) : (
+                <ExpandMoreIcon
+                  sx={{
+                    "&:hover": {
+                      color: "blue",
+                      borderRadius: 1,
+                    },
+                  }}
+                />
+              )}
+            </Box>
+          </Stack>
+        ) : (
+          <Stack
+            direction={"row"}
+            gap={1}
+            alignItems={"center"}
+            sx={{ cursor: "pointer" }}
+          >
+            <Box>English-US</Box>
+            <Box>
+              {open === true ? <KeyboardArrowUpIcon /> : <ExpandMoreIcon />}
+            </Box>
+          </Stack>
+        )}
+      </Typography>
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         MenuListProps={{
-          'aria-labelledby': 'basic-button',
+          "aria-labelledby": "basic-button",
         }}
-        
+        sx={{
+          borderRadius: "12px",
+        }}
       >
-        <MenuItem  selected={Locale === 'en'}   onClick={()=>handleChangeLanguage('en')}>English</MenuItem>
-        <MenuItem  selected={Locale === 'fr'}   onClick={()=>handleChangeLanguage('fr')}  >French</MenuItem>
+        <MenuItem
+          selected={Locale === "en"}
+          sx={{ padding: 1, width: 110 }}
+          onClick={() => handleChangeLanguage("en")}
+        >
+          English-US
+        </MenuItem>
+        <MenuItem
+          sx={{ padding: 1, width: 110 }}
+          selected={Locale === "fr"}
+          onClick={() => handleChangeLanguage("fr")}
+        >
+          Francais-CA
+        </MenuItem>
       </Menu>
     </div>
   );
 }
-

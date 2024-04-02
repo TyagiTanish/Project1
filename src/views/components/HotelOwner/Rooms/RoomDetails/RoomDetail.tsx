@@ -108,7 +108,7 @@ const RoomDetail = ({
 
   return (
     <>
-      <Grid item xs={2} sm={8} md={4} lg={7} xl={5.8} key={index}>
+      <Grid item xs={2} sm={8} md={5} lg={7} xl={5.8} key={index}>
         <Item>
           <Stack
             direction={"column"}
