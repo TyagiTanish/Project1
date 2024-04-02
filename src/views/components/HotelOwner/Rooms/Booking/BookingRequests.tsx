@@ -4,7 +4,8 @@ import SearchIcon from "@mui/icons-material/Search";
 import FilterListIcon from "@mui/icons-material/FilterList";
 
 import useAuth from "../../../../../Hooks/useAuth/useAuth";
-
+import { createMuiTheme, ThemeProvider } from "@mui/material/styles";
+import styled from "styled-components";
 import {
   Box,
   Button,
@@ -31,6 +32,13 @@ import { FormattedMessage, useIntl } from "react-intl";
 const socket = io("http://localhost:8000", {
   transports: ["websocket", "polling", "flashsocket"],
 });
+const StyledDataGrid = styled(DataGrid)`
+  .MuiDataGrid-cell:focus {
+    outline: none;
+  }
+`;
+
+const theme = createMuiTheme();
 
 /**
  * showing all the pending booking Requests to the admin. Markdown is *Bookings*.
@@ -66,7 +74,7 @@ export default function Bookings() {
       field: "fullName",
 
       width: 270,
-
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Customer Name" />
@@ -76,9 +84,9 @@ export default function Bookings() {
 
     {
       field: "email",
+      headerClassName: "MuiDataGrid-cell",
 
       width: 270,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Customer Email" />
@@ -88,8 +96,8 @@ export default function Bookings() {
     {
       field: "phone",
       headerName: "Phone No.",
+      headerClassName: "MuiDataGrid-cell",
       width: 250,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           {" "}
@@ -100,8 +108,8 @@ export default function Bookings() {
     {
       field: "type",
       headerName: "Payment Method",
+      headerClassName: "MuiDataGrid-cell",
       width: 250,
-      editable: true,
       renderCell: (params: any) => {
         return (
           <div style={{ textTransform: "capitalize" }}>
@@ -121,8 +129,8 @@ export default function Bookings() {
     {
       field: "paymentStatus",
       headerName: "Payment Status",
+      headerClassName: "MuiDataGrid-cell",
       width: 250,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Payment Status" />
@@ -133,7 +141,7 @@ export default function Bookings() {
     {
       field: "actions",
       type: "actions",
-
+      headerClassName: "MuiDataGrid-cell",
       width: 270,
       cellClassName: "actions",
       getActions: (value: any) => {
@@ -142,10 +150,9 @@ export default function Bookings() {
           <GridActionsCellItem
             icon={
               <Button
-                variant="contained"
+                variant="outlined"
                 sx={{
                   textTransform: "capitalize",
-                  backgroundImage: "linear-gradient(270deg,green,green)",
                 }}
               >
                 <FormattedMessage defaultMessage="Accept" />
@@ -164,10 +171,10 @@ export default function Bookings() {
           <GridActionsCellItem
             icon={
               <Button
-                variant="contained"
+                variant="outlined"
+                color="error"
                 sx={{
                   textTransform: "capitalize",
-                  backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
                 }}
               >
                 <FormattedMessage defaultMessage="Reject" />
@@ -186,7 +193,8 @@ export default function Bookings() {
           <GridActionsCellItem
             icon={
               <Button
-                variant="contained"
+                variant="outlined"
+                color="secondary"
                 sx={{
                   textTransform: "capitalize",
                 }}
@@ -326,20 +334,22 @@ export default function Bookings() {
       ) : (
         <Box sx={{ height: "38vh", width: "100%" }}>
           {/* data grid to implement server side sorting , pagination and searching */}
-          <DataGrid
-            rows={data}
-            columns={columns}
-            getRowId={(row) => row._id}
-            disableColumnMenu
-            sx={{ fontSize: 15 }}
-            rowCount={length}
-            pageSizeOptions={[5, 10, 20]}
-            paginationModel={paginationModel}
-            paginationMode="server"
-            onPaginationModelChange={setPaginationModel}
-            sortingMode="server"
-            onSortModelChange={handleSortModelChange}
-          />
+          <ThemeProvider theme={theme}>
+            <StyledDataGrid
+              rows={data}
+              columns={columns}
+              getRowId={(row) => row._id}
+              disableColumnMenu
+              sx={{ fontSize: 15 }}
+              rowCount={length}
+              pageSizeOptions={[5, 10, 20]}
+              paginationModel={paginationModel}
+              paginationMode="server"
+              onPaginationModelChange={setPaginationModel}
+              sortingMode="server"
+              onSortModelChange={handleSortModelChange}
+            />
+          </ThemeProvider>
         </Box>
       )}
 

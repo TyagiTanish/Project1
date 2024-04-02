@@ -222,7 +222,7 @@ export default function MemberRegister() {
         .min(
           3,
           intl.formatMessage({
-            defaultMessage: "Name should contain at least 5 letters",
+            defaultMessage: "Name should contain at least 3 letters",
           })
         )
         .matches(

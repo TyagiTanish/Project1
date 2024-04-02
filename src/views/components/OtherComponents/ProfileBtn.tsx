@@ -18,12 +18,14 @@ import { Stack } from "@mui/system";
 import { useNavigate } from "react-router-dom";
 import { FormattedMessage } from "react-intl";
 import EventIcon from "@mui/icons-material/Event";
+import Loader from "../loader/Loader";
 
 export default function AccountMenu() {
   const navigate = useNavigate();
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const user = useSelector((state: any) => state.userReducer.user);
   const open = Boolean(anchorEl);
+  const [loaderEl, setLoaderEl] = React.useState(false);
   const dispatch = useDispatch();
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -35,7 +37,11 @@ export default function AccountMenu() {
   const handleLogOut = () => {
     localStorage.removeItem("authToken");
     dispatch(userLogout());
-    navigate("/");
+    setLoaderEl(true);
+    setTimeout(() => {
+      setLoaderEl(false);
+      navigate("/");
+    }, 2000);
 
     setAnchorEl(null);
   };

@@ -7,7 +7,7 @@ import { useDispatch } from "react-redux";
 import { userLogin } from "./views/components/redux/user/userSlice";
 import Locales from "./views/components/Language/Locale";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { createContext } from "react";
+import { createContext, useEffect } from "react";
 
 function App() {
   const { request } = useAuth();
@@ -30,9 +30,9 @@ function App() {
     }
   };
 
-  // useEffect(() => {
-  //   getUser();
-  // });
+  useEffect(() => {
+    getUser();
+  }, []);
 
   // useEffect(() => {
   //   localStorage.clear();

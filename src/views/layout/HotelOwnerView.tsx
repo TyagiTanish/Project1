@@ -201,7 +201,7 @@ export default function HotelOwnerView() {
                 <Language />
                 <Stack>
                   <Typography color={"black"} fontWeight={"bolder"}>
-                    Hello,{user?.name}
+                    Hello,{user?.name?.split(" ")[0]}
                   </Typography>
                   <Typography color={"gray"} fontSize={"0.9rem"}>
                     {user?.role?.toUpperCase()}
@@ -245,7 +245,7 @@ export default function HotelOwnerView() {
 
                   "&:hover": {
                     borderRadius: 100,
-                    backgroundColor: "lightGray",
+                    // backgroundColor: "lightGray",
                   },
                   borderRadius: selectedIndex === 0 ? 100 : null,
                   backgroundColor: selectedIndex === 0 ? "lightgray" : null,
@@ -285,7 +285,7 @@ export default function HotelOwnerView() {
                   px: 2.5,
                   "&:hover": {
                     borderRadius: 100,
-                    backgroundColor: "lightGray",
+                    // backgroundColor: "lightGray",
                   },
                   borderRadius: selectedIndex === 1 ? 100 : null,
                   backgroundColor: selectedIndex === 1 ? "lightgray" : null,
@@ -326,7 +326,7 @@ export default function HotelOwnerView() {
                   px: 2.5,
                   "&:hover": {
                     borderRadius: 100,
-                    backgroundColor: "lightGray",
+                    // backgroundColor: "lightGray",
                   },
                   borderRadius: selectedIndex === 2 ? 100 : null,
                   backgroundColor: selectedIndex === 2 ? "lightgray" : null,
@@ -367,7 +367,7 @@ export default function HotelOwnerView() {
                   px: 2.5,
                   "&:hover": {
                     borderRadius: 100,
-                    backgroundColor: "lightGray",
+                    // backgroundColor: "lightGray",
                   },
                   borderRadius: selectedIndex === 3 ? 100 : null,
                   backgroundColor: selectedIndex === 3 ? "lightgray" : null,

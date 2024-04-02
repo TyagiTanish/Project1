@@ -31,8 +31,6 @@ function EditHotel(props: any) {
   const intl = useIntl();
   const [value, setValue] = useState(props.data?.discription);
   const [category, setcategory] = useState<any>(props?.data?.categories);
-  const [imagePreView, setImagePreView] = React.useState(false);
-  const [previewIndex, setPreviewIndex] = React.useState<any>("");
   const [photoValue, setPhotoValue] = useState(props.data?.photo.slice(7));
   const [open, setOpen] = useState(false);
   const [file, setFile] = useState<any>([]);
@@ -59,10 +57,6 @@ function EditHotel(props: any) {
     }
     return imageUrl;
   }, [acceptedFiles, props.data]);
-  const handlePreviewImage = () => {
-    setImagePreView(true);
-    setPreviewIndex(imagePreview);
-  };
   React.useEffect(() => {
     if (open === false) {
       setPhotoValue(props.data?.photo.slice(7));
@@ -216,18 +210,14 @@ function EditHotel(props: any) {
               <Stack m={2} direction={"row"} gap={2} flexWrap={"wrap"}>
                 {!(photoValue === "") ? (
                   <>
-                    <Tooltip title={"click to see preview"}>
-                      <Box
-                        component={"data"}
-                        onClick={() => handlePreviewImage()}
-                      >
-                        <Chip
-                          label={photoValue}
-                          style={{ cursor: "pointer", width: 300 }}
-                          onDelete={() => handleDelete()}
-                        />
-                      </Box>
-                    </Tooltip>
+                    <Stack gap={1} alignItems={"center"} width={"100%"}>
+                      <Box component={"img"} width={150} src={imagePreview} />
+                      <Chip
+                        label={photoValue}
+                        style={{ cursor: "pointer", width: 300 }}
+                        onDelete={() => handleDelete()}
+                      />
+                    </Stack>
                   </>
                 ) : (
                   <Typography {...getRootProps()}>
@@ -331,15 +321,6 @@ function EditHotel(props: any) {
           </Stack>
         </Stack>
       </DialogContent>
-      {imagePreView && (
-        <HotelImage
-          imagePreView={imagePreView}
-          setImagePreView={setImagePreView}
-          previewIndex={imagePreview}
-          open={open}
-          photoValue={photoValue}
-        />
-      )}
     </Dialog>
   );
 }

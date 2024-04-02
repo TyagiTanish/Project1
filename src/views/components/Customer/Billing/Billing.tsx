@@ -99,26 +99,26 @@ const Billing = () => {
 
   const calculateDifference = () => {
     // console.log(enddate.slice(6, 9), startdate.slice(4, 6));
-    const startDateArray = startdate.split(" ");
-    const startDay = parseInt(startDateArray[1]);
-    const endDateArray = enddate.split(" ");
-    const endDay = parseInt(endDateArray[1]);
-
-    const diff = Number(endDay) - Number(startDay);
-    // const duration = moment.duration(diff);
-
+    startdate = moment(startdate, "MMMM Do YYYY");
+    enddate = moment(enddate, "MMMM Do YYYY");
+    // const startDateArray = startdate.split(" ");
+    // const startDay = parseInt(startDateArray[1]);
+    // const endDateArray = enddate.split(" ");
+    // const endDay = parseInt(endDateArray[1]);
+    console.log(startdate);
+    // const diff = Number(endDay) - Number(startDay);
+    var duration = moment.duration(enddate.diff(startdate));
+    var differenceInDays = duration.asDays();
     setDifference({
-      days: diff,
+      days: differenceInDays,
     });
-    return diff;
+    return differenceInDays;
   };
   useEffect(() => {
     if (date) {
       calculateDifference();
     }
   }, [date]);
-
-  console.log(difference);
 
   let totalRooms;
   let totalGuests: any;

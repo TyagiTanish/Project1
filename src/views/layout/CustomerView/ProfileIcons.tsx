@@ -57,7 +57,8 @@ const ProfileIcons = () => {
             </Stack>
             <Stack>
               <Typography color={"black"} fontWeight={"bolder"}>
-                <FormattedMessage defaultMessage="Hello" />,{user?.name}
+                <FormattedMessage defaultMessage="Hello" />,
+                {user?.name?.split(" ")[0]}
               </Typography>
               <Typography color={"gray"} fontSize={"0.9rem"}>
                 {user?.role?.toUpperCase()}
