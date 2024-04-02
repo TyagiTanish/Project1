@@ -56,6 +56,7 @@ export default function AccountMenu() {
           alignItems={"center"}
           padding={0.5}
           borderRadius={10}
+          mr={2}
         >
           <Avatar
             src={require(`../../layout/user.png`)}

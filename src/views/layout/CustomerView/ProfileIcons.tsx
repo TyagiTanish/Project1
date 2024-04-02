@@ -41,7 +41,7 @@ const ProfileIcons = () => {
             marginRight={2}
           >
             <Language />
-            <Stack direction={"row"} alignItems={"center"} spacing={1}>
+            <Stack direction={"row"} alignItems={"center"} spacing={0}>
               <BusinessIcon sx={{ fontSize: "30px" }} />
               <Link
                 to="/AddHotel"
@@ -93,7 +93,7 @@ const ProfileIcons = () => {
             <FormattedMessage defaultMessage="List Your Property" />
           </IconButton>
 
-          <Stack direction={"row"} alignItems={"center"} spacing={1}>
+          <Stack direction={"row"} alignItems={"center"} spacing={0} >
             <Tooltip title="Login / SignUp">
               <PersonIcon />
             </Tooltip>
@@ -108,6 +108,7 @@ const ProfileIcons = () => {
                 color: "black",
                 fontWeight: "bolder",
                 cursor: "pointer",
+                mr:2
               }}
             >
               <FormattedMessage defaultMessage="Login / SignUp" />
