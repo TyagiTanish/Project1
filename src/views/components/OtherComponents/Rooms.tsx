@@ -430,7 +430,7 @@ function AddRooms({ setRender, showCategories }: any) {
                                   >
                                     <img
                                       alt="Preview image"
-                                      src={photo.preview}
+                                      src={photo?.preview}
                                       style={{
                                         width: "100%",
                                         height: "100%",
