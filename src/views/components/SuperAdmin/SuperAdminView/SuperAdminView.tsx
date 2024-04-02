@@ -197,7 +197,7 @@ export default function SuperAdminView() {
                 <Language />
                 <Stack>
                   <Typography color={"black"} fontWeight={"bolder"}>
-                    Hello,{user?.name}
+                    Hello,{user?.name?.split(" ")[0]}
                   </Typography>
                   <Typography color={"gray"} fontSize={"0.9rem"}>
                     {user?.role?.toUpperCase()}

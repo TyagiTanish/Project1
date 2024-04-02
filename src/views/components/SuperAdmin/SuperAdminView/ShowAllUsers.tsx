@@ -23,6 +23,15 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { useIntl, FormattedMessage } from "react-intl";
 import Actions from "./Actions";
+import { createMuiTheme, ThemeProvider } from "@mui/material/styles";
+import styled from "styled-components";
+const StyledDataGrid = styled(DataGrid)`
+  .MuiDataGrid-cell:focus {
+    outline: none;
+  }
+`;
+
+const theme = createMuiTheme();
 
 function ShowAllUsers() {
   const [data, setData] = useState<any>([]);
@@ -42,9 +51,8 @@ function ShowAllUsers() {
     {
       field: "name",
       headerName: "Hotel name",
-      headerClassName: "heading",
+      headerClassName: "MuiDataGrid-cell",
       width: 500,
-
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Customer Name" />
@@ -54,9 +62,8 @@ function ShowAllUsers() {
 
     {
       field: "email",
-      headerClassName: "heading",
+      headerClassName: "MuiDataGrid-cell",
       width: 500,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Customer Email" />
@@ -67,8 +74,7 @@ function ShowAllUsers() {
       field: `phone`,
       headerName: "Book From",
       width: 500,
-      headerClassName: "heading",
-      editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Customer Phone" />
@@ -142,7 +148,7 @@ function ShowAllUsers() {
         />
       </Stack>
       <Box sx={{ height: "auto", width: "100%" }}>
-        <DataGrid
+        <StyledDataGrid
           rows={data}
           columns={columns}
           getRowId={(row: any) => row._id}

@@ -9,9 +9,9 @@ const PdfViewerFromBuffer = ({ pdfBuffer }: any) => {
           src={
             URL.createObjectURL(
               new Blob([pdfBuffer], { type: "application/pdf" })
-            ) + "#zoom=65"
+            ) + "#zoom=64"
           }
-          style={{ width: "100%", height: "80vh" }}
+          style={{ width: "100%", height: "70vh" }}
         />
       )}
     </div>
