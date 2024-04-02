@@ -27,6 +27,15 @@ import { useIntl, FormattedMessage } from "react-intl";
 // import EditDialog from "../../EditDialog";
 import Actions from "./Actions";
 import Loaders from "../../loader/Loaders";
+import { createMuiTheme, ThemeProvider } from "@mui/material/styles";
+import styled from "styled-components";
+const StyledDataGrid = styled(DataGrid)`
+  .MuiDataGrid-cell:focus {
+    outline: none;
+  }
+`;
+
+const theme = createMuiTheme();
 
 /**
  * to show all the  Members to the super admin. Markdown is *ShowAllMembers*.
@@ -140,7 +149,7 @@ export default function ShowAllMembers() {
     {
       field: "hotelName",
       width: 270,
-      // editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
           <strong>
@@ -152,7 +161,7 @@ export default function ShowAllMembers() {
     {
       field: "city",
       width: 270,
-      // editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
           <strong>
@@ -164,7 +173,7 @@ export default function ShowAllMembers() {
     {
       field: "state",
       width: 270,
-      // editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
           <strong>
@@ -176,7 +185,7 @@ export default function ShowAllMembers() {
     {
       field: "ownerId",
       width: 270,
-      // editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: () => (
         <div style={{ fontSize: "large " }}>
           <strong>
@@ -189,7 +198,7 @@ export default function ShowAllMembers() {
     {
       field: "actions",
       type: "actions",
-
+      headerClassName: "MuiDataGrid-cell",
       width: 270,
       cellClassName: "actions",
       getActions: (value: any) => {
@@ -382,7 +391,7 @@ export default function ShowAllMembers() {
 
                 {/* server side sorting , pagination using data grid  */}
 
-                <DataGrid
+                <StyledDataGrid
                   rows={hotels}
                   columns={columns}
                   getRowId={(row) => row._id}

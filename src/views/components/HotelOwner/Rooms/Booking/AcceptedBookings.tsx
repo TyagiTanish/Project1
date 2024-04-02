@@ -26,6 +26,15 @@ import PdfViewer from "./DisplayPdf";
 import PdfViewerFromBuffer from "./DisplayPdf";
 import LoaderBeforeReciept from "./LoaderBeforeReciept";
 import { FormattedMessage, useIntl } from "react-intl";
+import { createMuiTheme, ThemeProvider } from "@mui/material/styles";
+import styled from "styled-components";
+const StyledDataGrid = styled(DataGrid)`
+  .MuiDataGrid-cell:focus {
+    outline: none;
+  }
+`;
+
+const theme = createMuiTheme();
 
 /**
  * To show all the accepted Bookings by the Hotel Owner. Markdown is *AcceptedBooking*.
@@ -76,6 +85,7 @@ function AcceptedBookings() {
     {
       field: "hotelId",
       headerName: "Hotel name",
+      headerClassName: "MuiDataGrid-cell",
       width: 200,
       renderCell: (params: any) => (
         // Access the 'age' property from the row data
@@ -92,9 +102,9 @@ function AcceptedBookings() {
 
     {
       field: "email",
+      headerClassName: "MuiDataGrid-cell",
 
       width: 200,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Customer Email" />
@@ -105,8 +115,7 @@ function AcceptedBookings() {
       field: `bookFrom`,
       headerName: "Book From",
       width: 200,
-
-      editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Check in" />
@@ -118,7 +127,6 @@ function AcceptedBookings() {
       field: "bookTo",
       headerName: "Book To",
       width: 200,
-      editable: true,
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Check Out" />
@@ -128,6 +136,7 @@ function AcceptedBookings() {
     },
     {
       field: "paymentStatus",
+      headerClassName: "MuiDataGrid-cell",
       headerName: "Payment Status",
       width: 200,
       renderHeader: (params: GridColumnHeaderParams) => (
@@ -165,7 +174,7 @@ function AcceptedBookings() {
       field: "paymentMethod",
       headerName: "Payment Method",
       width: 200,
-      editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Payment Method" />
@@ -181,7 +190,7 @@ function AcceptedBookings() {
       field: "status",
       headerName: "Status",
       width: 200,
-      editable: true,
+      headerClassName: "MuiDataGrid-cell",
       renderHeader: (params: GridColumnHeaderParams) => (
         <strong style={{ fontSize: 18 }}>
           <FormattedMessage defaultMessage="Booking Status" />
@@ -207,7 +216,7 @@ function AcceptedBookings() {
       field: "customField",
       headerName: " Arrival Status",
       width: 200,
-
+      headerClassName: "MuiDataGrid-cell",
       renderCell: (params: any) => (
         <FormControl fullWidth size="small">
           {params?.row?.arrival !== "Canceled" &&
@@ -272,7 +281,7 @@ function AcceptedBookings() {
     {
       field: "actions",
       type: "actions",
-
+      headerClassName: "MuiDataGrid-cell",
       width: 130,
       cellClassName: "actions",
       getActions: (value: any) => {
@@ -422,7 +431,7 @@ function AcceptedBookings() {
         </Stack>
         <Box sx={{ height: "38vh", width: "100%", fontSize: 20 }}>
           {loader && <LoaderBeforeReciept />}
-          <DataGrid
+          <StyledDataGrid
             rows={data}
             columns={columns}
             getRowId={(row: any) => row._id}

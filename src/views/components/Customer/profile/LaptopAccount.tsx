@@ -37,11 +37,12 @@ function LaptopAccount() {
         style={{ fontWeight: "bold", fontSize: 17 }}
         expandIcon={<ExpandMoreIcon />}
       >
-        <FormattedMessage defaultMessage="Account Settings"/>
+        <FormattedMessage defaultMessage="Account Settings" />
       </AccordionSummary>
       <AccordionDetails sx={{ ml: 4, mt: -1 }}>
         <Typography sx={{ fontFamily: "cursive" }}>
-        <FormattedMessage defaultMessage="Hello,"/>   {user.name}
+          <FormattedMessage defaultMessage="Hello," />{" "}
+          {user.name?.split(" ")[0]}
         </Typography>
         <Stack direction={"row"} spacing={1}>
           {" "}
@@ -50,15 +51,17 @@ function LaptopAccount() {
             to="/profile"
             style={{ textDecoration: "none", color: "black", marginTop: 3 }}
           >
-          <FormattedMessage defaultMessage="Profile"/>   
+            <FormattedMessage defaultMessage="Profile" />
           </Link>
         </Stack>
         <Stack direction={"row"} spacing={1} onClick={handleLogOut}>
           {" "}
           <Logout fontSize="small" />
-          <Typography><FormattedMessage defaultMessage="Logout"/></Typography>
+          <Typography>
+            <FormattedMessage defaultMessage="Logout" />
+          </Typography>
         </Stack>
-      </AccordionDetails> 
+      </AccordionDetails>
     </Accordion>
   );
 }

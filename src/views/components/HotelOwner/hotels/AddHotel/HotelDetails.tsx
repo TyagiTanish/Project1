@@ -35,7 +35,7 @@ import * as Yup from "yup";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import AddHotelLocation from "../../../Register/MemberRegister/AddHotelLocation";
 import { FormattedMessage, useIntl } from "react-intl";
-import Language from "../../../Language";
+import Language from "../../../Language/Language";
 
 const HotelDetails = () => {
   const intl = useIntl();
@@ -276,35 +276,15 @@ const HotelDetails = () => {
 
   return (
     <>
-      <Typography
-        sx={{
-          backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-          margin: "0",
-          // paddingLeft: { xl: "93px", md: "30px", sm: 5 },
-          // paddingTop: "5px",
-          // paddingBottom: "5px",
-          color: "white",
-          fontWeight: "bold",
-          // width: "100%",
-          fontSize: { xl: 17, md: 16, sm: 13 },
-          textAlign: "center",
-          p: "1%",
-        }}
-        color="text.secondary"
-        gutterBottom
-      >
-        <FormattedMessage defaultMessage="Add hotel & Get ₹500 OYO Money" />
-      </Typography>
       <Box sx={{ float: "right" }}>
         <Language />
       </Box>
       {step === 0 && (
         <Typography
           sx={{
-            m: "1%",
             fontWeight: "bold",
             fontFamily: "Inter,sans-serif",
-            fontSize: { xl: "25px", md: "20px", sm: 15 },
+            fontSize: { md: "20px", sm: 15 },
             textAlign: "center",
           }}
         >
@@ -314,7 +294,6 @@ const HotelDetails = () => {
       {step === 1 && (
         <Typography
           sx={{
-            m: "1%",
             fontWeight: "bold",
             fontFamily: "Inter,sans-serif",
             fontSize: { xl: "25px", md: "20px", sm: 15 },
@@ -327,7 +306,6 @@ const HotelDetails = () => {
       {step === 4 && (
         <Typography
           sx={{
-            m: "1%",
             fontWeight: "bold",
             fontFamily: "Inter,sans-serif",
             fontSize: { xl: "25px", md: "20px", sm: 15 },

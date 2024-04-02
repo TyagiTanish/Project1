@@ -37,14 +37,20 @@ export default function EditDialog({
   const handleClickOpen = () => {
     setOpen(true);
   };
-
   const handleClose = () => {
     setOpen(false);
   };
-  const [age, setAge] = React.useState("Admin");
+  const [age, setAge] = React.useState("member");
 
   const handleChange = (event: SelectChangeEvent) => {
-    setAge(event.target.value as string);
+    if (event.target.value === "customer") {
+      setAge("customer");
+    } else if (event.target.value === "member") {
+      setAge("member");
+    } else {
+      setAge("superAdmin");
+    }
+    // setAge( as string);
   };
 
   const handleDelete = async () => {
@@ -72,6 +78,7 @@ export default function EditDialog({
     handleClose();
   };
   React.useMemo(() => {
+    setAge("member");
     setTimeout(() => {
       reset();
     }, 1000);
@@ -99,7 +106,7 @@ export default function EditDialog({
         <Divider />
         <DialogContent>
           <form onSubmit={handleSubmit(onSubmit)}>
-            <Stack direction={"column"} spacing={2}>
+            <Stack direction={"column"} spacing={2} gap={2}>
               <Stack direction={"row"} spacing={3}>
                 {" "}
                 <TextField
@@ -131,9 +138,9 @@ export default function EditDialog({
                     {...register("role")}
                     onChange={handleChange}
                   >
-                    <MenuItem value={"Customer"}>Customer</MenuItem>
-                    <MenuItem value={"Admin"}>Admin</MenuItem>
-                    <MenuItem value={"Super Admin"}>Super Admin</MenuItem>
+                    <MenuItem value={"customer"}>Customer</MenuItem>
+                    <MenuItem value={"member"}>Admin</MenuItem>
+                    <MenuItem value={"superAdmin"}>Super Admin</MenuItem>
                   </Select>
                 </FormControl>
               </Stack>
@@ -145,12 +152,13 @@ export default function EditDialog({
               direction={"row"}
               justifyContent={"space-between"}
               spacing={0}
+              mt={4}
               padding={1}
             >
               {" "}
               <Box>
                 <Button variant="outlined" size="small" onClick={handleClose}>
-                <FormattedMessage defaultMessage="Cancel" />  
+                  <FormattedMessage defaultMessage="Cancel" />
                 </Button>
               </Box>{" "}
               <Stack direction={"row"} spacing={2}>
@@ -166,7 +174,7 @@ export default function EditDialog({
                   variant="outlined"
                   size="small"
                 >
-                <FormattedMessage defaultMessage=" Delete" />  
+                  <FormattedMessage defaultMessage=" Delete" />
                 </Button>
                 <Button
                   autoFocus
@@ -174,7 +182,7 @@ export default function EditDialog({
                   size="small"
                   type="submit"
                 >
-                <FormattedMessage defaultMessage="Save"  />
+                  <FormattedMessage defaultMessage="Save" />
                 </Button>
               </Stack>
             </Stack>

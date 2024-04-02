@@ -205,6 +205,7 @@ function HotelInfo({ setRender }: any) {
         {open2 && (
           <DeleteModal
             open2={open2}
+            setOpen2={setOpen2}
             handleClickOpen2={handleClickOpen2}
             handleCloseDelete={handleCloseDelete}
             handleDelete={handleDelete}
