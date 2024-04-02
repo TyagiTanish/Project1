@@ -6,6 +6,9 @@ import {
   TextField,
   Typography,
   FormHelperText,
+  FormControl,
+  InputLabel,
+  Select,
 } from "@mui/material";
 import moment from "moment";
 import React, {
@@ -22,7 +25,7 @@ import * as Yup from "yup";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import io from "socket.io-client";
 import { useSelector } from "react-redux";
-import dayjs from "dayjs";
+
 import PaymentDialogBox from "./paymentDialogBox";
 import BillingDetailsCard from "./BillingDetailsCard";
 import Loader from "./loader/Loader";
@@ -31,7 +34,9 @@ import { enqueueSnackbar } from "notistack";
 import UseRoomAndGuestQuantity from "../../../../Hooks/roomAndGuestQuantity/useRoomAndGuestQuantity";
 import { FormattedMessage, useIntl } from "react-intl";
 import PaymentMethods from "./PaymentMethods";
+import MenuItem from "@mui/material/MenuItem";
 
+import { SelectChangeEvent } from '@mui/material/Select';
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
  */
@@ -137,6 +142,17 @@ const Billing = () => {
   const [guest, setGuest] = useState<any>(false);
   const [submitButton, setSubmitButton] = useState(false);
   const navigate = useNavigate();
+  const language = useSelector((state: any) => state?.userReducer?.locale);
+  console.log("Language from Redux:", language); // Debugging
+
+  const [age, setAge] = useState<string>(
+    language === "en" ? "Indian Rupee ₹" : "Euro €"
+  );
+  console.log("Initial Age:", age); 
+console.log()
+  const handleChange = (event: SelectChangeEvent) => {
+    setAge(event.target.value as string);
+  };
   const handleCheckboxSubmit = () => {
     if (submitButton === true) {
       setSubmitButton(false);
@@ -144,7 +160,11 @@ const Billing = () => {
       setSubmitButton(true);
     }
   };
+useMemo(()=>{
+    const lang=  language === "en" ? "Indian Rupee ₹" : "Euro €";
+    setAge(lang as string);
 
+},[language])
   const handleCheckbox = () => {
     if (guest === true) {
       setGuest(false);
@@ -161,6 +181,7 @@ const Billing = () => {
     email: any;
     guestName: string | undefined;
     guestEmail: string | undefined;
+    currency:any | undefined
   }
   const intl = useIntl();
   const FormSchema = Yup.object().shape({
@@ -196,6 +217,10 @@ const Billing = () => {
             "Phone No. must not contain any special character and should start with 9 , 7 or 8",
         })
       ),
+      currency: Yup.string()
+      .required("Curerency field is required")
+     
+     ,
     guestName: Yup.string()
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
@@ -227,7 +252,8 @@ const Billing = () => {
     data.totalRooms = totalRoomsAndGuests?.rooms;
     data.roomId = roomDetails?._id;
     data.price = RoomPrice;
-    // console.log(data);
+    
+    console.log(data);
     setData(data);
     if (user) {
       if (selectedMethod !== "a") {
@@ -348,9 +374,29 @@ const Billing = () => {
                       defaultValue={user?.phone}
                       // autoComplete="current-password"
                     />
+                       <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
+                      <FormattedMessage defaultMessage="Payment Currency *" />
+                    </Typography>
                     {errors.phone?.message && (
                       <FormHelperText sx={{ color: "red" }}>
                         {errors.phone?.message.toString()}
+                      </FormHelperText>
+                    )}
+     <FormControl fullWidth>
+      <Select
+        id="demo-simple-select"
+        value={age}
+        {...register("currency")}
+        onChange={handleChange}
+       
+      >
+        <MenuItem value="Indian Rupee ₹">Indian Rupee ₹</MenuItem>
+        <MenuItem value="Euro €">Euro €</MenuItem>
+      </Select>
+    </FormControl>
+                    {errors.currency?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.currency?.message.toString()}
                       </FormHelperText>
                     )}
                     <Stack direction={"row"} ml={-1}>

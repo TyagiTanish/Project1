@@ -179,7 +179,11 @@ function Seachbar2() {
                 borderRadius: 3,
                 mt: 1,
                 width: 410,
+                '& .MuiInputBase-root': {
+                  height: '50px', // Adjust the height as needed
+              },
               }}
+            
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="start">
@@ -222,7 +226,9 @@ function Seachbar2() {
         <Box sx={{ mt: 1 }}>
           <TextField
             id="datePicker"
-            sx={{ bgcolor: "white", width: { sm: 240, md: 300 } }}
+            sx={{ bgcolor: "white", width: { sm: 240, md: 300 },'& .MuiInputBase-root': {
+              height: '50px', // Adjust the height as needed
+          }, }}
             autoComplete="off"
             placeholder={intl.formatMessage({
               defaultMessage: "Check in - Check out",
@@ -252,6 +258,9 @@ function Seachbar2() {
             bgcolor: "white",
             fontWeight: "bolder",
             mt: 1,
+            '& .MuiInputBase-root': {
+              height: '50px', // Adjust the height as needed
+          },
           }}
           // value={`${rooms.length} Room , ${guests} guest`}
           value={`${rooms.length} Room , ${guests} guest`}
@@ -270,9 +279,12 @@ function Seachbar2() {
                 "&:hover": { bgcolor: "green" },
                 color: "white",
                 fontWeight: "bolder",
-                height: 55,
+                height: 50,
                 mt: 0.75,
                 borderRadius: 1,
+                '& .MuiInputBase-root': {
+            height: '50px', // Adjust the height as needed
+        },
               }}
               onClick={() => {
                 // localStorage.setItem("searchTerm", searchTerm);
