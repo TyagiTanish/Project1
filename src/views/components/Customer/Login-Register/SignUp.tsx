@@ -24,12 +24,16 @@ import { enqueueSnackbar } from "notistack";
 import Loaders from "../../loader/Loader";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as Yup from "yup";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import Language from "../../Language/Language";
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 
 const SignUp = ({ setLogReg, setDisplay }: any) => {
   const { request } = useAuth();
+  const intl = useIntl();
   const [showPassword, setShowPassword] = React.useState(false);
+  const [currency, setCurrency] = React.useState("");
 
   const onSubmit = async (data: any) => {
     // console.log(data);
@@ -37,6 +41,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
       name: data.name,
       phone: data.phone,
       email: data.email,
+      currency: data.currency,
       password: data.password,
     });
 
@@ -64,39 +69,80 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
     }
   };
 
+  const handleChange = (event: any) => {
+    setCurrency(event.target.value as string);
+  };
   interface User {
     name: string;
     email: string;
     phone: string;
+    currency: string;
     password: string;
   }
   const FormSchema = Yup.object().shape({
     name: Yup.string()
-      .required("First Name is required")
-      .min(3)
+      .required(
+        intl.formatMessage({ defaultMessage: "First Name is required" })
+      )
+      .min(
+        3,
+        intl.formatMessage({
+          defaultMessage: "Name must have minimun 3 characters",
+        })
+      )
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-        "First Letter of name should be capital and name should be string"
+        intl.formatMessage({
+          defaultMessage:
+            "First Letter of name should be capital and name should be string",
+        })
       ),
     email: Yup.string().email("Invalid email !").required("Email is Required"),
     phone: Yup.string()
-      .required("Phone no. is required")
-      .max(10, "Max length should be 10")
+      .required(intl.formatMessage({ defaultMessage: "Phone no. is required" }))
+      .max(
+        10,
+        intl.formatMessage({ defaultMessage: "Max length should be 10" })
+      )
       .matches(
         /^[789]\d{9}$/,
-        "Phone No. must not contain any special character and should start with 9 , 7 or 8"
+        intl.formatMessage({
+          defaultMessage:
+            "Phone No. must not contain any special character and should start with 9 , 7 or 8",
+        })
       ),
+    currency: Yup.string().required(
+      intl.formatMessage({ defaultMessage: "Currency is required" })
+    ),
     password: Yup.string()
-      .required("This field is required")
-      .min(8, "Pasword must be 8 or more characters")
+      .required(
+        intl.formatMessage({ defaultMessage: "This field is required" })
+      )
+      .min(
+        8,
+        intl.formatMessage({
+          defaultMessage: "Pasword must be 8 or more characters",
+        })
+      )
       .matches(
         /(?=.*[a-z])(?=.*[A-Z])\w+/,
-        "Password ahould contain at least one uppercase and lowercase character"
+        intl.formatMessage({
+          defaultMessage:
+            "Password ahould contain at least one uppercase and lowercase character",
+        })
       )
-      .matches(/\d/, "Password should contain at least one number")
+      .matches(
+        /\d/,
+        intl.formatMessage({
+          defaultMessage: "Password should contain at least one number",
+        })
+      )
       .matches(
         /[`!@#$%^&*()_+\-=[\]{};':"\\|,.<>/?~]/,
-        "Password should contain at least one special character"
+        intl.formatMessage({
+          defaultMessage:
+            "Password should contain at least one special character",
+        })
       ),
   });
 
@@ -118,7 +164,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
 
   return (
     <>
-      <Card sx={{ minWidth: 400 }}>
+      {/* <Card sx={{ minWidth: 400 }}>
         <Typography
           sx={{
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
@@ -131,16 +177,15 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
           gutterBottom
         >
           <FormattedMessage defaultMessage="  Sign up & Get ₹500 OYO Money" />
-        </Typography>
-        <Box sx={{ float: "right" }}>
-          <Language />
-        </Box>
+        </Typography> */}
+      {/* <Box sx={{ float: "right" }}>
+        <Language />
+      </Box> */}
+      <Stack width={500} mb={3} gap={1}>
         <Typography
           sx={{
-            fontWeight: "bold",
-            fontFamily: "Inter,sans-serif",
-            fontSize: { xl: "30px", md: "25px", sm: "25px" },
-            m: 2,
+            fontSize: { xl: "20px", md: "25px", sm: "25px" },
+            fontWeight: "700",
           }}
         >
           <FormattedMessage defaultMessage="  Sign Up" />
@@ -152,11 +197,20 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
-                <FormattedMessage defaultMessage="  Name" />
+                <FormattedMessage defaultMessage="Name" />
               </Typography>
-              <TextField id="demo-helper-text-aligned" {...register("name")} />
+              <TextField
+                id="demo-helper-text-aligned"
+                {...register("name")}
+                sx={{
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+              />
               <FormHelperText sx={{ color: "red" }}>
                 {errors.name?.message}
               </FormHelperText>
@@ -164,12 +218,18 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
-                <FormattedMessage defaultMessage="   Email" />
+                <FormattedMessage defaultMessage="Email" />
               </Typography>
               <TextField
-                sx={{ border: "none" }}
+                sx={{
+                  border: "none",
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
                 id="demo-helper-text-aligned"
                 {...register("email")}
               />
@@ -180,11 +240,20 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
-                <FormattedMessage defaultMessage="  Phone No" />
+                <FormattedMessage defaultMessage="Phone No" />
               </Typography>
-              <TextField id="demo-helper-text-aligned" {...register("phone")} />
+              <TextField
+                id="demo-helper-text-aligned"
+                {...register("phone")}
+                sx={{
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+              />
               <FormHelperText sx={{ color: "red" }}>
                 {errors.phone?.message}
               </FormHelperText>
@@ -192,11 +261,56 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
                 sx={{
                   fontWeight: "bold",
                   fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
                 }}
               >
-                <FormattedMessage defaultMessage="    Password" />
+                <FormattedMessage defaultMessage="Currency" />
               </Typography>
-              <FormControl sx={{ width: "47ch" }} variant="outlined">
+              {/* <TextField
+                id="demo-helper-text-aligned"
+                {...register("currency")}
+              />
+               */}
+              <Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value={currency}
+                {...register("currency")}
+                onChange={handleChange}
+                sx={{
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+              >
+                <MenuItem value={"INR"}>
+                  <FormattedMessage defaultMessage="INR ₹" />
+                </MenuItem>
+                <MenuItem value={"EUR"}>
+                  <FormattedMessage defaultMessage="EUR €" />
+                </MenuItem>
+              </Select>
+              <FormHelperText sx={{ color: "red" }}>
+                {errors.currency?.message}
+              </FormHelperText>
+              <Typography
+                sx={{
+                  fontWeight: "bold",
+                  fontSize: { xl: 18, md: 16, sm: 16 },
+                  color: "gray",
+                }}
+              >
+                <FormattedMessage defaultMessage="Password" />
+              </Typography>
+              <FormControl
+                sx={{
+                  width: "60ch",
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
+                variant="outlined"
+              >
                 <OutlinedInput
                   id="outlined-adornment-password"
                   {...register("password")}
@@ -220,7 +334,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
               </FormHelperText>
             </Stack>
             <Button
-              size="small"
+              size="medium"
               variant="contained"
               type="submit"
               sx={{ mt: 2, textTransform: "none" }}
@@ -229,7 +343,7 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
             </Button>
           </form>
         </CardContent>
-        <Stack
+        {/* <Stack
           direction={"row"}
           alignItems={"center"}
           margin={2}
@@ -241,10 +355,37 @@ const SignUp = ({ setLogReg, setDisplay }: any) => {
               setLogReg(false);
             }}
           >
-           <FormattedMessage defaultMessage="Login here" />   
+            <FormattedMessage defaultMessage="Login here" />
           </Button>
-        </Stack>
-      </Card>
+        </Stack> */}
+        {/* <Button
+              // fullWidth
+              size="small"
+              variant="contained"
+              type="submit"
+              sx={{ mt: 2, textTransform: "none" }}
+            >
+              <FormattedMessage defaultMessage="SignUp" />
+            </Button>
+          </form>
+        </CardContent> */}
+      </Stack>
+      <Stack
+        direction={"row"}
+        alignItems={"center"}
+        margin={2}
+        justifyContent={"space-between"}
+      >
+        <FormattedMessage defaultMessage=" Already have an account?" />
+        <Button
+          onClick={() => {
+            setLogReg(false);
+          }}
+        >
+          <FormattedMessage defaultMessage="Login here" />
+        </Button>
+      </Stack>
+      {/* </Card> */}
     </>
   );
 };

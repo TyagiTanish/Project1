@@ -87,67 +87,83 @@ function HotelInfo({ setRender }: any) {
               component="img"
               sx={{
                 width: { lg: "40%", md: 500, sm: 300 },
-                height: { xl: 300, lg: 200, md: 200, sm: 150 },
+                height: { xl: 300, lg: 225, md: 200, sm: 150 },
               }}
               alt="The house from the offer."
               src={`http://localhost:8000/${data?.photo}`}
             />
-            <Stack direction={"column"} spacing={1}>
-              <Typography sx={{ fontSize: { xl: 22, md: 16 } }}>
-                {data?.hotelName}
-              </Typography>
-              <Stack direction={"row"} spacing={1}>
-                <PlaceIcon fontSize="small" />
-                <Typography fontSize={{ xl: 15, md: 12 }}>
-                  {data?.city}-{data?.pinCode},{data?.state},{data?.country}
-                </Typography>
+            <Stack>
+              <Stack direction={"row"}>
+                <Stack direction={"column"} spacing={1}>
+                  <Typography sx={{ fontSize: { xl: 22, md: 16 } }}>
+                    {data?.hotelName}
+                  </Typography>
+                  <Stack direction={"row"} spacing={1}>
+                    <PlaceIcon fontSize="small" />
+                    <Typography fontSize={{ xl: 15, md: 12 }}>
+                      {data?.city}-{data?.pinCode},{data?.state},{data?.country}
+                    </Typography>
+                  </Stack>
+                </Stack>
+                <Stack direction={"row"} spacing={2}>
+                  <Tooltip
+                    title={"Delete"}
+                    style={{ cursor: "pointer" }}
+                    onClick={handleClickOpen2}
+                  >
+                    <DeleteOutlineOutlinedIcon
+                      fontSize="medium"
+                      sx={{ color: "gray", "&:hover": { color: "black" } }}
+                    />
+                  </Tooltip>
+                  <Tooltip
+                    title={"Edit"}
+                    style={{ cursor: "pointer" }}
+                    onClick={() => handleOpenEditBox()}
+                  >
+                    <ModeEditOutlineOutlinedIcon
+                      fontSize="medium"
+                      sx={{ color: "gray", "&:hover": { color: "black" } }}
+                    />
+                  </Tooltip>
+                </Stack>
               </Stack>
-            </Stack>
-            <Stack direction={"row"} spacing={2}>
-              <Tooltip
-                title={"Delete"}
-                style={{ cursor: "pointer" }}
-                onClick={handleClickOpen2}
+              <Stack
+                direction={"column"}
+                mt={3}
+                spacing={1}
+                // marginBottom={5}
+                // sx={{ width: { xl: 1000, md: 500, sm: 310 } }}
+                // marginLeft={6}
               >
-                <DeleteOutlineOutlinedIcon
-                  fontSize="medium"
-                  sx={{ color: "gray", "&:hover": { color: "black" } }}
+                <Typography
+                  sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}
+                >
+                  <FormattedMessage defaultMessage="Description" />
+                </Typography>
+                <Box
+                  dangerouslySetInnerHTML={{ __html: data?.discription }}
+                  sx={{
+                    flex: 1,
+                    fontSize: { xl: 15, md: 12 },
+                    letterSpacing: 1,
+                    wordBreak: "break-word",
+                    maxHeight: {
+                      lg: "130px",
+                      xl: "170px",
+                      md: "100px",
+                      sm: "50px",
+                    },
+                    overflow: "auto",
+                    width: "100%",
+                  }}
                 />
-              </Tooltip>
-              <Tooltip
-                title={"Edit"}
-                style={{ cursor: "pointer" }}
-                onClick={() => handleOpenEditBox()}
-              >
-                <ModeEditOutlineOutlinedIcon
-                  fontSize="medium"
-                  sx={{ color: "gray", "&:hover": { color: "black" } }}
-                />
-              </Tooltip>
+              </Stack>
             </Stack>
           </Stack>
         </Stack>
-        <Stack
-          direction={"column"}
-          spacing={2}
-          marginBottom={5}
-          sx={{ width: { xl: 1000, md: 500, sm: 310 } }}
-          marginLeft={6}
-        >
-          <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}>
-            <FormattedMessage defaultMessage="Description" />
-          </Typography>
-          <Box
-            dangerouslySetInnerHTML={{ __html: data?.discription }}
-            sx={{
-              flex: 1,
-              fontSize: { xl: 15, md: 12 },
-              letterSpacing: 1,
-              wordBreak: "break-word",
-            }}
-          />
-        </Stack>
-        <Stack>
+
+        <Stack mt={-4}>
           <Stack
             justifyContent={"space-between"}
             direction={"row"}

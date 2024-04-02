@@ -7,6 +7,7 @@ import {
   Input,
   InputAdornment,
   InputLabel,
+  Link,
   OutlinedInput,
   Stack,
   TextField,
@@ -14,7 +15,7 @@ import {
 } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-import React, { useState } from "react";
+import React, { useMemo, useState } from "react";
 import { useForm } from "react-hook-form";
 import * as Yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -29,7 +30,7 @@ import { FormattedMessage } from "react-intl";
 import { Navigate, useLocation, useNavigate } from "react-router-dom";
 import Language from "../../Language/Language";
 
-function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
+function LoginForm({ setVerify, setLogReg, setDisplay }: any) {
   const { request } = useAuth();
   const [state, setState] = useState(false);
   const navigate = useNavigate();
@@ -66,7 +67,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
           setDisplay(true);
           setTimeout(() => {
             dispatch(userLogin(result.data.data));
-            localStorage.setItem("authToken", result.data.token);
+            localStorage.setItem("authToken", result?.data?.token);
             setDisplay(false);
             if (result?.data?.data?.role === "customer") {
               console.log(state);
@@ -97,13 +98,24 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
     register,
     handleSubmit,
     formState: { errors },
+    watch,
+    setValue,
   } = useForm<User>({
     resolver: yupResolver(FormSchema),
   });
+  const email = watch("email");
+  useMemo(() => {
+    if (email === "") {
+      setState(false);
+      setValue("password", "");
+      setShowPassword(false);
+    }
+  }, [email]);
+
   return (
     <>
-      <Box width={{ sm: 350, md: 400, xl: 400 }}>
-        <Typography
+      <Box width={{ sm: 350, md: 400, xl: 550 }}>
+        {/* <Typography
           sx={{
             backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
             fontWeight: 700,
@@ -112,26 +124,38 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
           }}
         >
           <FormattedMessage defaultMessage="Sign up & Get ₹500 OYO Money" />
-        </Typography>
+        </Typography> */}
+        <Stack ml={2} spacing={1}>
+          {" "}
+          <Typography
+            sx={{
+              fontSize: { xl: "20px", md: "25px", sm: "25px" },
+              fontWeight: "700",
+            }}
+          >
+            <FormattedMessage defaultMessage="Log in" />
+          </Typography>
+          <Typography
+            sx={{
+              // fontSize: { xl: "25px", md: "25px", sm: "25px" },
+              fontWeight: "400",
+              color: "rgb(158,158,158)",
+              fontSize: "16px",
+              fontFamily: "Roboto, sans-serif",
+            }}
+          >
+            <FormattedMessage defaultMessage="Enter your credentials to access your account" />
+          </Typography>
+        </Stack>
 
         <Box
           sx={{
             p: 2,
             background: "white",
+            pt: 8,
           }}
         >
-          <Box sx={{ float: "right", mt: -1 }}>
-            <Language />
-          </Box>
-          <Typography
-            sx={{
-              fontSize: { xl: "32px", md: "25px", sm: "25px" },
-              fontWeight: "700",
-            }}
-          >
-            <FormattedMessage defaultMessage="Login" />
-          </Typography>
-          <Typography
+          {/* <Typography
             sx={{
               fontWeight: "700",
               fontSize: { xl: "16px", md: "16px", sm: "18px" },
@@ -140,15 +164,23 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
             }}
           >
             <FormattedMessage defaultMessage=" Please enter your email to continue" />
-          </Typography>
+          </Typography> */}
           <form onSubmit={handleSubmit(Onsubmit)}>
             <Stack>
-              <b style={{ marginTop: 10, marginBottom: 0 }}>
-                <FormattedMessage defaultMessage={"Email-"} />
-              </b>
+              {/* <b style={{ marginTop: 10, marginBottom: 0, color: "gray" }}> */}
+              <Typography sx={{ fontWeight: 900, color: "gray" }}>
+                <FormattedMessage defaultMessage={"Email"} />
+              </Typography>
+
               <br />
               <TextField
-                sx={{ fontWeight: "500", marginTop: -2 }}
+                sx={{
+                  fontWeight: "500",
+                  marginTop: -2,
+                  [`& fieldset`]: {
+                    borderRadius: "12px",
+                  },
+                }}
                 {...register("email")}
               ></TextField>
 
@@ -156,33 +188,52 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                 {errors.email?.message}
               </FormHelperText>
 
-              {state && (
-                <>
-                  <b>
-                    <FormattedMessage defaultMessage="Password " />
-                  </b>
-                  <FormControl sx={{ width: "41ch" }} variant="outlined">
-                    <OutlinedInput
-                      id="outlined-adornment-password"
-                      sx={{ width: 368 }}
-                      {...register("password")}
-                      type={showPassword ? "text" : "password"}
-                      endAdornment={
-                        <InputAdornment position="end">
-                          <IconButton
-                            aria-label="toggle password visibility"
-                            onClick={handleClickShowPassword}
-                            onMouseDown={handleMouseDownPassword}
-                            edge="end"
-                          >
-                            {showPassword ? <VisibilityOff /> : <Visibility />}
-                          </IconButton>
-                        </InputAdornment>
-                      }
-                    />
-                  </FormControl>
-                </>
-              )}
+              {state &&
+                (email !== "" ? (
+                  <>
+                    <Typography
+                      sx={{
+                        fontWeight: 900,
+                        color: "gray",
+                      }}
+                    >
+                      {" "}
+                      <FormattedMessage defaultMessage="Password " />
+                    </Typography>
+
+                    <FormControl sx={{ width: "41ch" }} variant="outlined">
+                      <OutlinedInput
+                        id="outlined-adornment-password"
+                        sx={{
+                          width: { xl: 520, lg: 370 },
+                          [`& fieldset`]: {
+                            borderRadius: "12px",
+                          },
+                        }}
+                        {...register("password")}
+                        type={showPassword ? "text" : "password"}
+                        endAdornment={
+                          <InputAdornment position="end">
+                            <IconButton
+                              aria-label="toggle password visibility"
+                              onClick={handleClickShowPassword}
+                              onMouseDown={handleMouseDownPassword}
+                              edge="end"
+                            >
+                              {showPassword ? (
+                                <VisibilityOff />
+                              ) : (
+                                <Visibility />
+                              )}
+                            </IconButton>
+                          </InputAdornment>
+                        }
+                      />
+                    </FormControl>
+                  </>
+                ) : (
+                  <></>
+                ))}
             </Stack>
             {authentication && (
               <Typography sx={{ fontSize: "small", m: 2, color: "red" }}>
@@ -197,7 +248,7 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                 <Stack
                   sx={{
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    justifyContent: "center",
                     fontSize: { sm: "14px" },
                   }}
                   direction={"row"}
@@ -218,27 +269,42 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
                 <Button
                   type="submit"
                   variant="contained"
-                  sx={{ fontWeight: "500" }}
+                  sx={{
+                    textTransform: "none",
+                    fontWeight: "500",
+                    fontSize: "0.9375rem",
+                    transition:
+                      "background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, border-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms, color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;",
+                  }}
                 >
                   <FormattedMessage defaultMessage="  Verify email" />
                 </Button>
                 <Stack
                   sx={{
                     alignItems: "center",
-                    justifyContent: "space-between",
+                    justifyContent: "center",
                     fontSize: { sm: "14px" },
+                    mt: 3,
+                    fontWeight: "bolder",
                   }}
                   direction={"row"}
+                  gap={2}
                 >
                   <FormattedMessage defaultMessage="Don't have an account?" />
-                  <Button
+                  <Link
                     onClick={() => {
                       setLogReg(true);
                     }}
-                    sx={{ fontSize: { sm: "14px" } }}
+                    sx={{
+                      fontSize: {
+                        sm: "14px",
+                        fontWeight: 100,
+                        cursor: "pointer",
+                      },
+                    }}
                   >
                     <FormattedMessage defaultMessage="Register here" />
-                  </Button>
+                  </Link>
                 </Stack>
               </>
             )}
@@ -248,4 +314,4 @@ function SignUpComp({ setVerify, setLogReg, setDisplay }: any) {
     </>
   );
 }
-export default SignUpComp;
+export default LoginForm;

@@ -44,6 +44,7 @@ import useAuth from "../../../../../Hooks/useAuth/useAuth";
 import { enqueueSnackbar } from "notistack";
 import { useParams } from "react-router-dom";
 import { FormattedMessage, useIntl } from "react-intl";
+import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 
 /**
  *   To Edit the Details of a particular Room
@@ -83,29 +84,12 @@ export default function EditRoomDetails({
     window.addEventListener("resize", handleWindowSize);
   });
 
-  React.useEffect(() => {
+  React.useMemo(() => {
     setPhotos(room?.photos);
+    setChangedPhoto([]);
     setEditRoom(room);
-  }, [room]);
+  }, [editBox]);
 
-  // const amenities = [
-  //   { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
-  //   { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
-  //   { id: "pool", label: "Pool", icon: <PoolIcon /> },
-  //   { id: "roomService", label: "Room Service", icon: <RoomServiceIcon /> },
-  //   { id: "gym", label: "Gym", icon: <FitnessCenterIcon /> },
-  //   { id: "dryClean", label: "DryClean", icon: <DryCleaningIcon /> },
-  //   { id: "bar", label: "Bar", icon: <WineBarIcon /> },
-  //   { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
-  //   { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
-  //   { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
-  //   { id: "pool", label: "Pool", icon: <PoolIcon /> },
-  //   { id: "roomService", label: "Room Service", icon: <RoomServiceIcon /> },
-  //   { id: "gym", label: "Gym", icon: <FitnessCenterIcon /> },
-  //   { id: "dryClean", label: "DryClean", icon: <DryCleaningIcon /> },
-  //   { id: "bar", label: "Bar", icon: <WineBarIcon /> },
-  //   { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
-  // ];
   const amenities = [
     {
       id: "parking",
@@ -259,6 +243,11 @@ export default function EditRoomDetails({
     setPreviewIndex(previewIndex);
   }, [previewIndex, editRoom]);
   // console.log(editRoom?.roomType, "Type");
+
+  React.useMemo(() => {
+    console.log(changedPhoto);
+  }, [changedPhoto]);
+
   return (
     <Dialog
       fullScreen={fullScreen}
@@ -343,46 +332,70 @@ export default function EditRoomDetails({
                 </Typography>
                 <Stack m={2} direction={"row"} gap={2} flexWrap={"wrap"}>
                   {photos?.map((image: any, index: any) => (
-                    <Tooltip title={"click to see preview"}>
-                      <Box
-                        component={"data"}
-                        onClick={() => handlePreviewImage(index)}
-                      >
-                        <Chip
-                          label={`${image?.path}`}
-                          style={{ cursor: "pointer", width: 200 }}
-                          onDelete={() => handleDelete(index)}
+                    <>
+                      <Box position={"relative"}>
+                        <Box
+                          component={"img"}
+                          src={`http://localhost:8000/${image?.path}`}
+                          width={100}
                         />
+                        <IconButton
+                          sx={{
+                            position: "absolute",
+                            top: -4,
+                            bgcolor: "white",
+                            width: 8,
+                            height: 5,
+                            boxShadow: 3,
+                            color: "red",
+                            right: -2,
+                            ":hover": { bgcolor: "white" },
+                          }}
+                          onClick={() => handleDelete(index)}
+                        >
+                          <RemoveCircleOutlineIcon fontSize={"small"} />
+                        </IconButton>
                       </Box>
-                    </Tooltip>
+                    </>
                   ))}
-                  {changedPhoto?.map((photo: any, index: any) => (
-                    <Tooltip title={"click to see preview"}>
-                      <Box
-                        component={"data"}
-                        onClick={() => {
-                          previewImage();
-                          setChangedImageIndex(index);
-                        }}
-                      >
-                        <Chip
-                          label={`${photo?.path}`}
-                          style={{ cursor: "pointer", width: 200 }}
-                          onDelete={() => handleDeleteChangedPhoto(index)}
-                        />
-                      </Box>
-                    </Tooltip>
-                  ))}
+                  {photos?.length !== 4 &&
+                    changedPhoto?.map((photo: any, index: any) => (
+                      <>
+                        <Box position={"relative"}>
+                          <Box
+                            component={"img"}
+                            src={photo?.preview}
+                            width={100}
+                          />
+                          <IconButton
+                            sx={{
+                              position: "absolute",
+                              top: 0,
+                              bgcolor: "white",
+                              width: 8,
+                              height: 5,
+
+                              color: "red",
+                              right: 0,
+                            }}
+                            onClick={() => handleDeleteChangedPhoto(index)}
+                          >
+                            <RemoveCircleOutlineIcon fontSize={"small"} />
+                          </IconButton>
+                        </Box>
+                      </>
+                    ))}
                 </Stack>
                 <Box>
                   <Dropzone
                     onDrop={(acceptedFiles) => {
-                      setChangedPhoto(
-                        acceptedFiles.map((file) => {
-                          const previewURL = URL.createObjectURL(file);
-                          return { ...file, preview: previewURL };
-                        })
-                      );
+                      acceptedFiles.map((file) => {
+                        const previewURL = URL.createObjectURL(file);
+                        setChangedPhoto((prev: any) => [
+                          ...prev,
+                          { ...file, preview: previewURL },
+                        ]);
+                      });
                       setUpdatedPhoto(acceptedFiles);
                     }}
                   >
@@ -400,7 +413,13 @@ export default function EditRoomDetails({
                                 fontWeight: "bolder",
                                 color: "white",
                               }}
-                              disabled={photos?.length === 4 ? true : false}
+                              disabled={
+                                Number(photos?.length) +
+                                  Number(changedPhoto?.length) ===
+                                4
+                                  ? true
+                                  : false
+                              }
                             >
                               <FormattedMessage defaultMessage="Upload New Photo" />
                             </Button>
@@ -454,7 +473,7 @@ export default function EditRoomDetails({
           </Stack>
         </form>
       </DialogContent>
-      <ImagePreview
+      {/* <ImagePreview
         imagePreView={imagePreView}
         setImagePreView={setImagePreView}
         room={editRoom}
@@ -465,7 +484,7 @@ export default function EditRoomDetails({
         setChangedImagePreView={setChangedImagePreView}
         changedPhoto={changedPhoto}
         ChangedImageIndex={ChangedImageIndex}
-      />
+      /> */}
     </Dialog>
   );
 }
