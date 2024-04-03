@@ -154,6 +154,14 @@ export default function AddHotelAftrLgn() {
     window.addEventListener("resize", handleWindowSize);
   });
 
+  const findCityByName = (cityName: any) => {
+    return allCities.find((city) => city.name === cityName);
+  };
+
+  React.useMemo(() => {
+    setCityCoordinates(findCityByName(city));
+  }, [city, cityCoordinates]);
+
   const change = (e: any) => {
     const value = e.target.value;
 
@@ -227,9 +235,7 @@ export default function AddHotelAftrLgn() {
     formData.set("email", user?.email);
     formData.set("amenities", JSON.stringify(data?.amenities));
     formData.set("discription", data?.discription);
-    // console.log(data);
     if (step === 3) {
-      // console.log(formData);
       request.post("/addHotel", formData);
       navigate("/");
     }
@@ -738,45 +744,80 @@ export default function AddHotelAftrLgn() {
                   {screenSize > 768 ? (
                     <Grid
                       container
-                      rowSpacing={1}
-                      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                      rowSpacing={2}
+                      columnSpacing={{ xs: 1, sm: 2, md: 5 }}
+                      xs={12}
                     >
                       {amenitie.map((item, index) => (
-                        <Grid item xs={5}>
+                        <Grid item xs={3} key={index}>
                           <FormGroup>
-                            <Stack
-                              direction={"row"}
-                              alignItems={"center"}
-                              spacing={1}
+                            <Button
+                              sx={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                textDecoration: "none",
+                                ":hover": { bgcolor: "white" },
+                              }}
+                              onClick={() => {
+                                if (arr.find((item: any) => item === index)) {
+                                  // arr.delete(value);
+                                  setArr(arr.filter((i: any) => i !== index));
+                                } else {
+                                  // arr.push(value);
+                                  setArr([...arr, index]);
+                                }
+                              }}
                             >
-                              {item?.icon}
-                              {arr?.includes(index.toString()) ? (
-                                <FormControlLabel
-                                  control={
-                                    <Checkbox
-                                      value={index}
-                                      defaultChecked
-                                      onChange={(e) => {
-                                        change(e);
-                                      }}
-                                    />
-                                  }
-                                  label={item?.label}
-                                />
-                              ) : (
-                                <FormControlLabel
-                                  control={
-                                    <Checkbox
-                                      value={index}
-                                      onChange={(e) => {
-                                        change(e);
-                                      }}
-                                    />
-                                  }
-                                  label={item?.label}
-                                />
-                              )}
-                            </Stack>
+                              <Card
+                                variant="outlined"
+                                sx={{
+                                  width: 100,
+                                  height: "10vh",
+                                  border: arr?.includes(index)
+                                    ? "3px solid skyblue "
+                                    : "",
+                                  ":hover": { bgcolor: "transparent" },
+                                  borderRadius: 2,
+                                }}
+                              >
+                                <CardContent sx={{ justifyContent: "center" }}>
+                                  <Stack direction={"column"}>
+                                    {/* <Stack mt={-3} mr={-5}>
+                                     {arr.includes(index.toString()) ? (
+                                       <FormControlLabel
+                                         control={
+                                           <Checkbox
+                                             value={index}
+                                             defaultChecked
+                                           />
+                                         }
+                                         label=""
+                                         sx={{
+                                           display: "flex",
+                                           flexDirection: "row-reverse",
+                                         }} // Reverse the order of elements
+                                       />
+                                     ) : (
+                                       <FormControlLabel
+                                         control={<Checkbox value={index} />}
+                                         label=""
+                                         sx={{
+                                           display: "flex",
+                                           flexDirection: "row-reverse",
+                                         }} // Reverse the order of elements
+                                       />
+                                     )}
+                                   </Stack> */}
+                                    <Box>
+                                      <Box>{item.icon}</Box>
+                                      <Typography sx={{ fontSize: "12px" }}>
+                                        {item.label}
+                                      </Typography>
+                                    </Box>
+                                  </Stack>
+                                </CardContent>
+                              </Card>
+                            </Button>
                           </FormGroup>
                         </Grid>
                       ))}

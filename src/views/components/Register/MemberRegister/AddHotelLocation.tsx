@@ -1,57 +1,104 @@
-import React from "react";
+import React, { useEffect } from "react";
 import GoogleMapReact from "google-map-react";
-import { useDispatch, useSelector } from "react-redux";
-import { userLocation } from "../../redux/user/userSlice";
+import { Box, IconButton, Typography } from "@mui/material";
+
 import LocationOnIcon from "@mui/icons-material/LocationOn";
-import { IconButton } from "@mui/material";
+import mapboxgl from "mapbox-gl";
 
-const AnyReactComponent = ({ text }: any) => <div>{text}</div>;
-
-export default function SimpleMap({
+import "mapbox-gl/dist/mapbox-gl.css";
+export default function HotelLocationMap({
   setLocation,
   cityCoordinates,
   setCityCoordinates,
 }: any) {
-  const location = useSelector((state: any) => state.userReducer.location);
-  //   const dispatch = useDispatch();
-  const defaultProps = {
-    center: {
-      lat: location?.latitude || 30.733315,
-      lng: location?.longitude || 76.779419,
-    },
-    zoom: 15,
-  };
-  const handleChange = (value: any) => {
-    // console.log(value.center);
+  // const location = useSelector((state: any) => state.userReducer.location);
+  useEffect(() => {
+    mapboxgl.accessToken =
+      "pk.eyJ1IjoidGFuaXNoLXR5YWdpIiwiYSI6ImNscmV0YWJmcTFocmoybHFpZDQ3dHFkdzMifQ.szsjsVkaiJpDsGUe7LR_4A";
 
-    const data: any = {
-      latitude: value.center.lat,
-      longitude: value.center.lng,
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/satellite-streets-v12",
+      center: [
+        cityCoordinates?.longitude || 76.779419,
+        cityCoordinates?.latitude || 30.733315,
+      ],
+      zoom: 10,
+    });
+    map.addControl(new mapboxgl.NavigationControl());
+
+    let marker = new mapboxgl.Marker()
+      .setLngLat([
+        cityCoordinates?.longitude || 76.779419,
+        cityCoordinates?.latitude || 30.733315,
+      ])
+      .addTo(map);
+
+    const handleChange = (value: any) => {
+      const { lng, lat } = value;
+
+      const data: any = {
+        latitude: lat,
+        longitude: lng,
+      };
+      setCityCoordinates(data);
+      setLocation(data);
+      let center = map.getCenter();
+      marker.setLngLat([center.lng, center.lat]).addTo(map);
     };
 
-    setLocation(data);
-    // dispatch(userLocation(data));
-  };
+    // Add markers to the map
+
+    map?.on("move", (value) => {
+      handleChange(value?.target?.getCenter());
+    });
+
+    return () => map.remove();
+  }, [cityCoordinates]);
+
+  // const defaultProps = {
+  //   center: {
+  //     lat: 30.733315,
+  //     lng: 76.779419,
+  //   },
+  //   zoom: 11,
+  // };
+
+  // const handleChange = (value: any) => {
+  //   console.log(value);
+  // };
   return (
-    <div style={{ height: "30vh", minWidth: "10vw" }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: "AIzaSyDEZ3SEb_VoWvsv0AXCsGT_Mg9f4L0gATQ" }}
+    <>
+      <Box
+        id="map"
+        sx={{
+          height: "200px",
+          minWidth: { sm: "48vw", lg: 200 },
+          // zIndex: -1,
+          borderRadius: 2,
+        }}
+      />
+    </>
+  );
+}
+// <Box sx={{ height: "200px", minWidth: { sm: "48vw", lg: "35vw" } }}>
+{
+  /* <GoogleMapReact
+        bootstrapURLKeys={{ key: "" }}
         defaultCenter={defaultProps.center}
         defaultZoom={defaultProps.zoom}
         onChange={(value) => handleChange(value)}
-        center={defaultProps.center}
-        zoom={defaultProps.zoom}
       >
         <AnyReactComponent
-          lat={location?.latitude || 30.733315}
-          lng={location?.longitude || 76.779419}
+          lat={30.733315}
+          lng={76.779419}
           text={
             <IconButton sx={{ color: "red" }}>
               <LocationOnIcon />
             </IconButton>
           }
         />
-      </GoogleMapReact>
-    </div>
-  );
+      </GoogleMapReact> */
 }
+
+// </Box>
