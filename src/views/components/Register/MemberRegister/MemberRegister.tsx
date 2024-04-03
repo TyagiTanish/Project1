@@ -21,6 +21,8 @@ import DryCleaningIcon from "@mui/icons-material/DryCleaning";
 import WineBarIcon from "@mui/icons-material/WineBar";
 import GroupsIcon from "@mui/icons-material/Groups";
 import {
+  Card,
+  CardContent,
   Chip,
   FormGroup,
   FormHelperText,
@@ -48,6 +50,15 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Language from "../../Language";
 import { FormattedMessage, useIntl } from "react-intl";
+import { IconParkingCircle } from "@tabler/icons-react";
+import { IconWifi } from "@tabler/icons-react";
+import { IconSwimming } from "@tabler/icons-react";
+import { IconHotelService } from "@tabler/icons-react";
+import { IconBarbell } from "@tabler/icons-react";
+import { IconWashMachine } from "@tabler/icons-react";
+import { IconGlassGin } from "@tabler/icons-react";
+import { IconUsersGroup } from "@tabler/icons-react";
+
 export default function MemberRegister() {
   const [state, setState] = React.useState("");
   const [city, setCity] = React.useState("");
@@ -84,22 +95,62 @@ export default function MemberRegister() {
   const [content, setContent] = React.useState("");
   const [arr, setArr]: any = React.useState([]);
   const amenitie = [
-    { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
-    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
-    { id: "pool", label: "Pool", icon: <PoolIcon /> },
-    { id: "roomService", label: "Room Service", icon: <RoomServiceIcon /> },
-    { id: "gym", label: "Gym", icon: <FitnessCenterIcon /> },
-    { id: "dryClean", label: "DryClean", icon: <DryCleaningIcon /> },
-    { id: "bar", label: "Bar", icon: <WineBarIcon /> },
-    { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
-    { id: "parking", label: "Parking", icon: <LocalParkingIcon /> },
-    { id: "wifi", label: "Wifi", icon: <NetworkWifiIcon /> },
-    { id: "pool", label: "Pool", icon: <PoolIcon /> },
-    { id: "roomService", label: "Room Service", icon: <RoomServiceIcon /> },
-    { id: "gym", label: "Gym", icon: <FitnessCenterIcon /> },
-    { id: "dryClean", label: "DryClean", icon: <DryCleaningIcon /> },
-    { id: "bar", label: "Bar", icon: <WineBarIcon /> },
-    { id: "meeting", label: "Meeting", icon: <GroupsIcon /> },
+    {
+      id: "parking",
+      label: "Parking",
+      icon: <IconParkingCircle stroke={2} />,
+      index: 0,
+    },
+    { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 1 },
+    { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 2 },
+    {
+      id: "roomService",
+      label: "Room Service",
+      icon: <IconHotelService stroke={2} />,
+      index: 3,
+    },
+    { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 4 },
+    {
+      id: "dryClean",
+      label: "DryClean",
+      icon: <IconWashMachine stroke={2} />,
+      index: 5,
+    },
+    { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 6 },
+    {
+      id: "meeting",
+      label: "Meeting",
+      icon: <IconUsersGroup stroke={2} />,
+      index: "7",
+    },
+    // {
+    //   id: "parking",
+    //   label: "Parking",
+    //   icon: <IconParkingCircle stroke={2} />,
+    //   index: 8,
+    // },
+    // { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
+    // { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
+    // {
+    //   id: "roomService",
+    //   label: "Room Service",
+    //   icon: <IconHotelService stroke={2} />,
+    //   index: 11,
+    // },
+    // { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 12 },
+    // {
+    //   id: "dryClean",
+    //   label: "DryClean",
+    //   icon: <IconWashMachine stroke={2} />,
+    //   index: 13,
+    // },
+    // { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
+    // {
+    //   id: "meeting",
+    //   label: "Meeting",
+    //   icon: <IconUsersGroup stroke={2} />,
+    //   index: 15,
+    // },
   ];
   const handleClickShowPassword = () => setShowPassword((show) => !show);
 
@@ -437,7 +488,7 @@ export default function MemberRegister() {
           <Box
             sx={{
               // marginTop: { sm: 1, md: 5 },
-              // textAlign: "center",
+              textAlign: "center",
               justifyContent: "space-between",
               p: 2,
               pb: 0,
@@ -910,49 +961,84 @@ export default function MemberRegister() {
           {page === 4 && (
             <>
               <form>
-                <Stack ml={4} direction={"column"}>
+                <Stack direction={"column"} mt={2}>
                   {screenSize > 768 ? (
                     <Grid
                       container
-                      rowSpacing={1}
-                      columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+                      rowSpacing={2}
+                      columnSpacing={{ xs: 1, sm: 2, md: 5 }}
+                      xs={12}
                     >
                       {amenitie.map((item, index) => (
-                        <Grid item xs={5}>
+                        <Grid item xs={3} key={index}>
                           <FormGroup>
-                            <Stack
-                              direction={"row"}
-                              alignItems={"center"}
-                              spacing={1}
+                            <Button
+                              sx={{
+                                alignItems: "center",
+                                justifyContent: "center",
+                                textDecoration: "none",
+                                ":hover": { bgcolor: "white" },
+                              }}
+                              onClick={() => {
+                                if (arr.find((item: any) => item === index)) {
+                                  // arr.delete(value);
+                                  setArr(arr.filter((i: any) => i !== index));
+                                } else {
+                                  // arr.push(value);
+                                  setArr([...arr, index]);
+                                }
+                              }}
                             >
-                              {item.icon}
-                              {arr.includes(index.toString()) ? (
-                                <FormControlLabel
-                                  control={
-                                    <Checkbox
-                                      value={index}
-                                      defaultChecked
-                                      onChange={(e) => {
-                                        change(e);
-                                      }}
-                                    />
-                                  }
-                                  label={item.label}
-                                />
-                              ) : (
-                                <FormControlLabel
-                                  control={
-                                    <Checkbox
-                                      value={index}
-                                      onChange={(e) => {
-                                        change(e);
-                                      }}
-                                    />
-                                  }
-                                  label={item.label}
-                                />
-                              )}
-                            </Stack>
+                              <Card
+                                variant="outlined"
+                                sx={{
+                                  width: 100,
+                                  height: "10vh",
+                                  border: arr?.includes(index)
+                                    ? "3px solid skyblue "
+                                    : "",
+                                  ":hover": { bgcolor: "transparent" },
+                                  borderRadius: 2,
+                                }}
+                              >
+                                <CardContent sx={{ justifyContent: "center" }}>
+                                  <Stack direction={"column"}>
+                                    {/* <Stack mt={-3} mr={-5}>
+                                      {arr.includes(index.toString()) ? (
+                                        <FormControlLabel
+                                          control={
+                                            <Checkbox
+                                              value={index}
+                                              defaultChecked
+                                            />
+                                          }
+                                          label=""
+                                          sx={{
+                                            display: "flex",
+                                            flexDirection: "row-reverse",
+                                          }} // Reverse the order of elements
+                                        />
+                                      ) : (
+                                        <FormControlLabel
+                                          control={<Checkbox value={index} />}
+                                          label=""
+                                          sx={{
+                                            display: "flex",
+                                            flexDirection: "row-reverse",
+                                          }} // Reverse the order of elements
+                                        />
+                                      )}
+                                    </Stack> */}
+                                    <Box>
+                                      <Box>{item.icon}</Box>
+                                      <Typography sx={{ fontSize: "12px" }}>
+                                        {item.label}
+                                      </Typography>
+                                    </Box>
+                                  </Stack>
+                                </CardContent>
+                              </Card>
+                            </Button>
                           </FormGroup>
                         </Grid>
                       ))}
