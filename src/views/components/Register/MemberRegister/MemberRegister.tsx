@@ -27,10 +27,12 @@ import {
   FormLabel,
   IconButton,
   InputAdornment,
+  MenuItem,
   OutlinedInput,
+  Select,
   Stack,
 } from "@mui/material";
-
+import { Country, State, City } from "country-state-city";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import SimpleMap from "../../Customer/Map/Map";
 import HotelLocationMap from "./HotelLocationMap";
@@ -46,27 +48,10 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Language from "../../Language";
 import { FormattedMessage, useIntl } from "react-intl";
-function Copyright(props: any) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {"Copyright © "}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{" "}
-      {new Date().getFullYear()}
-      {"."}
-    </Typography>
-  );
-}
-
-const theme = createTheme();
-
 export default function MemberRegister() {
+  const [state, setState] = React.useState("");
+  const [city, setCity] = React.useState("");
+  const [cityCoordinates, setCityCoordinates] = React.useState<any>("");
   const [page, setPage] = React.useState(1);
   const [files, setfile] = React.useState<any>([]);
   const navigate = useNavigate();
@@ -78,7 +63,8 @@ export default function MemberRegister() {
   const { getRootProps, getInputProps, isDragActive, acceptedFiles } =
     useDropzone();
   const intl = useIntl();
-
+  const allStates = State.getStatesOfCountry("IN");
+  const allCities = City.getCitiesOfState("IN", state);
   React.useEffect(() => {
     if (acceptedFiles.length > 1) {
       setError("Only One file can be selected");
@@ -151,9 +137,12 @@ export default function MemberRegister() {
       setArr([...arr, value]);
     }
   };
-
-  console.log(page);
-
+  const handleChangeState = (event: any) => {
+    setState(event.target.value);
+  };
+  const handleChangeCity = (event: any) => {
+    setCity(event.target.value);
+  };
   React.useEffect(() => {
     // console.log(amenities);s
   }, [amenities]);
@@ -340,8 +329,14 @@ export default function MemberRegister() {
   });
   const { request } = useAuth();
   const [email, setEmail] = React.useState();
-  const password = watch("password");
+
   const confirmPassword = watch("confirmPassword");
+  const findCityByName = (cityName: any) => {
+    return allCities.find((city) => city.name === cityName);
+  };
+  React.useMemo(() => {
+    setCityCoordinates(findCityByName(city));
+  }, [city, cityCoordinates]);
   // console.log(password);
   const [location, setLocation] = React.useState({
     latitude: "",
@@ -682,6 +677,8 @@ export default function MemberRegister() {
                     required
                     fullWidth
                     {...register("country")}
+                    value={"India"}
+                    disabled
                     sx={{
                       [`& fieldset`]: {
                         borderRadius: "12px",
@@ -696,15 +693,22 @@ export default function MemberRegister() {
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                     <FormattedMessage defaultMessage={"State"} />
                   </Typography>
-                  <TextField
-                    variant="outlined"
-                    {...register("state")}
+                  <Select
                     sx={{
                       [`& fieldset`]: {
                         borderRadius: "12px",
                       },
                     }}
-                  ></TextField>
+                    value={state}
+                    {...register("state")}
+                    onChange={handleChangeState}
+                  >
+                    {allStates.map((option) => (
+                      <MenuItem key={option.isoCode} value={option.isoCode}>
+                        {option.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
                   <FormHelperText sx={{ color: "red" }}>
                     {errors?.state?.message}
                   </FormHelperText>
@@ -713,18 +717,22 @@ export default function MemberRegister() {
                   <Typography sx={{ fontSize: { xl: 17, md: 14, sm: 13 } }}>
                     <FormattedMessage defaultMessage={"City"} />
                   </Typography>
-                  <TextField
-                    autoComplete="given-name"
-                    required
-                    fullWidth
-                    autoFocus
-                    {...register("city")}
+                  <Select
                     sx={{
                       [`& fieldset`]: {
                         borderRadius: "12px",
                       },
                     }}
-                  />
+                    value={city}
+                    {...register("city")}
+                    onChange={handleChangeCity}
+                  >
+                    {allCities.map((option: any) => (
+                      <MenuItem key={option.name} value={option.name}>
+                        {option.name}
+                      </MenuItem>
+                    ))}
+                  </Select>
                   <FormHelperText sx={{ color: "red" }}>
                     {errors?.city?.message}
                   </FormHelperText>
@@ -749,7 +757,11 @@ export default function MemberRegister() {
                   </FormHelperText>
                 </Stack>
                 <Stack>
-                  <HotelLocationMap setLocation={setLocation} />
+                  <HotelLocationMap
+                    setLocation={setLocation}
+                    cityCoordinates={cityCoordinates}
+                    setCityCoordinates={setCityCoordinates}
+                  />
                 </Stack>
               </Stack>
               <IconButton
