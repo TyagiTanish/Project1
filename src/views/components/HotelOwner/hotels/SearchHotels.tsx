@@ -151,23 +151,14 @@ function SearchHotels({
                 <Box
                   component="img"
                   sx={{
-                    //   ml: { xl: "25%", md: "3%", sm: "3%" },
-                    //   mt: { xl: "5%" },
-                    width: { sm: 500, md: 450, lg: 700, xl: 900 },
+                    mt:25,
+                    width: { sm: 250, md: 200, lg: 330, xl: 450 },
                   }}
                   alt="The house from the offer."
-                  src={require("../../OtherComponents/no_result.gif")}
+                  src={require("../../../../assets/bg.avif")}
                 />
-                {/* <Button
-                  onClick={() => {
-                    setSearchTerm("");
-                    setRender((prev: any) => prev + 1);
-                  }}
-                  sx={{ ml: { xl: "26%", md: "5%" } }}
-                  variant="contained"
-                >
-                  Back
-                </Button> */}
+                <Typography sx={{fontSize:24,color:'red',fontWeight:'bold'}}>No Result Found</Typography>
+               
               </Stack>
             </>
           )}

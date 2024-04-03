@@ -10,7 +10,7 @@ import React, { useEffect, useMemo, useState } from "react";
 import SimpleMap from "../Map/Map";
 import Footer from "../Footer/Footer";
 import Seachbar2 from "../Header/Navbar/SearchBar/Seachbar2";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Navigate, Outlet, useNavigate } from "react-router-dom";
 import Logo from "../../Logo/Logo";
 import Hotels from "./Hotels";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
@@ -23,7 +23,7 @@ import { useDispatch } from "react-redux";
 import { FormattedMessage } from "react-intl";
 import { price, category } from "../../redux/user/userSlice";
 import Skeletons from "../../loader/skeleton/ImageSkeleton";
-
+import cover from "../../../../assets/bg.avif";
 /**
  *  To show all the hotels to user. Markdown is *HotelsPage*.
  */
@@ -36,7 +36,7 @@ const HotelsPage = () => {
   const reduxCategory = useSelector((state: any) => state.userReducer.category);
   // const search = localStorage.getItem("searchTerm");
   const [searchTerm, setSearchTerm] = useState(search || "");
-  const [filteredData, setFilteredData] = useState([]);
+  const [filteredData, setFilteredData] = useState<any>();
   const [screenSize, setScreenSize] = useState(window.innerWidth);
 
   const [open, setOpen] = React.useState(false);
@@ -46,6 +46,7 @@ const HotelsPage = () => {
   const [filterCategory, setFilterCategory] = React.useState<any>(
     reduxCategory ? reduxCategory : []
   );
+  const navigate = useNavigate();
   const location = useSelector((state: any) => state.userReducer.location);
   const [applyFilter, setApplyFilter] = React.useState<any>(0);
   const [isMapLoading, setMapLoading] = useState(false);
@@ -120,7 +121,9 @@ const HotelsPage = () => {
 
   return (
     <>
-      {screenSize > 1024 && filteredData?.length !== 0 ? (
+      {screenSize > 1024 &&
+      filteredData?.length !== 0 &&
+      filteredData !== false ? (
         <>
           <Stack direction={"row"} bgcolor={"rgb(250 250 250 0%)"}>
             {" "}
@@ -157,49 +160,95 @@ const HotelsPage = () => {
         sx={{ bgcolor: "rgb(250 250 250 0%)" }}
         padding={2}
       >
-        {filteredData?.length !== 0 ? (
-          <>
-            {" "}
-            {filteredData !== undefined ? (
-              <>
-                <Hotels filteredData={filteredData} screenSize={screenSize} />
-              </>
-            ) : null}
-            {screenSize <= 1024 ? (
-              <></>
-            ) : isMapLoading ? (
-              <Skeletons
-                width={{ xl: 800, sm: 700, md: "90%", lg: 650 }}
-                height={{ md: "80vh", lg: "90vh", xl: "78vh" }}
-              />
-            ) : (
-              <SimpleMap filteredData={filteredData} />
-            )}
-          </>
+        {filteredData !== false ? (
+          filteredData?.length !== 0 ? (
+            <>
+              {" "}
+              {filteredData !== undefined ? (
+                <>
+                  <Hotels filteredData={filteredData} screenSize={screenSize} />
+                </>
+              ) : null}
+              {screenSize <= 1024 ? (
+                <></>
+              ) : isMapLoading ? (
+                <Skeletons
+                  width={{ xl: 800, sm: 700, md: "90%", lg: 650 }}
+                  height={{ md: "80vh", lg: "90vh", xl: "78vh" }}
+                />
+              ) : (
+                <SimpleMap filteredData={filteredData} />
+              )}
+            </>
+          ) : (
+            <>
+              <Button
+                variant="outlined"
+                onClick={() => setOpen(true)}
+                sx={{
+                  height: "30px",
+                  width: "130px",
+                  ml: { xl: 8, lg: 5, md: 5 },
+                  mt: 3,
+                  mb: { xl: -3 },
+                }}
+              >
+                <TuneIcon sx={{ mr: 1 }} />
+                <FormattedMessage defaultMessage="Filters" />
+              </Button>
+              <Box
+            sx={{
+              backgroundImage: `url(${cover})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100% 100%",
+              width: "1400px",
+              height: "600px",
+              ml: 2,
+            }}
+          >
+            <Stack sx={{ mt: "25%", fontSize: 26 }} direction={'column'} spacing={2} textAlign={'center'}>
+              <Typography sx={{ fontSize: 30, color:'red', fontWeight:'bold',fontStyle:'oblique'}}>
+                {/* <center> */}
+                Oops ! No results match your filters
+                  {/* </center> */}
+              </Typography>
+
+             
+            </Stack>
+          </Box>
+            </>
+          )
         ) : (
-          <>
-            <Button
-              variant="outlined"
-              onClick={() => setOpen(true)}
-              sx={{
-                height: "30px",
-                width: "130px",
-                ml: { xl: 8, lg: 5, md: 5 },
-                mt: 3,
-                mb: { xl: -3 },
-              }}
-            >
-              <TuneIcon sx={{ mr: 1 }} />
-              <FormattedMessage defaultMessage="Filters" />
-            </Button>
-            <Box
-              margin={15}
-              marginLeft={"30%"}
-              sx={{ fontSize: 20, color: "red" }}
-            >
-              <FormattedMessage defaultMessage="No Results Match your search" />
-            </Box>
-          </>
+          <Box
+            sx={{
+              backgroundImage: `url(${cover})`,
+              backgroundRepeat: "no-repeat",
+              backgroundSize: "100% 100%",
+              width: "1400px",
+              height: "600px",
+              ml: 25,
+            }}
+          >
+            <Stack sx={{ mt: "25%", fontSize: 26 }} direction={'column'} spacing={2} textAlign={'center'}>
+              <Typography sx={{ fontSize: 26 }}>
+                {/* <center> */}
+                  There is no property available for this search
+                  {/* </center> */}
+              </Typography>
+
+              <Typography fontSize={18} >
+              {/* <center> */}
+                Book your next stay here:
+                {/* </center> */}
+              </Typography>
+              
+              <Button sx={{width:200,alignSelf:'center',bgcolor:'#1ab64f;', "&:hover": {
+      backgroundColor: "#1ab64f"
+    }}} variant="contained" onClick={()=>{window.history.back()}}>
+            Go to HomePage
+              </Button>
+            </Stack>
+          </Box>
         )}
       </Stack>
       <Footer />
