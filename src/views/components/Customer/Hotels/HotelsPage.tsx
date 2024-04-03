@@ -60,6 +60,7 @@ const HotelsPage = () => {
             category: filterCategory,
           },
         });
+        console.log(result?.data);
         setFilteredData(result.data);
       } else {
         var index = searchTerm.indexOf(",");
@@ -71,6 +72,7 @@ const HotelsPage = () => {
               category: filterCategory,
             },
           });
+          console.log(result?.data);
         } else {
           var result = await request.get("/getHotels", {
             params: {
@@ -80,6 +82,7 @@ const HotelsPage = () => {
             },
           });
         }
+        console.log(result?.data);
         setFilteredData(result?.data);
       }
     } catch (error) {
@@ -197,25 +200,35 @@ const HotelsPage = () => {
                 <FormattedMessage defaultMessage="Filters" />
               </Button>
               <Box
-            sx={{
-              backgroundImage: `url(${cover})`,
-              backgroundRepeat: "no-repeat",
-              backgroundSize: "100% 100%",
-              width: "1400px",
-              height: "600px",
-              ml: 2,
-            }}
-          >
-            <Stack sx={{ mt: "25%", fontSize: 26 }} direction={'column'} spacing={2} textAlign={'center'}>
-              <Typography sx={{ fontSize: 30, color:'red', fontWeight:'bold',fontStyle:'oblique'}}>
-                {/* <center> */}
-                Oops ! No results match your filters
-                  {/* </center> */}
-              </Typography>
-
-             
-            </Stack>
-          </Box>
+                sx={{
+                  backgroundImage: `url(${cover})`,
+                  backgroundRepeat: "no-repeat",
+                  backgroundSize: "100% 100%",
+                  width: "1400px",
+                  height: "600px",
+                  ml: 2,
+                }}
+              >
+                <Stack
+                  sx={{ mt: "25%", fontSize: 26 }}
+                  direction={"column"}
+                  spacing={2}
+                  textAlign={"center"}
+                >
+                  <Typography
+                    sx={{
+                      fontSize: 30,
+                      color: "red",
+                      fontWeight: "bold",
+                      fontStyle: "oblique",
+                    }}
+                  >
+                    {/* <center> */}
+                    Oops ! No results match your filters
+                    {/* </center> */}
+                  </Typography>
+                </Stack>
+              </Box>
             </>
           )
         ) : (
@@ -229,23 +242,39 @@ const HotelsPage = () => {
               ml: 25,
             }}
           >
-            <Stack sx={{ mt: "25%", fontSize: 26 }} direction={'column'} spacing={2} textAlign={'center'}>
+            <Stack
+              sx={{ mt: "25%", fontSize: 26 }}
+              direction={"column"}
+              spacing={2}
+              textAlign={"center"}
+            >
               <Typography sx={{ fontSize: 26 }}>
                 {/* <center> */}
-                  There is no property available for this search
-                  {/* </center> */}
+                There is no property available for this search
+                {/* </center> */}
               </Typography>
 
-              <Typography fontSize={18} >
-              {/* <center> */}
+              <Typography fontSize={18}>
+                {/* <center> */}
                 Book your next stay here:
                 {/* </center> */}
               </Typography>
-              
-              <Button sx={{width:200,alignSelf:'center',bgcolor:'#1ab64f;', "&:hover": {
-      backgroundColor: "#1ab64f"
-    }}} variant="contained" onClick={()=>{window.history.back()}}>
-            Go to HomePage
+
+              <Button
+                sx={{
+                  width: 200,
+                  alignSelf: "center",
+                  bgcolor: "#1ab64f;",
+                  "&:hover": {
+                    backgroundColor: "#1ab64f",
+                  },
+                }}
+                variant="contained"
+                onClick={() => {
+                  window.history.back();
+                }}
+              >
+                Go to HomePage
               </Button>
             </Stack>
           </Box>

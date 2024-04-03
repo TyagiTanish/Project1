@@ -117,10 +117,11 @@ function AddRooms({ setRender, showCategories }: any) {
     //   })
     // );
 
-    if (acceptedFiles.length !== 0) {
-      acceptedFiles.map((file) => {
+    if (acceptedFiles.length !== 0 && file.length < 4) {
+      acceptedFiles.map((file: any) => {
+        // console.log("file", { ...file });
         const previewURL = URL.createObjectURL(file);
-        setFile((prev: any) => [...prev, { ...file, preview: previewURL }]);
+        setFile((prev: any) => [...prev, { file, preview: previewURL }]);
       });
     }
   }, [acceptedFiles]);
@@ -170,8 +171,8 @@ function AddRooms({ setRender, showCategories }: any) {
     // const formData = new FormData();
     // data.roomHighlight = roomHighlight;
     const formData: any = new FormData();
-    for (const file of acceptedFiles) {
-      formData.append("files", file);
+    for (const photo of file) {
+      formData.append("files", photo?.file);
     }
     formData.set("roomQuantity", data.roomQuantity);
     formData.set("type", type);

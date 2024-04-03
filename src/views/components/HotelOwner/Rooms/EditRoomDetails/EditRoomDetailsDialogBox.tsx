@@ -87,6 +87,7 @@ export default function EditRoomDetails({
   React.useMemo(() => {
     setPhotos(room?.photos);
     setChangedPhoto([]);
+    setUpdatedPhoto([]);
     setEditRoom(room);
   }, [editBox]);
 
@@ -244,9 +245,9 @@ export default function EditRoomDetails({
   }, [previewIndex, editRoom]);
   // console.log(editRoom?.roomType, "Type");
 
-  React.useMemo(() => {
-    console.log(changedPhoto);
-  }, [changedPhoto]);
+  // React.useMemo(() => {
+  //   console.log(changedPhoto);
+  // }, [changedPhoto]);
 
   return (
     <Dialog
@@ -389,14 +390,16 @@ export default function EditRoomDetails({
                 <Box>
                   <Dropzone
                     onDrop={(acceptedFiles) => {
-                      acceptedFiles.map((file) => {
-                        const previewURL = URL.createObjectURL(file);
-                        setChangedPhoto((prev: any) => [
-                          ...prev,
-                          { ...file, preview: previewURL },
-                        ]);
-                      });
-                      setUpdatedPhoto(acceptedFiles);
+                      if (photos?.length < 4) {
+                        acceptedFiles.map((file) => {
+                          const previewURL = URL.createObjectURL(file);
+                          setChangedPhoto((prev: any) => [
+                            ...prev,
+                            { ...file, preview: previewURL },
+                          ]);
+                        });
+                        setUpdatedPhoto(acceptedFiles);
+                      }
                     }}
                   >
                     {({ getRootProps, getInputProps }) => (
