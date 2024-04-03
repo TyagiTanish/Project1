@@ -18,6 +18,7 @@ import MyLocationIcon from "@mui/icons-material/MyLocation";
 import { useDispatch, useSelector } from "react-redux";
 import {
   RoomsAndGuests,
+  clearFilter,
   searchDetails,
   userLocation,
 } from "../../../../redux/user/userSlice";
@@ -296,9 +297,11 @@ function SearchBar() {
               onClick={() => {
                 if (searchTerm !== "") {
                   dispatch(searchDetails(searchTerm));
+
                   const field = document.querySelector("#searchField");
                   handleCloseValidationPopper(field);
                   if (date) {
+                    dispatch(clearFilter());
                     navigate("/hotels");
                     window?.scroll(0, 0);
                   } else {

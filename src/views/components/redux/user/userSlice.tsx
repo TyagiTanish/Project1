@@ -49,7 +49,11 @@ export const userSlice = createSlice({
       state.start = action.payload;
     },
     end: (state: any, action: any) => {
-      state.end= action.payload;
+      state.end = action.payload;
+    },
+    clearFilter: (state: any) => {
+      state.price = [0, 37000];
+      state.category = [];
     },
   },
 });
@@ -67,6 +71,7 @@ export const {
   price,
   category,
   start,
-  end
+  end,
+  clearFilter,
 } = userSlice.actions;
 export default userSlice.reducer;

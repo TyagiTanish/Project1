@@ -7,7 +7,11 @@ import { IconButton } from "@mui/material";
 
 const AnyReactComponent = ({ text }: any) => <div>{text}</div>;
 
-export default function SimpleMap({ setLocation }: any) {
+export default function SimpleMap({
+  setLocation,
+  cityCoordinates,
+  setCityCoordinates,
+}: any) {
   const location = useSelector((state: any) => state.userReducer.location);
   //   const dispatch = useDispatch();
   const defaultProps = {

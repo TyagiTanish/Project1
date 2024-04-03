@@ -10,6 +10,8 @@ import {
   FormControlLabel,
   FormGroup,
   FormHelperText,
+  MenuItem,
+  Select,
   Stack,
   TextField,
 } from "@mui/material";
@@ -38,10 +40,18 @@ import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
 import AddDiscription from "../../HotelOwner/Rooms/RoomDetails/AddDiscription";
 import { FormattedMessage, useIntl } from "react-intl";
 import Logo from "../../Logo/Logo";
+import { Country, State, City } from "country-state-city";
+
 export default function AddHotelAftrLgn() {
+  const [state, setState] = React.useState("");
+  const [city, setCity] = React.useState("");
+  const [cityCoordinates, setCityCoordinates] = React.useState<any>("");
   const navigate = useNavigate();
   const user = useSelector((state: any) => state.userReducer.user);
   const { request } = useAuth();
+  const allStates = State.getStatesOfCountry("IN");
+  const allCities = City.getCitiesOfState("IN", state);
+
   const [location, setLocation] = useState({
     longitude: 76.779419,
     latitude: 30.733315,
@@ -200,6 +210,8 @@ export default function AddHotelAftrLgn() {
     if (step === 2) {
       data.discription = content;
     }
+    data.country = "India";
+    data.state = State.getStateByCodeAndCountry(state, "IN")?.name;
     data.longitude = location?.longitude;
     data.latitude = location?.latitude;
     formData.append("files", acceptedFiles?.[0]);
@@ -225,6 +237,13 @@ export default function AddHotelAftrLgn() {
     handleStep();
   };
 
+  const handleChangeState = (event: any) => {
+    setState(event.target.value);
+  };
+  const handleChangeCity = (event: any) => {
+    setCity(event.target.value);
+  };
+
   interface User {
     hotelName: string;
     city: string;
@@ -237,42 +256,37 @@ export default function AddHotelAftrLgn() {
   var FormSchema: any = "";
   if (step === 0) {
     FormSchema = Yup.object().shape({
-      hotelName: Yup.string()
-        .required("This field is required")
-        .min(3)
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "should be a string or should atleat have one upper case letter"
-        ),
+      hotelName: Yup.string().required("This field is required").min(3),
+      // .matches(
+      //   /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //   "should be a string or should atleat have one upper case letter"
+      // ),
     });
   }
   if (step === 1) {
     FormSchema = Yup.object().shape({
-      city: Yup.string()
-        .required("This field is required")
-        .min(3)
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "should be a string or should atleat have one upper case letter"
-        ),
-      state: Yup.string()
-        .required("This field is required")
-        .min(3)
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          "should be a string or should atleat have one upper case letter"
-        ),
+      city: Yup.string().required("This field is required"),
+      // .min(3)
+      // .matches(
+      //   /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //   "should be a string or should atleat have one upper case letter"
+      // ),
+      state: Yup.string().required("This field is required"),
+      // .min(3)
+      // .matches(
+      //   /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //   "should be a string or should atleat have one upper case letter"
+      // ),
       postalCode: Yup.string()
         .required("This field is required")
         .min(3)
         .matches(/(?=.*[0-9])\w+/, "Postal Code. must be a number"),
-      country: Yup.string()
-        .required("This field is required")
-        .min(3)
-        .matches(
-          /(?=.*[a-z])(?=.*[A-Z])\w+/,
-          "should be a string or should atleat have one upper case letter"
-        ),
+      country: Yup.string().required("This field is required"),
+      // .min(3)
+      // .matches(
+      //   /(?=.*[a-z])(?=.*[A-Z])\w+/,
+      //   "should be a string or should atleat have one upper case letter"
+      // ),
     });
   }
   if (step === 2) {
@@ -528,6 +542,18 @@ export default function AddHotelAftrLgn() {
                           <FormattedMessage defaultMessage="Country" />
                         </Typography>
                         <TextField
+                          required
+                          fullWidth
+                          {...register("country")}
+                          value={"India"}
+                          disabled
+                          sx={{
+                            [`& fieldset`]: {
+                              borderRadius: "12px",
+                            },
+                          }}
+                        />
+                        {/* <TextField
                           id="demo-helper-text-aligned"
                           placeholder={intl.formatMessage({
                             defaultMessage: "Enter Country",
@@ -538,7 +564,7 @@ export default function AddHotelAftrLgn() {
                               borderRadius: "12px",
                             },
                           }}
-                        />{" "}
+                        />{" "} */}
                         <FormHelperText sx={{ color: "red" }}>
                           {errors?.country?.message}
                         </FormHelperText>
@@ -554,7 +580,26 @@ export default function AddHotelAftrLgn() {
                         >
                           <FormattedMessage defaultMessage="State" />
                         </Typography>
-                        <TextField
+                        <Select
+                          sx={{
+                            [`& fieldset`]: {
+                              borderRadius: "12px",
+                            },
+                          }}
+                          value={state}
+                          {...register("state")}
+                          onChange={handleChangeState}
+                        >
+                          {allStates.map((option) => (
+                            <MenuItem
+                              key={option.isoCode}
+                              value={option.isoCode}
+                            >
+                              {option.name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                        {/* <TextField
                           id="demo-helper-text-aligned"
                           placeholder={intl.formatMessage({
                             defaultMessage: "Enter State",
@@ -565,7 +610,7 @@ export default function AddHotelAftrLgn() {
                               borderRadius: "12px",
                             },
                           }}
-                        />
+                        /> */}
                         <FormHelperText sx={{ color: "red" }}>
                           {errors?.state?.message}
                         </FormHelperText>
@@ -586,7 +631,23 @@ export default function AddHotelAftrLgn() {
                         >
                           <FormattedMessage defaultMessage="City" />
                         </Typography>
-                        <TextField
+                        <Select
+                          sx={{
+                            [`& fieldset`]: {
+                              borderRadius: "12px",
+                            },
+                          }}
+                          value={city}
+                          {...register("city")}
+                          onChange={handleChangeCity}
+                        >
+                          {allCities.map((option: any) => (
+                            <MenuItem key={option.name} value={option.name}>
+                              {option.name}
+                            </MenuItem>
+                          ))}
+                        </Select>
+                        {/* <TextField
                           placeholder={intl.formatMessage({
                             defaultMessage: "Enter City",
                           })}
@@ -596,7 +657,7 @@ export default function AddHotelAftrLgn() {
                               borderRadius: "12px",
                             },
                           }}
-                        />
+                        /> */}
                         <FormHelperText sx={{ color: "red" }}>
                           {errors?.city?.message}
                         </FormHelperText>
@@ -629,7 +690,11 @@ export default function AddHotelAftrLgn() {
                       </Stack>
                     </Stack>
                     <Box>
-                      <AddHotelLocation setLocation={setLocation} />
+                      <AddHotelLocation
+                        setLocation={setLocation}
+                        cityCoordinates={cityCoordinates}
+                        setCityCoordinates={setCityCoordinates}
+                      />
                     </Box>
                     <Stack direction={"row"} gap={4} mt={3}>
                       <Button
