@@ -21,7 +21,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       ],
       zoom: 10,
     });
-    map.addControl(new mapboxgl.NavigationControl());
+
     // Array of marker coordinates
     const locations = filteredData?.map((item: any) => {
       const coordinates = [
@@ -34,6 +34,7 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       const id = item._id;
       return { title, description, coordinates, image, id };
     });
+
     // Add markers to the map
     locations?.forEach((location: any) => {
       const popup = new mapboxgl.Popup()
@@ -54,7 +55,8 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
       //   // handleClick(lct );
       // });
     });
-    return () => map.remove();
+
+    return () => map?.remove();
   }, [location, filteredData]);
   useEffect(() => {}, [filteredData]);
   return (
@@ -68,7 +70,8 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
             // height: { sm: 600, xl: 800, md: 1000 },
             height: { md: "80vh", lg: "90vh", xl: "78vh" },
             borderRadius: 5,
-            zIndex: -1,
+
+            // zIndex: -1,
           }}
         />
       </Stack>
