@@ -93,7 +93,7 @@ function HotelInfo({ setRender }: any) {
               src={`http://localhost:8000/${data?.photo}`}
             />
             <Stack>
-              <Stack direction={"row"}>
+              <Stack direction={"row"} justifyContent={"space-between"}>
                 <Stack direction={"column"} spacing={1}>
                   <Typography sx={{ fontSize: { xl: 22, md: 16 } }}>
                     {data?.hotelName}
@@ -174,7 +174,10 @@ function HotelInfo({ setRender }: any) {
             >
               <FormattedMessage defaultMessage="Hotel Amenities" />
             </Typography>
-            <Button onClick={() => setOpen3(true)} sx={{ color: "gray" }}>
+            <Button
+              onClick={() => setOpen3(true)}
+              sx={{ color: "gray", mr: 3 }}
+            >
               <EditIcon fontSize="small" sx={{ cursor: "pointer" }} />
             </Button>
           </Stack>
