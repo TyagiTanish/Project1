@@ -194,9 +194,7 @@ export default function MemberRegister() {
   const handleChangeCity = (event: any) => {
     setCity(event.target.value);
   };
-  React.useEffect(() => {
-    // console.log(amenities);s
-  }, [amenities]);
+
   var FormSchema: any;
   page === 2 &&
     (FormSchema = Yup.object().shape({
@@ -212,51 +210,48 @@ export default function MemberRegister() {
           /^[1-9][0-9]{5}$/,
           intl.formatMessage({ defaultMessage: "Pin Code must be a number" })
         ),
-      country: Yup.string()
-        .required(
-          intl.formatMessage({ defaultMessage: "Country name is required " })
-        )
-        .min(
-          3,
-          intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
-        )
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          intl.formatMessage({
-            defaultMessage:
-              "First Letter of Country name should be capital and name should be string",
-          })
-        ),
-      state: Yup.string()
-        .required(
-          intl.formatMessage({ defaultMessage: "State name is required" })
-        )
-        .min(
-          3,
-          intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
-        )
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          intl.formatMessage({
-            defaultMessage:
-              "First Letter of State name should be capital and name should be string",
-          })
-        ),
-      city: Yup.string()
-        .required(
-          intl.formatMessage({ defaultMessage: "City name is required" })
-        )
-        .min(
-          3,
-          intl.formatMessage({ defaultMessage: "minimum length should be 3 " })
-        )
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          intl.formatMessage({
-            defaultMessage:
-              "First Letter of City name should be capital and name should be string",
-          })
-        ),
+      country: Yup.string().required(
+        intl.formatMessage({ defaultMessage: "Country name is required " })
+      ),
+      //   .min(
+      //     3,
+      //     intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
+      //   )
+      //   .matches(
+      //     /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //     intl.formatMessage({
+      //       defaultMessage:
+      //         "First Letter of Country name should be capital and name should be string",
+      //     })
+      //   ),
+      state: Yup.string().required(
+        intl.formatMessage({ defaultMessage: "State name is required" })
+      ),
+      //   .min(
+      //     3,
+      //     intl.formatMessage({ defaultMessage: "Minimum length should be 3" })
+      //   )
+      //   .matches(
+      //     /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //     intl.formatMessage({
+      //       defaultMessage:
+      //         "First Letter of State name should be capital and name should be string",
+      //     })
+      //   ),
+      city: Yup.string().required(
+        intl.formatMessage({ defaultMessage: "City name is required" })
+      ),
+      //   .min(
+      //     3,
+      //     intl.formatMessage({ defaultMessage: "minimum length should be 3 " })
+      //   )
+      //   .matches(
+      //     /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //     intl.formatMessage({
+      //       defaultMessage:
+      //         "First Letter of City name should be capital and name should be string",
+      //     })
+      //   ),
     }));
 
   page === 1 &&
@@ -270,14 +265,14 @@ export default function MemberRegister() {
           intl.formatMessage({
             defaultMessage: "Name should contain at least 3 letters",
           })
-        )
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          intl.formatMessage({
-            defaultMessage:
-              "First Letter of name should be capital and name should be string",
-          })
         ),
+      // .matches(
+      //   /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+      //   intl.formatMessage({
+      //     defaultMessage:
+      //       "First Letter of name should be capital and name should be string",
+      //   })
+      // ),
       email: Yup.string()
         .email(intl.formatMessage({ defaultMessage: "Invalid email !" }))
         .required(intl.formatMessage({ defaultMessage: "Email is Required" })),
@@ -303,13 +298,13 @@ export default function MemberRegister() {
             defaultMessage: "Hotel name should contain at least 5 letters",
           })
         )
-        .matches(
-          /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
-          intl.formatMessage({
-            defaultMessage:
-              "First Letter of name should be capital and name should be string",
-          })
-        )
+        // .matches(
+        //   /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
+        //   intl.formatMessage({
+        //     defaultMessage:
+        //       "First Letter of name should be capital and name should be string",
+        //   })
+        // )
         .required(
           intl.formatMessage({ defaultMessage: "Hotel Name is Required" })
         ),
@@ -405,10 +400,10 @@ export default function MemberRegister() {
       setPage((prev) => prev + 1);
     }
   };
-
   const Submit = async (detail: any) => {
     detail.amenities = arr;
-
+    detail.country = "India";
+    detail.state = State.getStateByCodeAndCountry(state, "IN")?.name;
     // if (page === 6) {
     detail.discription = content;
     // }
@@ -433,7 +428,7 @@ export default function MemberRegister() {
       formdata.set("discription", detail.discription);
       const result = await request.post("/registerMember", formdata);
 
-      // console.log(result.data);
+      // console.log(detail);
 
       navigate("/login");
     } else {
@@ -451,35 +446,16 @@ export default function MemberRegister() {
       return oldvalue.filter((e: any) => e.name !== photo.name);
     });
   };
-
+  State.getStateByCodeAndCountry(state, "IN");
   return (
     <>
       <Stack
         direction={"column"}
         sx={{
-          // border: "1px solid lightgrey",
-
           background: "white",
           width: { sm: "40vw", xl: "25vw" },
         }}
       >
-        {/* <Box
-          sx={{
-            // background: "#D4164B",
-            backgroundImage: "linear-gradient(270deg,#d11450,#ee2a24)",
-            // minHeight: "30px",
-            // paddingTop: { xl: 1, md: 1.2, sm: 1 },
-            // paddingLeft: { sm: 6, md: 10 },
-            textAlign: "center",
-            p: "1%",
-            fontWeight: 700,
-            color: "white",
-            fontSize: { xl: 17, md: 14, sm: 13 },
-          }}
-        >
-          <FormattedMessage defaultMessage={"Sign up & Get ₹500 OYO Money"} />
-        </Box> */}
-
         <Box
           sx={{
             background: "white",
