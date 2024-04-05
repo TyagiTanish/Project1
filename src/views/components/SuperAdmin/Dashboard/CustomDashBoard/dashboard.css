@@ -1,0 +1,20 @@
+/* Container styling */
+.draggable-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+/* Draggable item styling */
+.draggable-item {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+  cursor: grab;
+}
+
+/* Custom dragging styles */
+.dragging {
+  opacity: 0.5; /* Example: Reduce opacity while dragging */
+}

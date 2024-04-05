@@ -30,7 +30,7 @@ export default function BookingPieChart({ bookingData }: any) {
     setPendingBookings(0);
     setAcceptedBookings(0);
     setRejectedBookings(0);
-    bookingData?.map((booking: any) => {
+    bookingData?.forEach((booking: any) => {
       if (booking?.status === "pending") {
         setPendingBookings((prev: any) => prev + 1);
       } else if (booking?.status === "accepted") {
@@ -40,6 +40,7 @@ export default function BookingPieChart({ bookingData }: any) {
       }
     });
   }, [bookingData]);
+
   const seriesData = [
     {
       data: [
