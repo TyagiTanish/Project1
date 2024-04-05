@@ -4,8 +4,12 @@ import useAuth from "../useAuth/useAuth";
 const useAllMembers = () => {
   const { request } = useAuth();
   const AllMembers = async () => {
-    const booking: any = await request.get("/getAllMembers", data);
-    return booking.data;
+    try {
+      const booking: any = await request.get("/getAllMembers");
+      return booking.data;
+    } catch (error) {
+      return error;
+    }
   };
 
   const {
