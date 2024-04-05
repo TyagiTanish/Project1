@@ -6,6 +6,7 @@ import TabContext from "@mui/lab/TabContext";
 import TabPanel from "@mui/lab/TabPanel";
 import { Outlet, useNavigate } from "react-router-dom";
 import AllRooms from "./Rooms/RoomDetails/Rooms";
+import HotelDashboard from "./HotelDashboard/HotelDashboard";
 import { rowSelectionStateInitializer } from "@mui/x-data-grid/internals";
 
 /**
@@ -48,6 +49,9 @@ function AboutHotel({ setRender, data }: any) {
 
           <TabPanel value="info" sx={{ overflow: "auto" }}>
             <HotelInfo setRender={setRender} data={data} />
+          </TabPanel>
+          <TabPanel value="dashboard" sx={{ overflow: "auto" }}>
+            <HotelDashboard setRender={setRender} firstHotel={data} />
           </TabPanel>
           <TabPanel value="rooms" sx={{ overflow: "auto" }}>
             <AllRooms />

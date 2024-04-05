@@ -24,7 +24,6 @@ const statusMap = {
 
 export function LatestBookings({ orders, sx }: any): React.JSX.Element {
   var today = new Date();
-
   return (
     <Card sx={sx}>
       <CardHeader sx={{ fontWeight: "bolder" }} title="Upcoming Bookings  " />
