@@ -28,46 +28,44 @@ import { FormattedMessage } from "react-intl";
 function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
   const [arr, setArr]: any = React.useState([]);
   const amenitie = [
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 0 },
-    { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 1 },
-    { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 2 },
+    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: '0' },
+    { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: '1' },
+    { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: '2' },
     {
       id: "roomService",
       label: "Room Service",
       icon: <IconHotelService stroke={2} />,
-      index: 3,
+      index: '3',
     },
-    { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 4 },
+    { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: '4' },
     {
       id: "dryClean",
       label: "DryClean",
       icon: <IconWashMachine stroke={2} />,
-      index: 5,
+      index: '5',
     },
-    { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 6 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: "7" },
-    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: 8 },
-    { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
-    { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
+    { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: '6' },
+    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: '7' },
+    { id: "parking", label: "Parking", icon: <IconParkingCircle stroke={2} />, index: '8' },
+    { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: '9' },
+    { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: '10' },
     {
       id: "roomService",
       label: "Room Service",
       icon: <IconHotelService stroke={2} />,
-      index: 11,
+      index: '11',
     },
-    { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 12 },
+    { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: '12' },
     {
       id: "dryClean",
       label: "DryClean",
       icon: <IconWashMachine stroke={2} />,
       index: 13,
     },
-    { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: 15 },
+    { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: '14' },
+    { id: "meeting", label: "Meeting", icon: <IconUsersGroup stroke={2} />, index: '15' },
   ];
-  const ShowAmenities = amenitie.filter((item: any, index: any) =>
-    amenities?.includes(String(item.index))
-  );
+
 
   const { request } = useAuth();
   useMemo(() => {
@@ -76,21 +74,25 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
   const { register, handleSubmit } = useForm();
 
   const change = (e: any) => {
-    const value = e.target.value;
-
+    const value = (String(e));
     if (arr.find((item: any) => item === value)) {
       setArr(arr.filter((i: any) => i !== value));
     } else {
       // arr.push(value);
       setArr([...arr, value]);
     }
+    console.log(arr)
   };
+
   const onSubmit = async (data: any) => {
-    await request.post(`updateAmeneties/${id}`, arr);
+
+   
+    await request.post(`/updateAmeneties/${id}`, arr);
     setRender((prev: any) => prev + 1);
     onClose();
   };
 
+//arr contains strings
   return (
     <Dialog onClose={onClose} open={open}>
       <Stack
@@ -119,14 +121,14 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
               <Grid item xs={5}>
                 <FormGroup>
                   <Stack direction={"row"} alignItems={"center"} spacing={1}>
-                    {amenities.includes(index.toString()) ? (
+                    {amenities.includes(String(index)) ? (
                       <FormControlLabel
                         control={
                           <Checkbox
                             value={index}
                             defaultChecked
-                            onChange={(e) => {
-                              change(e);
+                            onChange={() => {
+                              change(index);
                             }}
                           />
                         }
@@ -137,8 +139,8 @@ function EditAmenities({ open, onClose, amenities, id, setRender }: any) {
                         control={
                           <Checkbox
                             value={index}
-                            onChange={(e) => {
-                              change(e);
+                            onChange={() => {
+                              change(index);
                             }}
                           />
                         }

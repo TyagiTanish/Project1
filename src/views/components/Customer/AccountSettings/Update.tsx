@@ -1,16 +1,66 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, FormHelperText, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../../Hooks/useAuth/useAuth";
 import { useSelector } from "react-redux";
-import { FormattedMessage } from "react-intl";
+import { FormattedMessage, useIntl } from "react-intl";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../redux/user/userSlice";
 import { enqueueSnackbar } from "notistack";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 function Update() {
   const dispatch = useDispatch();
-
-  const { register, handleSubmit } = useForm();
+  const intl = useIntl();
+  const FormSchema = Yup.object().shape({
+    name: Yup.string()
+      .required(
+        intl.formatMessage({ defaultMessage: "Name is required" })
+      )
+      .min(3)
+      .matches(
+        /^[A-Z][a-zA-Z]*( [a-zA-Z]*)*$/,
+        intl.formatMessage({
+          defaultMessage:
+            "First Letter of name should be capital and name should be string",
+        })
+      ),
+  
+    phone: Yup.string()
+      .required(intl.formatMessage({defaultMessage:'Phone Number is a required'}))
+      .min(
+        10,
+        intl.formatMessage({ defaultMessage: "Min length should be 10" })
+      )
+      .max(
+        10,
+        intl.formatMessage({ defaultMessage: "Max length should be 10" })
+      )
+      .matches(
+        /^[789]\d{9}$/,
+        intl.formatMessage({
+          defaultMessage:
+            "Phone No. must not contain any special character and should start with 9 , 7 or 8",
+        })
+      ),
+     
+     
+ 
+   
+   
+  });
+  interface User {
+    name  : any;
+    phone: any;
+    
+  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<any, User>({
+    resolver: yupResolver(FormSchema),
+  })
 
   const user = useSelector((state: any) => state.userReducer.user);
   // console.log(user);
@@ -23,7 +73,7 @@ function Update() {
     });
 
     if (result.data) {
-      enqueueSnackbar("Username updated successfully", {
+      enqueueSnackbar(intl.formatMessage({defaultMessage:"Username updated successfully"}), {
         variant: "success",
         autoHideDuration: 1000,
       });
@@ -53,6 +103,11 @@ function Update() {
           },
         }}
       />
+          {errors.name?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.name?.message.toString()}
+                      </FormHelperText>
+                    )}
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
@@ -71,7 +126,11 @@ function Update() {
           },
         }}
       />
-
+    {errors.phone?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.phone?.message.toString()}
+                      </FormHelperText>
+                    )}
       <Box>
         <Button
           variant="contained"

@@ -24,7 +24,7 @@ import Grid from "@mui/material/Grid";
 import AddHotelLocation from "./AddHotelLocation";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import Language from "../../../components/Language";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useDropzone } from "react-dropzone";
 import { Chip, IconButton } from "@mui/material";
 import AddPhotoAlternateSharpIcon from "@mui/icons-material/AddPhotoAlternateSharp";
@@ -41,6 +41,10 @@ import AddDiscription from "../../HotelOwner/Rooms/RoomDetails/AddDiscription";
 import { FormattedMessage, useIntl } from "react-intl";
 import Logo from "../../Logo/Logo";
 import { Country, State, City } from "country-state-city";
+import { userLogin } from "../../redux/user/userSlice";
+
+import Loaders from "../../loader/Loaders";
+import { enqueueSnackbar } from "notistack";
 
 export default function AddHotelAftrLgn() {
   const [state, setState] = React.useState("");
@@ -51,7 +55,7 @@ export default function AddHotelAftrLgn() {
   const { request } = useAuth();
   const allStates = State.getStatesOfCountry("IN");
   const allCities = City.getCitiesOfState("IN", state);
-
+  const [displayLoader, setDisplayLoader] = useState(false);
   const [location, setLocation] = useState({
     longitude: 76.779419,
     latitude: 30.733315,
@@ -75,6 +79,7 @@ export default function AddHotelAftrLgn() {
       setStep(0);
     }
   };
+
   const lang = useSelector((state: any) => state?.userReducer?.locale);
   const [files, setfile] = React.useState<any>([]);
   const [error, setError] = React.useState("");
@@ -111,38 +116,11 @@ export default function AddHotelAftrLgn() {
       icon: <IconUsersGroup stroke={2} />,
       index: "7",
     },
-    // {
-    //   id: "parking",
-    //   label: "Parking",
-    //   icon: <IconParkingCircle stroke={2} />,
-    //   index: 8,
-    // },
-    // { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
-    // { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
-    // {
-    //   id: "roomService",
-    //   label: "Room Service",
-    //   icon: <IconHotelService stroke={2} />,
-    //   index: 11,
-    // },
-    // { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 12 },
-    // {
-    //   id: "dryClean",
-    //   label: "DryClean",
-    //   icon: <IconWashMachine stroke={2} />,
-    //   index: 13,
-    // },
-    // { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    // {
-    //   id: "meeting",
-    //   label: "Meeting",
-    //   icon: <IconUsersGroup stroke={2} />,
-    //   index: 15,
-    // },
+  
   ];
 
   const [content, setContent] = useState("");
-
+const dispatch=useDispatch()
   const [screenSize, setScreenSize] = React.useState(window.outerWidth);
   React.useEffect(() => {
     setScreenSize(window.innerWidth);
@@ -206,6 +184,22 @@ export default function AddHotelAftrLgn() {
     });
   };
 
+  const getUser = async () => {
+    const authToken = localStorage.getItem("authToken");
+    try {
+      //   if(!authToken)
+      //   {
+      //  return  navigate('/login');
+      //   }
+      if (authToken) {
+        const userData = (await request.get(`/getUserData`)).data;
+        dispatch(userLogin(userData));
+      }
+    } catch (error) {
+      localStorage.removeItem("authToken");
+    }
+  };
+ 
   const formData = new FormData();
   const onSubmit = async (data: any) => {
     // console.log(data);
@@ -213,8 +207,10 @@ export default function AddHotelAftrLgn() {
     //   setArr(arr);
     //   data.amenities = arr;
     // }
-    console.log(files?.[0].path);
+ 
+   //data.amenities contains elements not in form of ""
     data.amenities = arr;
+   console.log( JSON.stringify(data?.amenities))
     if (step === 2) {
       data.discription = content;
     }
@@ -235,9 +231,28 @@ export default function AddHotelAftrLgn() {
     formData.set("email", user?.email);
     formData.set("amenities", JSON.stringify(data?.amenities));
     formData.set("discription", data?.discription);
+   console.log('data?.amenities--------->',data?.amenities);
+   console.log(JSON.stringify(data?.amenities))
     if (step === 3) {
-      request.post("/addHotel", formData);
-      navigate("/");
+    
+ const data=    await   request.post("/addHotel", formData);
+
+if(data.data){
+  getUser();
+  setDisplayLoader(true)
+  setTimeout(()=>{
+  
+    navigate('/member')
+    setDisplayLoader(false);
+  },1000)
+  enqueueSnackbar("Congratulations 💐, your First Hotel is Added", {
+    variant: "success",
+  
+  });
+ 
+}
+    
+   
     }
 
     handleStep();
@@ -321,6 +336,12 @@ export default function AddHotelAftrLgn() {
   });
 
   return (
+    <>  <Box>  {displayLoader && (
+      <Box sx={{ background: "blur" }}>
+        <Loaders />
+      </Box>
+    )}</Box>
+  
     <Grid
       container
       xs={12}
@@ -595,6 +616,7 @@ export default function AddHotelAftrLgn() {
                           value={state}
                           {...register("state")}
                           onChange={handleChangeState}
+                          MenuProps={{ PaperProps: { style: { maxHeight: '200px' } } }}
                         >
                           {allStates.map((option) => (
                             <MenuItem
@@ -646,6 +668,7 @@ export default function AddHotelAftrLgn() {
                           value={city}
                           {...register("city")}
                           onChange={handleChangeCity}
+                          MenuProps={{ PaperProps: { style: { maxHeight: '200px' } } }}
                         >
                           {allCities.map((option: any) => (
                             <MenuItem key={option.name} value={option.name}>
@@ -960,6 +983,7 @@ export default function AddHotelAftrLgn() {
               </Box> */}
         </Box>
       </Grid>
-    </Grid>
+    </Grid></>
+  
   );
 }

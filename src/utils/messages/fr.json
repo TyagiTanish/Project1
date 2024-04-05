@@ -1247,5 +1247,28 @@
   "nFQbxh": { "defaultMessage": "Mode de paiement" },
   "ozyoh7": { "defaultMessage": "Rechercher des hôtels" },
   "u/vOPu": { "defaultMessage": "Payé" },
-  "xFenH3": { "defaultMessage": "Entrez le nom de l'hôtel" }
+  "xFenH3": { "defaultMessage": "Entrez le nom de l'hôtel" },
+  "1ysYAx": { "defaultMessage": "Le nom de l'État est requis" },
+  "41XwY/": { "defaultMessage": "Le nom doit contenir au moins 3 lettres" },
+  "55hdQy": { "defaultMessage": "Devise" },
+  "5b7A7T": { "defaultMessage": "Le nom du pays est obligatoire" },
+  "7imKkI": {
+    "defaultMessage": "Entrez vos identifiants pour accéder à votre compte"
+  },
+  "8ZB+UZ": { "defaultMessage": "Monnaie de paiement*" },
+  "8Zr2SI": { "defaultMessage": "Le nom du propriétaire" },
+  "Gvxoji": { "defaultMessage": "Le nom est requis" },
+  "K2oKVV": { "defaultMessage": "Le nom de la ville est obligatoire" },
+  "OecwUv": { "defaultMessage": "Le numéro de téléphone est obligatoire" },
+  "RDExXR": { "defaultMessage": "Le code PIN est requis" },
+  "V7vxlC": { "defaultMessage": "Le code PIN doit être un chiffre" },
+  "XnwjvE": { "defaultMessage": "EUR €" },
+  "Z08msU": { "defaultMessage": "INR ₹" },
+  "deksVw": { "defaultMessage": "Supprimer l'hôtel" },
+  "eFPkDO": { "defaultMessage": "La devise est requise" },
+  "odXlk8": { "defaultMessage": "Se connecter" },
+  "xdqpxQ": { "defaultMessage": "Le nom doit comporter au moins 3 caractères" },
+  "2EwzO4": { "defaultMessage": "Ancien mot de passe est incorrect" },
+  "ebXoWR": { "defaultMessage": "Mis à jour avec succés" },
+  "wwc7MP": { "defaultMessage": "Nom d'utilisateur mis à jour avec succès" }
 }

@@ -49,7 +49,7 @@ export default function AlertDialogSlide({
               <FormattedMessage defaultMessage="Delete Hotel" />
             </DialogTitle>
             <Tooltip title={"close"}>
-              <IconButton onClick={handleClose}>
+              <IconButton onClick={handleCloseDelete}>
                 <CloseIcon />
               </IconButton>
             </Tooltip>

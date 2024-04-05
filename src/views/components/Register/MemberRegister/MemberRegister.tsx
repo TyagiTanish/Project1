@@ -424,11 +424,10 @@ export default function MemberRegister() {
       formdata.set("country", detail.country);
       formdata.set("city", detail.city);
       formdata.set("hotelName", detail.hotelName);
-      formdata.set("amenities", detail.amenities);
+      formdata.set("amenities", JSON.stringify(detail.amenities));
       formdata.set("discription", detail.discription);
       const result = await request.post("/registerMember", formdata);
-
-      // console.log(detail);
+     
 
       navigate("/login");
     } else {
@@ -725,13 +724,15 @@ export default function MemberRegister() {
                       [`& fieldset`]: {
                         borderRadius: "12px",
                       },
+                      
                     }}
                     value={state}
                     {...register("state")}
                     onChange={handleChangeState}
+                    MenuProps={{ PaperProps: { style: { maxHeight: '200px' } } }}
                   >
                     {allStates.map((option) => (
-                      <MenuItem key={option.isoCode} value={option.isoCode}>
+                      <MenuItem key={option.isoCode} value={option.isoCode}  >
                         {option.name}
                       </MenuItem>
                     ))}
@@ -753,6 +754,7 @@ export default function MemberRegister() {
                     value={city}
                     {...register("city")}
                     onChange={handleChangeCity}
+                    MenuProps={{ PaperProps: { style: { maxHeight: '200px' } } }}
                   >
                     {allCities.map((option: any) => (
                       <MenuItem key={option.name} value={option.name}>

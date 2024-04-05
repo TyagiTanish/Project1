@@ -207,7 +207,7 @@ function AddRooms({ setRender, showCategories }: any) {
       <Button
         onClick={handleOpen}
         variant="contained"
-        color="error"
+       
         sx={{ float: "right", width: 150 }}
       >
         <FormattedMessage defaultMessage={"Add Room +"} />

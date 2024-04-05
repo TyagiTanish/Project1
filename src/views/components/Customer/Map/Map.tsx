@@ -24,17 +24,28 @@ const SimpleMap = ({ filteredData, setToggle }: any) => {
 
     // Array of marker coordinates
     const locations = filteredData?.map((item: any) => {
-      const coordinates = [
-        JSON.parse(item?.location?.longitude),
-        JSON.parse(item?.location?.latitude),
-      ];
-      const title = item?.hotelName;
-      const description = `${item?.city}, ${item?.state}, ${item?.country}`;
-      const image = item.photo;
-      const id = item._id;
-      return { title, description, coordinates, image, id };
-    });
-
+      // Parse longitude and latitude values
+      const longitude = parseFloat(item?.location?.longitude);
+      const latitude = parseFloat(item?.location?.latitude);
+  
+      // Check if longitude and latitude are valid numbers
+      if (!isNaN(longitude) && !isNaN(latitude)) {
+          // Valid coordinates
+          const coordinates = [longitude, latitude];
+          const title = item?.hotelName;
+          const description = `${item?.city}, ${item?.state}, ${item?.country}`;
+          const image = item.photo;
+          const id = item._id;
+          
+          return { title, description, coordinates, image, id };
+      } else {
+          // Invalid coordinates, log a warning and return null
+          console.warn("Invalid coordinates:", item?.location?.longitude, item?.location?.latitude);
+          return null;
+      }
+  }).filter((location:any) => location !== null); // Remove entries with invalid coordinates
+  
+  
     // Add markers to the map
     locations?.forEach((location: any) => {
       const popup = new mapboxgl.Popup()

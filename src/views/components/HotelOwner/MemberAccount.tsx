@@ -26,7 +26,7 @@ function Account() {
       <Box
         sx={{
           ml: { sm: 10, md: 15, xl: 50 },
-          mt: 5,
+          mt: 3,
           fontFamily: "Proxima Vara,Arial,Helvetica,Sans,Sans-Serif",
           display: "flex",
           flexDirection: "row",
@@ -34,7 +34,7 @@ function Account() {
       >
         <Box sx={{ display: "flex", flexDirection: "column" }}>
           <Typography
-            sx={{ width: 300, mt: 2, fontSize: { xl: 18, md: 16, sm: 14 } }}
+            sx={{ width: 300, mt: 2, fontSize: { xl: 25, md: 16, sm: 14 } }}
           >
             <FormattedMessage defaultMessage="Personal Information" />
           </Typography>

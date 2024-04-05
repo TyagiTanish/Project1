@@ -119,10 +119,22 @@
       "value": "informations personnelles"
     }
   ],
+  "1ysYAx": [
+    {
+      "type": 0,
+      "value": "Le nom de l'État est requis"
+    }
+  ],
   "25WwxF": [
     {
       "type": 0,
       "value": "Vous n'avez pas de compte ?"
+    }
+  ],
+  "2EwzO4": [
+    {
+      "type": 0,
+      "value": "Ancien mot de passe est incorrect"
     }
   ],
   "2HUE26": [
@@ -215,6 +227,12 @@
       "value": "Il y a une réservation aujourd'hui"
     }
   ],
+  "41XwY/": [
+    {
+      "type": 0,
+      "value": "Le nom doit contenir au moins 3 lettres"
+    }
+  ],
   "47FYwb": [
     {
       "type": 0,
@@ -243,6 +261,12 @@
     {
       "type": 0,
       "value": "Images des chambres"
+    }
+  ],
+  "55hdQy": [
+    {
+      "type": 0,
+      "value": "Devise"
     }
   ],
   "5A6hoi": [
@@ -285,6 +309,12 @@
     {
       "type": 0,
       "value": "Offrant une vue imprenable sur la mer d'Oman dans la capitale commerciale de l'Inde, l'InterContinental Marine Drive établit des normes en matière de service personnalisé pour les voyageurs d'affaires et de loisirs. L'expérience commence lorsque l'horizon scintillant de Mumbai, appelé à juste titre le Collier de la Reine, vous accueille. Entrez dans l'InterContinental Marine Drive et l'attention chaleureuse et personnalisée vous aidera à vous détendre. L'InterContinental Marine Drive est stratégiquement situé au cœur du quartier des affaires et financier de Mumbai, à 1,5 km de Nariman Point et à 3 km de la principale zone commerçante de Colaba. Vous offrant le luxe primordial de gagner du temps pendant votre travail. Les installations de communication et de réunion d'affaires ultramodernes optimisent davantage la gestion du temps."
+    }
+  ],
+  "5b7A7T": [
+    {
+      "type": 0,
+      "value": "Le nom du pays est obligatoire"
     }
   ],
   "5sg7KC": [
@@ -359,6 +389,12 @@
       "value": "Description de la pièce:"
     }
   ],
+  "7imKkI": [
+    {
+      "type": 0,
+      "value": "Entrez vos identifiants pour accéder à votre compte"
+    }
+  ],
   "7lsiX8": [
     {
       "type": 0,
@@ -375,6 +411,18 @@
     {
       "type": 0,
       "value": "Tous les hôtels"
+    }
+  ],
+  "8ZB+UZ": [
+    {
+      "type": 0,
+      "value": "Monnaie de paiement*"
+    }
+  ],
+  "8Zr2SI": [
+    {
+      "type": 0,
+      "value": "Le nom du propriétaire"
     }
   ],
   "8oWVZA": [
@@ -677,6 +725,12 @@
       "value": "Entrez la description de l'hôtel...."
     }
   ],
+  "Gvxoji": [
+    {
+      "type": 0,
+      "value": "Le nom est requis"
+    }
+  ],
   "GzxlXs": [
     {
       "type": 0,
@@ -801,6 +855,12 @@
     {
       "type": 0,
       "value": "Pays:"
+    }
+  ],
+  "K2oKVV": [
+    {
+      "type": 0,
+      "value": "Le nom de la ville est obligatoire"
     }
   ],
   "K3r6DQ": [
@@ -947,6 +1007,12 @@
       "value": "Les détails de réservation"
     }
   ],
+  "OecwUv": [
+    {
+      "type": 0,
+      "value": "Le numéro de téléphone est obligatoire"
+    }
+  ],
   "OgF6Am": [
     {
       "type": 0,
@@ -1065,6 +1131,12 @@
     {
       "type": 0,
       "value": "Ajouter une pièce +"
+    }
+  ],
+  "RDExXR": [
+    {
+      "type": 0,
+      "value": "Le code PIN est requis"
     }
   ],
   "RLXaEm": [
@@ -1187,6 +1259,12 @@
       "value": "Hôtel"
     }
   ],
+  "V7vxlC": [
+    {
+      "type": 0,
+      "value": "Le code PIN doit être un chiffre"
+    }
+  ],
   "VHWEyT": [
     {
       "type": 0,
@@ -1271,6 +1349,12 @@
       "value": "Éléments de menu...."
     }
   ],
+  "XnwjvE": [
+    {
+      "type": 0,
+      "value": "EUR €"
+    }
+  ],
   "Y2s5iu": [
     {
       "type": 0,
@@ -1317,6 +1401,12 @@
     {
       "type": 0,
       "value": "Statut de paiement"
+    }
+  ],
+  "Z08msU": [
+    {
+      "type": 0,
+      "value": "INR ₹"
     }
   ],
   "ZT1AQD": [
@@ -1433,6 +1523,12 @@
       "value": "Entrez le code postal"
     }
   ],
+  "deksVw": [
+    {
+      "type": 0,
+      "value": "Supprimer l'hôtel"
+    }
+  ],
   "dfXq0N": [
     {
       "type": 0,
@@ -1481,6 +1577,12 @@
       "value": "Voulez-vous supprimer une salle?"
     }
   ],
+  "eFPkDO": [
+    {
+      "type": 0,
+      "value": "La devise est requise"
+    }
+  ],
   "eQRxMR": [
     {
       "type": 0,
@@ -1491,6 +1593,12 @@
     {
       "type": 0,
       "value": "Code Postal. doit être un nombre"
+    }
+  ],
+  "ebXoWR": [
+    {
+      "type": 0,
+      "value": "Mis à jour avec succés"
     }
   ],
   "esvUBZ": [
@@ -1853,6 +1961,12 @@
       "value": "De luxe"
     }
   ],
+  "odXlk8": [
+    {
+      "type": 0,
+      "value": "Se connecter"
+    }
+  ],
   "ozyoh7": [
     {
       "type": 0,
@@ -2081,6 +2195,12 @@
       "value": "Book Now"
     }
   ],
+  "wwc7MP": [
+    {
+      "type": 0,
+      "value": "Nom d'utilisateur mis à jour avec succès"
+    }
+  ],
   "x+EcXU": [
     {
       "type": 0,
@@ -2109,6 +2229,12 @@
     {
       "type": 0,
       "value": "Peignoirs et pantoufles"
+    }
+  ],
+  "xdqpxQ": [
+    {
+      "type": 0,
+      "value": "Le nom doit comporter au moins 3 caractères"
     }
   ],
   "xmcVZ0": [

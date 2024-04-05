@@ -107,10 +107,22 @@
       "value": "Personal Information"
     }
   ],
+  "1ysYAx": [
+    {
+      "type": 0,
+      "value": "State name is required"
+    }
+  ],
   "25WwxF": [
     {
       "type": 0,
       "value": "Don't have an account?"
+    }
+  ],
+  "2EwzO4": [
+    {
+      "type": 0,
+      "value": "Old Password is Incorrect"
     }
   ],
   "2HUE26": [
@@ -167,18 +179,6 @@
       "value": "Check in: 15:00"
     }
   ],
-  "3O6vm3": [
-    {
-      "type": 0,
-      "value": "First Letter of Country name should be capital and name should be string"
-    }
-  ],
-  "3SVI5p": [
-    {
-      "type": 0,
-      "value": "Warning"
-    }
-  ],
   "3VI9mt": [
     {
       "type": 0,
@@ -203,16 +203,16 @@
       "value": "There is a booking today"
     }
   ],
+  "41XwY/": [
+    {
+      "type": 0,
+      "value": "Name should contain at least 3 letters"
+    }
+  ],
   "47FYwb": [
     {
       "type": 0,
       "value": "Cancel"
-    }
-  ],
-  "4OjOXO": [
-    {
-      "type": 0,
-      "value": "Please enter your email to continue"
     }
   ],
   "4UoaOO": [
@@ -233,6 +233,12 @@
       "value": "Room Images"
     }
   ],
+  "55hdQy": [
+    {
+      "type": 0,
+      "value": "Currency"
+    }
+  ],
   "5A6hoi": [
     {
       "type": 0,
@@ -251,12 +257,6 @@
       "value": "Mg Road"
     }
   ],
-  "5GxMk2": [
-    {
-      "type": 0,
-      "value": "Add hotel & Get ₹500 OYO Money"
-    }
-  ],
   "5Qhl64": [
     {
       "type": 0,
@@ -267,6 +267,12 @@
     {
       "type": 0,
       "value": "Hotels in Gurgaon"
+    }
+  ],
+  "5b7A7T": [
+    {
+      "type": 0,
+      "value": "Country name is required"
     }
   ],
   "5sg7KC": [
@@ -335,6 +341,12 @@
       "value": "Room Description:"
     }
   ],
+  "7imKkI": [
+    {
+      "type": 0,
+      "value": "Enter your credentials to access your account"
+    }
+  ],
   "7lsiX8": [
     {
       "type": 0,
@@ -353,6 +365,18 @@
       "value": "All Hotels"
     }
   ],
+  "8ZB+UZ": [
+    {
+      "type": 0,
+      "value": "Payment Currency *"
+    }
+  ],
+  "8Zr2SI": [
+    {
+      "type": 0,
+      "value": "Owner Name"
+    }
+  ],
   "8pvKg1": [
     {
       "type": 0,
@@ -363,12 +387,6 @@
     {
       "type": 0,
       "value": "Popular Locations"
-    }
-  ],
-  "8wrF/p": [
-    {
-      "type": 0,
-      "value": "Zip Code must be a number"
     }
   ],
   "8xVmzh": [
@@ -413,12 +431,6 @@
       "value": "Photos"
     }
   ],
-  "9mXFUz": [
-    {
-      "type": 0,
-      "value": "No Results Match your search"
-    }
-  ],
   "9uOFF3": [
     {
       "type": 0,
@@ -455,12 +467,6 @@
       "value": "Enter Your Personal Details...."
     }
   ],
-  "AyGauy": [
-    {
-      "type": 0,
-      "value": "Login"
-    }
-  ],
   "BSij1a": [
     {
       "type": 0,
@@ -489,12 +495,6 @@
     {
       "type": 0,
       "value": "Logout"
-    }
-  ],
-  "CC/6/1": [
-    {
-      "type": 0,
-      "value": "Minimum length should be 3"
     }
   ],
   "CDQSzi": [
@@ -623,6 +623,12 @@
       "value": "Enter Hotel Discription...."
     }
   ],
+  "Gvxoji": [
+    {
+      "type": 0,
+      "value": "Name is required"
+    }
+  ],
   "GzxlXs": [
     {
       "type": 0,
@@ -639,12 +645,6 @@
     {
       "type": 0,
       "value": "Name"
-    }
-  ],
-  "HBbJIL": [
-    {
-      "type": 0,
-      "value": "There's a smarter way to OYO around"
     }
   ],
   "HOmXxw": [
@@ -737,6 +737,12 @@
       "value": "Country:"
     }
   ],
+  "K2oKVV": [
+    {
+      "type": 0,
+      "value": "City name is required"
+    }
+  ],
   "K3r6DQ": [
     {
       "type": 0,
@@ -759,12 +765,6 @@
     {
       "type": 0,
       "value": "Cyber Security"
-    }
-  ],
-  "KkDJ/P": [
-    {
-      "type": 0,
-      "value": "Sign up & Get ₹500 OYO Money"
     }
   ],
   "KlvzVf": [
@@ -795,12 +795,6 @@
     {
       "type": 0,
       "value": "Guest name"
-    }
-  ],
-  "Lmlys/": [
-    {
-      "type": 0,
-      "value": "State is required"
     }
   ],
   "LpTgVJ": [
@@ -845,12 +839,6 @@
       "value": "Account Settings"
     }
   ],
-  "NRJ2ln": [
-    {
-      "type": 0,
-      "value": "minimum length should be 3"
-    }
-  ],
   "NhX4DJ": [
     {
       "type": 0,
@@ -879,6 +867,12 @@
     {
       "type": 0,
       "value": "Booking Details"
+    }
+  ],
+  "OecwUv": [
+    {
+      "type": 0,
+      "value": "Phone Number is a required"
     }
   ],
   "OgF6Am": [
@@ -1001,6 +995,12 @@
       "value": "Add Room +"
     }
   ],
+  "RDExXR": [
+    {
+      "type": 0,
+      "value": "Pin Code is required"
+    }
+  ],
   "RLXaEm": [
     {
       "type": 0,
@@ -1109,6 +1109,12 @@
       "value": "Hotel"
     }
   ],
+  "V7vxlC": [
+    {
+      "type": 0,
+      "value": "Pin Code must be a number"
+    }
+  ],
   "VHWEyT": [
     {
       "type": 0,
@@ -1133,12 +1139,6 @@
       "value": "Phone No:"
     }
   ],
-  "W435jR": [
-    {
-      "type": 0,
-      "value": "City is required"
-    }
-  ],
   "W6urRz": [
     {
       "type": 0,
@@ -1155,12 +1155,6 @@
     {
       "type": 0,
       "value": "Phone No."
-    }
-  ],
-  "WsjDFp": [
-    {
-      "type": 0,
-      "value": "First Letter of City name should be capital and name should be string"
     }
   ],
   "WwY6F2": [
@@ -1191,6 +1185,12 @@
     {
       "type": 0,
       "value": "Menu Items...."
+    }
+  ],
+  "XnwjvE": [
+    {
+      "type": 0,
+      "value": "EUR €"
     }
   ],
   "Y2s5iu": [
@@ -1241,6 +1241,12 @@
       "value": "Payment Status"
     }
   ],
+  "Z08msU": [
+    {
+      "type": 0,
+      "value": "INR ₹"
+    }
+  ],
   "ZT1AQD": [
     {
       "type": 0,
@@ -1275,12 +1281,6 @@
     {
       "type": 0,
       "value": "Guest Policies"
-    }
-  ],
-  "a5msuh": [
-    {
-      "type": 0,
-      "value": "Yes"
     }
   ],
   "acrOoz": [
@@ -1355,6 +1355,12 @@
       "value": "Enter Postal code"
     }
   ],
+  "deksVw": [
+    {
+      "type": 0,
+      "value": "Delete Hotel"
+    }
+  ],
   "dfXq0N": [
     {
       "type": 0,
@@ -1403,6 +1409,12 @@
       "value": "Do you Want to Delete room?"
     }
   ],
+  "eFPkDO": [
+    {
+      "type": 0,
+      "value": "Currency is required"
+    }
+  ],
   "eQRxMR": [
     {
       "type": 0,
@@ -1413,6 +1425,12 @@
     {
       "type": 0,
       "value": "Postal Code. must be a number"
+    }
+  ],
+  "ebXoWR": [
+    {
+      "type": 0,
+      "value": "Updated Successfully"
     }
   ],
   "esvUBZ": [
@@ -1577,12 +1595,6 @@
       "value": "Member Details-"
     }
   ],
-  "jlqOPq": [
-    {
-      "type": 0,
-      "value": "Country is required"
-    }
-  ],
   "jvaZOr": [
     {
       "type": 0,
@@ -1613,12 +1625,6 @@
       "value": "Suite"
     }
   ],
-  "kcNawJ": [
-    {
-      "type": 0,
-      "value": "Pin Your Location On Map...."
-    }
-  ],
   "kg6n2g": [
     {
       "type": 0,
@@ -1643,12 +1649,6 @@
       "value": "Type is required"
     }
   ],
-  "ky/NSF": [
-    {
-      "type": 0,
-      "value": "First Letter of State name should be capital and name should be string"
-    }
-  ],
   "lRJWXn": [
     {
       "type": 0,
@@ -1671,12 +1671,6 @@
     {
       "type": 0,
       "value": "Owner Details"
-    }
-  ],
-  "lqSLwV": [
-    {
-      "type": 0,
-      "value": "There's a smarter way to OYO aroundties"
     }
   ],
   "mI63KF": [
@@ -1739,12 +1733,6 @@
       "value": "Guest Email"
     }
   ],
-  "oUWADl": [
-    {
-      "type": 0,
-      "value": "No"
-    }
-  ],
   "oUWTom": [
     {
       "type": 0,
@@ -1755,6 +1743,12 @@
     {
       "type": 0,
       "value": "Deluxe"
+    }
+  ],
+  "odXlk8": [
+    {
+      "type": 0,
+      "value": "Log in"
     }
   ],
   "ozyoh7": [
@@ -1773,12 +1767,6 @@
     {
       "type": 0,
       "value": "Download OYO app for exciting offers."
-    }
-  ],
-  "pU++Lb": [
-    {
-      "type": 0,
-      "value": "Name should contain at least 5 letters"
     }
   ],
   "puODkp": [
@@ -1821,12 +1809,6 @@
     {
       "type": 0,
       "value": "Log In"
-    }
-  ],
-  "r6Hj+h": [
-    {
-      "type": 0,
-      "value": "Points Calendar"
     }
   ],
   "rvirM2": [
@@ -1919,12 +1901,6 @@
       "value": "Booking Status"
     }
   ],
-  "vNbJei": [
-    {
-      "type": 0,
-      "value": "Email-"
-    }
-  ],
   "vONi+O": [
     {
       "type": 0,
@@ -1979,6 +1955,12 @@
       "value": "Book Now"
     }
   ],
+  "wwc7MP": [
+    {
+      "type": 0,
+      "value": "Username updated successfully"
+    }
+  ],
   "x+EcXU": [
     {
       "type": 0,
@@ -2009,6 +1991,12 @@
       "value": "Bath robes and slippers"
     }
   ],
+  "xdqpxQ": [
+    {
+      "type": 0,
+      "value": "Name must have minimun 3 characters"
+    }
+  ],
   "xmcVZ0": [
     {
       "type": 0,
@@ -2031,12 +2019,6 @@
     {
       "type": 0,
       "value": "All Cities"
-    }
-  ],
-  "yGJ420": [
-    {
-      "type": 0,
-      "value": "Zip Code is required"
     }
   ],
   "yrx0I+": [
