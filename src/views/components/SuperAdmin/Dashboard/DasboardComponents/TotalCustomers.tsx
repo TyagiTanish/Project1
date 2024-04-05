@@ -9,45 +9,29 @@ import { ArrowDown as ArrowDownIcon } from "@phosphor-icons/react/dist/ssr/Arrow
 import { ArrowUp as ArrowUpIcon } from "@phosphor-icons/react/dist/ssr/ArrowUp";
 import { CurrencyDollar as CurrencyDollarIcon } from "@phosphor-icons/react/dist/ssr/CurrencyDollar";
 import { useSelector } from "react-redux";
-import CurrencyRupeeIcon from "@mui/icons-material/CurrencyRupee";
 export interface BudgetProps {
   diff?: number;
   trend: "up" | "down";
   sx?: SxProps;
-  value: string;
-  bookingData: any;
+  customers: any;
 }
 
-export function TotalEarnings({
+export function TotalCustomers({
   diff = 12,
   trend = "up",
   sx,
-  value = "$24k",
-  bookingData,
+  customers,
 }: BudgetProps): React.JSX.Element {
-  const locale = useSelector((state: any) => state?.userReducer?.locale);
-
   const TrendIcon = trend === "up" ? ArrowUpIcon : ArrowDownIcon;
   const trendColor =
     trend === "up"
       ? "var(--mui-palette-success-main)"
       : "var(--mui-palette-error-main)";
-  const [totalEarnings, setTotalEarnings] = React.useState(0);
+  const [totalCustomers, setTotalCustomers] = React.useState(customers?.length);
 
   React.useMemo(() => {
-    setTotalEarnings(0);
-    bookingData?.map((booking: any) => {
-      if (booking?.paymentStatus === "paid") {
-        setTotalEarnings(
-          (prev: any) =>
-            prev +
-            (locale === "fr"
-              ? Math.floor(Number(booking?.paymentId?.amount) / 90)
-              : Number(booking?.paymentId?.amount))
-        );
-      }
-    });
-  }, [bookingData, locale]);
+    setTotalCustomers(customers?.length);
+  }, [customers]);
 
   return (
     <Card sx={sx}>
@@ -60,18 +44,9 @@ export function TotalEarnings({
           >
             <Stack spacing={1}>
               <Typography color="text.secondary" variant="overline">
-                Total Earnings
+                Total Customers
               </Typography>
-              <Typography variant="h4">
-                {locale === "en" ? (
-                  <>
-                    <CurrencyRupeeIcon />
-                    {totalEarnings}
-                  </>
-                ) : (
-                  `€${totalEarnings}`
-                )}
-              </Typography>
+              <Typography variant="h4">{totalCustomers}</Typography>
             </Stack>
             <Avatar
               sx={{

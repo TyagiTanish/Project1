@@ -171,7 +171,7 @@ export default function SuperAdminView() {
                 direction={"row"}
                 spacing={3}
                 alignItems={"center"}
-                height={"2vh"}
+                height={"4vh"}
               >
                 {" "}
                 {!open && <Logo />}
@@ -203,8 +203,7 @@ export default function SuperAdminView() {
                     {user?.role?.toUpperCase()}
                   </Typography>
                 </Stack>
-             <Menu />
-                
+                <Menu />
               </Stack>
             </Stack>
           </Toolbar>
@@ -243,6 +242,10 @@ export default function SuperAdminView() {
                     borderRadius: 100,
                     backgroundColor: "lightGray",
                   },
+                }}
+                onClick={() => {
+                  setSelectedIndex(2);
+                  navigate("/superAdmin");
                 }}
               >
                 <ListItemIcon
@@ -441,7 +444,7 @@ export default function SuperAdminView() {
             </ListItem>
           </List> */}
         </Drawer>
-        <Box sx={{ flexGrow: 1, p: 2, overflow: "auto", height: "100vh" }}>
+        <Box sx={{ flexGrow: 1, overflow: "auto", height: "100vh" }}>
           <DrawerHeader />
           <Outlet />
         </Box>

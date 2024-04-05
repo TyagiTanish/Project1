@@ -1,6 +1,6 @@
 import React from "react";
 import { useMutation } from "react-query";
-import useAuth from "../useAuth/useAuth";
+import useAuth from "./useAuth/useAuth";
 
 const useAllBookings = () => {
   const { request } = useAuth();
@@ -14,8 +14,9 @@ const useAllBookings = () => {
     isLoading,
     isError,
     data,
+    isSuccess,
   } = useMutation("/allBookings", bookings);
-  return { AllBooking, isLoading, isError, data };
+  return { AllBooking, isLoading, isError, data, isSuccess };
 };
 
 export default useAllBookings;

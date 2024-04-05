@@ -8,7 +8,7 @@ import { TotalCustomers } from "./dashBoardComponents/TotalCustomers";
 import { BookingChart } from "./dashBoardComponents/BookingChart";
 import { LatestBookings } from "./dashBoardComponents/LatestBookings";
 import { Stack } from "@mui/material";
-import useAllBookings from "../../../../Hooks/Member/useAllBookings";
+import useAllBookings from "../../../../Hooks/useAllBookings";
 import { AcceptedBookings } from "./dashBoardComponents/AcceptedBookings";
 import { PendingBookings } from "./dashBoardComponents/PendingBookings";
 import Remainder from "./dashBoardComponents/reminder";

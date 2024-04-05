@@ -36,7 +36,7 @@ import { FormattedMessage, useIntl } from "react-intl";
 import PaymentMethods from "./PaymentMethods";
 import MenuItem from "@mui/material/MenuItem";
 
-import { SelectChangeEvent } from '@mui/material/Select';
+import { SelectChangeEvent } from "@mui/material/Select";
 /**
  * for entering details of a user and checking the payment , Markdown is *Billing*.
  */
@@ -98,16 +98,9 @@ const Billing = () => {
   var enddate: any = useSelector((state: any) => state?.userReducer?.end);
 
   const calculateDifference = () => {
-    // console.log(enddate.slice(6, 9), startdate.slice(4, 6));
-    startdate = moment(startdate, "MMMM Do YYYY");
-    enddate = moment(enddate, "MMMM Do YYYY");
-    // const startDateArray = startdate.split(" ");
-    // const startDay = parseInt(startDateArray[1]);
-    // const endDateArray = enddate.split(" ");
-    // const endDay = parseInt(endDateArray[1]);
-    console.log(startdate);
-    // const diff = Number(endDay) - Number(startDay);
-    var duration = moment.duration(enddate.diff(startdate));
+    let start = moment(startdate, "MMMM Do YYYY");
+    let end = moment(enddate, "MMMM Do YYYY");
+    var duration = moment.duration(end.diff(start));
     var differenceInDays = duration.asDays();
     setDifference({
       days: differenceInDays,
@@ -123,17 +116,6 @@ const Billing = () => {
   let totalRooms;
   let totalGuests: any;
 
-  // useEffect(() => {
-  //   var result = 0;
-  //   var Rooms = 0;
-  //   parsedData.forEach((element: any) => {
-  //     result = result + +element.guest;
-  //     Rooms = Rooms + 1;
-  //   });
-  //   totalRooms = Rooms;
-  //   totalGuests = result;
-  // }, [totalRooms, totalGuests]);
-
   const [bookingId, setBookingId] = useState();
   const [result, setResult] = useState<any>({});
   const [displayLoader, setDisplayLoader] = useState(false);
@@ -143,13 +125,10 @@ const Billing = () => {
   const [submitButton, setSubmitButton] = useState(false);
   const navigate = useNavigate();
   const language = useSelector((state: any) => state?.userReducer?.locale);
-  console.log("Language from Redux:", language); // Debugging
 
   const [age, setAge] = useState<string>(
     language === "en" ? "Indian Rupee ₹" : "Euro €"
   );
-  console.log("Initial Age:", age); 
-console.log()
   const handleChange = (event: SelectChangeEvent) => {
     setAge(event.target.value as string);
   };
@@ -160,11 +139,10 @@ console.log()
       setSubmitButton(true);
     }
   };
-useMemo(()=>{
-    const lang=  language === "en" ? "Indian Rupee ₹" : "Euro €";
+  useMemo(() => {
+    const lang = language === "en" ? "Indian Rupee ₹" : "Euro €";
     setAge(lang as string);
-
-},[language])
+  }, [language]);
   const handleCheckbox = () => {
     if (guest === true) {
       setGuest(false);
@@ -181,7 +159,7 @@ useMemo(()=>{
     email: any;
     guestName: string | undefined;
     guestEmail: string | undefined;
-    currency:any | undefined
+    currency: any | undefined;
   }
   const intl = useIntl();
   const FormSchema = Yup.object().shape({
@@ -217,10 +195,8 @@ useMemo(()=>{
             "Phone No. must not contain any special character and should start with 9 , 7 or 8",
         })
       ),
-      currency: Yup.string()
-      .required("Curerency field is required")
-     
-     ,
+    currency: Yup.string().required("Curerency field is required"),
+
     guestName: Yup.string()
       .matches(
         /^[a-zA-Z]+(?: [a-zA-Z]+)?$/,
@@ -252,7 +228,7 @@ useMemo(()=>{
     data.totalRooms = totalRoomsAndGuests?.rooms;
     data.roomId = roomDetails?._id;
     data.price = RoomPrice;
-    
+
     console.log(data);
     setData(data);
     if (user) {
@@ -374,7 +350,7 @@ useMemo(()=>{
                       defaultValue={user?.phone}
                       // autoComplete="current-password"
                     />
-                       <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
+                    <Typography sx={{ fontWeight: "Bolder", mb: 1, mt: 1 }}>
                       <FormattedMessage defaultMessage="Payment Currency *" />
                     </Typography>
                     {errors.phone?.message && (
@@ -382,18 +358,19 @@ useMemo(()=>{
                         {errors.phone?.message.toString()}
                       </FormHelperText>
                     )}
-     <FormControl fullWidth>
-      <Select
-        id="demo-simple-select"
-        value={age}
-        {...register("currency")}
-        onChange={handleChange}
-       
-      >
-        <MenuItem value="Indian Rupee ₹">Indian Rupee ₹</MenuItem>
-        <MenuItem value="Euro €">Euro €</MenuItem>
-      </Select>
-    </FormControl>
+                    <FormControl fullWidth>
+                      <Select
+                        id="demo-simple-select"
+                        value={age}
+                        {...register("currency")}
+                        onChange={handleChange}
+                      >
+                        <MenuItem value="Indian Rupee ₹">
+                          Indian Rupee ₹
+                        </MenuItem>
+                        <MenuItem value="Euro €">Euro €</MenuItem>
+                      </Select>
+                    </FormControl>
                     {errors.currency?.message && (
                       <FormHelperText sx={{ color: "red" }}>
                         {errors.currency?.message.toString()}

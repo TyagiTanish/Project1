@@ -27,6 +27,7 @@ import ProfileBox from "../OtherComponents/ProfileBox";
 import BookingDetails from "../Customer/AccountSettings/BookingDetails";
 import ShowCustomerBooking from "../Customer/AccountSettings/ShowCustomerBooking";
 import PrivateRoute from "./Authentication/PrivateRoute";
+import SuperAdminDashboard from "../SuperAdmin/Dashboard/SuperAdminDashboard";
 
 /**
  * Contains all the routers used within the webApp , Markdown is *Router*.
@@ -41,6 +42,15 @@ const router = [
       </SuperAdminRoute>
     ),
     children: [
+      {
+        index: true,
+        path: "/superAdmin",
+        element: (
+          <SuperAdminRoute>
+            <SuperAdminDashboard />
+          </SuperAdminRoute>
+        ),
+      },
       {
         path: "/superAdmin/users",
         element: (

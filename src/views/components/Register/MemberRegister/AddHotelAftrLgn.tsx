@@ -111,34 +111,34 @@ export default function AddHotelAftrLgn() {
       icon: <IconUsersGroup stroke={2} />,
       index: "7",
     },
-    {
-      id: "parking",
-      label: "Parking",
-      icon: <IconParkingCircle stroke={2} />,
-      index: 8,
-    },
-    { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
-    { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
-    {
-      id: "roomService",
-      label: "Room Service",
-      icon: <IconHotelService stroke={2} />,
-      index: 11,
-    },
-    { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 12 },
-    {
-      id: "dryClean",
-      label: "DryClean",
-      icon: <IconWashMachine stroke={2} />,
-      index: 13,
-    },
-    { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
-    {
-      id: "meeting",
-      label: "Meeting",
-      icon: <IconUsersGroup stroke={2} />,
-      index: 15,
-    },
+    // {
+    //   id: "parking",
+    //   label: "Parking",
+    //   icon: <IconParkingCircle stroke={2} />,
+    //   index: 8,
+    // },
+    // { id: "wifi", label: "Wifi", icon: <IconWifi stroke={2} />, index: 9 },
+    // { id: "pool", label: "Pool", icon: <IconSwimming stroke={2} />, index: 10 },
+    // {
+    //   id: "roomService",
+    //   label: "Room Service",
+    //   icon: <IconHotelService stroke={2} />,
+    //   index: 11,
+    // },
+    // { id: "gym", label: "Gym", icon: <IconBarbell stroke={2} />, index: 12 },
+    // {
+    //   id: "dryClean",
+    //   label: "DryClean",
+    //   icon: <IconWashMachine stroke={2} />,
+    //   index: 13,
+    // },
+    // { id: "bar", label: "Bar", icon: <IconGlassGin stroke={2} />, index: 14 },
+    // {
+    //   id: "meeting",
+    //   label: "Meeting",
+    //   icon: <IconUsersGroup stroke={2} />,
+    //   index: 15,
+    // },
   ];
 
   const [content, setContent] = useState("");
@@ -736,53 +736,48 @@ export default function AddHotelAftrLgn() {
               <></>
             ) : step === 3 ? (
               <form>
-                <Stack
-                  ml={2}
-                  direction={"column"}
-                  maxWidth={{ lg: 500, md: 400 }}
-                >
-                  {screenSize > 768 ? (
-                    <Grid
-                      container
-                      rowSpacing={2}
-                      columnSpacing={{ xs: 1, sm: 2, md: 5 }}
-                      xs={12}
-                    >
-                      {amenitie.map((item, index) => (
-                        <Grid item xs={3} key={index}>
-                          <FormGroup>
-                            <Button
+                {screenSize > 768 ? (
+                  <Grid
+                    container
+                    rowSpacing={2}
+                    columnSpacing={{ xs: 1, sm: 2, md: 5 }}
+                    xs={12}
+                  >
+                    {amenitie.map((item, index) => (
+                      <Grid item xs={3} key={index}>
+                        <FormGroup>
+                          <Button
+                            sx={{
+                              alignItems: "center",
+                              justifyContent: "center",
+                              textDecoration: "none",
+                              ":hover": { bgcolor: "white" },
+                            }}
+                            onClick={() => {
+                              if (arr.find((item: any) => item === index)) {
+                                // arr.delete(value);
+                                setArr(arr.filter((i: any) => i !== index));
+                              } else {
+                                // arr.push(value);
+                                setArr([...arr, index]);
+                              }
+                            }}
+                          >
+                            <Card
+                              variant="outlined"
                               sx={{
-                                alignItems: "center",
-                                justifyContent: "center",
-                                textDecoration: "none",
-                                ":hover": { bgcolor: "white" },
-                              }}
-                              onClick={() => {
-                                if (arr.find((item: any) => item === index)) {
-                                  // arr.delete(value);
-                                  setArr(arr.filter((i: any) => i !== index));
-                                } else {
-                                  // arr.push(value);
-                                  setArr([...arr, index]);
-                                }
+                                width: 100,
+                                height: "10vh",
+                                border: arr?.includes(index)
+                                  ? "3px solid skyblue "
+                                  : "",
+                                ":hover": { bgcolor: "transparent" },
+                                borderRadius: 2,
                               }}
                             >
-                              <Card
-                                variant="outlined"
-                                sx={{
-                                  width: 100,
-                                  height: "10vh",
-                                  border: arr?.includes(index)
-                                    ? "3px solid skyblue "
-                                    : "",
-                                  ":hover": { bgcolor: "transparent" },
-                                  borderRadius: 2,
-                                }}
-                              >
-                                <CardContent sx={{ justifyContent: "center" }}>
-                                  <Stack direction={"column"}>
-                                    {/* <Stack mt={-3} mr={-5}>
+                              <CardContent sx={{ justifyContent: "center" }}>
+                                <Stack direction={"column"}>
+                                  {/* <Stack mt={-3} mr={-5}>
                                      {arr.includes(index.toString()) ? (
                                        <FormControlLabel
                                          control={
@@ -808,65 +803,64 @@ export default function AddHotelAftrLgn() {
                                        />
                                      )}
                                    </Stack> */}
-                                    <Box>
-                                      <Box>{item.icon}</Box>
-                                      <Typography sx={{ fontSize: "12px" }}>
-                                        {item.label}
-                                      </Typography>
-                                    </Box>
-                                  </Stack>
-                                </CardContent>
-                              </Card>
-                            </Button>
-                          </FormGroup>
-                        </Grid>
-                      ))}
-                    </Grid>
-                  ) : (
-                    <Box sx={{ maxHeight: "200px", overflowY: "auto" }}>
-                      {amenitie.map((item, index) => (
-                        <FormGroup>
-                          <Stack
-                            direction={"row"}
-                            alignItems={"center"}
-                            spacing={1}
-                          >
-                            {item?.icon}
-                            {arr?.includes(index.toString()) ? (
-                              <FormControlLabel
-                                control={
-                                  <Checkbox
-                                    value={index}
-                                    defaultChecked
-                                    onChange={(e) => {
-                                      change(e);
-                                    }}
-                                  />
-                                }
-                                label={item?.label}
-                              />
-                            ) : (
-                              <FormControlLabel
-                                control={
-                                  <Checkbox
-                                    value={index}
-                                    onChange={(e) => {
-                                      change(e);
-                                    }}
-                                  />
-                                }
-                                label={item?.label}
-                              />
-                            )}
-                          </Stack>
+                                  <Box>
+                                    <Box>{item.icon}</Box>
+                                    <Typography sx={{ fontSize: "12px" }}>
+                                      {item.label}
+                                    </Typography>
+                                  </Box>
+                                </Stack>
+                              </CardContent>
+                            </Card>
+                          </Button>
                         </FormGroup>
-                      ))}
-                    </Box>
-                  )}
-                  {/* <FormHelperText sx={{ color: "red" }}>
+                      </Grid>
+                    ))}
+                  </Grid>
+                ) : (
+                  <Box sx={{ maxHeight: "200px", overflowY: "auto" }}>
+                    {amenitie.map((item, index) => (
+                      <FormGroup>
+                        <Stack
+                          direction={"row"}
+                          alignItems={"center"}
+                          spacing={1}
+                        >
+                          {item?.icon}
+                          {arr?.includes(index.toString()) ? (
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  value={index}
+                                  defaultChecked
+                                  onChange={(e) => {
+                                    change(e);
+                                  }}
+                                />
+                              }
+                              label={item?.label}
+                            />
+                          ) : (
+                            <FormControlLabel
+                              control={
+                                <Checkbox
+                                  value={index}
+                                  onChange={(e) => {
+                                    change(e);
+                                  }}
+                                />
+                              }
+                              label={item?.label}
+                            />
+                          )}
+                        </Stack>
+                      </FormGroup>
+                    ))}
+                  </Box>
+                )}
+                {/* <FormHelperText sx={{ color: "red" }}>
                         {errors.amenities?.message}
                       </FormHelperText> */}
-                </Stack>
 
                 <Stack direction={"row"} gap={2} mt={2}>
                   <Button
