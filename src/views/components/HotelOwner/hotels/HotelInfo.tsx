@@ -182,7 +182,7 @@ function HotelInfo({ setRender }: any) {
             </Button>
           </Stack>
           <Box ml={{ xl: -50, lg: -40, md: -25, sm: -15 }}>
-            <HotelAmenities amenities={data.amenities} />
+            <HotelAmenities amenities={String(data.amenities)} />
           </Box>
         </Stack>
 

@@ -321,68 +321,49 @@ export default function AddHotelAftrLgn() {
   });
 
   return (
-    <Grid
-      container
-      xs={12}
-      direction={"row"}
-      spacing={3}
-      width={"100%"}
-      alignItems={"center"}
-    >
-      <Grid item xs={7}>
-        <Box
-          component={"img"}
-          src={require("../../../../assets/Group 13.jpg")}
-          width={"55%"}
-          height={"100vh"}
-          position={"fixed"}
-          top={0}
-        />
-      </Grid>
+    <Grid>
+      <Stack>
+        <Box sx={{ alignSelf: "flex-end", mt: 4 }}>
+          <Language />
+        </Box>
+        <Box sx={{ alignSelf: "center" }}>
+          <Logo />
+        </Box>
+      </Stack>
 
-      <Grid item xs={4} mt={20} gap={3} p={2}>
-        <Stack width={700}>
-          <Box sx={{ alignSelf: "flex-end" }}>
-            <Language />
-          </Box>
-          <Box sx={{ alignSelf: "center" }}>
-            <Logo />
-          </Box>
-        </Stack>
+      <Box>
+        {/* {display && <Loaders />} */}
 
-        <Box>
-          {/* {display && <Loaders />} */}
+        {step === 0 && (
+          <Typography
+            sx={{
+              m: "1%",
+              fontWeight: "bold",
+              fontFamily: "Roboto,sans-serif",
+              fontSize: { xl: "25px", md: "20px", sm: 15 },
+              textAlign: "center",
+              // mt: -50,
+              width: 520,
+            }}
+          >
+            <FormattedMessage defaultMessage="Add Hotel Details.." />
+          </Typography>
+        )}
 
-          {step === 0 && (
-            <Typography
-              sx={{
-                m: "1%",
-                fontWeight: "bold",
-                fontFamily: "Roboto,sans-serif",
-                fontSize: { xl: "25px", md: "20px", sm: 15 },
-                textAlign: "center",
-                // mt: -50,
-                width: 520,
-              }}
-            >
-              <FormattedMessage defaultMessage="Add Hotel Details.." />
-            </Typography>
-          )}
-
-          {step === 1 && (
-            <Typography
-              sx={{
-                m: "1%",
-                fontWeight: "bold",
-                fontFamily: "Inter,sans-serif",
-                fontSize: { xl: "25px", md: "20px", sm: 15 },
-                textAlign: "center",
-              }}
-            >
-              <FormattedMessage defaultMessage="Add Hotel Location" />
-            </Typography>
-          )}
-          {/* {step === 4 && (
+        {step === 1 && (
+          <Typography
+            sx={{
+              m: "1%",
+              fontWeight: "bold",
+              fontFamily: "Inter,sans-serif",
+              fontSize: { xl: "25px", md: "20px", sm: 15 },
+              textAlign: "center",
+            }}
+          >
+            <FormattedMessage defaultMessage="Add Hotel Location" />
+          </Typography>
+        )}
+        {/* {step === 4 && (
             <Typography
               sx={{
                 m: "1%",
@@ -395,171 +376,171 @@ export default function AddHotelAftrLgn() {
               <FormattedMessage defaultMessage="Point location" />
             </Typography>
           )} */}
-          {step === 3 && (
-            <Typography
-              sx={{
-                fontSize: { xl: 28, md: 20 },
-                fontWeight: "700",
-                textAlign: "center",
-                opacity: 0.7,
-              }}
-            >
-              <FormattedMessage defaultMessage="Enter Hotel Amenities...." />
-            </Typography>
-          )}
-          {step === 2 && (
-            <Typography
-              sx={{
-                fontSize: { xl: 28, md: 20 },
-                fontWeight: "700",
-                textAlign: "center",
-                opacity: 0.7,
-              }}
-            >
-              <FormattedMessage defaultMessage="Enter Hotel Discription...." />
-            </Typography>
-          )}
+        {step === 3 && (
+          <Typography
+            sx={{
+              fontSize: { xl: 28, md: 20 },
+              fontWeight: "700",
+              textAlign: "center",
+              opacity: 0.7,
+            }}
+          >
+            <FormattedMessage defaultMessage="Enter Hotel Amenities...." />
+          </Typography>
+        )}
+        {step === 2 && (
+          <Typography
+            sx={{
+              fontSize: { xl: 28, md: 20 },
+              fontWeight: "700",
+              textAlign: "center",
+              opacity: 0.7,
+            }}
+          >
+            <FormattedMessage defaultMessage="Enter Hotel Discription...." />
+          </Typography>
+        )}
 
-          <Stack ml={20}>
-            {step === 0 ? (
-              <>
-                <form>
+        <Stack ml={20}>
+          {step === 0 ? (
+            <>
+              <form>
+                <Stack
+                  direction={"column"}
+                  gap={4}
+                  // margin={"2%"}
+                  sx={{ width: { xl: 350, md: 280, sm: 280 } }}
+                >
+                  <Stack gap={1}>
+                    <Typography
+                      sx={{
+                        fontWeight: "bold",
+                        fontSize: { xl: 16, md: 15, sm: 12 },
+                        color: "gray",
+                      }}
+                    >
+                      <FormattedMessage defaultMessage="Hotel name" />
+                    </Typography>
+                    <TextField
+                      // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
+
+                      placeholder={intl.formatMessage({
+                        defaultMessage: "Enter Hotel Name",
+                      })}
+                      {...register("hotelName")}
+                    />
+                    <FormHelperText sx={{ color: "red" }}>
+                      {errors?.hotelName?.message}
+                    </FormHelperText>
+                  </Stack>
+                  {files.length === 0 ? (
+                    <Typography {...getRootProps()}>
+                      <input {...getInputProps()} />
+                      {
+                        <IconButton
+                          sx={{
+                            border: "2px dashed lightgrey",
+                            borderRadius: 0,
+                            width: { xl: "10vw", md: "12vw" },
+                            height: { xl: "5vw", md: "10vw" },
+                            display: "flex",
+                            flexDirection: "column",
+                            justifyContent: "center",
+                          }}
+                        >
+                          <Typography sx={{ mt: 1 }}>
+                            <AddPhotoAlternateSharpIcon fontSize="large" />
+                            <Typography sx={{ fontSize: "10px" }}>
+                              <FormattedMessage defaultMessage="Drop a Photo Here" />
+                            </Typography>
+                          </Typography>
+                        </IconButton>
+                      }
+                    </Typography>
+                  ) : null}
+
+                  {/* </Stack> */}
+                  <Stack direction={"column"} spacing={2}>
+                    {files.map((photo: any) => (
+                      <>
+                        <Box position={"relative"}>
+                          <Box
+                            component={"img"}
+                            src={photo?.preview}
+                            width={100}
+                          />
+                          <IconButton
+                            sx={{
+                              position: "absolute",
+                              top: 0,
+                              bgcolor: "white",
+                              width: 8,
+                              height: 5,
+                              left: 90,
+                              color: "red",
+                              right: 0,
+                            }}
+                            onClick={() => handleDelete(photo)}
+                          >
+                            <RemoveCircleOutlineIcon fontSize={"small"} />
+                          </IconButton>
+                        </Box>
+                      </>
+                    ))}
+                    {error && (
+                      <FormHelperText sx={{ color: "red", ml: 2 }}>
+                        {error}
+                      </FormHelperText>
+                    )}
+                    <Button
+                      size="small"
+                      variant="contained"
+                      type="submit"
+                      disabled={!maxPhoto}
+                      sx={{
+                        fontSize: { xl: 15, md: 13 },
+                      }}
+                      onClick={handleSubmit(onSubmit)}
+                    >
+                      <FormattedMessage defaultMessage="Next" />
+                    </Button>
+                  </Stack>
+                </Stack>
+              </form>
+            </>
+          ) : step === 1 ? (
+            <>
+              <form>
+                <Stack gap={2}>
                   <Stack
-                    direction={"column"}
-                    gap={4}
-                    // margin={"2%"}
-                    sx={{ width: { xl: 350, md: 280, sm: 280 } }}
+                    gap={3}
+                    // justifyContent={"center"}
+                    // direction={"row"}
+                    // sx={{ m: "2%" }}
                   >
-                    <Stack gap={1}>
+                    <Stack>
                       <Typography
                         sx={{
                           fontWeight: "bold",
-                          fontSize: { xl: 16, md: 15, sm: 12 },
+                          fontSize: { xl: 16, md: 15, sm: 13 },
                           color: "gray",
                         }}
                       >
-                        <FormattedMessage defaultMessage="Hotel name" />
+                        <FormattedMessage defaultMessage="Country" />
                       </Typography>
                       <TextField
-                        // sx={{ mb: 8, height: 2, border: "none", width: "95%" }}
-
-                        placeholder={intl.formatMessage({
-                          defaultMessage: "Enter Hotel Name",
-                        })}
-                        {...register("hotelName")}
-                      />
-                      <FormHelperText sx={{ color: "red" }}>
-                        {errors?.hotelName?.message}
-                      </FormHelperText>
-                    </Stack>
-                    {files.length === 0 ? (
-                      <Typography {...getRootProps()}>
-                        <input {...getInputProps()} />
-                        {
-                          <IconButton
-                            sx={{
-                              border: "2px dashed lightgrey",
-                              borderRadius: 0,
-                              width: { xl: "10vw", md: "12vw" },
-                              height: { xl: "5vw", md: "10vw" },
-                              display: "flex",
-                              flexDirection: "column",
-                              justifyContent: "center",
-                            }}
-                          >
-                            <Typography sx={{ mt: 1 }}>
-                              <AddPhotoAlternateSharpIcon fontSize="large" />
-                              <Typography sx={{ fontSize: "10px" }}>
-                                <FormattedMessage defaultMessage="Drop a Photo Here" />
-                              </Typography>
-                            </Typography>
-                          </IconButton>
-                        }
-                      </Typography>
-                    ) : null}
-
-                    {/* </Stack> */}
-                    <Stack direction={"column"} spacing={2}>
-                      {files.map((photo: any) => (
-                        <>
-                          <Box position={"relative"}>
-                            <Box
-                              component={"img"}
-                              src={photo?.preview}
-                              width={100}
-                            />
-                            <IconButton
-                              sx={{
-                                position: "absolute",
-                                top: 0,
-                                bgcolor: "white",
-                                width: 8,
-                                height: 5,
-                                left: 90,
-                                color: "red",
-                                right: 0,
-                              }}
-                              onClick={() => handleDelete(photo)}
-                            >
-                              <RemoveCircleOutlineIcon fontSize={"small"} />
-                            </IconButton>
-                          </Box>
-                        </>
-                      ))}
-                      {error && (
-                        <FormHelperText sx={{ color: "red", ml: 2 }}>
-                          {error}
-                        </FormHelperText>
-                      )}
-                      <Button
-                        size="small"
-                        variant="contained"
-                        type="submit"
-                        disabled={!maxPhoto}
+                        required
+                        fullWidth
+                        {...register("country")}
+                        value={"India"}
+                        disabled
                         sx={{
-                          fontSize: { xl: 15, md: 13 },
+                          [`& fieldset`]: {
+                            borderRadius: "12px",
+                          },
                         }}
-                        onClick={handleSubmit(onSubmit)}
-                      >
-                        <FormattedMessage defaultMessage="Next" />
-                      </Button>
-                    </Stack>
-                  </Stack>
-                </form>
-              </>
-            ) : step === 1 ? (
-              <>
-                <form>
-                  <Stack gap={2}>
-                    <Stack
-                      gap={3}
-                      // justifyContent={"center"}
-                      // direction={"row"}
-                      // sx={{ m: "2%" }}
-                    >
-                      <Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
-                            color: "gray",
-                          }}
-                        >
-                          <FormattedMessage defaultMessage="Country" />
-                        </Typography>
-                        <TextField
-                          required
-                          fullWidth
-                          {...register("country")}
-                          value={"India"}
-                          disabled
-                          sx={{
-                            [`& fieldset`]: {
-                              borderRadius: "12px",
-                            },
-                          }}
-                        />
-                        {/* <TextField
+                      />
+                      {/* <TextField
                           id="demo-helper-text-aligned"
                           placeholder={intl.formatMessage({
                             defaultMessage: "Enter Country",
@@ -571,41 +552,38 @@ export default function AddHotelAftrLgn() {
                             },
                           }}
                         />{" "} */}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors?.country?.message}
-                        </FormHelperText>
-                      </Stack>
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors?.country?.message}
+                      </FormHelperText>
+                    </Stack>
 
-                      <Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
-                            color: "gray",
-                          }}
-                        >
-                          <FormattedMessage defaultMessage="State" />
-                        </Typography>
-                        <Select
-                          sx={{
-                            [`& fieldset`]: {
-                              borderRadius: "12px",
-                            },
-                          }}
-                          value={state}
-                          {...register("state")}
-                          onChange={handleChangeState}
-                        >
-                          {allStates.map((option) => (
-                            <MenuItem
-                              key={option.isoCode}
-                              value={option.isoCode}
-                            >
-                              {option.name}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                        {/* <TextField
+                    <Stack>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: { xl: 16, md: 15, sm: 13 },
+                          color: "gray",
+                        }}
+                      >
+                        <FormattedMessage defaultMessage="State" />
+                      </Typography>
+                      <Select
+                        sx={{
+                          [`& fieldset`]: {
+                            borderRadius: "12px",
+                          },
+                        }}
+                        value={state}
+                        {...register("state")}
+                        onChange={handleChangeState}
+                      >
+                        {allStates.map((option) => (
+                          <MenuItem key={option.isoCode} value={option.isoCode}>
+                            {option.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                      {/* <TextField
                           id="demo-helper-text-aligned"
                           placeholder={intl.formatMessage({
                             defaultMessage: "Enter State",
@@ -617,43 +595,43 @@ export default function AddHotelAftrLgn() {
                             },
                           }}
                         /> */}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors?.state?.message}
-                        </FormHelperText>
-                      </Stack>
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors?.state?.message}
+                      </FormHelperText>
                     </Stack>
-                    <Stack
-                      gap={3}
-                      // justifyContent={"center"}
-                      // direction={"row"}
-                    >
-                      <Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
-                            color: "gray",
-                          }}
-                        >
-                          <FormattedMessage defaultMessage="City" />
-                        </Typography>
-                        <Select
-                          sx={{
-                            [`& fieldset`]: {
-                              borderRadius: "12px",
-                            },
-                          }}
-                          value={city}
-                          {...register("city")}
-                          onChange={handleChangeCity}
-                        >
-                          {allCities.map((option: any) => (
-                            <MenuItem key={option.name} value={option.name}>
-                              {option.name}
-                            </MenuItem>
-                          ))}
-                        </Select>
-                        {/* <TextField
+                  </Stack>
+                  <Stack
+                    gap={3}
+                    // justifyContent={"center"}
+                    // direction={"row"}
+                  >
+                    <Stack>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: { xl: 16, md: 15, sm: 13 },
+                          color: "gray",
+                        }}
+                      >
+                        <FormattedMessage defaultMessage="City" />
+                      </Typography>
+                      <Select
+                        sx={{
+                          [`& fieldset`]: {
+                            borderRadius: "12px",
+                          },
+                        }}
+                        value={city}
+                        {...register("city")}
+                        onChange={handleChangeCity}
+                      >
+                        {allCities.map((option: any) => (
+                          <MenuItem key={option.name} value={option.name}>
+                            {option.name}
+                          </MenuItem>
+                        ))}
+                      </Select>
+                      {/* <TextField
                           placeholder={intl.formatMessage({
                             defaultMessage: "Enter City",
                           })}
@@ -664,78 +642,79 @@ export default function AddHotelAftrLgn() {
                             },
                           }}
                         /> */}
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors?.city?.message}
-                        </FormHelperText>
-                      </Stack>
-                      <Stack>
-                        <Typography
-                          sx={{
-                            fontWeight: "bold",
-                            fontSize: { xl: 16, md: 15, sm: 13 },
-                            color: "gray",
-                          }}
-                        >
-                          <FormattedMessage defaultMessage="Postal code" />
-                        </Typography>
-                        <TextField
-                          id="demo-helper-text-aligned"
-                          placeholder={intl.formatMessage({
-                            defaultMessage: "Enter Postal code",
-                          })}
-                          {...register("postalCode")}
-                          sx={{
-                            [`& fieldset`]: {
-                              borderRadius: "12px",
-                            },
-                          }}
-                        />
-                        <FormHelperText sx={{ color: "red" }}>
-                          {errors?.postalCode?.message}
-                        </FormHelperText>
-                      </Stack>
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors?.city?.message}
+                      </FormHelperText>
                     </Stack>
-                    <Box>
-                      <AddHotelLocation
-                        setLocation={setLocation}
-                        cityCoordinates={cityCoordinates}
-                        setCityCoordinates={setCityCoordinates}
+                    <Stack>
+                      <Typography
+                        sx={{
+                          fontWeight: "bold",
+                          fontSize: { xl: 16, md: 15, sm: 13 },
+                          color: "gray",
+                        }}
+                      >
+                        <FormattedMessage defaultMessage="Postal code" />
+                      </Typography>
+                      <TextField
+                        id="demo-helper-text-aligned"
+                        placeholder={intl.formatMessage({
+                          defaultMessage: "Enter Postal code",
+                        })}
+                        {...register("postalCode")}
+                        sx={{
+                          [`& fieldset`]: {
+                            borderRadius: "12px",
+                          },
+                        }}
                       />
-                    </Box>
-                    <Stack direction={"row"} gap={4} mt={3}>
-                      <Button
-                        size="small"
-                        variant="contained"
-                        sx={{
-                          fontSize: 15,
-                          background: "lightgray",
-                          color: "black",
-                        }}
-                        id="stepBackButton"
-                        onClick={handleStepBack}
-                      >
-                        <ArrowBackIcon
-                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                        />
-                      </Button>
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        onClick={handleSubmit(onSubmit)}
-                        sx={{
-                          fontSize: { xl: 15, md: 13, sm: 11 },
-                        }}
-                      >
-                        <FormattedMessage defaultMessage="Next" />
-                      </Button>
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors?.postalCode?.message}
+                      </FormHelperText>
                     </Stack>
                   </Stack>
-                </form>
-              </>
-            ) : step === 4 ? (
-              <></>
-            ) : step === 3 ? (
-              <form>
+                  <Box>
+                    <AddHotelLocation
+                      setLocation={setLocation}
+                      cityCoordinates={cityCoordinates}
+                      setCityCoordinates={setCityCoordinates}
+                    />
+                  </Box>
+                  <Stack direction={"row"} gap={4} mt={3}>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      sx={{
+                        fontSize: 15,
+                        background: "lightgray",
+                        color: "black",
+                      }}
+                      id="stepBackButton"
+                      onClick={handleStepBack}
+                    >
+                      <ArrowBackIcon
+                        sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                      />
+                    </Button>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      onClick={handleSubmit(onSubmit)}
+                      sx={{
+                        fontSize: { xl: 15, md: 13, sm: 11 },
+                      }}
+                    >
+                      <FormattedMessage defaultMessage="Next" />
+                    </Button>
+                  </Stack>
+                </Stack>
+              </form>
+            </>
+          ) : step === 4 ? (
+            <></>
+          ) : step === 3 ? (
+            <form>
+              <Stack direction={"column"} maxWidth={{ lg: 500, md: 400 }}>
                 {screenSize > 768 ? (
                   <Grid
                     container
@@ -861,92 +840,93 @@ export default function AddHotelAftrLgn() {
                 {/* <FormHelperText sx={{ color: "red" }}>
                         {errors.amenities?.message}
                       </FormHelperText> */}
+              </Stack>
 
-                <Stack direction={"row"} gap={2} mt={2}>
-                  <Button
-                    size="small"
-                    variant="contained"
-                    sx={{
-                      fontSize: 15,
-                      background: "lightgray",
-                      color: "black",
-                    }}
-                    id="stepBackButton"
-                    onClick={handleStepBack}
-                  >
-                    <ArrowBackIcon
-                      sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                    />
-                  </Button>
-                  <Button
-                    type="submit"
-                    variant="contained"
-                    disabled={arr?.length === 0}
-                    onClick={handleSubmit(onSubmit)}
-                    sx={{
-                      fontSize: { xl: 15, md: 13, sm: 11 },
-                    }}
-                  >
-                    <FormattedMessage defaultMessage="Next" />
-                  </Button>
-                </Stack>
-              </form>
-            ) : step === 2 ? (
-              <>
-                {/* {console.log(content)} */}
-                <Stack minWidth={{ sm: 300, md: 400, xl: 420 }}>
-                  <form>
-                    {/* <ReactQuill
+              <Stack direction={"row"} gap={2} mt={2}>
+                <Button
+                  size="small"
+                  variant="contained"
+                  sx={{
+                    fontSize: 15,
+                    background: "lightgray",
+                    color: "black",
+                  }}
+                  id="stepBackButton"
+                  onClick={handleStepBack}
+                >
+                  <ArrowBackIcon
+                    sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                  />
+                </Button>
+                <Button
+                  type="submit"
+                  variant="contained"
+                  disabled={arr?.length === 0}
+                  onClick={handleSubmit(onSubmit)}
+                  sx={{
+                    fontSize: { xl: 15, md: 13, sm: 11 },
+                  }}
+                >
+                  <FormattedMessage defaultMessage="Next" />
+                </Button>
+              </Stack>
+            </form>
+          ) : step === 2 ? (
+            <>
+              {/* {console.log(content)} */}
+              <Stack minWidth={{ sm: 300, md: 400, xl: 420 }}>
+                <form>
+                  {/* <ReactQuill
                             theme="snow"
                             value={content}
                             onChange={setContent}
                           /> */}
-                    <AddDiscription
-                      setContent={setContent}
-                      content={content}
-                      placeHolder={"Enter hotel discription"}
-                    />
+                  <AddDiscription
+                    setContent={setContent}
+                    content={content}
+                    placeHolder={"Enter hotel discription"}
+                  />
 
-                    <FormHelperText sx={{ color: "red" }}>
-                      {errors.discription?.message}
-                    </FormHelperText>
+                  <FormHelperText sx={{ color: "red" }}>
+                    {errors.discription?.message}
+                  </FormHelperText>
 
-                    {/* <Box sx={{ display: "flex" }}> */}
-                    <Stack direction={"row"} gap={3} mt={8}>
-                      <Button
-                        size="small"
-                        variant="contained"
-                        sx={{
-                          fontSize: 15,
-                          background: "lightgray",
-                          color: "black",
-                        }}
-                        id="stepBackButton"
-                        onClick={handleStepBack}
-                      >
-                        <ArrowBackIcon
-                          sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
-                        />
-                      </Button>
+                  {/* <Box sx={{ display: "flex" }}> */}
+                  <Stack direction={"row"} gap={3} mt={8}>
+                    <Button
+                      size="small"
+                      variant="contained"
+                      sx={{
+                        fontSize: 15,
+                        background: "lightgray",
+                        color: "black",
+                      }}
+                      id="stepBackButton"
+                      onClick={handleStepBack}
+                    >
+                      <ArrowBackIcon
+                        sx={{ fontSize: { sm: 18, md: 20, xl: 22 } }}
+                      />
+                    </Button>
 
-                      <Button
-                        type="submit"
-                        variant="contained"
-                        onClick={handleSubmit(onSubmit)}
-                        sx={{
-                          fontSize: { xl: 15, md: 13, sm: 11 },
-                        }}
-                      >
-                        <FormattedMessage defaultMessage="Next" />
-                      </Button>
-                    </Stack>
-                  </form>
-                </Stack>
-              </>
-            ) : null}
-          </Stack>
+                    <Button
+                      type="submit"
+                      variant="contained"
+                      onClick={handleSubmit(onSubmit)}
+                      sx={{
+                        fontSize: { xl: 15, md: 13, sm: 11 },
+                      }}
+                    >
+                      <FormattedMessage defaultMessage="Next" />
+                    </Button>
+                  </Stack>
+                </form>
+              </Stack>
+            </>
+          ) : null}
+        </Stack>
 
-          {/* <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
+        {/* <Box sx={{ mt: 4, fontSize: { xl: 15, md: 13, sm: 10 } }}>
                 <FormattedMessage defaultMessage="To use Another Email for adding hotel" />
                 <Button
                   sx={{
@@ -958,8 +938,7 @@ export default function AddHotelAftrLgn() {
                   <FormattedMessage defaultMessage="Click here..." />
                 </Button>
               </Box> */}
-        </Box>
-      </Grid>
+      </Box>
     </Grid>
   );
 }

@@ -2,19 +2,26 @@ import * as React from "react";
 import Grid from "@mui/material/Unstable_Grid2";
 import dayjs from "dayjs";
 
-import { TotalEarnings } from "./dashBoardComponents/TotalEarnings";
-import { TotalBookings } from "./dashBoardComponents/TotalBookings";
-import { TotalCustomers } from "./dashBoardComponents/TotalCustomers";
-import { BookingChart } from "./dashBoardComponents/BookingChart";
-import { LatestBookings } from "./dashBoardComponents/LatestBookings";
-import { Stack } from "@mui/material";
-import useAllBookings from "../../../../Hooks/useAllBookings";
-import { AcceptedBookings } from "./dashBoardComponents/AcceptedBookings";
-import { PendingBookings } from "./dashBoardComponents/PendingBookings";
-import Remainder from "./dashBoardComponents/reminder";
+import { TotalEarnings } from "./HotelDashboardComponents/TotalEarnings";
+import { TotalBookings } from "./HotelDashboardComponents/TotalBookings";
+import { TotalCustomers } from "./HotelDashboardComponents/TotalCustomers";
+import { BookingChart } from "./HotelDashboardComponents/BookingChart";
+import { LatestBookings } from "./HotelDashboardComponents/LatestBookings";
+import { AcceptedBookings } from "./HotelDashboardComponents/AcceptedBookings";
+import { PendingBookings } from "./HotelDashboardComponents/PendingBookings";
+import Remainder from "./HotelDashboardComponents/reminder";
+import { useParams } from "react-router-dom";
+import useParticularHotelBookings from "../../../../Hooks/Member/particularHotelBookings";
 
-export default function AdminDashboard() {
-  const { AllBooking, data } = useAllBookings();
+export default function AdminDashboard({ firstHotel, setRender }: any) {
+  const id = useParams();
+  let param: any;
+  if (Object.keys(id).length !== 0) {
+    param = id.id;
+  } else {
+    param = firstHotel?._id;
+  }
+  const { AllBooking, data } = useParticularHotelBookings(param);
   const [bookingData, setBookingData] = React.useState<any>();
   // State to hold monthly bookings
   const [monthlyBookings, setMonthlyBookings] = React.useState({});
@@ -97,8 +104,9 @@ export default function AdminDashboard() {
       setBookingData(data);
     };
     get();
-  }, [AllBooking]);
+  }, [AllBooking, param]);
   const booking: { [key: number]: number } = monthlyBookings;
+
   return (
     <Grid container spacing={3} xs={12} bgcolor={"whitesmoke"} p={2}>
       <Grid lg={3} sm={6} xs={12}>

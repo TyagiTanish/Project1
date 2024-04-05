@@ -10,6 +10,7 @@ import { useTheme } from "@mui/material/styles";
 import HotelDetails from "./HotelDetails";
 import CloseIcon from "@mui/icons-material/Close";
 import { NONAME } from "dns";
+import { Stack } from "@mui/material";
 /**
  * A Component to add hotel . Markdown is addHotel*.
  */
@@ -43,15 +44,17 @@ export default function AddHotelDialogBox({ open, setOpen }: any) {
               textTransform: "none",
               color: "black",
               mt: -2,
-              mr: -5,
+              mr: -3,
             }}
           >
             <CloseIcon fontSize="small" />
           </Button>
         </DialogTitle>
-        <DialogContent>
+        {/* <DialogContent> */}
+        <Stack>
           <HotelDetails />
-        </DialogContent>
+        </Stack>
+        {/* </DialogContent> */}
       </Dialog>
     </>
   );
