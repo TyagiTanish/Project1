@@ -6,13 +6,15 @@ import PlaceIcon from "@mui/icons-material/Place";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import DeleteOutlineOutlinedIcon from "@mui/icons-material/DeleteOutlineOutlined";
 import EditHotel from "../editHotels/EditHotel";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import DeleteModal from "../editHotels/DeleteModal";
 import { enqueueSnackbar } from "notistack";
 import EditIcon from "@mui/icons-material/Edit";
 import HotelAmenities from "./hotelAmenities/hotelAmenities";
 import EditAmenities from "../editHotels/EditAmenities";
 import { FormattedMessage } from "react-intl";
+import { userLogout } from "../../redux/user/userSlice";
+import Loaders from "../../loader/Loaders";
 
 function HotelInfo({ setRender }: any) {
   const [data, setData] = useState<any>([]);
@@ -24,9 +26,12 @@ function HotelInfo({ setRender }: any) {
   const [open2, setOpen2] = React.useState(false);
   const user = useSelector((state: any) => state.userReducer.user);
   const [render2, setRender2] = useState(0);
+
   const handleClickOpen = () => {
     setOpen(true);
   };
+
+  const dispatch = useDispatch();
   const handleClickOpen2 = () => {
     setOpen2(true);
   };
@@ -37,17 +42,34 @@ function HotelInfo({ setRender }: any) {
     setOpen3(false);
   };
   const handleDelete = async () => {
-    const result = await request.delete(`/deleteHotel/${data?._id}`);
-    setRender((prev: any) => prev + 1);
-    setHandle((prev: any) => prev + 1);
-    if (!result.data) {
-      navigate("/");
-      enqueueSnackbar("You No longer have any Hotel", {
-        variant: "warning",
-        autoHideDuration: 2000,
-      });
+    if(data?._id){
+    
+      const result = await request.delete(`/deleteHotel/${data?._id}`);
+      setRender((prev: any) => prev + 1);
+      setHandle((prev: any) => prev + 1);
+    
+      if (result.data) {
+        navigate("/member/hotels");
+      }
+      else{
+       
+       
+    
+          dispatch(userLogout())
+          localStorage.clear();
+     
+       
+      
+        enqueueSnackbar("You No longer have any Hotel", {
+          variant: "warning",
+          autoHideDuration: 2000,
+        });
+      }
+        
+     
+     
     }
-    navigate("/member/hotels");
+    
   };
   const id = useParams();
   const navigate = useNavigate();
@@ -80,6 +102,7 @@ function HotelInfo({ setRender }: any) {
 
   return (
     <>
+ 
       <Stack marginLeft={-6}>
         <Stack direction={"row"} justifyContent={"space-around"}>
           <Stack margin={6} spacing={5} direction={"row"} width={"90%"}>
@@ -87,83 +110,67 @@ function HotelInfo({ setRender }: any) {
               component="img"
               sx={{
                 width: { lg: "40%", md: 500, sm: 300 },
-                height: { xl: 300, lg: 225, md: 200, sm: 150 },
+                height: { xl: 300, lg: 200, md: 200, sm: 150 },
               }}
               alt="The house from the offer."
               src={`http://localhost:8000/${data?.photo}`}
             />
-            <Stack>
-              <Stack direction={"row"} justifyContent={"space-between"}>
-                <Stack direction={"column"} spacing={1}>
-                  <Typography sx={{ fontSize: { xl: 22, md: 16 } }}>
-                    {data?.hotelName}
-                  </Typography>
-                  <Stack direction={"row"} spacing={1}>
-                    <PlaceIcon fontSize="small" />
-                    <Typography fontSize={{ xl: 15, md: 12 }}>
-                      {data?.city}-{data?.pinCode},{data?.state},{data?.country}
-                    </Typography>
-                  </Stack>
-                </Stack>
-                <Stack direction={"row"} spacing={2}>
-                  <Tooltip
-                    title={"Delete"}
-                    style={{ cursor: "pointer" }}
-                    onClick={handleClickOpen2}
-                  >
-                    <DeleteOutlineOutlinedIcon
-                      fontSize="medium"
-                      sx={{ color: "gray", "&:hover": { color: "black" } }}
-                    />
-                  </Tooltip>
-                  <Tooltip
-                    title={"Edit"}
-                    style={{ cursor: "pointer" }}
-                    onClick={() => handleOpenEditBox()}
-                  >
-                    <ModeEditOutlineOutlinedIcon
-                      fontSize="medium"
-                      sx={{ color: "gray", "&:hover": { color: "black" } }}
-                    />
-                  </Tooltip>
-                </Stack>
-              </Stack>
-              <Stack
-                direction={"column"}
-                mt={3}
-                spacing={1}
-                // marginBottom={5}
-                // sx={{ width: { xl: 1000, md: 500, sm: 310 } }}
-                // marginLeft={6}
-              >
-                <Typography
-                  sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}
-                >
-                  <FormattedMessage defaultMessage="Description" />
+            <Stack direction={"column"} spacing={1}>
+              <Typography sx={{ fontSize: { xl: 22, md: 16 } }}>
+                {data?.hotelName}
+              </Typography>
+              <Stack direction={"row"} spacing={1}>
+                <PlaceIcon fontSize="small" />
+                <Typography fontSize={{ xl: 15, md: 12 }}>
+                  {data?.city}-{data?.pinCode},{data?.state},{data?.country}
                 </Typography>
-                <Box
-                  dangerouslySetInnerHTML={{ __html: data?.discription }}
-                  sx={{
-                    flex: 1,
-                    fontSize: { xl: 15, md: 12 },
-                    letterSpacing: 1,
-                    wordBreak: "break-word",
-                    maxHeight: {
-                      lg: "130px",
-                      xl: "170px",
-                      md: "100px",
-                      sm: "50px",
-                    },
-                    overflow: "auto",
-                    width: "100%",
-                  }}
-                />
               </Stack>
+            </Stack>
+            <Stack direction={"row"} spacing={2}>
+              <Tooltip
+                title={"Delete"}
+                style={{ cursor: "pointer" }}
+                onClick={handleClickOpen2}
+              >
+                <DeleteOutlineOutlinedIcon
+                  fontSize="medium"
+                  sx={{ color: "gray", "&:hover": { color: "black" } }}
+                />
+              </Tooltip>
+              <Tooltip
+                title={"Edit"}
+                style={{ cursor: "pointer" }}
+                onClick={() => handleOpenEditBox()}
+              >
+                <ModeEditOutlineOutlinedIcon
+                  fontSize="medium"
+                  sx={{ color: "gray", "&:hover": { color: "black" } }}
+                />
+              </Tooltip>
             </Stack>
           </Stack>
         </Stack>
-
-        <Stack mt={-4}>
+        <Stack
+          direction={"column"}
+          spacing={2}
+          marginBottom={5}
+          sx={{ width: { xl: 1000, md: 500, sm: 310 } }}
+          marginLeft={6}
+        >
+          <Typography sx={{ fontSize: { xl: 22, md: 16 }, fontWeight: "bold" }}>
+            <FormattedMessage defaultMessage="Description" />
+          </Typography>
+          <Box
+            dangerouslySetInnerHTML={{ __html: data?.discription }}
+            sx={{
+              flex: 1,
+              fontSize: { xl: 15, md: 12 },
+              letterSpacing: 1,
+              wordBreak: "break-word",
+            }}
+          />
+        </Stack>
+        <Stack>
           <Stack
             justifyContent={"space-between"}
             direction={"row"}
@@ -174,10 +181,7 @@ function HotelInfo({ setRender }: any) {
             >
               <FormattedMessage defaultMessage="Hotel Amenities" />
             </Typography>
-            <Button
-              onClick={() => setOpen3(true)}
-              sx={{ color: "gray", mr: 3 }}
-            >
+            <Button onClick={() => setOpen3(true)} sx={{ color: "gray" }}>
               <EditIcon fontSize="small" sx={{ cursor: "pointer" }} />
             </Button>
           </Stack>
@@ -224,7 +228,6 @@ function HotelInfo({ setRender }: any) {
         {open2 && (
           <DeleteModal
             open2={open2}
-            setOpen2={setOpen2}
             handleClickOpen2={handleClickOpen2}
             handleCloseDelete={handleCloseDelete}
             handleDelete={handleDelete}

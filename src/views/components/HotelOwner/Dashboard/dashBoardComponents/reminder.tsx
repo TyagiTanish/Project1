@@ -56,7 +56,8 @@ const Remainder = () => {
             </Typography>
             <Divider />
           </Stack>
-          <Stack gap={2} mt={2}>
+          {reminders.length ?   <Stack gap={2} mt={2}>
+            
             {reminders?.map((value, index: any) => (
               <Card variant="outlined" sx={{ padding: 1 }}>
                 <Stack direction={"row"} justifyContent={"space-between"}>
@@ -76,7 +77,8 @@ const Remainder = () => {
                 </Stack>
               </Card>
             ))}
-          </Stack>
+          </Stack> : <center style={{marginTop:'40%'}}><Typography sx={{width:300,fontSize:20}}>No Reminders till now</Typography></center>}
+        
           {/* <ReminderDetailPopper open={open} anchorEl={anchorEl} value={value} /> */}
         </CardContent>
       </Card>

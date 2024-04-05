@@ -24,10 +24,36 @@ const statusMap = {
 
 export function LatestBookings({ orders, sx }: any): React.JSX.Element {
   var today = new Date();
+  var date1 = today.getDate()
+  var month1= today.getMonth()
+  var year1= today.getFullYear();
+  function parseDateString(dateString:any) {
+    // Split the string into parts
+    var parts = dateString.split(" ");
 
+    // Extract month, day, and year
+    var month = parts[0]; // Month is the first part
+    var day = parseInt(parts[1]); // Day is the second part, convert to integer
+    var year = parseInt(parts[2]); // Year is the third part, convert to integer
+
+    // Map month names to month numbers
+    var monthMap : any= {
+        "January": 0, "February": 1, "March": 2, "April": 3,
+        "May": 4, "June": 5, "July": 6, "August": 7,
+        "September": 8, "October": 9, "November": 10, "December": 11
+    };
+
+    // Get the month number from the map
+    var monthNumber = monthMap[month];
+
+    // Create a new Date object
+    var date = new Date(year, monthNumber, day);
+
+    return date;
+}
   return (
     <Card sx={sx}>
-      <CardHeader sx={{ fontWeight: "bolder" }} title="Upcoming Bookings  " />
+      <CardHeader sx={{ fontWeight: "bolder" }} title=" Bookings for the Day " />
       <Divider />
       <Box sx={{ overflow: "auto" }}>
         <Table sx={{ minWidth: 800 }}>
@@ -45,14 +71,23 @@ export function LatestBookings({ orders, sx }: any): React.JSX.Element {
           </TableHead>
           <TableBody>
             {orders?.map((order: any) => {
-              return (
-                <TableRow hover key={order?._id}>
-                  <TableCell>{order?.fullName}</TableCell>
-                  <TableCell>{order?.email}</TableCell>
-                  <TableCell>{order?.bookFrom}</TableCell>
-                  <TableCell></TableCell>
-                </TableRow>
-              );
+           var dateObject = parseDateString(order?.bookFrom);
+         var date2=dateObject?.getDate()
+         var year2=dateObject?.getFullYear()
+         var month2= dateObject?.getMonth()
+         if((date1===date2 && month1===month2 && year1===year2)){
+          return (
+            <TableRow hover key={order?._id}>
+              <TableCell>{order?.fullName}</TableCell>
+              <TableCell>{order?.email}</TableCell>
+              <TableCell>{order?.bookFrom}</TableCell>
+              <TableCell></TableCell>
+            </TableRow>
+          );
+         }
+          
+         
+              
             })}
           </TableBody>
         </Table>

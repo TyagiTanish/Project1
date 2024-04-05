@@ -1,4 +1,4 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
+import { Box, Button, FormHelperText, TextField, Typography } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import useAuth from "../../../Hooks/useAuth/useAuth";
@@ -6,8 +6,56 @@ import { useDispatch, useSelector } from "react-redux";
 import { enqueueSnackbar } from "notistack";
 import { userLogin } from "../redux/user/userSlice";
 import { useIntl, FormattedMessage } from "react-intl";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as Yup from "yup";
 function Password() {
-  const { register, handleSubmit } = useForm();
+  const intl = useIntl();
+  const FormSchema = Yup.object().shape({
+    oldpassword :Yup.string()
+    .required(
+      intl.formatMessage({ defaultMessage: "This field is required" })
+    ),
+      newpassword :Yup.string()
+      .required(
+        intl.formatMessage({ defaultMessage: "This field is required" })
+      )
+      .min(
+        8,
+        intl.formatMessage({
+          defaultMessage: "Pasword must be 8 or more characters",
+        })
+      )
+      .matches(
+        /(?=.*[a-z])(?=.*[A-Z])\w+/,
+        intl.formatMessage({
+          defaultMessage:
+            "Password ahould contain at least one uppercase and lowercase character",
+        })
+      )
+      .matches(
+        /\d/,
+        intl.formatMessage({
+          defaultMessage: "Password should contain at least one number",
+        })
+      )
+     
+     
+ 
+   
+   
+  });
+  interface User {
+  oldpassword:any,
+    newpassword: any;
+    
+  }
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm<any, User>({
+    resolver: yupResolver(FormSchema),
+  })
 
   const dispatch = useDispatch();
   const user = useSelector((state: any) => state.userReducer.user);
@@ -20,12 +68,12 @@ function Password() {
       newpassword: data.newpassword,
     });
     if (!result.data) {
-      enqueueSnackbar("Wrong Password", {
-        variant: "error",
+      enqueueSnackbar(intl.formatMessage({defaultMessage:"Old Password is Incorrect"}), {
+        variant: "info",
         autoHideDuration: 1500,
       });
     } else {
-      enqueueSnackbar("Updated Successfully", {
+      enqueueSnackbar(intl.formatMessage({defaultMessage:"Updated Successfully"}), {
         variant: "success",
         autoHideDuration: 1000,
       });
@@ -38,7 +86,7 @@ function Password() {
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
-        <FormattedMessage defaultMessage=" Old password:" />
+        <FormattedMessage defaultMessage="Old password:" />
       </Typography>
       <TextField
         id="outlined-basic"
@@ -51,6 +99,11 @@ function Password() {
           },
         }}
       />
+         {errors.oldpassword?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.oldpassword?.message.toString()}
+                      </FormHelperText>
+                    )}
       <Typography
         sx={{ fontWeight: "bold", mt: 2, fontSize: { xl: 15, md: 14, sm: 13 } }}
       >
@@ -66,7 +119,11 @@ function Password() {
           },
         }}
       />
-
+          {errors.newpassword?.message && (
+                      <FormHelperText sx={{ color: "red" }}>
+                        {errors.newpassword?.message.toString()}
+                      </FormHelperText>
+                    )}
       <Box>
         <Button
           variant="contained"

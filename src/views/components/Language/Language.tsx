@@ -13,7 +13,8 @@ import { Box } from "@mui/system";
 export default function Language() {
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [Locale, setLocale] = React.useState(
-    localStorage.getItem("locale") || "en"
+    // localStorage.getItem("locale") || "en"
+    useSelector((state: any) => state?.userReducer?.locale) || "en"
   );
   const dispatch = useDispatch();
   const open = Boolean(anchorEl);
